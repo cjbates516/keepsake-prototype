@@ -468,6 +468,7 @@
   var state = {
     brand:'Apple', model:'iPhone 17 Pro Max', colorName:'Silver', colorHex:'#F5F5F5',
     photo:null, photoImg:null, photoUrl:null, filter:'none',
+    isLibraryDesign:false,
     text:'', textFont:0, textColor:'#FFFFFF', textSize:220, textPos:62, textVertical:false,
     px:0, py:0, scale:1, rot:0,
     addons:{screen:false,lens:false}, promo:null, reserved:false
@@ -620,7 +621,7 @@
       if((img.naturalWidth&&img.naturalWidth<150)||(img.naturalHeight&&img.naturalHeight<150)){
         alert('Please use an image at least 150×150.'); return;
       }
-      state.photoImg=img; state.photoUrl=url;
+      state.photoImg=img; state.photoUrl=url; state.isLibraryDesign=false;
       state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none'; state.reserved=false;
       $('zoomRange').value=1; $('rotRange').value=0;
       renderFilterChips(); updateDpi(); updateStage(); updateSummary();
@@ -696,6 +697,10 @@
   function updateDpi(){
     var el=$('dpiLabel');
     if(!state.photoImg){ el.textContent=''; return; }
+    if(state.isLibraryDesign){
+      el.textContent='Library design — we print from the full-resolution original';
+      el.style.color='#1E8E3E'; return;
+    }
     var sp = printSpec[state.model] || [0,0,900,1900];
     var ok = state.photoImg.naturalWidth >= sp[2]*0.6 && state.photoImg.naturalHeight >= sp[3]*0.6;
     el.textContent = ok ? 'Great resolution — crisp at print size' : 'Low resolution — this photo may print soft; a larger photo is better';
@@ -865,7 +870,7 @@
     if(!/^[a-z0-9-]+\.jpg$/.test(file)) return;
     var img=new Image();
     img.onload=function(){
-      state.photoImg=img; state.photoUrl='assets/designs/'+file;
+      state.photoImg=img; state.photoUrl='assets/designs/'+file; state.isLibraryDesign=true;
       state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none';
       renderFilterChips(); updateDpi(); updateStage(); updateSummary();
       $('stageHint').textContent='Library design loaded — drag to position, or add a name below';
