@@ -604,6 +604,7 @@
     return { x:(evt.clientX-r.left)*DIM.w/r.width, y:(evt.clientY-r.top)*DIM.h/r.height };
   }
   var dragging=false,last=null;
+  canvas.addEventListener('click',function(){ if(!state.photoImg && !state.text) $('fileInput').click(); });
   canvas.addEventListener('pointerdown',function(e){ if(!state.photoImg)return;
     dragging=true; last=toCanvas(e); canvas.classList.add('dragging');
     try{canvas.setPointerCapture(e.pointerId);}catch(_){}
@@ -619,15 +620,15 @@
   /* ── stage state ── */
   function hasKit(){ return !!KITS[state.model]; }
   function updateStage(){
-    var live = (state.photoImg || state.text) && hasKit();
+    var live = hasKit();
     canvas.style.display = live ? 'block' : 'none';
     $('stageEmpty').style.display = live ? 'none' : 'block';
     $('exportLink').style.display = state.photoImg ? 'inline' : 'none';
     $('editTools').style.display = state.photoImg ? 'block' : 'none';
     $('clearBtn').style.display = state.photoImg ? 'block' : 'none';
     $('uploadBtn').textContent = state.photoImg ? 'Upload a different photo' : 'Upload a photo';
-    if (!state.photoImg){
-      $('stageHint').textContent = 'Upload or drop a photo to begin';
+    if (!state.photoImg && !state.text){
+      $('stageHint').textContent = hasKit() ? 'Your case — upload or drop a photo to begin' : 'Upload or drop a photo to begin';
       $('kitNote').style.display='none';
     } else if (hasKit()){
       $('stageHint').textContent = 'Drag your photo to position it';
