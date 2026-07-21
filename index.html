@@ -24,8 +24,8 @@
   }
   @keyframes ksPrint{0%,54%{opacity:0}64%,88%{opacity:1}96%,100%{opacity:0}}
   @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  .rv{animation:reveal .7s cubic-bezier(.2,.7,.2,1) both;animation-timeline:view();animation-range:entry 0% entry 30%}
-  @supports not (animation-timeline: view()){ .rv{animation:none} }
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
   @media (prefers-reduced-motion: reduce){ *{animation:none !important;transition:none !important} }
   /* hover utilities (ported from style-hover attributes) */
   .h-circle:hover{background:#F3F2F2}
@@ -805,6 +805,17 @@
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
+
+  // section reveal on scroll (IntersectionObserver — no scroll-driven CSS)
+  var rvs = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    rvs.forEach(function(el){ io.observe(el); });
+  } else {
+    rvs.forEach(function(el){ el.classList.add('in'); });
+  }
 
   // announce rotation
   var annMsgs = [
