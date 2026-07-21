@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/cpr-cell-phone-repair-design-system-9e4b0993-39a0-4a90-877a-e70a3a58b435/colors_and_type.css">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    body{margin:0;font-family:'Avenir','Avenir Next','Nunito Sans',sans-serif;color:#2D2D3B;background:#F3F2F2}
+    a{color:#DC282E;text-decoration:none} a:hover{color:#B81F24;text-decoration:underline}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    input,select,textarea{font-family:inherit}
+  </style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column">
+  <header style="background:#FFFFFF;border-bottom:1px solid #E4E3E3;padding:0 clamp(16px,3vw,40px);display:flex;align-items:center;justify-content:space-between;height:66px">
+    <a href="Keepsake Printing Co.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <img src="assets/icon-color.svg" alt="" style="width:34px" />
+      <span style="font-weight:900;font-size:16px;color:#2D2D3B;letter-spacing:-.01em">KEEPSAKE <span style="color:#DC282E">PRINTING CO.</span></span>
+    </a>
+    <a href="Keepsake Printing Co.dc.html" style="font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4E4E50">← Back to shop</a>
+  </header>
+
+  <div style="background:#2D2D3B;padding:56px clamp(16px,3vw,40px)">
+    <div style="max-width:1080px;margin:0 auto">
+      <div style="display:inline-block;background:#DC282E;color:#FFFFFF;font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;padding:7px 16px;border-radius:999px;margin-bottom:16px">Teachers save 15% every day</div>
+      <h1 style="font-weight:900;font-size:clamp(30px,4.5vw,48px);letter-spacing:-.01em;text-transform:uppercase;color:#FFFFFF;margin:0 0 12px;max-width:640px">For the people who teach our kids</h1>
+      <p style="font-size:16px;line-height:1.6;color:#B9BDCB;margin:0;max-width:560px">Class photos, team mascots, retirement gifts, end-of-year keepsakes. Show a school ID and save 15% on everything — or order for the whole teachers' lounge and save more.</p>
+    </div>
+  </div>
+
+  <main style="flex:1;width:100%;max-width:1080px;margin:0 auto;padding:40px clamp(16px,3vw,40px) 80px;box-sizing:border-box">
+
+    <div style="animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:40px">
+      <div style="background:#FFFFFF;border:1px solid #EFEDED;border-radius:10px;padding:26px">
+        <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#9A9A9D;margin-bottom:10px">Every day</div>
+        <div style="font-size:34px;font-weight:900;line-height:1;color:#2D2D3B;margin-bottom:8px">15% off</div>
+        <p style="font-size:13px;line-height:1.55;color:#6E6E70;margin:0">Any custom case, any day — just show a valid school ID in store or verify once online. Code <b>TEACHER15</b>.</p>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #EFEDED;border-radius:10px;padding:26px">
+        <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#9A9A9D;margin-bottom:10px">Classroom orders 5+</div>
+        <div style="font-size:34px;font-weight:900;line-height:1;color:#2D2D3B;margin-bottom:8px">20% off</div>
+        <p style="font-size:13px;line-height:1.55;color:#6E6E70;margin:0">Team gifts, grade-level orders, PTA fundraisers. Mix models freely — every case can have a different photo.</p>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #EFEDED;border-radius:10px;padding:26px">
+        <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#9A9A9D;margin-bottom:10px">Whole school 25+</div>
+        <div style="font-size:34px;font-weight:900;line-height:1;color:#2D2D3B;margin-bottom:8px">25% off</div>
+        <p style="font-size:13px;line-height:1.55;color:#6E6E70;margin:0">Staff appreciation, retirement classes, spirit-wear drops. Free delivery to your school within 20 miles.</p>
+      </div>
+    </div>
+
+    <div style="animation:fadeUp .5s cubic-bezier(.2,.7,.2,1) .1s both;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start" data-mobile-stack="true">
+      <div style="background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;padding:28px">
+        <h2 style="font-weight:900;font-size:20px;letter-spacing:.02em;text-transform:uppercase;margin:0 0 6px">Get verified once</h2>
+        <p style="font-size:13px;line-height:1.6;color:#6E6E70;margin:0 0 18px">Verify your school email and your 15% applies automatically to every order — no ID at the counter, no codes to remember.</p>
+        <sc-if value="{{ verified }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#E8F5EC;border-radius:12px;padding:18px;font-size:14px;color:#1E8E3E;font-weight:800">You're verified! TEACHER15 is now tied to your email — it applies automatically at checkout.</div>
+        </sc-if>
+        <sc-if value="{{ notVerified }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ verify }}" style="display:flex;flex-direction:column;gap:12px">
+            <input required="required" placeholder="Full name" style="border:1px solid #D8D7D7;border-radius:8px;padding:13px 14px;font-size:14px" />
+            <input type="email" required="required" placeholder="School email (.edu, .k12, or district domain)" style="border:1px solid #D8D7D7;border-radius:8px;padding:13px 14px;font-size:14px" />
+            <input placeholder="School name" style="border:1px solid #D8D7D7;border-radius:8px;padding:13px 14px;font-size:14px" />
+            <button type="submit" style="background:#DC282E;color:#FFFFFF;border:0;padding:15px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s" style-hover="background:#B71C22">Verify my discount</button>
+            <div style="font-size:11px;color:#9A9A9D;line-height:1.5">We only use this to confirm you teach — it's never shared or added to marketing lists without asking.</div>
+          </form>
+        </sc-if>
+      </div>
+
+      <div style="background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;padding:28px">
+        <h2 style="font-weight:900;font-size:20px;letter-spacing:.02em;text-transform:uppercase;margin:0 0 6px">Classroom quote</h2>
+        <p style="font-size:13px;line-height:1.6;color:#6E6E70;margin:0 0 18px">Tell us the size of the order and we'll reply with a firm quote and a timeline — usually the same day.</p>
+        <sc-if value="{{ quoteSent }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#E8F5EC;border-radius:12px;padding:18px;font-size:14px;color:#1E8E3E;font-weight:800">Request received! We'll email your quote within one business day.</div>
+        </sc-if>
+        <sc-if value="{{ quoteNotSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ sendQuote }}" style="display:flex;flex-direction:column;gap:12px">
+            <input type="email" required="required" placeholder="School email" style="border:1px solid #D8D7D7;border-radius:8px;padding:13px 14px;font-size:14px" />
+            <div style="display:flex;gap:10px">
+              <select style="flex:1;border:1px solid #D8D7D7;border-radius:8px;padding:13px 14px;font-size:14px;background:#FFFFFF">
+                <option>5–9 cases (20% off)</option>
+                <option>10–24 cases (20% off)</option>
+                <option>25+ cases (25% off)</option>
+              </select>
+              <input type="date" style="flex:1;border:1px solid #D8D7D7;border-radius:8px;padding:13px 14px;font-size:14px" title="When do you need them?" />
+            </div>
+            <textarea placeholder="What's the occasion? (team gift, retirement, fundraiser…)" rows="3" style="border:1px solid #D8D7D7;border-radius:8px;padding:13px 14px;font-size:14px;resize:vertical"></textarea>
+            <button type="submit" style="background:#FFFFFF;color:#2D2D3B;border:1px solid #2D2D3B;padding:15px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s" style-hover="background:#2D2D3B;color:#FFFFFF">Request quote</button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="animation:fadeUp .5s cubic-bezier(.2,.7,.2,1) .2s both;background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;padding:28px;margin-top:24px">
+      <h2 style="font-weight:900;font-size:20px;letter-spacing:.02em;text-transform:uppercase;margin:0 0 16px">Ideas from real classrooms</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+        <div style="background:#F8F7F7;border-radius:12px;padding:18px"><div style="font-size:14px;font-weight:900;color:#2D2D3B;margin-bottom:6px">End-of-year class photo</div><div style="font-size:13px;line-height:1.55;color:#6E6E70">One group shot, a case for every teacher on the team. The gift that doesn't sit in a drawer.</div></div>
+        <div style="background:#F8F7F7;border-radius:12px;padding:18px"><div style="font-size:14px;font-weight:900;color:#2D2D3B;margin-bottom:6px">Retirement keepsake</div><div style="font-size:13px;line-height:1.55;color:#6E6E70">Thirty years of yearbook photos, one collage, one case. Bring tissues to the party.</div></div>
+        <div style="background:#F8F7F7;border-radius:12px;padding:18px"><div style="font-size:14px;font-weight:900;color:#2D2D3B;margin-bottom:6px">PTA fundraiser</div><div style="font-size:13px;line-height:1.55;color:#6E6E70">School mascot cases at spirit week — we print, you keep the margin. Ask for the fundraiser sheet.</div></div>
+        <div style="background:#F8F7F7;border-radius:12px;padding:18px"><div style="font-size:14px;font-weight:900;color:#2D2D3B;margin-bottom:6px">Team coach gifts</div><div style="font-size:13px;line-height:1.55;color:#6E6E70">The season's best action shot for every coach and assistant. Ready before the banquet.</div></div>
+      </div>
+    </div>
+  </main>
+
+  <footer style="background:#2D2D3B;padding:28px 40px;display:flex;align-items:center;justify-content:center;gap:12px">
+    <img src="assets/icon-mono-white.svg" alt="" style="width:24px" />
+    <span style="font-size:12px;color:#B9BDCB;font-weight:600">© 2026 Keepsake Printing Co. · 10-day returns · 6-month warranty</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { verified: false, quoteSent: false };
+  renderVals() {
+    const s = this.state;
+    return {
+      verified: s.verified, notVerified: !s.verified,
+      verify: (e) => { e.preventDefault(); this.setState({ verified: true }); },
+      quoteSent: s.quoteSent, quoteNotSent: !s.quoteSent,
+      sendQuote: (e) => { e.preventDefault(); this.setState({ quoteSent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

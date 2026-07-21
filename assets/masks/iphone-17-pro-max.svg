@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.58 164.32" data-model="iPhone 17 Pro Max" data-units="mm" data-px-width="916" data-px-height="1941" data-status="validated">
+  <path id="case-outline" d="M 10.0,0 H 67.58 A 10.0 10.0 0 0 1 77.58 10.0 V 154.32 A 10.0 10.0 0 0 1 67.58 164.32 H 10.0 A 10.0 10.0 0 0 1 0 154.32 V 10.0 A 10.0 10.0 0 0 1 10.0 0 Z" fill="none" stroke="#4E4E50" stroke-width="0.4"></path>
+  <rect id="camera-zone" x="0.0" y="0.0" width="77.58" height="34" rx="8.0" fill="#4E4E50" fill-opacity="0.25"></rect>
+  <rect id="safe-zone" x="5.0" y="5.0" width="67.58" height="154.32" rx="5.0" fill="none" stroke="#DC282E" stroke-width="0.25" stroke-dasharray="2 2" opacity="0.6"></rect>
+</svg>

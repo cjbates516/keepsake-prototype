@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/cpr-cell-phone-repair-design-system-9e4b0993-39a0-4a90-877a-e70a3a58b435/colors_and_type.css">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    body{margin:0;font-family:'Avenir','Avenir Next','Nunito Sans',sans-serif;color:#2D2D3B;background:#F3F2F2}
+    a{color:#DC282E;text-decoration:none} a:hover{color:#B81F24;text-decoration:underline}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(220,40,46,.35)}50%{box-shadow:0 0 0 10px rgba(220,40,46,0)}}
+    input{font-family:inherit}
+  </style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column">
+  <header style="background:#FFFFFF;border-bottom:1px solid #E4E3E3;padding:0 clamp(16px,3vw,40px);display:flex;align-items:center;justify-content:space-between;height:66px">
+    <a href="Keepsake Printing Co.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <img src="assets/icon-color.svg" alt="" style="width:34px" />
+      <span style="font-weight:900;font-size:16px;color:#2D2D3B;letter-spacing:-.01em">KEEPSAKE <span style="color:#DC282E">PRINTING CO.</span></span>
+    </a>
+    <a href="Keepsake Printing Co.dc.html" style="font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4E4E50">← Back to shop</a>
+  </header>
+
+  <div style="background:#2D2D3B;padding:44px clamp(16px,3vw,40px)">
+    <div style="max-width:880px;margin:0 auto">
+      <h1 style="font-weight:900;font-size:clamp(28px,4vw,40px);letter-spacing:-.01em;text-transform:uppercase;color:#FFFFFF;margin:0 0 8px">Track your order</h1>
+      <p style="font-size:15px;color:#B9BDCB;margin:0">Enter your order number to see your case's journey — from upload to your hands.</p>
+    </div>
+  </div>
+
+  <main style="flex:1;width:100%;max-width:880px;margin:0 auto;padding:36px clamp(16px,3vw,40px) 80px;box-sizing:border-box">
+    <div style="animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;padding:28px;margin-bottom:24px">
+      <form onSubmit="{{ track }}" style="display:flex;gap:10px;flex-wrap:wrap">
+        <input value="{{ code }}" onChange="{{ setCode }}" required="required" placeholder="Order number (e.g. KP-4821)" style="flex:1;min-width:200px;border:1px solid #D8D7D7;border-radius:999px;padding:14px 20px;font-size:14px;letter-spacing:.03em;text-transform:uppercase;outline-color:#2D2D3B" />
+        <button type="submit" style="background:#DC282E;color:#FFFFFF;border:0;padding:14px 32px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s" style-hover="background:#B71C22">Track</button>
+      </form>
+      <div style="font-size:12px;color:#9A9A9D;margin-top:12px">It's on your receipt and in your confirmation email. Try <b>KP-4821</b> to see a live example.</div>
+    </div>
+
+    <sc-if value="{{ showResult }}" hint-placeholder-val="{{ true }}">
+      <div style="animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;padding:28px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px">
+          <div>
+            <div style="font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#9A9A9D">Order {{ orderCode }}</div>
+            <div style="font-size:20px;font-weight:900;color:#2D2D3B;margin-top:4px">{{ orderName }}</div>
+          </div>
+          <div style="background:#FBE0E1;color:#DC282E;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;border-radius:999px">{{ statusBadge }}</div>
+        </div>
+        <div style="font-size:13px;color:#6E6E70;margin-bottom:26px">{{ orderMeta }}</div>
+
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ steps }}" as="st" hint-placeholder-count="5">
+            <div style="display:flex;gap:18px">
+              <div style="display:flex;flex-direction:column;align-items:center">
+                <div style="width:34px;height:34px;border-radius:50%;background:{{ st.dotBg }};border:2px solid {{ st.dotBorder }};display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:{{ st.dotColor }};flex-shrink:0;animation:{{ st.anim }}">{{ st.mark }}</div>
+                <sc-if value="{{ st.hasLine }}" hint-placeholder-val="{{ true }}">
+                  <div style="width:2px;flex:1;min-height:34px;background:{{ st.lineBg }}"></div>
+                </sc-if>
+              </div>
+              <div style="padding:6px 0 26px">
+                <div style="font-size:15px;font-weight:900;color:{{ st.titleColor }}">{{ st.title }}</div>
+                <div style="font-size:13px;line-height:1.55;color:#6E6E70;margin-top:3px">{{ st.desc }}</div>
+                <sc-if value="{{ st.hasTime }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-size:12px;font-weight:800;color:#9A9A9D;margin-top:5px">{{ st.time }}</div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="background:#F8F7F7;border-radius:12px;padding:18px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <div style="flex:1;min-width:220px;font-size:13px;line-height:1.6;color:#4E4E50"><b>Questions about this order?</b> Reply to your confirmation email or call 610-555-0148 — have your order number ready.</div>
+          <a href="Help and Info.dc.html" style="background:#FFFFFF;border:1px solid #2D2D3B;color:#2D2D3B;padding:11px 22px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;text-decoration:none" style-hover="background:#2D2D3B;color:#FFFFFF;text-decoration:none">Get help</a>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ notFound }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:fadeUp .3s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;padding:28px;text-align:center">
+        <div style="font-size:16px;font-weight:900;color:#2D2D3B;margin-bottom:6px">We couldn't find that order</div>
+        <div style="font-size:14px;line-height:1.6;color:#6E6E70">Double-check the number on your receipt — it starts with KP-. Still stuck? Call or text 610-555-0148 and we'll find it.</div>
+      </div>
+    </sc-if>
+  </main>
+
+  <footer style="background:#2D2D3B;padding:28px 40px;display:flex;align-items:center;justify-content:center;gap:12px">
+    <img src="assets/icon-mono-white.svg" alt="" style="width:24px" />
+    <span style="font-size:12px;color:#B9BDCB;font-weight:600">© 2026 Keepsake Printing Co. · 10-day returns · 6-month warranty</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { code: 'KP-4821', tracked: 'KP-4821' };
+  renderVals() {
+    const s = this.state;
+    const known = {
+      'KP-4821': {
+        name: 'iPhone 17 Pro Max · MagSafe Clear', meta: 'Custom print · Cosmic Orange · Placed today, 11:42 AM · In-store pickup', stage: 2,
+        badge: 'Printing now'
+      },
+      'KP-3377': {
+        name: 'iPhone 16 · MagSafe Clear', meta: 'Custom print · Ultramarine · Placed yesterday · Shipping to East Coast', stage: 4,
+        badge: 'Shipped'
+      }
+    };
+    const order = known[(s.tracked || '').toUpperCase()];
+    const stageDefs = [
+      { title: 'Order received', desc: 'Your photo and case details are in. We check the image resolution and crop before anything prints.' },
+      { title: 'Photo prepped', desc: 'Color-matched and fitted to your exact model\u2019s print template by a real person.' },
+      { title: 'Printing now', desc: 'Your case is on the UV printer — ink is being cured directly into the surface. This takes about 15 minutes.' },
+      { title: 'Quality check', desc: 'We inspect edges, camera cutout alignment, and color under daylight lamps. Not right? We reprint it.' },
+      { title: 'Ready', desc: 'Pickup orders: come see us! Shipped orders: tracking is in your email.' }
+    ];
+    const times = ['11:42 AM', '11:58 AM', '12:10 PM', '', ''];
+    return {
+      code: s.code,
+      setCode: (e) => this.setState({ code: e.target.value }),
+      track: (e) => { e.preventDefault(); this.setState({ tracked: s.code.trim() }); },
+      showResult: !!order, notFound: !!s.tracked && !order,
+      orderCode: (s.tracked || '').toUpperCase(),
+      orderName: order ? order.name : '',
+      orderMeta: order ? order.meta : '',
+      statusBadge: order ? order.badge : '',
+      steps: stageDefs.map((d, i) => {
+        const done = order && i < order.stage;
+        const active = order && i === order.stage;
+        return {
+          title: d.title, desc: d.desc,
+          mark: done ? '\u2713' : active ? '\u25CF' : '',
+          dotBg: done ? '#1E8E3E' : active ? '#DC282E' : '#FFFFFF',
+          dotBorder: done ? '#1E8E3E' : active ? '#DC282E' : '#D8D7D7',
+          dotColor: '#FFFFFF',
+          anim: active ? 'pulse 1.8s infinite' : 'none',
+          titleColor: done || active ? '#2D2D3B' : '#9A9A9D',
+          hasLine: i < stageDefs.length - 1,
+          lineBg: done ? '#1E8E3E' : '#E4E3E3',
+          hasTime: !!(order && times[i] && i <= order.stage),
+          time: times[i]
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

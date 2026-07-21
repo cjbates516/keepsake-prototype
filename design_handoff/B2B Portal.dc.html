@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/cpr-cell-phone-repair-design-system-9e4b0993-39a0-4a90-877a-e70a3a58b435/colors_and_type.css">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    body{margin:0;font-family:'Avenir','Avenir Next','Nunito Sans',sans-serif;color:#2D2D3B;background:#F3F2F2}
+    a{color:#DC282E;text-decoration:none} a:hover{color:#B81F24;text-decoration:underline}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    input{font-family:inherit}
+  </style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column">
+  <header style="background:#2D2D3B;padding:0 clamp(16px,3vw,40px);display:flex;align-items:center;justify-content:space-between;height:66px">
+    <a href="Keepsake Printing Co.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <img src="assets/icon-mono-white.svg" alt="" style="width:34px" />
+      <span style="font-weight:900;font-size:16px;color:#FFFFFF;letter-spacing:-.01em">KEEPSAKE <span style="color:#F15F5E">B2B</span></span>
+    </a>
+    <div style="display:flex;align-items:center;gap:18px">
+      <a href="Keepsake Printing Co.dc.html" style="font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B9BDCB">← Retail site</a>
+      <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ signOut }}" style="background:none;border:2px solid #B9BDCB;border-radius:999px;padding:9px 20px;font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit;color:#FFFFFF">Sign out</button>
+      </sc-if>
+    </div>
+  </header>
+
+  <main style="flex:1;width:100%;max-width:1080px;margin:0 auto;padding:40px clamp(16px,3vw,40px) 80px;box-sizing:border-box">
+
+    <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ true }}">
+      <div style="animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;max-width:440px;margin:48px auto 0;background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;padding:36px;box-shadow:0 12px 32px rgba(46,56,61,.08)">
+        <div style="display:inline-flex;background:#FBE0E1;border-radius:999px;padding:6px 16px;font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#B81F24;margin-bottom:16px">Wholesale partners</div>
+        <h1 style="font-weight:900;font-size:26px;letter-spacing:-.01em;text-transform:uppercase;margin:0 0 6px">Partner sign in</h1>
+        <p style="font-size:14px;color:#6E6E70;line-height:1.6;margin:0 0 24px">For repair shops, retailers, and businesses ordering custom-printed swag at volume pricing.</p>
+        <form onSubmit="{{ signIn }}" style="display:flex;flex-direction:column;gap:14px">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#6E6E70">Business email<input type="email" required="required" placeholder="you@yourshop.com" style="border:1px solid #D8D7D7;border-radius:8px;padding:13px 14px;font-size:15px" /></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#6E6E70">Password<input type="password" required="required" placeholder="••••••••" style="border:1px solid #D8D7D7;border-radius:8px;padding:13px 14px;font-size:15px" /></label>
+          <button type="submit" style="background:#DC282E;color:#FFFFFF;border:0;padding:15px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit;box-shadow:0 8px 20px rgba(220,40,46,.25)">Sign in</button>
+        </form>
+        <div style="margin-top:20px;padding-top:18px;border-top:1px solid #E4E3E3;font-size:13px;text-align:center">Not a partner yet? <a href="Keepsake Printing Co.dc.html">Apply on the wholesale page →</a></div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:28px">
+        <div>
+          <div style="font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#DC282E;margin-bottom:6px">Partner dashboard</div>
+          <h1 style="font-weight:900;font-size:clamp(28px,4vw,38px);letter-spacing:-.01em;text-transform:uppercase;margin:0">Main Street Repair Co.</h1>
+          <div style="font-size:13px;color:#6E6E70;margin-top:6px">Partner since April 2026 · Net-30 terms · Rep: Corey</div>
+        </div>
+        <div style="background:#2D2D3B;border-radius:999px;padding:10px 22px;font-size:13px;font-weight:900;color:#FFFFFF;letter-spacing:.04em">TIER 2 · 25% OFF RETAIL</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-bottom:20px">
+        <div style="background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;padding:24px">
+          <div style="font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#6E6E70;margin-bottom:14px">This quarter</div>
+          <div style="font-weight:900;font-size:40px;letter-spacing:-.02em;line-height:1">142</div>
+          <div style="font-size:13px;color:#4E4E50;margin-top:6px">cases ordered · <b>$2,556</b> wholesale</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;padding:24px">
+          <div style="font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#6E6E70;margin-bottom:14px">Volume tier progress</div>
+          <div style="height:8px;background:#F3F2F2;border-radius:999px;margin:6px 0 10px;overflow:hidden"><div style="width:71%;height:100%;background:#DC282E;border-radius:999px"></div></div>
+          <div style="font-size:12px;color:#6E6E70">58 more cases this quarter unlocks <b style="color:#2D2D3B">Tier 3 — 30% off + free freight</b></div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;padding:24px">
+          <div style="font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#6E6E70;margin-bottom:14px">Quick reorder</div>
+          <div style="font-size:13px;color:#4E4E50;margin-bottom:12px">Repeat your last order — 24× mixed iPhone cases, your shop logo backs.</div>
+          <button onClick="{{ noop }}" style="background:#DC282E;color:#FFFFFF;border:0;padding:12px 22px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit">Reorder 24 units</button>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;padding:28px;margin-bottom:20px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px">
+          <h2 style="font-weight:900;font-size:18px;letter-spacing:.02em;text-transform:uppercase;margin:0">Order history</h2>
+          <span style="font-size:12px;color:#6E6E70">4 orders</span>
+        </div>
+        <sc-for list="{{ orders }}" as="o" hint-placeholder-count="0">
+          <div style="display:grid;grid-template-columns:1fr auto auto auto;gap:16px;align-items:center;padding:14px 0;border-top:1px solid #F0EFEF">
+            <div>
+              <div style="font-weight:800;font-size:14px">{{ o.name }}</div>
+              <div style="font-size:12px;color:#6E6E70;margin-top:2px">{{ o.date }} · {{ o.id }} · {{ o.units }} units</div>
+            </div>
+            <div style="font-weight:900;font-size:14px">{{ o.total }}</div>
+            <span style="{{ o.statusStyle }}">{{ o.status }}</span>
+            <button onClick="{{ noop }}" style="background:#FFFFFF;border:2px solid #2D2D3B;border-radius:999px;padding:7px 14px;font-size:11px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;font-family:inherit;color:#2D2D3B">Reorder</button>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+        <div style="background:#2D2D3B;border-radius:16px;padding:28px">
+          <h2 style="font-weight:900;font-size:18px;letter-spacing:.02em;text-transform:uppercase;margin:0 0 12px;color:#FFFFFF">Trade show season?</h2>
+          <p style="font-size:13px;color:#B9BDCB;line-height:1.6;margin:0 0 16px">Custom-printed swag — cases, charging pads, earbud cases — with your client's logo. Volume pricing from 50 units.</p>
+          <button onClick="{{ noop }}" style="background:#DC282E;color:#FFFFFF;border:0;padding:12px 22px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit">Get a swag quote</button>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;padding:28px">
+          <h2 style="font-weight:900;font-size:18px;letter-spacing:.02em;text-transform:uppercase;margin:0 0 12px">Wholesale price list</h2>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:#4E4E50">
+            <div style="display:flex;justify-content:space-between"><span>MagSafe Clear, printed</span><b>$22 / unit</b></div>
+            <div style="display:flex;justify-content:space-between;color:#9A9A9D"><span>Suggested retail</span><span>$64.99</span></div>
+          </div>
+          <div style="font-size:11px;color:#9A9A9D;margin-top:12px">Tier 2 pricing shown. MOQ 12 units per order, mixable across devices.</div>
+        </div>
+      </div>
+    </sc-if>
+  </main>
+
+  <footer style="background:#2D2D3B;padding:28px 40px;display:flex;align-items:center;justify-content:center;gap:12px">
+    <img src="assets/icon-mono-white.svg" alt="" style="width:24px" />
+    <span style="font-size:12px;color:#B9BDCB;font-weight:600">© 2026 Keepsake Printing Co. · Wholesale partner portal</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { signedIn: false };
+  renderVals() {
+    const pill = (bg, fg) => ({ background: bg, color: fg, borderRadius: '999px', padding: '6px 14px', fontSize: '11px', fontWeight: 900, letterSpacing: '.04em', textTransform: 'uppercase', textAlign: 'center' });
+    return {
+      signedIn: this.state.signedIn, signedOut: !this.state.signedIn,
+      signIn: (e) => { e.preventDefault(); this.setState({ signedIn: true }); },
+      signOut: () => this.setState({ signedIn: false }),
+      noop: (e) => { if (e && e.preventDefault) e.preventDefault(); },
+      orders: [
+        { id: 'B2B-0221', name: '24× mixed iPhone cases · shop logo', date: 'July 2, 2026', units: 24, total: '$456', status: 'Printing', statusStyle: pill('#FFF3E0', '#B26A00') },
+        { id: 'B2B-0198', name: '50× trade-show swag · client logo', date: 'June 11, 2026', units: 50, total: '$900', status: 'Delivered', statusStyle: pill('#E8F5EC', '#1E8E3E') },
+        { id: 'B2B-0173', name: '36× Galaxy cases · seasonal designs', date: 'May 20, 2026', units: 36, total: '$684', status: 'Delivered', statusStyle: pill('#E8F5EC', '#1E8E3E') },
+        { id: 'B2B-0140', name: '32× mixed cases · launch stock', date: 'April 28, 2026', units: 32, total: '$516', status: 'Delivered', statusStyle: pill('#E8F5EC', '#1E8E3E') }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

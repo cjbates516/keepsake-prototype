@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/cpr-cell-phone-repair-design-system-9e4b0993-39a0-4a90-877a-e70a3a58b435/colors_and_type.css">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    body{margin:0;font-family:'Avenir','Avenir Next','Nunito Sans',sans-serif;color:#2D2D3B;background:#F3F2F2}
+    a{color:#DC282E;text-decoration:none} a:hover{color:#B81F24;text-decoration:underline}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    input{font-family:inherit}
+  </style>
+  <script src="./image-slot.js"></script>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column">
+  <header style="background:#FFFFFF;border-bottom:1px solid #E4E3E3;padding:0 clamp(16px,3vw,40px);display:flex;align-items:center;justify-content:space-between;height:66px">
+    <a href="Keepsake Printing Co.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <img src="assets/icon-color.svg" alt="" style="width:34px" />
+      <span style="font-weight:900;font-size:16px;color:#2D2D3B;letter-spacing:-.01em">KEEPSAKE <span style="color:#DC282E">PRINTING CO.</span></span>
+    </a>
+    <a href="Keepsake Printing Co.dc.html" style="font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4E4E50">← Back to shop</a>
+  </header>
+
+  <div style="background:#2D2D3B;padding:44px clamp(16px,3vw,40px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <h1 style="font-weight:900;font-size:clamp(28px,4vw,40px);letter-spacing:-.01em;text-transform:uppercase;color:#FFFFFF;margin:0 0 8px">Design library</h1>
+      <p style="font-size:15px;color:#B9BDCB;margin:0">No photo? No problem. Pick a ready-made design and we'll print it on your case today.</p>
+    </div>
+  </div>
+
+  <div style="background:#FFFFFF;border-bottom:1px solid #E4E3E3;position:sticky;top:0;z-index:5">
+    <div style="max-width:1200px;margin:0 auto;padding:14px clamp(16px,3vw,40px);display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <input value="{{ query }}" onChange="{{ setQuery }}" placeholder="Search designs — try &quot;ocean&quot; or &quot;dog&quot;" style="flex:1;min-width:220px;border:1px solid #D8D7D7;border-radius:999px;padding:11px 20px;font-size:14px;outline-color:#2D2D3B" />
+      <div style="display:flex;gap:8px;overflow-x:auto">
+        <sc-for list="{{ cats }}" as="c" hint-placeholder-count="6">
+          <button onClick="{{ c.pick }}" style="background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }};border-radius:999px;padding:9px 18px;font-size:12px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s">{{ c.name }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <main style="flex:1;width:100%;max-width:1200px;margin:0 auto;padding:32px clamp(16px,3vw,40px) 80px;box-sizing:border-box">
+    <div style="font-size:13px;font-weight:700;color:#9A9A9D;margin-bottom:18px">{{ countLabel }}</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px">
+      <sc-for list="{{ designs }}" as="d" hint-placeholder-count="8">
+        <div style="animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border:1px solid #EFEDED;border-radius:14px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-4px);box-shadow:0 16px 36px rgba(46,56,61,.12)">
+          <div style="aspect-ratio:1/1.6;background:#F8F7F7">
+            <image-slot id="{{ d.slotId }}" shape="rect" style="width:100%;height:100%">{{ d.ph }}</image-slot>
+          </div>
+          <div style="padding:14px 16px 16px">
+            <div style="font-size:14px;font-weight:900;color:#2D2D3B">{{ d.name }}</div>
+            <div style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9A9D;margin:4px 0 12px">{{ d.tagLine }}</div>
+            <a href="Keepsake Printing Co.dc.html" style="display:block;text-align:center;background:#FFFFFF;border:1px solid #2D2D3B;color:#2D2D3B;padding:10px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;transition:background .2s,color .2s" style-hover="background:#2D2D3B;color:#FFFFFF;text-decoration:none">Use this design</a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;padding:40px;text-align:center;margin-top:8px">
+        <div style="font-size:16px;font-weight:900;color:#2D2D3B;margin-bottom:6px">Nothing matches "{{ query }}"</div>
+        <div style="font-size:14px;color:#6E6E70">Try a broader word — or upload your own photo in the <a href="Keepsake Printing Co.dc.html">case designer</a>.</div>
+      </div>
+    </sc-if>
+  </main>
+
+  <footer style="background:#2D2D3B;padding:28px 40px;display:flex;align-items:center;justify-content:center;gap:12px">
+    <img src="assets/icon-mono-white.svg" alt="" style="width:24px" />
+    <span style="font-size:12px;color:#B9BDCB;font-weight:600">© 2026 Keepsake Printing Co. · 10-day returns · 6-month warranty</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: 'All', query: '' };
+  designs() {
+    return [
+      { name: 'Seashell Study', tags: ['Ocean', 'Summer'], kw: 'seashell beach sand coastal' },
+      { name: 'Wave Break', tags: ['Ocean'], kw: 'surf water blue sea' },
+      { name: 'Tide Pool', tags: ['Ocean', 'Nature'], kw: 'starfish coral beach' },
+      { name: 'Golden Hour Palms', tags: ['Summer', 'Nature'], kw: 'palm tree sunset vacation' },
+      { name: 'Wildflower Field', tags: ['Florals', 'Nature'], kw: 'flower meadow spring' },
+      { name: 'Pressed Petals', tags: ['Florals'], kw: 'flower vintage botanical' },
+      { name: 'Peony Bloom', tags: ['Florals'], kw: 'flower pink mothers day' },
+      { name: 'Best in Show', tags: ['Pets'], kw: 'dog puppy portrait' },
+      { name: 'Cat Nap', tags: ['Pets'], kw: 'cat kitten cozy' },
+      { name: 'Game Day', tags: ['Sports'], kw: 'football field team' },
+      { name: 'Home Plate', tags: ['Sports'], kw: 'baseball diamond team' },
+      { name: 'Rink Lights', tags: ['Sports'], kw: 'hockey ice team' },
+      { name: 'Evergreen Christmas', tags: ['Holidays'], kw: 'christmas pine winter snow' },
+      { name: 'Pumpkin Patch', tags: ['Holidays'], kw: 'halloween fall autumn october' },
+      { name: 'Firework Sky', tags: ['Holidays', 'Summer'], kw: 'july fourth celebration night' },
+      { name: 'Mountain Ridge', tags: ['Nature'], kw: 'hiking peaks landscape adventure' }
+    ];
+  }
+  renderVals() {
+    const s = this.state;
+    const all = this.designs();
+    const catNames = ['All', 'Ocean', 'Florals', 'Pets', 'Sports', 'Holidays', 'Nature', 'Summer'];
+    const q = s.query.trim().toLowerCase();
+    const list = all.filter((d) => {
+      const inCat = s.cat === 'All' || d.tags.indexOf(s.cat) >= 0;
+      const inQ = !q || (d.name + ' ' + d.tags.join(' ') + ' ' + d.kw).toLowerCase().indexOf(q) >= 0;
+      return inCat && inQ;
+    });
+    return {
+      query: s.query,
+      setQuery: (e) => this.setState({ query: e.target.value }),
+      cats: catNames.map((c) => ({
+        name: c,
+        bg: s.cat === c ? '#2D2D3B' : '#FFFFFF',
+        color: s.cat === c ? '#FFFFFF' : '#4E4E50',
+        border: s.cat === c ? '#2D2D3B' : '#D8D7D7',
+        pick: () => this.setState({ cat: c })
+      })),
+      designs: list.map((d) => ({
+        name: d.name,
+        tagLine: d.tags.join(' · '),
+        slotId: 'lib-' + d.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+        ph: 'Drop "' + d.name + '" design'
+      })),
+      countLabel: list.length + ' design' + (list.length === 1 ? '' : 's') + (s.cat !== 'All' ? ' in ' + s.cat : '') + (q ? ' matching "' + s.query + '"' : ''),
+      empty: list.length === 0
+    };
+  }
+}
+</script>
+</body>
+</html>
