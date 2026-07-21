@@ -243,6 +243,17 @@
       </div>
     </section>
 
+    <!-- ═══ trust bar ═══ -->
+    <section style="background:#2D2D3B;color:#FFFFFF;padding:20px 40px">
+      <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,56px);flex-wrap:wrap;text-align:center">
+        <span style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:800"><span style="color:#F15F5E;letter-spacing:2px">★★★★★</span> 4.9 · 312 in-store reviews</span>
+        <span style="width:1px;height:22px;background:rgba(255,255,255,.2)" class="desktop-only"></span>
+        <span style="font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B9BDCB">Printed same-day in <span style="color:#FFFFFF">West Chester</span> · <span style="color:#FFFFFF">Pottstown</span> · <span style="color:#FFFFFF">Newark DE</span></span>
+        <span style="width:1px;height:22px;background:rgba(255,255,255,.2)" class="desktop-only"></span>
+        <span style="font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B9BDCB">$1 from every case to charity</span>
+      </div>
+    </section>
+
     <!-- ═══ story chips ═══ -->
     <section style="border-top:1px solid #F3F2F2;border-bottom:1px solid #F3F2F2;padding:22px 40px;background:#FFFFFF">
       <div style="max-width:1280px;margin:0 auto;display:flex;gap:26px;justify-content:center;flex-wrap:wrap">
@@ -279,6 +290,20 @@
           <span style="font-size:11px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#4E4E50;text-align:center;line-2">For business</span>
         </a>
       </div>
+    </section>
+
+    <!-- ═══ collection drop ═══ -->
+    <section class="rv" style="max-width:1280px;margin:0 auto;padding:64px 40px 24px">
+      <div style="display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:24px">
+        <div>
+          <div style="font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#DC282E;margin-bottom:10px">New drop</div>
+          <h2 style="font-weight:900;font-size:clamp(26px,3vw,38px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0">The Back to School Drop</h2>
+          <p style="font-size:15px;color:#6E6E70;margin:10px 0 0;max-width:460px">Fresh patterns from the design library — add their name and it's a first-day-of-school flex. Printed while you wait.</p>
+        </div>
+        <a class="h-darkred" href="gallery.html" style="font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#DC282E;display:inline-flex;align-items:center;gap:8px">Shop all designs
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div id="dropStrip" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px"></div>
     </section>
 
     <!-- ═══ featured reviews ═══ -->
@@ -818,19 +843,29 @@
   }
 
   // announce rotation
+  function countdownStr(){
+    var now=new Date(), end=new Date(now); end.setHours(23,59,59,999);
+    var t=Math.max(0,(end-now)/1000|0);
+    var h=String(t/3600|0).padStart(2,'0'), mn=String(t/60%60|0).padStart(2,'0'), sc=String(t%60|0).padStart(2,'0');
+    return h+':'+mn+':'+sc;
+  }
   var annMsgs = [
-    '10% off your first case — code <span style="background:rgba(255,255,255,.18);border-radius:999px;padding:2px 10px;letter-spacing:.1em">FIRST10</span>',
-    'First responders &amp; nurses save 20% every day',
-    'Printed in store — often in under an hour'
+    function(){ return '10% off your first case — code <span style="background:rgba(255,255,255,.18);border-radius:999px;padding:2px 10px;letter-spacing:.1em">FIRST10</span> · ends in <span style="font-variant-numeric:tabular-nums">'+countdownStr()+'</span>'; },
+    function(){ return 'First responders &amp; nurses save 20% every day'; },
+    function(){ return 'Printed in store — often in under an hour'; }
   ];
   var annIdx = 0;
+  $('announce').innerHTML = annMsgs[0]();
   setInterval(function(){
     annIdx = (annIdx+1) % annMsgs.length;
     var el = $('announce');
     el.style.animation = 'none'; void el.offsetWidth;
-    el.innerHTML = annMsgs[annIdx];
+    el.innerHTML = annMsgs[annIdx]();
     el.style.animation = 'fadeIn .45s cubic-bezier(.2,.7,.2,1) both';
   }, 4200);
+  setInterval(function(){
+    if (annIdx===0) $('announce').innerHTML = annMsgs[0]();
+  }, 1000);
 
   // hero rotating word
   var words = ['Mom.','Dad.','Grandma.','the grad.','pet people.'];
@@ -1041,6 +1076,80 @@
     $('emailForm').style.display = 'none';
     $('emailDone').style.display = 'inline-block';
   });
+
+  // library patterns into home slots + collection drop
+  var SLOT_FILLS = {
+    chips: {
+      'New ideas':'vibrant-abstract-curved-shapes.jpg',
+      "Mother's Day":'pastel-pink-floral-minimalist-pattern.jpg',
+      'Pets':'abstract-leopard-pink.jpg',
+      'Back to school':'playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.jpg',
+      'Christmas':'high-detail-botanical-of-winter-flora-on-white.jpg',
+      'Case quiz':'colorful-minimalist-wavy-stripes.jpg',
+      'Gift cards':'minimalist-white-heart-pattern.jpg',
+      'For business':'mid-century-modern-abstract-shapes.jpg'
+    },
+    collections: {
+      "Mother's Day":'stylish-white-daisy-floral-pattern.jpg',
+      'Weddings':'charming-minimalist-black-hearts-pattern.jpg',
+      'Pets':'intricate-black-leopard-spots.jpg',
+      'Back to school':'playful-cartoon-cherries.jpg'
+    },
+    gallery: {
+      'For Mom':'pastel-pink-floral-minimalist-pattern.jpg',
+      'The Big Day':'minimalist-white-heart-pattern-2.jpg',
+      'The Goodest Boy':'adorable-cartoon-lion-face.jpg',
+      'Class of 2026':'cheerful-vertical-stripes-pattern-in-red-and-pink.jpg',
+      'Matching Family Set':'kawaii-watercolor-strawberry.jpg',
+      'Spooky Season':'dreamy-gradient-cosmic-background-with-sparkles.jpg'
+    }
+  };
+  function slotImg(file, alt){
+    return '<img src="assets/designs/'+file+'" alt="'+(alt||'')+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">';
+  }
+  document.querySelectorAll('.h-chip').forEach(function(chip){
+    var label = (chip.textContent||'').trim();
+    var file = SLOT_FILLS.chips[label];
+    if (file){
+      var slot = chip.querySelector('.slot');
+      if (slot) slot.outerHTML = slotImg(file, label);
+    }
+  });
+  document.querySelectorAll('.gal-col').forEach(function(col){
+    var t = col.querySelector('span[style*="font-weight:900"]');
+    var name = t ? t.textContent.trim() : '';
+    var file = SLOT_FILLS.collections[name];
+    if (file){
+      var slot = col.querySelector('.slot');
+      if (slot) slot.outerHTML = slotImg(file, name);
+    }
+  });
+  galleryData.forEach(function(g){
+    var f = SLOT_FILLS.gallery[g.title];
+    if (f) g.img = f;
+  });
+  var _renderGallery = renderGallery;
+  renderGallery = function(){
+    _renderGallery();
+    var items = galleryData.filter(function(g){ return galFilter==='All' || g.tag===galFilter; });
+    var cards = document.querySelectorAll('#galGrid > div');
+    items.forEach(function(g,i){
+      if (g.img && cards[i]){
+        var slot = cards[i].querySelector('.slot');
+        if (slot) slot.outerHTML = slotImg(g.img, g.title);
+      }
+    });
+  };
+  renderGallery();
+  var DROP = ['playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.jpg','adorable-cartoon-lion-face.jpg',
+              'cheerful-vertical-stripes-pattern-in-red-and-pink.jpg','kawaii-watercolor-strawberry.jpg',
+              'black-heart-shapes.jpg','colorful-minimalist-wavy-stripes.jpg'];
+  var dropEl = document.getElementById('dropStrip');
+  if (dropEl) dropEl.innerHTML = DROP.map(function(f){
+    return '<a href="customizer.html?design='+encodeURIComponent(f)+'" class="h-cardsm" style="display:block;background:#FFFFFF;border:1px solid #EFEDED;border-radius:12px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s">'
+      + '<div style="aspect-ratio:3/4;background:#F8F7F7">'+slotImg(f)+'</div>'
+      + '<div style="padding:10px 12px;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#DC282E;text-align:center">Make it yours</div></a>';
+  }).join('');
 
   // chat
   $('chatToggle').addEventListener('click', function(){
