@@ -1,0 +1,130 @@
+/* ── Keepsake Printing Co design system ─────────────────────────────
+   Tokens from the CPR/Keepsake brand book via design handoff README:
+   red #DC282E · light red #F15F5E · ink #4E4E50 · blue-dark #2D2D3B
+   accent #4FB0E3 · neutral #B9BDCB · base #F3F2F2 · body ink #414346
+   Type: Avenir w/ Nunito Sans fallback · 8-pt spacing · radius 10/16/999 */
+
+:root{
+  --red:#DC282E; --red-hover:#B31F26; --red-light:#F15F5E;
+  --ink:#4E4E50; --body:#414346; --blue-dark:#2D2D3B;
+  --accent:#4FB0E3; --neutral:#B9BDCB; --base:#F3F2F2; --bg:#FFFFFF;
+  --muted:#9A9A9D; --hairline:#E8E7E7;
+  --shadow:0 10px 30px rgba(46,56,61,.08);
+  --shadow-red:0 10px 26px rgba(220,40,46,.25);
+  --r-card:10px; --r-block:16px; --r-pill:999px;
+  --font:"Avenir Next","Avenir","Nunito Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#1D1D22; --ink:#E8E8EC; --body:#C9C9CE; --base:#2A2A31;
+         --hairline:#33333B; --muted:#A2A2AA; --shadow:0 10px 30px rgba(0,0,0,.35); }
+}
+:root[data-theme="dark"]{ --bg:#1D1D22; --ink:#E8E8EC; --body:#C9C9CE; --base:#2A2A31;
+         --hairline:#33333B; --muted:#A2A2AA; --shadow:0 10px 30px rgba(0,0,0,.35); }
+:root[data-theme="light"]{ --bg:#FFFFFF; --ink:#4E4E50; --body:#414346; --base:#F3F2F2;
+         --hairline:#E8E7E7; --muted:#9A9A9D; --shadow:0 10px 30px rgba(46,56,61,.08); }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);color:var(--body);background:var(--bg);
+     font-size:16px;line-height:1.6}
+img{max-width:100%}
+a{color:var(--red);text-decoration:none}
+a:hover{color:var(--red-hover)}
+
+/* ── header ── */
+.site-header{position:sticky;top:0;z-index:50;background:var(--bg);
+  border-bottom:1px solid var(--hairline)}
+.site-header .bar{max-width:1120px;margin:0 auto;padding:14px 20px;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
+.wordmark{justify-self:center;font-weight:900;font-size:20px;letter-spacing:.34em;
+  color:var(--ink);text-transform:uppercase}
+.wordmark a{color:inherit}
+.nav-left{display:flex;gap:18px;font-size:13px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.06em}
+.nav-left a{color:var(--ink)}
+.nav-left a:hover{color:var(--red)}
+.nav-right{justify-self:end;display:flex;gap:18px;font-size:13px;font-weight:800;
+  text-transform:uppercase;letter-spacing:.06em}
+.nav-right a{color:var(--ink)}
+.nav-right a:hover{color:var(--red)}
+@media(max-width:720px){
+  .nav-left{display:none}
+  .site-header .bar{grid-template-columns:auto 1fr}
+  .nav-right{gap:12px}
+}
+
+/* announcement strip */
+.announce{background:var(--blue-dark);color:#fff;text-align:center;font-size:12.5px;
+  font-weight:700;letter-spacing:.04em;padding:8px 16px}
+.announce a{color:#fff;text-decoration:underline}
+
+/* ── layout ── */
+.container{max-width:1120px;margin:0 auto;padding:0 20px}
+.section{padding:64px 0}
+.section.tight{padding:40px 0}
+.eyebrow{font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 8px}
+h1,h2,h3{color:var(--ink);line-height:1.1;letter-spacing:-.01em;text-wrap:balance;margin:0}
+h1{font-weight:900;font-size:clamp(40px,7vw,72px);text-transform:uppercase;line-height:1.05}
+h2{font-weight:900;font-size:clamp(26px,4vw,38px);text-transform:uppercase}
+h3{font-weight:800;font-size:19px}
+.lede{font-size:18px;color:var(--body);max-width:34em}
+
+/* ── buttons ── */
+.btn{display:inline-block;font-family:inherit;font-weight:800;font-size:15px;
+  border:0;border-radius:var(--r-pill);padding:14px 28px;cursor:pointer;
+  transition:transform .2s var(--ease), box-shadow .2s var(--ease), background .2s}
+.btn-primary{background:var(--red);color:#fff;box-shadow:var(--shadow-red)}
+.btn-primary:hover{background:var(--red-hover);color:#fff;transform:translateY(-1px)}
+.btn-ghost{background:var(--base);color:var(--ink)}
+.btn-ghost:hover{background:var(--hairline);color:var(--ink)}
+.btn-mini{padding:9px 16px;font-size:13px}
+
+/* ── cards ── */
+.card{background:var(--bg);border:1px solid var(--hairline);border-radius:var(--r-card);
+  box-shadow:var(--shadow);padding:24px}
+.tilt{transition:transform .25s var(--ease), box-shadow .25s var(--ease)}
+.tilt:hover{transform:perspective(900px) rotateY(-9deg) translateY(-3px);
+  box-shadow:0 18px 40px rgba(46,56,61,.14)}
+@media (prefers-reduced-motion: reduce){
+  .tilt:hover{transform:none}
+}
+
+/* grids */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+@media(max-width:860px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}.grid-2{grid-template-columns:1fr}}
+@media(max-width:520px){.grid-3,.grid-4{grid-template-columns:1fr}}
+
+/* chips */
+.chip{display:inline-block;background:var(--base);color:var(--ink);font-size:13px;
+  font-weight:800;letter-spacing:.04em;border-radius:var(--r-pill);padding:9px 18px}
+.chip:hover{background:var(--hairline);color:var(--red)}
+
+/* wip banner for unbuilt pages */
+.wip{background:#FFF6E8;border:1px solid #F0D9AD;color:#8A6420;border-radius:var(--r-card);
+  padding:14px 18px;font-size:14px;font-weight:700;margin:24px 0}
+:root[data-theme="dark"] .wip{background:#2E2717;border-color:#4E421F;color:#D9B96A}
+@media (prefers-color-scheme: dark){ .wip{background:#2E2717;border-color:#4E421F;color:#D9B96A} }
+
+/* ── footer ── */
+.site-footer{border-top:1px solid var(--hairline);margin-top:64px;
+  background:var(--base);color:var(--body)}
+.site-footer .cols{max-width:1120px;margin:0 auto;padding:48px 20px 24px;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}
+@media(max-width:820px){.site-footer .cols{grid-template-columns:1fr 1fr}}
+.site-footer h4{font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 12px}
+.site-footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.site-footer a{color:var(--body)}
+.site-footer a:hover{color:var(--red)}
+.site-footer .fineprint{max-width:1120px;margin:0 auto;padding:16px 20px 32px;
+  font-size:12.5px;color:var(--muted);border-top:1px solid var(--hairline)}
+.charity{font-size:13.5px;font-weight:700}
+.charity strong{color:var(--red)}
+
+/* focus visibility */
+a:focus-visible,button:focus-visible,.btn:focus-visible{
+  outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
