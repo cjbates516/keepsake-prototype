@@ -1108,7 +1108,8 @@
     return '<img src="assets/designs/'+file+'" alt="'+(alt||'')+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">';
   }
   document.querySelectorAll('.h-chip').forEach(function(chip){
-    var label = (chip.textContent||'').trim();
+    var spans = chip.querySelectorAll(':scope > span');
+    var label = spans.length ? spans[spans.length-1].textContent.trim() : '';
     var file = SLOT_FILLS.chips[label];
     if (file){
       var slot = chip.querySelector('.slot');
