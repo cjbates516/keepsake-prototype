@@ -761,7 +761,7 @@
   $('modelSel').addEventListener('change',function(){
     state.model=this.value; state.reserved=false;
     if (KITS[state.model]) loadKit(state.model);
-    updateFitNote(); updateDpi(); updateStage(); updateSummary();
+    renderSwatches(); updateFitNote(); updateDpi(); updateStage(); updateSummary();
   });
 
   /* ── addons / promo / totals ── */
