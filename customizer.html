@@ -517,11 +517,11 @@
   caseImg.onload=function(){ caseReady=true; render(); };
   var lightImg=new Image(), lightReady=false;
   lightImg.onload=function(){
-    var t=document.createElement('canvas'); t.width=28; t.height=34;
+    var t=document.createElement('canvas'); t.width=20; t.height=24;
     var tc=t.getContext('2d');
-    tc.drawImage(lightImg,0,0,28,34);
+    tc.drawImage(lightImg,0,0,20,24);
     // grayscale + normalize: shading only — hue-free, phone-color-free (white ink physics)
-    var d=tc.getImageData(0,0,28,34), p=d.data, sum=0, n=0;
+    var d=tc.getImageData(0,0,20,24), p=d.data, sum=0, n=0;
     for(var i=0;i<p.length;i+=4){
       var l=p[i]*.299+p[i+1]*.587+p[i+2]*.114;
       p[i]=p[i+1]=p[i+2]=l;
