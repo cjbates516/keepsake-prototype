@@ -512,7 +512,20 @@
   var caseImg=new Image(), lightMap=null, caseReady=false;
   caseImg.onload=function(){
     var t=document.createElement('canvas'); t.width=42; t.height=50;
-    t.getContext('2d').drawImage(caseImg,0,0,42,50);
+    var tc=t.getContext('2d');
+    tc.drawImage(caseImg,0,0,42,50);
+    // normalize: the light map should carry shading only, not the phone's darkness —
+    // the print has a white ink underlayer, so dark phones must not dim the design
+    var d=tc.getImageData(0,0,42,50), p=d.data, sum=0, n=0;
+    for(var i=0;i<p.length;i+=4){
+      var l=p[i]*.299+p[i+1]*.587+p[i+2]*.114;
+      if(l<245){ sum+=l; n++; }
+    }
+    var mean=n?sum/n:235, k=Math.min(2.4, 232/Math.max(mean,60));
+    for(var j=0;j<p.length;j+=4){
+      p[j]=Math.min(255,p[j]*k); p[j+1]=Math.min(255,p[j+1]*k); p[j+2]=Math.min(255,p[j+2]*k);
+    }
+    tc.putImageData(d,0,0);
     lightMap=document.createElement('canvas'); lightMap.width=DIM.w; lightMap.height=DIM.h;
     var lc=lightMap.getContext('2d');
     lc.imageSmoothingEnabled=true; lc.imageSmoothingQuality='high';
