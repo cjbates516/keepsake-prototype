@@ -521,7 +521,7 @@
       var l=p[i]*.299+p[i+1]*.587+p[i+2]*.114;
       if(l<245){ sum+=l; n++; }
     }
-    var mean=n?sum/n:235, k=Math.min(2.4, 232/Math.max(mean,60));
+    var mean=n?sum/n:235, k=Math.min(3.4, 236/Math.max(mean,50));
     for(var j=0;j<p.length;j+=4){
       p[j]=Math.min(255,p[j]*k); p[j+1]=Math.min(255,p[j+1]*k); p[j+2]=Math.min(255,p[j+2]*k);
     }
