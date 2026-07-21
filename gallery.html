@@ -346,7 +346,7 @@
         + '<div style="padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px">'
         + '<div style="min-width:0"><div style="font-weight:900;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+d.title+'</div>'
         + '<div style="font-size:11px;color:#9A9A9D;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">'+d.category+'</div></div>'
-        + '<a href="customizer.html" class="h-makeone" style="background:#FFFFFF;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:9px 14px;border-radius:999px;white-space:nowrap;transition:all .2s;flex-shrink:0">Make one</a>'
+        + '<a href="customizer.html?design='+encodeURIComponent(d.file)+'" class="h-makeone" style="background:#FFFFFF;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:9px 14px;border-radius:999px;white-space:nowrap;transition:all .2s;flex-shrink:0">Make one</a>'
         + '</div></div>';
     }).join('');
   }
@@ -354,8 +354,12 @@
     var f=e.target.closest('.galF');
     if(f){ filter=f.dataset.f; renderFilters(); renderGrid(); window.scrollTo({top:0,behavior:'smooth'}); }
   });
+  var mcat=/[?&]cat=([^&]+)/.exec(location.search);
+  if (mcat) filter = decodeURIComponent(mcat[1]);
   fetch('assets/designs/designs.json').then(function(r){ return r.json(); }).then(function(d){
-    designs = d; renderFilters(); renderGrid();
+    designs = d;
+    if (filter!=='All' && !d.some(function(x){return x.category===filter;})) filter='All';
+    renderFilters(); renderGrid();
   }).catch(function(){
     $('grid').innerHTML = '<div style="padding:40px;font-weight:700;color:#9A9A9D">Could not load designs.</div>';
   });

@@ -272,6 +272,28 @@
             </div>
           </div>
 
+          <div style="margin:0 0 28px">
+            <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:6px">Add a name <span style="font-weight:600;color:#9A9A9D;font-size:13px">· optional, printed on the case</span></div>
+            <input id="nameInput" type="text" maxlength="18" placeholder="Sarah, DAD, Class of 2026…" style="width:100%;box-sizing:border-box;padding:14px 18px;border-radius:999px;border:1px solid #E4E3E3;font-size:15px;color:#17171F;outline-color:#2D2D3B">
+            <div id="fontChips" style="display:none;gap:8px;overflow-x:auto;padding:12px 0 4px"></div>
+            <div id="textOpts" style="display:none;animation:fadeUp .3s cubic-bezier(.2,.7,.2,1) both">
+              <div style="display:flex;align-items:center;gap:10px;margin:8px 0 12px">
+                <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9D;width:52px">Color</span>
+                <div id="textColors" style="display:flex;gap:8px"></div>
+                <span style="flex:1"></span>
+                <button id="orientBtn" class="h-borderink" style="background:#FFFFFF;border:1px solid #E4E3E3;color:#6E6E70;border-radius:999px;padding:7px 16px;font-size:12px;font-weight:800;cursor:pointer;transition:border-color .2s,color .2s">Vertical</button>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px">
+                <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9D;width:52px">Size</span>
+                <input id="textSize" type="range" min="90" max="420" step="2" value="220" style="flex:1;accent-color:#DC282E">
+              </div>
+              <div style="display:flex;align-items:center;gap:14px">
+                <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9D;width:52px">Position</span>
+                <input id="textPos" type="range" min="0" max="100" step="1" value="62" style="flex:1;accent-color:#DC282E">
+              </div>
+            </div>
+          </div>
+
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:30px">
             <span style="font-size:17px;font-weight:800;color:#17171F">Device color · <span id="colorName" style="font-weight:600;color:#6E6E70">Silver</span></span>
             <div id="colorSwatches" style="display:flex;gap:8px"></div>
@@ -433,10 +455,20 @@
     {key:'lens',name:'Camera lens protector',sub:'Sapphire-hard rings for every lens',price:9.99}
   ];
   var BASE = 64.99;
+  var FONTS = [
+    {n:'Script', css:'"Snell Roundhand","Savoye LET","Apple Chancery",cursive', w:''},
+    {n:'Hand', css:'"Bradley Hand","Segoe Script","Comic Sans MS",cursive', w:''},
+    {n:'Classic', css:'Georgia,"Times New Roman",serif', w:''},
+    {n:'Bold', css:'"Avenir Next","Avenir","Arial Black",sans-serif', w:'900 '},
+    {n:'Type', css:'"Courier New",monospace', w:'700 '},
+    {n:'Marker', css:'"Marker Felt","Chalkboard SE","Comic Sans MS",fantasy', w:''}
+  ];
+  var TEXT_COLORS = ['#FFFFFF','#17171F','#DC282E','#F77E2D','#C6A052','#32374A'];
 
   var state = {
     brand:'Apple', model:'iPhone 17 Pro Max', colorName:'Silver', colorHex:'#F5F5F5',
     photo:null, photoImg:null, photoUrl:null, filter:'none',
+    text:'', textFont:0, textColor:'#FFFFFF', textSize:220, textPos:62, textVertical:false,
     px:0, py:0, scale:1, rot:0,
     addons:{screen:false,lens:false}, promo:null, reserved:false
   };
@@ -500,12 +532,42 @@
       ctx.drawImage(lightMap,0,0,DIM.w,DIM.h);
       ctx.globalAlpha=1;
       ctx.globalCompositeOperation='source-over';
+      drawTextLayer(ctx);
+      ctx.restore();
+      ctx.save();
+      ctx.clip(inversePath,'evenodd');
+      ctx.drawImage(caseImg,0,0,DIM.w,DIM.h);
+      ctx.restore();
+    } else if (state.text){
+      // name on a blank (design-less) case still previews
+      ctx.save();
+      ctx.clip(printPath,'evenodd');
+      drawTextLayer(ctx);
       ctx.restore();
       ctx.save();
       ctx.clip(inversePath,'evenodd');
       ctx.drawImage(caseImg,0,0,DIM.w,DIM.h);
       ctx.restore();
     }
+  }
+  function drawTextLayer(c2){
+    if(!state.text) return;
+    var f=FONTS[state.textFont];
+    var cx=(690+1825)/2;
+    var y=380+(2680-380)*(state.textPos/100);
+    c2.save();
+    c2.font=f.w+state.textSize+'px '+f.css;
+    c2.fillStyle=state.textColor;
+    c2.textAlign='center'; c2.textBaseline='middle';
+    c2.shadowColor='rgba(46,56,61,.18)'; c2.shadowBlur=14; c2.shadowOffsetY=5;
+    if(state.textVertical){
+      c2.translate(cx,Math.max(1000,Math.min(2200,y)));
+      c2.rotate(-Math.PI/2);
+      c2.fillText(state.text,0,0);
+    } else {
+      c2.fillText(state.text,cx,y);
+    }
+    c2.restore();
   }
 
   function toCanvas(evt){
@@ -528,7 +590,7 @@
   /* ── stage state ── */
   function is17PM(){ return state.model==='iPhone 17 Pro Max'; }
   function updateStage(){
-    var live = state.photoImg && is17PM();
+    var live = (state.photoImg || state.text) && is17PM();
     canvas.style.display = live ? 'block' : 'none';
     $('stageEmpty').style.display = live ? 'none' : 'block';
     $('exportLink').style.display = state.photoImg ? 'inline' : 'none';
@@ -704,7 +766,7 @@
   /* ── print export (staff link) ── */
   $('exportLink').addEventListener('click',function(e){
     e.preventDefault();
-    if(!state.photoImg) return;
+    if(!state.photoImg && !state.text) return;
     var c=document.createElement('canvas'); c.width=TPL.pxW; c.height=TPL.pxH;
     var c2=c.getContext('2d');
     var k=TPL.pxW/TPL.w;
@@ -715,12 +777,27 @@
     c2.fillStyle='#fff'; c2.fillRect(0,0,c.width,c.height);
     var m=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y).multiply(designTransform());
     var src=state.photoImg;
+    if(!src){
+      var m0b=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
+      c2.setTransform(m0b.a,m0b.b,m0b.c,m0b.d,m0b.e,m0b.f);
+      drawTextLayer(c2);
+      c2.restore();
+      var a2=document.createElement('a');
+      a2.download='print-17promax-916x1941.png';
+      a2.href=c.toDataURL('image/png');
+      a2.click();
+      return;
+    }
     var iw=src.naturalWidth, ih=src.naturalHeight;
     var cs=Math.max(DIM.w/iw, DIM.h/ih);
     var dx=(DIM.w-iw*cs)/2, dy=(DIM.h-ih*cs)/2;
     c2.setTransform(m.a,m.b,m.c,m.d,m.e,m.f);
     try{ c2.filter = state.filter; }catch(_){}
     c2.drawImage(src,dx,dy,iw*cs,ih*cs);
+    try{ c2.filter='none'; }catch(_){}
+    var m0=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
+    c2.setTransform(m0.a,m0.b,m0.c,m0.d,m0.e,m0.f);
+    drawTextLayer(c2);
     c2.restore();
     var a=document.createElement('a');
     a.download='print-17promax-916x1941.png';
@@ -744,6 +821,57 @@
     $('chatFormWrap').style.display='none';
     $('chatSent').style.display='block';
   });
+
+  /* ── name/monogram tool ── */
+  function renderFontChips(){
+    var el=$('fontChips');
+    el.style.display = state.text ? 'flex' : 'none';
+    $('textOpts').style.display = state.text ? 'block' : 'none';
+    if(!state.text) return;
+    el.innerHTML = FONTS.map(function(f,i){
+      var on = i===state.textFont;
+      return '<button class="fontChip" data-i="'+i+'" style="flex:0 0 auto;background:#FFFFFF;border:2px solid '+(on?'#DC282E':'#E4E3E3')+';color:'+(on?'#17171F':'#6E6E70')+';border-radius:12px;padding:8px 14px;cursor:pointer;transition:border-color .2s">'
+        + '<span style="font:'+f.w+'20px '+f.css.replace(/"/g,"&quot;")+'">Abc</span>'
+        + '<span style="display:block;font-size:9.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#9A9A9D;margin-top:2px">'+f.n+'</span></button>';
+    }).join('');
+    $('textColors').innerHTML = TEXT_COLORS.map(function(c){
+      var on = c===state.textColor;
+      return '<button class="txtCol h-swatch" data-c="'+c+'" style="width:26px;height:26px;border-radius:50%;cursor:pointer;background:'+c+';border:3px solid '+(on?'#DC282E':'#E4E3E3')+'"></button>';
+    }).join('');
+  }
+  $('nameInput').addEventListener('input',function(){
+    state.text=this.value.trim(); state.reserved=false;
+    renderFontChips(); updateStage();
+  });
+  document.addEventListener('click',function(e){
+    var fc=e.target.closest('.fontChip');
+    if(fc){ state.textFont=+fc.dataset.i; renderFontChips(); render(); }
+    var tc=e.target.closest('.txtCol');
+    if(tc){ state.textColor=tc.dataset.c; renderFontChips(); render(); }
+    if(e.target.id==='orientBtn'){
+      state.textVertical=!state.textVertical;
+      e.target.textContent=state.textVertical?'Horizontal':'Vertical';
+      render();
+    }
+  });
+  $('textSize').addEventListener('input',function(){ state.textSize=+this.value; render(); });
+  $('textPos').addEventListener('input',function(){ state.textPos=+this.value; render(); });
+
+  /* ── design preload from the library (?design=file.jpg) ── */
+  (function(){
+    var m=/[?&]design=([^&]+)/.exec(location.search);
+    if(!m) return;
+    var file=decodeURIComponent(m[1]);
+    if(!/^[a-z0-9-]+\.jpg$/.test(file)) return;
+    var img=new Image();
+    img.onload=function(){
+      state.photoImg=img; state.photoUrl='assets/designs/'+file;
+      state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none';
+      renderFilterChips(); updateDpi(); updateStage(); updateSummary();
+      $('stageHint').textContent='Library design loaded — drag to position, or add a name below';
+    };
+    img.src='assets/designs/'+file;
+  })();
 
   /* ── init ── */
   fillModels(); renderSwatches(); renderAddons(); updateFitNote(); updateStage(); updateSummary();
