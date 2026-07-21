@@ -8,3 +8,9 @@ Custom phone case e-commerce prototype. Live site: https://cjbates516.github.io/
 - `assets/photos/` — case product renders (17 / 17 Air / 17 Pro / 17 Pro Max)
 - `assets/masks/` — vector print templates (authoritative customizer geometry)
 - `design_handoff/` — full site design references + build spec
+
+## Adding new designs
+Drop new pattern images into `~/Desktop/case-photos` on the Mac, then ask Claude to
+"sync the designs" — it runs `tools/sync_designs.py` (incremental: content-hash dedupe,
+auto-categorize from filename, web-size via sips, regenerate `assets/designs/designs.json`)
+and pushes. The Design Library page renders whatever is in the manifest.
