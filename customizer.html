@@ -240,12 +240,27 @@
           </div>
 
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:30px">
-            <div style="cursor:pointer;text-align:center">
+            <div id="ctClear" class="ctCard" data-ct="MagSafe Clear" style="cursor:pointer;text-align:center">
               <div style="position:relative;border:2px solid #DC282E;border-radius:12px;overflow:hidden;background:#F7F7F7">
-                <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:2;background:#C6A052;color:#FFFFFF;font-size:7.5px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px;border-radius:3px;pointer-events:none;white-space:nowrap;max-width:92%">MagSafe compatible</div>
+                <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:2;background:#C6A052;color:#FFFFFF;font-size:7.5px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px;border-radius:3px;pointer-events:none;white-space:nowrap;max-width:94%">MagSafe compatible</div>
                 <div style="height:104px;display:flex;align-items:center;justify-content:center;pointer-events:none">
                   <svg width="46" height="88" viewBox="0 0 46 88"><rect x="2" y="2" width="42" height="84" rx="10" fill="rgba(185,189,203,.45)"/><rect x="5" y="5" width="36" height="78" rx="8" fill="#FAFAFA"/><rect x="8" y="8" width="14" height="14" rx="4" fill="#E4E3E3"/></svg>
                 </div>
+              </div>
+              <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">MagSafe Clear</div>
+              <div style="font-size:12.5px;font-weight:600;color:#9A9A9D;margin-top:2px">$64.99+</div>
+            </div>
+            <div id="ctTough" class="ctCard" data-ct="Tough Magnetic" style="cursor:pointer;text-align:center">
+              <div style="position:relative;border:2px solid #E4E3E3;border-radius:12px;overflow:hidden;background:#F7F7F7">
+                <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:2;background:#2D2D3B;color:#FFFFFF;font-size:7.5px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px;border-radius:3px;pointer-events:none;white-space:nowrap;max-width:94%">Extra protection</div>
+                <div style="height:104px;display:flex;align-items:center;justify-content:center;pointer-events:none;padding:6px">
+                  <img id="toughThumb" src="assets/cases/i17pm-tough.webp" alt="Tough Magnetic" style="max-height:92px;max-width:100%">
+                </div>
+              </div>
+              <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">Tough Magnetic</div>
+              <div style="font-size:12.5px;font-weight:600;color:#9A9A9D;margin-top:2px">$69.99+</div>
+            </div>
+          </div>
               </div>
               <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">MagSafe Clear</div>
               <div style="font-size:12.5px;font-weight:600;color:#9A9A9D;margin-top:2px">$64.99+</div>
@@ -455,6 +470,8 @@
     {key:'lens',name:'Camera lens protector',sub:'Sapphire-hard rings for every lens',price:9.99}
   ];
   var BASE = 64.99;
+  var TOUGH_PRICE = 69.99;
+  function basePrice(){ return state.caseType==='Tough Magnetic' ? TOUGH_PRICE : BASE; }
   var FONTS = [
     {n:'Script', css:'"Snell Roundhand","Savoye LET","Apple Chancery",cursive', w:''},
     {n:'Hand', css:'"Bradley Hand","Segoe Script","Comic Sans MS",cursive', w:''},
@@ -468,6 +485,7 @@
   var state = {
     brand:'Apple', model:'iPhone 17 Pro Max', colorName:'Silver', colorHex:'#F5F5F5',
     photo:null, photoImg:null, photoUrl:null, filter:'none',
+    caseType:'MagSafe Clear',
     isLibraryDesign:false,
     text:'', textFont:0, textColor:'#FFFFFF', textSize:220, textPos:62, textVertical:false,
     px:0, py:0, scale:1, rot:0,
@@ -478,6 +496,7 @@
   var DIM={w:2500,h:3000};
   var KITS = {
     'iPhone 17 Pro Max': {
+      tough: { fit: {x:668,y:344,sx:5.2787,sy:4.9512}, outD: "M 833.0 344.0 L 1663.0 344.0 A 165.0 165.0 0 0 1 1828.0 509.0 L 1828.0 2485.0 A 165.0 165.0 0 0 1 1663.0 2650.0 L 833.0 2650.0 A 165.0 165.0 0 0 1 668.0 2485.0 L 668.0 509.0 A 165.0 165.0 0 0 1 833.0 344.0 Z", camD: "M 782.0 362.0 L 1692.0 362.0 A 72.0 72.0 0 0 1 1764.0 434.0 L 1764.0 930.0 A 72.0 72.0 0 0 1 1692.0 1002.0 L 782.0 1002.0 A 72.0 72.0 0 0 1 710.0 930.0 L 710.0 434.0 A 72.0 72.0 0 0 1 782.0 362.0 Z", tplD: "M 10.0 0.0 L 209.8 0.0 A 10.0 10.0 0 0 1 219.8 10.0 L 219.8 455.8 A 10.0 10.0 0 0 1 209.8 465.8 L 10.0 465.8 A 10.0 10.0 0 0 1 0.0 455.8 L 0.0 10.0 A 10.0 10.0 0 0 1 10.0 0.0 Z M 22.0 3.6 L 193.5 3.6 A 14.1 14.1 0 0 1 207.6 17.7 L 207.6 118.8 A 14.1 14.1 0 0 1 193.5 132.9 L 22.0 132.9 A 14.1 14.1 0 0 1 8.0 118.8 L 8.0 17.7 A 14.1 14.1 0 0 1 22.0 3.6 Z", textBounds: {cx:1250, yTop:1068, yBot:2560}, file: 'i17pm-tough.webp' },
       light: 'i17pm-light.jpg',
       tpl: {w:219.75,h:465.75,pxW:916,pxH:1941},
       fit: {x:714,y:290.55,sx:4.9522,sy:5.1931},
@@ -486,6 +505,7 @@
       colors: [{n:'Silver',h:'#F5F5F5',f:'i17pm-silver.webp'},{n:'Cosmic Orange',h:'#F77E2D',f:'i17pm-orange.webp'},{n:'Deep Blue',h:'#32374A',f:'i17pm-blue.webp'}]
     },
     'iPhone 17 Pro': {
+      tough: { fit: {x:668,y:350,sx:5.7368,sy:5.3896}, outD: "M 833.0 350.0 L 1669.0 350.0 A 165.0 165.0 0 0 1 1834.0 515.0 L 1834.0 2485.0 A 165.0 165.0 0 0 1 1669.0 2650.0 L 833.0 2650.0 A 165.0 165.0 0 0 1 668.0 2485.0 L 668.0 515.0 A 165.0 165.0 0 0 1 833.0 350.0 Z", camD: "M 782.0 366.0 L 1688.0 366.0 A 72.0 72.0 0 0 1 1760.0 438.0 L 1760.0 990.0 A 72.0 72.0 0 0 1 1688.0 1062.0 L 782.0 1062.0 A 72.0 72.0 0 0 1 710.0 990.0 L 710.0 438.0 A 72.0 72.0 0 0 1 782.0 366.0 Z", tplD: "M 10.0 0.0 L 193.2 0.0 A 10.0 10.0 0 0 1 203.2 10.0 L 203.2 416.8 A 10.0 10.0 0 0 1 193.2 426.8 L 10.0 426.8 A 10.0 10.0 0 0 1 0.0 416.8 L 0.0 10.0 A 10.0 10.0 0 0 1 10.0 0.0 Z M 20.3 3.0 L 177.4 3.0 A 12.9 12.9 0 0 1 190.4 15.9 L 190.4 119.2 A 12.9 12.9 0 0 1 177.4 132.1 L 20.3 132.1 A 12.9 12.9 0 0 1 7.3 119.2 L 7.3 15.9 A 12.9 12.9 0 0 1 20.3 3.0 Z", textBounds: {cx:1250, yTop:1128, yBot:2560}, file: 'i17p-tough.webp' },
       light: 'i17p-light.jpg',
       tpl: {w:203.25,h:426.75,pxW:846,pxH:1779},
       fit: {x:703,y:371.52,sx:5.1830,sy:5.2800},
@@ -494,6 +514,7 @@
       colors: [{n:'Black',h:'#2A2A30',f:'i17p-black.webp'},{n:'Cosmic Orange',h:'#F77E2D',f:'i17p-orange.webp'},{n:'Deep Blue',h:'#32374A',f:'i17p-blue.webp'}]
     },
     'iPhone 17': {
+      tough: { fit: {x:668,y:350,sx:16.3311,sy:15.3282}, outD: "M 833.0 350.0 L 1663.0 350.0 A 165.0 165.0 0 0 1 1828.0 515.0 L 1828.0 2485.0 A 165.0 165.0 0 0 1 1663.0 2650.0 L 833.0 2650.0 A 165.0 165.0 0 0 1 668.0 2485.0 L 668.0 515.0 A 165.0 165.0 0 0 1 833.0 350.0 Z", camD: "M 774.0 394.0 L 1194.0 394.0 A 72.0 72.0 0 0 1 1266.0 466.0 L 1266.0 922.0 A 72.0 72.0 0 0 1 1194.0 994.0 L 774.0 994.0 A 72.0 72.0 0 0 1 702.0 922.0 L 702.0 466.0 A 72.0 72.0 0 0 1 774.0 394.0 Z", tplD: "M 10.0 0.0 L 61.0 0.0 A 10.0 10.0 0 0 1 71.0 10.0 L 71.0 140.1 A 10.0 10.0 0 0 1 61.0 150.1 L 10.0 150.1 A 10.0 10.0 0 0 1 0.0 140.1 L 0.0 10.0 A 10.0 10.0 0 0 1 10.0 0.0 Z M 6.6 2.9 L 32.1 2.9 A 4.5 4.5 0 0 1 36.6 7.4 L 36.6 37.5 A 4.5 4.5 0 0 1 32.1 42.0 L 6.6 42.0 A 4.5 4.5 0 0 1 2.1 37.5 L 2.1 7.4 A 4.5 4.5 0 0 1 6.6 2.9 Z", textBounds: {cx:1250, yTop:1060, yBot:2560}, file: 'i17-tough.webp' },
       light: 'i17-light.jpg',
       tpl: {w:200.88,h:425.25,pxW:839,pxH:1772},
       fit: {x:717.37,y:397,sx:5.2579,sy:5.1975},
@@ -502,6 +523,7 @@
       colors: [{n:'Black',h:'#2A2A30',f:'i17-black.webp'},{n:'Silver',h:'#E8E7E7',f:'i17-silver.webp'},{n:'Titanium',h:'#B9B4AC',f:'i17-titan.webp'}]
     },
     'iPhone Air': {
+      tough: { fit: {x:668,y:350,sx:15.7823,sy:14.8387}, outD: "M 833.0 350.0 L 1663.0 350.0 A 165.0 165.0 0 0 1 1828.0 515.0 L 1828.0 2485.0 A 165.0 165.0 0 0 1 1663.0 2650.0 L 833.0 2650.0 A 165.0 165.0 0 0 1 668.0 2485.0 L 668.0 515.0 A 165.0 165.0 0 0 1 833.0 350.0 Z", camD: "M 778.0 362.0 L 1692.0 362.0 A 72.0 72.0 0 0 1 1764.0 434.0 L 1764.0 750.0 A 72.0 72.0 0 0 1 1692.0 822.0 L 778.0 822.0 A 72.0 72.0 0 0 1 706.0 750.0 L 706.0 434.0 A 72.0 72.0 0 0 1 778.0 362.0 Z", tplD: "M 10.0 0.0 L 63.5 0.0 A 10.0 10.0 0 0 1 73.5 10.0 L 73.5 145.0 A 10.0 10.0 0 0 1 63.5 155.0 L 10.0 155.0 A 10.0 10.0 0 0 1 0.0 145.0 L 0.0 10.0 A 10.0 10.0 0 0 1 10.0 0.0 Z M 7.1 0.8 L 64.7 0.8 A 4.7 4.7 0 0 1 69.4 5.5 L 69.4 27.1 A 4.7 4.7 0 0 1 64.7 31.8 L 7.1 31.8 A 4.7 4.7 0 0 1 2.4 27.1 L 2.4 5.5 A 4.7 4.7 0 0 1 7.1 0.8 Z", textBounds: {cx:1250, yTop:888, yBot:2560}, file: 'i17a-tough.webp' },
       light: 'i17a-light.jpg',
       tpl: {w:73.5,h:155.0,pxW:868,pxH:1831},
       fit: {x:671,y:325,sx:15.6735,sy:15.1419},
@@ -523,6 +545,7 @@
     // grayscale + normalize: shading only — hue-free, phone-color-free (white ink physics)
     var d=tc.getImageData(0,0,20,24), p=d.data, sum=0, n=0;
     for(var i=0;i<p.length;i+=4){
+      if(p[i+3]<128){ p[i]=p[i+1]=p[i+2]=255; p[i+3]=255; }
       var l=p[i]*.299+p[i+1]*.587+p[i+2]*.114;
       p[i]=p[i+1]=p[i+2]=l;
       if(l<245){ sum+=l; n++; }
@@ -541,7 +564,8 @@
   };
   function loadKit(model){
     var k=KITS[model]; if(!k) return false;
-    TPL=k.tpl; FIT=k.fit; OUT_D=k.outD; CAM_D=k.camD; TPL_D=k.tplD;
+    var v = (state.caseType==='Tough Magnetic' && k.tough) ? k.tough : k;
+    TPL=k.tpl; FIT=v.fit; OUT_D=v.outD; CAM_D=v.camD; TPL_D=v.tplD;
     printPath=new Path2D(OUT_D+' '+CAM_D);
     inversePath=new Path2D('M -99000 -99000 L 99000 -99000 L 99000 99000 L -99000 99000 Z '+OUT_D+' '+CAM_D);
     var col = k.colors.find(function(c){return c.n===state.colorName;}) || k.colors[0];
@@ -549,8 +573,10 @@
     ['colorName','colorName2','colorName3','colorName4'].forEach(function(id){ var el=$(id); if(el) el.textContent=state.colorName; });
     var mp=$('miniPhone'); if(mp) mp.style.background=state.colorHex;
     caseReady=false;
-    caseImg.src='assets/cases/'+col.f;
-    var ls='assets/cases/'+(k.light||col.f);
+    var srcFile = (state.caseType==='Tough Magnetic' && k.tough) ? k.tough.file : col.f;
+    caseImg.src='assets/cases/'+srcFile;
+    var tt=$('toughThumb'); if(tt && k.tough) tt.src='assets/cases/'+k.tough.file;
+    var ls='assets/cases/'+((state.caseType==='Tough Magnetic' && k.tough) ? k.tough.file : (k.light||col.f));
     if (!lightImg.src.endsWith(ls)) { lightReady=false; lightImg.src=ls; }
     else if (!lightReady && lightImg.complete) lightImg.onload();
     return true;
@@ -811,11 +837,12 @@
   function updateSummary(){
     var addonTotal=addonDefs.reduce(function(t,a){return t+(state.addons[a.key]?a.price:0);},0);
     var p=state.promo?promoTable[state.promo]:null;
-    var disc=p?(p.flat!=null?p.flat:BASE*p.pct):0;
-    var total=Math.max(0,BASE-disc)+addonTotal;
+    var bp=basePrice();
+    var disc=p?(p.flat!=null?p.flat:bp*p.pct):0;
+    var total=Math.max(0,bp-disc)+addonTotal;
     $('totalTop').textContent='$'+total.toFixed(2);
     $('totalBar').textContent=total.toFixed(2);
-    $('lineDevice').textContent=state.model+' · MagSafe Clear';
+    $('lineDevice').textContent=state.model+' · '+state.caseType;
     var names=addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return a.name.split(' ')[0]==='Tempered'?'Screen protector':'Lens protector';});
     $('lineAddons').style.display=names.length?'flex':'none';
     if(names.length){ $('addonSummary').textContent=names.join(' + '); $('addonTotal').textContent='+$'+addonTotal.toFixed(2); }
@@ -946,6 +973,17 @@
     };
     img.src='assets/designs/'+file;
   })();
+
+  document.addEventListener('click',function(e){
+    var cc=e.target.closest('.ctCard');
+    if(cc){
+      state.caseType=cc.dataset.ct; state.reserved=false;
+      document.querySelectorAll('.ctCard > div:first-child').forEach(function(el){ el.style.borderColor='#E4E3E3'; });
+      cc.querySelector('div').style.borderColor='#DC282E';
+      if (KITS[state.model]) loadKit(state.model);
+      updateSummary();
+    }
+  });
 
   /* ── init ── */
   loadKit(state.model);
