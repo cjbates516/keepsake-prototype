@@ -529,6 +529,19 @@
   };
   var TPL, FIT, OUT_D, CAM_D, TPL_D;
   var printPath=null, inversePath=null;
+  var BASE_OUT=null, BASE_CAM=null;
+  var CAL = { on:/[?&]cal=1/.test(location.search), dx:0,dy:0,s:1, cdx:0,cdy:0,cs:1 };
+  function buildPaths(){
+    if(!BASE_OUT) return;
+    var mAll=new DOMMatrix().translate(1250+CAL.dx,1500+CAL.dy).scale(CAL.s).translate(-1250,-1500);
+    var mCam=new DOMMatrix().translate(1250+CAL.dx+CAL.cdx,1500+CAL.dy+CAL.cdy).scale(CAL.s*CAL.cs).translate(-1250,-1500);
+    var po=new Path2D(); po.addPath(new Path2D(BASE_OUT), mAll);
+    var pc=new Path2D(); pc.addPath(new Path2D(BASE_CAM), mCam);
+    printPath=new Path2D(); printPath.addPath(po); printPath.addPath(pc);
+    inversePath=new Path2D('M -99000 -99000 L 99000 -99000 L 99000 99000 L -99000 99000 Z');
+    inversePath.addPath(po); inversePath.addPath(pc);
+    CAL._po=po; CAL._pc=pc;
+  }
   var canvas=$('stageCanvas'), ctx=canvas.getContext('2d');
   var caseImg=new Image(), lightMap=null, caseReady=false;
   caseImg.onload=function(){ caseReady=true; render(); };
@@ -561,8 +574,8 @@
     var k=KITS[model]; if(!k) return false;
     var v = (state.caseType==='Tough Magnetic' && k.tough) ? k.tough : k;
     TPL=k.tpl; FIT=v.fit; OUT_D=v.outD; CAM_D=v.camD; TPL_D=v.tplD;
-    printPath=new Path2D(OUT_D+' '+CAM_D);
-    inversePath=new Path2D('M -99000 -99000 L 99000 -99000 L 99000 99000 L -99000 99000 Z '+OUT_D+' '+CAM_D);
+    BASE_OUT=OUT_D; BASE_CAM=CAM_D;
+    buildPaths();
     var col = k.colors.find(function(c){return c.n===state.colorName;}) || k.colors[0];
     state.colorName=col.n; state.colorHex=col.h;
     ['colorName','colorName2','colorName3','colorName4'].forEach(function(id){ var el=$(id); if(el) el.textContent=state.colorName; });
@@ -633,6 +646,19 @@
       ctx.drawImage(caseImg,0,0,DIM.w,DIM.h);
       ctx.restore();
     }
+    drawCalOverlay();
+  }
+  function drawCalOverlay(){
+    if(!CAL.on || !CAL._po) return;
+    ctx.save();
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.lineWidth=6;
+    ctx.strokeStyle='#DC282E'; ctx.stroke(CAL._po);
+    ctx.strokeStyle='#2D6FE3'; ctx.stroke(CAL._pc);
+    ctx.restore();
+    var el=document.getElementById('calReadout');
+    if(el) el.textContent = state.model+' · '+state.caseType+'  →  '
+      +JSON.stringify({dx:CAL.dx,dy:CAL.dy,s:+CAL.s.toFixed(4),cdx:CAL.cdx,cdy:CAL.cdy,cs:+CAL.cs.toFixed(4)});
   }
   function drawTextLayer(c2){
     if(!state.text) return;
@@ -979,6 +1005,31 @@
       updateSummary();
     }
   });
+
+  if (CAL.on){
+    var ro=document.createElement('div');
+    ro.id='calReadout';
+    ro.style.cssText='position:fixed;left:10px;bottom:90px;z-index:99;background:#17171F;color:#7CFC9A;font:12px ui-monospace,monospace;padding:10px 14px;border-radius:10px;user-select:all;max-width:90vw';
+    document.body.appendChild(ro);
+    var help=document.createElement('div');
+    help.style.cssText='position:fixed;left:10px;bottom:44px;z-index:99;background:#2D2D3B;color:#fff;font:11px sans-serif;padding:8px 12px;border-radius:8px';
+    help.textContent='CAL MODE — arrows: move mask · shift+arrows: camera only · +/-: size · 9/0: camera size · R: reset. Copy the green numbers and send them to Claude.';
+    document.body.appendChild(help);
+    document.addEventListener('keydown',function(e){
+      var step = e.altKey?1:4, hit=true;
+      if(e.key==='ArrowLeft'){ if(e.shiftKey)CAL.cdx-=step; else CAL.dx-=step; }
+      else if(e.key==='ArrowRight'){ if(e.shiftKey)CAL.cdx+=step; else CAL.dx+=step; }
+      else if(e.key==='ArrowUp'){ if(e.shiftKey)CAL.cdy-=step; else CAL.dy-=step; }
+      else if(e.key==='ArrowDown'){ if(e.shiftKey)CAL.cdy+=step; else CAL.dy+=step; }
+      else if(e.key==='+'||e.key==='='){ CAL.s+=0.004; }
+      else if(e.key==='-'){ CAL.s-=0.004; }
+      else if(e.key==='9'){ CAL.cs-=0.004; }
+      else if(e.key==='0'){ CAL.cs+=0.004; }
+      else if(e.key==='r'||e.key==='R'){ CAL.dx=CAL.dy=CAL.cdx=CAL.cdy=0; CAL.s=CAL.cs=1; }
+      else hit=false;
+      if(hit){ e.preventDefault(); buildPaths(); render(); }
+    });
+  }
 
   /* ── init ── */
   loadKit(state.model);
