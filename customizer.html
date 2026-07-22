@@ -201,6 +201,7 @@
           <div id="stageHint" style="font-size:12px;font-weight:700;color:#9A9A9D;letter-spacing:.04em">Upload or drop a photo to begin</div>
           <div id="kitNote" style="display:none;font-size:11.5px;font-weight:600;color:#B9BDCB;letter-spacing:.02em;text-align:center;max-width:300px"></div>
           <a id="exportLink" href="#" style="display:none;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B9BDCB">Download print file (staff)</a>
+          <a id="calLink" href="#" style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B9BDCB">Adjust fit (staff)</a>
         </div>
 
         <!-- ══ right: product rail ══ -->
@@ -1005,6 +1006,94 @@
       updateSummary();
     }
   });
+
+  function calNudge(op){
+    var step=4;
+    if(op==='L'){CAL.dx-=step;} else if(op==='R'){CAL.dx+=step;}
+    else if(op==='U'){CAL.dy-=step;} else if(op==='D'){CAL.dy+=step;}
+    else if(op==='cL'){CAL.cdx-=step;} else if(op==='cR'){CAL.cdx+=step;}
+    else if(op==='cU'){CAL.cdy-=step;} else if(op==='cD'){CAL.cdy+=step;}
+    else if(op==='s+'){CAL.s+=0.004;} else if(op==='s-'){CAL.s-=0.004;}
+    else if(op==='cs+'){CAL.cs+=0.004;} else if(op==='cs-'){CAL.cs-=0.004;}
+    else if(op==='reset'){CAL.dx=CAL.dy=CAL.cdx=CAL.cdy=0;CAL.s=CAL.cs=1;}
+    buildPaths(); render();
+  }
+  function shareSetup(){
+    var setup={m:state.model, ct:state.caseType,
+      cal:{dx:CAL.dx,dy:CAL.dy,s:+CAL.s.toFixed(4),cdx:CAL.cdx,cdy:CAL.cdy,cs:+CAL.cs.toFixed(4)},
+      ph:{px:Math.round(state.px),py:Math.round(state.py),sc:+state.scale.toFixed(3),rot:state.rot,f:state.filter},
+      d: state.isLibraryDesign && state.photoUrl ? state.photoUrl.split('/').pop() : null,
+      txt: state.text ? {t:state.text,f:state.textFont,c:state.textColor,sz:state.textSize,p:state.textPos,v:state.textVertical} : null};
+    var url=location.origin+location.pathname+'?setup='+encodeURIComponent(JSON.stringify(setup));
+    var done=function(){ var b=document.getElementById('calShare'); if(b){b.textContent='Link copied — paste it to Claude'; setTimeout(function(){b.textContent='📋 Copy share link';},2500);} };
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done,function(){prompt('Copy this link:',url);});
+    else prompt('Copy this link:',url);
+  }
+  function enableCalUI(){
+    if(document.getElementById('calPanel')) return;
+    CAL.on=true;
+    var ro=document.createElement('div');
+    ro.id='calReadout';
+    ro.style.cssText='position:fixed;left:10px;bottom:10px;z-index:99;background:#17171F;color:#7CFC9A;font:11px ui-monospace,monospace;padding:8px 12px;border-radius:10px;user-select:all;max-width:60vw';
+    document.body.appendChild(ro);
+    var p=document.createElement('div');
+    p.id='calPanel';
+    p.style.cssText='position:fixed;right:10px;bottom:80px;z-index:99;background:#2D2D3B;border-radius:14px;padding:12px;display:grid;grid-template-columns:repeat(3,44px);gap:6px;box-shadow:0 12px 30px rgba(0,0,0,.35)';
+    var mode='mask';
+    function btn(label,op,span){
+      var b=document.createElement('button');
+      b.textContent=label;
+      b.style.cssText='height:40px;border:0;border-radius:9px;background:#4E4E50;color:#fff;font-weight:800;font-size:15px;cursor:pointer'+(span?';grid-column:span 3':'');
+      b.addEventListener('click',function(){ 
+        if(op==='mode'){ mode=(mode==='mask'?'camera':'mask'); b.textContent=(mode==='mask'?'🎯 Mask':'📷 Camera'); b.style.background=(mode==='mask'?'#4E4E50':'#2B5FA3'); return; }
+        if(op==='share'){ shareSetup(); return; }
+        var real=op;
+        if(mode==='camera'&&/^[LRUD]$/.test(op)) real='c'+op;
+        if(mode==='camera'&&(op==='s+'||op==='s-')) real='c'+op;
+        calNudge(real);
+      });
+      return b;
+    }
+    var modeB=btn('🎯 Mask','mode',true); p.appendChild(modeB);
+    p.appendChild(btn('−','s-')); p.appendChild(btn('▲','U')); p.appendChild(btn('+','s+'));
+    p.appendChild(btn('◀','L')); p.appendChild(btn('▼','D')); p.appendChild(btn('▶','R'));
+    var rB=btn('Reset','reset',true); rB.style.background='#B31F26'; p.appendChild(rB);
+    var sB=btn('📋 Copy share link','share',true); sB.id='calShare'; sB.style.background='#1E8E3E'; sB.style.fontSize='12px'; p.appendChild(sB);
+    document.body.appendChild(p);
+    buildPaths(); render();
+  }
+  document.addEventListener('click',function(e){
+    if(e.target && e.target.id==='calLink'){ e.preventDefault(); enableCalUI(); }
+  });
+  // apply shared setup from URL
+  (function(){
+    var m=/[?&]setup=([^&]+)/.exec(location.search);
+    if(!m) return;
+    try{
+      var su=JSON.parse(decodeURIComponent(m[1]));
+      setTimeout(function(){
+        if(su.m && KITS[su.m]!==undefined){ state.model=su.m; var ms=$('modelSel'); }
+        if(su.ct) state.caseType=su.ct;
+        if(su.cal) Object.assign(CAL, su.cal);
+        state.brand='Apple'; fillModels();
+        var msel=$('modelSel'); if(msel) msel.value=su.m;
+        loadKit(state.model);
+        updateFitNote(); updateStage(); updateSummary();
+        var applyRest=function(){
+          if(su.ph){ state.px=su.ph.px; state.py=su.ph.py; state.scale=su.ph.sc; state.rot=su.ph.rot; state.filter=su.ph.f||'none';
+            $('zoomRange').value=state.scale; $('rotRange').value=state.rot; }
+          if(su.txt){ state.text=su.txt.t; state.textFont=su.txt.f; state.textColor=su.txt.c; state.textSize=su.txt.sz; state.textPos=su.txt.p; state.textVertical=su.txt.v;
+            $('nameInput').value=state.text; renderFontChips(); }
+          enableCalUI(); buildPaths(); render(); updateStage();
+        };
+        if(su.d && /^[a-z0-9-]+\.jpg$/.test(su.d)){
+          var img=new Image();
+          img.onload=function(){ state.photoImg=img; state.photoUrl='assets/designs/'+su.d; state.isLibraryDesign=true; renderFilterChips(); applyRest(); };
+          img.src='assets/designs/'+su.d;
+        } else applyRest();
+      }, 900);
+    }catch(err){}
+  })();
 
   if (CAL.on){
     var ro=document.createElement('div');
