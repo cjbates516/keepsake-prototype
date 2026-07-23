@@ -33,6 +33,7 @@
   .h-swatch:hover{transform:scale(1.1)}
   .desktop-only{display:inline-flex}
   @media(max-width:760px){.desktop-only{display:none !important}}
+  @media(max-width:900px){ #stageStick{ position:static !important; padding:12px 0 0 !important } }
   #mega{display:none}
   #mega.open{display:block}
   #stageCanvas{width:100%;max-width:420px;height:auto;touch-action:none;cursor:grab;display:block;
@@ -188,7 +189,7 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:clamp(32px,4vw,72px);align-items:start">
 
         <!-- ══ left: stage ══ -->
-        <div style="display:flex;flex-direction:column;align-items:center;gap:26px;padding:32px 0;position:sticky;top:110px">
+        <div id="stageStick" style="display:flex;flex-direction:column;align-items:center;gap:26px;padding:32px 0;position:sticky;top:110px">
           <div id="stageWrap" style="display:flex;align-items:center;justify-content:center;width:100%">
             <!-- empty state -->
             <div id="stageEmpty" style="position:relative;width:290px;height:554px">
