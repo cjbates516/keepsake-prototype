@@ -724,10 +724,10 @@
     <section style="max-width:1280px;margin:0 auto;padding:0 40px 88px">
       <div style="display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px">
         <div>
-          <div style="font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#DC282E;margin-bottom:8px">#KeepsakeMade</div>
-          <h2 style="font-weight:900;font-size:clamp(26px,3vw,38px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0">Made by customers like you</h2>
+          <div style="font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#DC282E;margin-bottom:8px">Library designs, out in the world</div>
+          <h2 style="font-weight:900;font-size:clamp(26px,3vw,38px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0">The Keepsake lookbook</h2>
         </div>
-        <div style="font-size:14px;color:#6E6E70">Tag <b>#KeepsakeMade</b> to be featured</div>
+        <div style="font-size:14px;color:#6E6E70">Bought one? Tag <b>#KeepsakeMade</b> to be featured</div>
       </div>
       <div id="ugcGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px"></div>
     </section>
@@ -1068,19 +1068,19 @@
 
   // UGC
   var ugc = [
-    { handle:'@sarah.prints', ph:'Drop customer photo — kids case' },
-    { handle:'@mikes.garage', ph:'Drop customer photo — dog case' },
-    { handle:'@jenteaches3rd', ph:'Drop customer photo — class photo case' },
-    { handle:'@ncc_hockey', ph:'Drop customer photo — team case' },
-    { handle:'@gma.linda', ph:'Drop customer photo — grandkids case' },
-    { handle:'@wedding.of.em', ph:'Drop customer photo — wedding case' }
+    { img:'assets/lifestyle/life-v118.jpg', title:'Cheerful Pink Strawberry Pattern', design:'cheerful-pink-strawberry-pattern.jpg' },
+    { img:'assets/lifestyle/life-v119.jpg', title:'Colorful Minimalist Wavy Stripes', design:'colorful-minimalist-wavy-stripes.jpg' },
+    { img:'assets/lifestyle/life-v116.jpg', title:'Charming Minimalist Black Hearts Pattern', design:'charming-minimalist-black-hearts-pattern.jpg' },
+    { img:'assets/lifestyle/life-v120.jpg', title:'Kawaii Watercolor Strawberry', design:'kawaii-watercolor-strawberry.jpg' },
+    { img:'assets/lifestyle/life-v122.jpg', title:'Intricate Black Leopard Spots', design:'intricate-black-leopard-spots.jpg' },
+    { img:'assets/lifestyle/life-v113.jpg', title:'High-Detail Botanical Of Winter Flora On White', design:'high-detail-botanical-of-winter-flora-on-white.jpg' }
   ];
   $('ugcGrid').innerHTML = ugc.map(function(u){
     return '<div class="h-cardsm" style="background:#FFFFFF;border:1px solid #EFEDED;border-radius:14px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
-      + '<div style="aspect-ratio:1/1.25;background:#F8F7F7"><span class="slot">'+u.ph+'</span></div>'
+      + '<div style="aspect-ratio:1/1.25;background:#F8F7F7"><img src="'+u.img+'" alt="'+u.title+' case" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>'
       + '<div style="padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px">'
-      + '<span style="font-size:12px;font-weight:800;color:#2D2D3B">'+u.handle+'</span>'
-      + '<a href="customizer.html" style="color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;text-decoration:none">Shop this look</a>'
+      + '<span style="font-size:12px;font-weight:800;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+u.title+'</span>'
+      + '<a href="customizer.html?design='+encodeURIComponent(u.design)+'" style="color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;flex-shrink:0">Shop this look</a>'
       + '</div></div>';
   }).join('');
 
