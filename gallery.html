@@ -33,6 +33,7 @@
   .desktop-only{display:inline-flex}
   @media(max-width:760px){.desktop-only{display:none !important}}
   #mega{display:none}
+  @media(pointer:coarse){ .cdot{ width:22px !important; height:22px !important } }
   #mega.open{display:block}
 </style>
 </head>
@@ -85,7 +86,7 @@
     </a>
     <div style="display:flex;align-items:center;gap:2px">
       <a href="b2b.html" class="desktop-only h-circle" style="font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#4E4E50;padding:10px 12px;border-radius:999px;transition:background .2s,color .2s">B2B Login</a>
-      <select aria-label="Language" style="padding:10px 2px;border:0;font-size:12px;font-weight:800;color:#17171F;cursor:pointer;background:#FFFFFF">
+      <select aria-label="Language" class="desktop-only" style="padding:10px 2px;border:0;font-size:12px;font-weight:800;color:#17171F;cursor:pointer;background:#FFFFFF">
         <option value="en">EN</option><option value="es">ES</option><option value="fr">FR</option>
       </select>
       <a href="account.html" aria-label="My account" title="My account" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;color:#17171F;transition:background .2s">

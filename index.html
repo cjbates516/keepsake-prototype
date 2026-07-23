@@ -112,7 +112,7 @@
     </a>
     <div style="display:flex;align-items:center;gap:2px">
       <a href="b2b.html" class="desktop-only h-circle" style="font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#4E4E50;padding:10px 12px;border-radius:999px;transition:background .2s,color .2s">B2B Login</a>
-      <select aria-label="Language" style="padding:10px 2px;border:0;font-size:12px;font-weight:800;color:#17171F;cursor:pointer;background:#FFFFFF">
+      <select aria-label="Language" class="desktop-only" style="padding:10px 2px;border:0;font-size:12px;font-weight:800;color:#17171F;cursor:pointer;background:#FFFFFF">
         <option value="en">EN</option><option value="es">ES</option><option value="fr">FR</option>
       </select>
       <a href="account.html" aria-label="My account" title="My account" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;color:#17171F;transition:background .2s">
@@ -791,7 +791,7 @@
   </footer>
 
   <!-- chat bubble -->
-  <div style="position:fixed;right:24px;bottom:24px;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:14px">
+  <div id="kpChatWrap" style="position:fixed;right:24px;bottom:24px;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:14px">
     <div id="chatPanel" style="display:none;width:340px;max-width:calc(100vw - 48px);background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;box-shadow:0 24px 60px rgba(46,56,61,.22);overflow:hidden;animation:fadeUp .3s cubic-bezier(.2,.7,.2,1) both">
       <div style="background:#2D2D3B;padding:18px 20px;display:flex;align-items:center;gap:12px">
         <div style="flex:1">
