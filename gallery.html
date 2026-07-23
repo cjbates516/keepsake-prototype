@@ -179,17 +179,18 @@
 
 
   <main style="flex:1;background:#F3F2F2">
-    <div style="max-width:1280px;margin:0 auto;padding:64px 40px 96px">
-      <div style="display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px">
+    <div style="max-width:1280px;margin:0 auto;padding:56px 40px 96px">
+      <div style="display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:22px">
         <div>
           <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#9A9A9D;margin-bottom:14px">Design library</div>
-          <h1 style="font-weight:900;font-size:clamp(30px,3.6vw,48px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0;line-height:1">Pick a design.<br>Make it yours.</h1>
-          <p style="font-size:16px;color:#6E6E70;margin:16px 0 0;max-width:480px;line-height:1.6">Ready-made patterns printed on any case — or a starting point for your own photo. New designs added all the time.</p>
+          <h1 id="shopTitle" style="font-weight:900;font-size:clamp(30px,3.6vw,48px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0;line-height:1">Pick a design.<br>Make it yours.</h1>
+          <p style="font-size:16px;color:#6E6E70;margin:16px 0 0;max-width:520px;line-height:1.6">Ready-made designs on the case you actually carry — or a starting point for your own photo. <span style="color:#DC282E;font-weight:800">Move your mouse across a case to preview phone colors.</span></p>
         </div>
         <div style="font-size:13px;font-weight:800;color:#9A9A9D"><span id="countLabel"></span></div>
       </div>
-      <div id="filters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px"></div>
-      <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px"></div>
+      <div id="deviceBar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center"></div>
+      <div id="filters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px"></div>
+      <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px"></div>
     </div>
   </main>
 
@@ -326,43 +327,215 @@
     $('chatSent').style.display='block';
   });
 
-  var designs = [], filter = 'All';
+  /* ================= shop-by-device (Casetify-style) ================= */
+  var KP_DEVICES = {"iPhone 17 Pro Max": {"colors": [{"n": "Silver", "h": "#F5F5F5", "f": "i17pm-silver.webp"}, {"n": "Cosmic Orange", "h": "#F77E2D", "f": "i17pm-orange.webp"}, {"n": "Deep Blue", "h": "#32374A", "f": "i17pm-blue.webp"}], "outD": "M 833.0 344.0 L 1663.0 344.0 A 165.0 165.0 0 0 1 1828.0 509.0 L 1828.0 2485.0 A 165.0 165.0 0 0 1 1663.0 2650.0 L 833.0 2650.0 A 165.0 165.0 0 0 1 668.0 2485.0 L 668.0 509.0 A 165.0 165.0 0 0 1 833.0 344.0 Z", "camD": "M 782.0 362.0 L 1692.0 362.0 A 72.0 72.0 0 0 1 1764.0 434.0 L 1764.0 930.0 A 72.0 72.0 0 0 1 1692.0 1002.0 L 782.0 1002.0 A 72.0 72.0 0 0 1 710.0 930.0 L 710.0 434.0 A 72.0 72.0 0 0 1 782.0 362.0 Z", "outBox": [668.0, 344.0, 1828.0, 2650.0]}, "iPhone 17 Pro": {"colors": [{"n": "Silver", "h": "#F5F5F5", "f": "i17p-silver.webp"}, {"n": "Cosmic Orange", "h": "#F77E2D", "f": "i17p-orange.webp"}, {"n": "Deep Blue", "h": "#32374A", "f": "i17p-blue.webp"}], "outD": "M 833.0 350.0 L 1669.0 350.0 A 165.0 165.0 0 0 1 1834.0 515.0 L 1834.0 2485.0 A 165.0 165.0 0 0 1 1669.0 2650.0 L 833.0 2650.0 A 165.0 165.0 0 0 1 668.0 2485.0 L 668.0 515.0 A 165.0 165.0 0 0 1 833.0 350.0 Z", "camD": "M 782.0 366.0 L 1688.0 366.0 A 72.0 72.0 0 0 1 1760.0 438.0 L 1760.0 990.0 A 72.0 72.0 0 0 1 1688.0 1062.0 L 782.0 1062.0 A 72.0 72.0 0 0 1 710.0 990.0 L 710.0 438.0 A 72.0 72.0 0 0 1 782.0 366.0 Z", "outBox": [668.0, 350.0, 1834.0, 2650.0]}, "iPhone 17": {"colors": [{"n": "Black", "h": "#2A2A30", "f": "i17-black.webp"}, {"n": "Silver", "h": "#E8E7E7", "f": "i17-silver.webp"}, {"n": "Lavender", "h": "#B0ADC3", "f": "i17-lavender.webp"}, {"n": "Mist Blue", "h": "#7D90A3", "f": "i17-blue.webp"}], "outD": "M 833.0 350.0 L 1663.0 350.0 A 165.0 165.0 0 0 1 1828.0 515.0 L 1828.0 2485.0 A 165.0 165.0 0 0 1 1663.0 2650.0 L 833.0 2650.0 A 165.0 165.0 0 0 1 668.0 2485.0 L 668.0 515.0 A 165.0 165.0 0 0 1 833.0 350.0 Z", "camD": "M 774.0 394.0 L 1194.0 394.0 A 72.0 72.0 0 0 1 1266.0 466.0 L 1266.0 922.0 A 72.0 72.0 0 0 1 1194.0 994.0 L 774.0 994.0 A 72.0 72.0 0 0 1 702.0 922.0 L 702.0 466.0 A 72.0 72.0 0 0 1 774.0 394.0 Z", "outBox": [668.0, 350.0, 1828.0, 2650.0]}, "iPhone Air": {"colors": [{"n": "Space Black", "h": "#2A2A30", "f": "i17a-black.webp"}, {"n": "Cloud White", "h": "#E8E7E7", "f": "i17a-silver.webp"}, {"n": "Sky Blue", "h": "#ADBFC5", "f": "i17a-blue.webp"}, {"n": "Light Gold", "h": "#C6BDAB", "f": "i17a-gold.webp"}], "outD": "M 833.0 350.0 L 1663.0 350.0 A 165.0 165.0 0 0 1 1828.0 515.0 L 1828.0 2485.0 A 165.0 165.0 0 0 1 1663.0 2650.0 L 833.0 2650.0 A 165.0 165.0 0 0 1 668.0 2485.0 L 668.0 515.0 A 165.0 165.0 0 0 1 833.0 350.0 Z", "camD": "M 778.0 362.0 L 1692.0 362.0 A 72.0 72.0 0 0 1 1764.0 434.0 L 1764.0 750.0 A 72.0 72.0 0 0 1 1692.0 822.0 L 778.0 822.0 A 72.0 72.0 0 0 1 706.0 750.0 L 706.0 434.0 A 72.0 72.0 0 0 1 778.0 362.0 Z", "outBox": [668.0, 350.0, 1828.0, 2650.0]}, "iPhone 16 Pro Max": {"colors": [{"n": "Black", "h": "#505050", "f": "i16pm-black.webp"}, {"n": "Silver", "h": "#939393", "f": "i16pm-silver.webp"}, {"n": "Titanium", "h": "#837F7C", "f": "i16pm-titan.webp"}, {"n": "Blue", "h": "#6E767D", "f": "i16pm-blue.webp"}], "outD": "M 847.4 250.0 L 1649.6 250.0 A 209.4 209.4 0 0 1 1859.0 459.4 L 1859.0 2495.6 A 209.4 209.4 0 0 1 1649.6 2705.0 L 847.4 2705.0 A 209.4 209.4 0 0 1 638.0 2495.6 L 638.0 459.4 A 209.4 209.4 0 0 1 847.4 250.0 Z", "camD": "M 858.4 271.1 L 1152.0 271.1 A 189.2 189.2 0 0 1 1341.3 460.3 L 1341.3 743.7 A 189.2 189.2 0 0 1 1152.0 933.0 L 858.4 933.0 A 189.2 189.2 0 0 1 669.2 743.7 L 669.2 460.3 A 189.2 189.2 0 0 1 858.4 271.1 Z", "outBox": [638.0, 250.0, 1859.0, 2705.0]}, "iPhone 16 Pro": {"colors": [{"n": "Black", "h": "#7A7A7A", "f": "i16p-black.webp"}, {"n": "Silver", "h": "#B1B1B1", "f": "i16p-silver.webp"}, {"n": "Titanium", "h": "#AAA8A7", "f": "i16p-titan.webp"}, {"n": "Blue", "h": "#8D9194", "f": "i16p-blue.webp"}], "outD": "M 887.8 351.0 L 1609.2 351.0 A 202.8 202.8 0 0 1 1812.0 553.8 L 1812.0 2400.2 A 202.8 202.8 0 0 1 1609.2 2603.0 L 887.8 2603.0 A 202.8 202.8 0 0 1 685.0 2400.2 L 685.0 553.8 A 202.8 202.8 0 0 1 887.8 351.0 Z", "camD": "M 901.7 388.2 L 1195.0 388.2 A 193.5 193.5 0 0 1 1388.5 581.6 L 1388.5 851.1 A 193.5 193.5 0 0 1 1195.0 1044.5 L 901.7 1044.5 A 193.5 193.5 0 0 1 708.3 851.1 L 708.3 581.6 A 193.5 193.5 0 0 1 901.7 388.2 Z", "outBox": [685.0, 351.0, 1812.0, 2603.0]}, "iPhone 16": {"colors": [{"n": "Black", "h": "#545454", "f": "i16n-dark.webp"}, {"n": "White", "h": "#A9A9A9", "f": "i16n-white.webp"}, {"n": "Titanium", "h": "#8A8781", "f": "i16n-titan.webp"}, {"n": "Blue", "h": "#818EBA", "f": "i16n-blue.webp"}, {"n": "Pink", "h": "#B286A7", "f": "i16n-pink.webp"}], "outD": "M 905.9 364.0 L 1591.1 364.0 A 223.9 223.9 0 0 1 1815.0 587.9 L 1815.0 2366.1 A 223.9 223.9 0 0 1 1591.1 2590.0 L 905.9 2590.0 A 223.9 223.9 0 0 1 682.0 2366.1 L 682.0 587.9 A 223.9 223.9 0 0 1 905.9 364.0 Z", "camD": "M 886.9 381.5 L 893.1 381.5 A 188.4 188.4 0 0 1 1081.5 569.9 L 1081.5 819.2 A 188.4 188.4 0 0 1 893.1 1007.6 L 886.9 1007.6 A 188.4 188.4 0 0 1 698.5 819.2 L 698.5 569.9 A 188.4 188.4 0 0 1 886.9 381.5 Z", "outBox": [682.0, 364.0, 1815.0, 2590.0]}, "iPhone 15 Pro Max": {"colors": [{"n": "Black", "h": "#212121", "f": "i15pm-black.webp"}, {"n": "White", "h": "#6B6B6B", "f": "i15pm-white.webp"}, {"n": "Titanium", "h": "#585049", "f": "i15pm-titan.webp"}], "outD": "M 859.6 334.0 L 1649.4 334.0 A 187.6 187.6 0 0 1 1837.0 521.6 L 1837.0 2506.4 A 187.6 187.6 0 0 1 1649.4 2694.0 L 859.6 2694.0 A 187.6 187.6 0 0 1 672.0 2506.4 L 672.0 521.6 A 187.6 187.6 0 0 1 859.6 334.0 Z", "camD": "M 760.4 334.0 L 1280.3 334.0 A 88.4 88.4 0 0 1 1368.6 422.4 L 1368.6 831.9 A 88.4 88.4 0 0 1 1280.3 920.2 L 760.4 920.2 A 88.4 88.4 0 0 1 672.0 831.9 L 672.0 422.4 A 88.4 88.4 0 0 1 760.4 334.0 Z", "outBox": [672.0, 334.0, 1837.0, 2694.0]}, "iPhone 15 Pro": {"colors": [{"n": "Black", "h": "#2A2A2A", "f": "i15p-black.webp"}, {"n": "Silver", "h": "#BDBDBD", "f": "i15p-silver.webp"}, {"n": "Titanium", "h": "#9A958B", "f": "i15p-titan.webp"}], "outD": "M 886.2 447.0 L 1607.8 447.0 A 185.2 185.2 0 0 1 1793.0 632.2 L 1793.0 2441.8 A 185.2 185.2 0 0 1 1607.8 2627.0 L 886.2 2627.0 A 185.2 185.2 0 0 1 701.0 2441.8 L 701.0 632.2 A 185.2 185.2 0 0 1 886.2 447.0 Z", "camD": "M 797.9 447.0 L 1315.9 447.0 A 96.9 96.9 0 0 1 1412.8 543.9 L 1412.8 932.4 A 96.9 96.9 0 0 1 1315.9 1029.4 L 797.9 1029.4 A 96.9 96.9 0 0 1 701.0 932.4 L 701.0 543.9 A 96.9 96.9 0 0 1 797.9 447.0 Z", "outBox": [701.0, 447.0, 1793.0, 2627.0]}, "iPhone 15": {"colors": [{"n": "Black", "h": "#303030", "f": "i15-black.webp"}, {"n": "Pink", "h": "#AD979C", "f": "i15-pink.webp"}, {"n": "Yellow", "h": "#BFB79F", "f": "i15-yellow.webp"}], "outD": "M 877.3 431.0 L 1640.7 431.0 A 172.3 172.3 0 0 1 1813.0 603.3 L 1813.0 2443.7 A 172.3 172.3 0 0 1 1640.7 2616.0 L 877.3 2616.0 A 172.3 172.3 0 0 1 705.0 2443.7 L 705.0 603.3 A 172.3 172.3 0 0 1 877.3 431.0 Z", "camD": "M 826.7 431.0 L 1178.6 431.0 A 121.7 121.7 0 0 1 1300.3 552.7 L 1300.3 797.2 A 121.7 121.7 0 0 1 1178.6 918.9 L 826.7 918.9 A 121.7 121.7 0 0 1 705.0 797.2 L 705.0 552.7 A 121.7 121.7 0 0 1 826.7 431.0 Z", "outBox": [705.0, 431.0, 1813.0, 2616.0]}};
+  var DEVICE_ORDER = Object.keys(KP_DEVICES);
+  function slugify(m){ return m.toLowerCase().replace(/ /g,'-'); }
+
+  var designs = [], filter = 'All', device = null;
+  var dParam = /[?&]device=([^&]+)/.exec(location.search);
+  if (dParam){
+    var dp = decodeURIComponent(dParam[1]).toLowerCase();
+    DEVICE_ORDER.forEach(function(m){ if (slugify(m) === dp || m.toLowerCase() === dp) device = m; });
+  }
+
+  var CW = 440, CH = 528, S = CW/2500;
+  var caseImgs = {}, caseLayers = {}, designImgs = {};
+
+  function loadCase(dev, idx, cb){
+    var key = dev + '|' + idx;
+    if (caseLayers[key]) { cb && cb(); return; }
+    var c = KP_DEVICES[dev].colors[idx];
+    var img = new Image(); img.crossOrigin = 'anonymous';
+    img.onload = function(){
+      var cv = document.createElement('canvas'); cv.width = CW; cv.height = CH;
+      cv.getContext('2d').drawImage(img, 0, 0, CW, CH);
+      caseLayers[key] = cv; cb && cb();
+    };
+    img.src = 'assets/cases/' + c.f;
+  }
+  function preloadDevice(dev){ KP_DEVICES[dev].colors.forEach(function(_, i){ loadCase(dev, i, i===0 ? refreshVisible : null); }); }
+
+  function loadDesign(file, cb){
+    if (designImgs[file]) { if (designImgs[file].complete) cb && cb(); else designImgs[file].addEventListener('load', function(){ cb && cb(); }); return; }
+    var img = new Image(); img.crossOrigin = 'anonymous';
+    img.onload = function(){ cb && cb(); };
+    img.src = 'assets/designs/' + file;
+    designImgs[file] = img;
+  }
+
+  function renderCase(cv, file, colorIdx){
+    var dev = KP_DEVICES[device];
+    var layer = caseLayers[device + '|' + colorIdx];
+    var dImg = designImgs[file];
+    if (!layer || !dImg || !dImg.complete) return;
+    var ctx = cv.getContext('2d');
+    ctx.clearRect(0, 0, CW, CH);
+    ctx.drawImage(layer, 0, 0);
+    ctx.save();
+    var p = new Path2D(); p.addPath(new Path2D(dev.outD)); p.addPath(new Path2D(dev.camD));
+    ctx.scale(S, S);
+    ctx.clip(p, 'evenodd');
+    var b = dev.outBox, bw = b[2]-b[0], bh = b[3]-b[1];
+    var s = Math.max(bw/dImg.width, bh/dImg.height), w = dImg.width*s, h = dImg.height*s;
+    ctx.globalAlpha = .94;
+    ctx.drawImage(dImg, b[0]+(bw-w)/2, b[1]+(bh-h)/2, w, h);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.globalAlpha = .32; ctx.globalCompositeOperation = 'multiply';
+    ctx.drawImage(layer, 0, 0);
+    ctx.restore();
+  }
+
+  function renderDeviceBar(){
+    var bar = document.getElementById('deviceBar');
+    var chips = ['<span style="font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#9A9A9D;margin-right:4px">Device</span>'];
+    chips.push('<button class="devF" data-d="" style="background:' + (!device ? '#2D2D3B' : '#FFFFFF') + ';color:' + (!device ? '#FFFFFF' : '#4E4E50') + ';border:1px solid ' + (!device ? '#2D2D3B' : '#E4E3E3') + ';font-size:12.5px;font-weight:800;padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .2s">Flat designs</button>');
+    DEVICE_ORDER.forEach(function(m){
+      var on = m === device;
+      chips.push('<button class="devF" data-d="' + slugify(m) + '" style="background:' + (on ? '#DC282E' : '#FFFFFF') + ';color:' + (on ? '#FFFFFF' : '#4E4E50') + ';border:1px solid ' + (on ? '#DC282E' : '#E4E3E3') + ';font-size:12.5px;font-weight:800;padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .2s">' + m.replace('iPhone ', 'iPhone ') + '</button>');
+    });
+    bar.innerHTML = chips.join('');
+  }
+
   function renderFilters(){
     var cats = {};
-    designs.forEach(function(d){ cats[d.category]=(cats[d.category]||0)+1; });
+    designs.forEach(function(d){ cats[d.category] = (cats[d.category]||0)+1; });
     var names = ['All'].concat(Object.keys(cats).sort());
     $('filters').innerHTML = names.map(function(c){
-      var on = c===filter;
-      var n = c==='All' ? designs.length : cats[c];
-      return '<button class="h-borderred galF" data-f="'+c+'" style="background:'+(on?'#DC282E':'#FFFFFF')+';color:'+(on?'#FFFFFF':'#4E4E50')+';border:1px solid '+(on?'#DC282E':'#E4E3E3')+';font-size:13px;font-weight:800;padding:9px 18px;border-radius:999px;cursor:pointer;transition:all .2s cubic-bezier(.2,.7,.2,1)">'+c+' <span style="opacity:.6;font-weight:700">'+n+'</span></button>';
+      var on = c === filter;
+      var n = c === 'All' ? designs.length : cats[c];
+      return '<button class="h-borderred galF" data-f="' + c + '" style="background:' + (on?'#DC282E':'#FFFFFF') + ';color:' + (on?'#FFFFFF':'#4E4E50') + ';border:1px solid ' + (on?'#DC282E':'#E4E3E3') + ';font-size:13px;font-weight:800;padding:9px 18px;border-radius:999px;cursor:pointer;transition:all .2s cubic-bezier(.2,.7,.2,1)">' + c + ' <span style="opacity:.6;font-weight:700">' + n + '</span></button>';
     }).join('');
   }
+
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var cv = en.target, file = cv.dataset.file;
+      io.unobserve(cv);
+      loadDesign(file, function(){ renderCase(cv, file, +(cv.dataset.color||0)); });
+    });
+  }, { rootMargin: '400px 0px' }) : null;
+
+  function refreshVisible(){
+    document.querySelectorAll('#grid canvas').forEach(function(cv){
+      if (designImgs[cv.dataset.file] && designImgs[cv.dataset.file].complete) renderCase(cv, cv.dataset.file, +(cv.dataset.color||0));
+    });
+  }
+
+  function canBuy(){ return !!(window.KP_VARIANTS && window.KP_VARIANTS['MagSafe Clear'] && window.KP_VARIANTS['MagSafe Clear'][device]); }
+
   function renderGrid(){
-    var items = designs.filter(function(d){ return filter==='All' || d.category===filter; });
-    $('countLabel').textContent = items.length + ' design' + (items.length===1?'':'s');
-    $('grid').innerHTML = items.map(function(d){
-      return '<div class="h-card" style="animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:12px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
-        + '<div style="aspect-ratio:3/4;background:#F8F7F7"><img src="assets/designs/'+d.file+'" alt="'+d.title+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>'
-        + '<div style="padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px">'
-        + '<div style="min-width:0"><div style="font-weight:900;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+d.title+'</div>'
-        + '<div style="font-size:11px;color:#9A9A9D;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">'+d.category+'</div></div>'
-        + '<a href="customizer.html?design='+encodeURIComponent(d.file)+'" class="h-makeone" style="background:#FFFFFF;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:9px 14px;border-radius:999px;white-space:nowrap;transition:all .2s;flex-shrink:0">Make one</a>'
+    var items = designs.filter(function(d){ return filter === 'All' || d.category === filter; });
+    $('countLabel').textContent = items.length + ' design' + (items.length===1?'':'s') + (device ? ' · ' + device : '');
+    $('shopTitle').innerHTML = device ? (device + '<br>cases, ready to go.') : 'Pick a design.<br>Make it yours.';
+    var grid = $('grid');
+    if (!device){
+      grid.style.gridTemplateColumns = 'repeat(auto-fill,minmax(220px,1fr))';
+      grid.innerHTML = items.map(function(d){
+        return '<div class="h-card" style="animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:12px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
+          + '<div style="aspect-ratio:3/4;background:#F8F7F7"><img src="assets/designs/' + d.file + '" alt="' + d.title + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>'
+          + '<div style="padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px">'
+          + '<div style="min-width:0"><div style="font-weight:900;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
+          + '<div style="font-size:11px;color:#9A9A9D;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">' + d.category + '</div></div>'
+          + '<a href="customizer.html?design=' + encodeURIComponent(d.file) + '" class="h-makeone" style="background:#FFFFFF;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:9px 14px;border-radius:999px;white-space:nowrap;transition:all .2s;flex-shrink:0">Make one</a>'
+          + '</div></div>';
+      }).join('');
+      return;
+    }
+    var dev = KP_DEVICES[device];
+    grid.style.gridTemplateColumns = 'repeat(auto-fill,minmax(240px,1fr))';
+    grid.innerHTML = items.map(function(d, i){
+      var dots = dev.colors.map(function(c, ci){
+        return '<span class="cdot" data-ci="' + ci + '" title="' + c.n + '" style="width:14px;height:14px;border-radius:50%;background:' + c.h + ';border:2px solid ' + (ci===0?'#DC282E':'#E4E3E3') + ';display:inline-block;cursor:pointer"></span>';
+      }).join('');
+      return '<div class="h-card kpCard" data-file="' + d.file + '" style="animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:12px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
+        + '<a href="customizer.html?design=' + encodeURIComponent(d.file) + '&model=' + slugify(device) + '" style="display:block;background:#F8F7F7;text-decoration:none">'
+        + '<canvas width="' + CW + '" height="' + CH + '" data-file="' + d.file + '" data-color="0" style="width:100%;height:auto;display:block"></canvas></a>'
+        + '<div style="padding:12px 16px 6px;display:flex;align-items:center;justify-content:space-between;gap:8px">'
+        + '<div style="min-width:0"><div style="font-weight:900;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
+        + '<div style="font-size:11px;color:#9A9A9D;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">MagSafe Clear · From $64.99</div></div>'
+        + '<div style="display:flex;gap:5px;flex-shrink:0">' + dots + '</div></div>'
+        + '<div style="padding:8px 16px 14px;display:flex;gap:8px">'
+        + (canBuy() ? '<button class="kpAdd" data-file="' + d.file + '" style="flex:1;background:#2D2D3B;color:#FFFFFF;border:0;padding:11px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:background .2s">Add to cart</button>' : '')
+        + '<a href="customizer.html?design=' + encodeURIComponent(d.file) + '&model=' + slugify(device) + '" class="h-makeone" style="flex:1;text-align:center;background:#FFFFFF;border:1px solid #E4E3E3;color:#DC282E;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:10px;border-radius:999px;transition:all .2s;text-decoration:none">Customize</a>'
         + '</div></div>';
     }).join('');
+    if (io) document.querySelectorAll('#grid canvas').forEach(function(cv){ io.observe(cv); });
+    else document.querySelectorAll('#grid canvas').forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, 0); }); });
   }
-  document.addEventListener('click',function(e){
-    var f=e.target.closest('.galF');
-    if(f){ filter=f.dataset.f; renderFilters(); renderGrid(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+  // hover: scrub phone colors across the card
+  document.addEventListener('mousemove', function(e){
+    if (!device) return;
+    var card = e.target.closest ? e.target.closest('.kpCard') : null;
+    if (!card) return;
+    var cv = card.querySelector('canvas');
+    var r = cv.getBoundingClientRect();
+    if (e.clientY > r.bottom || e.clientY < r.top) return;
+    var n = KP_DEVICES[device].colors.length;
+    var ci = Math.max(0, Math.min(n-1, Math.floor((e.clientX - r.left)/r.width*n)));
+    if (+cv.dataset.color === ci) return;
+    cv.dataset.color = ci;
+    loadCase(device, ci, function(){ renderCase(cv, cv.dataset.file, ci); });
+    card.querySelectorAll('.cdot').forEach(function(dt, di){ dt.style.borderColor = di===ci ? '#DC282E' : '#E4E3E3'; });
   });
-  var mcat=/[?&]cat=([^&]+)/.exec(location.search);
+  document.addEventListener('mouseout', function(e){
+    if (!device) return;
+    var card = e.target.closest ? e.target.closest('.kpCard') : null;
+    if (!card || card.contains(e.relatedTarget)) return;
+    var cv = card.querySelector('canvas');
+    if (+cv.dataset.color !== 0){
+      cv.dataset.color = 0;
+      renderCase(cv, cv.dataset.file, 0);
+      card.querySelectorAll('.cdot').forEach(function(dt, di){ dt.style.borderColor = di===0 ? '#DC282E' : '#E4E3E3'; });
+    }
+  });
+
+  document.addEventListener('click', function(e){
+    var f = e.target.closest('.galF');
+    if (f){ filter = f.dataset.f; renderFilters(); renderGrid(); window.scrollTo({top:0,behavior:'smooth'}); }
+    var dv = e.target.closest('.devF');
+    if (dv){
+      device = dv.dataset.d ? DEVICE_ORDER.filter(function(m){ return slugify(m)===dv.dataset.d; })[0] : null;
+      var url = location.pathname + (device ? '?device=' + slugify(device) : '');
+      history.replaceState(null, '', url);
+      renderDeviceBar(); renderGrid();
+      if (device) preloadDevice(device);
+    }
+    var dot = e.target.closest('.cdot');
+    if (dot){
+      e.preventDefault();
+      var card = dot.closest('.kpCard'); var cv = card.querySelector('canvas');
+      var ci = +dot.dataset.ci;
+      cv.dataset.color = ci;
+      loadCase(device, ci, function(){ renderCase(cv, cv.dataset.file, ci); });
+      card.querySelectorAll('.cdot').forEach(function(dt, di){ dt.style.borderColor = di===ci ? '#DC282E' : '#E4E3E3'; });
+    }
+    var add = e.target.closest('.kpAdd');
+    if (add && device && canBuy()){
+      var vid = window.KP_VARIANTS['MagSafe Clear'][device];
+      add.textContent = 'Adding\u2026';
+      fetch('/cart/add.js', { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ items:[{ id: vid, quantity: 1, properties: {
+          'Model': device, 'Case type': 'MagSafe Clear', 'Design': add.dataset.file, 'Note': 'Pre-made design' } }] }) })
+        .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+        .then(function(){ add.textContent = 'Added \u2713 View cart'; add.onclick = function(){ location.href = '/cart'; }; })
+        .catch(function(){ add.textContent = 'Try again'; });
+    }
+  });
+
+  var mcat = /[?&]cat=([^&]+)/.exec(location.search);
   if (mcat) filter = decodeURIComponent(mcat[1]);
   fetch('assets/designs/designs.json').then(function(r){ return r.json(); }).then(function(d){
     designs = d;
-    if (filter!=='All' && !d.some(function(x){return x.category===filter;})) filter='All';
-    renderFilters(); renderGrid();
+    if (filter !== 'All' && !d.some(function(x){ return x.category === filter; })) filter = 'All';
+    renderDeviceBar(); renderFilters(); renderGrid();
+    if (device) preloadDevice(device);
   }).catch(function(){
     $('grid').innerHTML = '<div style="padding:40px;font-weight:700;color:#9A9A9D">Could not load designs.</div>';
   });
+
 })();
 </script>
 </body>

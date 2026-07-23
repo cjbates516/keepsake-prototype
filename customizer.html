@@ -108,14 +108,14 @@
       <div>
         <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">iPhone Cases</div>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 17 Pro Max</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 17 Pro</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 17</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16 Pro Max</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16 Pro</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 15 Pro Max</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 15</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-17-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 17 Pro Max</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-17-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 17 Pro</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-17" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 17</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-16-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16 Pro Max</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-16-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16 Pro</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-16" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-15-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 15 Pro Max</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-15" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 15</a>
           <a class="h-darkred" href="customizer.html" style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#DC282E;margin-top:6px;display:inline-flex;align-items:center;gap:6px">All iPhone cases
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
         </div>
@@ -487,6 +487,10 @@
     px:0, py:0, scale:1, rot:0,
     addons:{screen:false,lens:false}, promo:null, reserved:false
   };
+  (function(){ var mm = /[?&]model=([^&]+)/.exec(location.search); if (!mm) return;
+    var want = decodeURIComponent(mm[1]).replace(/-/g, ' ').toLowerCase();
+    for (var b in modelsByBrand){ modelsByBrand[b].forEach(function(md){
+      if (md.toLowerCase() === want){ state.brand = b; state.model = md; } }); } })();
 
   /* ── canvas compositor (17 Pro Max) ── */
   var DIM={w:2500,h:3000};
