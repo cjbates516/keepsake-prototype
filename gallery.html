@@ -341,6 +341,15 @@
   }
 
   var CW = 440, CH = 528, S = CW/2500;
+  var KP_VIEW = {"iPhone 17 Pro Max": {"f": "view-i17pm.png", "b": [705, 937, 1791, 2669]}, "iPhone 17 Pro": {"f": "view-i17p.png", "b": [750, 1035, 1746, 2571]}, "iPhone 17": {"f": "view-i17.png", "b": [747, 425, 1750, 2575]}, "iPhone Air": {"f": "view-i17a.png", "b": [723, 786, 1774, 2624]}, "iPhone 16 Pro Max": {"f": "view-i16pm.png", "b": [684, 283, 1811, 2670]}, "iPhone 16 Pro": {"f": "view-i16p.png", "b": [731, 388, 1765, 2565]}, "iPhone 16": {"f": "view-i16n.png", "b": [728, 397, 1768, 2556]}, "iPhone 15 Pro Max": {"f": "view-i15pm.png", "b": [692, 348, 1813, 2667]}, "iPhone 15 Pro": {"f": "view-i15p.png", "b": [735, 473, 1759, 2591]}, "iPhone 15": {"f": "view-i15.png", "b": [745, 461, 1778, 2575]}};
+  var viewMasks = {};
+  function loadViewMask(dev, cb){
+    var v=KP_VIEW[dev]; if(!v){ cb&&cb(); return; }
+    if(viewMasks[dev]){ cb&&cb(); return; }
+    var img=new Image(); img.crossOrigin='anonymous';
+    img.onload=function(){ viewMasks[dev]=img; cb&&cb(); };
+    img.src='assets/masks/'+v.f;
+  }
   var caseImgs = {}, caseLayers = {}, designImgs = {};
 
   function loadCase(dev, idx, cb){
@@ -355,7 +364,7 @@
     };
     img.src = 'assets/cases/' + c.f;
   }
-  function preloadDevice(dev){ KP_DEVICES[dev].colors.forEach(function(_, i){ loadCase(dev, i, i===0 ? refreshVisible : null); }); }
+  function preloadDevice(dev){ loadViewMask(dev, refreshVisible); KP_DEVICES[dev].colors.forEach(function(_, i){ loadCase(dev, i, i===0 ? refreshVisible : null); }); }
 
   function loadDesign(file, cb){
     if (designImgs[file]) { if (designImgs[file].complete) cb && cb(); else designImgs[file].addEventListener('load', function(){ cb && cb(); }); return; }
@@ -373,6 +382,22 @@
     var ctx = cv.getContext('2d');
     ctx.clearRect(0, 0, CW, CH);
     ctx.drawImage(layer, 0, 0);
+    var vmask = viewMasks[device];
+    if (vmask){
+      var t = document.createElement('canvas'); t.width = CW; t.height = CH;
+      var tc = t.getContext('2d');
+      var vb = KP_VIEW[device].b;
+      var bx = vb[0]*S, by = vb[1]*S, bw = (vb[2]-vb[0])*S, bh = (vb[3]-vb[1])*S;
+      var sc = Math.max(bw/dImg.width, bh/dImg.height), w = dImg.width*sc, h = dImg.height*sc;
+      tc.globalAlpha = .94;
+      tc.drawImage(dImg, bx+(bw-w)/2, by+(bh-h)/2, w, h);
+      tc.globalAlpha = .32; tc.globalCompositeOperation = 'multiply';
+      tc.drawImage(layer, 0, 0);
+      tc.globalAlpha = 1; tc.globalCompositeOperation = 'destination-in';
+      tc.drawImage(vmask, 0, 0, CW, CH);
+      ctx.drawImage(t, 0, 0);
+      return;
+    }
     ctx.save();
     var p = new Path2D(); p.addPath(new Path2D(dev.outD)); p.addPath(new Path2D(dev.camD));
     ctx.scale(S, S);
