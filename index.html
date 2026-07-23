@@ -696,16 +696,24 @@
       'abstract-leopard-pink.jpg','black-shapes.jpg'];
     var W=1250,H=1500, BOX=[705/2,937/2,1791/2,2669/2];
     var caseImg=new Image(), mask=new Image(), ready=0, idx=0;
+    var _shade=null;
+    function shadeOf(img){
+      if(_shade) return _shade;
+      var m=document.createElement('canvas'); m.width=20; m.height=24;
+      var mc=m.getContext('2d');
+      mc.fillStyle='#fff'; mc.fillRect(0,0,20,24);
+      mc.drawImage(img,0,0,20,24);
+      _shade=m; return m;
+    }
     function draw(img){
       var c=cvs.getContext('2d');
       var t=document.createElement('canvas'); t.width=W; t.height=H;
       var tc=t.getContext('2d');
       var bx=BOX[0],by=BOX[1],bw=BOX[2]-BOX[0],bh=BOX[3]-BOX[1];
       var sc=Math.max(bw/img.width,bh/img.height), dw=img.width*sc, dh=img.height*sc;
-      tc.globalAlpha=.94;
       tc.drawImage(img, bx+(bw-dw)/2, by+(bh-dh)/2, dw, dh);
       tc.globalAlpha=.32; tc.globalCompositeOperation='multiply';
-      tc.drawImage(caseImg,0,0,W,H);
+      tc.drawImage(shadeOf(caseImg),0,0,W,H);
       tc.globalAlpha=1; tc.globalCompositeOperation='destination-in';
       tc.drawImage(mask,0,0,W,H);
       tc.globalCompositeOperation='source-over';

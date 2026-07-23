@@ -374,6 +374,15 @@
     designImgs[file] = img;
   }
 
+  var shadeCache = {};
+  function shadeOf(key, layer){
+    if (shadeCache[key]) return shadeCache[key];
+    var m=document.createElement('canvas'); m.width=20; m.height=24;
+    var mc=m.getContext('2d');
+    mc.fillStyle='#fff'; mc.fillRect(0,0,20,24);
+    mc.drawImage(layer,0,0,20,24);
+    shadeCache[key]=m; return m;
+  }
   function renderCase(cv, file, colorIdx){
     var dev = KP_DEVICES[device];
     var layer = caseLayers[device + '|' + colorIdx];
@@ -389,10 +398,9 @@
       var vb = KP_VIEW[device].b;
       var bx = vb[0]*S, by = vb[1]*S, bw = (vb[2]-vb[0])*S, bh = (vb[3]-vb[1])*S;
       var sc = Math.max(bw/dImg.width, bh/dImg.height), w = dImg.width*sc, h = dImg.height*sc;
-      tc.globalAlpha = .94;
       tc.drawImage(dImg, bx+(bw-w)/2, by+(bh-h)/2, w, h);
       tc.globalAlpha = .32; tc.globalCompositeOperation = 'multiply';
-      tc.drawImage(layer, 0, 0);
+      tc.drawImage(shadeOf(device + '|' + colorIdx, layer), 0, 0, CW, CH);
       tc.globalAlpha = 1; tc.globalCompositeOperation = 'destination-in';
       tc.drawImage(vmask, 0, 0, CW, CH);
       ctx.drawImage(t, 0, 0);
