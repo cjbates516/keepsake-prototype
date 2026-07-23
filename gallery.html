@@ -462,8 +462,11 @@
         + '<a href="customizer.html?design=' + encodeURIComponent(d.file) + '&model=' + slugify(device) + '" class="h-makeone" style="flex:1;text-align:center;background:#FFFFFF;border:1px solid #E4E3E3;color:#DC282E;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:10px;border-radius:999px;transition:all .2s;text-decoration:none">Customize</a>'
         + '</div></div>';
     }).join('');
-    if (io) document.querySelectorAll('#grid canvas').forEach(function(cv){ io.observe(cv); });
-    else document.querySelectorAll('#grid canvas').forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, 0); }); });
+    var cvsAll = Array.prototype.slice.call(document.querySelectorAll('#grid canvas'));
+    // first cards render eagerly so above-the-fold never waits on observer timing
+    cvsAll.slice(0, 8).forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, +(cv.dataset.color||0)); }); });
+    if (io) cvsAll.slice(8).forEach(function(cv){ io.observe(cv); });
+    else cvsAll.slice(8).forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, 0); }); });
   }
 
   // hover: scrub phone colors across the card
