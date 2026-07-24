@@ -19,6 +19,9 @@ RULES = [
     # seasonal first — "cute halloween ghost" belongs in Halloween, not Cute & kids
     (r"halloween|spooky|pumpkin|ghost|bat(s)?\b|witch|skeleton|spider|candy corn|jack-?o", "Halloween"),
     (r"christmas|xmas|santa|snowflake|snowman|holly|reindeer|candy cane|gingerbread|mistletoe|ornament", "Christmas"),
+    (r"bow(s)?\b|ribbon|lace|coquette", "Coquette"),
+    (r"checker|smiley|groovy|y2k|gingham|plaid|disco|emoji", "Retro & Y2K"),
+    (r"celestial|starry|\bstars?\b|\bmoons?\b|\bsuns?\b|zodiac|constellation", "Celestial"),
     (r"leopard|tiger|zebra|cheetah|animal", "Animal print"),
     (r"lion|teddy|kawaii|cartoon|paw|whimsical|cute", "Cute & kids"),
     (r"heart", "Hearts"),
