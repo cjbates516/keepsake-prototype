@@ -102,6 +102,11 @@ def main():
         added += 1
 
     manifest.sort(key=lambda m: (m["category"], m["title"]))
+    hidden_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "hidden.json")
+    hidden = set(json.load(open(hidden_path))) if os.path.exists(hidden_path) else set()
+    for entry in manifest:
+        if entry["file"] in hidden: entry["hidden"] = True
+        elif "hidden" in entry: del entry["hidden"]
     json.dump(manifest, open(MANIFEST, "w"), indent=1)
     cats = {}
     for m in manifest:

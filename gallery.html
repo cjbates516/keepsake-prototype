@@ -565,7 +565,8 @@
   var mcat = /[?&]cat=([^&]+)/.exec(location.search);
   if (mcat) filter = decodeURIComponent(mcat[1]);
   fetch('assets/designs/designs.json').then(function(r){ return r.json(); }).then(function(d){
-    designs = d;
+    var staffMode = /[?&]staff=1/.test(location.search);
+    designs = staffMode ? d : d.filter(function(x){ return !x.hidden; });
     if (filter !== 'All' && !d.some(function(x){ return x.category === filter; })) filter = 'All';
     renderDeviceBar(); renderFilters(); renderGrid();
     if (device) preloadDevice(device);
