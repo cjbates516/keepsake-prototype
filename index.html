@@ -730,6 +730,18 @@
         var mc=m.getContext('2d');
         mc.fillStyle='#fff'; mc.fillRect(0,0,20,24);
         mc.drawImage(caseImg,0,0,20,24);
+        var d=mc.getImageData(0,0,20,24), p=d.data, sum=0, n=0;
+        for(var i=0;i<p.length;i+=4){
+          var l=p[i]*.299+p[i+1]*.587+p[i+2]*.114;
+          p[i]=p[i+1]=p[i+2]=l;
+          if(l<250){ sum+=l; n++; }
+        }
+        var k=n?242/Math.max(sum/n,90):1;
+        for(var j=0;j<p.length;j+=4){
+          var v=Math.min(255,p[j]*k);
+          p[j]=p[j+1]=p[j+2]=v;
+        }
+        mc.putImageData(d,0,0);
         shade=m; return m;
       }
       function draw(c, img){
@@ -739,8 +751,10 @@
         tc.clearRect(0,0,W,H);
         var bx=BOX[0],by=BOX[1],bw=BOX[2]-BOX[0],bh=BOX[3]-BOX[1];
         var sc=Math.max(bw/img.width,bh/img.height), dw=img.width*sc, dh=img.height*sc;
+        try{ tc.filter='saturate(1.08) contrast(1.03)'; }catch(_){}
         tc.drawImage(img, bx+(bw-dw)/2, by+(bh-dh)/2, dw, dh);
-        tc.globalAlpha=.32; tc.globalCompositeOperation='multiply';
+        try{ tc.filter='none'; }catch(_){}
+        tc.globalAlpha=.22; tc.globalCompositeOperation='multiply';
         tc.drawImage(shadeOf(),0,0,W,H);
         tc.globalAlpha=1; tc.globalCompositeOperation='destination-in';
         tc.drawImage(mask,0,0,W,H);
