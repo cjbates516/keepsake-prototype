@@ -267,6 +267,7 @@
 
           <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:12px">Your photo</div>
           <button id="uploadBtn" class="h-upload" style="width:100%;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s">Upload a photo</button>
+          <div style="font-size:11.5px;color:#9A9A9D;font-weight:600;margin-top:8px;text-align:center">🔒 Your photo never leaves this device — we don't upload or store it</div>
           <div style="margin-top:14px;padding-top:14px;border-top:1px solid #EFEDED">
             <div style="font-size:13px;font-weight:800;color:#17171F;margin-bottom:8px">No photo? Describe your idea</div>
             <div style="display:flex;gap:8px">
@@ -794,6 +795,36 @@
     render();
   }
 
+  /* ── on-device photo screening (nothing is uploaded — model runs in the browser) ── */
+  var kpScreen={model:null,loading:false};
+  function kpLoadScript(src){ return new Promise(function(res,rej){ var sc=document.createElement('script'); sc.src=src; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }); }
+  function kpEnsureScreen(cb){
+    if(kpScreen.model){ cb(); return; }
+    if(kpScreen.loading){ setTimeout(function(){ kpEnsureScreen(cb); }, 500); return; }
+    kpScreen.loading=true;
+    kpLoadScript('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js')
+      .then(function(){ return kpLoadScript('https://cdn.jsdelivr.net/npm/nsfwjs@4.2.1/dist/browser/nsfwjs.min.js'); })
+      .then(function(){ return nsfwjs.load('assets/nsfw/', {size:224}); })
+      .then(function(m){ kpScreen.model=m; kpScreen.loading=false; cb(); })
+      .catch(function(){ kpScreen.loading=false; cb(); });
+  }
+  function kpScreenPhoto(img){
+    kpEnsureScreen(function(){
+      if(!kpScreen.model || state.photoImg!==img) return;
+      kpScreen.model.classify(img).then(function(preds){
+        var bad=0;
+        preds.forEach(function(p){ if(p.className==='Porn'||p.className==='Hentai') bad+=p.probability; });
+        if(bad>0.6 && state.photoImg===img){
+          state.photoImg=null; state.photoUrl=null; state.isLibraryDesign=false;
+          state.px=0; state.py=0; state.scale=1; state.rot=0;
+          updateStage(); updateSummary();
+          $('stageHint').textContent='Upload or drop a photo to begin';
+          alert('That photo can\u2019t be printed \u2014 explicit imagery isn\u2019t allowed on our cases. Family-friendly photos only, please!');
+        }
+      }).catch(function(){});
+    });
+  }
+
   /* ── photo load ── */
   function loadPhoto(f){
     if(!f||!/^image\//.test(f.type))return;
@@ -807,6 +838,7 @@
       state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none'; state.reserved=false;
       $('zoomRange').value=1; $('rotRange').value=0;
       renderFilterChips(); updateDpi(); updateStage(); updateSummary();
+      kpScreenPhoto(img);
     };
     img.src=url;
   }
@@ -1114,6 +1146,7 @@
           state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none';
           renderFilterChips(); updateDpi(); updateStage(); updateSummary();
           $('stageHint').textContent='Your AI design is on the case \u2014 drag to position';
+          kpScreenPhoto(img);
           btn.disabled=false; btn.textContent='\u2728 Try another version';
         };
         img.src=j.image;

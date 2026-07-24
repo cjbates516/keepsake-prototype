@@ -57,6 +57,7 @@ export default {
         prompt: `phone case design, ${prompt}, seamless full-bleed pattern, vibrant, high detail, no text, no watermark`,
         image_size: { width: 768, height: 1344 },
         num_images: 1,
+        enable_safety_checker: true,
       }),
     });
     if (!r.ok) return json({ error: 'generation failed' }, 502, cors);
