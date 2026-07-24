@@ -16,6 +16,9 @@ MANIFEST = os.path.join(DEST, "designs.json")
 
 # filename keyword -> category (first match wins)
 RULES = [
+    # seasonal first — "cute halloween ghost" belongs in Halloween, not Cute & kids
+    (r"halloween|spooky|pumpkin|ghost|bat(s)?\b|witch|skeleton|spider|candy corn|jack-?o", "Halloween"),
+    (r"christmas|xmas|santa|snowflake|snowman|holly|reindeer|candy cane|gingerbread|mistletoe|ornament", "Christmas"),
     (r"leopard|tiger|zebra|cheetah|animal", "Animal print"),
     (r"lion|teddy|kawaii|cartoon|paw|whimsical|cute", "Cute & kids"),
     (r"heart", "Hearts"),
