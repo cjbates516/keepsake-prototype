@@ -49,6 +49,8 @@ STRIP = [
 
 def clean_title(name):
     t = name
+    if "-" in t and " " not in t:
+        t = t.replace("-", " ")
     for pat in STRIP:
         t = re.sub(pat, "", t, flags=re.I)
     t = re.sub(r"\s{2,}", " ", t).strip(" -·,")
@@ -102,6 +104,9 @@ def main():
         added += 1
 
     manifest.sort(key=lambda m: (m["category"], m["title"]))
+    for entry in manifest:
+        if "-" in entry["title"] and " " not in entry["title"]:
+            entry["title"] = clean_title(os.path.splitext(entry["file"])[0]).title()
     hidden_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "hidden.json")
     hidden = set(json.load(open(hidden_path))) if os.path.exists(hidden_path) else set()
     for entry in manifest:
