@@ -3,7 +3,7 @@
 
 Repeatable + incremental: drop new images into the Desktop folder and re-run.
 - content-hash dedupe (same file twice, or "(1)" re-exports, are skipped)
-- web-sizes every image to max 900px JPEG via sips (originals untouched)
+- web-sizes every image to max 1600px JPEG via sips (originals untouched)
 - auto-categorizes from the filename; add manual fixes in OVERRIDES
 - regenerates assets/designs/designs.json which gallery.html renders
 """
@@ -95,7 +95,7 @@ def main():
         slug = s2
         out = os.path.join(DEST, slug + ".jpg")
         r = subprocess.run(["sips", "-s", "format", "jpeg", "-s", "formatOptions", "82",
-                            "-Z", "900", path, "--out", out],
+                            "-Z", "1600", path, "--out", out],
                            capture_output=True, text=True)
         if r.returncode != 0:
             print("  ! failed:", fname, r.stderr.strip()[:120]); continue
