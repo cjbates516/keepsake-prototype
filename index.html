@@ -61,6 +61,16 @@
   @media(max-width:760px){.desktop-only{display:none !important}}
   #mega{display:none}
   #mega.open{display:block}
+  .heroUnit{position:absolute;inset:0}
+  .heroUnit img,.heroUnit canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;transform:scale(1.18)}
+  .heroUnit canvas{opacity:0;transition:opacity .6s ease}
+  #heroL{transform:translateX(-42%) scale(.8) rotate(-7deg);z-index:1;filter:drop-shadow(0 18px 24px rgba(46,56,61,.16))}
+  #heroC{z-index:2;filter:drop-shadow(0 24px 32px rgba(46,56,61,.2))}
+  #heroR{transform:translateX(42%) scale(.8) rotate(7deg);z-index:1;filter:drop-shadow(0 18px 24px rgba(46,56,61,.16))}
+  @media(max-width:640px){
+    #heroL{transform:translateX(-33%) scale(.72) rotate(-7deg)}
+    #heroR{transform:translateX(33%) scale(.72) rotate(7deg)}
+  }
 </style>
 </head>
 <body>
@@ -234,8 +244,20 @@
       </div>
       <div style="position:relative;display:flex;justify-content:center;padding:34px 0;min-width:0;perspective:1400px">
         <div id="heroCase" style="animation:fadeIn .7s cubic-bezier(.2,.7,.2,1) .2s both;position:relative;width:290px;height:554px;transition:transform .3s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 24px 32px rgba(46,56,61,.22))">
-          <img src="assets/cases/i17pm-silver.webp" alt="Custom printed clear iPhone 17 Pro Max case" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;transform:scale(1.32)">
-          <canvas id="heroSpin" width="1250" height="1500" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;transform:scale(1.32);opacity:0;transition:opacity .5s ease"></canvas>
+          <div id="heroTrio" style="position:absolute;inset:0">
+            <div class="heroUnit" id="heroL">
+              <img src="assets/cases/i17pm-blue.webp" alt="Deep blue iPhone 17 Pro Max case">
+              <canvas width="1250" height="1500"></canvas><canvas width="1250" height="1500"></canvas>
+            </div>
+            <div class="heroUnit" id="heroR">
+              <img src="assets/cases/i17pm-orange.webp" alt="Cosmic orange iPhone 17 Pro Max case">
+              <canvas width="1250" height="1500"></canvas><canvas width="1250" height="1500"></canvas>
+            </div>
+            <div class="heroUnit" id="heroC">
+              <img src="assets/cases/i17pm-silver.webp" alt="Silver iPhone 17 Pro Max case with custom printed design">
+              <canvas id="heroSpin" width="1250" height="1500"></canvas><canvas width="1250" height="1500"></canvas>
+            </div>
+          </div>
           <div style="position:absolute;bottom:-18px;right:8px;background:#2D2D3B;color:#FFFFFF;border-radius:999px;padding:12px 20px;font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 10px 24px rgba(220,40,46,.28)">From $64.99</div>
         </div>
         <div style="animation:fadeUp .7s cubic-bezier(.2,.7,.2,1) .5s both;position:absolute;top:-24px;right:8px;width:max-content;max-width:200px;background:#FFFFFF;border-radius:10px;padding:12px 16px;z-index:4;box-shadow:0 18px 40px rgba(78,78,80,.14), 0 6px 14px rgba(78,78,80,.08);transform:rotate(2deg)">
@@ -686,51 +708,60 @@
       if (slot) slot.outerHTML = slotImg(file, label);
     }
   });
-  // hero design roulette — the case cycles through library designs
+  // hero design roulette — three phone colors, staggered design crossfades
   (function(){
-    var cvs=document.getElementById('heroSpin'); if(!cvs) return;
+    var trio=document.getElementById('heroTrio'); if(!trio) return;
     var DESIGNS=['cheerful-pink-strawberry-pattern.jpg','colorful-minimalist-wavy-stripes.jpg',
       'charming-minimalist-black-hearts-pattern.jpg','kawaii-watercolor-strawberry.jpg',
       'intricate-black-leopard-spots.jpg','adorable-cartoon-lion-face.jpg',
       'dreamy-gradient-cosmic-background-with-sparkles.jpg','high-detail-botanical-of-winter-flora-on-white.jpg',
       'abstract-leopard-pink.jpg','black-shapes.jpg'];
     var W=1250,H=1500, BOX=[705/2,937/2,1791/2,2669/2];
-    var caseImg=new Image(), mask=new Image(), ready=0, idx=0;
-    var _shade=null;
-    function shadeOf(img){
-      if(_shade) return _shade;
-      var m=document.createElement('canvas'); m.width=20; m.height=24;
-      var mc=m.getContext('2d');
-      mc.fillStyle='#fff'; mc.fillRect(0,0,20,24);
-      mc.drawImage(img,0,0,20,24);
-      _shade=m; return m;
-    }
-    function draw(img){
-      var c=cvs.getContext('2d');
-      var t=document.createElement('canvas'); t.width=W; t.height=H;
-      var tc=t.getContext('2d');
-      var bx=BOX[0],by=BOX[1],bw=BOX[2]-BOX[0],bh=BOX[3]-BOX[1];
-      var sc=Math.max(bw/img.width,bh/img.height), dw=img.width*sc, dh=img.height*sc;
-      tc.drawImage(img, bx+(bw-dw)/2, by+(bh-dh)/2, dw, dh);
-      tc.globalAlpha=.32; tc.globalCompositeOperation='multiply';
-      tc.drawImage(shadeOf(caseImg),0,0,W,H);
-      tc.globalAlpha=1; tc.globalCompositeOperation='destination-in';
-      tc.drawImage(mask,0,0,W,H);
-      tc.globalCompositeOperation='source-over';
-      c.clearRect(0,0,W,H); c.drawImage(t,0,0);
-    }
-    function cycle(){
-      var img=new Image();
-      img.onload=function(){
-        cvs.style.opacity='0';
-        setTimeout(function(){ draw(img); cvs.style.opacity='1'; }, 500);
-      };
-      img.src='assets/designs/'+DESIGNS[idx%DESIGNS.length]; idx++;
-    }
-    function boot(){ if(++ready<2) return; cycle(); setInterval(cycle, 3200); }
-    caseImg.onload=boot; mask.onload=boot;
-    caseImg.src='assets/cases/i17pm-silver.webp';
+    var mask=new Image(), maskReady=false;
+    mask.onload=function(){ maskReady=true; };
     mask.src='assets/masks/view-i17pm.png';
+    Array.prototype.slice.call(trio.querySelectorAll('.heroUnit')).forEach(function(u, ui){
+      var caseImg=u.querySelector('img');
+      var cvs=Array.prototype.slice.call(u.querySelectorAll('canvas'));
+      var front=-1, idx=ui*3, shade=null;
+      function shadeOf(){
+        if(shade) return shade;
+        var m=document.createElement('canvas'); m.width=20; m.height=24;
+        var mc=m.getContext('2d');
+        mc.fillStyle='#fff'; mc.fillRect(0,0,20,24);
+        mc.drawImage(caseImg,0,0,20,24);
+        shade=m; return m;
+      }
+      function draw(c, img){
+        var tc=c.getContext('2d');
+        tc.setTransform(1,0,0,1,0,0);
+        tc.globalAlpha=1; tc.globalCompositeOperation='source-over';
+        tc.clearRect(0,0,W,H);
+        var bx=BOX[0],by=BOX[1],bw=BOX[2]-BOX[0],bh=BOX[3]-BOX[1];
+        var sc=Math.max(bw/img.width,bh/img.height), dw=img.width*sc, dh=img.height*sc;
+        tc.drawImage(img, bx+(bw-dw)/2, by+(bh-dh)/2, dw, dh);
+        tc.globalAlpha=.32; tc.globalCompositeOperation='multiply';
+        tc.drawImage(shadeOf(),0,0,W,H);
+        tc.globalAlpha=1; tc.globalCompositeOperation='destination-in';
+        tc.drawImage(mask,0,0,W,H);
+        tc.globalCompositeOperation='source-over';
+      }
+      function cycle(){
+        var img=new Image();
+        img.onload=function(){
+          if(!maskReady || !caseImg.complete){ setTimeout(cycle, 400); return; }
+          var next=(front===-1)?0:1-front;
+          var nc=cvs[next], oc=(front===-1)?null:cvs[front];
+          draw(nc, img);
+          nc.style.zIndex=3; if(oc) oc.style.zIndex=2;
+          nc.style.opacity='1';
+          if(oc) setTimeout(function(){ oc.style.opacity='0'; }, 650);
+          front=next;
+        };
+        img.src='assets/designs/'+DESIGNS[idx%DESIGNS.length]; idx++;
+      }
+      setTimeout(function(){ cycle(); setInterval(cycle, 3600); }, 300+ui*1200);
+    });
   })();
 
   // chat
