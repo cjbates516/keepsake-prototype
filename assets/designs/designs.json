@@ -6,12 +6,6 @@
   "hash": "4dd2c38e7000"
  },
  {
-  "file": "image.jpg",
-  "title": "Strawberry Jam Picnic",
-  "category": "Fruits",
-  "hash": "6a15587c6a30"
- },
- {
   "file": "mid-century-modern-abstract-shapes.jpg",
   "title": "Mid-Century Modern Abstract Shapes",
   "category": "Abstract",
@@ -22,12 +16,6 @@
   "title": "Playful Abstract Pink Shapes",
   "category": "Abstract",
   "hash": "85a3f0ac9a35"
- },
- {
-  "file": "screenshot-2026-07-18-at-6-16-55-pm.jpg",
-  "title": "Painted Pastel Garden",
-  "category": "Florals",
-  "hash": "b7ec7398035c"
  },
  {
   "file": "stylish-bohemian-abstract-terracotta-phone-case.jpg",
@@ -306,6 +294,12 @@
   "hash": "a062e29ea4d8"
  },
  {
+  "file": "screenshot-2026-07-18-at-6-16-55-pm.jpg",
+  "title": "Painted Pastel Garden",
+  "category": "Florals",
+  "hash": "b7ec7398035c"
+ },
+ {
   "file": "pastel-pink-floral-minimalist-pattern.jpg",
   "title": "Pastel Pink Floral Minimalist Pattern",
   "category": "Florals",
@@ -394,6 +388,12 @@
   "title": "Playful Strawberry and Flower Pattern",
   "category": "Fruits",
   "hash": "6c481133d1ea"
+ },
+ {
+  "file": "image.jpg",
+  "title": "Strawberry Jam Picnic",
+  "category": "Fruits",
+  "hash": "6a15587c6a30"
  },
  {
   "file": "stylized-lemon-and-floral.jpg",
@@ -526,6 +526,174 @@
   "title": "Vibrant Citrus Slice Pattern on Pastel Yellow Background",
   "category": "Gradients & pastels",
   "hash": "3034928f3e70"
+ },
+ {
+  "file": "halloween-bats-on-orange.jpg",
+  "title": "Halloween bats on orange",
+  "category": "Halloween",
+  "hash": "1ea193c1512d"
+ },
+ {
+  "file": "halloween-bold-pumpkins-on-black.jpg",
+  "title": "Halloween bold pumpkins on black",
+  "category": "Halloween",
+  "hash": "a5eef51c19c2"
+ },
+ {
+  "file": "halloween-boo-crew-ghosts-on-charcoal.jpg",
+  "title": "Halloween boo crew ghosts on charcoal",
+  "category": "Halloween",
+  "hash": "48600cd019dd"
+ },
+ {
+  "file": "halloween-cowboy-ghosts-on-cream.jpg",
+  "title": "Halloween cowboy ghosts on cream",
+  "category": "Halloween",
+  "hash": "f05857a39ae2"
+ },
+ {
+  "file": "halloween-cowboy-pumpkins-on-charcoal.jpg",
+  "title": "Halloween cowboy pumpkins on charcoal",
+  "category": "Halloween",
+  "hash": "59f28146a9f5"
+ },
+ {
+  "file": "halloween-cute-ghosts-and-pumpkins-on-lavender.jpg",
+  "title": "Halloween cute ghosts and pumpkins on lavender",
+  "category": "Halloween",
+  "hash": "f15feb292f08"
+ },
+ {
+  "file": "halloween-floral-skulls-on-pink.jpg",
+  "title": "Halloween floral skulls on pink",
+  "category": "Halloween",
+  "hash": "77afffca3784"
+ },
+ {
+  "file": "halloween-ghost-and-pumpkin-friends-on-cream.jpg",
+  "title": "Halloween ghost and pumpkin friends on cream",
+  "category": "Halloween",
+  "hash": "4d81c3aba74d"
+ },
+ {
+  "file": "halloween-ghost-parade-on-black.jpg",
+  "title": "Halloween ghost parade on black",
+  "category": "Halloween",
+  "hash": "facc7f941308"
+ },
+ {
+  "file": "halloween-ghost-toss-black-and-white.jpg",
+  "title": "Halloween ghost toss black and white",
+  "category": "Halloween",
+  "hash": "1f29a66c225a"
+ },
+ {
+  "file": "halloween-ghosts-and-pink-pumpkins-on-black.jpg",
+  "title": "Halloween ghosts and pink pumpkins on black",
+  "category": "Halloween",
+  "hash": "319869a18822"
+ },
+ {
+  "file": "halloween-ghosts-pumpkins-florals-on-black.jpg",
+  "title": "Halloween ghosts pumpkins florals on black",
+  "category": "Halloween",
+  "hash": "b01e532aad10"
+ },
+ {
+  "file": "halloween-haunted-houses-on-white.jpg",
+  "title": "Halloween haunted houses on white",
+  "category": "Halloween",
+  "hash": "35b01392ade2"
+ },
+ {
+  "file": "halloween-jack-o-lantern-toss-on-cream.jpg",
+  "title": "Halloween jack o lantern toss on cream",
+  "category": "Halloween",
+  "hash": "a77e3ff18a6d"
+ },
+ {
+  "file": "halloween-night-doodles-on-black.jpg",
+  "title": "Halloween night doodles on black",
+  "category": "Halloween",
+  "hash": "db7c4907db13"
+ },
+ {
+  "file": "halloween-night-doodles-on-cream.jpg",
+  "title": "Halloween night doodles on cream",
+  "category": "Halloween",
+  "hash": "fdbf29e8f956"
+ },
+ {
+  "file": "halloween-orange-dots-on-black.jpg",
+  "title": "Halloween orange dots on black",
+  "category": "Halloween",
+  "hash": "c8feee85d7aa"
+ },
+ {
+  "file": "halloween-pink-and-orange-pumpkin-toss.jpg",
+  "title": "Halloween pink and orange pumpkin toss",
+  "category": "Halloween",
+  "hash": "92233f2fc019"
+ },
+ {
+  "file": "halloween-pink-ghosts-pumpkins-and-daisies.jpg",
+  "title": "Halloween pink ghosts pumpkins and daisies",
+  "category": "Halloween",
+  "hash": "5f2b5805fc19"
+ },
+ {
+  "file": "halloween-pink-pumpkin-toss-on-charcoal.jpg",
+  "title": "Halloween pink pumpkin toss on charcoal",
+  "category": "Halloween",
+  "hash": "54fd730abcf0"
+ },
+ {
+  "file": "halloween-pumpkins-and-daisies-on-charcoal.jpg",
+  "title": "Halloween pumpkins and daisies on charcoal",
+  "category": "Halloween",
+  "hash": "9dee6403e85a"
+ },
+ {
+  "file": "halloween-pumpkins-on-periwinkle.jpg",
+  "title": "Halloween pumpkins on periwinkle",
+  "category": "Halloween",
+  "hash": "d854a4e66527"
+ },
+ {
+  "file": "halloween-skulls-in-witch-hats-on-black.jpg",
+  "title": "Halloween skulls in witch hats on black",
+  "category": "Halloween",
+  "hash": "797715ed51f6"
+ },
+ {
+  "file": "halloween-spooky-scene-on-pink.jpg",
+  "title": "Halloween spooky scene on pink",
+  "category": "Halloween",
+  "hash": "d73504f0d81a"
+ },
+ {
+  "file": "halloween-western-ghosts-and-cactus.jpg",
+  "title": "Halloween western ghosts and cactus",
+  "category": "Halloween",
+  "hash": "ae5e1e116584"
+ },
+ {
+  "file": "pumpkin-spice-boba-on-blush.jpg",
+  "title": "Pumpkin spice boba on blush",
+  "category": "Halloween",
+  "hash": "2125314dc461"
+ },
+ {
+  "file": "pumpkin-spice-latte-toss-on-white.jpg",
+  "title": "Pumpkin spice latte toss on white",
+  "category": "Halloween",
+  "hash": "80f7e4e96ef5"
+ },
+ {
+  "file": "pumpkin-spice-lattes-on-pink.jpg",
+  "title": "Pumpkin spice lattes on pink",
+  "category": "Halloween",
+  "hash": "5397791732f0"
  },
  {
   "file": "black-heart-shapes.jpg",
