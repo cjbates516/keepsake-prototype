@@ -71,6 +71,10 @@
     #heroL{transform:translateX(-33%) scale(.72) rotate(-7deg)}
     #heroR{transform:translateX(33%) scale(.72) rotate(7deg)}
   }
+.kpBest{flex:0 0 205px;scroll-snap-align:start;text-decoration:none;text-align:center}
+@media(max-width:640px){.kpBest{flex:0 0 44%}}
+.kpBest:hover img{transform:translateY(-4px)}
+.kpBest img{transition:transform .25s cubic-bezier(.2,.7,.2,1)}
 </style>
 </head>
 <body>
@@ -272,13 +276,48 @@
       </div>
     </section>
 
+    <!-- ═══ best sellers ═══ -->
+    <section style="max-width:1280px;margin:0 auto;padding:8px 40px 56px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:18px">
+        <h2 style="font-weight:900;font-size:clamp(24px,3vw,36px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0">Best Sellers</h2>
+        <a href="gallery.html?device=iphone-17-pro-max" style="font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#DC282E;text-decoration:none;white-space:nowrap">Shop all &rarr;</a>
+      </div>
+      <div style="display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:8px">
+        <a class="kpBest" href="customizer.html?design=intricate-black-leopard-spots.jpg">
+          <img src="assets/promo/promo-intricate-black-leopard-spots.webp" alt="Leopard case" loading="lazy" width="300" height="400" style="width:100%;height:auto;filter:drop-shadow(0 10px 18px rgba(46,56,61,.16))">
+          <span style="display:block;font-weight:900;font-size:14px;color:#2D2D3B;margin-top:10px">Leopard</span>
+          <span style="display:inline-block;margin-top:8px;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px">Shop now</span>
+        </a>
+        <a class="kpBest" href="customizer.html?design=charming-minimalist-black-hearts-pattern.jpg">
+          <img src="assets/promo/promo-charming-minimalist-black-hearts-pattern.webp" alt="Black Hearts case" loading="lazy" width="300" height="400" style="width:100%;height:auto;filter:drop-shadow(0 10px 18px rgba(46,56,61,.16))">
+          <span style="display:block;font-weight:900;font-size:14px;color:#2D2D3B;margin-top:10px">Black Hearts</span>
+          <span style="display:inline-block;margin-top:8px;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px">Shop now</span>
+        </a>
+        <a class="kpBest" href="customizer.html?design=stylish-white-daisy-floral-pattern.jpg">
+          <img src="assets/promo/promo-stylish-white-daisy-floral-pattern.webp" alt="Daisies case" loading="lazy" width="300" height="400" style="width:100%;height:auto;filter:drop-shadow(0 10px 18px rgba(46,56,61,.16))">
+          <span style="display:block;font-weight:900;font-size:14px;color:#2D2D3B;margin-top:10px">Daisies</span>
+          <span style="display:inline-block;margin-top:8px;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px">Shop now</span>
+        </a>
+        <a class="kpBest" href="customizer.html?design=colorful-minimalist-wavy-stripes.jpg">
+          <img src="assets/promo/promo-colorful-minimalist-wavy-stripes.webp" alt="Wavy Stripes case" loading="lazy" width="300" height="400" style="width:100%;height:auto;filter:drop-shadow(0 10px 18px rgba(46,56,61,.16))">
+          <span style="display:block;font-weight:900;font-size:14px;color:#2D2D3B;margin-top:10px">Wavy Stripes</span>
+          <span style="display:inline-block;margin-top:8px;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px">Shop now</span>
+        </a>
+        <a class="kpBest" href="customizer.html?design=playful-cartoon-cherries.jpg">
+          <img src="assets/promo/promo-playful-cartoon-cherries.webp" alt="Cherries case" loading="lazy" width="300" height="400" style="width:100%;height:auto;filter:drop-shadow(0 10px 18px rgba(46,56,61,.16))">
+          <span style="display:block;font-weight:900;font-size:14px;color:#2D2D3B;margin-top:10px">Cherries</span>
+          <span style="display:inline-block;margin-top:8px;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px">Shop now</span>
+        </a>
+      </div>
+    </section>
+
     <!-- ═══ trust bar ═══ -->
         <!-- case wall marquee -->
     <section style="background:#FFFFFF;padding:0 0 40px;overflow:hidden">
       <a href="gallery.html?device=iphone-17-pro-max" aria-label="Shop ready-made cases" style="display:block;text-decoration:none">
         <div style="display:flex;width:max-content;gap:28px;align-items:center;animation:marquee 46s linear infinite"><img width="225" height="300" src="assets/promo/promo-adorable-cartoon-lion-face.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-kawaii-watercolor-strawberry.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-minimalist-white-heart-pattern.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-colorful-minimalist-wavy-stripes.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-abstract-leopard-pink.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-stylish-white-daisy-floral-pattern.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-dreamy-gradient-cosmic-background-with-sparkles.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-playful-cartoon-cherries.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-mid-century-modern-abstract-shapes.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-adorable-cartoon-lion-face.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-kawaii-watercolor-strawberry.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-minimalist-white-heart-pattern.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-colorful-minimalist-wavy-stripes.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-abstract-leopard-pink.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-stylish-white-daisy-floral-pattern.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-dreamy-gradient-cosmic-background-with-sparkles.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-playful-cartoon-cherries.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-mid-century-modern-abstract-shapes.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"></div>
       </a>
-      <div style="text-align:center;margin-top:18px"><span style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#9A9A9D">120 ready-made designs · tap any case to shop</span></div>
+      <div style="text-align:center;margin-top:18px"><span style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#9A9A9D">500+ ready-made designs · tap any case to shop</span></div>
     </section>
 
     <section style="background:#2D2D3B;color:#FFFFFF;padding:20px 40px">
