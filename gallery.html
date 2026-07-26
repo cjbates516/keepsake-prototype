@@ -184,8 +184,8 @@
       <div style="display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:22px">
         <div>
           <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#9A9A9D;margin-bottom:14px">Design library</div>
-          <h1 id="shopTitle" style="font-weight:900;font-size:clamp(30px,3.6vw,48px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0;line-height:1">Pick a design.<br>Make it yours.</h1>
-          <p style="font-size:16px;color:#6E6E70;margin:16px 0 0;max-width:520px;line-height:1.6">Ready-made designs on the case you actually carry — or a starting point for your own photo. <span style="color:#DC282E;font-weight:800">Move your mouse across a case to preview phone colors.</span></p>
+          <h1 id="shopTitle" style="font-weight:900;font-size:clamp(24px,3.6vw,48px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0;line-height:1">Pick a design.<br>Make it yours.</h1>
+          <p style="font-size:16px;font-weight:700;color:#6E6E70;margin:14px 0 0">Every design, printed in store today.</p>
         </div>
         <div style="font-size:13px;font-weight:800;color:#9A9A9D"><span id="countLabel"></span></div>
       </div>
@@ -435,15 +435,30 @@
     ctx.restore();
   }
 
+  var KP_BRANDS = { 'Apple': DEVICE_ORDER, 'Samsung': [], 'Google': [] };
+  var brandSel = 'Apple';
   function renderDeviceBar(){
     var bar = document.getElementById('deviceBar');
-    var chips = ['<span style="font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#9A9A9D;margin-right:4px">Device</span>'];
-    chips.push('<button class="devF" data-d="" style="background:' + (!device ? '#2D2D3B' : '#FFFFFF') + ';color:' + (!device ? '#FFFFFF' : '#4E4E50') + ';border:1px solid ' + (!device ? '#2D2D3B' : '#E4E3E3') + ';font-size:12.5px;font-weight:800;padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .2s">Flat designs</button>');
-    DEVICE_ORDER.forEach(function(m){
-      var on = m === device;
-      chips.push('<button class="devF" data-d="' + slugify(m) + '" style="background:' + (on ? '#DC282E' : '#FFFFFF') + ';color:' + (on ? '#FFFFFF' : '#4E4E50') + ';border:1px solid ' + (on ? '#DC282E' : '#E4E3E3') + ';font-size:12.5px;font-weight:800;padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .2s">' + m.replace('iPhone ', 'iPhone ') + '</button>');
+    if (device){ for (var b in KP_BRANDS){ if (KP_BRANDS[b].indexOf(device) > -1) brandSel = b; } }
+    var row1 = ['<span style="font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#9A9A9D;margin-right:4px">Brand</span>'];
+    row1.push('<button class="devF" data-d="" style="background:' + (!device ? '#2D2D3B' : '#FFFFFF') + ';color:' + (!device ? '#FFFFFF' : '#4E4E50') + ';border:1px solid ' + (!device ? '#2D2D3B' : '#E4E3E3') + ';font-size:12.5px;font-weight:800;padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .2s">Flat designs</button>');
+    Object.keys(KP_BRANDS).forEach(function(b){
+      var models = KP_BRANDS[b];
+      if (models.length){
+        var bon = !!device && brandSel === b;
+        row1.push('<button class="devB" data-b="' + b + '" style="background:' + (bon ? '#DC282E' : '#FFFFFF') + ';color:' + (bon ? '#FFFFFF' : '#4E4E50') + ';border:1px solid ' + (bon ? '#DC282E' : '#E4E3E3') + ';font-size:12.5px;font-weight:800;padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .2s">' + b + '</button>');
+      } else {
+        row1.push('<button disabled title="Coming soon — reserve in store" style="background:#F3F2F2;color:#9A9A9D;border:1px solid #E4E3E3;font-size:12.5px;font-weight:800;padding:8px 16px;border-radius:999px;cursor:default">' + b + ' · soon</button>');
+      }
     });
-    bar.innerHTML = chips.join('');
+    var row2 = '';
+    if (device && KP_BRANDS[brandSel] && KP_BRANDS[brandSel].length){
+      row2 = '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">' + KP_BRANDS[brandSel].map(function(m){
+        var on = m === device;
+        return '<button class="devF" data-d="' + slugify(m) + '" style="background:' + (on ? '#DC282E' : '#FFFFFF') + ';color:' + (on ? '#FFFFFF' : '#4E4E50') + ';border:1px solid ' + (on ? '#DC282E' : '#E4E3E3') + ';font-size:12.5px;font-weight:800;padding:8px 14px;border-radius:999px;cursor:pointer;transition:all .2s">' + m.replace('iPhone ', '').replace(' ', '\u00a0') + '</button>';
+      }).join('') + '</div>';
+    }
+    bar.innerHTML = '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">' + row1.join('') + '</div>' + row2;
   }
 
   function renderFilters(){
@@ -480,7 +495,7 @@
   function renderGrid(){
     var items = designs.filter(function(d){ return filter === 'All' || d.category === filter; });
     $('countLabel').textContent = items.length + ' design' + (items.length===1?'':'s') + (device ? ' · ' + device : '');
-    $('shopTitle').innerHTML = device ? (device + '<br>cases, ready to go.') : 'Pick a design.<br>Make it yours.';
+    $('shopTitle').innerHTML = device ? (device + ' cases.') : 'Pick a design.<br>Make it yours.';
     var grid = $('grid');
     if (!device){
       grid.style.gridTemplateColumns = 'repeat(auto-fill,minmax(220px,1fr))';
@@ -551,6 +566,17 @@
   document.addEventListener('click', function(e){
     var f = e.target.closest('.galF');
     if (f){ filter = f.dataset.f; renderFilters(); renderGrid(); window.scrollTo({top:0,behavior:'smooth'}); }
+    var bv = e.target.closest('.devB');
+    if (bv){
+      brandSel = bv.dataset.b;
+      var first = KP_BRANDS[brandSel][0];
+      if (first){
+        device = first;
+        history.replaceState(null, '', location.pathname + '?device=' + slugify(device));
+        renderDeviceBar(); renderGrid(); preloadDevice(device);
+      }
+      return;
+    }
     var dv = e.target.closest('.devF');
     if (dv){
       device = dv.dataset.d ? DEVICE_ORDER.filter(function(m){ return slugify(m)===dv.dataset.d; })[0] : null;
