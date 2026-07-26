@@ -35,6 +35,15 @@
   #mega{display:none}
   @media(pointer:coarse){ .cdot{ width:22px !important; height:22px !important } }
   #mega.open{display:block}
+.kpStep{display:none}
+@media(max-width:640px){
+  body.kp-device-mode #deviceBar,body.kp-device-mode #filters{display:none !important}
+  body.kp-device-mode #deviceBar.kp-open{display:block !important}
+  body.kp-device-mode .kpStep{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+  body.kp-device-mode #colorBar{margin:10px 0 18px}
+}
+.kpStepN{width:26px;height:26px;border-radius:50%;background:#2D2D3B;color:#FFF;font-size:13px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.kpStepDone{background:#1E8E3E}
 </style>
 </head>
 <body>
@@ -190,8 +199,10 @@
         <div style="font-size:13px;font-weight:800;color:#9A9A9D"><span id="countLabel"></span></div>
       </div>
       <div id="deviceBar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center"></div>
+      <div id="wizardBar"></div>
       <div id="filters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"></div>
       <div id="colorBar" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:30px"></div>
+      <div class="kpStep" id="step3Lab"><span class="kpStepN">3</span><span style="font-weight:900;font-size:15px;color:#2D2D3B">Tap a case you love</span></div>
       <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px"></div>
     </div>
   </main>
@@ -460,8 +471,40 @@
       }).join('') + '</div>';
     }
     bar.innerHTML = '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">' + row1.join('') + '</div>' + row2;
+    renderWizard();
   }
 
+  var searchQ='';
+  function renderWizard(){
+    var el=document.getElementById('wizardBar'); if(!el) return;
+    if(!device){ el.innerHTML=''; document.body.classList.remove('kp-device-mode'); return; }
+    document.body.classList.add('kp-device-mode');
+    var cats={}; designs.forEach(function(d){ if(!d.hidden) cats[d.category]=(cats[d.category]||0)+1; });
+    var opts='<option value="All">All styles ('+designs.filter(function(d){return !d.hidden;}).length+')</option>'+
+      Object.keys(cats).sort().map(function(c){ return '<option value="'+c+'"'+(filter===c?' selected':'')+'>'+c+' ('+cats[c]+')</option>'; }).join('');
+    el.innerHTML =
+      '<div class="kpStep"><span class="kpStepN kpStepDone">✓</span>'+
+      '<span style="font-weight:900;font-size:15px;color:#2D2D3B;flex:1">'+device+'</span>'+
+      '<button id="wizChange" style="background:none;border:0;color:#DC282E;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;padding:6px">Change</button></div>'+
+      '<div class="kpStep" style="flex-wrap:wrap"><span class="kpStepN">2</span>'+
+      '<span style="font-weight:900;font-size:15px;color:#2D2D3B">Pick your style</span>'+
+      '<select id="wizCat" aria-label="Design style" style="flex:1;min-width:130px;font-size:16px;font-weight:700;padding:10px 12px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF;color:#2D2D3B">'+opts+'</select>'+
+      '<input id="wizSearch" type="search" placeholder="Search designs…" value="'+searchQ.replace(/"/g,'&quot;')+'" aria-label="Search designs" style="flex-basis:100%;font-size:16px;padding:11px 14px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF"></div>';
+    var sel=document.getElementById('wizCat');
+    sel.addEventListener('change',function(){
+      filter=this.value; searchQ='';
+      var si2=document.getElementById('wizSearch'); if(si2) si2.value='';
+      renderFilters(); renderGrid();
+    });
+    document.getElementById('wizChange').addEventListener('click',function(){
+      document.getElementById('deviceBar').classList.toggle('kp-open');
+    });
+    var si=document.getElementById('wizSearch'), deb=null;
+    si.addEventListener('input',function(){
+      var v=this.value; clearTimeout(deb);
+      deb=setTimeout(function(){ searchQ=v.trim().toLowerCase(); renderGrid(); },150);
+    });
+  }
   var KP_COLORS=[['Red','#DC282E'],['Pink','#F5A8C7'],['Orange','#F07B3C'],['Yellow','#F2D14E'],['Green','#6FA382'],['Blue','#5B8DEF'],['Purple','#9B7EDE'],['Brown','#7A4E2D'],['Black','#17171F'],['White','#FFFFFF'],['Grey','#9A9A9D'],['Beige','#E4D3B4']];
   var colorSel=null;
   function renderColors(){
@@ -506,8 +549,23 @@
   function canBuy(){ return !!(window.KP_VARIANTS && window.KP_VARIANTS['MagSafe Clear'] && window.KP_VARIANTS['MagSafe Clear'][device]); }
 
   function renderGrid(){
-    var items = designs.filter(function(d){ return (filter === 'All' || d.category === filter) && (!colorSel || (d.color||[]).indexOf(colorSel) > -1); });
+    var items = designs.filter(function(d){
+      if (filter !== 'All' && d.category !== filter) return false;
+      if (colorSel && (d.color||[]).indexOf(colorSel) === -1) return false;
+      if (searchQ){
+        var hay=(d.title+' '+d.category).toLowerCase();
+        if (searchQ.split(/\s+/).some(function(t){ return hay.indexOf(t)===-1; })) return false;
+      }
+      return true;
+    });
     $('countLabel').textContent = items.length + ' design' + (items.length===1?'':'s') + (device ? ' · ' + device : '');
+    if (!items.length){
+      $('grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px">'
+        + '<div style="font-weight:900;font-size:18px;color:#2D2D3B;margin-bottom:8px">No designs match</div>'
+        + '<div style="font-size:14px;color:#6E6E70;margin-bottom:18px">Try a different style, color, or search.</div>'
+        + '<button class="wizClearAll" style="background:#DC282E;color:#FFF;border:0;padding:12px 24px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Show everything</button></div>';
+      return;
+    }
     $('shopTitle').innerHTML = device ? (device + ' cases.') : 'Pick a design.<br>Make it yours.';
     var grid = $('grid');
     if (!device){
@@ -579,6 +637,13 @@
   document.addEventListener('click', function(e){
     var f = e.target.closest('.galF');
     if (f){ filter = f.dataset.f; renderFilters(); renderGrid(); window.scrollTo({top:0,behavior:'smooth'}); }
+    var ca = e.target.closest('.wizClearAll');
+    if (ca){
+      filter='All'; colorSel=null; searchQ='';
+      var si3=document.getElementById('wizSearch'); if(si3) si3.value='';
+      renderFilters(); renderColors(); renderWizard(); renderGrid();
+      return;
+    }
     var cf = e.target.closest('.colF');
     if (cf){ colorSel = cf.dataset.c || null;
       var u = new URL(location.href);
