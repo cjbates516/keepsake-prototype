@@ -37,7 +37,7 @@
   @media(max-width:900px){ #kpChatWrap{ bottom:96px !important; right:14px !important } }
   #mega{display:none}
   #mega.open{display:block}
-  #stageCanvas{width:100%;max-width:420px;height:auto;touch-action:none;cursor:grab;display:block;
+  #stageCanvas{width:100%;max-width:420px;height:auto;touch-action:pan-y;cursor:grab;display:block;
     filter:drop-shadow(0 16px 24px rgba(46,56,61,.22))}
   #stageCanvas.dragging{cursor:grabbing}
   select:focus,input:focus,textarea:focus,button:focus-visible{outline:2px solid #4FB0E3;outline-offset:1px}
@@ -352,7 +352,7 @@
           <div id="promoMsg" style="font-size:13px;font-weight:700;margin-bottom:20px;min-height:18px"></div>
 
           <div style="border-top:1px solid #EFEDED;padding-top:18px">
-            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="lineDevice">iPhone 17 Pro Max · MagSafe Clear</span><span>$64.99</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="lineDevice">iPhone 17 Pro Max · MagSafe Clear</span><span id="linePrice">$64.99</span></div>
             <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#9A9A9D;margin-bottom:6px"><span>Printed in store · <span id="colorName4">Silver</span></span><span>Included</span></div>
             <div id="lineAddons" style="display:none;justify-content:space-between;font-size:13px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="addonSummary"></span><span id="addonTotal"></span></div>
             <div id="lineDiscount" style="display:none;justify-content:space-between;font-size:14px;font-weight:800;color:#1E8E3E;margin-bottom:6px"><span id="discountName"></span><span id="discountAmt"></span></div>
@@ -749,7 +749,9 @@
   }
   var dragging=false,last=null,panning=false,panLast=null;
   canvas.addEventListener('click',function(){ if(!state.photoImg && !state.text && !CAL.on) $('fileInput').click(); });
+  var kpPtr=null;
   canvas.addEventListener('pointerdown',function(e){
+    if(kpPtr!==null && e.pointerId!==kpPtr) return; kpPtr=e.pointerId;
     if(CAL.on && VIEW.z>1){ panning=true; panLast={x:e.clientX,y:e.clientY};
       try{canvas.setPointerCapture(e.pointerId);}catch(_){} return; }
     if(!state.photoImg)return;
@@ -757,10 +759,11 @@
     try{canvas.setPointerCapture(e.pointerId);}catch(_){}
   });
   canvas.addEventListener('pointermove',function(e){
+    if(kpPtr!==null && e.pointerId!==kpPtr) return;
     if(panning){ VIEW.x+=e.clientX-panLast.x; VIEW.y+=e.clientY-panLast.y; panLast={x:e.clientX,y:e.clientY}; applyView(); return; }
     if(!dragging)return;
     var p=toCanvas(e); state.px+=p.x-last.x; state.py+=p.y-last.y; last=p; render(); });
-  function endDrag(){ dragging=false; panning=false; canvas.classList.remove('dragging'); }
+  function endDrag(){ dragging=false; panning=false; kpPtr=null; canvas.classList.remove('dragging'); }
   canvas.addEventListener('pointerup',endDrag); canvas.addEventListener('pointercancel',endDrag);
   canvas.addEventListener('wheel',function(e){
     if(CAL.on){ e.preventDefault();
@@ -776,6 +779,7 @@
   function updateStage(){
     var live = hasKit();
     canvas.style.display = live ? 'block' : 'none';
+    canvas.style.touchAction = state.photoImg ? 'none' : 'pan-y';
     $('stageEmpty').style.display = live ? 'none' : 'block';
     $('exportLink').style.display = state.photoImg ? 'inline' : 'none';
     $('editTools').style.display = state.photoImg ? 'block' : 'none';
@@ -786,7 +790,11 @@
       $('kitNote').style.display='none';
     } else if (hasKit()){
       $('stageHint').textContent = 'Drag your photo to position it';
-      $('kitNote').style.display='none';
+      var kk=KITS[state.model];
+      if(state.caseType==='Tough Magnetic' && kk && !kk.tough){
+        $('kitNote').textContent='Tough Magnetic preview coming soon for this model \u2014 shown on the clear case. Your design still prints on the Tough case.';
+        $('kitNote').style.display='block';
+      } else { $('kitNote').style.display='none'; }
     } else {
       $('stageHint').textContent = 'Design saved for ' + state.model;
       $('kitNote').textContent = state.model + ' case photo coming soon — your design still saves correctly.';
@@ -819,26 +827,60 @@
           state.px=0; state.py=0; state.scale=1; state.rot=0;
           updateStage(); updateSummary();
           $('stageHint').textContent='Upload or drop a photo to begin';
-          alert('That photo can\u2019t be printed \u2014 explicit imagery isn\u2019t allowed on our cases. Family-friendly photos only, please!');
+          kpToast('That photo can\u2019t be printed \u2014 explicit imagery isn\u2019t allowed on our cases. Family-friendly photos only, please!');
         }
       }).catch(function(){});
     });
   }
 
+  /* toast messaging (replaces alert) + stray-drop guard */
+  function kpToast(msg, ms){
+    var t=document.getElementById('kpToast');
+    if(!t){ t=document.createElement('div'); t.id='kpToast'; t.setAttribute('role','status'); t.setAttribute('aria-live','polite');
+      t.style.cssText='position:fixed;left:50%;bottom:118px;transform:translateX(-50%);max-width:88vw;background:#2D2D3B;color:#FFF;font-size:14px;font-weight:700;line-height:1.45;padding:14px 20px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:99;opacity:0;transition:opacity .25s';
+      document.body.appendChild(t); }
+    t.textContent=msg; t.style.opacity='1';
+    clearTimeout(t.__h); t.__h=setTimeout(function(){ t.style.opacity='0'; }, ms||5200);
+  }
+  ['dragover','drop'].forEach(function(ev){
+    window.addEventListener(ev,function(e){ e.preventDefault(); });
+  });
+
   /* ── photo load ── */
   function loadPhoto(f){
-    if(!f||!/^image\//.test(f.type))return;
+    if(!f)return;
+    if(/heic|heif/i.test(f.type||'') || /\.hei[cf]$/i.test(f.name||'')){
+      kpToast("That’s an iPhone HEIC photo — this browser can’t read it. On iPhone it works in Safari, or set Camera → Formats → Most Compatible, or send yourself the photo as a JPG."); return;
+    }
+    if(!/^image\//.test(f.type)){ kpToast('That file isn’t a photo we can read — JPG, PNG or WebP work best.'); return; }
+    if(f.size > 40*1024*1024){ kpToast('That photo is over 40MB — please use a smaller copy (screenshots of it work great too).'); return; }
     var url=URL.createObjectURL(f);
     var img=new Image();
+    img.onerror=function(){
+      URL.revokeObjectURL(url);
+      kpToast("We couldn’t read that photo — it may be an unsupported format. JPG or PNG always works.");
+    };
     img.onload=function(){
       if((img.naturalWidth&&img.naturalWidth<150)||(img.naturalHeight&&img.naturalHeight<150)){
-        alert('Please use an image at least 150×150.'); return;
+        URL.revokeObjectURL(url);
+        kpToast('That image is too small to print well — please use one at least 150×150 pixels.'); return;
       }
-      state.photoImg=img; state.photoUrl=url; state.isLibraryDesign=false;
+      /* downscale huge photos to a fast working copy; full quality is far above print needs */
+      var MAXE=3072, w=img.naturalWidth, h=img.naturalHeight, k=Math.min(1, MAXE/Math.max(w,h)), src=img;
+      if(k<1){
+        var wc=document.createElement('canvas'); wc.width=Math.round(w*k); wc.height=Math.round(h*k);
+        var wctx=wc.getContext('2d'); wctx.imageSmoothingQuality='high'; wctx.drawImage(img,0,0,wc.width,wc.height);
+        wc.naturalWidth=wc.width; wc.naturalHeight=wc.height; src=wc;
+      }
+      URL.revokeObjectURL(url);
+      state.photoImg=src; state.photoUrl=null; state.isLibraryDesign=false;
       state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none'; state.reserved=false;
       $('zoomRange').value=1; $('rotRange').value=0;
       renderFilterChips(); updateDpi(); updateStage(); updateSummary();
-      kpScreenPhoto(img);
+      var th=document.createElement('canvas'); var tk=Math.min(1, 512/Math.max(src.naturalWidth,src.naturalHeight));
+      th.width=Math.max(1,Math.round(src.naturalWidth*tk)); th.height=Math.max(1,Math.round(src.naturalHeight*tk));
+      th.getContext('2d').drawImage(src,0,0,th.width,th.height);
+      kpScreenPhoto(th);
     };
     img.src=url;
   }
@@ -862,7 +904,9 @@
   });
 
   /* ── filters ── */
+  var KP_FILTER_OK=(function(){ try{ var x=document.createElement('canvas').getContext('2d'); x.filter='blur(1px)'; return x.filter!=='none'; }catch(_){ return false; } })();
   function renderFilterChips(){
+    if(!KP_FILTER_OK){ var fw=$('filterChips'); if(fw){ fw.style.display='none'; if(fw.previousElementSibling) fw.previousElementSibling.style.display='none'; } return; }
     var el=$('filterChips');
     el.innerHTML = filters.map(function(f,i){
       var on = state.filter===f.css;
@@ -962,6 +1006,7 @@
     var addonTotal=addonDefs.reduce(function(t,a){return t+(state.addons[a.key]?a.price:0);},0);
     var p=state.promo?promoTable[state.promo]:null;
     var bp=basePrice();
+    var lp=document.getElementById('linePrice'); if(lp) lp.textContent='$'+bp.toFixed(2);
     var disc=p?(p.flat!=null?p.flat:bp*p.pct):0;
     var total=Math.max(0,bp-disc)+addonTotal;
     $('totalTop').textContent='$'+total.toFixed(2);
@@ -992,9 +1037,10 @@
   $('exportLink').addEventListener('click',function(e){
     e.preventDefault();
     if(!state.photoImg && !state.text) return;
-    var c=document.createElement('canvas'); c.width=TPL.pxW; c.height=TPL.pxH;
+    var pxW=TPL.pxW||Math.round(TPL.w*300/72), pxH=TPL.pxH||Math.round(TPL.h*300/72);
+    var c=document.createElement('canvas'); c.width=pxW; c.height=pxH;
     var c2=c.getContext('2d');
-    var k=TPL.pxW/TPL.w;
+    var k=pxW/TPL.w;
     c2.save();
     c2.scale(k,k);
     c2.clip(new Path2D(TPL_D),'evenodd');
@@ -1008,7 +1054,7 @@
       drawTextLayer(c2);
       c2.restore();
       var a2=document.createElement('a');
-      a2.download='print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+TPL.pxW+'x'+TPL.pxH+'.png';
+      a2.download='print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+pxW+'x'+pxH+'.png';
       a2.href=c.toDataURL('image/png');
       a2.click();
       return;
@@ -1025,7 +1071,7 @@
     drawTextLayer(c2);
     c2.restore();
     var a=document.createElement('a');
-    a.download='print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+TPL.pxW+'x'+TPL.pxH+'.png';
+    a.download='print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+pxW+'x'+pxH+'.png';
     a.href=c.toDataURL('image/png');
     a.click();
   });
@@ -1134,7 +1180,7 @@
     if(!KP_AI_ENDPOINT) return;
     var prompt=($('ideaInput').value||'').trim();
     if(!prompt) return;
-    if(KP_BANNED.test(prompt)){ alert('We can\u2019t print brands, characters, or celebrity imagery \u2014 try describing a style instead!'); return; }
+    if(KP_BANNED.test(prompt)){ kpToast('We can\u2019t print brands, characters, or celebrity imagery \u2014 try describing a style instead!'); return; }
     var btn=$('ideaAiBtn'); btn.disabled=true; btn.textContent='Designing\u2026 about 15 seconds';
     fetch(KP_AI_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({prompt: prompt})})
@@ -1151,7 +1197,7 @@
         };
         img.src=j.image;
       })
-      .catch(function(){ btn.disabled=false; btn.textContent='\u2728 Create it with AI'; alert('The design studio is busy \u2014 give it another try in a moment.'); });
+      .catch(function(){ btn.disabled=false; btn.textContent='\u2728 Create it with AI'; kpToast('The design studio is busy \u2014 give it another try in a moment.'); });
   });
 
   /* ── design preload from the library (?design=file.jpg) ── */

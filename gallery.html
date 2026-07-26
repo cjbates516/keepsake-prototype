@@ -370,7 +370,8 @@
     if (designImgs[file]) { if (designImgs[file].complete) cb && cb(); else designImgs[file].addEventListener('load', function(){ cb && cb(); }); return; }
     var img = new Image(); img.crossOrigin = 'anonymous';
     img.onload = function(){ cb && cb(); };
-    img.src = 'assets/designs/' + file;
+    img.onerror = function(){ delete designImgs[file]; };
+    img.src = 'assets/designs/thumbs/' + file;
     designImgs[file] = img;
   }
 
@@ -458,12 +459,15 @@
 
   var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
     entries.forEach(function(en){
-      if (!en.isIntersecting) return;
       var cv = en.target, file = cv.dataset.file;
-      io.unobserve(cv);
-      loadDesign(file, function(){ renderCase(cv, file, +(cv.dataset.color||0)); });
+      if (en.isIntersecting){
+        if (cv.width === 0){ cv.width = CW; cv.height = CH; }
+        loadDesign(file, function(){ renderCase(cv, file, +(cv.dataset.color||0)); });
+      } else if (cv.width !== 0 && Math.abs(en.boundingClientRect.top) > 2400){
+        cv.width = 0; cv.height = 0; /* releases canvas memory on iOS; CSS aspect-ratio keeps layout */
+      }
     });
-  }, { rootMargin: '400px 0px' }) : null;
+  }, { rootMargin: '900px 0px' }) : null;
 
   function refreshVisible(){
     document.querySelectorAll('#grid canvas').forEach(function(cv){
@@ -482,7 +486,7 @@
       grid.style.gridTemplateColumns = 'repeat(auto-fill,minmax(220px,1fr))';
       grid.innerHTML = items.map(function(d){
         return '<div class="h-card" style="animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:12px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
-          + '<div style="aspect-ratio:3/4;background:#F8F7F7"><img src="assets/designs/' + d.file + '" alt="' + d.title + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>'
+          + '<div style="aspect-ratio:3/4;background:#F8F7F7"><img src="assets/designs/thumbs/' + d.file + '" onerror="this.closest(\'.h-card\').style.display=\'none\'" alt="' + d.title + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>'
           + '<div style="padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px">'
           + '<div style="min-width:0"><div style="font-weight:900;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
           + '<div style="font-size:11px;color:#9A9A9D;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">' + d.category + '</div></div>'
@@ -497,9 +501,9 @@
       var dots = dev.colors.map(function(c, ci){
         return '<span class="cdot" data-ci="' + ci + '" title="' + c.n + '" style="width:14px;height:14px;border-radius:50%;background:' + c.h + ';border:2px solid ' + (ci===0?'#DC282E':'#E4E3E3') + ';display:inline-block;cursor:pointer"></span>';
       }).join('');
-      return '<div class="h-card kpCard" data-file="' + d.file + '" style="animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:12px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
+      return '<div class="h-card kpCard" data-file="' + d.file + '" style="' + (i<24 ? 'animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;' : '') + 'background:#FFFFFF;border-radius:12px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
         + '<a href="customizer.html?design=' + encodeURIComponent(d.file) + '&model=' + slugify(device) + '" style="display:block;background:#F8F7F7;text-decoration:none">'
-        + '<canvas width="' + CW + '" height="' + CH + '" data-file="' + d.file + '" data-color="0" style="width:100%;height:auto;display:block"></canvas></a>'
+        + '<canvas width="' + CW + '" height="' + CH + '" data-file="' + d.file + '" data-color="0" role="img" aria-label="' + d.title + ' on ' + device + '" style="width:100%;height:auto;aspect-ratio:440/528;display:block"></canvas></a>'
         + '<div style="padding:12px 16px 6px;display:flex;align-items:center;justify-content:space-between;gap:8px">'
         + '<div style="min-width:0"><div style="font-weight:900;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
         + '<div style="font-size:11px;color:#9A9A9D;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">MagSafe Clear · From $64.99</div></div>'
@@ -517,8 +521,9 @@
   }
 
   // hover: scrub phone colors across the card
+  var KP_HOVER = window.matchMedia && matchMedia('(hover:hover)').matches;
   document.addEventListener('mousemove', function(e){
-    if (!device) return;
+    if (!device || !KP_HOVER) return;
     var card = e.target.closest ? e.target.closest('.kpCard') : null;
     if (!card) return;
     var cv = card.querySelector('canvas');
@@ -532,7 +537,7 @@
     card.querySelectorAll('.cdot').forEach(function(dt, di){ dt.style.borderColor = di===ci ? '#DC282E' : '#E4E3E3'; });
   });
   document.addEventListener('mouseout', function(e){
-    if (!device) return;
+    if (!device || !KP_HOVER) return;
     var card = e.target.closest ? e.target.closest('.kpCard') : null;
     if (!card || card.contains(e.relatedTarget)) return;
     var cv = card.querySelector('canvas');
@@ -565,14 +570,20 @@
     }
     var add = e.target.closest('.kpAdd');
     if (add && device && canBuy()){
+      if (add.dataset.busy==='1') return;
+      if (add.dataset.done==='1'){ location.href='/cart'; return; }
+      add.dataset.busy='1';
       var vid = window.KP_VARIANTS['MagSafe Clear'][device];
+      var card = add.closest('.kpCard');
+      var ci = card ? +(card.querySelector('canvas').dataset.color||0) : 0;
+      var colName = (KP_DEVICES[device].colors[ci]||{}).n || '';
       add.textContent = 'Adding\u2026';
       fetch('/cart/add.js', { method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ items:[{ id: vid, quantity: 1, properties: {
-          'Model': device, 'Case type': 'MagSafe Clear', 'Design': add.dataset.file, 'Note': 'Pre-made design' } }] }) })
+          'Model': device, 'Case type': 'MagSafe Clear', 'Device color': colName, 'Design': add.dataset.file, 'Note': 'Pre-made design' } }] }) })
         .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-        .then(function(){ add.textContent = 'Added \u2713 View cart'; add.onclick = function(){ location.href = '/cart'; }; })
-        .catch(function(){ add.textContent = 'Try again'; });
+        .then(function(){ add.dataset.busy='0'; add.dataset.done='1'; add.textContent = 'Added \u2713 View cart'; })
+        .catch(function(){ add.dataset.busy='0'; add.textContent = 'Try again'; });
     }
   });
 

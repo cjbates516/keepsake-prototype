@@ -128,3 +128,17 @@ h3{font-weight:800;font-size:19px}
 /* focus visibility */
 a:focus-visible,button:focus-visible,.btn:focus-visible{
   outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+/* device/UX audit hardening */
+button, a, .h-chip, .cdot { touch-action: manipulation }
+@media (pointer:coarse){
+  input[type=text], input[type=email], input[type=tel], select, textarea { font-size:16px !important }
+}
+@media (hover:none){
+  .h-borderred:hover, .btn:hover { transform:none }
+}
+@media (prefers-reduced-motion:reduce){
+  *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important }
+}
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline:2px solid #DC282E; outline-offset:2px }
