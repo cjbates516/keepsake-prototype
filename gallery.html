@@ -190,7 +190,8 @@
         <div style="font-size:13px;font-weight:800;color:#9A9A9D"><span id="countLabel"></span></div>
       </div>
       <div id="deviceBar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center"></div>
-      <div id="filters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px"></div>
+      <div id="filters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"></div>
+      <div id="colorBar" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:30px"></div>
       <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px"></div>
     </div>
   </main>
@@ -461,6 +462,18 @@
     bar.innerHTML = '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">' + row1.join('') + '</div>' + row2;
   }
 
+  var KP_COLORS=[['Red','#DC282E'],['Pink','#F5A8C7'],['Orange','#F07B3C'],['Yellow','#F2D14E'],['Green','#6FA382'],['Blue','#5B8DEF'],['Purple','#9B7EDE'],['Brown','#7A4E2D'],['Black','#17171F'],['White','#FFFFFF'],['Grey','#9A9A9D'],['Beige','#E4D3B4']];
+  var colorSel=null;
+  function renderColors(){
+    var el=document.getElementById('colorBar'); if(!el) return;
+    var out=['<span style="font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#9A9A9D;margin-right:2px">Color</span>'];
+    KP_COLORS.forEach(function(c){
+      var on = colorSel===c[0];
+      out.push('<button class="colF" data-c="'+c[0]+'" title="'+c[0]+'" aria-label="'+c[0]+(on?' (selected)':'')+'" style="width:26px;height:26px;border-radius:50%;background:'+c[1]+';border:2px solid '+(on?'#DC282E':'#E4E3E3')+';cursor:pointer;box-shadow:'+(on?'0 0 0 2px #FBE0E1':'none')+'"></button>');
+    });
+    if(colorSel) out.push('<button class="colF" data-c="" style="background:none;border:0;color:#DC282E;font-size:12px;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:.05em">Clear</button>');
+    el.innerHTML=out.join('');
+  }
   function renderFilters(){
     var cats = {};
     designs.forEach(function(d){ cats[d.category] = (cats[d.category]||0)+1; });
@@ -493,7 +506,7 @@
   function canBuy(){ return !!(window.KP_VARIANTS && window.KP_VARIANTS['MagSafe Clear'] && window.KP_VARIANTS['MagSafe Clear'][device]); }
 
   function renderGrid(){
-    var items = designs.filter(function(d){ return filter === 'All' || d.category === filter; });
+    var items = designs.filter(function(d){ return (filter === 'All' || d.category === filter) && (!colorSel || (d.color||[]).indexOf(colorSel) > -1); });
     $('countLabel').textContent = items.length + ' design' + (items.length===1?'':'s') + (device ? ' · ' + device : '');
     $('shopTitle').innerHTML = device ? (device + ' cases.') : 'Pick a design.<br>Make it yours.';
     var grid = $('grid');
@@ -566,6 +579,12 @@
   document.addEventListener('click', function(e){
     var f = e.target.closest('.galF');
     if (f){ filter = f.dataset.f; renderFilters(); renderGrid(); window.scrollTo({top:0,behavior:'smooth'}); }
+    var cf = e.target.closest('.colF');
+    if (cf){ colorSel = cf.dataset.c || null;
+      var u = new URL(location.href);
+      if (colorSel) u.searchParams.set('color', colorSel); else u.searchParams.delete('color');
+      history.replaceState(null, '', u.pathname + u.search);
+      renderColors(); renderGrid(); }
     var bv = e.target.closest('.devB');
     if (bv){
       brandSel = bv.dataset.b;
@@ -615,11 +634,13 @@
 
   var mcat = /[?&]cat=([^&]+)/.exec(location.search);
   if (mcat) filter = decodeURIComponent(mcat[1]);
+  var mcol = /[?&]color=([^&]+)/.exec(location.search);
+  if (mcol){ colorSel = decodeURIComponent(mcol[1]); }
   fetch('assets/designs/designs.json').then(function(r){ return r.json(); }).then(function(d){
     var staffMode = /[?&]staff=1/.test(location.search);
     designs = staffMode ? d : d.filter(function(x){ return !x.hidden; });
     if (filter !== 'All' && !d.some(function(x){ return x.category === filter; })) filter = 'All';
-    renderDeviceBar(); renderFilters(); renderGrid();
+    renderDeviceBar(); renderFilters(); renderColors(); renderGrid();
     if (device) preloadDevice(device);
   }).catch(function(){
     $('grid').innerHTML = '<div style="padding:40px;font-weight:700;color:#9A9A9D">Could not load designs.</div>';

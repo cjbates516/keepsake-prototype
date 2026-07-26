@@ -67,6 +67,48 @@ def slugify(t):
     s = re.sub(r"[^a-z0-9]+", "-", t.lower()).strip("-")
     return s[:60] or "design"
 
+def classify_colors(img_path):
+    """Dominant color buckets for shop-by-color (up to 2 of:
+    Red Pink Orange Yellow Green Blue Purple Brown Black White Grey Beige)."""
+    try:
+        from PIL import Image
+    except ImportError:
+        return []
+    try:
+        im = Image.open(img_path).convert("RGB").resize((64, 64))
+    except Exception:
+        return []
+    hsv = im.convert("HSV")
+    counts = {}
+    px = im.load(); pxh = hsv.load()
+    for y in range(64):
+        for x in range(64):
+            r, g, b = px[x, y]
+            h, sat, v = pxh[x, y]
+            if v < 60: bucket = "Black"
+            elif sat < 45:
+                if v > 215: bucket = "White"
+                elif r - b > 18 and v > 140: bucket = "Beige"
+                else: bucket = "Grey"
+            else:
+                if (h < 12 or h >= 243):
+                    bucket = "Pink" if (sat < 130 and v > 180) else "Red"
+                elif h < 30:
+                    bucket = "Brown" if v < 150 else "Orange"
+                elif h < 48: bucket = "Yellow"
+                elif h < 115: bucket = "Green"
+                elif h < 180: bucket = "Blue"
+                elif h < 205: bucket = "Purple"
+                else: bucket = "Pink"
+            counts[bucket] = counts.get(bucket, 0) + 1
+    total = 64 * 64
+    ranked = sorted(counts.items(), key=lambda kv: -kv[1])
+    white_share = counts.get("White", 0) / total
+    picks = [b for b, n in ranked if b != "White" and n / total >= 0.15][:2]
+    if not picks:
+        picks = ["White"] if white_share >= 0.5 else [ranked[0][0]] if ranked else []
+    return picks
+
 def main():
     os.makedirs(DEST, exist_ok=True)
     manifest = []
@@ -99,7 +141,8 @@ def main():
                            capture_output=True, text=True)
         if r.returncode != 0:
             print("  ! failed:", fname, r.stderr.strip()[:120]); continue
-        manifest.append({"file": slug + ".jpg", "title": title, "category": cat, "hash": h})
+        manifest.append({"file": slug + ".jpg", "title": title, "category": cat, "hash": h,
+                         "color": classify_colors(out)})
         seen_hashes.add(h); seen_slugs.add(slug)
         added += 1
 
@@ -107,6 +150,13 @@ def main():
     for entry in manifest:
         if "-" in entry["title"] and " " not in entry["title"]:
             entry["title"] = clean_title(os.path.splitext(entry["file"])[0]).title()
+    backfilled = 0
+    for entry in manifest:
+        if not entry.get("color"):
+            tp = os.path.join(DEST, "thumbs", entry["file"])
+            entry["color"] = classify_colors(tp if os.path.exists(tp) else os.path.join(DEST, entry["file"]))
+            backfilled += 1
+    if backfilled: print(f"color backfill: {backfilled} designs")
     hidden_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "hidden.json")
     hidden = set(json.load(open(hidden_path))) if os.path.exists(hidden_path) else set()
     for entry in manifest:
