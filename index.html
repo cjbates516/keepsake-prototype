@@ -75,6 +75,15 @@
 @media(max-width:640px){.kpBest{flex:0 0 44%}}
 .kpBest:hover img{transform:translateY(-4px)}
 .kpBest img{transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.kpTile{position:relative;display:block;border-radius:24px;overflow:hidden;text-decoration:none;background:#F3F2F2}
+.kpTile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.kpTile:hover img{transform:scale(1.04)}
+.kpTile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,23,31,.38),rgba(23,23,31,0) 42%);pointer-events:none}
+.kpTile span{z-index:1;position:absolute;top:18px;left:20px;right:20px;color:#FFF;font-weight:900;font-size:clamp(20px,2.4vw,28px);line-height:1.15;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+.kpTileGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.kpTile{aspect-ratio:1/1.06}
+.kpTile.wide{grid-column:1/-1;aspect-ratio:21/9}
+@media(max-width:640px){.kpTile.wide{aspect-ratio:16/9}}
 </style>
 </head>
 <body>
@@ -344,39 +353,27 @@
 
 
     <!-- ═══ story chips ═══ -->
-    <section style="border-top:1px solid #F3F2F2;border-bottom:1px solid #F3F2F2;padding:22px 40px;background:#FFFFFF">
-      <div style="max-width:1280px;margin:0 auto;display:flex;gap:26px;justify-content:center;flex-wrap:wrap">
-        <a href="gallery.html" class="h-chip" style="display:flex;flex-direction:column;align-items:center;gap:8px;width:82px;cursor:pointer">
-          <span class="ring" style="width:72px;height:72px;border-radius:50%;padding:3px;border:2px solid #E4E3E3;display:block;transition:border-color .2s,transform .2s cubic-bezier(.2,.7,.2,1)"><span style="display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#F3F2F2"><span class="slot" style="font-size:9px">New ideas</span></span></span>
-          <span style="font-size:11px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#4E4E50;text-align:center;line-height:1.2">New ideas</span>
+    <section style="max-width:1280px;margin:0 auto;padding:0 40px 64px">
+      <div class="kpTileGrid">
+        <a class="kpTile" href="gallery.html">
+          <img src="assets/lifestyle/life-v119.jpg" alt="Ready-made designs" loading="lazy">
+          <span>Ready-Made<br>Designs</span>
         </a>
-        <a href="gallery.html?cat=Florals" class="h-chip" style="display:flex;flex-direction:column;align-items:center;gap:8px;width:82px;cursor:pointer">
-          <span class="ring" style="width:72px;height:72px;border-radius:50%;padding:3px;border:2px solid #E4E3E3;display:block;transition:border-color .2s,transform .2s cubic-bezier(.2,.7,.2,1)"><span style="display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#F3F2F2"><span class="slot" style="font-size:9px">Mother's Day</span></span></span>
-          <span style="font-size:11px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#4E4E50;text-align:center;line-height:1.2">Mother's Day</span>
+        <a class="kpTile" href="customizer.html">
+          <img src="assets/lifestyle/life-v118.jpg" alt="Design your own case" loading="lazy">
+          <span>Design<br>Your Own</span>
         </a>
-        <a href="gallery.html?cat=Animal%20print" class="h-chip" style="display:flex;flex-direction:column;align-items:center;gap:8px;width:82px;cursor:pointer">
-          <span class="ring" style="width:72px;height:72px;border-radius:50%;padding:3px;border:2px solid #E4E3E3;display:block;transition:border-color .2s,transform .2s cubic-bezier(.2,.7,.2,1)"><span style="display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#F3F2F2"><span class="slot" style="font-size:9px">Pets</span></span></span>
-          <span style="font-size:11px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#4E4E50;text-align:center;line-height:1.2">Pets</span>
+        <a class="kpTile wide" href="gallery.html?device=iphone-17-pro-max">
+          <img src="product-shots/clear-iphone-17-pro-max-cosmic-orange.jpg" alt="Shop iPhone 17 Pro Max cases" loading="lazy">
+          <span>Shop Your iPhone</span>
         </a>
-        <a href="gallery.html?cat=Stripes%20%26%20waves" class="h-chip" style="display:flex;flex-direction:column;align-items:center;gap:8px;width:82px;cursor:pointer">
-          <span class="ring" style="width:72px;height:72px;border-radius:50%;padding:3px;border:2px solid #E4E3E3;display:block;transition:border-color .2s,transform .2s cubic-bezier(.2,.7,.2,1)"><span style="display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#F3F2F2"><span class="slot" style="font-size:9px">Back to school</span></span></span>
-          <span style="font-size:11px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#4E4E50;text-align:center;line-height:1.2">Back to school</span>
+        <a class="kpTile" href="gallery.html?cat=Halloween">
+          <img src="assets/designs/halloween-bats-on-orange.jpg" alt="Halloween shop" loading="lazy">
+          <span>Halloween<br>Shop</span>
         </a>
-        <a href="gallery.html?cat=Christmas" class="h-chip" style="display:flex;flex-direction:column;align-items:center;gap:8px;width:82px;cursor:pointer">
-          <span class="ring" style="width:72px;height:72px;border-radius:50%;padding:3px;border:2px solid #E4E3E3;display:block;transition:border-color .2s,transform .2s cubic-bezier(.2,.7,.2,1)"><span style="display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#F3F2F2"><span class="slot" style="font-size:9px">Christmas</span></span></span>
-          <span style="font-size:11px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#4E4E50;text-align:center;line-height:1.2">Christmas</span>
-        </a>
-        <a href="#quiz" class="h-chip" style="display:flex;flex-direction:column;align-items:center;gap:8px;width:82px;cursor:pointer">
-          <span class="ring" style="width:72px;height:72px;border-radius:50%;padding:3px;border:2px solid #E4E3E3;display:block;transition:border-color .2s,transform .2s cubic-bezier(.2,.7,.2,1)"><span style="display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#F3F2F2"><span class="slot" style="font-size:9px">Case quiz</span></span></span>
-          <span style="font-size:11px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#4E4E50;text-align:center;line-height:1.2">Case quiz</span>
-        </a>
-        <a href="checkout.html" class="h-chip" style="display:flex;flex-direction:column;align-items:center;gap:8px;width:82px;cursor:pointer">
-          <span class="ring" style="width:72px;height:72px;border-radius:50%;padding:3px;border:2px solid #E4E3E3;display:block;transition:border-color .2s,transform .2s cubic-bezier(.2,.7,.2,1)"><span style="display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#F3F2F2"><span class="slot" style="font-size:9px">Gift cards</span></span></span>
-          <span style="font-size:11px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#4E4E50;text-align:center;line-height:1.2">Gift cards</span>
-        </a>
-        <a href="b2b.html" class="h-chip" style="display:flex;flex-direction:column;align-items:center;gap:8px;width:82px;cursor:pointer">
-          <span class="ring" style="width:72px;height:72px;border-radius:50%;padding:3px;border:2px solid #E4E3E3;display:block;transition:border-color .2s,transform .2s cubic-bezier(.2,.7,.2,1)"><span style="display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#F3F2F2"><span class="slot" style="font-size:9px">For business</span></span></span>
-          <span style="font-size:11px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#4E4E50;text-align:center;line-2">For business</span>
+        <a class="kpTile" href="gallery.html?cat=Christmas">
+          <img src="assets/designs/labrador-retrievers-in-santa-hats.jpg" alt="Christmas shop" loading="lazy">
+          <span>Christmas<br>Shop</span>
         </a>
       </div>
     </section>
