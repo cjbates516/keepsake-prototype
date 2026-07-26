@@ -512,6 +512,7 @@
 
   /* ── canvas compositor (17 Pro Max) ── */
   var DIM={w:2500,h:3000};
+  var PS=0.5;   // preview renders at half res (display is ~420px wide) — print export stays full-res
   var KITS = {
     'iPhone 17 Pro Max': {
       tough: { fit: {x:668,y:344,sx:5.2787,sy:4.9512}, outD: "M 833.0 344.0 L 1663.0 344.0 A 165.0 165.0 0 0 1 1828.0 509.0 L 1828.0 2485.0 A 165.0 165.0 0 0 1 1663.0 2650.0 L 833.0 2650.0 A 165.0 165.0 0 0 1 668.0 2485.0 L 668.0 509.0 A 165.0 165.0 0 0 1 833.0 344.0 Z", camD: "M 782.0 362.0 L 1692.0 362.0 A 72.0 72.0 0 0 1 1764.0 434.0 L 1764.0 930.0 A 72.0 72.0 0 0 1 1692.0 1002.0 L 782.0 1002.0 A 72.0 72.0 0 0 1 710.0 930.0 L 710.0 434.0 A 72.0 72.0 0 0 1 782.0 362.0 Z", tplD: "M 10.0 0.0 L 209.8 0.0 A 10.0 10.0 0 0 1 219.8 10.0 L 219.8 455.8 A 10.0 10.0 0 0 1 209.8 465.8 L 10.0 465.8 A 10.0 10.0 0 0 1 0.0 455.8 L 0.0 10.0 A 10.0 10.0 0 0 1 10.0 0.0 Z M 22.0 3.6 L 193.5 3.6 A 14.1 14.1 0 0 1 207.6 17.7 L 207.6 118.8 A 14.1 14.1 0 0 1 193.5 132.9 L 22.0 132.9 A 14.1 14.1 0 0 1 8.0 118.8 L 8.0 17.7 A 14.1 14.1 0 0 1 22.0 3.6 Z", textBounds: {cx:1250, yTop:1068, yBot:2560}, file: 'i17pm-tough.webp' },
@@ -572,6 +573,7 @@
     CAL._po=po; CAL._pc=pc;
   }
   var canvas=$('stageCanvas'), ctx=canvas.getContext('2d');
+  canvas.width=DIM.w*PS; canvas.height=DIM.h*PS;
   var caseImg=new Image(), lightMap=null, caseReady=false;
   var viewImg=null, viewReady=false, viewSrc=null;
   caseImg.onload=function(){ caseReady=true; render(); };
@@ -594,10 +596,10 @@
       p[j]=p[j+1]=p[j+2]=v;
     }
     tc.putImageData(d,0,0);
-    lightMap=document.createElement('canvas'); lightMap.width=DIM.w; lightMap.height=DIM.h;
+    lightMap=document.createElement('canvas'); lightMap.width=DIM.w*PS; lightMap.height=DIM.h*PS;
     var lc=lightMap.getContext('2d');
     lc.imageSmoothingEnabled=true; lc.imageSmoothingQuality='high';
-    lc.drawImage(t,0,0,DIM.w,DIM.h);
+    lc.drawImage(t,0,0,DIM.w*PS,DIM.h*PS);
     lightReady=true; render();
   };
   function loadKit(model){
@@ -666,18 +668,27 @@
   }
   function drawDesign(c2){
     var m=designTransform();
-    c2.setTransform(m.a,m.b,m.c,m.d,m.e,m.f);
+    c2.setTransform(PS,0,0,PS,0,0);
+    c2.transform(m.a,m.b,m.c,m.d,m.e,m.f);
     drawDesignInto(c2, state.photoImg, (state.filter==='none' ? '' : state.filter+' ') + 'saturate(1.06)');
-    c2.setTransform(1,0,0,1,0,0);
+    c2.setTransform(PS,0,0,PS,0,0);
   }
   var _designLayer=null;
   function getDesignLayer(){
-    if(!_designLayer){ _designLayer=document.createElement('canvas'); _designLayer.width=DIM.w; _designLayer.height=DIM.h; }
+    if(!_designLayer){ _designLayer=document.createElement('canvas'); _designLayer.width=DIM.w*PS; _designLayer.height=DIM.h*PS; }
     return _designLayer;
   }
+  var _rafPend=false;
   function render(){
+    if(_rafPend) return; _rafPend=true;
+    var done=false;
+    function go(){ if(done) return; done=true; _rafPend=false; renderNow(); }
+    requestAnimationFrame(go);
+    setTimeout(go, 80);   // backstop: rAF is paused/throttled in some contexts
+  }
+  function renderNow(){
     if(!caseReady || !lightReady) return;
-    ctx.setTransform(1,0,0,1,0,0);
+    ctx.setTransform(PS,0,0,PS,0,0);
     ctx.globalCompositeOperation='source-over';
     ctx.globalAlpha=1;
     ctx.clearRect(0,0,DIM.w,DIM.h);
@@ -685,7 +696,7 @@
     var useMask = viewImg && viewReady;
     if(state.photoImg){
       var dl=getDesignLayer(), d2=dl.getContext('2d');
-      d2.setTransform(1,0,0,1,0,0);
+      d2.setTransform(PS,0,0,PS,0,0);
       d2.globalCompositeOperation='source-over'; d2.globalAlpha=1;
       d2.clearRect(0,0,DIM.w,DIM.h);
       if(!useMask){ d2.save(); d2.clip(printPath,'evenodd'); }
@@ -705,7 +716,7 @@
         d2.drawImage(viewImg,0,0,DIM.w,DIM.h);
         d2.globalCompositeOperation='source-over';
       } else { d2.restore(); }
-      ctx.drawImage(dl,0,0);
+      ctx.drawImage(dl,0,0,DIM.w,DIM.h);
       if(!useMask){
         ctx.save();
         ctx.clip(inversePath,'evenodd');
@@ -715,7 +726,7 @@
     } else if (state.text){
       // name on a blank (design-less) case still previews
       var dl2=getDesignLayer(), t2=dl2.getContext('2d');
-      t2.setTransform(1,0,0,1,0,0);
+      t2.setTransform(PS,0,0,PS,0,0);
       t2.globalCompositeOperation='source-over'; t2.globalAlpha=1;
       t2.clearRect(0,0,DIM.w,DIM.h);
       if(!useMask){ t2.save(); t2.clip(printPath,'evenodd'); }
@@ -725,7 +736,7 @@
         t2.drawImage(viewImg,0,0,DIM.w,DIM.h);
         t2.globalCompositeOperation='source-over';
       } else { t2.restore(); }
-      ctx.drawImage(dl2,0,0);
+      ctx.drawImage(dl2,0,0,DIM.w,DIM.h);
       if(!useMask){
         ctx.save();
         ctx.clip(inversePath,'evenodd');
@@ -738,8 +749,8 @@
   function drawCalOverlay(){
     if(!CAL.on || !CAL._po) return;
     ctx.save();
-    ctx.setTransform(1,0,0,1,0,0);
-    ctx.lineWidth=6;
+    ctx.setTransform(PS,0,0,PS,0,0);
+    ctx.lineWidth=6/PS;
     ctx.strokeStyle='#DC282E'; ctx.stroke(CAL._po);
     ctx.strokeStyle='#2D6FE3'; ctx.stroke(CAL._pc);
     ctx.restore();
@@ -828,6 +839,13 @@
     }
     render();
   }
+
+  /* ── iOS: repaint after app-switch (Safari purges canvases), free GPU while hidden ── */
+  document.addEventListener('visibilitychange',function(){
+    if(document.visibilityState==='visible'){ render(); }
+    else { try{ if(kpScreen.model){ kpScreen.model.model.dispose(); kpScreen.model=null; } }catch(_){ kpScreen.model=null; } }
+  });
+  window.addEventListener('pageshow',function(){ render(); });
 
   /* ── on-device photo screening (nothing is uploaded — model runs in the browser) ── */
   var kpScreen={model:null,loading:false};
