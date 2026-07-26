@@ -82,8 +82,13 @@
 .kpTile span{z-index:1;position:absolute;top:18px;left:20px;right:20px;color:#FFF;font-weight:900;font-size:clamp(20px,2.4vw,28px);line-height:1.15;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}
 .kpTileGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .kpTile{aspect-ratio:1/1.06}
-.kpTile.wide{grid-column:1/-1;aspect-ratio:21/9}
-@media(max-width:640px){.kpTile.wide{aspect-ratio:16/9}}
+.kpTile.wide{grid-column:1/-1;aspect-ratio:16/9}
+@media(min-width:641px){
+  .kpTileGrid{grid-template-columns:repeat(5,1fr);gap:16px}
+  .kpTile{aspect-ratio:1/1.25}
+  .kpTile.wide{grid-column:auto;aspect-ratio:1/1.25}
+  .kpTile span{font-size:19px}
+}
 @media(max-width:640px){
   #heroSec .heroFloat,#heroSec .heroSaleCard{display:none !important}
   #heroSec .heroSaleTop{display:block !important}
