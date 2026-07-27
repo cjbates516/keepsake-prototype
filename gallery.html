@@ -735,7 +735,7 @@
     var di0=document.getElementById('deskSearch'); if(di0) di0.value = searchQ; }
   var mcol = /[?&]color=([^&]+)/.exec(location.search);
   if (mcol){ colorSel = decodeURIComponent(mcol[1]); }
-  fetch('assets/designs/designs.json').then(function(r){ return r.json(); }).then(function(d){
+  fetch('assets/designs/designs.json', {cache:'no-cache'}).then(function(r){ return r.json(); }).then(function(d){
     var staffMode = /[?&]staff=1/.test(location.search);
     designs = staffMode ? d : d.filter(function(x){ return !x.hidden; });
     if (filter !== 'All' && !d.some(function(x){ return x.category === filter; })) filter = 'All';
