@@ -142,17 +142,30 @@ def main():
         while s2 in seen_slugs:
             s2 = f"{slug}-{n}"; n += 1
         slug = s2
-        out = os.path.join(DEST, slug + ".jpg")
-        r = subprocess.run(["sips", "-s", "format", "jpeg", "-s", "formatOptions", "82",
-                            "-Z", "1600", path, "--out", out],
-                           capture_output=True, text=True)
+        keep_png = False
+        if fname.lower().endswith(".png"):
+            try:
+                from PIL import Image as _PILImage
+                with _PILImage.open(path) as _im:
+                    keep_png = (_im.mode in ("RGBA", "LA")) and _im.getextrema()[-1][0] < 250
+            except Exception:
+                keep_png = False
+        ext = ".png" if keep_png else ".jpg"
+        out = os.path.join(DEST, slug + ext)
+        if keep_png:
+            r = subprocess.run(["sips", "-s", "format", "png", "-Z", "1600", path, "--out", out],
+                               capture_output=True, text=True)
+        else:
+            r = subprocess.run(["sips", "-s", "format", "jpeg", "-s", "formatOptions", "82",
+                                "-Z", "1600", path, "--out", out],
+                               capture_output=True, text=True)
         if r.returncode != 0:
             print("  ! failed:", fname, r.stderr.strip()[:120]); continue
         tdir = os.path.join(DEST, "thumbs")
         os.makedirs(tdir, exist_ok=True)
-        subprocess.run(["sips", "-Z", "640", out, "--out", os.path.join(tdir, slug + ".jpg")],
+        subprocess.run(["sips", "-Z", "640", out, "--out", os.path.join(tdir, slug + ext)],
                        capture_output=True)
-        manifest.append({"file": slug + ".jpg", "title": title, "category": cat, "hash": h,
+        manifest.append({"file": slug + ext, "title": title, "category": cat, "hash": h,
                          "color": classify_colors(out)})
         seen_hashes.add(h); seen_slugs.add(slug)
         added += 1

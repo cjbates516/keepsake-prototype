@@ -699,6 +699,18 @@
     c2.drawImage(src,dx,dy,dw,dh);
     try{ c2.filter='none'; }catch(_){}
   }
+  function photoHasAlpha(){
+    var im=state.photoImg; if(!im) return false;
+    if(im.__hasAlpha!==undefined) return im.__hasAlpha;
+    try{
+      var t=document.createElement('canvas'); t.width=48; t.height=48;
+      var tc=t.getContext('2d'); tc.drawImage(im,0,0,48,48);
+      var px=tc.getImageData(0,0,48,48).data, has=false;
+      for(var i=3;i<px.length;i+=4){ if(px[i]<250){ has=true; break; } }
+      im.__hasAlpha=has;
+    }catch(_){ im.__hasAlpha=false; }
+    return im.__hasAlpha;
+  }
   function drawDesign(c2){
     var m=designTransform();
     c2.setTransform(PS,0,0,PS,0,0);
@@ -733,8 +745,17 @@
       d2.globalCompositeOperation='source-over'; d2.globalAlpha=1;
       d2.clearRect(0,0,DIM.w,DIM.h);
       if(!useMask){ d2.save(); d2.clip(printPath,'evenodd'); }
-      d2.fillStyle='#fff'; d2.fillRect(0,0,DIM.w,DIM.h);
-      drawDesign(d2);
+      var pAlpha=photoHasAlpha();
+      if(pAlpha){
+        drawDesign(d2);
+        d2.globalCompositeOperation='source-in';
+        d2.fillStyle='#fff'; d2.fillRect(0,0,DIM.w,DIM.h);
+        d2.globalCompositeOperation='source-over';
+        drawDesign(d2);
+      } else {
+        d2.fillStyle='#fff'; d2.fillRect(0,0,DIM.w,DIM.h);
+        drawDesign(d2);
+      }
       d2.globalCompositeOperation='multiply';
       d2.globalAlpha=0.3;
       d2.drawImage(lightMap,0,0,DIM.w,DIM.h);
@@ -1221,7 +1242,7 @@
     c2.scale(k,k);
     c2.clip(new Path2D(TPL_D),'evenodd');
     c2.setTransform(1,0,0,1,0,0);
-    c2.fillStyle='#fff'; c2.fillRect(0,0,c.width,c.height);
+    if(!photoHasAlpha()){ c2.fillStyle='#fff'; c2.fillRect(0,0,c.width,c.height); }
     var m=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y).multiply(designTransform());
     var src=state.photoImg;
     if(!src){
@@ -1344,7 +1365,7 @@
     var m=/[?&]design=([^&]+)/.exec(location.search);
     if(!m) return;
     var file=decodeURIComponent(m[1]);
-    if(!/^[a-z0-9-]+\.jpg$/.test(file)) return;
+    if(!/^[a-z0-9-]+\.(jpg|png)$/.test(file)) return;
     var img=new Image();
     img.onload=function(){
       state.photoImg=img; state.photoUrl='assets/designs/'+file; state.isLibraryDesign=true;
@@ -1458,7 +1479,7 @@
             $('nameInput').value=state.text; renderFontChips(); }
           enableCalUI(); buildPaths(); render(); updateStage();
         };
-        if(su.d && /^[a-z0-9-]+\.jpg$/.test(su.d)){
+        if(su.d && /^[a-z0-9-]+\.(jpg|png)$/.test(su.d)){
           var img=new Image();
           img.onload=function(){ state.photoImg=img; state.photoUrl='assets/designs/'+su.d; state.isLibraryDesign=true; renderFilterChips(); applyRest(); };
           img.src='assets/designs/'+su.d;
