@@ -30,6 +30,16 @@
   ]
  },
  {
+  "file": "baltimore-atlas.jpg",
+  "title": "Baltimore atlas",
+  "category": "City maps",
+  "hash": "e3a8c3613c7d",
+  "color": [
+   "Grey"
+  ],
+  "state": "MD"
+ },
+ {
   "file": "black-shapes.jpg",
   "title": "Black Shapes",
   "category": "Abstract",
@@ -84,6 +94,16 @@
   ]
  },
  {
+  "file": "boston-atlas.jpg",
+  "title": "Boston atlas",
+  "category": "City maps",
+  "hash": "44873e492319",
+  "color": [
+   "Grey"
+  ],
+  "state": "MA"
+ },
+ {
   "file": "charming-coffee-cup-and-spoon.jpg",
   "title": "Charming Coffee Cup And Spoon",
   "category": "Abstract",
@@ -122,6 +142,16 @@
    "Orange",
    "Brown"
   ]
+ },
+ {
+  "file": "chicago-atlas.jpg",
+  "title": "Chicago atlas",
+  "category": "City maps",
+  "hash": "e7660a1614c0",
+  "color": [
+   "Grey"
+  ],
+  "state": "IL"
  },
  {
   "file": "close-up-of-a-playful-beagle-dog.jpg",
@@ -339,6 +369,36 @@
   ]
  },
  {
+  "file": "los-angeles-atlas.jpg",
+  "title": "Los angeles atlas",
+  "category": "City maps",
+  "hash": "7b8495f158ac",
+  "color": [
+   "Grey"
+  ],
+  "state": "CA"
+ },
+ {
+  "file": "media-atlas.jpg",
+  "title": "Media atlas",
+  "category": "City maps",
+  "hash": "795722f986f3",
+  "color": [
+   "White"
+  ],
+  "state": "PA"
+ },
+ {
+  "file": "miami-atlas.jpg",
+  "title": "Miami atlas",
+  "category": "City maps",
+  "hash": "b31bc0661c70",
+  "color": [
+   "White"
+  ],
+  "state": "FL"
+ },
+ {
   "file": "mid-century-modern-abstract-shapes.jpg",
   "title": "Mid-Century Modern Abstract Shapes",
   "category": "Abstract",
@@ -463,6 +523,16 @@
   ]
  },
  {
+  "file": "nashville-atlas.jpg",
+  "title": "Nashville atlas",
+  "category": "City maps",
+  "hash": "89a4ea558829",
+  "color": [
+   "White"
+  ],
+  "state": "TN"
+ },
+ {
   "file": "national-parks-inspired-adventure-starts-here-event-sign.jpg",
   "title": "National Parks-Inspired Adventure Starts Here Event Sign",
   "category": "Abstract",
@@ -479,6 +549,17 @@
   "color": [
    "Black"
   ]
+ },
+ {
+  "file": "new-york-city-atlas.jpg",
+  "title": "New york city atlas",
+  "category": "City maps",
+  "hash": "794e2e9f366a",
+  "color": [
+   "Grey",
+   "Blue"
+  ],
+  "state": "NY"
  },
  {
   "file": "playful-abstract-pink-shapes.jpg",
@@ -507,6 +588,16 @@
   "color": [
    "White"
   ]
+ },
+ {
+  "file": "san-francisco-atlas.jpg",
+  "title": "San francisco atlas",
+  "category": "City maps",
+  "hash": "0f72e2b16dc5",
+  "color": [
+   "White"
+  ],
+  "state": "CA"
  },
  {
   "file": "serene-koi-fish-pond-for.jpg",
@@ -1122,6 +1213,26 @@
    "Red",
    "Pink"
   ]
+ },
+ {
+  "file": "washington-dc-atlas.jpg",
+  "title": "Washington dc atlas",
+  "category": "City maps",
+  "hash": "537af8660386",
+  "color": [
+   "Grey"
+  ],
+  "state": "DC"
+ },
+ {
+  "file": "west-chester-atlas.jpg",
+  "title": "West chester atlas",
+  "category": "City maps",
+  "hash": "d3ffa6fd1188",
+  "color": [
+   "White"
+  ],
+  "state": "PA"
  },
  {
   "file": "abstract-leopard-pink.jpg",
@@ -1752,6 +1863,16 @@
   ]
  },
  {
+  "file": "hollywood-atlas.jpg",
+  "title": "Hollywood atlas",
+  "category": "City maps",
+  "hash": "88afe79c17ce",
+  "color": [
+   "White"
+  ],
+  "state": "CA"
+ },
+ {
   "file": "hollywood-map-blush.jpg",
   "title": "Hollywood map blush",
   "category": "Christmas",
@@ -2289,6 +2410,16 @@
   "state": "DE"
  },
  {
+  "file": "newark-atlas.jpg",
+  "title": "Newark atlas",
+  "category": "City maps",
+  "hash": "6d8c8736f11b",
+  "color": [
+   "White"
+  ],
+  "state": "DE"
+ },
+ {
   "file": "northeast-philly-city-map-blush.jpg",
   "title": "Northeast Philly City Map Blush",
   "category": "City maps",
@@ -2323,6 +2454,16 @@
   "title": "Northeast Philly City Map Sage",
   "category": "City maps",
   "hash": "ab51902b7ddd",
+  "color": [
+   "White"
+  ],
+  "state": "PA"
+ },
+ {
+  "file": "northeast-philly-atlas.jpg",
+  "title": "Northeast philly atlas",
+  "category": "City maps",
+  "hash": "a6b724bb35b9",
   "color": [
    "White"
   ],
@@ -2411,6 +2552,16 @@
   "state": "PA"
  },
  {
+  "file": "philadelphia-atlas.jpg",
+  "title": "Philadelphia atlas",
+  "category": "City maps",
+  "hash": "c5963c794ff1",
+  "color": [
+   "Grey"
+  ],
+  "state": "PA"
+ },
+ {
   "file": "pottstown-city-map-blush.jpg",
   "title": "Pottstown City Map Blush",
   "category": "City maps",
@@ -2445,6 +2596,16 @@
   "title": "Pottstown City Map Sage",
   "category": "City maps",
   "hash": "6fcd8665b646",
+  "color": [
+   "White"
+  ],
+  "state": "PA"
+ },
+ {
+  "file": "pottstown-atlas.jpg",
+  "title": "Pottstown atlas",
+  "category": "City maps",
+  "hash": "fab1b3e2aab7",
   "color": [
    "White"
   ],
@@ -2526,6 +2687,16 @@
   "title": "South Philly City Map Sage",
   "category": "City maps",
   "hash": "a9f65d2f4c1f",
+  "color": [
+   "White"
+  ],
+  "state": "PA"
+ },
+ {
+  "file": "south-philly-atlas.jpg",
+  "title": "South philly atlas",
+  "category": "City maps",
+  "hash": "730cfe3a8599",
   "color": [
    "White"
   ],
@@ -2647,6 +2818,16 @@
   "title": "West Philly City Map Sage",
   "category": "City maps",
   "hash": "fc05c2db5c4d",
+  "color": [
+   "White"
+  ],
+  "state": "PA"
+ },
+ {
+  "file": "west-philly-atlas.jpg",
+  "title": "West philly atlas",
+  "category": "City maps",
+  "hash": "21389c8ea524",
   "color": [
    "White"
   ],
