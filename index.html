@@ -60,7 +60,8 @@
   .desktop-only{display:inline-flex}
   @media(max-width:760px){.desktop-only{display:none !important}}
   #mega{display:none}
-  #mega.open{display:block}
+  #mega.open{display:block;max-height:calc(100dvh - 72px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+@media(max-width:900px){#mega>div{padding-bottom:150px !important}}
   .heroUnit{position:absolute;inset:0}
   .heroUnit img,.heroUnit canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;transform:scale(1.18)}
   .heroUnit canvas{opacity:0;transition:opacity .6s ease}
@@ -197,11 +198,11 @@
         <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">Samsung Cases</div>
         <div style="display:flex;flex-direction:column;gap:10px">
           <a class="h-redlink" href="gallery.html?device=galaxy-s26-ultra" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S26 Ultra</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S26+</a>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy S26+ · soon</span>
           <a class="h-redlink" href="gallery.html?device=galaxy-s26" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S26</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S25 Ultra</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S25</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy A56</a>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy S25 Ultra · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy S25 · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy A56 · soon</span>
           <a class="h-darkred" href="customizer.html" style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#DC282E;margin-top:6px;display:inline-flex;align-items:center;gap:6px">All Samsung cases
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
         </div>
@@ -209,25 +210,23 @@
       <div>
         <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">Google Cases</div>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Pixel 10 Pro XL</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Pixel 10 Pro</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Pixel 10</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Pixel 9 Pro</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Pixel 9</a>
-          <a class="h-darkred" href="customizer.html" style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#DC282E;margin-top:6px;display:inline-flex;align-items:center;gap:6px">All Pixel cases
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 10 Pro XL · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 10 Pro · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 10 · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 9 Pro · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 9 · soon</span>
+          <span style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#C4C4C7;margin-top:6px">Coming soon</span>
         </div>
       </div>
       <div>
         <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">iPad Cases</div>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPad Pro 13″</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPad Pro 11″</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPad Air 13″</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPad Air 11″</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPad 10.9″ (10th gen)</a>
-          <a class="h-darkred" href="customizer.html" style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#DC282E;margin-top:6px;display:inline-flex;align-items:center;gap:6px">All iPad cases
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Pro 13″ · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Pro 11″ · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Air 13″ · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Air 11″ · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad 10.9″ (10th gen) · soon</span>
+          <span style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#C4C4C7;margin-top:6px">Coming soon</span>
         </div>
       </div>
       <div>

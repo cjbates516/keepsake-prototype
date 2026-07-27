@@ -36,7 +36,8 @@
   @media(max-width:900px){ #stageStick{ position:static !important; padding:12px 0 0 !important } }
   @media(max-width:900px){ #kpChatWrap{ bottom:96px !important; right:14px !important } }
   #mega{display:none}
-  #mega.open{display:block}
+  #mega.open{display:block;max-height:calc(100dvh - 72px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+@media(max-width:900px){#mega>div{padding-bottom:150px !important}}
   #stageCanvas{width:100%;max-width:420px;height:auto;touch-action:pan-y;cursor:grab;display:block;
     filter:drop-shadow(0 16px 24px rgba(46,56,61,.22))}
   #stageCanvas.dragging{cursor:grabbing}
@@ -126,11 +127,11 @@
         <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">Samsung Cases</div>
         <div style="display:flex;flex-direction:column;gap:10px">
           <a class="h-redlink" href="gallery.html?device=galaxy-s26-ultra" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S26 Ultra</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S26+</a>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy S26+ · soon</span>
           <a class="h-redlink" href="gallery.html?device=galaxy-s26" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S26</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S25 Ultra</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S25</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy A56</a>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy S25 Ultra · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy S25 · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy A56 · soon</span>
           <a class="h-darkred" href="customizer.html" style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#DC282E;margin-top:6px;display:inline-flex;align-items:center;gap:6px">All Samsung cases
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
         </div>
@@ -138,25 +139,23 @@
       <div>
         <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">Google Cases</div>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Pixel 10 Pro XL</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Pixel 10 Pro</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Pixel 10</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Pixel 9 Pro</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">Pixel 9</a>
-          <a class="h-darkred" href="customizer.html" style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#DC282E;margin-top:6px;display:inline-flex;align-items:center;gap:6px">All Pixel cases
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 10 Pro XL · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 10 Pro · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 10 · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 9 Pro · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 9 · soon</span>
+          <span style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#C4C4C7;margin-top:6px">Coming soon</span>
         </div>
       </div>
       <div>
         <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">iPad Cases</div>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPad Pro 13″</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPad Pro 11″</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPad Air 13″</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPad Air 11″</a>
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50">iPad 10.9″ (10th gen)</a>
-          <a class="h-darkred" href="customizer.html" style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#DC282E;margin-top:6px;display:inline-flex;align-items:center;gap:6px">All iPad cases
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Pro 13″ · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Pro 11″ · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Air 13″ · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Air 11″ · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad 10.9″ (10th gen) · soon</span>
+          <span style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#C4C4C7;margin-top:6px">Coming soon</span>
         </div>
       </div>
       <div>
@@ -231,8 +230,8 @@
             <select id="brandSel" style="flex:1;min-width:0;padding:15px 20px;border:0;font-size:15px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer">
               <option value="Apple">Apple</option>
               <option value="Samsung">Samsung</option>
-              <option value="Google">Google</option>
-              <option value="iPad">iPad</option>
+              <option value="Google" disabled>Google — coming soon</option>
+              <option value="iPad" disabled>iPad — coming soon</option>
             </select>
             <div style="width:1px;background:#E4E3E3"></div>
             <select id="modelSel" style="flex:1.4;min-width:0;padding:15px 20px;border:0;font-size:15px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer"></select>
@@ -996,7 +995,8 @@
   /* ── model / brand ── */
   function fillModels(){
     $('modelSel').innerHTML = modelsByBrand[state.brand].map(function(m){
-      return '<option value="'+m+'"'+(m===state.model?' selected':'')+'>'+m+'</option>';
+      var has = !!KITS[m];
+      return '<option value="'+m+'"'+(m===state.model?' selected':'')+(has?'':' disabled')+'>'+m+(has?'':' \u2014 coming soon')+'</option>';
     }).join('');
   }
   function paletteFor(){
