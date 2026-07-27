@@ -1752,6 +1752,42 @@
   ]
  },
  {
+  "file": "hollywood-map-blush.jpg",
+  "title": "Hollywood map blush",
+  "category": "Christmas",
+  "hash": "60a6531e581a",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "hollywood-map-cream.jpg",
+  "title": "Hollywood map cream",
+  "category": "Christmas",
+  "hash": "a720d81388ce",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "hollywood-map-navy.jpg",
+  "title": "Hollywood map navy",
+  "category": "Christmas",
+  "hash": "a81bf5cb67d5",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "hollywood-map-sage.jpg",
+  "title": "Hollywood map sage",
+  "category": "Christmas",
+  "hash": "10339276ee49",
+  "color": [
+   "White"
+  ]
+ },
+ {
   "file": "labrador-retrievers-in-santa-hats.jpg",
   "title": "Labrador Retrievers In Santa Hats",
   "category": "Christmas",
@@ -1827,6 +1863,154 @@
   ]
  },
  {
+  "file": "baltimore-map-blush.jpg",
+  "title": "Baltimore map blush",
+  "category": "City maps",
+  "hash": "80f9af89006e",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "baltimore-map-cream.jpg",
+  "title": "Baltimore map cream",
+  "category": "City maps",
+  "hash": "c9931edadff6",
+  "color": [
+   "Grey"
+  ]
+ },
+ {
+  "file": "baltimore-map-navy.jpg",
+  "title": "Baltimore map navy",
+  "category": "City maps",
+  "hash": "65d3c44cc0e8",
+  "color": [
+   "Black",
+   "Grey"
+  ]
+ },
+ {
+  "file": "baltimore-map-sage.jpg",
+  "title": "Baltimore map sage",
+  "category": "City maps",
+  "hash": "ca8f1424eb22",
+  "color": [
+   "Grey"
+  ]
+ },
+ {
+  "file": "boston-map-blush.jpg",
+  "title": "Boston map blush",
+  "category": "City maps",
+  "hash": "891d6761d10e",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "boston-map-cream.jpg",
+  "title": "Boston map cream",
+  "category": "City maps",
+  "hash": "206bce750162",
+  "color": [
+   "Grey"
+  ]
+ },
+ {
+  "file": "boston-map-navy.jpg",
+  "title": "Boston map navy",
+  "category": "City maps",
+  "hash": "664356789cef",
+  "color": [
+   "Black",
+   "Grey"
+  ]
+ },
+ {
+  "file": "boston-map-sage.jpg",
+  "title": "Boston map sage",
+  "category": "City maps",
+  "hash": "eaeefc229066",
+  "color": [
+   "Grey"
+  ]
+ },
+ {
+  "file": "chicago-map-blush.jpg",
+  "title": "Chicago map blush",
+  "category": "City maps",
+  "hash": "178f0fb3da1d",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "chicago-map-cream.jpg",
+  "title": "Chicago map cream",
+  "category": "City maps",
+  "hash": "6cfb570fd578",
+  "color": [
+   "Grey"
+  ]
+ },
+ {
+  "file": "chicago-map-navy.jpg",
+  "title": "Chicago map navy",
+  "category": "City maps",
+  "hash": "8244011af4b5",
+  "color": [
+   "Black",
+   "Grey"
+  ]
+ },
+ {
+  "file": "chicago-map-sage.jpg",
+  "title": "Chicago map sage",
+  "category": "City maps",
+  "hash": "f286c115f95d",
+  "color": [
+   "Grey"
+  ]
+ },
+ {
+  "file": "los-angeles-map-blush.jpg",
+  "title": "Los angeles map blush",
+  "category": "City maps",
+  "hash": "16356da784f2",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "los-angeles-map-cream.jpg",
+  "title": "Los angeles map cream",
+  "category": "City maps",
+  "hash": "c63aa2d7bf85",
+  "color": [
+   "Grey"
+  ]
+ },
+ {
+  "file": "los-angeles-map-navy.jpg",
+  "title": "Los angeles map navy",
+  "category": "City maps",
+  "hash": "619eb5d45e49",
+  "color": [
+   "Black",
+   "Grey"
+  ]
+ },
+ {
+  "file": "los-angeles-map-sage.jpg",
+  "title": "Los angeles map sage",
+  "category": "City maps",
+  "hash": "70707e03c6c6",
+  "color": [
+   "Grey"
+  ]
+ },
+ {
   "file": "media-city-map-blush.jpg",
   "title": "Media City Map Blush",
   "category": "City maps",
@@ -1858,6 +2042,78 @@
   "title": "Media City Map Sage",
   "category": "City maps",
   "hash": "0c688173ce6e",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "miami-map-blush.jpg",
+  "title": "Miami map blush",
+  "category": "City maps",
+  "hash": "0da7723bdd15",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "miami-map-cream.jpg",
+  "title": "Miami map cream",
+  "category": "City maps",
+  "hash": "7f0f4d213019",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "miami-map-navy.jpg",
+  "title": "Miami map navy",
+  "category": "City maps",
+  "hash": "d1d5cf1b2e32",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "miami-map-sage.jpg",
+  "title": "Miami map sage",
+  "category": "City maps",
+  "hash": "5bfa88a06686",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "nashville-map-blush.jpg",
+  "title": "Nashville map blush",
+  "category": "City maps",
+  "hash": "5c1bf5342f57",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "nashville-map-cream.jpg",
+  "title": "Nashville map cream",
+  "category": "City maps",
+  "hash": "0f755f517658",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "nashville-map-navy.jpg",
+  "title": "Nashville map navy",
+  "category": "City maps",
+  "hash": "4d13ca0d41b8",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "nashville-map-sage.jpg",
+  "title": "Nashville map sage",
+  "category": "City maps",
+  "hash": "dc414aee18f7",
   "color": [
    "White"
   ]
@@ -1935,6 +2191,43 @@
   ]
  },
  {
+  "file": "nyc-map-blush.jpg",
+  "title": "Nyc map blush",
+  "category": "City maps",
+  "hash": "4752ae0d51d1",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "nyc-map-cream.jpg",
+  "title": "Nyc map cream",
+  "category": "City maps",
+  "hash": "dd5c9162248f",
+  "color": [
+   "Grey"
+  ]
+ },
+ {
+  "file": "nyc-map-navy.jpg",
+  "title": "Nyc map navy",
+  "category": "City maps",
+  "hash": "bb98e26ab326",
+  "color": [
+   "Black",
+   "Grey"
+  ]
+ },
+ {
+  "file": "nyc-map-sage.jpg",
+  "title": "Nyc map sage",
+  "category": "City maps",
+  "hash": "49c5f39fd897",
+  "color": [
+   "Grey"
+  ]
+ },
+ {
   "file": "philadelphia-city-map-blush.jpg",
   "title": "Philadelphia City Map Blush",
   "category": "City maps",
@@ -2008,6 +2301,43 @@
   ]
  },
  {
+  "file": "san-francisco-map-blush.jpg",
+  "title": "San francisco map blush",
+  "category": "City maps",
+  "hash": "c6035c696768",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "san-francisco-map-cream.jpg",
+  "title": "San francisco map cream",
+  "category": "City maps",
+  "hash": "348c16c071ce",
+  "color": [
+   "Grey"
+  ]
+ },
+ {
+  "file": "san-francisco-map-navy.jpg",
+  "title": "San francisco map navy",
+  "category": "City maps",
+  "hash": "3b20d5d4245a",
+  "color": [
+   "Black",
+   "Grey"
+  ]
+ },
+ {
+  "file": "san-francisco-map-sage.jpg",
+  "title": "San francisco map sage",
+  "category": "City maps",
+  "hash": "54e807dd035c",
+  "color": [
+   "Grey"
+  ]
+ },
+ {
   "file": "south-philly-city-map-blush.jpg",
   "title": "South Philly City Map Blush",
   "category": "City maps",
@@ -2041,6 +2371,43 @@
   "hash": "a9f65d2f4c1f",
   "color": [
    "White"
+  ]
+ },
+ {
+  "file": "washington-dc-map-blush.jpg",
+  "title": "Washington dc map blush",
+  "category": "City maps",
+  "hash": "5c22c43a9445",
+  "color": [
+   "Pink"
+  ]
+ },
+ {
+  "file": "washington-dc-map-cream.jpg",
+  "title": "Washington dc map cream",
+  "category": "City maps",
+  "hash": "c40d2f36efef",
+  "color": [
+   "Grey"
+  ]
+ },
+ {
+  "file": "washington-dc-map-navy.jpg",
+  "title": "Washington dc map navy",
+  "category": "City maps",
+  "hash": "7127796494a6",
+  "color": [
+   "Black",
+   "Grey"
+  ]
+ },
+ {
+  "file": "washington-dc-map-sage.jpg",
+  "title": "Washington dc map sage",
+  "category": "City maps",
+  "hash": "1766643a3b83",
+  "color": [
+   "Grey"
   ]
  },
  {
@@ -2113,6 +2480,24 @@
   "hash": "fc05c2db5c4d",
   "color": [
    "White"
+  ]
+ },
+ {
+  "file": "where-it-all-began-heart-map-cream.jpg",
+  "title": "Where it all began heart map cream",
+  "category": "City maps",
+  "hash": "7f18c64930ce",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "where-it-all-began-heart-map-navy.jpg",
+  "title": "Where it all began heart map navy",
+  "category": "City maps",
+  "hash": "77a4ee513544",
+  "color": [
+   "Black"
   ]
  },
  {
@@ -5425,6 +5810,450 @@
   "hash": "8b3ea177f8a1",
   "color": [
    "Orange"
+  ]
+ },
+ {
+  "file": "zodiac-aquarius-blush.jpg",
+  "title": "Zodiac aquarius blush",
+  "category": "Zodiac",
+  "hash": "71634cfbc8ce",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-aquarius-gold-noir.jpg",
+  "title": "Zodiac aquarius gold noir",
+  "category": "Zodiac",
+  "hash": "7c579d6ab2e7",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "zodiac-aquarius-ink.jpg",
+  "title": "Zodiac aquarius ink",
+  "category": "Zodiac",
+  "hash": "5168b022bb97",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-aquarius-night-sky.jpg",
+  "title": "Zodiac aquarius night sky",
+  "category": "Zodiac",
+  "hash": "2b437aa2ff29",
+  "color": [
+   "Black",
+   "Blue"
+  ]
+ },
+ {
+  "file": "zodiac-aries-blush.jpg",
+  "title": "Zodiac aries blush",
+  "category": "Zodiac",
+  "hash": "b87326983336",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-aries-gold-noir.jpg",
+  "title": "Zodiac aries gold noir",
+  "category": "Zodiac",
+  "hash": "51f78c9abde4",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "zodiac-aries-ink.jpg",
+  "title": "Zodiac aries ink",
+  "category": "Zodiac",
+  "hash": "0f5de695f843",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-aries-night-sky.jpg",
+  "title": "Zodiac aries night sky",
+  "category": "Zodiac",
+  "hash": "92b873603291",
+  "color": [
+   "Black",
+   "Blue"
+  ]
+ },
+ {
+  "file": "zodiac-cancer-blush.jpg",
+  "title": "Zodiac cancer blush",
+  "category": "Zodiac",
+  "hash": "512d50c43816",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-cancer-gold-noir.jpg",
+  "title": "Zodiac cancer gold noir",
+  "category": "Zodiac",
+  "hash": "41d5b229db8f",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "zodiac-cancer-ink.jpg",
+  "title": "Zodiac cancer ink",
+  "category": "Zodiac",
+  "hash": "0f2f28d4716e",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-cancer-night-sky.jpg",
+  "title": "Zodiac cancer night sky",
+  "category": "Zodiac",
+  "hash": "4d5a07feaf08",
+  "color": [
+   "Black",
+   "Blue"
+  ]
+ },
+ {
+  "file": "zodiac-capricorn-blush.jpg",
+  "title": "Zodiac capricorn blush",
+  "category": "Zodiac",
+  "hash": "6d5d6cd2144c",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-capricorn-gold-noir.jpg",
+  "title": "Zodiac capricorn gold noir",
+  "category": "Zodiac",
+  "hash": "888acb7dd683",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "zodiac-capricorn-ink.jpg",
+  "title": "Zodiac capricorn ink",
+  "category": "Zodiac",
+  "hash": "8d59b0a37625",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-capricorn-night-sky.jpg",
+  "title": "Zodiac capricorn night sky",
+  "category": "Zodiac",
+  "hash": "afefc42b166b",
+  "color": [
+   "Black",
+   "Blue"
+  ]
+ },
+ {
+  "file": "zodiac-gemini-blush.jpg",
+  "title": "Zodiac gemini blush",
+  "category": "Zodiac",
+  "hash": "9a4ac7557f7e",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-gemini-gold-noir.jpg",
+  "title": "Zodiac gemini gold noir",
+  "category": "Zodiac",
+  "hash": "08adfbe5f2e2",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "zodiac-gemini-ink.jpg",
+  "title": "Zodiac gemini ink",
+  "category": "Zodiac",
+  "hash": "dd88c6a3f129",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-gemini-night-sky.jpg",
+  "title": "Zodiac gemini night sky",
+  "category": "Zodiac",
+  "hash": "485edb96ec0d",
+  "color": [
+   "Black",
+   "Blue"
+  ]
+ },
+ {
+  "file": "zodiac-leo-blush.jpg",
+  "title": "Zodiac leo blush",
+  "category": "Zodiac",
+  "hash": "0d6562de3ea0",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-leo-gold-noir.jpg",
+  "title": "Zodiac leo gold noir",
+  "category": "Zodiac",
+  "hash": "6baf687d6d64",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "zodiac-leo-ink.jpg",
+  "title": "Zodiac leo ink",
+  "category": "Zodiac",
+  "hash": "ee59e38a9bdb",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-leo-night-sky.jpg",
+  "title": "Zodiac leo night sky",
+  "category": "Zodiac",
+  "hash": "1671168b37a5",
+  "color": [
+   "Black",
+   "Blue"
+  ]
+ },
+ {
+  "file": "zodiac-libra-blush.jpg",
+  "title": "Zodiac libra blush",
+  "category": "Zodiac",
+  "hash": "f72fae7d2e59",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-libra-gold-noir.jpg",
+  "title": "Zodiac libra gold noir",
+  "category": "Zodiac",
+  "hash": "f3dc89d31883",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "zodiac-libra-ink.jpg",
+  "title": "Zodiac libra ink",
+  "category": "Zodiac",
+  "hash": "b98d9bbb1f59",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-libra-night-sky.jpg",
+  "title": "Zodiac libra night sky",
+  "category": "Zodiac",
+  "hash": "034214301390",
+  "color": [
+   "Black",
+   "Blue"
+  ]
+ },
+ {
+  "file": "zodiac-pisces-blush.jpg",
+  "title": "Zodiac pisces blush",
+  "category": "Zodiac",
+  "hash": "43c63189de03",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-pisces-gold-noir.jpg",
+  "title": "Zodiac pisces gold noir",
+  "category": "Zodiac",
+  "hash": "08d639d6f9ea",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "zodiac-pisces-ink.jpg",
+  "title": "Zodiac pisces ink",
+  "category": "Zodiac",
+  "hash": "f679701cd0e6",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-pisces-night-sky.jpg",
+  "title": "Zodiac pisces night sky",
+  "category": "Zodiac",
+  "hash": "f749df24a10e",
+  "color": [
+   "Black",
+   "Blue"
+  ]
+ },
+ {
+  "file": "zodiac-sagittarius-blush.jpg",
+  "title": "Zodiac sagittarius blush",
+  "category": "Zodiac",
+  "hash": "61d33509bc3c",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-sagittarius-gold-noir.jpg",
+  "title": "Zodiac sagittarius gold noir",
+  "category": "Zodiac",
+  "hash": "dcc9750e6948",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "zodiac-sagittarius-ink.jpg",
+  "title": "Zodiac sagittarius ink",
+  "category": "Zodiac",
+  "hash": "35bd7eeac986",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-sagittarius-night-sky.jpg",
+  "title": "Zodiac sagittarius night sky",
+  "category": "Zodiac",
+  "hash": "660e256db99f",
+  "color": [
+   "Black",
+   "Blue"
+  ]
+ },
+ {
+  "file": "zodiac-scorpio-blush.jpg",
+  "title": "Zodiac scorpio blush",
+  "category": "Zodiac",
+  "hash": "a2359b5a8f63",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-scorpio-gold-noir.jpg",
+  "title": "Zodiac scorpio gold noir",
+  "category": "Zodiac",
+  "hash": "58ff0e2b7942",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "zodiac-scorpio-ink.jpg",
+  "title": "Zodiac scorpio ink",
+  "category": "Zodiac",
+  "hash": "b678f5f99999",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-scorpio-night-sky.jpg",
+  "title": "Zodiac scorpio night sky",
+  "category": "Zodiac",
+  "hash": "f7909f5315ee",
+  "color": [
+   "Black",
+   "Blue"
+  ]
+ },
+ {
+  "file": "zodiac-taurus-blush.jpg",
+  "title": "Zodiac taurus blush",
+  "category": "Zodiac",
+  "hash": "818a9ceaf40f",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-taurus-gold-noir.jpg",
+  "title": "Zodiac taurus gold noir",
+  "category": "Zodiac",
+  "hash": "52efd6f04229",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "zodiac-taurus-ink.jpg",
+  "title": "Zodiac taurus ink",
+  "category": "Zodiac",
+  "hash": "516c0e61875e",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-taurus-night-sky.jpg",
+  "title": "Zodiac taurus night sky",
+  "category": "Zodiac",
+  "hash": "5ccebc2dbd11",
+  "color": [
+   "Black",
+   "Blue"
+  ]
+ },
+ {
+  "file": "zodiac-virgo-blush.jpg",
+  "title": "Zodiac virgo blush",
+  "category": "Zodiac",
+  "hash": "6a3a1bd30897",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-virgo-gold-noir.jpg",
+  "title": "Zodiac virgo gold noir",
+  "category": "Zodiac",
+  "hash": "d17cfc649617",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "zodiac-virgo-ink.jpg",
+  "title": "Zodiac virgo ink",
+  "category": "Zodiac",
+  "hash": "2f454d0b6642",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "zodiac-virgo-night-sky.jpg",
+  "title": "Zodiac virgo night sky",
+  "category": "Zodiac",
+  "hash": "af1a771eab33",
+  "color": [
+   "Black",
+   "Blue"
   ]
  }
 ]

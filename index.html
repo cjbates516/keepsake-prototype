@@ -84,7 +84,7 @@
 .kpTile{aspect-ratio:1/1.06}
 .kpTile.wide{grid-column:1/-1;aspect-ratio:16/9}
 @media(min-width:641px){
-  .kpTileGrid{grid-template-columns:repeat(5,1fr);gap:16px}
+  .kpTileGrid{grid-template-columns:repeat(6,1fr);gap:14px}
   .kpTile{aspect-ratio:1/1.25}
   .kpTile.wide{grid-column:auto;aspect-ratio:1/1.25}
   .kpTile span{font-size:19px}
@@ -114,9 +114,10 @@
 @media(min-width:901px){
   #kpCarousel{max-width:1360px;margin:18px auto 0;border:2px solid #17171F;border-radius:26px;overflow:hidden;position:relative;background:#FFFFFF}
   #kpCarousel .kpSlide{height:560px;overflow:hidden}
-  #kpCarousel .kpSlide[data-slide="1"],#kpCarousel .kpSlide[data-slide="2"]{min-height:0}
-  #kpCarousel .kpSlide[data-slide="1"]>div:last-child{min-height:560px !important;padding:40px !important}
-  #kpCarousel .kpSlide[data-slide="2"]>div{min-height:560px !important;padding:40px 48px !important}
+  #kpCarousel .kpSlide[data-slide="0"],#kpCarousel .kpSlide[data-slide="2"],#kpCarousel .kpSlide[data-slide="3"]{min-height:0}
+  #kpCarousel .kpSlide[data-slide="0"]>div{min-height:520px !important;padding:40px 48px !important}
+  #kpCarousel .kpSlide[data-slide="2"]>div:last-child{min-height:560px !important;padding:40px !important}
+  #kpCarousel .kpSlide[data-slide="3"]>div{min-height:560px !important;padding:40px 48px !important}
   #kpCarousel #heroSec{padding:36px 48px 0 !important;min-height:0 !important}
   #kpCarousel #heroSec h1{font-size:clamp(34px,3.4vw,52px) !important;margin-bottom:14px !important}
   #kpCarousel #heroSec .heroFloat{display:none !important}
@@ -131,12 +132,14 @@
   #bsFan img:nth-child(3){width:146px;transform:translateY(-12px);z-index:2}
   #bsFan img:nth-child(4){transform:rotate(6deg) translate(-10px,-3px);z-index:1}
   #bsFan img:nth-child(5){transform:rotate(13deg) translate(-24px,8px)}
-}
   .kpCarCtrls{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid #EFEDED}
 }
+@media(min-width:901px) and (max-width:1150px){
+  .kpSlide[data-slide="0"] .kpFan img:first-child,.kpSlide[data-slide="0"] .kpFan img:last-child{display:none}
+}
 @media(max-width:900px){
-  #kpCarousel .kpSlide[data-slide="1"],#kpCarousel .kpSlide[data-slide="2"]{display:none !important}
-  #kpCarousel .kpSlide[data-slide="0"]{display:block !important}
+  #kpCarousel .kpSlide[data-slide="0"],#kpCarousel .kpSlide[data-slide="2"],#kpCarousel .kpSlide[data-slide="3"]{display:none !important}
+  #kpCarousel .kpSlide[data-slide="1"]{display:block !important}
 }
 </style>
 </head>
@@ -284,7 +287,24 @@
 
     <!-- ═══ hero carousel ═══ -->
     <div id="kpCarousel">
-      <div class="kpSlide on" data-slide="0">
+      <section class="kpSlide on" data-slide="0" style="position:relative;background:linear-gradient(160deg,#E23A40 0%,#DC282E 55%,#B81F24 100%)">
+        <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:30px;align-items:center;min-height:520px;padding:50px 48px">
+          <div>
+            <div style="font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:14px">New — the City Maps collection</div>
+            <h2 style="font-weight:900;font-size:clamp(38px,4.6vw,66px);letter-spacing:-.01em;color:#FFFFFF;margin:0 0 16px;line-height:1.02;text-transform:uppercase">Your streets.<br>Your case.</h2>
+            <p style="font-size:16px;color:rgba(255,255,255,.88);margin:0 0 26px;max-width:420px;line-height:1.6">Real street maps of your city — Philly to LA, printed in store today. Even the corner where you met.</p>
+            <a href="gallery.html?cat=City%20maps" class="btn" style="background:#FFFFFF;color:#B81F24;padding:15px 34px;border-radius:999px;font-weight:900;font-size:14px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;display:inline-block">Shop City Maps</a>
+          </div>
+          <div class="kpFan" style="display:flex;align-items:center;justify-content:center">
+            <img src="assets/promo/promo-boston-map-cream.webp" alt="Boston map case" style="width:clamp(100px,11vw,158px);transform:rotate(-13deg) translate(30px,10px);filter:drop-shadow(0 18px 26px rgba(0,0,0,.38));border-radius:20px">
+            <img src="assets/promo/promo-nyc-map-navy.webp" alt="New York map case" style="width:clamp(106px,11.6vw,164px);transform:rotate(-6deg) translate(12px,-6px);filter:drop-shadow(0 18px 26px rgba(0,0,0,.38));border-radius:20px;z-index:1">
+            <img src="assets/promo/promo-philly-map-cream.webp" alt="Philadelphia map case" style="width:clamp(118px,13vw,184px);transform:translateY(-14px);filter:drop-shadow(0 20px 30px rgba(0,0,0,.42));border-radius:20px;z-index:2">
+            <img src="assets/promo/promo-heart-map-cream.webp" alt="Where we met heart map case" style="width:clamp(106px,11.6vw,164px);transform:rotate(6deg) translate(-12px,-6px);filter:drop-shadow(0 18px 26px rgba(0,0,0,.38));border-radius:20px;z-index:1">
+            <img src="assets/promo/promo-la-map-blush.webp" alt="Los Angeles map case" style="width:clamp(100px,11vw,158px);transform:rotate(13deg) translate(-30px,10px);filter:drop-shadow(0 18px 26px rgba(0,0,0,.38));border-radius:20px">
+          </div>
+        </div>
+      </section>
+      <div class="kpSlide" data-slide="1">
     <!-- ═══ hero ═══ -->
     <section id="heroSec" style="max-width:1280px;margin:0 auto;padding:76px 40px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:40px;align-items:center">
       <div>
@@ -355,7 +375,7 @@
 
       </div>
     <!-- carousel slide 2: seasonal collection -->
-    <section class="kpSlide" data-slide="1" style="position:relative;min-height:520px">
+    <section class="kpSlide" data-slide="2" style="position:relative;min-height:520px">
       <div style="position:absolute;inset:0;display:flex">
         <div style="flex:1;background:url('assets/designs/halloween-bats-on-orange.jpg') center/cover"></div>
         <div style="flex:1;background:url('assets/designs/halloween-cute-ghosts-and-pumpkins-on-lavender.jpg') center/cover"></div>
@@ -370,7 +390,7 @@
       </div>
     </section>
     <!-- carousel slide 3: three cases, three personalities -->
-    <section class="kpSlide" data-slide="2" style="position:relative;background:#17171F;min-height:520px">
+    <section class="kpSlide" data-slide="3" style="position:relative;background:#17171F;min-height:520px">
       <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;min-height:520px;padding:60px 48px">
         <div>
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><span style="color:#F7E27A;letter-spacing:2px;font-size:15px">★★★★★</span><span style="font-size:13px;font-weight:800;color:#B9BDCB">4.9 · 312 in-store reviews</span></div>
@@ -428,6 +448,9 @@
     <!-- ═══ story chips ═══ -->
     <section style="max-width:1280px;margin:0 auto;padding:0 40px 64px">
       <div class="kpTileGrid">
+        <a class="kpTile" href="gallery.html?cat=City%20maps" style="position:relative;display:block;border-radius:22px;overflow:hidden;background:url('assets/designs/thumbs/philadelphia-map-navy.jpg') center/cover">
+          <span style="position:absolute;top:16px;left:16px;font-weight:900;font-size:clamp(17px,2vw,24px);color:#FFFFFF;text-shadow:0 2px 12px rgba(0,0,0,.45)">City<br>Maps</span>
+        </a>
         <a class="kpTile" href="gallery.html">
           <img src="assets/lifestyle/life-v119.jpg" alt="Ready-made designs" loading="lazy">
           <span>Ready-Made<br>Designs</span>
