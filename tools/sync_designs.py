@@ -24,7 +24,7 @@ RULES = [
     (r"checker|smiley|groovy|y2k|gingham|plaid|disco|emoji", "Retro & Y2K"),
     (r"zodiac|constellation", "Zodiac"),
     (r"celestial|starry|\bstars?\b|\bmoons?\b|\bsuns?\b", "Celestial"),
-    (r"city map|-map-|street map", "City maps"),
+    (r"city map|-map-|street map|\blake\b|marsh-creek|marsh creek", "City maps"),
     (r"leopard|tiger|zebra|cheetah|animal", "Animal print"),
     (r"lion|teddy|kawaii|cartoon|paw|whimsical|cute", "Cute & kids"),
     (r"heart", "Hearts"),

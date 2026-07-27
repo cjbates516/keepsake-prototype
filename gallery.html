@@ -710,6 +710,9 @@
         renderGrid(); },150);
     });
   })();
+  var mq = /[?&]q=([^&]+)/.exec(location.search);
+  if (mq){ searchQ = decodeURIComponent(mq[1].replace(/\+/g,' ')).toLowerCase();
+    var di0=document.getElementById('deskSearch'); if(di0) di0.value = searchQ; }
   var mcol = /[?&]color=([^&]+)/.exec(location.search);
   if (mcol){ colorSel = decodeURIComponent(mcol[1]); }
   fetch('assets/designs/designs.json').then(function(r){ return r.json(); }).then(function(d){

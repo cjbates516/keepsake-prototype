@@ -1974,6 +1974,80 @@
   ]
  },
  {
+  "file": "lake-george-cream.jpg",
+  "title": "Lake george cream",
+  "category": "City maps",
+  "hash": "ad6d1c8f434c",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "lake-george-navy.jpg",
+  "title": "Lake george navy",
+  "category": "City maps",
+  "hash": "bb349c59dabb",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "lake-michigan-cream.jpg",
+  "title": "Lake michigan cream",
+  "category": "City maps",
+  "hash": "4937b0fd8255",
+  "color": [
+   "Blue"
+  ]
+ },
+ {
+  "file": "lake-michigan-navy.jpg",
+  "title": "Lake michigan navy",
+  "category": "City maps",
+  "hash": "8d082c16bfd6",
+  "color": [
+   "Blue",
+   "Black"
+  ]
+ },
+ {
+  "file": "lake-placid-cream.jpg",
+  "title": "Lake placid cream",
+  "category": "City maps",
+  "hash": "1e5f689e3e41",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "lake-placid-navy.jpg",
+  "title": "Lake placid navy",
+  "category": "City maps",
+  "hash": "1cf97058a32f",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "lake-tahoe-cream.jpg",
+  "title": "Lake tahoe cream",
+  "category": "City maps",
+  "hash": "8d7745f3c4d7",
+  "color": [
+   "Blue"
+  ]
+ },
+ {
+  "file": "lake-tahoe-navy.jpg",
+  "title": "Lake tahoe navy",
+  "category": "City maps",
+  "hash": "9b119118832e",
+  "color": [
+   "Black",
+   "Blue"
+  ]
+ },
+ {
   "file": "los-angeles-map-blush.jpg",
   "title": "Los angeles map blush",
   "category": "City maps",
@@ -2008,6 +2082,24 @@
   "hash": "70707e03c6c6",
   "color": [
    "Grey"
+  ]
+ },
+ {
+  "file": "marsh-creek-cream.jpg",
+  "title": "Marsh creek cream",
+  "category": "City maps",
+  "hash": "c747ab33e26e",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "marsh-creek-navy.jpg",
+  "title": "Marsh creek navy",
+  "category": "City maps",
+  "hash": "78c4cf5111c5",
+  "color": [
+   "Black"
   ]
  },
  {
