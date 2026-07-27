@@ -203,6 +203,7 @@
       <div id="wizardBar"></div>
       <input id="deskSearch" type="search" placeholder="Search 539 designs — try &quot;dog&quot;, &quot;philly&quot;, &quot;hearts&quot;…" aria-label="Search designs" style="width:100%;max-width:440px;font-size:16px;padding:12px 16px;border:1px solid #E4E3E3;border-radius:12px;background:#FFFFFF;margin-bottom:16px">
       <div id="filters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"></div>
+      <div id="stateBar" style="display:none;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px"></div>
       <div id="colorBar" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:30px"></div>
       <div class="kpStep" id="step3Lab"><span class="kpStepN">3</span><span style="font-weight:900;font-size:15px;color:#2D2D3B">Tap a case you love</span></div>
       <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px"></div>
@@ -507,6 +508,22 @@
       deb=setTimeout(function(){ searchQ=v.trim().toLowerCase(); renderGrid(); },150);
     });
   }
+  var stateSel=null;
+  var STATE_NAMES={PA:'Pennsylvania',DE:'Delaware',NY:'New York',MA:'Massachusetts',CA:'California',MD:'Maryland',IL:'Illinois',DC:'Washington DC',FL:'Florida',TN:'Tennessee'};
+  function renderStates(){
+    var el=document.getElementById('stateBar'); if(!el) return;
+    if(filter!=='City maps'){ el.style.display='none'; stateSel=null; return; }
+    var sts={};
+    designs.forEach(function(d){ if(d.category==='City maps' && !d.hidden && d.state) sts[d.state]=(sts[d.state]||0)+1; });
+    var keys=Object.keys(sts).sort();
+    el.style.display='flex';
+    el.innerHTML='<span style="font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#9A9A9D;margin-right:2px">State</span>'+
+      '<button class="stF" data-s="" style="background:'+(!stateSel?'#2D2D3B':'#FFFFFF')+';color:'+(!stateSel?'#FFFFFF':'#4E4E50')+';border:1px solid '+(!stateSel?'#2D2D3B':'#E4E3E3')+';font-size:12px;font-weight:800;padding:7px 14px;border-radius:999px;cursor:pointer">All states</button>'+
+      keys.map(function(k){
+        var on=stateSel===k;
+        return '<button class="stF" data-s="'+k+'" title="'+(STATE_NAMES[k]||k)+'" style="background:'+(on?'#DC282E':'#FFFFFF')+';color:'+(on?'#FFFFFF':'#4E4E50')+';border:1px solid '+(on?'#DC282E':'#E4E3E3')+';font-size:12px;font-weight:800;padding:7px 14px;border-radius:999px;cursor:pointer">'+k+' '+sts[k]+'</button>';
+      }).join('');
+  }
   var KP_COLORS=[['Red','#DC282E'],['Pink','#F5A8C7'],['Orange','#F07B3C'],['Yellow','#F2D14E'],['Green','#6FA382'],['Blue','#5B8DEF'],['Purple','#9B7EDE'],['Brown','#7A4E2D'],['Black','#17171F'],['White','#FFFFFF'],['Grey','#9A9A9D'],['Beige','#E4D3B4']];
   var colorSel=null;
   function renderColors(){
@@ -553,6 +570,7 @@
   function renderGrid(){
     var items = designs.filter(function(d){
       if (filter !== 'All' && d.category !== filter) return false;
+      if (filter === 'City maps' && stateSel && d.state !== stateSel) return false;
       if (colorSel && (d.color||[]).indexOf(colorSel) === -1) return false;
       if (searchQ){
         var hay=(d.title+' '+d.category).toLowerCase();
@@ -638,7 +656,7 @@
 
   document.addEventListener('click', function(e){
     var f = e.target.closest('.galF');
-    if (f){ filter = f.dataset.f; renderFilters(); renderGrid(); window.scrollTo({top:0,behavior:'smooth'}); }
+    if (f){ filter = f.dataset.f; renderFilters(); renderStates(); renderGrid(); window.scrollTo({top:0,behavior:'smooth'}); }
     var ca = e.target.closest('.wizClearAll');
     if (ca){
       filter='All'; colorSel=null; searchQ='';
@@ -646,6 +664,8 @@
       renderFilters(); renderColors(); renderWizard(); renderGrid();
       return;
     }
+    var st = e.target.closest('.stF');
+    if (st){ stateSel = st.dataset.s || null; renderStates(); renderGrid(); }
     var cf = e.target.closest('.colF');
     if (cf){ colorSel = cf.dataset.c || null;
       var u = new URL(location.href);
@@ -719,7 +739,7 @@
     var staffMode = /[?&]staff=1/.test(location.search);
     designs = staffMode ? d : d.filter(function(x){ return !x.hidden; });
     if (filter !== 'All' && !d.some(function(x){ return x.category === filter; })) filter = 'All';
-    renderDeviceBar(); renderFilters(); renderColors(); renderGrid();
+    renderDeviceBar(); renderFilters(); renderStates(); renderColors(); renderGrid();
     if (device) preloadDevice(device);
   }).catch(function(){
     $('grid').innerHTML = '<div style="padding:40px;font-weight:700;color:#9A9A9D">Could not load designs.</div>';

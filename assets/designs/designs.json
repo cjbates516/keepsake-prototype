@@ -1869,7 +1869,8 @@
   "hash": "80f9af89006e",
   "color": [
    "White"
-  ]
+  ],
+  "state": "MD"
  },
  {
   "file": "baltimore-map-cream.jpg",
@@ -1878,7 +1879,8 @@
   "hash": "c9931edadff6",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "MD"
  },
  {
   "file": "baltimore-map-navy.jpg",
@@ -1888,7 +1890,8 @@
   "color": [
    "Black",
    "Grey"
-  ]
+  ],
+  "state": "MD"
  },
  {
   "file": "baltimore-map-sage.jpg",
@@ -1897,7 +1900,8 @@
   "hash": "ca8f1424eb22",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "MD"
  },
  {
   "file": "boston-map-blush.jpg",
@@ -1906,7 +1910,8 @@
   "hash": "891d6761d10e",
   "color": [
    "White"
-  ]
+  ],
+  "state": "MA"
  },
  {
   "file": "boston-map-cream.jpg",
@@ -1915,7 +1920,8 @@
   "hash": "206bce750162",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "MA"
  },
  {
   "file": "boston-map-navy.jpg",
@@ -1925,7 +1931,8 @@
   "color": [
    "Black",
    "Grey"
-  ]
+  ],
+  "state": "MA"
  },
  {
   "file": "boston-map-sage.jpg",
@@ -1934,7 +1941,8 @@
   "hash": "eaeefc229066",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "MA"
  },
  {
   "file": "chicago-map-blush.jpg",
@@ -1943,7 +1951,8 @@
   "hash": "178f0fb3da1d",
   "color": [
    "White"
-  ]
+  ],
+  "state": "IL"
  },
  {
   "file": "chicago-map-cream.jpg",
@@ -1952,7 +1961,8 @@
   "hash": "6cfb570fd578",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "IL"
  },
  {
   "file": "chicago-map-navy.jpg",
@@ -1962,7 +1972,8 @@
   "color": [
    "Black",
    "Grey"
-  ]
+  ],
+  "state": "IL"
  },
  {
   "file": "chicago-map-sage.jpg",
@@ -1971,7 +1982,8 @@
   "hash": "f286c115f95d",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "IL"
  },
  {
   "file": "lake-george-cream.jpg",
@@ -1980,7 +1992,8 @@
   "hash": "ad6d1c8f434c",
   "color": [
    "White"
-  ]
+  ],
+  "state": "NY"
  },
  {
   "file": "lake-george-navy.jpg",
@@ -1989,7 +2002,8 @@
   "hash": "bb349c59dabb",
   "color": [
    "Black"
-  ]
+  ],
+  "state": "NY"
  },
  {
   "file": "lake-michigan-cream.jpg",
@@ -1998,7 +2012,8 @@
   "hash": "4937b0fd8255",
   "color": [
    "Blue"
-  ]
+  ],
+  "state": "IL"
  },
  {
   "file": "lake-michigan-navy.jpg",
@@ -2008,7 +2023,8 @@
   "color": [
    "Blue",
    "Black"
-  ]
+  ],
+  "state": "IL"
  },
  {
   "file": "lake-placid-cream.jpg",
@@ -2017,7 +2033,8 @@
   "hash": "1e5f689e3e41",
   "color": [
    "White"
-  ]
+  ],
+  "state": "NY"
  },
  {
   "file": "lake-placid-navy.jpg",
@@ -2026,7 +2043,8 @@
   "hash": "1cf97058a32f",
   "color": [
    "Black"
-  ]
+  ],
+  "state": "NY"
  },
  {
   "file": "lake-tahoe-cream.jpg",
@@ -2035,7 +2053,8 @@
   "hash": "8d7745f3c4d7",
   "color": [
    "Blue"
-  ]
+  ],
+  "state": "CA"
  },
  {
   "file": "lake-tahoe-navy.jpg",
@@ -2045,7 +2064,8 @@
   "color": [
    "Black",
    "Blue"
-  ]
+  ],
+  "state": "CA"
  },
  {
   "file": "los-angeles-map-blush.jpg",
@@ -2054,7 +2074,8 @@
   "hash": "16356da784f2",
   "color": [
    "White"
-  ]
+  ],
+  "state": "CA"
  },
  {
   "file": "los-angeles-map-cream.jpg",
@@ -2063,7 +2084,8 @@
   "hash": "c63aa2d7bf85",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "CA"
  },
  {
   "file": "los-angeles-map-navy.jpg",
@@ -2073,7 +2095,8 @@
   "color": [
    "Black",
    "Grey"
-  ]
+  ],
+  "state": "CA"
  },
  {
   "file": "los-angeles-map-sage.jpg",
@@ -2082,7 +2105,8 @@
   "hash": "70707e03c6c6",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "CA"
  },
  {
   "file": "marsh-creek-cream.jpg",
@@ -2091,7 +2115,8 @@
   "hash": "c747ab33e26e",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "marsh-creek-navy.jpg",
@@ -2100,7 +2125,8 @@
   "hash": "78c4cf5111c5",
   "color": [
    "Black"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "media-city-map-blush.jpg",
@@ -2109,7 +2135,8 @@
   "hash": "65f8ccf3e642",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "media-city-map-cream.jpg",
@@ -2118,7 +2145,8 @@
   "hash": "2ccf0f7fb11e",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "media-city-map-navy.jpg",
@@ -2127,7 +2155,8 @@
   "hash": "4c5cb0ec59a6",
   "color": [
    "Black"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "media-city-map-sage.jpg",
@@ -2136,7 +2165,8 @@
   "hash": "0c688173ce6e",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "miami-map-blush.jpg",
@@ -2145,7 +2175,8 @@
   "hash": "0da7723bdd15",
   "color": [
    "White"
-  ]
+  ],
+  "state": "FL"
  },
  {
   "file": "miami-map-cream.jpg",
@@ -2154,7 +2185,8 @@
   "hash": "7f0f4d213019",
   "color": [
    "White"
-  ]
+  ],
+  "state": "FL"
  },
  {
   "file": "miami-map-navy.jpg",
@@ -2163,7 +2195,8 @@
   "hash": "d1d5cf1b2e32",
   "color": [
    "Black"
-  ]
+  ],
+  "state": "FL"
  },
  {
   "file": "miami-map-sage.jpg",
@@ -2172,7 +2205,8 @@
   "hash": "5bfa88a06686",
   "color": [
    "White"
-  ]
+  ],
+  "state": "FL"
  },
  {
   "file": "nashville-map-blush.jpg",
@@ -2181,7 +2215,8 @@
   "hash": "5c1bf5342f57",
   "color": [
    "White"
-  ]
+  ],
+  "state": "TN"
  },
  {
   "file": "nashville-map-cream.jpg",
@@ -2190,7 +2225,8 @@
   "hash": "0f755f517658",
   "color": [
    "White"
-  ]
+  ],
+  "state": "TN"
  },
  {
   "file": "nashville-map-navy.jpg",
@@ -2199,7 +2235,8 @@
   "hash": "4d13ca0d41b8",
   "color": [
    "Black"
-  ]
+  ],
+  "state": "TN"
  },
  {
   "file": "nashville-map-sage.jpg",
@@ -2208,7 +2245,8 @@
   "hash": "dc414aee18f7",
   "color": [
    "White"
-  ]
+  ],
+  "state": "TN"
  },
  {
   "file": "newark-city-map-blush.jpg",
@@ -2217,7 +2255,8 @@
   "hash": "d793618630c8",
   "color": [
    "White"
-  ]
+  ],
+  "state": "DE"
  },
  {
   "file": "newark-city-map-cream.jpg",
@@ -2226,7 +2265,8 @@
   "hash": "8d25dc57e948",
   "color": [
    "White"
-  ]
+  ],
+  "state": "DE"
  },
  {
   "file": "newark-city-map-navy.jpg",
@@ -2235,7 +2275,8 @@
   "hash": "f8f645b80f42",
   "color": [
    "Black"
-  ]
+  ],
+  "state": "DE"
  },
  {
   "file": "newark-city-map-sage.jpg",
@@ -2244,7 +2285,8 @@
   "hash": "7279a2b18f54",
   "color": [
    "White"
-  ]
+  ],
+  "state": "DE"
  },
  {
   "file": "northeast-philly-city-map-blush.jpg",
@@ -2253,7 +2295,8 @@
   "hash": "82967ce5cd34",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "northeast-philly-city-map-cream.jpg",
@@ -2262,7 +2305,8 @@
   "hash": "43cdbff6e47a",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "northeast-philly-city-map-navy.jpg",
@@ -2271,7 +2315,8 @@
   "hash": "80fab6873a8c",
   "color": [
    "Black"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "northeast-philly-city-map-sage.jpg",
@@ -2280,7 +2325,8 @@
   "hash": "ab51902b7ddd",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "nyc-map-blush.jpg",
@@ -2289,7 +2335,8 @@
   "hash": "4752ae0d51d1",
   "color": [
    "White"
-  ]
+  ],
+  "state": "NY"
  },
  {
   "file": "nyc-map-cream.jpg",
@@ -2298,7 +2345,8 @@
   "hash": "dd5c9162248f",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "NY"
  },
  {
   "file": "nyc-map-navy.jpg",
@@ -2308,7 +2356,8 @@
   "color": [
    "Black",
    "Grey"
-  ]
+  ],
+  "state": "NY"
  },
  {
   "file": "nyc-map-sage.jpg",
@@ -2317,7 +2366,8 @@
   "hash": "49c5f39fd897",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "NY"
  },
  {
   "file": "philadelphia-city-map-blush.jpg",
@@ -2326,7 +2376,8 @@
   "hash": "e4fae10e3283",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "philadelphia-city-map-cream.jpg",
@@ -2335,7 +2386,8 @@
   "hash": "ab223d5d9d98",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "philadelphia-city-map-navy.jpg",
@@ -2345,7 +2397,8 @@
   "color": [
    "Black",
    "Grey"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "philadelphia-city-map-sage.jpg",
@@ -2354,7 +2407,8 @@
   "hash": "adae9a474826",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "pottstown-city-map-blush.jpg",
@@ -2363,7 +2417,8 @@
   "hash": "332b6139f568",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "pottstown-city-map-cream.jpg",
@@ -2372,7 +2427,8 @@
   "hash": "441ee95fbc26",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "pottstown-city-map-navy.jpg",
@@ -2381,7 +2437,8 @@
   "hash": "3e415d353365",
   "color": [
    "Black"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "pottstown-city-map-sage.jpg",
@@ -2390,7 +2447,8 @@
   "hash": "6fcd8665b646",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "san-francisco-map-blush.jpg",
@@ -2399,7 +2457,8 @@
   "hash": "c6035c696768",
   "color": [
    "White"
-  ]
+  ],
+  "state": "CA"
  },
  {
   "file": "san-francisco-map-cream.jpg",
@@ -2408,7 +2467,8 @@
   "hash": "348c16c071ce",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "CA"
  },
  {
   "file": "san-francisco-map-navy.jpg",
@@ -2418,7 +2478,8 @@
   "color": [
    "Black",
    "Grey"
-  ]
+  ],
+  "state": "CA"
  },
  {
   "file": "san-francisco-map-sage.jpg",
@@ -2427,7 +2488,8 @@
   "hash": "54e807dd035c",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "CA"
  },
  {
   "file": "south-philly-city-map-blush.jpg",
@@ -2436,7 +2498,8 @@
   "hash": "98f2426355a7",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "south-philly-city-map-cream.jpg",
@@ -2445,7 +2508,8 @@
   "hash": "9f2639762401",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "south-philly-city-map-navy.jpg",
@@ -2454,7 +2518,8 @@
   "hash": "ff5d7c365191",
   "color": [
    "Black"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "south-philly-city-map-sage.jpg",
@@ -2463,7 +2528,8 @@
   "hash": "a9f65d2f4c1f",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "washington-dc-map-blush.jpg",
@@ -2472,7 +2538,8 @@
   "hash": "5c22c43a9445",
   "color": [
    "Pink"
-  ]
+  ],
+  "state": "DC"
  },
  {
   "file": "washington-dc-map-cream.jpg",
@@ -2481,7 +2548,8 @@
   "hash": "c40d2f36efef",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "DC"
  },
  {
   "file": "washington-dc-map-navy.jpg",
@@ -2491,7 +2559,8 @@
   "color": [
    "Black",
    "Grey"
-  ]
+  ],
+  "state": "DC"
  },
  {
   "file": "washington-dc-map-sage.jpg",
@@ -2500,7 +2569,8 @@
   "hash": "1766643a3b83",
   "color": [
    "Grey"
-  ]
+  ],
+  "state": "DC"
  },
  {
   "file": "west-chester-city-map-blush.jpg",
@@ -2509,7 +2579,8 @@
   "hash": "a8fc0e95ec5b",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "west-chester-city-map-cream.jpg",
@@ -2518,7 +2589,8 @@
   "hash": "d3d4a165f31b",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "west-chester-city-map-navy.jpg",
@@ -2527,7 +2599,8 @@
   "hash": "935317e7a1f2",
   "color": [
    "Black"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "west-chester-city-map-sage.jpg",
@@ -2536,7 +2609,8 @@
   "hash": "c0e16157db46",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "west-philly-city-map-blush.jpg",
@@ -2545,7 +2619,8 @@
   "hash": "be5493a439b9",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "west-philly-city-map-cream.jpg",
@@ -2554,7 +2629,8 @@
   "hash": "9d1db25a25eb",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "west-philly-city-map-navy.jpg",
@@ -2563,7 +2639,8 @@
   "hash": "883dc374ae3f",
   "color": [
    "Black"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "west-philly-city-map-sage.jpg",
@@ -2572,7 +2649,8 @@
   "hash": "fc05c2db5c4d",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "where-it-all-began-heart-map-cream.jpg",
@@ -2581,7 +2659,8 @@
   "hash": "7f18c64930ce",
   "color": [
    "White"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "where-it-all-began-heart-map-navy.jpg",
@@ -2590,7 +2669,8 @@
   "hash": "77a4ee513544",
   "color": [
    "Black"
-  ]
+  ],
+  "state": "PA"
  },
  {
   "file": "cheerful-pastel-watercolor-rainbow-pattern.jpg",
