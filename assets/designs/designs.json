@@ -1824,6 +1824,114 @@
   ]
  },
  {
+  "file": "media-city-map-blush.jpg",
+  "title": "Media City Map Blush",
+  "category": "City maps",
+  "hash": "f94f498bbc94",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "media-city-map-cream.jpg",
+  "title": "Media City Map Cream",
+  "category": "City maps",
+  "hash": "253fa501df66",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "media-city-map-navy.jpg",
+  "title": "Media City Map Navy",
+  "category": "City maps",
+  "hash": "16314ea4b329",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "media-city-map-sage.jpg",
+  "title": "Media City Map Sage",
+  "category": "City maps",
+  "hash": "91fc7f12938a",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "newark-city-map-blush.jpg",
+  "title": "Newark City Map Blush",
+  "category": "City maps",
+  "hash": "ce87eb012aed",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "newark-city-map-cream.jpg",
+  "title": "Newark City Map Cream",
+  "category": "City maps",
+  "hash": "eaf696b6fce9",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "newark-city-map-navy.jpg",
+  "title": "Newark City Map Navy",
+  "category": "City maps",
+  "hash": "132936635969",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "newark-city-map-sage.jpg",
+  "title": "Newark City Map Sage",
+  "category": "City maps",
+  "hash": "6c8606acb415",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "northeast-philly-city-map-blush.jpg",
+  "title": "Northeast Philly City Map Blush",
+  "category": "City maps",
+  "hash": "23d638bf2d3e",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "northeast-philly-city-map-cream.jpg",
+  "title": "Northeast Philly City Map Cream",
+  "category": "City maps",
+  "hash": "7df74765703f",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "northeast-philly-city-map-navy.jpg",
+  "title": "Northeast Philly City Map Navy",
+  "category": "City maps",
+  "hash": "6f037e6993bd",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "northeast-philly-city-map-sage.jpg",
+  "title": "Northeast Philly City Map Sage",
+  "category": "City maps",
+  "hash": "84e24e574824",
+  "color": [
+   "White"
+  ]
+ },
+ {
   "file": "philadelphia-city-map-blush.jpg",
   "title": "Philadelphia City Map Blush",
   "category": "City maps",
@@ -1858,6 +1966,150 @@
   "hash": "9f60566b7d81",
   "color": [
    "Grey"
+  ]
+ },
+ {
+  "file": "pottstown-city-map-blush.jpg",
+  "title": "Pottstown City Map Blush",
+  "category": "City maps",
+  "hash": "e800823db6d7",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "pottstown-city-map-cream.jpg",
+  "title": "Pottstown City Map Cream",
+  "category": "City maps",
+  "hash": "6cb02aa3dfc1",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "pottstown-city-map-navy.jpg",
+  "title": "Pottstown City Map Navy",
+  "category": "City maps",
+  "hash": "9d40f23e2dca",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "pottstown-city-map-sage.jpg",
+  "title": "Pottstown City Map Sage",
+  "category": "City maps",
+  "hash": "9cb72deee35e",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "south-philly-city-map-blush.jpg",
+  "title": "South Philly City Map Blush",
+  "category": "City maps",
+  "hash": "a349977ff23f",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "south-philly-city-map-cream.jpg",
+  "title": "South Philly City Map Cream",
+  "category": "City maps",
+  "hash": "26e566935546",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "south-philly-city-map-navy.jpg",
+  "title": "South Philly City Map Navy",
+  "category": "City maps",
+  "hash": "a233768e82a2",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "south-philly-city-map-sage.jpg",
+  "title": "South Philly City Map Sage",
+  "category": "City maps",
+  "hash": "6eb1c8cd69ec",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "west-chester-city-map-blush.jpg",
+  "title": "West Chester City Map Blush",
+  "category": "City maps",
+  "hash": "1f981b9a9605",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "west-chester-city-map-cream.jpg",
+  "title": "West Chester City Map Cream",
+  "category": "City maps",
+  "hash": "54f44d7d86f5",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "west-chester-city-map-navy.jpg",
+  "title": "West Chester City Map Navy",
+  "category": "City maps",
+  "hash": "3f532a8b9ff3",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "west-chester-city-map-sage.jpg",
+  "title": "West Chester City Map Sage",
+  "category": "City maps",
+  "hash": "fc4eb814f75f",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "west-philly-city-map-blush.jpg",
+  "title": "West Philly City Map Blush",
+  "category": "City maps",
+  "hash": "d6fbfce66be3",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "west-philly-city-map-cream.jpg",
+  "title": "West Philly City Map Cream",
+  "category": "City maps",
+  "hash": "78be6b5ddae3",
+  "color": [
+   "White"
+  ]
+ },
+ {
+  "file": "west-philly-city-map-navy.jpg",
+  "title": "West Philly City Map Navy",
+  "category": "City maps",
+  "hash": "ab7fed019870",
+  "color": [
+   "Black"
+  ]
+ },
+ {
+  "file": "west-philly-city-map-sage.jpg",
+  "title": "West Philly City Map Sage",
+  "category": "City maps",
+  "hash": "a621fb3b1819",
+  "color": [
+   "White"
   ]
  },
  {
