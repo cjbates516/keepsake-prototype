@@ -202,6 +202,16 @@
           </div>
           <div id="stageHint" style="font-size:12px;font-weight:700;color:#9A9A9D;letter-spacing:.04em">Upload or drop a photo to begin</div>
           <div id="kitNote" style="display:none;font-size:11.5px;font-weight:600;color:#B9BDCB;letter-spacing:.02em;text-align:center;max-width:300px"></div>
+          <div id="kpViews" style="display:none;width:100%;max-width:420px;margin-top:10px">
+            <div style="font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#9A9A9D;margin-bottom:8px">See it in real life</div>
+            <div id="kpViewsRow" style="display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;border-radius:14px">
+              <canvas class="kpScene" data-s="v113" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
+              <canvas class="kpScene" data-s="v115" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
+              <canvas class="kpScene" data-s="v119" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
+              <canvas class="kpScene" data-s="v124" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
+            </div>
+          </div>
+
           <a id="exportLink" href="#" style="display:none;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B9BDCB">Download print file (staff)</a>
           <a id="calLink" href="#" style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B9BDCB">Adjust fit (staff)</a>
         </div>
@@ -696,7 +706,7 @@
   function render(){
     if(_rafPend) return; _rafPend=true;
     var done=false;
-    function go(){ if(done) return; done=true; _rafPend=false; renderNow(); }
+    function go(){ if(done) return; done=true; _rafPend=false; renderNow(); scheduleScenes(); }
     requestAnimationFrame(go);
     setTimeout(go, 80);   // backstop: rAF is paused/throttled in some contexts
   }
@@ -1111,6 +1121,48 @@
     $('cartBtn').textContent='Added ✓ — checkout is next in the prototype';
     setTimeout(function(){ $('cartBtn').textContent='Add To Cart'; },2600);
   });
+
+  /* KP-SCENE-VIEWS — lifestyle previews under the stage */
+  var KP_SCENES={"v113": {"cx": 613.1, "cy": 639.9, "bw": 492.6, "bh": 785.4, "ang": -6.17}, "v115": {"cx": 623.1, "cy": 580.1, "bw": 351.0, "bh": 703.5, "ang": -1.0}, "v119": {"cx": 558.2, "cy": 667.0, "bw": 573.3, "bh": 694.5, "ang": 29.77}, "v124": {"cx": 615.0, "cy": 676.8, "bw": 381.3, "bh": 747.6, "ang": 0.23}};
+  var sceneImgs={}, scenesLoaded=false, scenePend=null;
+  function loadScenes(cb){
+    if(scenesLoaded){ cb&&cb(); return; }
+    var keys=Object.keys(KP_SCENES), n=0;
+    keys.forEach(function(k){
+      var im=new Image(); im.crossOrigin='anonymous';
+      im.onload=im.onerror=function(){ if(++n===keys.length){ scenesLoaded=true; cb&&cb(); } };
+      im.src='assets/scenes/'+k+'.webp';
+      sceneImgs[k]=im;
+    });
+  }
+  function renderScenes(){
+    if(!state.photoImg) return;
+    document.querySelectorAll('#kpViewsRow .kpScene').forEach(function(cv){
+      var k=cv.dataset.s, m=KP_SCENES[k], im=sceneImgs[k];
+      if(!m||!im||!im.complete||!im.naturalWidth) return;
+      var c=cv.getContext('2d'), S=0.5;
+      c.setTransform(1,0,0,1,0,0);
+      c.fillStyle='#FFFFFF'; c.fillRect(0,0,600,600);
+      var d=state.photoImg, iw=d.naturalWidth||d.width, ih=d.naturalHeight||d.height;
+      var sc=Math.max(m.bw/iw,m.bh/ih)*1.28;
+      c.save();
+      c.translate(m.cx*S,m.cy*S);
+      c.rotate(m.ang*Math.PI/180);
+      try{ c.filter='saturate(1.06)'; }catch(_){ }
+      c.drawImage(d,-iw*sc/2*S,-ih*sc/2*S,iw*sc*S,ih*sc*S);
+      try{ c.filter='none'; }catch(_){ }
+      c.restore();
+      c.drawImage(im,0,0,600,600);
+    });
+  }
+  function scheduleScenes(){
+    var box=$('kpViews'); if(!box) return;
+    var show=!!state.photoImg && state.brand==='Apple';
+    box.style.display=show?'block':'none';
+    if(!show) return;
+    clearTimeout(scenePend);
+    scenePend=setTimeout(function(){ loadScenes(renderScenes); },350);
+  }
 
   /* ── print export (staff link) ── */
   $('exportLink').addEventListener('click',function(e){
