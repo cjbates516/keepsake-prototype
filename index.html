@@ -98,7 +98,16 @@
   #heroTrio{transform:scale(.94);margin:0 0 -6px !important}
   #heroSec .heroQuiz{border:0 !important;padding:12px 4px !important;font-size:12px !important;text-decoration:underline;text-underline-offset:3px}
 }
-#heroSec{background:linear-gradient(160deg,#FAF5EC 0%,#F7ECE2 55%,#F6E5DE 100%)}
+#heroSec{background:linear-gradient(160deg,#E23A40 0%,#DC282E 55%,#B81F24 100%)}
+#heroSec h1{color:#FFFFFF !important}
+#heroSec #heroWord{color:#F7E27A !important}
+#heroSec .heroBadge{background:rgba(255,255,255,.16) !important;color:#FFFFFF !important}
+#heroSec .heroSub{color:rgba(255,255,255,.88) !important}
+#heroSec .h-cta{background:#17171F !important;box-shadow:0 10px 24px rgba(0,0,0,.3) !important}
+#heroSec .heroStats *{color:#FFFFFF !important}
+#heroSec .heroStats div[style*="background:#E4E3E3"]{background:rgba(255,255,255,.3) !important}
+#heroSec .heroStats span[style*="letter-spacing:1px"]{color:#F7E27A !important}
+#bsFan{display:none}
 #kpCarousel .kpSlide{display:none}
 #kpCarousel .kpSlide.on{display:block}
 .kpCarCtrls{display:none}
@@ -113,6 +122,15 @@
   #kpCarousel #heroSec .heroFloat{display:none !important}
   #kpCarousel #heroSec p{font-size:15px !important;margin-bottom:0 !important}
   #kpCarousel #heroTrio{transform:scale(.8);transform-origin:top center}
+  #kpCarousel #heroCase{display:none !important}
+  #kpCarousel #bsFan{display:flex;align-items:center;justify-content:center}
+  #kpCarousel #bsFan{max-width:600px;margin:0 auto}
+  #bsFan img{width:128px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.35));border-radius:18px}
+  #bsFan img:nth-child(1){transform:rotate(-13deg) translate(24px,8px)}
+  #bsFan img:nth-child(2){transform:rotate(-6deg) translate(10px,-3px);z-index:1}
+  #bsFan img:nth-child(3){width:146px;transform:translateY(-12px);z-index:2}
+  #bsFan img:nth-child(4){transform:rotate(6deg) translate(-10px,-3px);z-index:1}
+  #bsFan img:nth-child(5){transform:rotate(13deg) translate(-24px,8px)}
 }
   .kpCarCtrls{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid #EFEDED}
 }
@@ -295,6 +313,13 @@
         </div>
       </div>
       <div style="position:relative;display:flex;justify-content:center;padding:34px 0;min-width:0;perspective:1400px">
+        <div id="bsFan" aria-label="Best-selling cases">
+          <img src="assets/promo/promo-abstract-leopard-pink.webp" alt="Pink leopard case">
+          <img src="assets/promo/promo-charming-minimalist-black-hearts-pattern.webp" alt="Black hearts case">
+          <img src="assets/promo/promo-philly-map-cream.webp" alt="Philadelphia map case">
+          <img src="assets/promo/promo-stylish-white-daisy-floral-pattern.webp" alt="Daisy case">
+          <img src="assets/promo/promo-playful-cartoon-cherries.webp" alt="Cherries case">
+        </div>
         <div id="heroCase" style="animation:fadeIn .7s cubic-bezier(.2,.7,.2,1) .2s both;position:relative;width:290px;height:554px;transition:transform .3s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 24px 32px rgba(46,56,61,.22))">
           <a class="heroSaleTop" href="gallery.html?device=iphone-17-pro-max" style="display:none;background:#F7E27A;border-radius:12px;padding:12px 16px;text-decoration:none;margin:4px 0 10px">
             <span style="font-weight:900;font-size:14px;color:#2D2D3B">Back to School Sale</span>
@@ -368,42 +393,6 @@
         </div>
       </div>
     </div>
-    <!-- ═══ best sellers ═══ -->
-    <section style="max-width:1280px;margin:0 auto;padding:8px 40px 56px">
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:18px">
-        <h2 style="font-weight:900;font-size:clamp(24px,3vw,36px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0">Best Sellers</h2>
-        <a href="gallery.html?device=iphone-17-pro-max" style="font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#DC282E;text-decoration:none;white-space:nowrap">Shop all &rarr;</a>
-      </div>
-      <div style="display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:8px">
-        <a class="kpBest" href="customizer.html?design=intricate-black-leopard-spots.jpg">
-          <img src="assets/promo/promo-intricate-black-leopard-spots.webp" alt="Leopard case" loading="lazy" width="300" height="400" style="width:100%;height:auto;filter:drop-shadow(0 10px 18px rgba(46,56,61,.16))">
-          <span style="display:block;font-weight:900;font-size:14px;color:#2D2D3B;margin-top:10px">Leopard</span>
-          <span style="display:inline-block;margin-top:8px;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px">Shop now</span>
-        </a>
-        <a class="kpBest" href="customizer.html?design=charming-minimalist-black-hearts-pattern.jpg">
-          <img src="assets/promo/promo-charming-minimalist-black-hearts-pattern.webp" alt="Black Hearts case" loading="lazy" width="300" height="400" style="width:100%;height:auto;filter:drop-shadow(0 10px 18px rgba(46,56,61,.16))">
-          <span style="display:block;font-weight:900;font-size:14px;color:#2D2D3B;margin-top:10px">Black Hearts</span>
-          <span style="display:inline-block;margin-top:8px;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px">Shop now</span>
-        </a>
-        <a class="kpBest" href="customizer.html?design=stylish-white-daisy-floral-pattern.jpg">
-          <img src="assets/promo/promo-stylish-white-daisy-floral-pattern.webp" alt="Daisies case" loading="lazy" width="300" height="400" style="width:100%;height:auto;filter:drop-shadow(0 10px 18px rgba(46,56,61,.16))">
-          <span style="display:block;font-weight:900;font-size:14px;color:#2D2D3B;margin-top:10px">Daisies</span>
-          <span style="display:inline-block;margin-top:8px;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px">Shop now</span>
-        </a>
-        <a class="kpBest" href="customizer.html?design=colorful-minimalist-wavy-stripes.jpg">
-          <img src="assets/promo/promo-colorful-minimalist-wavy-stripes.webp" alt="Wavy Stripes case" loading="lazy" width="300" height="400" style="width:100%;height:auto;filter:drop-shadow(0 10px 18px rgba(46,56,61,.16))">
-          <span style="display:block;font-weight:900;font-size:14px;color:#2D2D3B;margin-top:10px">Wavy Stripes</span>
-          <span style="display:inline-block;margin-top:8px;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px">Shop now</span>
-        </a>
-        <a class="kpBest" href="customizer.html?design=playful-cartoon-cherries.jpg">
-          <img src="assets/promo/promo-playful-cartoon-cherries.webp" alt="Cherries case" loading="lazy" width="300" height="400" style="width:100%;height:auto;filter:drop-shadow(0 10px 18px rgba(46,56,61,.16))">
-          <span style="display:block;font-weight:900;font-size:14px;color:#2D2D3B;margin-top:10px">Cherries</span>
-          <span style="display:inline-block;margin-top:8px;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px">Shop now</span>
-        </a>
-      </div>
-    </section>
-
-
     <!-- ═══ trust bar ═══ -->
         <!-- case wall marquee -->
     <section style="background:#FFFFFF;padding:0 0 40px;overflow:hidden">
