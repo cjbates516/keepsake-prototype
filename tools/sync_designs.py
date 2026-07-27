@@ -24,7 +24,7 @@ RULES = [
     (r"checker|smiley|groovy|y2k|gingham|plaid|disco|emoji", "Retro & Y2K"),
     (r"western|cowboy|cowgirl|rodeo|wild west", "Western"),
     (r"\bdogs?\b|\bcats?\b|puppy|puppies|kitten|paw print|dachshund|corgi|labrador|whale|shark|dolphin|octopus|sea life|ocean animal", "Animals"),
-    (r"birth flower", "Birth flowers"),
+    (r"birth[- ]flower", "Birth flowers"),
     (r"zodiac|constellation", "Zodiac"),
     (r"celestial|starry|\bstars?\b|\bmoons?\b|\bsuns?\b", "Celestial"),
     (r"city map|-map-|street map|\blake\b|marsh-creek|marsh creek|atlas", "City maps"),
