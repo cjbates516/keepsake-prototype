@@ -41,6 +41,7 @@
   body.kp-device-mode #deviceBar.kp-open{display:block !important}
   body.kp-device-mode .kpStep{display:flex;align-items:center;gap:10px;margin:0 0 12px}
   body.kp-device-mode #colorBar{margin:10px 0 18px}
+  body.kp-device-mode #deskSearch{display:none}
 }
 .kpStepN{width:26px;height:26px;border-radius:50%;background:#2D2D3B;color:#FFF;font-size:13px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .kpStepDone{background:#1E8E3E}
@@ -200,6 +201,7 @@
       </div>
       <div id="deviceBar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center"></div>
       <div id="wizardBar"></div>
+      <input id="deskSearch" type="search" placeholder="Search 539 designs — try &quot;dog&quot;, &quot;philly&quot;, &quot;hearts&quot;…" aria-label="Search designs" style="width:100%;max-width:440px;font-size:16px;padding:12px 16px;border:1px solid #E4E3E3;border-radius:12px;background:#FFFFFF;margin-bottom:16px">
       <div id="filters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"></div>
       <div id="colorBar" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:30px"></div>
       <div class="kpStep" id="step3Lab"><span class="kpStepN">3</span><span style="font-weight:900;font-size:15px;color:#2D2D3B">Tap a case you love</span></div>
@@ -699,6 +701,15 @@
 
   var mcat = /[?&]cat=([^&]+)/.exec(location.search);
   if (mcat) filter = decodeURIComponent(mcat[1]);
+  (function(){
+    var di=document.getElementById('deskSearch'), deb=null;
+    if(di) di.addEventListener('input',function(){
+      var v=this.value; clearTimeout(deb);
+      deb=setTimeout(function(){ searchQ=v.trim().toLowerCase();
+        var wi=document.getElementById('wizSearch'); if(wi && wi.value!==v) wi.value=v;
+        renderGrid(); },150);
+    });
+  })();
   var mcol = /[?&]color=([^&]+)/.exec(location.search);
   if (mcol){ colorSel = decodeURIComponent(mcol[1]); }
   fetch('assets/designs/designs.json').then(function(r){ return r.json(); }).then(function(d){

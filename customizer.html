@@ -290,15 +290,7 @@
               <button id="fitFit" style="flex:1;background:#FFF;color:#4E4E50;border:1px solid #E4E3E3;padding:10px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Fit whole photo</button>
             </div>
 
-            <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px">
-              <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9D;width:52px">Zoom</span>
-              <input id="zoomRange" type="range" min="0.5" max="2.5" step="0.01" value="1" style="flex:1;accent-color:#DC282E">
-            </div>
-            <div style="display:flex;align-items:center;gap:14px">
-              <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9D;width:52px">Rotate</span>
-              <input id="rotRange" type="range" min="-180" max="180" step="1" value="0" style="flex:1;accent-color:#DC282E">
-              <button id="resetBtn" class="h-borderink" style="background:#FFFFFF;border:1px solid #E4E3E3;color:#6E6E70;border-radius:999px;padding:7px 16px;font-size:12px;font-weight:800;cursor:pointer;transition:border-color .2s,color .2s">Reset</button>
-            </div>
+
           </div>
 
           <div style="margin:0 0 28px">
@@ -806,9 +798,7 @@
       VIEW.z = Math.min(8, Math.max(1, VIEW.z * (e.deltaY<0?1.12:0.9)));
       if(VIEW.z===1){VIEW.x=VIEW.y=0;}
       applyView(); return; }
-    if(!state.photoImg)return; e.preventDefault();
-    state.scale=Math.min(2.5,Math.max(0.5,state.scale*(e.deltaY<0?1.05:0.95)));
-    $('zoomRange').value=state.scale; render(); },{passive:false});
+    },{passive:false});
 
   /* ── stage state ── */
   function hasKit(){ return !!KITS[state.model]; }
@@ -920,7 +910,6 @@
       state.photoImg=src; state.photoUrl=null; state.isLibraryDesign=false;
       state.fitMode = (w/h > 1.15) ? 'fit' : 'fill';
       state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none'; state.reserved=false;
-      $('zoomRange').value=1; $('rotRange').value=0;
       renderFilterChips(); updateDpi(); updateStage(); updateSummary();
       var th=document.createElement('canvas'); var tk=Math.min(1, 512/Math.max(src.naturalWidth,src.naturalHeight));
       th.width=Math.max(1,Math.round(src.naturalWidth*tk)); th.height=Math.max(1,Math.round(src.naturalHeight*tk));
@@ -949,12 +938,7 @@
   }
   $('fitFill').addEventListener('click',function(){ state.fitMode='fill'; syncFitChips(); render(); });
   $('fitFit').addEventListener('click',function(){ state.fitMode='fit'; syncFitChips(); render(); });
-  $('zoomRange').addEventListener('input',function(){ state.scale=+this.value; render(); });
-  $('rotRange').addEventListener('input',function(){ state.rot=+this.value; render(); });
-  $('resetBtn').addEventListener('click',function(){
-    state.px=0;state.py=0;state.scale=1;state.rot=0;
-    $('zoomRange').value=1;$('rotRange').value=0; render();
-  });
+
 
   /* ── filters ── */
   var KP_FILTER_OK=(function(){ try{ var x=document.createElement('canvas').getContext('2d'); x.filter='blur(1px)'; return x.filter!=='none'; }catch(_){ return false; } })();
@@ -1360,7 +1344,7 @@
         updateFitNote(); updateStage(); updateSummary();
         var applyRest=function(){
           if(su.ph){ state.px=su.ph.px; state.py=su.ph.py; state.scale=su.ph.sc; state.rot=su.ph.rot; state.filter=su.ph.f||'none';
-            $('zoomRange').value=state.scale; $('rotRange').value=state.rot; }
+            }
           if(su.txt){ state.text=su.txt.t; state.textFont=su.txt.f; state.textColor=su.txt.c; state.textSize=su.txt.sz; state.textPos=su.txt.p; state.textVertical=su.txt.v;
             $('nameInput').value=state.text; renderFontChips(); }
           enableCalUI(); buildPaths(); render(); updateStage();
