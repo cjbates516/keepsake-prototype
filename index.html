@@ -98,6 +98,17 @@
   #heroTrio{transform:scale(.94);margin:0 0 -6px !important}
   #heroSec .heroQuiz{border:0 !important;padding:12px 4px !important;font-size:12px !important;text-decoration:underline;text-underline-offset:3px}
 }
+#kpCarousel .kpSlide{display:none}
+#kpCarousel .kpSlide.on{display:block}
+.kpCarCtrls{display:none}
+@media(min-width:901px){
+  #kpCarousel{max-width:1360px;margin:18px auto 0;border:2px solid #17171F;border-radius:26px;overflow:hidden;position:relative;background:#FFFFFF}
+  .kpCarCtrls{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid #EFEDED}
+}
+@media(max-width:900px){
+  #kpCarousel .kpSlide[data-slide="1"],#kpCarousel .kpSlide[data-slide="2"]{display:none !important}
+  #kpCarousel .kpSlide[data-slide="0"]{display:block !important}
+}
 </style>
 </head>
 <body>
@@ -242,6 +253,9 @@
 
   <main style="flex:1">
 
+    <!-- ═══ hero carousel ═══ -->
+    <div id="kpCarousel">
+      <div class="kpSlide on" data-slide="0">
     <!-- ═══ hero ═══ -->
     <section id="heroSec" style="max-width:1280px;margin:0 auto;padding:76px 40px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:40px;align-items:center">
       <div>
@@ -338,6 +352,46 @@
       </div>
     </section>
 
+      </div>
+    <!-- carousel slide 2: seasonal collection -->
+    <section class="kpSlide" data-slide="1" style="position:relative;min-height:520px">
+      <div style="position:absolute;inset:0;display:flex">
+        <div style="flex:1;background:url('assets/designs/halloween-bats-on-orange.jpg') center/cover"></div>
+        <div style="flex:1;background:url('assets/designs/halloween-cute-ghosts-and-pumpkins-on-lavender.jpg') center/cover"></div>
+        <div style="flex:1;background:url('assets/designs/halloween-pink-ghosts-pumpkins-and-daisies.jpg') center/cover"></div>
+        <div style="flex:1;background:url('assets/designs/halloween-boo-crew-ghosts-on-charcoal.jpg') center/cover"></div>
+      </div>
+      <div style="position:absolute;inset:0;background:rgba(23,23,31,.38)"></div>
+      <div style="position:relative;min-height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px">
+        <div style="font-size:15px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#F7E27A;margin-bottom:14px">New arrivals</div>
+        <h2 style="font-weight:900;font-size:clamp(44px,6vw,84px);letter-spacing:.02em;color:#FFFFFF;text-transform:uppercase;margin:0 0 26px;text-shadow:0 4px 30px rgba(0,0,0,.35)">Spooky Season</h2>
+        <a href="gallery.html?cat=Halloween" class="btn" style="background:#FFFFFF;color:#17171F;padding:15px 34px;border-radius:999px;font-weight:900;font-size:14px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none">Shop the collection</a>
+      </div>
+    </section>
+    <!-- carousel slide 3: three cases, three personalities -->
+    <section class="kpSlide" data-slide="2" style="position:relative;background:#17171F;min-height:520px">
+      <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;min-height:520px;padding:60px 48px">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><span style="color:#F7E27A;letter-spacing:2px;font-size:15px">★★★★★</span><span style="font-size:13px;font-weight:800;color:#B9BDCB">4.9 · 312 in-store reviews</span></div>
+          <h2 style="font-weight:900;font-size:clamp(38px,4.6vw,64px);letter-spacing:-.01em;color:#FFFFFF;margin:0 0 16px;line-height:1.05">One case.<br>Every personality.</h2>
+          <p style="font-size:16px;color:#B9BDCB;margin:0 0 28px;max-width:400px;line-height:1.6">539 ready-made designs — or the photo on your phone. Printed in store while you watch.</p>
+          <a href="gallery.html" class="btn" style="background:#DC282E;color:#FFFFFF;padding:15px 34px;border-radius:999px;font-weight:900;font-size:14px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;display:inline-block">Find yours</a>
+        </div>
+        <div style="display:flex;align-items:flex-end;justify-content:center;gap:26px">
+          <div style="text-align:center"><div style="font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#FFFFFF;margin-bottom:6px">Loud</div><div style="color:#5A5A68;line-height:.9;margin-bottom:10px">⋮</div><img src="assets/promo/promo-abstract-leopard-pink.webp" alt="Pink leopard case" style="width:170px;filter:drop-shadow(0 18px 30px rgba(0,0,0,.5))"></div>
+          <div style="text-align:center;margin-bottom:34px"><div style="font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#FFFFFF;margin-bottom:6px">Local</div><div style="color:#5A5A68;line-height:.9;margin-bottom:10px">⋮</div><img src="assets/promo/promo-philly-map-cream.webp" alt="Philadelphia map case" style="width:196px;filter:drop-shadow(0 18px 30px rgba(0,0,0,.5))"></div>
+          <div style="text-align:center"><div style="font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#FFFFFF;margin-bottom:6px">Dreamy</div><div style="color:#5A5A68;line-height:.9;margin-bottom:10px">⋮</div><img src="assets/promo/promo-dreamy-gradient-cosmic-background-with-sparkles.webp" alt="Cosmic sparkle case" style="width:170px;filter:drop-shadow(0 18px 30px rgba(0,0,0,.5))"></div>
+        </div>
+      </div>
+    </section>
+      <div class="kpCarCtrls">
+        <span id="kpCarCount" style="font-size:14px;font-weight:700;color:#4E4E50">1 of 3</span>
+        <div style="display:flex;gap:10px">
+          <button id="kpCarPrev" aria-label="Previous slide" style="width:44px;height:44px;border-radius:50%;border:1.5px solid #2D2D3B;background:#FFFFFF;cursor:pointer;font-size:18px">&#8592;</button>
+          <button id="kpCarNext" aria-label="Next slide" style="width:44px;height:44px;border-radius:50%;border:1.5px solid #2D2D3B;background:#FFFFFF;cursor:pointer;font-size:18px">&#8594;</button>
+        </div>
+      </div>
+    </div>
     <!-- ═══ trust bar ═══ -->
         <!-- case wall marquee -->
     <section style="background:#FFFFFF;padding:0 0 40px;overflow:hidden">
@@ -637,6 +691,28 @@
     });
     wrap.addEventListener('mouseleave', function(){ hc.style.transform = 'none'; });
   }
+
+  // hero carousel
+  (function(){
+    var slides=document.querySelectorAll('#kpCarousel .kpSlide');
+    if(!slides.length) return;
+    var idx=0, n=slides.length, timer=null;
+    var count=document.getElementById('kpCarCount');
+    function show(i){
+      idx=(i+n)%n;
+      slides.forEach(function(sl,j){ sl.classList.toggle('on', j===idx); });
+      if(count) count.textContent=(idx+1)+' of '+n;
+    }
+    function arm(){
+      if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if(timer) clearInterval(timer);
+      timer=setInterval(function(){ if(innerWidth>900) show(idx+1); }, 7000);
+    }
+    var pv=document.getElementById('kpCarPrev'), nx=document.getElementById('kpCarNext');
+    if(pv) pv.addEventListener('click',function(){ show(idx-1); arm(); });
+    if(nx) nx.addEventListener('click',function(){ show(idx+1); arm(); });
+    arm();
+  })();
 
   // mega menu
   var mega = $('mega');
