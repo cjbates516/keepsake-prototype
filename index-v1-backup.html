@@ -33,7 +33,7 @@
   .h-darkred:hover{color:#B81F24;text-decoration:none}
   .h-inklink:hover{color:#2D2D3B;text-decoration:none}
   .h-cta{transition:background .2s,transform .2s}
-  .h-cta:hover{background:#2D2D3B !important;transform:translateY(-2px)}
+  .h-cta:hover{background:#17171F !important;transform:translateY(-2px)}
   .h-cta:active{transform:scale(.98)}
   .h-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(78,78,80,.14)}
   .h-cardsm:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(78,78,80,.14)}
@@ -46,14 +46,14 @@
   .h-perkdark:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(220,40,46,.28)}
   .h-perkdarker:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(46,56,61,.3)}
   .h-b2b:hover{background:#DC282E !important}
-  .h-chatred:hover{background:#B81F24 !important}
+  .h-chatred:hover{background:#B71C22 !important}
   .h-foot{color:#6E6E70}
   .h-foot:hover{color:#2D2D3B;text-decoration:none}
   .h-quiz:hover{border-color:#DC282E !important;color:#DC282E !important}
   .h-quiz:active{transform:scale(.96)}
   .h-chip:hover .ring{border-color:#DC282E;transform:scale(1.05)}
   .h-chip:hover{text-decoration:none}
-  .h-navy:hover{background:#2D2D3B !important;color:#FFFFFF !important;border-color:#B81F24 !important}
+  .h-navy:hover{background:#17171F !important;color:#FFFFFF !important;border-color:#B81F24 !important}
   /* placeholder image slots */
   .slot{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#F3F2F2;color:#9A9A9D;
     font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;text-align:center;padding:10px;box-sizing:border-box;line-height:1.4}
@@ -98,19 +98,48 @@
   #heroTrio{transform:scale(.94);margin:0 0 -6px !important}
   #heroSec .heroQuiz{border:0 !important;padding:12px 4px !important;font-size:12px !important;text-decoration:underline;text-underline-offset:3px}
 }
-#heroSec{background:linear-gradient(180deg,#FDF0F0 0%,#FFFFFF 100%)}
+#heroSec{background:linear-gradient(160deg,#E23A40 0%,#DC282E 55%,#B81F24 100%)}
+#heroSec h1{color:#FFFFFF !important}
+#heroSec #heroWord{color:#F7E27A !important}
+#heroSec .heroBadge{background:rgba(255,255,255,.16) !important;color:#FFFFFF !important}
+#heroSec .heroSub{color:rgba(255,255,255,.88) !important}
+#heroSec .h-cta{background:#17171F !important;box-shadow:0 10px 24px rgba(0,0,0,.3) !important}
+#heroSec .heroStats *{color:#FFFFFF !important}
+#heroSec .heroStats div[style*="background:#E4E3E3"]{background:rgba(255,255,255,.3) !important}
+#heroSec .heroStats span[style*="letter-spacing:1px"]{color:#F7E27A !important}
 #bsFan{display:none}
+#kpCarousel .kpSlide{display:none}
+#kpCarousel .kpSlide.on{display:block}
+.kpCarCtrls{display:none}
 @media(min-width:901px){
+  #kpCarousel{max-width:1360px;margin:18px auto 0;border:2px solid #17171F;border-radius:26px;overflow:hidden;position:relative;background:#FFFFFF}
+  #kpCarousel .kpSlide{height:560px;overflow:hidden}
+  #kpCarousel .kpSlide[data-slide="0"],#kpCarousel .kpSlide[data-slide="2"],#kpCarousel .kpSlide[data-slide="3"]{min-height:0}
+  #kpCarousel .kpSlide[data-slide="0"]>div{min-height:520px !important;padding:40px 48px !important}
+  #kpCarousel .kpSlide[data-slide="2"]>div:last-child{min-height:560px !important;padding:40px !important}
+  #kpCarousel .kpSlide[data-slide="3"]>div{min-height:560px !important;padding:40px 48px !important}
+  #kpCarousel #heroSec{padding:36px 48px 0 !important;min-height:0 !important}
+  #kpCarousel #heroSec h1{font-size:clamp(34px,3.4vw,52px) !important;margin-bottom:14px !important}
+  #kpCarousel #heroSec .heroFloat{display:none !important}
+  #kpCarousel #heroSec p{font-size:15px !important;margin-bottom:0 !important}
+  #kpCarousel #heroTrio{transform:scale(.8);transform-origin:top center}
+  #kpCarousel #heroCase{display:none !important}
+  #kpCarousel #bsFan{display:flex;align-items:center;justify-content:center}
+  #kpCarousel #bsFan{max-width:600px;margin:0 auto}
   #bsFan img{width:128px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.35));border-radius:18px}
   #bsFan img:nth-child(1){transform:rotate(-13deg) translate(24px,8px)}
   #bsFan img:nth-child(2){transform:rotate(-6deg) translate(10px,-3px);z-index:1}
   #bsFan img:nth-child(3){width:146px;transform:translateY(-12px);z-index:2}
   #bsFan img:nth-child(4){transform:rotate(6deg) translate(-10px,-3px);z-index:1}
   #bsFan img:nth-child(5){transform:rotate(13deg) translate(-24px,8px)}
+  .kpCarCtrls{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid #EFEDED}
 }
 @media(min-width:901px) and (max-width:1150px){
+  .kpSlide[data-slide="0"] .kpFan img:first-child,.kpSlide[data-slide="0"] .kpFan img:last-child{display:none}
 }
 @media(max-width:900px){
+  #kpCarousel .kpSlide[data-slide="0"],#kpCarousel .kpSlide[data-slide="2"],#kpCarousel .kpSlide[data-slide="3"]{display:none !important}
+  #kpCarousel .kpSlide[data-slide="1"]{display:block !important}
 }
 </style>
 </head>
@@ -125,10 +154,10 @@
   <!-- header -->
   <header style="position:sticky;top:0;z-index:60;background:#FFFFFF;border-bottom:1px solid #F3F2F2;padding:0 clamp(10px,2vw,28px);display:flex;align-items:center;justify-content:space-between;min-height:72px">
     <div style="display:flex;align-items:center;gap:2px">
-      <button id="burger" aria-label="Menu" aria-expanded="false" aria-label="Menu" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#2D2D3B;transition:background .2s">
+      <button id="burger" aria-label="Menu" aria-expanded="false" aria-label="Menu" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#17171F;transition:background .2s">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="14" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
       </button>
-      <a href="gallery.html" aria-label="Search" title="Search" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#2D2D3B;transition:background .2s">
+      <a href="gallery.html" aria-label="Search" title="Search" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#17171F;transition:background .2s">
         <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       </a>
     </div>
@@ -149,10 +178,10 @@
         <path d="M23 31.8l-5-5.1c-1.35-1.4-1.35-3.6 0-5 1.35-1.4 3.55-1.4 4.9 0l.1.1.1-.1c1.35-1.4 3.55-1.4 4.9 0 1.35 1.4 1.35 3.6 0 5z" fill="#F3F2F2"></path>
         <rect x="58" y="5" width="19" height="33" rx="5.5" fill="#2D2D3B"></rect>
         <rect x="60.5" y="7.5" width="14" height="28" rx="3.5" fill="#F3F2F2"></rect>
-        <circle cx="64" cy="11" r="1.5" fill="#2D2D3B"></circle>
+        <circle cx="64" cy="11" r="1.5" fill="#17171F"></circle>
         <g style="animation:ksPrint 6s cubic-bezier(.2,.7,.2,1) infinite">
           <rect x="60.5" y="7.5" width="14" height="28" rx="3.5" fill="#E8E7E7"></rect>
-          <circle cx="64" cy="11" r="1.5" fill="#2D2D3B"></circle>
+          <circle cx="64" cy="11" r="1.5" fill="#17171F"></circle>
           <path d="M67.5 26.5l-3-3.1c-.8-.83-.8-2.15 0-2.98.8-.83 2.1-.83 2.9 0l.1.1.1-.1c.8-.83 2.1-.83 2.9 0 .8.83.8 2.15 0 2.98z" fill="#DC282E"></path>
         </g>
       </svg>
@@ -163,13 +192,13 @@
     </a>
     <div style="display:flex;align-items:center;gap:2px">
       <a href="b2b.html" class="desktop-only h-circle" style="font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#4E4E50;padding:10px 12px;border-radius:999px;transition:background .2s,color .2s">B2B Login</a>
-      <select aria-label="Language" class="desktop-only" style="padding:10px 2px;border:0;font-size:12px;font-weight:800;color:#2D2D3B;cursor:pointer;background:#FFFFFF">
+      <select aria-label="Language" class="desktop-only" style="padding:10px 2px;border:0;font-size:12px;font-weight:800;color:#17171F;cursor:pointer;background:#FFFFFF">
         <option value="en">EN</option><option value="es">ES</option><option value="fr">FR</option>
       </select>
-      <a href="account.html" aria-label="My account" title="My account" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;color:#2D2D3B;transition:background .2s">
+      <a href="account.html" aria-label="My account" title="My account" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;color:#17171F;transition:background .2s">
         <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
       </a>
-      <a href="checkout.html" aria-label="Cart" title="Cart" class="h-circle" style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#2D2D3B;transition:background .2s">
+      <a href="checkout.html" aria-label="Cart" title="Cart" class="h-circle" style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#17171F;transition:background .2s">
         <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
       </a>
     </div>
@@ -256,6 +285,26 @@
 
   <main style="flex:1">
 
+    <!-- ═══ hero carousel ═══ -->
+    <div id="kpCarousel">
+      <section class="kpSlide on" data-slide="0" style="position:relative;background:linear-gradient(160deg,#E23A40 0%,#DC282E 55%,#B81F24 100%)">
+        <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:30px;align-items:center;min-height:520px;padding:50px 48px">
+          <div>
+            <div style="font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:14px">New — the City Maps collection</div>
+            <h2 style="font-weight:900;font-size:clamp(38px,4.6vw,66px);letter-spacing:-.01em;color:#FFFFFF;margin:0 0 16px;line-height:1.02;text-transform:uppercase">Your streets.<br>Your case.</h2>
+            <p style="font-size:16px;color:rgba(255,255,255,.88);margin:0 0 26px;max-width:420px;line-height:1.6">Real street maps of your city — Philly to LA, printed in store today. Even the corner where you met.</p>
+            <a href="gallery.html?cat=City%20maps" class="btn" style="background:#FFFFFF;color:#B81F24;padding:15px 34px;border-radius:999px;font-weight:900;font-size:14px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;display:inline-block">Shop City Maps</a>
+          </div>
+          <div class="kpFan" style="display:flex;align-items:center;justify-content:center">
+            <img src="assets/promo/promo-boston-map-cream.webp" alt="Boston map case" style="width:clamp(100px,11vw,158px);transform:rotate(-13deg) translate(30px,10px);filter:drop-shadow(0 18px 26px rgba(0,0,0,.38));border-radius:20px">
+            <img src="assets/promo/promo-nyc-map-navy.webp" alt="New York map case" style="width:clamp(106px,11.6vw,164px);transform:rotate(-6deg) translate(12px,-6px);filter:drop-shadow(0 18px 26px rgba(0,0,0,.38));border-radius:20px;z-index:1">
+            <img src="assets/promo/promo-philly-map-cream.webp" alt="Philadelphia map case" style="width:clamp(118px,13vw,184px);transform:translateY(-14px);filter:drop-shadow(0 20px 30px rgba(0,0,0,.42));border-radius:20px;z-index:2">
+            <img src="assets/promo/promo-heart-map-cream.webp" alt="Where we met heart map case" style="width:clamp(106px,11.6vw,164px);transform:rotate(6deg) translate(-12px,-6px);filter:drop-shadow(0 18px 26px rgba(0,0,0,.38));border-radius:20px;z-index:1">
+            <img src="assets/promo/promo-la-map-blush.webp" alt="Los Angeles map case" style="width:clamp(100px,11vw,158px);transform:rotate(13deg) translate(-30px,10px);filter:drop-shadow(0 18px 26px rgba(0,0,0,.38));border-radius:20px">
+          </div>
+        </div>
+      </section>
+      <div class="kpSlide" data-slide="1">
     <!-- ═══ hero ═══ -->
     <section id="heroSec" style="max-width:1280px;margin:0 auto;padding:76px 40px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:40px;align-items:center">
       <div>
@@ -263,17 +312,25 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
           Printed in store — ready today
         </div>
-        <h1 style="animation:fadeUp .6s cubic-bezier(.2,.7,.2,1) .1s both;font-weight:900;font-size:clamp(42px,6.2vw,92px);line-height:.98;letter-spacing:-.025em;color:#2D2D3B;text-transform:uppercase;margin:0 0 24px">One photo.<br>One case.<br><span style="display:inline">Made for <span id="heroWord" style="color:#DC282E;display:inline-block;animation:fadeUp .45s cubic-bezier(.2,.7,.2,1) both">the grad.</span></span></h1>
+        <h1 style="animation:fadeUp .6s cubic-bezier(.2,.7,.2,1) .1s both;font-weight:900;font-size:clamp(42px,6.2vw,92px);line-height:.98;letter-spacing:-.025em;color:#2D2D3B;text-transform:uppercase;margin:0 0 24px">One photo.<br>One case.<br><span style="display:inline">Made for <span id="heroWord" style="color:#DC282E;display:inline-block;animation:fadeUp .45s cubic-bezier(.2,.7,.2,1) both">Mom.</span></span></h1>
         <div style="animation:fadeUp .6s cubic-bezier(.2,.7,.2,1) .18s both;display:flex;gap:14px;flex-wrap:wrap;align-items:center">
-          <a href="customizer.html" class="h-cta" style="display:inline-block;background:#DC282E;color:#FFFFFF;border:0;padding:18px 34px;border-radius:999px;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Design your case</a>
-          <a href="gallery.html" style="display:inline-block;margin-left:14px;color:#B81F24;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:3px">or browse 600+ ready-made designs</a>
+          <a href="customizer.html" class="h-cta" style="display:inline-block;background:#2D2D3B;color:#FFFFFF;border:0;padding:18px 34px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;box-shadow:0 10px 24px rgba(220,40,46,.28)">Design your case</a>
 
         </div>
         <p class="heroSub" style="animation:fadeUp .6s cubic-bezier(.2,.7,.2,1) .24s both;font-size:16px;line-height:1.5;color:#6E6E70;max-width:460px;margin:18px 0 0">Your photo, printed while you watch — walk out with it today.</p>
-        
+        <a href="gallery.html?device=iphone-17-pro-max" class="h-card heroSaleCard" style="display:inline-block;margin-top:20px;background:#F7E27A;border-radius:14px;padding:14px 22px;text-decoration:none;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s">
+          <span style="display:block;font-weight:900;font-size:17px;color:#2D2D3B">Back to School Sale</span>
+          <span style="display:block;font-size:13px;font-weight:700;color:#4E4E50;margin-top:3px">10% off your first case — code <b style="color:#B81F24">FIRST10</b> &nbsp;·&nbsp; shop ready-made designs &rarr;</span>
+        </a>
         <div style="display:none">
         </div>
-        <div class="heroStats" style="margin-top:34px;font-size:14px;font-weight:700;color:#6E6E70"><span style="color:#DC282E;letter-spacing:1px">★★★★★</span> 4.9 · 312 in-store reviews · West Chester · Pottstown · Newark DE · ready today</div>
+        <div class="heroStats" style="animation:fadeUp .6s cubic-bezier(.2,.7,.2,1) .34s both;display:flex;flex-wrap:wrap;gap:18px 24px;margin-top:44px;align-items:center">
+          <div><div style="display:flex;align-items:baseline;gap:6px"><span style="font-size:26px;font-weight:900;color:#2D2D3B;line-height:1">4.9</span><span style="color:#DC282E;font-size:14px;letter-spacing:1px">★★★★★</span></div><div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9A9A9D;margin-top:5px">312 reviews</div></div>
+          <div style="width:1px;height:36px;background:#E4E3E3"></div>
+          <div><div style="font-size:26px;font-weight:900;color:#DC282E;line-height:1">Today</div><div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9A9A9D;margin-top:5px">Not 7–10 days</div></div>
+          <div style="width:1px;height:36px;background:#E4E3E3"></div>
+          <div><div style="font-size:26px;font-weight:900;color:#2D2D3B;line-height:1">100%</div><div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9A9A9D;margin-top:5px">Guaranteed</div></div>
+        </div>
       </div>
       <div style="position:relative;display:flex;justify-content:center;padding:34px 0;min-width:0;perspective:1400px">
         <div id="bsFan" aria-label="Best-selling cases">
@@ -284,7 +341,10 @@
           <img src="assets/promo/promo-playful-cartoon-cherries.webp" alt="Cherries case">
         </div>
         <div id="heroCase" style="animation:fadeIn .7s cubic-bezier(.2,.7,.2,1) .2s both;position:relative;width:290px;height:554px;transition:transform .3s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 24px 32px rgba(46,56,61,.22))">
-          
+          <a class="heroSaleTop" href="gallery.html?device=iphone-17-pro-max" style="display:none;background:#F7E27A;border-radius:12px;padding:12px 16px;text-decoration:none;margin:4px 0 10px">
+            <span style="font-weight:900;font-size:14px;color:#2D2D3B">Back to School Sale</span>
+            <span style="font-size:12.5px;font-weight:700;color:#4E4E50"> — 10% off with code <b style="color:#B81F24">FIRST10</b> &rarr;</span>
+          </a>
           <div id="heroTrio" style="position:absolute;inset:0">
             <div class="heroUnit" id="heroL">
               <img src="assets/cases/i17pm-blue.webp" alt="Deep blue iPhone 17 Pro Max case">
@@ -307,49 +367,83 @@
           <div style="font-size:11px;font-weight:700;color:#9A9A9D;margin-top:2px">Priya K. · Mother's Day</div>
         </div>
         <div class="heroFloat" style="animation:fadeUp .7s cubic-bezier(.2,.7,.2,1) .65s both;position:absolute;bottom:-4px;left:0;width:196px;background:#2D2D3B;color:#FFFFFF;border-radius:10px;padding:13px 16px;box-shadow:0 18px 40px rgba(46,56,61,.25);transform:rotate(-2deg);display:flex;align-items:center;gap:10px">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC282E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F15F5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
           <div><div style="font-size:13px;font-weight:900">Typically under an hour</div><div style="font-size:11px;font-weight:700;color:#B9BDCB;margin-top:1px">Watch it print in store</div></div>
         </div>
       </div>
     </section>
 
-
       </div>
-    </div>
-    <!-- ═══ best sellers ═══ -->
-    <section style="max-width:1280px;margin:0 auto;padding:64px 40px 72px">
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:26px">
-        <h2 style="font-weight:900;font-size:clamp(28px,3.2vw,40px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0">Best Sellers</h2>
-        <a href="gallery.html?device=iphone-17-pro-max" style="color:#B81F24;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;text-decoration:underline;text-underline-offset:3px">Shop all</a>
+    <!-- carousel slide 2: seasonal collection -->
+    <section class="kpSlide" data-slide="2" style="position:relative;min-height:520px">
+      <div style="position:absolute;inset:0;display:flex">
+        <div style="flex:1;background:url('assets/designs/halloween-bats-on-orange.jpg') center/cover"></div>
+        <div style="flex:1;background:url('assets/designs/halloween-cute-ghosts-and-pumpkins-on-lavender.jpg') center/cover"></div>
+        <div style="flex:1;background:url('assets/designs/halloween-pink-ghosts-pumpkins-and-daisies.jpg') center/cover"></div>
+        <div style="flex:1;background:url('assets/designs/halloween-boo-crew-ghosts-on-charcoal.jpg') center/cover"></div>
       </div>
-      <div style="display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px">
-        <a class="kpBest" href="customizer.html?design=abstract-leopard-pink.jpg&model=iphone-17-pro-max"><img src="assets/promo/promo-abstract-leopard-pink.webp" alt="Pink Leopard case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Pink Leopard</div><div style="font-size:12px;font-weight:700;color:#9A9A9D;margin-top:2px">From $64.99</div></a>
-        <a class="kpBest" href="customizer.html?design=philadelphia-city-map-cream.jpg&model=iphone-17-pro-max"><img src="assets/promo/promo-philly-map-cream.webp" alt="Philadelphia Map case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Philadelphia Map</div><div style="font-size:12px;font-weight:700;color:#9A9A9D;margin-top:2px">From $64.99</div></a>
-        <a class="kpBest" href="customizer.html?design=charming-minimalist-black-hearts-pattern-2.jpg&model=iphone-17-pro-max"><img src="assets/promo/promo-charming-minimalist-black-hearts-pattern.webp" alt="Black Hearts case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Black Hearts</div><div style="font-size:12px;font-weight:700;color:#9A9A9D;margin-top:2px">From $64.99</div></a>
-        <a class="kpBest" href="customizer.html?design=zodiac-leo-night-sky.jpg&model=iphone-17-pro-max"><img src="assets/promo/promo-zodiac-leo-night-sky.webp" alt="Leo — Night Sky case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Leo — Night Sky</div><div style="font-size:12px;font-weight:700;color:#9A9A9D;margin-top:2px">From $64.99</div></a>
-        <a class="kpBest" href="customizer.html?design=stylish-white-daisy-floral-pattern.jpg&model=iphone-17-pro-max"><img src="assets/promo/promo-stylish-white-daisy-floral-pattern.webp" alt="White Daisies case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">White Daisies</div><div style="font-size:12px;font-weight:700;color:#9A9A9D;margin-top:2px">From $64.99</div></a>
-        <a class="kpBest" href="customizer.html?design=where-it-all-began-heart-map-cream.jpg&model=iphone-17-pro-max"><img src="assets/promo/promo-heart-map-cream.webp" alt="Where We Met case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Where We Met</div><div style="font-size:12px;font-weight:700;color:#9A9A9D;margin-top:2px">From $64.99</div></a>
-        <a class="kpBest" href="customizer.html?design=dreamy-gradient-cosmic-background-with-sparkles.jpg&model=iphone-17-pro-max"><img src="assets/promo/promo-dreamy-gradient-cosmic-background-with-sparkles.webp" alt="Cosmic Sparkle case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Cosmic Sparkle</div><div style="font-size:12px;font-weight:700;color:#9A9A9D;margin-top:2px">From $64.99</div></a>
-        <a class="kpBest" href="customizer.html?design=playful-cartoon-cherries.jpg&model=iphone-17-pro-max"><img src="assets/promo/promo-playful-cartoon-cherries.webp" alt="Cherries case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Cherries</div><div style="font-size:12px;font-weight:700;color:#9A9A9D;margin-top:2px">From $64.99</div></a>
+      <div style="position:absolute;inset:0;background:rgba(23,23,31,.38)"></div>
+      <div style="position:relative;min-height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px">
+        <div style="font-size:15px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#F7E27A;margin-bottom:14px">New arrivals</div>
+        <h2 style="font-weight:900;font-size:clamp(44px,6vw,84px);letter-spacing:.02em;color:#FFFFFF;text-transform:uppercase;margin:0 0 26px;text-shadow:0 4px 30px rgba(0,0,0,.35)">Spooky Season</h2>
+        <a href="gallery.html?cat=Halloween" class="btn" style="background:#FFFFFF;color:#17171F;padding:15px 34px;border-radius:999px;font-weight:900;font-size:14px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none">Shop the collection</a>
       </div>
     </section>
-      <section id="mapsBand" style="position:relative;background:#DC282E">
-        <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:30px;align-items:center;min-height:520px;padding:50px 48px">
-          <div>
-            <div style="font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:14px">New — the City Maps collection</div>
-            <h2 style="font-weight:900;font-size:clamp(38px,4.6vw,66px);letter-spacing:-.01em;color:#FFFFFF;margin:0 0 16px;line-height:1.02;text-transform:uppercase">Your streets.<br>Your case.</h2>
-            <p style="font-size:16px;color:rgba(255,255,255,.88);margin:0 0 26px;max-width:420px;line-height:1.6">Real street maps of your city — Philly to LA, printed in store today. Even the corner where you met.</p>
-            <a href="gallery.html?cat=City%20maps" class="btn" style="background:#FFFFFF;color:#B81F24;padding:15px 34px;border-radius:999px;font-weight:900;font-size:14px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;display:inline-block">Shop City Maps</a>
-          </div>
-          <div class="kpFan" style="display:flex;align-items:center;justify-content:center">
-            <img src="assets/promo/promo-boston-map-cream.webp" alt="Boston map case" style="width:clamp(100px,11vw,158px);transform:rotate(-13deg) translate(30px,10px);filter:drop-shadow(0 18px 26px rgba(0,0,0,.38));border-radius:20px">
-            <img src="assets/promo/promo-nyc-map-navy.webp" alt="New York map case" style="width:clamp(106px,11.6vw,164px);transform:rotate(-6deg) translate(12px,-6px);filter:drop-shadow(0 18px 26px rgba(0,0,0,.38));border-radius:20px;z-index:1">
-            <img src="assets/promo/promo-philly-map-cream.webp" alt="Philadelphia map case" style="width:clamp(118px,13vw,184px);transform:translateY(-14px);filter:drop-shadow(0 20px 30px rgba(0,0,0,.42));border-radius:20px;z-index:2">
-            <img src="assets/promo/promo-heart-map-cream.webp" alt="Where we met heart map case" style="width:clamp(106px,11.6vw,164px);transform:rotate(6deg) translate(-12px,-6px);filter:drop-shadow(0 18px 26px rgba(0,0,0,.38));border-radius:20px;z-index:1">
-            <img src="assets/promo/promo-la-map-blush.webp" alt="Los Angeles map case" style="width:clamp(100px,11vw,158px);transform:rotate(13deg) translate(-30px,10px);filter:drop-shadow(0 18px 26px rgba(0,0,0,.38));border-radius:20px">
-          </div>
+    <!-- carousel slide 3: three cases, three personalities -->
+    <section class="kpSlide" data-slide="3" style="position:relative;background:#17171F;min-height:520px">
+      <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;min-height:520px;padding:60px 48px">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><span style="color:#F7E27A;letter-spacing:2px;font-size:15px">★★★★★</span><span style="font-size:13px;font-weight:800;color:#B9BDCB">4.9 · 312 in-store reviews</span></div>
+          <h2 style="font-weight:900;font-size:clamp(38px,4.6vw,64px);letter-spacing:-.01em;color:#FFFFFF;margin:0 0 16px;line-height:1.05">One case.<br>Every personality.</h2>
+          <p style="font-size:16px;color:#B9BDCB;margin:0 0 28px;max-width:400px;line-height:1.6">539 ready-made designs — or the photo on your phone. Printed in store while you watch.</p>
+          <a href="gallery.html" class="btn" style="background:#DC282E;color:#FFFFFF;padding:15px 34px;border-radius:999px;font-weight:900;font-size:14px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;display:inline-block">Find yours</a>
         </div>
-      </section>
+        <div style="display:flex;align-items:flex-end;justify-content:center;gap:26px">
+          <div style="text-align:center"><div style="font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#FFFFFF;margin-bottom:6px">Loud</div><div style="color:#5A5A68;line-height:.9;margin-bottom:10px">⋮</div><img src="assets/promo/promo-abstract-leopard-pink.webp" alt="Pink leopard case" style="width:170px;filter:drop-shadow(0 18px 30px rgba(0,0,0,.5))"></div>
+          <div style="text-align:center;margin-bottom:34px"><div style="font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#FFFFFF;margin-bottom:6px">Local</div><div style="color:#5A5A68;line-height:.9;margin-bottom:10px">⋮</div><img src="assets/promo/promo-philly-map-cream.webp" alt="Philadelphia map case" style="width:196px;filter:drop-shadow(0 18px 30px rgba(0,0,0,.5))"></div>
+          <div style="text-align:center"><div style="font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#FFFFFF;margin-bottom:6px">Dreamy</div><div style="color:#5A5A68;line-height:.9;margin-bottom:10px">⋮</div><img src="assets/promo/promo-dreamy-gradient-cosmic-background-with-sparkles.webp" alt="Cosmic sparkle case" style="width:170px;filter:drop-shadow(0 18px 30px rgba(0,0,0,.5))"></div>
+        </div>
+      </div>
+    </section>
+      <div class="kpCarCtrls">
+        <span id="kpCarCount" style="font-size:14px;font-weight:700;color:#4E4E50">1 of 3</span>
+        <div style="display:flex;gap:10px">
+          <button id="kpCarPrev" aria-label="Previous slide" style="width:44px;height:44px;border-radius:50%;border:1.5px solid #2D2D3B;background:#FFFFFF;cursor:pointer;font-size:18px">&#8592;</button>
+          <button id="kpCarNext" aria-label="Next slide" style="width:44px;height:44px;border-radius:50%;border:1.5px solid #2D2D3B;background:#FFFFFF;cursor:pointer;font-size:18px">&#8594;</button>
+        </div>
+      </div>
+    </div>
+    <!-- ═══ trust bar ═══ -->
+        <!-- case wall marquee -->
+    <section style="background:#FFFFFF;padding:0 0 40px;overflow:hidden">
+      <a href="gallery.html?device=iphone-17-pro-max" aria-label="Shop ready-made cases" style="display:block;text-decoration:none">
+        <div style="display:flex;width:max-content;gap:28px;align-items:center;animation:marquee 46s linear infinite"><img width="225" height="300" src="assets/promo/promo-adorable-cartoon-lion-face.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-kawaii-watercolor-strawberry.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-minimalist-white-heart-pattern.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-colorful-minimalist-wavy-stripes.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-abstract-leopard-pink.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-stylish-white-daisy-floral-pattern.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-dreamy-gradient-cosmic-background-with-sparkles.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-playful-cartoon-cherries.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-mid-century-modern-abstract-shapes.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-adorable-cartoon-lion-face.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-kawaii-watercolor-strawberry.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-minimalist-white-heart-pattern.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-colorful-minimalist-wavy-stripes.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-abstract-leopard-pink.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-stylish-white-daisy-floral-pattern.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-dreamy-gradient-cosmic-background-with-sparkles.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-playful-cartoon-cherries.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"><img width="225" height="300" src="assets/promo/promo-mid-century-modern-abstract-shapes.webp" alt="" loading="lazy" style="height:250px;width:auto;filter:drop-shadow(0 12px 18px rgba(46,56,61,.16))"></div>
+      </a>
+      <div style="text-align:center;margin-top:18px"><span style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#9A9A9D">500+ ready-made designs · tap any case to shop</span></div>
+    </section>
+
+    <section style="background:#2D2D3B;color:#FFFFFF;padding:20px 40px">
+      <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,56px);flex-wrap:wrap;text-align:center">
+        <span style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:800"><span style="color:#F15F5E;letter-spacing:2px">★★★★★</span> 4.9 · 312 in-store reviews</span>
+        <span style="width:1px;height:22px;background:rgba(255,255,255,.2)" class="desktop-only"></span>
+        <span style="font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B9BDCB">Printed same-day in <span style="color:#FFFFFF">West Chester</span> · <span style="color:#FFFFFF">Pottstown</span> · <span style="color:#FFFFFF">Newark DE</span></span>
+        <span style="width:1px;height:22px;background:rgba(255,255,255,.2)" class="desktop-only"></span>
+        <span style="font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B9BDCB">$1 from every case to charity</span>
+      </div>
+    </section>
+
+    <!-- ═══ UGC ═══ -->
+    <section style="max-width:1280px;margin:0 auto;padding:0 40px 88px">
+      <div style="display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px">
+        <div>
+          <div style="font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#DC282E;margin-bottom:8px">Library designs, out in the world</div>
+          <h2 style="font-weight:900;font-size:clamp(26px,3vw,38px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0">The Keepsake lookbook</h2>
+        </div>
+        <div style="font-size:14px;color:#6E6E70">Bought one? Tag <b>#KeepsakeMade</b> to be featured</div>
+      </div>
+      <div id="ugcGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px"></div>
+    </section>
+
 
     <!-- ═══ story chips ═══ -->
     <section style="max-width:1280px;margin:0 auto;padding:0 40px 64px">
@@ -375,7 +469,28 @@
           <img src="product-shots/clear-iphone-17-pro-max-cosmic-orange.jpg" alt="Shop iPhone 17 Pro Max cases" loading="lazy">
           <span>Shop Your iPhone</span>
         </a>
+        <a class="kpTile" href="gallery.html?cat=Halloween">
+          <img src="assets/designs/halloween-bats-on-orange.jpg" alt="Halloween shop" loading="lazy">
+          <span>Halloween<br>Shop</span>
+        </a>
+        <a class="kpTile" href="gallery.html?cat=Christmas">
+          <img src="assets/designs/labrador-retrievers-in-santa-hats.jpg" alt="Christmas shop" loading="lazy">
+          <span>Christmas<br>Shop</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══ shop by device ═══ -->
+    <section style="border-top:1px solid #F3F2F2;background:#FFFFFF;padding:36px 40px">
+      <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:clamp(16px,3vw,40px);flex-wrap:wrap;justify-content:center">
+        <span style="font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#9A9A9D">Shop by device</span>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+          <a href="gallery.html?device=iphone-17-pro-max" class="h-borderred" style="display:inline-flex;align-items:center;gap:10px;background:#FBE0E1;border:1px solid #DC282E;border-radius:999px;padding:11px 22px;font-size:13px;font-weight:900;color:#B81F24;cursor:pointer;transition:all .2s">iPhone</a>
+          <a href="customizer.html" class="h-borderred" style="display:inline-flex;align-items:center;gap:10px;background:#FFFFFF;border:1px solid #E4E3E3;border-radius:999px;padding:11px 22px;font-size:13px;font-weight:900;color:#4E4E50;cursor:pointer;transition:all .2s">Samsung Galaxy</a>
+          <a href="customizer.html" class="h-borderred" style="display:inline-flex;align-items:center;gap:10px;background:#FFFFFF;border:1px solid #E4E3E3;border-radius:999px;padding:11px 22px;font-size:13px;font-weight:900;color:#4E4E50;cursor:pointer;transition:all .2s">Google Pixel</a>
+          <a href="customizer.html" class="h-borderred" style="display:inline-flex;align-items:center;gap:10px;background:#FFFFFF;border:1px solid #E4E3E3;border-radius:999px;padding:11px 22px;font-size:13px;font-weight:900;color:#4E4E50;cursor:pointer;transition:all .2s">iPad</a>
         </div>
+      </div>
     </section>
 
     <!-- ═══ how it works ═══ -->
@@ -413,7 +528,6 @@
       <div style="text-align:center;margin-bottom:44px">
         <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#9A9A9D;margin-bottom:12px">Reviews</div>
         <h2 style="font-weight:900;font-size:clamp(30px,3.4vw,44px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0 0 10px">Printed for real people</h2>
-        <p style="font-size:14px;font-weight:700;color:#6E6E70;margin:10px 0 0">4.9 · 312 in-store reviews · West Chester, Pottstown &amp; Newark DE · $1 from every case to local schools</p>
         <div style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:800;color:#4E4E50"><span style="color:#DC282E;letter-spacing:2px;font-size:16px">★★★★★</span> 4.9 average · 312 reviews</div>
       </div>
       <div id="reviewsWall" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:20px"></div>
@@ -425,7 +539,7 @@
         <h2 style="font-weight:900;font-size:clamp(28px,3vw,40px);letter-spacing:-.01em;text-transform:uppercase;margin:0 0 12px">Get 10% off your first case</h2>
         <p style="font-size:16px;margin:0 0 28px;opacity:.92">Join the list for seasonal ideas — Mother's Day, back to school, the holidays — and your welcome discount.</p>
         <form id="emailForm" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-          <input id="emailInput" type="email" required placeholder="you@email.com" style="padding:15px 18px;border-radius:12px;border:0;font-size:15px;width:320px;max-width:100%;color:#2D2D3B">
+          <input id="emailInput" type="email" required placeholder="you@email.com" style="padding:15px 18px;border-radius:5px;border:0;font-size:15px;width:320px;max-width:100%;color:#2D2D3B">
           <button type="submit" style="background:#2D2D3B;color:#FFFFFF;border:0;padding:15px 28px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Sign me up</button>
         </form>
         <div id="emailDone" style="display:none;background:rgba(255,255,255,.14);border-radius:8px;padding:18px 24px;font-weight:800;font-size:15px">You're in! Check your inbox for the 10% welcome code.</div>
@@ -543,8 +657,33 @@
     rvs.forEach(function(el){ el.classList.add('in'); });
   }
 
+  // announce rotation
+  function countdownStr(){
+    var now=new Date(), end=new Date(now); end.setHours(23,59,59,999);
+    var t=Math.max(0,(end-now)/1000|0);
+    var h=String(t/3600|0).padStart(2,'0'), mn=String(t/60%60|0).padStart(2,'0'), sc=String(t%60|0).padStart(2,'0');
+    return h+':'+mn+':'+sc;
+  }
+  var annMsgs = [
+    function(){ return '10% off your first case — code <span style="background:rgba(255,255,255,.18);border-radius:999px;padding:2px 10px;letter-spacing:.1em">FIRST10</span> · ends in <span style="font-variant-numeric:tabular-nums">'+countdownStr()+'</span>'; },
+    function(){ return 'First responders &amp; nurses save 20% every day'; },
+    function(){ return 'Printed in store — often in under an hour'; }
+  ];
+  var annIdx = 0;
+  $('announce').innerHTML = annMsgs[0]();
+  setInterval(function(){
+    annIdx = (annIdx+1) % annMsgs.length;
+    var el = $('announce');
+    el.style.animation = 'none'; void el.offsetWidth;
+    el.innerHTML = annMsgs[annIdx]();
+    el.style.animation = 'fadeIn .45s cubic-bezier(.2,.7,.2,1) both';
+  }, 4200);
+  setInterval(function(){
+    if (annIdx===0) $('announce').innerHTML = annMsgs[0]();
+  }, 1000);
+
   // hero rotating word
-  var words = ['the grad.','Mom.','Dad.','Grandma.','pet people.'];
+  var words = ['Mom.','Dad.','Grandma.','the grad.','pet people.'];
   var wIdx = 0;
   setInterval(function(){
     wIdx = (wIdx+1) % words.length;
@@ -566,6 +705,28 @@
     wrap.addEventListener('mouseleave', function(){ hc.style.transform = 'none'; });
   }
 
+  // hero carousel
+  (function(){
+    var slides=document.querySelectorAll('#kpCarousel .kpSlide');
+    if(!slides.length) return;
+    var idx=0, n=slides.length, timer=null;
+    var count=document.getElementById('kpCarCount');
+    function show(i){
+      idx=(i+n)%n;
+      slides.forEach(function(sl,j){ sl.classList.toggle('on', j===idx); });
+      if(count) count.textContent=(idx+1)+' of '+n;
+    }
+    function arm(){
+      if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if(timer) clearInterval(timer);
+      timer=setInterval(function(){ if(innerWidth>900) show(idx+1); }, 7000);
+    }
+    var pv=document.getElementById('kpCarPrev'), nx=document.getElementById('kpCarNext');
+    if(pv) pv.addEventListener('click',function(){ show(idx-1); arm(); });
+    if(nx) nx.addEventListener('click',function(){ show(idx+1); arm(); });
+    arm();
+  })();
+
   // mega menu
   var mega = $('mega');
   $('burger').addEventListener('click', function(e){ e.stopPropagation(); mega.classList.toggle('open'); });
@@ -573,11 +734,11 @@
 
   // reviews wall
   var wall = [
-    { hasPhoto:false, text:'I paid $60 for a case online last year and waited two weeks. This one was done before I finished my coffee — and it’s my kids’ faces, so it wins.', name:'Sarah K.', init:'SK', when:'June 2026' },
+    { hasPhoto:true, text:'I paid $60 for a case online last year and waited two weeks. This one was done before I finished my coffee — and it’s my kids’ faces, so it wins.', name:'Sarah K.', init:'SK', when:'June 2026' },
     { hasPhoto:false, text:'Got one made for my wife for Mother’s Day with the kids’ beach photo. She cried. 10/10 will be back for Christmas.', name:'Mike D.', init:'MD', when:'May 2026' },
-    { hasPhoto:false, text:'Watching it print is half the fun. My daughter picked the photo, positioned it herself on the screen, and the case matched exactly.', name:'Jennifer R.', init:'JR', when:'June 2026' },
+    { hasPhoto:true, text:'Watching it print is half the fun. My daughter picked the photo, positioned it herself on the screen, and the case matched exactly.', name:'Jennifer R.', init:'JR', when:'June 2026' },
     { hasPhoto:false, text:'Brought in our dog’s portrait. Print quality is sharper than the $70 case I ordered online — and it was ready the same afternoon.', name:'Alex T.', init:'AT', when:'April 2026' },
-    { hasPhoto:false, text:'Ordered 12 for my bridesmaids with a photo from the engagement shoot. They matched, they shipped on time, everyone asked where they came from.', name:'Priya M.', init:'PM', when:'May 2026' },
+    { hasPhoto:true, text:'Ordered 12 for my bridesmaids with a photo from the engagement shoot. They matched, they shipped on time, everyone asked where they came from.', name:'Priya M.', init:'PM', when:'May 2026' },
     { hasPhoto:false, text:'First responder discount plus the referral credit made this cheaper than a plain case at the mall. And it’s got my son’s hockey photo on it.', name:'Dan W.', init:'DW', when:'June 2026' }
   ];
   $('reviewsWall').innerHTML = wall.map(function(r){
@@ -591,6 +752,24 @@
       + '</div></div>';
   }).join('');
 
+
+  // UGC
+  var ugc = [
+    { img:'assets/lifestyle/life-v118.jpg', title:'Pink Berries', design:'cheerful-pink-strawberry-pattern.jpg' },
+    { img:'assets/lifestyle/life-v119.jpg', title:'Wavy Stripes', design:'colorful-minimalist-wavy-stripes.jpg' },
+    { img:'assets/lifestyle/life-v116.jpg', title:'Black Hearts', design:'charming-minimalist-black-hearts-pattern.jpg' },
+    { img:'assets/lifestyle/life-v120.jpg', title:'Kawaii Berry', design:'kawaii-watercolor-strawberry.jpg' },
+    { img:'assets/lifestyle/life-v122.jpg', title:'Leopard', design:'intricate-black-leopard-spots.jpg' },
+    { img:'assets/lifestyle/life-v113.jpg', title:'Botanical', design:'high-detail-botanical-of-winter-flora-on-white.jpg' }
+  ];
+  $('ugcGrid').innerHTML = ugc.map(function(u){
+    return '<div class="h-cardsm" style="background:#FFFFFF;border:1px solid #EFEDED;border-radius:14px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
+      + '<div style="aspect-ratio:1/1.25;background:#F8F7F7"><img src="'+u.img+'" alt="'+u.title+' case" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>'
+      + '<div style="padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px">'
+      + '<span style="font-size:12px;font-weight:800;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+u.title+'</span>'
+      + '<a href="customizer.html?design='+encodeURIComponent(u.design)+'" style="color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;flex-shrink:0">Shop this look</a>'
+      + '</div></div>';
+  }).join('');
 
   // email band
   $('emailForm').addEventListener('submit', function(e){
