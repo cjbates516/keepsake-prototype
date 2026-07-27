@@ -614,7 +614,7 @@
       if(viewSrc!==vm){
         viewReady=false; viewSrc=vm;
         viewImg=new Image();
-        viewImg.onload=function(){ viewReady=true; render(); };
+        viewImg.onload=function(){ viewReady=true; computeMaskBox(); render(); };
         viewImg.src='assets/masks/'+vm;
       }
     } else { viewImg=null; viewReady=false; viewSrc=null; }
@@ -631,6 +631,21 @@
       .translate(cx,cy).rotate(state.rot).translate(-cx,-cy)
       .translate(cx,cy).scale(state.scale).translate(-cx,-cy);
   }
+  var maskBox=null;
+  function computeMaskBox(){
+    maskBox=null;
+    if(!(viewImg&&viewReady)) return;
+    try{
+      var c=document.createElement('canvas'); c.width=100; c.height=120;
+      var x=c.getContext('2d'); x.drawImage(viewImg,0,0,100,120);
+      var d=x.getImageData(0,0,100,120).data;
+      var x0=100,y0=120,x1=-1,y1=-1;
+      for(var yy=0;yy<120;yy++)for(var xx=0;xx<100;xx++){
+        if(d[(yy*100+xx)*4+3]>40){ if(xx<x0)x0=xx; if(xx>x1)x1=xx; if(yy<y0)y0=yy; if(yy>y1)y1=yy; }
+      }
+      if(x1>x0) maskBox={x:x0/100*DIM.w, y:y0/120*DIM.h, w:(x1-x0+1)/100*DIM.w, h:(y1-y0+1)/120*DIM.h};
+    }catch(_){ maskBox=null; }
+  }
   function edgeColor(src){
     if(src.__edge) return src.__edge;
     var t=document.createElement('canvas'); t.width=12; t.height=12;
@@ -643,18 +658,19 @@
   }
   function drawDesignInto(c2, src, filterCss){
     var iw=src.naturalWidth||src.width, ih=src.naturalHeight||src.height;
+    var B=maskBox||{x:0,y:0,w:DIM.w,h:DIM.h};
     if(state.fitMode==='fit'){
-      var cvr=Math.max(DIM.w/iw, DIM.h/ih);
+      var cvr=Math.max(B.w/iw, B.h/ih);
       c2.fillStyle=edgeColor(src); c2.fillRect(-DIM.w,-DIM.h,DIM.w*3,DIM.h*3);
       try{ c2.filter='blur(60px) saturate(1.1)';
-        c2.drawImage(src,(DIM.w-iw*cvr)/2,(DIM.h-ih*cvr)/2,iw*cvr,ih*cvr);
+        c2.drawImage(src,B.x+(B.w-iw*cvr)/2,B.y+(B.h-ih*cvr)/2,iw*cvr,ih*cvr);
       }catch(_){}
       try{ c2.filter='none'; }catch(_){}
-      var cs=Math.min(DIM.w/iw, DIM.h/ih)*0.93;
+      var cs=Math.min(B.w/iw, B.h/ih)*0.93;
     } else {
-      var cs=Math.max(DIM.w/iw, DIM.h/ih);
+      var cs=Math.max(B.w/iw, B.h/ih);
     }
-    var dw=iw*cs, dh=ih*cs, dx=(DIM.w-dw)/2, dy=(DIM.h-dh)/2;
+    var dw=iw*cs, dh=ih*cs, dx=B.x+(B.w-dw)/2, dy=B.y+(B.h-dh)/2;
     try{ c2.filter=filterCss; }catch(_){}
     c2.drawImage(src,dx,dy,dw,dh);
     try{ c2.filter='none'; }catch(_){}
@@ -780,6 +796,7 @@
   canvas.addEventListener('click',function(){ if(!state.photoImg && !state.text && !CAL.on) $('fileInput').click(); });
   var kpPtr=null;
   canvas.addEventListener('pointerdown',function(e){
+    if(state.isLibraryDesign && !CAL.on) return;
     if(kpPtr!==null && e.pointerId!==kpPtr) return; kpPtr=e.pointerId;
     if(CAL.on && VIEW.z>1){ panning=true; panLast={x:e.clientX,y:e.clientY};
       try{canvas.setPointerCapture(e.pointerId);}catch(_){} return; }
@@ -813,6 +830,8 @@
     if(state.photoImg && typeof syncFitChips==='function') syncFitChips();
     $('clearBtn').style.display = state.photoImg ? 'block' : 'none';
     $('uploadBtn').textContent = state.photoImg ? 'Upload a different photo' : 'Upload a photo';
+    canvas.style.cursor = state.isLibraryDesign ? 'default' : 'grab';
+    canvas.style.touchAction = (state.photoImg && !state.isLibraryDesign) ? 'none' : 'pan-y';
     updateBrowseLink();
     if (!state.photoImg && !state.text){
       $('stageHint').textContent = hasKit() ? 'Your case — upload or drop a photo to begin' : 'Upload or drop a photo to begin';
@@ -1183,7 +1202,7 @@
       state.photoImg=img; state.photoUrl='assets/designs/'+file; state.isLibraryDesign=true;
       state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none';
       renderFilterChips(); updateDpi(); updateStage(); updateSummary();
-      $('stageHint').textContent='Design loaded — drag to position, or add a name below';
+      $('stageHint').textContent='Pre-fitted to your case — add a name below to make it yours';
     };
     img.src='assets/designs/'+file;
   }
