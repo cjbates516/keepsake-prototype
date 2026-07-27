@@ -41,6 +41,8 @@
   #stageCanvas{width:100%;max-width:420px;height:auto;touch-action:pan-y;cursor:grab;display:block;
     filter:drop-shadow(0 16px 24px rgba(46,56,61,.22))}
   #stageCanvas.dragging{cursor:grabbing}
+  .kpScene{cursor:zoom-in}
+  .kpVid{cursor:pointer}
   select:focus,input:focus,textarea:focus,button:focus-visible{outline:2px solid #4FB0E3;outline-offset:1px}
 </style>
 </head>
@@ -208,6 +210,14 @@
               <canvas class="kpScene" data-s="v115" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
               <canvas class="kpScene" data-s="v119" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
               <canvas class="kpScene" data-s="v124" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
+            </div>
+          </div>
+          <div id="kpWatch" style="display:none;width:100%;max-width:420px;margin-top:14px">
+            <div style="font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#9A9A9D;margin-bottom:8px">Watch it in action</div>
+            <div style="display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;border-radius:14px">
+              <div class="kpVid" style="position:relative;flex:0 0 auto;scroll-snap-align:start"><video src="assets/videos/keepsake-pink-leopard-mirror-selfie.mp4" muted loop playsinline preload="metadata" style="width:132px;height:132px;object-fit:cover;border-radius:12px;display:block;background:#F3F2F2"></video><span class="kpVidBadge" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(23,23,31,.55);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span></span></div>
+              <div class="kpVid" style="position:relative;flex:0 0 auto;scroll-snap-align:start"><video src="assets/videos/keepsake-cherries-poolside.mp4" muted loop playsinline preload="metadata" style="width:132px;height:132px;object-fit:cover;border-radius:12px;display:block;background:#F3F2F2"></video><span class="kpVidBadge" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(23,23,31,.55);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span></span></div>
+              <div class="kpVid" style="position:relative;flex:0 0 auto;scroll-snap-align:start"><video src="assets/videos/keepsake-lifestyle-slideshow.mp4" muted loop playsinline preload="metadata" style="width:132px;height:132px;object-fit:cover;border-radius:12px;display:block;background:#F3F2F2"></video><span class="kpVidBadge" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(23,23,31,.55);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span></span></div>
             </div>
           </div>
 
@@ -1159,10 +1169,45 @@
     var box=$('kpViews'); if(!box) return;
     var show=!!state.photoImg && state.brand==='Apple';
     box.style.display=show?'block':'none';
+    var w=$('kpWatch'); if(w) w.style.display=show?'block':'none';
     if(!show) return;
     clearTimeout(scenePend);
     scenePend=setTimeout(function(){ loadScenes(renderScenes); },350);
   }
+
+  /* KP-SCENE-LIGHTBOX + video tiles */
+  document.addEventListener('click',function(e){
+    var vid=e.target.closest ? e.target.closest('.kpVid') : null;
+    if(vid){
+      var v=vid.querySelector('video'), badge=vid.querySelector('.kpVidBadge');
+      if(v.paused){ v.play(); if(badge) badge.style.display='none';
+        document.querySelectorAll('.kpVid video').forEach(function(o){ if(o!==v){ o.pause(); var b=o.parentElement.querySelector('.kpVidBadge'); if(b) b.style.display='flex'; } });
+      } else { v.pause(); if(badge) badge.style.display='flex'; }
+      return;
+    }
+    var cv=e.target.closest ? e.target.closest('.kpScene') : null;
+    if(!cv) return;
+    var k=cv.dataset.s, m=KP_SCENES[k], im=sceneImgs[k];
+    if(!m||!im||!im.complete||!state.photoImg) return;
+    var ov=document.createElement('div');
+    ov.style.cssText='position:fixed;inset:0;z-index:220;background:rgba(23,23,31,.86);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;animation:fadeUp .2s ease both';
+    var big=document.createElement('canvas'); big.width=1200; big.height=1200;
+    big.style.cssText='max-width:min(92vw,640px);max-height:86vh;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.5)';
+    var c=big.getContext('2d');
+    c.fillStyle='#FFFFFF'; c.fillRect(0,0,1200,1200);
+    var d=state.photoImg, iw=d.naturalWidth||d.width, ih=d.naturalHeight||d.height;
+    var sc=Math.max(m.bw/iw,m.bh/ih)*1.28;
+    c.save(); c.translate(m.cx,m.cy); c.rotate(m.ang*Math.PI/180);
+    try{ c.filter='saturate(1.06)'; }catch(_){ }
+    c.drawImage(d,-iw*sc/2,-ih*sc/2,iw*sc,ih*sc);
+    try{ c.filter='none'; }catch(_){ }
+    c.restore(); c.drawImage(im,0,0,1200,1200);
+    ov.appendChild(big); document.body.appendChild(ov);
+    function close(){ ov.remove(); document.removeEventListener('keydown',onk); }
+    function onk(ev){ if(ev.key==='Escape') close(); }
+    ov.addEventListener('click',close);
+    document.addEventListener('keydown',onk);
+  });
 
   /* ── print export (staff link) ── */
   $('exportLink').addEventListener('click',function(e){
