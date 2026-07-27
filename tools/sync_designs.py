@@ -148,6 +148,10 @@ def main():
                            capture_output=True, text=True)
         if r.returncode != 0:
             print("  ! failed:", fname, r.stderr.strip()[:120]); continue
+        tdir = os.path.join(DEST, "thumbs")
+        os.makedirs(tdir, exist_ok=True)
+        subprocess.run(["sips", "-Z", "640", out, "--out", os.path.join(tdir, slug + ".jpg")],
+                       capture_output=True)
         manifest.append({"file": slug + ".jpg", "title": title, "category": cat, "hash": h,
                          "color": classify_colors(out)})
         seen_hashes.add(h); seen_slugs.add(slug)
@@ -169,6 +173,14 @@ def main():
     for entry in manifest:
         if entry["file"] in hidden: entry["hidden"] = True
         elif "hidden" in entry: del entry["hidden"]
+    tmiss = 0
+    for entry in manifest:
+        tp = os.path.join(DEST, "thumbs", entry["file"])
+        if not os.path.exists(tp):
+            subprocess.run(["sips", "-Z", "640", os.path.join(DEST, entry["file"]), "--out", tp],
+                           capture_output=True)
+            tmiss += 1
+    if tmiss: print(f"thumbs backfilled: {tmiss}")
     json.dump(manifest, open(MANIFEST, "w"), indent=1)
     cats = {}
     for m in manifest:
