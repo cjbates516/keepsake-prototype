@@ -131,7 +131,7 @@
   <!-- header -->
   <header style="position:sticky;top:0;z-index:60;background:#FFFFFF;border-bottom:1px solid #F3F2F2;padding:0 clamp(10px,2vw,28px);display:flex;align-items:center;justify-content:space-between;min-height:72px">
     <div style="display:flex;align-items:center;gap:2px">
-      <button id="burger" aria-label="Menu" aria-expanded="false" aria-label="Menu" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#2D2D3B;transition:background .2s">
+      <button id="burger" aria-label="Menu" aria-expanded="false" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#2D2D3B;transition:background .2s">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="14" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
       </button>
       <a href="gallery.html" aria-label="Search" title="Search" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#2D2D3B;transition:background .2s">
@@ -612,7 +612,7 @@
       + '<p style="font-size:14px;line-height:1.6;color:#4E4E50;margin:0">"'+r.text+'"</p>'
       + '<div style="display:flex;align-items:center;gap:10px;margin-top:auto">'
       + '<span style="width:34px;height:34px;border-radius:50%;background:#FBE0E1;color:#B81F24;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:12px">'+r.init+'</span>'
-      + '<span style="display:flex;flex-direction:column"><span style="font-weight:900;font-size:13px;color:#2D2D3B">'+r.name+'</span><span style="font-size:11px;font-weight:700;color:#9A9A9D">'+r.when+' · Verified purchase</span></span>'
+      + '<span style="display:flex;flex-direction:column"><span style="font-weight:900;font-size:13px;color:#2D2D3B">'+r.name+'</span><span style="font-size:11px;font-weight:700;color:#9A9A9D">'+r.when+' · </span></span>'
       + '</div></div>';
   }).join('');
 
