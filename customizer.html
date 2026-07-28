@@ -215,6 +215,7 @@
           <div id="kpWatch" style="display:none;width:100%;max-width:420px;margin-top:14px">
             <div style="font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#9A9A9D;margin-bottom:8px">Watch it in action</div>
             <div style="display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;border-radius:14px">
+              <div id="kpMotion" style="position:relative;flex:0 0 auto;scroll-snap-align:start;cursor:pointer"><canvas id="kpMotionThumb" width="600" height="600" style="width:132px;height:132px;border-radius:12px;display:block;background:#F3F2F2"></canvas><span style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(220,40,46,.85);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span><span style="font-size:9px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#FFFFFF;text-shadow:0 1px 6px rgba(0,0,0,.45)">Yours · in motion</span></span></div>
               <div class="kpVid" style="position:relative;flex:0 0 auto;scroll-snap-align:start"><video src="assets/videos/keepsake-pink-leopard-mirror-selfie.mp4" muted loop playsinline preload="metadata" style="width:132px;height:132px;object-fit:cover;border-radius:12px;display:block;background:#F3F2F2"></video><span class="kpVidBadge" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(23,23,31,.55);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span></span></div>
               <div class="kpVid" style="position:relative;flex:0 0 auto;scroll-snap-align:start"><video src="assets/videos/keepsake-cherries-poolside.mp4" muted loop playsinline preload="metadata" style="width:132px;height:132px;object-fit:cover;border-radius:12px;display:block;background:#F3F2F2"></video><span class="kpVidBadge" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(23,23,31,.55);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span></span></div>
               <div class="kpVid" style="position:relative;flex:0 0 auto;scroll-snap-align:start"><video src="assets/videos/keepsake-lifestyle-slideshow.mp4" muted loop playsinline preload="metadata" style="width:132px;height:132px;object-fit:cover;border-radius:12px;display:block;background:#F3F2F2"></video><span class="kpVidBadge" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(23,23,31,.55);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span></span></div>
@@ -1168,6 +1169,8 @@
   }
   function renderScenes(){
     if(!state.photoImg) return;
+    var mt=document.getElementById('kpMotionThumb');
+    if(mt && state.photoImg){ var firstK=Object.keys(KP_SCENES)[0]; if(sceneImgs[firstK]&&sceneImgs[firstK].complete) renderSceneTo(mt.getContext('2d'),firstK,600); }
     document.querySelectorAll('#kpViewsRow .kpScene').forEach(function(cv){
       var k=cv.dataset.s, m=KP_SCENES[k], im=sceneImgs[k];
       if(!m||!im||!im.complete||!im.naturalWidth) return;
@@ -1196,38 +1199,91 @@
     scenePend=setTimeout(function(){ loadScenes(renderScenes); },350);
   }
 
-  /* KP-SCENE-LIGHTBOX + video tiles */
+  /* KP-SCENE-LIGHTBOX v2: shared renderer, big video player, motion preview */
+  function renderSceneTo(c,k,S){
+    var m=KP_SCENES[k], im=sceneImgs[k];
+    if(!m||!im||!im.complete||!state.photoImg) return false;
+    c.fillStyle='#FFFFFF'; c.fillRect(0,0,S,S);
+    var f=S/1200;
+    var d=state.photoImg, iw=d.naturalWidth||d.width, ih=d.naturalHeight||d.height;
+    var sc=Math.max(m.bw/iw,m.bh/ih)*1.28*f;
+    c.save(); c.translate(m.cx*f,m.cy*f); c.rotate(m.ang*Math.PI/180);
+    try{ c.filter='saturate(1.06)'; }catch(_){ }
+    c.drawImage(d,-iw*sc/2,-ih*sc/2,iw*sc,ih*sc);
+    try{ c.filter='none'; }catch(_){ }
+    c.restore(); c.drawImage(im,0,0,S,S);
+    return true;
+  }
+  function kpOverlay(inner){
+    var ov=document.createElement('div');
+    ov.style.cssText='position:fixed;inset:0;z-index:220;background:rgba(23,23,31,.86);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;animation:fadeUp .2s ease both';
+    ov.appendChild(inner); document.body.appendChild(ov);
+    function close(){ ov.remove(); document.removeEventListener('keydown',onk); if(ov.__onclose) ov.__onclose(); }
+    function onk(ev){ if(ev.key==='Escape') close(); }
+    ov.addEventListener('click',function(ev){ if(ev.target===ov||inner.tagName==='CANVAS') close(); });
+    document.addEventListener('keydown',onk);
+    return ov;
+  }
   document.addEventListener('click',function(e){
+    var mo=e.target.closest ? e.target.closest('#kpMotion') : null;
+    if(mo && state.photoImg){
+      loadScenes(function(){
+        var keys=Object.keys(KP_SCENES).filter(function(k){ return sceneImgs[k]&&sceneImgs[k].complete; });
+        if(!keys.length) return;
+        var S=1200;
+        var frames=keys.map(function(k){
+          var t=document.createElement('canvas'); t.width=S; t.height=S;
+          renderSceneTo(t.getContext('2d'),k,S);
+          return t;
+        });
+        var big=document.createElement('canvas'); big.width=S; big.height=S;
+        big.style.cssText='max-width:min(92vw,640px);max-height:86vh;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.5)';
+        var ov=kpOverlay(big);
+        var c=big.getContext('2d');
+        var HOLD=2800, FADE=500, t0=performance.now(), raf=0;
+        function kb(cv,p,alpha,zin){
+          var z=1.03+(zin?p*0.09:(1-p)*0.05);
+          var w=S/z, h=S/z;
+          var x=(S-w)*(0.5+ (zin?p:1-p)*0.08 -0.04), y=(S-h)*0.5;
+          c.globalAlpha=alpha;
+          c.drawImage(cv,x,y,w,h,0,0,S,S);
+        }
+        function tick(now){
+          var t=(now-t0)%(HOLD*frames.length);
+          var i=Math.floor(t/HOLD), p=(t%HOLD)/HOLD;
+          c.globalAlpha=1;
+          kb(frames[i],p,1,true);
+          if(p>1-FADE/HOLD){
+            var q=(p-(1-FADE/HOLD))/(FADE/HOLD);
+            kb(frames[(i+1)%frames.length],0,q,true);
+          }
+          c.globalAlpha=1;
+          raf=requestAnimationFrame(tick);
+        }
+        raf=requestAnimationFrame(tick);
+        ov.__onclose=function(){ cancelAnimationFrame(raf); };
+      });
+      return;
+    }
     var vid=e.target.closest ? e.target.closest('.kpVid') : null;
     if(vid){
-      var v=vid.querySelector('video'), badge=vid.querySelector('.kpVidBadge');
-      if(v.paused){ v.play(); if(badge) badge.style.display='none';
-        document.querySelectorAll('.kpVid video').forEach(function(o){ if(o!==v){ o.pause(); var b=o.parentElement.querySelector('.kpVidBadge'); if(b) b.style.display='flex'; } });
-      } else { v.pause(); if(badge) badge.style.display='flex'; }
+      var src=vid.querySelector('video').getAttribute('src');
+      var v=document.createElement('video');
+      v.src=src; v.controls=true; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+      v.setAttribute('playsinline','');
+      v.style.cssText='max-width:min(92vw,640px);max-height:86vh;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.5);background:#000';
+      var ovv=kpOverlay(v);
+      ovv.__onclose=function(){ try{ v.pause(); v.removeAttribute('src'); v.load(); }catch(_){ } };
       return;
     }
     var cv=e.target.closest ? e.target.closest('.kpScene') : null;
     if(!cv) return;
-    var k=cv.dataset.s, m=KP_SCENES[k], im=sceneImgs[k];
-    if(!m||!im||!im.complete||!state.photoImg) return;
-    var ov=document.createElement('div');
-    ov.style.cssText='position:fixed;inset:0;z-index:220;background:rgba(23,23,31,.86);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;animation:fadeUp .2s ease both';
+    var k=cv.dataset.s;
+    if(!(KP_SCENES[k]&&sceneImgs[k]&&sceneImgs[k].complete&&state.photoImg)) return;
     var big=document.createElement('canvas'); big.width=1200; big.height=1200;
     big.style.cssText='max-width:min(92vw,640px);max-height:86vh;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.5)';
-    var c=big.getContext('2d');
-    c.fillStyle='#FFFFFF'; c.fillRect(0,0,1200,1200);
-    var d=state.photoImg, iw=d.naturalWidth||d.width, ih=d.naturalHeight||d.height;
-    var sc=Math.max(m.bw/iw,m.bh/ih)*1.28;
-    c.save(); c.translate(m.cx,m.cy); c.rotate(m.ang*Math.PI/180);
-    try{ c.filter='saturate(1.06)'; }catch(_){ }
-    c.drawImage(d,-iw*sc/2,-ih*sc/2,iw*sc,ih*sc);
-    try{ c.filter='none'; }catch(_){ }
-    c.restore(); c.drawImage(im,0,0,1200,1200);
-    ov.appendChild(big); document.body.appendChild(ov);
-    function close(){ ov.remove(); document.removeEventListener('keydown',onk); }
-    function onk(ev){ if(ev.key==='Escape') close(); }
-    ov.addEventListener('click',close);
-    document.addEventListener('keydown',onk);
+    renderSceneTo(big.getContext('2d'),k,1200);
+    kpOverlay(big);
   });
 
   /* ── print export (staff link) ── */
