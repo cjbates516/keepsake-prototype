@@ -273,14 +273,14 @@
               <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">MagSafe Clear</div>
               <div style="font-size:12.5px;font-weight:600;color:#9A9A9D;margin-top:2px">$64.99+</div>
             </div>
-            <div id="ctTough" class="ctCard" data-ct="Tough Magnetic" style="cursor:pointer;text-align:center">
+            <div id="ctTough" class="ctCard" data-ct="Slim Hybrid MagSafe" style="cursor:pointer;text-align:center">
               <div style="position:relative;border:2px solid #E4E3E3;border-radius:12px;overflow:hidden;background:#F7F7F7">
                 <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:2;background:#2D2D3B;color:#FFFFFF;font-size:7.5px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px;border-radius:3px;pointer-events:none;white-space:nowrap;max-width:94%">Extra protection</div>
                 <div style="height:104px;display:flex;align-items:center;justify-content:center;pointer-events:none;padding:6px">
-                  <img id="toughThumb" src="assets/cases/i17pm-tough.webp" alt="Tough Magnetic" style="max-height:92px;max-width:100%">
+                  <img id="toughThumb" src="assets/cases/i17-hyb-black.webp" alt="Slim Hybrid MagSafe" style="max-height:92px;max-width:100%">
                 </div>
               </div>
-              <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">Tough Magnetic</div>
+              <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">Slim Hybrid MagSafe</div>
               <div style="font-size:12.5px;font-weight:600;color:#9A9A9D;margin-top:2px">$69.99+</div>
             </div>
           </div>
@@ -503,7 +503,8 @@
   ];
   var BASE = 64.99;
   var TOUGH_PRICE = 69.99;
-  function basePrice(){ return state.caseType==='Tough Magnetic' ? TOUGH_PRICE : BASE; }
+  var HYBRID_PRICE = 69.99;  /* Slim Hybrid MagSafe — placeholder, confirm with Corey */
+  function basePrice(){ return state.caseType==='Tough Magnetic' ? TOUGH_PRICE : (state.caseType==='Slim Hybrid MagSafe' ? HYBRID_PRICE : BASE); }
   var FONTS = [
     {n:'Script', css:'"Snell Roundhand","Savoye LET","Apple Chancery",cursive', w:''},
     {n:'Hand', css:'"Bradley Hand","Segoe Script","Comic Sans MS",cursive', w:''},
@@ -576,6 +577,12 @@
   var TPL, FIT, OUT_D, CAM_D, TPL_D;
   /* KP-SAMSUNG-KITS (tough case only — KishMish scene renders) */
   Object.assign(KITS, {"Samsung Galaxy S26": {"light": "s26-light.jpg", "tpl": {"w": 202.32, "h": 423.12, "pxW": 843, "pxH": 1763}, "fit": {"x": 702, "y": 311, "sx": 5.4023, "sy": 5.5894}, "outD": "M 779.0 251.0 L 1719.0 251.0 A 150.0 150.0 0 0 1 1869.0 401.0 L 1869.0 2599.0 A 150.0 150.0 0 0 1 1719.0 2749.0 L 779.0 2749.0 A 150.0 150.0 0 0 1 629.0 2599.0 L 629.0 401.0 A 150.0 150.0 0 0 1 779.0 251.0 Z", "camD": "M 866.0 332.0 L 1068.0 332.0 A 151.0 151.0 0 0 1 1219.0 483.0 L 1219.0 1060.0 A 151.0 151.0 0 0 1 1068.0 1211.0 L 866.0 1211.0 A 151.0 151.0 0 0 1 715.0 1060.0 L 715.0 483.0 A 151.0 151.0 0 0 1 866.0 332.0 Z", "textBounds": {"cx": 1248, "yTop": 1280, "yBot": 2626}, "colors": [{"n": "White", "h": "#F5F5F5", "f": "s26-white.webp"}], "toughOnly": true}, "Samsung Galaxy S26 Ultra": {"light": "s26u-light.jpg", "tpl": {"w": 223.92, "h": 463.2, "pxW": 933, "pxH": 1930}, "fit": {"x": 709, "y": 311, "sx": 4.8232, "sy": 5.1058}, "outD": "M 786.0 251.0 L 1713.0 251.0 A 150.0 150.0 0 0 1 1863.0 401.0 L 1863.0 2599.0 A 150.0 150.0 0 0 1 1713.0 2749.0 L 786.0 2749.0 A 150.0 150.0 0 0 1 636.0 2599.0 L 636.0 401.0 A 150.0 150.0 0 0 1 786.0 251.0 Z", "camD": "M 875.0 328.0 L 1085.0 328.0 A 158.0 158.0 0 0 1 1243.0 486.0 L 1243.0 1060.0 A 158.0 158.0 0 0 1 1085.0 1218.0 L 875.0 1218.0 A 158.0 158.0 0 0 1 717.0 1060.0 L 717.0 486.0 A 158.0 158.0 0 0 1 875.0 328.0 Z", "textBounds": {"cx": 1249, "yTop": 1280, "yBot": 2626}, "colors": [{"n": "White", "h": "#F5F5F5", "f": "s26u-white.webp"}], "toughOnly": true}});
+  /* KP-HYBRID-KITS: Cube Slim Hybrid MagSafe (TPPCMAG26) — same clear-case geometry, colored bumper renders */
+  if(KITS['iPhone 17']) KITS['iPhone 17'].hybrid = {colors:[
+    {n:'Black', h:'#2A2A2E', f:'i17-hyb-black.webp'},
+    {n:'Steel Blue', h:'#566572', f:'i17-hyb-blue.webp'},
+    {n:'Copper Tan', h:'#B78964', f:'i17-hyb-brown.webp'},
+    {n:'Gray', h:'#8C8C91', f:'i17-hyb-gray.webp'}]};
   /* KP-VIEWMASKS */
   (function(){ var V={"iPhone 17 Pro Max": "view-i17pm.png", "iPhone 17 Pro": "view-i17p.png", "iPhone 17": "view-i17.png", "iPhone Air": "view-i17a.png", "iPhone 16 Pro Max": "view-i16pm.png", "iPhone 16 Pro": "view-i16p.png", "iPhone 16": "view-i16n.png", "iPhone 15 Pro Max": "view-i15pm.png", "iPhone 15 Pro": "view-i15p.png", "iPhone 15": "view-i15.png", "Samsung Galaxy S26": "view-s26.png", "Samsung Galaxy S26 Ultra": "view-s26u.png"};
     Object.keys(V).forEach(function(m){ if(KITS[m]) KITS[m].view=V[m]; }); })();
@@ -630,12 +637,14 @@
     TPL=k.tpl; FIT=v.fit; OUT_D=v.outD; CAM_D=v.camD; TPL_D=v.tplD;
     BASE_OUT=OUT_D; BASE_CAM=CAM_D;
     buildPaths();
-    var col = k.colors.find(function(c){return c.n===state.colorName;}) || k.colors[0];
+    var hyb = (state.caseType==='Slim Hybrid MagSafe' && k.hybrid) ? k.hybrid : null;
+    var colSrc = hyb ? hyb.colors : k.colors;
+    var col = colSrc.find(function(c){return c.n===state.colorName;}) || colSrc[0];
     state.colorName=col.n; state.colorHex=col.h;
     ['colorName','colorName2','colorName3','colorName4'].forEach(function(id){ var el=$(id); if(el) el.textContent=state.colorName; });
     var mp=$('miniPhone'); if(mp) mp.style.background=state.colorHex;
     caseReady=false;
-    var srcFile = (state.caseType==='Tough Magnetic' && k.tough) ? k.tough.file : col.f;
+    var srcFile = (state.caseType==='Tough Magnetic' && k.tough) ? k.tough.file : col.f;  /* hybrid col.f already per-bumper-color */
     caseImg.src='assets/cases/'+srcFile;
     var tt=$('toughThumb'); if(tt){ if(k.tough) tt.src='assets/cases/'+k.tough.file; else if(k.toughOnly) tt.src='assets/cases/'+k.colors[0].f; }
     var vm=(state.caseType==='Tough Magnetic') ? ((k.tough&&k.tough.view)||(k.toughOnly&&k.view)||null) : (k.view||null);
@@ -1064,6 +1073,7 @@
   }
   function paletteFor(){
     var k=KITS[state.model];
+    if (k && state.caseType==='Slim Hybrid MagSafe' && k.hybrid) return k.hybrid.colors.map(function(c){return {n:c.n,h:c.h};});
     if (k) return k.colors.map(function(c){return {n:c.n,h:c.h};});
     if (state.brand!=='Apple') return palettes.Other;
     return /iPhone 17/.test(state.model) ? palettes.Apple17 : palettes.AppleOld;
@@ -1151,8 +1161,11 @@
   });
   function updateSummary(){
     var tkK=KITS[state.model], tOnly=!!(tkK&&tkK.toughOnly);
-    /* KP_TOUGH_OFF: tough hidden for Apple — single case type per brand */
-    state.caseType = tOnly ? 'Tough Magnetic' : 'MagSafe Clear';
+    /* KP_TOUGH_OFF: tough hidden — case types are Clear + Slim Hybrid (where available) */
+    if(tOnly) state.caseType='Tough Magnetic';
+    else if(state.caseType==='Slim Hybrid MagSafe' && !(tkK&&tkK.hybrid)) state.caseType='MagSafe Clear';
+    else if(state.caseType==='Tough Magnetic') state.caseType='MagSafe Clear';
+    var rowEl=$('ctRow'); if(rowEl) rowEl.style.display=(tkK&&tkK.hybrid&&!tOnly)?'grid':'none';
     var addonTotal=addonDefs.reduce(function(t,a){return t+(state.addons[a.key]?a.price:0);},0);
     var p=state.promo?promoTable[state.promo]:null;
     var bp=basePrice();
@@ -1485,11 +1498,12 @@
     var cc=e.target.closest('.ctCard');
     if(cc){
       if(cc.dataset.ct==='MagSafe Clear' && KITS[state.model] && KITS[state.model].toughOnly) return;
+      if(cc.dataset.ct==='Slim Hybrid MagSafe' && !(KITS[state.model] && KITS[state.model].hybrid)) return;
       state.caseType=cc.dataset.ct; state.reserved=false;
       document.querySelectorAll('.ctCard > div:first-child').forEach(function(el){ el.style.borderColor='#E4E3E3'; });
       cc.querySelector('div').style.borderColor='#DC282E';
       if (KITS[state.model]) loadKit(state.model);
-      updateSummary();
+      renderSwatches(); updateSummary();
     }
   });
 
