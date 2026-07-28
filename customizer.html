@@ -583,6 +583,13 @@
     {n:'Steel Blue', h:'#566572', f:'i17-hyb-blue.webp'},
     {n:'Copper Tan', h:'#B78964', f:'i17-hyb-brown.webp'},
     {n:'Gray', h:'#8C8C91', f:'i17-hyb-gray.webp'}]};
+  if(KITS['iPhone Air']) KITS['iPhone Air'].hybrid = {colors:[
+    {n:'Black', h:'#2A2A2E', f:'i17a-hyb-black.webp'},
+    {n:'Steel Blue', h:'#566572', f:'i17a-hyb-blue.webp'},
+    {n:'Copper Tan', h:'#B78964', f:'i17a-hyb-brown.webp'},
+    {n:'Gray', h:'#8C8C91', f:'i17a-hyb-gray.webp'}]};
+  if(KITS['iPhone 17 Pro']) KITS['iPhone 17 Pro'].hybrid = {colors:[
+    {n:'Copper Tan', h:'#B78964', f:'i17p-hyb-brown.webp'}]};
   /* KP-VIEWMASKS */
   (function(){ var V={"iPhone 17 Pro Max": "view-i17pm.png", "iPhone 17 Pro": "view-i17p.png", "iPhone 17": "view-i17.png", "iPhone Air": "view-i17a.png", "iPhone 16 Pro Max": "view-i16pm.png", "iPhone 16 Pro": "view-i16p.png", "iPhone 16": "view-i16n.png", "iPhone 15 Pro Max": "view-i15pm.png", "iPhone 15 Pro": "view-i15p.png", "iPhone 15": "view-i15.png", "Samsung Galaxy S26": "view-s26.png", "Samsung Galaxy S26 Ultra": "view-s26u.png"};
     Object.keys(V).forEach(function(m){ if(KITS[m]) KITS[m].view=V[m]; }); })();
