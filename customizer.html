@@ -262,7 +262,7 @@
             </div>
           </div>
 
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:30px">
+          <div id="ctRow" style="display:none;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:30px"><!-- KP_TOUGH_OFF: set display:grid to re-enable case-type choice -->
             <div id="ctClear" class="ctCard" data-ct="MagSafe Clear" style="cursor:pointer;text-align:center">
               <div style="position:relative;border:2px solid #DC282E;border-radius:12px;overflow:hidden;background:#F7F7F7">
                 <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:2;background:#C6A052;color:#FFFFFF;font-size:7.5px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px;border-radius:3px;pointer-events:none;white-space:nowrap;max-width:94%">MagSafe compatible</div>
@@ -1151,10 +1151,8 @@
   });
   function updateSummary(){
     var tkK=KITS[state.model], tOnly=!!(tkK&&tkK.toughOnly);
-    var ccEl=$('ctClear');
-    if(ccEl){ ccEl.style.opacity=tOnly?'.35':''; ccEl.style.pointerEvents=tOnly?'none':''; }
-    if(tOnly){ state.caseType='Tough Magnetic';
-      var tEl=$('ctTough'); if(tEl&&ccEl){ tEl.querySelector('div').style.borderColor='#DC282E'; ccEl.querySelector('div').style.borderColor='#E4E3E3'; } }
+    /* KP_TOUGH_OFF: tough hidden for Apple — single case type per brand */
+    state.caseType = tOnly ? 'Tough Magnetic' : 'MagSafe Clear';
     var addonTotal=addonDefs.reduce(function(t,a){return t+(state.addons[a.key]?a.price:0);},0);
     var p=state.promo?promoTable[state.promo]:null;
     var bp=basePrice();
