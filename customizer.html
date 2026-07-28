@@ -94,10 +94,6 @@
       </span>
     </a>
     <div style="display:flex;align-items:center;gap:2px">
-      <a href="b2b.html" class="desktop-only h-circle" style="font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#4E4E50;padding:10px 12px;border-radius:999px;transition:background .2s,color .2s">B2B Login</a>
-      <select aria-label="Language" class="desktop-only" style="padding:10px 2px;border:0;font-size:12px;font-weight:800;color:#17171F;cursor:pointer;background:#FFFFFF">
-        <option value="en">EN</option><option value="es">ES</option><option value="fr">FR</option>
-      </select>
       <a href="account.html" aria-label="My account" title="My account" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;color:#17171F;transition:background .2s">
         <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
       </a>
@@ -163,13 +159,13 @@
       <div>
         <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">Shop by Occasion</div>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <a class="h-redlink" href="#gallery" style="font-size:14px;font-weight:600;color:#4E4E50">Mother's Day</a>
-          <a class="h-redlink" href="#gallery" style="font-size:14px;font-weight:600;color:#4E4E50">Weddings</a>
-          <a class="h-redlink" href="#gallery" style="font-size:14px;font-weight:600;color:#4E4E50">Pets</a>
-          <a class="h-redlink" href="#gallery" style="font-size:14px;font-weight:600;color:#4E4E50">Back to school</a>
-          <a class="h-redlink" href="#gallery" style="font-size:14px;font-weight:600;color:#4E4E50">Gifts</a>
-          <a class="h-redlink" href="#gallery" style="font-size:14px;font-weight:600;color:#4E4E50">Christmas</a>
-          <a class="h-redlink" href="#gallery" style="font-size:14px;font-weight:600;color:#4E4E50">Halloween</a>
+          <a class="h-redlink" href="gallery.html?cat=Florals" style="font-size:14px;font-weight:600;color:#4E4E50">Mother's Day</a>
+          <a class="h-redlink" href="gallery.html?cat=Hearts" style="font-size:14px;font-weight:600;color:#4E4E50">Weddings</a>
+          <a class="h-redlink" href="gallery.html?cat=Animal%20print" style="font-size:14px;font-weight:600;color:#4E4E50">Pets</a>
+          <a class="h-redlink" href="gallery.html?cat=Stripes%20%26%20waves" style="font-size:14px;font-weight:600;color:#4E4E50">Back to school</a>
+          <a class="h-redlink" href="gallery.html" style="font-size:14px;font-weight:600;color:#4E4E50">Gifts</a>
+          <a class="h-redlink" href="gallery.html?cat=Christmas" style="font-size:14px;font-weight:600;color:#4E4E50">Christmas</a>
+          <a class="h-redlink" href="gallery.html?cat=Halloween" style="font-size:14px;font-weight:600;color:#4E4E50">Halloween</a>
         </div>
         <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin:22px 0 14px">Case Styles</div>
         <div style="display:flex;flex-direction:column;gap:10px">
@@ -177,7 +173,7 @@
             <span style="background:#FBE0E1;color:#B81F24;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px">Best seller</span></a>
           <div style="margin-top:10px;background:#F3F2F2;border-radius:10px;padding:14px 16px">
             <div style="font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#DC282E;margin-bottom:6px">Not sure?</div>
-            <a class="h-redlink" href="#quiz" style="font-size:13px;font-weight:800;color:#2D2D3B">Take the 20-second case quiz</a>
+            <a class="h-redlink" href="gallery.html" style="font-size:13px;font-weight:800;color:#2D2D3B">Browse all designs</a>
           </div>
         </div>
       </div>
@@ -206,6 +202,10 @@
           <div id="kpViews" style="display:none;width:100%;max-width:420px;margin-top:10px">
             <div style="font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#9A9A9D;margin-bottom:8px">See it in real life</div>
             <div id="kpViewsRow" style="display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;border-radius:14px">
+              <canvas class="kpScene" data-s="pm3" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
+              <canvas class="kpScene" data-s="pm2" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
+              <canvas class="kpScene" data-s="pm10" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
+              <canvas class="kpScene" data-s="pm12" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
               <canvas class="kpScene" data-s="v113" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
               <canvas class="kpScene" data-s="v115" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
               <canvas class="kpScene" data-s="v119" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
@@ -216,8 +216,8 @@
             <div style="font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#9A9A9D;margin-bottom:8px">Watch it in action</div>
             <div style="display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;border-radius:14px">
               <div id="kpMotion" style="position:relative;flex:0 0 auto;scroll-snap-align:start;cursor:pointer"><canvas id="kpMotionThumb" width="600" height="600" style="width:132px;height:132px;border-radius:12px;display:block;background:#F3F2F2"></canvas><span style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(220,40,46,.85);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span><span style="font-size:9px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#FFFFFF;text-shadow:0 1px 6px rgba(0,0,0,.45)">Yours · in motion</span></span></div>
-              <div class="kpVid" style="position:relative;flex:0 0 auto;scroll-snap-align:start"><video src="assets/videos/keepsake-pink-leopard-mirror-selfie.mp4" muted loop playsinline preload="metadata" style="width:132px;height:132px;object-fit:cover;border-radius:12px;display:block;background:#F3F2F2"></video><span class="kpVidBadge" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(23,23,31,.55);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span></span></div>
-              <div class="kpVid" style="position:relative;flex:0 0 auto;scroll-snap-align:start"><video src="assets/videos/keepsake-cherries-poolside.mp4" muted loop playsinline preload="metadata" style="width:132px;height:132px;object-fit:cover;border-radius:12px;display:block;background:#F3F2F2"></video><span class="kpVidBadge" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(23,23,31,.55);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span></span></div>
+              <div class="kpVid" style="position:relative;flex:0 0 auto;scroll-snap-align:start"><video src="assets/videos/keepsake-real-looks-1.mp4" muted loop playsinline preload="metadata" style="width:132px;height:132px;object-fit:cover;border-radius:12px;display:block;background:#F3F2F2"></video><span class="kpVidBadge" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(23,23,31,.55);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span></span></div>
+              <div class="kpVid" style="position:relative;flex:0 0 auto;scroll-snap-align:start"><video src="assets/videos/keepsake-real-looks-2.mp4" muted loop playsinline preload="metadata" style="width:132px;height:132px;object-fit:cover;border-radius:12px;display:block;background:#F3F2F2"></video><span class="kpVidBadge" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(23,23,31,.55);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span></span></div>
               <div class="kpVid" style="position:relative;flex:0 0 auto;scroll-snap-align:start"><video src="assets/videos/keepsake-lifestyle-slideshow.mp4" muted loop playsinline preload="metadata" style="width:132px;height:132px;object-fit:cover;border-radius:12px;display:block;background:#F3F2F2"></video><span class="kpVidBadge" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(23,23,31,.55);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span></span></div>
             </div>
           </div>
@@ -368,6 +368,10 @@
           <div id="promoMsg" style="font-size:13px;font-weight:700;margin-bottom:20px;min-height:18px"></div>
 
           <div style="border-top:1px solid #EFEDED;padding-top:18px">
+            <div style="margin-bottom:14px">
+              <div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6E6E70;margin-bottom:8px">Pickup store</div>
+              <div id="storeChips" style="display:flex;flex-wrap:wrap;gap:7px"></div>
+            </div>
             <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="lineDevice">iPhone 17 Pro Max · MagSafe Clear</span><span id="linePrice">$64.99</span></div>
             <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#9A9A9D;margin-bottom:6px"><span>Printed in store · <span id="colorName4">Silver</span></span><span>Included</span></div>
             <div id="lineAddons" style="display:none;justify-content:space-between;font-size:13px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="addonSummary"></span><span id="addonTotal"></span></div>
@@ -375,7 +379,7 @@
             <button id="reserveBtn" class="h-outline" style="width:100%;margin-top:14px;background:#FFFFFF;color:#17171F;border:1px solid #17171F;padding:15px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer;transition:background .2s,color .2s">Reserve — print in store</button>
             <div id="reservedBox" style="display:none;animation:fadeUp .35s cubic-bezier(.2,.7,.2,1) both;background:#FBE0E1;border-radius:10px;padding:18px;text-align:center;font-weight:800;font-size:14px;line-height:1.5;color:#2D2D3B;margin-top:14px"></div>
             <div style="display:flex;gap:18px;margin-top:16px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#9A9A9D;flex-wrap:wrap">
-              <span>10-day returns</span><span style="color:#E4E3E3">·</span><span>6-mo warranty</span><span style="color:#E4E3E3">·</span><span>$1 donated</span>
+              <span>10-day returns</span><span style="color:#E4E3E3">·</span><span>6-mo warranty</span>
             </div>
           </div>
         </div>
@@ -840,23 +844,59 @@
   }
   var dragging=false,last=null,panning=false,panLast=null;
   canvas.addEventListener('click',function(){ if(!state.photoImg && !state.text && !CAL.on) $('fileInput').click(); });
-  var kpPtr=null;
+  var kpPtr=null, kpPtrs={}, pinch=null;
+  function ptrCount(){ return Object.keys(kpPtrs).length; }
+  function canGesture(){ return state.photoImg && !state.isLibraryDesign; }
   canvas.addEventListener('pointerdown',function(e){
     if(state.isLibraryDesign && !CAL.on) return;
-    if(kpPtr!==null && e.pointerId!==kpPtr) return; kpPtr=e.pointerId;
-    if(CAL.on && VIEW.z>1){ panning=true; panLast={x:e.clientX,y:e.clientY};
+    if(CAL.on && VIEW.z>1){ if(kpPtr!==null && e.pointerId!==kpPtr) return; kpPtr=e.pointerId;
+      panning=true; panLast={x:e.clientX,y:e.clientY};
       try{canvas.setPointerCapture(e.pointerId);}catch(_){} return; }
     if(!state.photoImg)return;
-    dragging=true; last=toCanvas(e); canvas.classList.add('dragging');
+    kpPtrs[e.pointerId]=toCanvas(e);
     try{canvas.setPointerCapture(e.pointerId);}catch(_){}
+    if(ptrCount()===2 && canGesture()){
+      dragging=false;
+      var ids=Object.keys(kpPtrs), a=kpPtrs[ids[0]], b=kpPtrs[ids[1]];
+      pinch={d0:Math.hypot(b.x-a.x,b.y-a.y)||1, s0:state.scale,
+             mx0:(a.x+b.x)/2, my0:(a.y+b.y)/2, px0:state.px, py0:state.py};
+      canvas.classList.add('dragging');
+      return;
+    }
+    if(ptrCount()>2) return;
+    kpPtr=e.pointerId;
+    dragging=true; last=toCanvas(e); canvas.classList.add('dragging');
   });
   canvas.addEventListener('pointermove',function(e){
-    if(kpPtr!==null && e.pointerId!==kpPtr) return;
-    if(panning){ VIEW.x+=e.clientX-panLast.x; VIEW.y+=e.clientY-panLast.y; panLast={x:e.clientX,y:e.clientY}; applyView(); return; }
-    if(!dragging)return;
+    if(panning){ if(e.pointerId!==kpPtr) return;
+      VIEW.x+=e.clientX-panLast.x; VIEW.y+=e.clientY-panLast.y; panLast={x:e.clientX,y:e.clientY}; applyView(); return; }
+    if(!(e.pointerId in kpPtrs)) return;
+    kpPtrs[e.pointerId]=toCanvas(e);
+    if(pinch && ptrCount()>=2){
+      var ids=Object.keys(kpPtrs), a=kpPtrs[ids[0]], b=kpPtrs[ids[1]];
+      var d=Math.hypot(b.x-a.x,b.y-a.y)||1;
+      state.scale=Math.min(4,Math.max(0.35,pinch.s0*d/pinch.d0));
+      var mx=(a.x+b.x)/2, my=(a.y+b.y)/2;
+      state.px=pinch.px0+(mx-pinch.mx0); state.py=pinch.py0+(my-pinch.my0);
+      state.reserved=false; render(); return;
+    }
+    if(!dragging || e.pointerId!==kpPtr) return;
     var p=toCanvas(e); state.px+=p.x-last.x; state.py+=p.y-last.y; last=p; render(); });
-  function endDrag(){ dragging=false; panning=false; kpPtr=null; canvas.classList.remove('dragging'); }
+  function endDrag(e){
+    if(e && e.pointerId!==undefined){ delete kpPtrs[e.pointerId]; }
+    else kpPtrs={};
+    if(ptrCount()<2) pinch=null;
+    if(ptrCount()===0){ dragging=false; panning=false; kpPtr=null; canvas.classList.remove('dragging'); }
+    else if(pinch===null){ var ids=Object.keys(kpPtrs); kpPtr=+ids[0]; dragging=true; last=kpPtrs[kpPtr]; }
+  }
   canvas.addEventListener('pointerup',endDrag); canvas.addEventListener('pointercancel',endDrag);
+  canvas.addEventListener('wheel',function(e){
+    if(!CAL.on && e.ctrlKey && canGesture()){
+      e.preventDefault();
+      state.scale=Math.min(4,Math.max(0.35,state.scale*(e.deltaY<0?1.06:0.94)));
+      state.reserved=false; render(); return;
+    }
+    },{passive:false});
   canvas.addEventListener('wheel',function(e){
     if(CAL.on){ e.preventDefault();
       VIEW.z = Math.min(8, Math.max(1, VIEW.z * (e.deltaY<0?1.12:0.9)));
@@ -883,7 +923,7 @@
       $('stageHint').textContent = hasKit() ? 'Your case — upload or drop a photo to begin' : 'Upload or drop a photo to begin';
       $('kitNote').style.display='none';
     } else if (hasKit()){
-      $('stageHint').textContent = 'Drag your photo to position it';
+      $('stageHint').textContent = state.isLibraryDesign ? 'Pre-fitted to your case' : (matchMedia('(pointer:coarse)').matches ? 'Drag to position \u00b7 pinch to zoom' : 'Drag to position \u00b7 ctrl+scroll to zoom');
       var kk=KITS[state.model];
       if(state.caseType==='Tough Magnetic' && kk && !kk.tough && !kk.toughOnly){
         $('kitNote').textContent='Tough Magnetic preview coming soon for this model \u2014 shown on the clear case. Your design still prints on the Tough case.';
@@ -1133,6 +1173,8 @@
     $('totalTop').textContent='$'+total.toFixed(2);
     $('totalBar').textContent=total.toFixed(2);
     $('lineDevice').textContent=state.model+' · '+state.caseType;
+    var ln2=$('linePickup'); if(!ln2){ ln2=document.createElement('div'); ln2.id='linePickup'; ln2.style.cssText='font-size:12px;font-weight:600;color:#9A9A9D;margin-bottom:6px'; $('lineDevice').parentElement.insertAdjacentElement('afterend',ln2); }
+    ln2.textContent='Pickup: '+state.store+' — free, ready today';
     var names=addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return a.name.split(' ')[0]==='Tempered'?'Screen protector':'Lens protector';});
     $('lineAddons').style.display=names.length?'flex':'none';
     if(names.length){ $('addonSummary').textContent=names.join(' + '); $('addonTotal').textContent='+$'+addonTotal.toFixed(2); }
@@ -1143,10 +1185,28 @@
     $('reserveBtn').style.display=state.reserved?'none':'block';
     $('reservedBox').style.display=state.reserved?'block':'none';
   }
+  var KP_STORES=[
+    {n:'West Chester, PA', a:'CPR Cell Phone Repair · West Chester'},
+    {n:'Pottstown, PA', a:'CPR Cell Phone Repair · Pottstown'},
+    {n:'Newark, DE', a:'CPR Cell Phone Repair · Newark'}
+  ];
+  state.store=state.store||KP_STORES[0].n;
+  function renderStoreChips(){
+    var el=$('storeChips'); if(!el) return;
+    el.innerHTML=KP_STORES.map(function(st){
+      var on=st.n===state.store;
+      return '<button class="storeChip" data-s="'+st.n+'" style="font-size:12px;font-weight:800;padding:9px 14px;border-radius:999px;cursor:pointer;background:'+(on?'#2D2D3B':'#FFFFFF')+';color:'+(on?'#FFFFFF':'#4E4E50')+';border:1px solid '+(on?'#2D2D3B':'#E4E3E3')+';transition:all .2s">'+st.n+'</button>';
+    }).join('');
+  }
+  document.addEventListener('click',function(e){
+    var sc=e.target.closest ? e.target.closest('.storeChip') : null;
+    if(sc){ state.store=sc.dataset.s; state.reserved=false; renderStoreChips(); updateSummary(); }
+  });
+  renderStoreChips();
   $('reserveBtn').addEventListener('click',function(){
     state.reserved=true;
     var code='KP-'+Math.random().toString(36).slice(2,6).toUpperCase();
-    $('reservedBox').innerHTML='Reserved! Show code <span style="color:#DC282E;letter-spacing:.1em">'+code+'</span> at the counter and watch it print.';
+    $('reservedBox').innerHTML='Reserved at <strong>'+state.store+'</strong>! Show code <span style="color:#DC282E;letter-spacing:.1em">'+code+'</span> at the counter and watch it print.';
     updateSummary();
   });
   $('cartBtn').addEventListener('click',function(){
@@ -1155,7 +1215,7 @@
   });
 
   /* KP-SCENE-VIEWS — lifestyle previews under the stage */
-  var KP_SCENES={"v113": {"cx": 613.1, "cy": 639.9, "bw": 492.6, "bh": 785.4, "ang": -6.17}, "v115": {"cx": 623.1, "cy": 580.1, "bw": 351.0, "bh": 703.5, "ang": -1.0}, "v119": {"cx": 558.2, "cy": 667.0, "bw": 573.3, "bh": 694.5, "ang": 29.77}, "v124": {"cx": 615.0, "cy": 676.8, "bw": 381.3, "bh": 747.6, "ang": 0.23}};
+  var KP_SCENES={"pm3": {"cx": 599.9, "cy": 655.3, "bw": 331.3, "bh": 665.6, "ang": 0.34}, "pm2": {"cx": 600.8, "cy": 670.8, "bw": 336.5, "bh": 627.4, "ang": -0.19}, "pm10": {"cx": 604.8, "cy": 641.5, "bw": 316.7, "bh": 626.1, "ang": -1.81}, "pm12": {"cx": 539.4, "cy": 723.7, "bw": 393.8, "bh": 679.8, "ang": 43.07}, "v113": {"cx": 613.1, "cy": 639.9, "bw": 492.6, "bh": 785.4, "ang": -6.17}, "v115": {"cx": 623.1, "cy": 580.1, "bw": 351.0, "bh": 703.5, "ang": -1.0}, "v119": {"cx": 558.2, "cy": 667.0, "bw": 573.3, "bh": 694.5, "ang": 29.77}, "v124": {"cx": 615.0, "cy": 676.8, "bw": 381.3, "bh": 747.6, "ang": 0.23}};
   var sceneImgs={}, scenesLoaded=false, scenePend=null;
   function loadScenes(cb){
     if(scenesLoaded){ cb&&cb(); return; }

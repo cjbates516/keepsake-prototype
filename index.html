@@ -69,6 +69,11 @@
   #heroC{z-index:2;filter:drop-shadow(0 24px 32px rgba(46,56,61,.2))}
   #heroR{transform:translateX(42%) scale(.8) rotate(7deg);z-index:1;filter:drop-shadow(0 18px 24px rgba(46,56,61,.16))}
   @media(max-width:640px){
+  #mapsBand > div{grid-template-columns:1fr !important;min-height:0 !important;padding:38px 22px 44px !important;gap:18px !important}
+  #mapsBand .kpFan img:first-child,#mapsBand .kpFan img:last-child{display:none !important}
+  #mapsBand .kpFan img{width:98px !important;transform:none !important}
+  #mapsBand h2{font-size:34px !important}
+  .kpLookHint{display:none}
     #heroL{transform:translateX(-33%) scale(.72) rotate(-7deg)}
     #heroR{transform:translateX(33%) scale(.72) rotate(7deg)}
   }
@@ -163,10 +168,6 @@
       </span>
     </a>
     <div style="display:flex;align-items:center;gap:2px">
-      <a href="b2b.html" class="desktop-only h-circle" style="font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#4E4E50;padding:10px 12px;border-radius:999px;transition:background .2s,color .2s">B2B Login</a>
-      <select aria-label="Language" class="desktop-only" style="padding:10px 2px;border:0;font-size:12px;font-weight:800;color:#2D2D3B;cursor:pointer;background:#FFFFFF">
-        <option value="en">EN</option><option value="es">ES</option><option value="fr">FR</option>
-      </select>
       <a href="account.html" aria-label="My account" title="My account" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;color:#2D2D3B;transition:background .2s">
         <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
       </a>
@@ -354,7 +355,7 @@
     <section style="max-width:1280px;margin:0 auto;padding:64px 40px 72px">
       <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:26px">
         <h2 style="font-weight:900;font-size:clamp(28px,3.2vw,40px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0">Real-life looks</h2>
-        <span style="font-size:13px;font-weight:700;color:#9A9A9D">Tap any look to make it yours</span>
+        <span class="kpLookHint" style="font-size:13px;font-weight:700;color:#9A9A9D">Tap any look to make it yours</span>
       </div>
       <div style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px">
         <a href="customizer.html?design=cheerful-pink-strawberry-pattern.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life-v118.jpg" alt="Pink Berries case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Pink Berries</div></a>
@@ -466,7 +467,7 @@
             <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><g transform="rotate(-9 22 10)"><rect x="15" y="1" width="17" height="20" rx="1.5" fill="#F3F2F2" stroke="#9A9A9D" stroke-width="1"></rect><rect x="17.5" y="3.5" width="12" height="11" rx="1" fill="#E8E7E7"></rect></g><rect x="4" y="14" width="32" height="23" rx="4" fill="#DC282E"></rect><rect x="7" y="17" width="26" height="17" rx="2.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1" stroke-dasharray="2.4 2.4"></rect><circle cx="9.5" cy="21" r="1.4" fill="#FFFFFF" opacity=".9"></circle><circle cx="9.5" cy="25.5" r="1.4" fill="#FFFFFF" opacity=".9"></circle><circle cx="9.5" cy="30" r="1.4" fill="#FFFFFF" opacity=".9"></circle><path d="M23 31.8l-5-5.1c-1.35-1.4-1.35-3.6 0-5 1.35-1.4 3.55-1.4 4.9 0l.1.1.1-.1c1.35-1.4 3.55-1.4 4.9 0 1.35 1.4 1.35 3.6 0 5z" fill="#F3F2F2"></path></svg>
             <span style="font-weight:900;font-size:16px;color:#2D2D3B;letter-spacing:-.01em">KEEPSAKE <span style="color:#DC282E">PRINTING CO.</span></span>
           </div>
-          <p style="font-size:13px;line-height:1.6;margin:0;max-width:300px">Custom photo cases printed in store while you watch. One dollar from every sale is donated to a local charity.</p>
+          <p style="font-size:13px;line-height:1.6;margin:0;max-width:300px">Custom photo cases printed in store while you watch.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
           <div style="font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#2D2D3B;margin-bottom:4px">Shop</div>
@@ -492,6 +493,7 @@
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
           <div style="font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#2D2D3B;margin-bottom:4px">Business</div>
+          <a class="h-foot" href="b2b.html">B2B login</a>
           <a class="h-foot" href="b2b.html">Wholesale pricing</a>
           <a class="h-foot" href="b2b.html">Request a quote</a>
           <a class="h-foot" href="b2b.html">Partner portal</a>
