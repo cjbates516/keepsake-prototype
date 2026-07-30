@@ -297,6 +297,10 @@
           </div>
 
           <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:12px">Your photo</div>
+          <div style="margin-bottom:12px">
+            <div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6E6E70;margin-bottom:8px">Case style</div>
+            <div id="layoutChips" style="display:flex;flex-wrap:wrap;gap:7px"></div>
+          </div>
           <button id="uploadBtn" class="h-upload" style="width:100%;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s">Upload a photo</button>
           <div style="font-size:11.5px;color:#9A9A9D;font-weight:600;margin-top:8px;text-align:center">🔒 Your photo never leaves this device — we don't upload or store it</div>
           <a id="browseLink" href="gallery.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;background:#FBE0E1;border-radius:12px;padding:14px 16px;text-decoration:none">
@@ -533,7 +537,8 @@
     isLibraryDesign:false,
     text:'', textFont:0, textColor:'#FFFFFF', textSize:220, textPos:62, textVertical:false,
     px:0, py:0, scale:1, rot:0,
-    addons:{screen:false,lens:false}, promo:null, reserved:false, fitMode:'fill'
+    addons:{screen:false,lens:false}, promo:null, reserved:false, fitMode:'fill',
+    layout:null, photos:[], slotTarget:null
   };
   (function(){ var mm = /[?&]model=([^&]+)/.exec(location.search); if (!mm) return;
     var want = decodeURIComponent(mm[1]).replace(/-/g, ' ').toLowerCase();
@@ -737,6 +742,65 @@
     c2.drawImage(src,dx,dy,dw,dh);
     try{ c2.filter='none'; }catch(_){}
   }
+  /* ── KP-COLLAGE: multi-photo layouts (slots are fractions of the print window) ── */
+  var KP_LAYOUTS={
+    duo:  {n:'Duo',       slots:[{x:.05,y:.045,w:.9,h:.44},{x:.05,y:.515,w:.9,h:.44}]},
+    trio: {n:'Film Strip',slots:[{x:.08,y:.03,w:.84,h:.293},{x:.08,y:.353,w:.84,h:.293},{x:.08,y:.677,w:.84,h:.293}]},
+    grid4:{n:'Grid 4',    slots:[{x:.045,y:.045,w:.44,h:.44},{x:.515,y:.045,w:.44,h:.44},{x:.045,y:.515,w:.44,h:.44},{x:.515,y:.515,w:.44,h:.44}]},
+    pol3: {n:'Polaroid 3',polaroid:true,slots:[{x:.06,y:.03,w:.62,h:.32,rot:-6},{x:.34,y:.33,w:.62,h:.32,rot:5},{x:.10,y:.645,w:.62,h:.32,rot:-3}]},
+    pol5: {n:'Polaroid 5',polaroid:true,slots:[{x:.04,y:.02,w:.5,h:.26,rot:-7},{x:.47,y:.10,w:.5,h:.26,rot:6},{x:.07,y:.315,w:.5,h:.26,rot:4},{x:.44,y:.42,w:.5,h:.26,rot:-5},{x:.22,y:.68,w:.5,h:.26,rot:2}]}
+  };
+  function hasArt(){ return !!state.photoImg || (state.layout && state.photos && state.photos.some(Boolean)); }
+  function slotRects(){
+    var L=KP_LAYOUTS[state.layout]; if(!L) return [];
+    var B=maskBox||{x:0,y:0,w:DIM.w,h:DIM.h};
+    return L.slots.map(function(sl){
+      return {x:B.x+sl.x*B.w, y:B.y+sl.y*B.h, w:sl.w*B.w, h:sl.h*B.h, rot:(sl.rot||0)*Math.PI/180, polaroid:!!L.polaroid};
+    });
+  }
+  function drawCollageInto(c2, forPrint){
+    var B=maskBox||{x:0,y:0,w:DIM.w,h:DIM.h};
+    c2.fillStyle='#F6F3EC';
+    c2.fillRect(B.x-DIM.w,B.y-DIM.h,DIM.w*3,DIM.h*3);
+    var rects=slotRects();
+    for(var i=0;i<rects.length;i++){
+      var r=rects[i], ph=state.photos[i];
+      c2.save();
+      c2.translate(r.x+r.w/2, r.y+r.h/2);
+      c2.rotate(r.rot);
+      var w=r.w,h=r.h;
+      if(r.polaroid){
+        c2.shadowColor='rgba(40,35,25,.28)'; c2.shadowBlur=26; c2.shadowOffsetY=10;
+        c2.fillStyle='#FFFFFF'; c2.fillRect(-w/2,-h/2,w,h);
+        c2.shadowColor='transparent'; c2.shadowBlur=0; c2.shadowOffsetY=0;
+        var pad=w*0.055, capH=h*0.20;
+        var iw=w-pad*2, ih=h-pad-capH;
+        if(ph){ coverDraw(c2,ph,-w/2+pad,-h/2+pad,iw,ih); }
+        else if(!forPrint){ emptySlot(c2,-w/2+pad,-h/2+pad,iw,ih,i); }
+      } else {
+        if(ph){ coverDraw(c2,ph,-w/2,-h/2,w,h); }
+        else if(!forPrint){ c2.fillStyle='#FFFFFF'; c2.fillRect(-w/2,-h/2,w,h); emptySlot(c2,-w/2,-h/2,w,h,i); }
+        else { c2.fillStyle='#FFFFFF'; c2.fillRect(-w/2,-h/2,w,h); }
+      }
+      c2.restore();
+    }
+  }
+  function coverDraw(c2,img,x,y,w,h){
+    var iw=img.naturalWidth||img.width, ih=img.naturalHeight||img.height;
+    var k=Math.max(w/iw,h/ih), dw=iw*k, dh=ih*k;
+    c2.save(); c2.beginPath(); c2.rect(x,y,w,h); c2.clip();
+    c2.drawImage(img, x+(w-dw)/2, y+(h-dh)/2, dw, dh);
+    c2.restore();
+  }
+  function emptySlot(c2,x,y,w,h,i){
+    c2.fillStyle='#EFEBE2'; c2.fillRect(x,y,w,h);
+    c2.strokeStyle='#C9C2B2'; c2.setLineDash([18,14]); c2.lineWidth=6;
+    c2.strokeRect(x+8,y+8,w-16,h-16); c2.setLineDash([]);
+    c2.fillStyle='#A79F8D';
+    c2.font='700 '+Math.round(Math.min(w,h)*0.16)+'px -apple-system,sans-serif';
+    c2.textAlign='center'; c2.textBaseline='middle';
+    c2.fillText('Tap to add photo '+(i+1), x+w/2, y+h/2);
+  }
   function photoHasAlpha(){
     var im=state.photoImg; if(!im) return false;
     if(im.__hasAlpha!==undefined) return im.__hasAlpha;
@@ -750,6 +814,7 @@
     return im.__hasAlpha;
   }
   function drawDesign(c2){
+    if(state.layout){ c2.setTransform(PS,0,0,PS,0,0); drawCollageInto(c2,false); return; }
     var m=designTransform();
     c2.setTransform(PS,0,0,PS,0,0);
     c2.transform(m.a,m.b,m.c,m.d,m.e,m.f);
@@ -777,13 +842,13 @@
     ctx.clearRect(0,0,DIM.w,DIM.h);
     ctx.drawImage(caseImg,0,0,DIM.w,DIM.h);
     var useMask = viewImg && viewReady;
-    if(state.photoImg){
+    if(state.photoImg || state.layout){
       var dl=getDesignLayer(), d2=dl.getContext('2d');
       d2.setTransform(PS,0,0,PS,0,0);
       d2.globalCompositeOperation='source-over'; d2.globalAlpha=1;
       d2.clearRect(0,0,DIM.w,DIM.h);
       if(!useMask){ d2.save(); d2.clip(printPath,'evenodd'); }
-      var pAlpha=photoHasAlpha();
+      var pAlpha=!state.layout && photoHasAlpha();
       if(pAlpha){
         drawDesign(d2);
         d2.globalCompositeOperation='source-in';
@@ -881,6 +946,17 @@
   function ptrCount(){ return Object.keys(kpPtrs).length; }
   function canGesture(){ return state.photoImg && !state.isLibraryDesign; }
   canvas.addEventListener('pointerdown',function(e){
+    if(state.layout && !CAL.on){
+      var p=toCanvas(e), rects=slotRects(), hit=-1;
+      for(var i=rects.length-1;i>=0;i--){
+        var r=rects[i], cx=r.x+r.w/2, cy=r.y+r.h/2;
+        var dx=p.x-cx, dy=p.y-cy, ca=Math.cos(-r.rot), sa=Math.sin(-r.rot);
+        var lx=dx*ca-dy*sa, ly=dx*sa+dy*ca;
+        if(Math.abs(lx)<=r.w/2 && Math.abs(ly)<=r.h/2){ hit=i; break; }
+      }
+      if(hit>=0){ state.slotTarget=hit; $('fileInput').click(); }
+      return;
+    }
     if(state.isLibraryDesign && !CAL.on) return;
     if(CAL.on && VIEW.z>1){ if(kpPtr!==null && e.pointerId!==kpPtr) return; kpPtr=e.pointerId;
       panning=true; panLast={x:e.clientX,y:e.clientY};
@@ -944,15 +1020,19 @@
     canvas.style.display = live ? 'block' : 'none';
     canvas.style.touchAction = state.photoImg ? 'none' : 'pan-y';
     $('stageEmpty').style.display = live ? 'none' : 'block';
-    $('exportLink').style.display = state.photoImg ? 'inline' : 'none';
-    $('editTools').style.display = state.photoImg ? 'block' : 'none';
+    $('exportLink').style.display = hasArt() ? 'inline' : 'none';
+    $('editTools').style.display = (state.photoImg && !state.layout) ? 'block' : 'none';
     if(state.photoImg && typeof syncFitChips==='function') syncFitChips();
-    $('clearBtn').style.display = state.photoImg ? 'block' : 'none';
-    $('uploadBtn').textContent = state.photoImg ? 'Upload a different photo' : 'Upload a photo';
+    $('clearBtn').style.display = (hasArt()||state.layout) ? 'block' : 'none';
+    updateUploadLabel();
     canvas.style.cursor = state.isLibraryDesign ? 'default' : 'grab';
     canvas.style.touchAction = (state.photoImg && !state.isLibraryDesign) ? 'none' : 'pan-y';
     updateBrowseLink();
-    if (!state.photoImg && !state.text){
+    if (state.layout){
+      var Lh=KP_LAYOUTS[state.layout], fh=state.photos.filter(Boolean).length;
+      $('stageHint').textContent = fh>=Lh.slots.length ? 'Collage complete — tap any photo to swap it' : 'Tap an empty frame (or Add photo) — '+fh+' of '+Lh.slots.length+' added';
+      $('kitNote').style.display='none';
+    } else if (!state.photoImg && !state.text){
       $('stageHint').textContent = hasKit() ? 'Your case — upload or drop a photo to begin' : 'Upload or drop a photo to begin';
       $('kitNote').style.display='none';
     } else if (hasKit()){
@@ -1047,10 +1127,17 @@
         wc.naturalWidth=wc.width; wc.naturalHeight=wc.height; src=wc;
       }
       URL.revokeObjectURL(url);
+      if(state.layout){
+        var L=KP_LAYOUTS[state.layout];
+        var idx=(state.slotTarget!=null)?state.slotTarget:(function(){for(var i=0;i<L.slots.length;i++){if(!state.photos[i])return i;}return 0;})();
+        state.photos[idx]=src; state.slotTarget=null; state.reserved=false;
+        updateUploadLabel(); updateStage(); updateSummary(); render();
+      } else {
       state.photoImg=src; state.photoUrl=null; state.isLibraryDesign=false;
       state.fitMode = (w/h > 1.15) ? 'fit' : 'fill';
       state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none'; state.reserved=false;
-      renderFilterChips(); updateDpi(); updateStage(); updateSummary();
+      updateUploadLabel();
+      renderFilterChips(); updateDpi(); updateStage(); updateSummary(); }
       var th=document.createElement('canvas'); var tk=Math.min(1, 512/Math.max(src.naturalWidth,src.naturalHeight));
       th.width=Math.max(1,Math.round(src.naturalWidth*tk)); th.height=Math.max(1,Math.round(src.naturalHeight*tk));
       th.getContext('2d').drawImage(src,0,0,th.width,th.height);
@@ -1058,12 +1145,39 @@
     };
     img.src=url;
   }
+  function renderLayoutChips(){
+    var el=$('layoutChips'); if(!el) return;
+    var items=[[null,'Single photo']].concat(Object.keys(KP_LAYOUTS).map(function(k){return [k,KP_LAYOUTS[k].n];}));
+    el.innerHTML=items.map(function(it){
+      var on=(state.layout===it[0]);
+      return '<button class="layChip" data-l="'+(it[0]||'')+'" style="font-size:12px;font-weight:800;padding:9px 13px;border-radius:999px;cursor:pointer;background:'+(on?'#2D2D3B':'#FFFFFF')+';color:'+(on?'#FFFFFF':'#4E4E50')+';border:1px solid '+(on?'#2D2D3B':'#E4E3E3')+'">'+it[1]+'</button>';
+    }).join('');
+  }
+  document.addEventListener('click',function(e){
+    var lc=e.target.closest ? e.target.closest('.layChip') : null;
+    if(!lc) return;
+    var id=lc.dataset.l||null;
+    if(state.layout===id) return;
+    state.layout=id; state.photos=[]; state.slotTarget=null;
+    state.photoImg=null; state.photoUrl=null; state.isLibraryDesign=false; state.reserved=false;
+    state.px=0;state.py=0;state.scale=1;state.rot=0;
+    renderLayoutChips(); updateUploadLabel(); updateStage(); updateSummary(); render();
+  });
+  function updateUploadLabel(){
+    var b=$('uploadBtn'); if(!b) return;
+    if(state.layout){
+      var L=KP_LAYOUTS[state.layout], filled=state.photos.filter(Boolean).length;
+      b.textContent= filled>=L.slots.length ? 'Replace a photo (tap it first)' : 'Add photo '+(filled+1)+' of '+L.slots.length;
+    } else b.textContent = state.photoImg ? 'Upload a different photo' : 'Upload a photo';
+  }
+  renderLayoutChips();
   $('uploadBtn').addEventListener('click',function(){ $('fileInput').click(); });
   $('fileInput').addEventListener('change',function(e){ loadPhoto(e.target.files[0]); e.target.value=''; });
   $('clearBtn').addEventListener('click',function(){
     state.photoImg=null; state.photoUrl=null; state.filter='none';
+    state.photos=[]; state.slotTarget=null;
     state.px=0;state.py=0;state.scale=1;state.rot=0;
-    updateDpi(); updateStage(); updateSummary();
+    updateUploadLabel(); updateDpi(); updateStage(); updateSummary(); render();
   });
   ['dragover','drop'].forEach(function(ev){
     document.getElementById('stageWrap').addEventListener(ev,function(e){ e.preventDefault();
@@ -1125,6 +1239,7 @@
     }
   }
   function updateDpi(){
+    if(state.layout){ var dl=$('dpiLabel'); if(dl) dl.textContent='Collage prints at full 300 DPI'; return; }
     var el=$('dpiLabel');
     if(!state.photoImg){ el.textContent=''; return; }
     if(state.isLibraryDesign){
@@ -1374,7 +1489,7 @@
   /* ── print export (staff link) ── */
   $('exportLink').addEventListener('click',function(e){
     e.preventDefault();
-    if(!state.photoImg && !state.text) return;
+    if(!hasArt() && !state.text) return;
     var pxW=TPL.pxW||Math.round(TPL.w*300/72), pxH=TPL.pxH||Math.round(TPL.h*300/72);
     var c=document.createElement('canvas'); c.width=pxW; c.height=pxH;
     var c2=c.getContext('2d');
@@ -1386,7 +1501,7 @@
     if(!photoHasAlpha()){ c2.fillStyle='#fff'; c2.fillRect(0,0,c.width,c.height); }
     var m=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y).multiply(designTransform());
     var src=state.photoImg;
-    if(!src){
+    if(!src && !state.layout){
       var m0b=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
       c2.setTransform(m0b.a,m0b.b,m0b.c,m0b.d,m0b.e,m0b.f);
       drawTextLayer(c2);
@@ -1397,8 +1512,14 @@
       a2.click();
       return;
     }
+    if(state.layout){
+      var mc=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
+      c2.setTransform(mc.a,mc.b,mc.c,mc.d,mc.e,mc.f);
+      drawCollageInto(c2,true);
+    } else {
     c2.setTransform(m.a,m.b,m.c,m.d,m.e,m.f);
     drawDesignInto(c2, src, state.filter);
+    }
     var m0=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
     c2.setTransform(m0.a,m0.b,m0.c,m0.d,m0.e,m0.f);
     drawTextLayer(c2);
@@ -1656,6 +1777,24 @@
   }
 
   /* ── embed mode (?embed=1): strip site chrome for iframe embedding ── */
+  /* ── KP-KIOSK: floor-iPad mode (?kiosk=1) — chrome hidden, idle auto-reset for privacy ── */
+  if (/[?&]kiosk=1/.test(location.search)) {
+    document.body.classList.add('kp-kiosk');
+    var kst=document.createElement('style');
+    kst.textContent='.kp-kiosk #announceBar,.kp-kiosk header,.kp-kiosk #mega,.kp-kiosk footer,.kp-kiosk #kpChatWrap,.kp-kiosk #chatToggle,.kp-kiosk #cartBtn{display:none !important}'+
+      '.kp-kiosk main{padding-top:12px !important}'+
+      '.kp-kiosk #reserveBtn{background:#DC282E !important;color:#FFF !important;border-color:#DC282E !important;font-size:15px !important;padding:18px !important}'+
+      '#kpKioskReset{position:fixed;top:14px;right:14px;z-index:300;background:#2D2D3B;color:#FFF;border:0;border-radius:999px;padding:12px 20px;font-size:13px;font-weight:800;cursor:pointer}';
+    document.head.appendChild(kst);
+    var rb=document.createElement('button');
+    rb.id='kpKioskReset'; rb.textContent='Start over';
+    rb.addEventListener('click',function(){ location.href=location.pathname+'?kiosk=1'; });
+    document.body.appendChild(rb);
+    var idleT=null;
+    function arm(){ clearTimeout(idleT); idleT=setTimeout(function(){ location.href=location.pathname+'?kiosk=1'; }, 180000); }
+    ['pointerdown','keydown','touchstart'].forEach(function(ev){ document.addEventListener(ev,arm,{passive:true}); });
+    arm();
+  }
   if (/[?&]embed=1/.test(location.search)) {
     ['announceBar','siteHeader','mega','chatToggle','chatPanel'].forEach(function(id){
       var el=document.getElementById(id); if(el) el.style.display='none';
