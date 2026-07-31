@@ -743,45 +743,47 @@
     try{ c2.filter='none'; }catch(_){}
   }
   /* ── KP-COLLAGE: multi-photo layouts (slots are fractions of the print window) ── */
-  var KP_LAYOUTS={
-    duo:  {n:'Duo',       slots:[{x:.05,y:.045,w:.9,h:.44},{x:.05,y:.515,w:.9,h:.44}]},
-    trio: {n:'Film Strip',slots:[{x:.08,y:.03,w:.84,h:.293},{x:.08,y:.353,w:.84,h:.293},{x:.08,y:.677,w:.84,h:.293}]},
-    grid4:{n:'Grid 4',    slots:[{x:.045,y:.045,w:.44,h:.44},{x:.515,y:.045,w:.44,h:.44},{x:.045,y:.515,w:.44,h:.44},{x:.515,y:.515,w:.44,h:.44}]},
-    pol3: {n:'Polaroid 3',polaroid:true,slots:[{x:.06,y:.03,w:.62,h:.32,rot:-6},{x:.34,y:.33,w:.62,h:.32,rot:5},{x:.10,y:.645,w:.62,h:.32,rot:-3}]},
-    pol5: {n:'Polaroid 5',polaroid:true,slots:[{x:.04,y:.02,w:.5,h:.26,rot:-7},{x:.47,y:.10,w:.5,h:.26,rot:6},{x:.07,y:.315,w:.5,h:.26,rot:4},{x:.44,y:.42,w:.5,h:.26,rot:-5},{x:.22,y:.68,w:.5,h:.26,rot:2}]}
-  };
+  var KP_TPLS=[]; var tplImgs={};
+  fetch('assets/collage/templates.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){ KP_TPLS=d; renderLayoutChips(); var w=$('layoutChipsWrap'); if(w) w.style.display='block'; });
+  function curTpl(){ return KP_TPLS.find(function(t){return 'tpl:'+t.id===state.layout;}) || null; }
+  function tplImage(t){
+    if(tplImgs[t.id]) return tplImgs[t.id];
+    var im=new Image(); im.crossOrigin='anonymous';
+    im.onload=function(){ render(); };
+    im.src='assets/collage/'+t.img;
+    tplImgs[t.id]=im; return im;
+  }
   function hasArt(){ return !!state.photoImg || (state.layout && state.photos && state.photos.some(Boolean)); }
-  function slotRects(){
-    var L=KP_LAYOUTS[state.layout]; if(!L) return [];
+  function tplMap(){
+    var t=curTpl(); if(!t) return null;
     var B=maskBox||{x:0,y:0,w:DIM.w,h:DIM.h};
-    return L.slots.map(function(sl){
-      return {x:B.x+sl.x*B.w, y:B.y+sl.y*B.h, w:sl.w*B.w, h:sl.h*B.h, rot:(sl.rot||0)*Math.PI/180, polaroid:!!L.polaroid};
+    var pageAR=1080/1920, winAR=B.w/B.h;
+    var sc, ox, oy;   /* cover-fit page into window */
+    if(winAR>pageAR){ sc=B.w/1080; ox=B.x; oy=B.y-(1920*sc-B.h)/2; }
+    else { sc=B.h/1920; ox=B.x-(1080*sc-B.w)/2; oy=B.y; }
+    return {sc:sc,ox:ox,oy:oy,B:B};
+  }
+  function slotRects(){
+    var t=curTpl(); if(!t) return [];
+    var m=tplMap();
+    return t.slots.map(function(sl){
+      return {x:m.ox+(sl.cx-sl.w/2)*1080*m.sc, y:m.oy+(sl.cy-sl.h/2)*1920*m.sc,
+              w:sl.w*1080*m.sc, h:sl.h*1920*m.sc, rot:(sl.rot||0)*Math.PI/180};
     });
   }
   function drawCollageInto(c2, forPrint){
-    var B=maskBox||{x:0,y:0,w:DIM.w,h:DIM.h};
-    c2.fillStyle='#F6F3EC';
-    c2.fillRect(B.x-DIM.w,B.y-DIM.h,DIM.w*3,DIM.h*3);
+    var t=curTpl(); if(!t) return;
+    var m=tplMap(), im=tplImage(t);
+    if(!(im&&im.complete&&im.naturalWidth)) { c2.fillStyle='#F3F2F2'; c2.fillRect(m.B.x,m.B.y,m.B.w,m.B.h); return; }
+    c2.drawImage(im, m.ox, m.oy, 1080*m.sc, 1920*m.sc);
     var rects=slotRects();
     for(var i=0;i<rects.length;i++){
-      var r=rects[i], ph=state.photos[i];
+      var ph=state.photos[i]; if(!ph) continue;
+      var r=rects[i];
       c2.save();
       c2.translate(r.x+r.w/2, r.y+r.h/2);
       c2.rotate(r.rot);
-      var w=r.w,h=r.h;
-      if(r.polaroid){
-        c2.shadowColor='rgba(40,35,25,.28)'; c2.shadowBlur=26; c2.shadowOffsetY=10;
-        c2.fillStyle='#FFFFFF'; c2.fillRect(-w/2,-h/2,w,h);
-        c2.shadowColor='transparent'; c2.shadowBlur=0; c2.shadowOffsetY=0;
-        var pad=w*0.055, capH=h*0.20;
-        var iw=w-pad*2, ih=h-pad-capH;
-        if(ph){ coverDraw(c2,ph,-w/2+pad,-h/2+pad,iw,ih); }
-        else if(!forPrint){ emptySlot(c2,-w/2+pad,-h/2+pad,iw,ih,i); }
-      } else {
-        if(ph){ coverDraw(c2,ph,-w/2,-h/2,w,h); }
-        else if(!forPrint){ c2.fillStyle='#FFFFFF'; c2.fillRect(-w/2,-h/2,w,h); emptySlot(c2,-w/2,-h/2,w,h,i); }
-        else { c2.fillStyle='#FFFFFF'; c2.fillRect(-w/2,-h/2,w,h); }
-      }
+      coverDraw(c2, ph, -r.w/2, -r.h/2, r.w, r.h);
       c2.restore();
     }
   }
@@ -1029,8 +1031,8 @@
     canvas.style.touchAction = (state.photoImg && !state.isLibraryDesign) ? 'none' : 'pan-y';
     updateBrowseLink();
     if (state.layout){
-      var Lh=KP_LAYOUTS[state.layout], fh=state.photos.filter(Boolean).length;
-      $('stageHint').textContent = fh>=Lh.slots.length ? 'Collage complete — tap any photo to swap it' : 'Tap an empty frame (or Add photo) — '+fh+' of '+Lh.slots.length+' added';
+      var Th=curTpl(), tot=Th?Th.slots.length:0, fh=state.photos.filter(Boolean).length;
+      $('stageHint').textContent = fh>=tot ? 'Collage complete — tap any photo to swap it' : (Th?Th.n+' — tap a photo spot to replace it ('+fh+' of '+tot+')':'');
       $('kitNote').style.display='none';
     } else if (!state.photoImg && !state.text){
       $('stageHint').textContent = hasKit() ? 'Your case — upload or drop a photo to begin' : 'Upload or drop a photo to begin';
@@ -1128,8 +1130,8 @@
       }
       URL.revokeObjectURL(url);
       if(state.layout){
-        var L=KP_LAYOUTS[state.layout];
-        var idx=(state.slotTarget!=null)?state.slotTarget:(function(){for(var i=0;i<L.slots.length;i++){if(!state.photos[i])return i;}return 0;})();
+        var t=curTpl(), nslots=t?t.slots.length:1;
+        var idx=(state.slotTarget!=null)?state.slotTarget:(function(){for(var i=0;i<nslots;i++){if(!state.photos[i])return i;}return 0;})();
         state.photos[idx]=src; state.slotTarget=null; state.reserved=false;
         updateUploadLabel(); updateStage(); updateSummary(); render();
       } else {
@@ -1147,10 +1149,11 @@
   }
   function renderLayoutChips(){
     var el=$('layoutChips'); if(!el) return;
-    var items=[[null,'Single photo']].concat(Object.keys(KP_LAYOUTS).map(function(k){return [k,KP_LAYOUTS[k].n];}));
-    el.innerHTML=items.map(function(it){
-      var on=(state.layout===it[0]);
-      return '<button class="layChip" data-l="'+(it[0]||'')+'" style="font-size:12px;font-weight:800;padding:9px 13px;border-radius:999px;cursor:pointer;background:'+(on?'#2D2D3B':'#FFFFFF')+';color:'+(on?'#FFFFFF':'#4E4E50')+';border:1px solid '+(on?'#2D2D3B':'#E4E3E3')+'">'+it[1]+'</button>';
+    var single='<button class="layChip" data-l="" style="flex:0 0 auto;scroll-snap-align:start;font-size:12px;font-weight:800;padding:9px 13px;border-radius:12px;cursor:pointer;height:118px;background:'+(!state.layout?'#2D2D3B':'#FFFFFF')+';color:'+(!state.layout?'#FFFFFF':'#4E4E50')+';border:1.5px solid '+(!state.layout?'#2D2D3B':'#E4E3E3')+'">Single<br>photo</button>';
+    el.style.cssText='display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:4px';
+    el.innerHTML=single+KP_TPLS.map(function(t){
+      var on=(state.layout==='tpl:'+t.id);
+      return '<button class="layChip" data-l="tpl:'+t.id+'" title="'+t.n+'" style="flex:0 0 auto;scroll-snap-align:start;padding:0;border-radius:12px;cursor:pointer;overflow:hidden;border:2px solid '+(on?'#DC282E':'#E4E3E3')+';background:#FFF"><img src="assets/collage/'+t.thumb+'" alt="'+t.n+'" style="height:114px;display:block"></button>';
     }).join('');
   }
   document.addEventListener('click',function(e){
@@ -1159,6 +1162,7 @@
     var id=lc.dataset.l||null;
     if(state.layout===id) return;
     state.layout=id; state.photos=[]; state.slotTarget=null;
+    if(id){ var t=curTpl(); if(t) tplImage(t); }
     state.photoImg=null; state.photoUrl=null; state.isLibraryDesign=false; state.reserved=false;
     state.px=0;state.py=0;state.scale=1;state.rot=0;
     renderLayoutChips(); updateUploadLabel(); updateStage(); updateSummary(); render();
@@ -1166,8 +1170,8 @@
   function updateUploadLabel(){
     var b=$('uploadBtn'); if(!b) return;
     if(state.layout){
-      var L=KP_LAYOUTS[state.layout], filled=state.photos.filter(Boolean).length;
-      b.textContent= filled>=L.slots.length ? 'Replace a photo (tap it first)' : 'Add photo '+(filled+1)+' of '+L.slots.length;
+      var t=curTpl(), total=t?t.slots.length:0, filled=state.photos.filter(Boolean).length;
+      b.textContent= filled>=total ? 'Replace a photo (tap it first)' : 'Add photo '+(filled+1)+' of '+total;
     } else b.textContent = state.photoImg ? 'Upload a different photo' : 'Upload a photo';
   }
   renderLayoutChips();
