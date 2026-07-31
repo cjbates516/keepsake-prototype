@@ -18,6 +18,7 @@ MANIFEST = os.path.join(DEST, "designs.json")
 RULES = [
     (r"\bclear\b.*transparent|transparent.*\bclear\b|^clear-", "Clear"),
     (r"coastal|beach umbrella|seashell|starfish", "Coastal"),
+    (r"polka[- ]dots?", "Polka dots"),
     (r"area[- ]code|coordinates|go[- ]birds|broad[- ]street|pinstripe|hoops", "Hometown"),
     (r"city map|philadelphia|philly|west chester|pottstown|newark|wilmington", "City maps"),
     # seasonal first — "cute halloween ghost" belongs in Halloween, not Cute & kids
