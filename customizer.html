@@ -262,7 +262,7 @@
             <div style="width:1px;background:#E4E3E3"></div>
             <select id="modelSel" style="flex:1.4;min-width:0;padding:15px 20px;border:0;font-size:16px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer"></select>
           </div>
-          <div style="font-size:12px;font-weight:600;color:#9A9A9D;margin:-18px 0 24px;padding-left:2px"><span id="fitNote"></span>
+          <div style="font-size:12px;font-weight:600;color:#9A9A9D;margin:-18px 0 24px;padding-left:2px"><span id="fitNote" style="display:none"></span>
             <span id="dpiLabel" style="display:block;margin-top:6px;font-weight:800"></span>
           </div>
 
@@ -1313,17 +1313,16 @@
     }
   }
   function updateDpi(){
-    if(state.layout){ var dl=$('dpiLabel'); if(dl) dl.textContent='Collage prints at full 300 DPI'; return; }
-    var el=$('dpiLabel');
-    if(!state.photoImg){ el.textContent=''; return; }
-    if(state.isLibraryDesign){
-      el.textContent='Library design — we print from the full-resolution original';
-      el.style.color='#1E8E3E'; return;
-    }
+    /* quiet by default — the label only ever speaks up to warn about a low-res photo */
+    var el=$('dpiLabel'); if(!el) return;
+    el.textContent='';
+    if(state.layout || !state.photoImg || state.isLibraryDesign) return;
     var sp = printSpec[state.model] || [0,0,900,1900];
     var ok = state.photoImg.naturalWidth >= sp[2]*0.6 && state.photoImg.naturalHeight >= sp[3]*0.6;
-    el.textContent = ok ? 'Great resolution — crisp at print size' : 'Low resolution — this photo may print soft; a larger photo is better';
-    el.style.color = ok ? '#1E8E3E' : '#C77700';
+    if(!ok){
+      el.textContent='Low resolution — this photo may print soft; a larger photo is better';
+      el.style.color='#C77700';
+    }
   }
   $('brandSel').addEventListener('change',function(){
     state.brand=this.value; state.model=modelsByBrand[state.brand][0]; state.reserved=false;
