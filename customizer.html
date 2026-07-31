@@ -1569,7 +1569,14 @@
       if(CAM_D) pClip.addPath(new Path2D(CAM_D), mClip);
       c2.clip(pClip,'evenodd');
     }
-    if(!photoHasAlpha()){ c2.fillStyle='#fff'; c2.fillRect(0,0,c.width,c.height); }
+    if(maskBox){
+      /* second clip: only the design window prints — everything else stays transparent (clear case) */
+      var mWin=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
+      var pWin=new Path2D(); var pWinT=new Path2D();
+      pWin.rect(maskBox.x, maskBox.y, maskBox.w, maskBox.h);
+      pWinT.addPath(pWin, mWin);
+      c2.clip(pWinT);
+    }
     var m=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y).multiply(designTransform());
     var src=state.photoImg;
     if(!src && !state.layout){
