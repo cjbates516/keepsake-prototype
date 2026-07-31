@@ -1708,7 +1708,7 @@
     var setImg=function(im, isThumb){
       im.__kpIsThumb=isThumb;
       state.photoImg=im; state.photoUrl='assets/designs/'+file; state.isLibraryDesign=true;
-      state.fitMode = kpBgUniform(im) ? 'fit' : 'fill';
+      state.fitMode='fill';
       state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none';
       renderFilterChips(); updateDpi(); updateStage(); updateSummary();
       if(hint) $('stageHint').textContent=hint;
