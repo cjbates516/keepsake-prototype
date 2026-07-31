@@ -778,12 +778,25 @@
     c2.drawImage(im, m.ox, m.oy, 1080*m.sc, 1920*m.sc);
     var rects=slotRects();
     for(var i=0;i<rects.length;i++){
-      var ph=state.photos[i]; if(!ph) continue;
-      var r=rects[i];
+      var r=rects[i], ph=state.photos[i];
       c2.save();
       c2.translate(r.x+r.w/2, r.y+r.h/2);
       c2.rotate(r.rot);
-      coverDraw(c2, ph, -r.w/2, -r.h/2, r.w, r.h);
+      if(ph){ coverDraw(c2, ph, -r.w/2, -r.h/2, r.w, r.h); }
+      else if(!forPrint){
+        c2.strokeStyle='rgba(255,255,255,.9)'; c2.setLineDash([18,12]); c2.lineWidth=7;
+        c2.strokeRect(-r.w/2+6,-r.h/2+6,r.w-12,r.h-12);
+        c2.strokeStyle='rgba(45,45,59,.55)'; c2.lineWidth=3;
+        c2.strokeRect(-r.w/2+6,-r.h/2+6,r.w-12,r.h-12);
+        c2.setLineDash([]);
+        var fs=Math.max(56,Math.min(r.w,r.h)*0.32);
+        c2.font='800 '+fs+'px -apple-system,sans-serif';
+        c2.textAlign='center'; c2.textBaseline='middle';
+        c2.lineWidth=8; c2.strokeStyle='rgba(255,255,255,.85)';
+        c2.strokeText('+', 0, 0);
+        c2.fillStyle='rgba(45,45,59,.8)';
+        c2.fillText('+', 0, 0);
+      }
       c2.restore();
     }
   }
@@ -1032,7 +1045,7 @@
     updateBrowseLink();
     if (state.layout){
       var Th=curTpl(), tot=Th?Th.slots.length:0, fh=state.photos.filter(Boolean).length;
-      $('stageHint').textContent = fh>=tot ? 'Collage complete — tap any photo to swap it' : (Th?Th.n+' — tap a photo spot to replace it ('+fh+' of '+tot+')':'');
+      $('stageHint').textContent = fh>=tot ? 'Collage complete — tap any photo to swap it' : (Th?Th.n+' — tap a + spot to add your photos ('+fh+' of '+tot+' added)':'');
       $('kitNote').style.display='none';
     } else if (!state.photoImg && !state.text){
       $('stageHint').textContent = hasKit() ? 'Your case — upload or drop a photo to begin' : 'Upload or drop a photo to begin';
