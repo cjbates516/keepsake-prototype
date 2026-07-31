@@ -40,13 +40,10 @@
   #mega.open{display:block;max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 @media(max-width:900px){#mega>div{padding-bottom:150px !important}}
 .kpStep{display:none}
-@media(max-width:640px){
   body.kp-device-mode #deviceBar,body.kp-device-mode #filters{display:none !important}
-  body.kp-device-mode #deviceBar.kp-open{display:block !important}
-  body.kp-device-mode .kpStep{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+  body.kp-device-mode .kpStep{display:flex;align-items:center;gap:10px;margin:0 0 12px;max-width:720px}
   body.kp-device-mode #colorBar{margin:10px 0 18px}
   body.kp-device-mode #deskSearch{display:none}
-}
 .kpStepN{width:26px;height:26px;border-radius:50%;background:#2D2D3B;color:#FFF;font-size:13px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .kpStepDone{background:#1E8E3E}
   #mega.open{max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto}
@@ -499,27 +496,36 @@
   var searchQ='';
   function renderWizard(){
     var el=document.getElementById('wizardBar'); if(!el) return;
-    if(!device){ el.innerHTML=''; document.body.classList.remove('kp-device-mode'); return; }
     document.body.classList.add('kp-device-mode');
     var cats={}; designs.forEach(function(d){ if(!d.hidden) cats[d.category]=(cats[d.category]||0)+1; });
     var opts='<option value="All">All styles ('+designs.filter(function(d){return !d.hidden;}).length+')</option>'+
       Object.keys(cats).sort().map(function(c){ return '<option value="'+c+'"'+(filter===c?' selected':'')+'>'+c+' ('+cats[c]+')</option>'; }).join('');
+    var devOpts='<option value=""'+(!device?' selected':'')+'>Flat designs — no phone preview</option>'+
+      Object.keys(KP_BRANDS).filter(function(b){return KP_BRANDS[b].length;}).map(function(b){
+        return '<optgroup label="'+b+'">'+KP_BRANDS[b].map(function(m){
+          return '<option value="'+slugify(m)+'"'+(m===device?' selected':'')+'>'+m+'</option>';
+        }).join('')+'</optgroup>';
+      }).join('');
     el.innerHTML =
-      '<div class="kpStep"><span class="kpStepN kpStepDone">✓</span>'+
-      '<span style="font-weight:900;font-size:15px;color:#2D2D3B;flex:1">'+device+'</span>'+
-      '<button id="wizChange" style="background:none;border:0;color:#DC282E;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;padding:6px">Change</button></div>'+
+      '<div class="kpStep"><span class="kpStepN'+(device?' kpStepDone':'')+'">'+(device?'\u2713':'1')+'</span>'+
+      '<span style="font-weight:900;font-size:15px;color:#2D2D3B;white-space:nowrap">Your phone</span>'+
+      '<select id="wizDev" aria-label="Phone model" style="flex:1;min-width:150px;font-size:16px;font-weight:700;padding:10px 12px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF;color:#2D2D3B">'+devOpts+'</select></div>'+
       '<div class="kpStep" style="flex-wrap:wrap"><span class="kpStepN">2</span>'+
       '<span style="font-weight:900;font-size:15px;color:#2D2D3B">Pick your style</span>'+
       '<select id="wizCat" aria-label="Design style" style="flex:1;min-width:130px;font-size:16px;font-weight:700;padding:10px 12px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF;color:#2D2D3B">'+opts+'</select>'+
-      '<input id="wizSearch" type="search" placeholder="Search designs…" value="'+searchQ.replace(/"/g,'&quot;')+'" aria-label="Search designs" style="flex-basis:100%;font-size:16px;padding:11px 14px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF"></div>';
+      '<input id="wizSearch" type="search" placeholder="Search designs\u2026" value="'+searchQ.replace(/"/g,'&quot;')+'" aria-label="Search designs" style="flex-basis:100%;font-size:16px;padding:11px 14px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF"></div>';
+    document.getElementById('wizDev').addEventListener('change',function(){
+      var slug=this.value;
+      device = slug ? DEVICE_ORDER.filter(function(m){ return slugify(m)===slug; })[0] : null;
+      history.replaceState(null,'', location.pathname + (device ? '?device='+slug : ''));
+      renderDeviceBar(); renderGrid();
+      if(device) preloadDevice(device);
+    });
     var sel=document.getElementById('wizCat');
     sel.addEventListener('change',function(){
       filter=this.value; searchQ='';
       var si2=document.getElementById('wizSearch'); if(si2) si2.value='';
-      renderFilters(); renderGrid();
-    });
-    document.getElementById('wizChange').addEventListener('click',function(){
-      document.getElementById('deviceBar').classList.toggle('kp-open');
+      renderFilters(); renderStates(); renderGrid();
     });
     var si=document.getElementById('wizSearch'), deb=null;
     si.addEventListener('input',function(){
