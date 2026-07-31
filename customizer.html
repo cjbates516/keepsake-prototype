@@ -1566,46 +1566,65 @@
     if(!hasArt() && !state.text) return;
     if(state.photoImg && state.photoImg.__kpIsThumb){ kpToast('Full-quality art is still loading — one moment, then try again.'); return; }
     var pxW=TPL.pxW||Math.round(TPL.w*300/72), pxH=TPL.pxH||Math.round(TPL.h*300/72);
-    var c=document.createElement('canvas'); c.width=pxW; c.height=pxH;
-    var c2=c.getContext('2d');
     var k=pxW/TPL.w;
+    var BLEED=Math.max(2, Math.round(4.252*k));   /* 1.5mm run-off (TPL units are points: 1.5mm = 4.252pt) */
+    var c=document.createElement('canvas'); c.width=pxW+2*BLEED; c.height=pxH+2*BLEED;
+    var c2=c.getContext('2d');
     c2.save();
-    var m=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y).multiply(designTransform());
+    var m=new DOMMatrix().translate(BLEED,BLEED).scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y).multiply(designTransform());
     var src=state.photoImg;
     if(!src && !state.layout){
-      var m0b=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
+      var m0b=new DOMMatrix().translate(BLEED,BLEED).scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
       c2.setTransform(m0b.a,m0b.b,m0b.c,m0b.d,m0b.e,m0b.f);
       drawTextLayer(c2);
       c2.restore();
-      applyPrintMask(c2,k);
-      kpDownloadCanvas(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+pxW+'x'+pxH+'.png');
+      applyPrintMask(c2,k,BLEED);
+      kpDownloadCanvas(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+pxW+'x'+pxH+'-bleed1.5mm.png');
       return;
     }
     if(state.layout){
-      var mc=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
+      var mc=new DOMMatrix().translate(BLEED,BLEED).scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
       c2.setTransform(mc.a,mc.b,mc.c,mc.d,mc.e,mc.f);
       drawCollageInto(c2,true);
     } else {
     c2.setTransform(m.a,m.b,m.c,m.d,m.e,m.f);
     drawDesignInto(c2, src, state.filter);
     }
-    var m0=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
+    var m0=new DOMMatrix().translate(BLEED,BLEED).scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
     c2.setTransform(m0.a,m0.b,m0.c,m0.d,m0.e,m0.f);
     drawTextLayer(c2);
     c2.restore();
-    applyPrintMask(c2,k);
-    kpDownloadCanvas(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+pxW+'x'+pxH+'.png');
+    applyPrintMask(c2,k,BLEED);
+    kpDownloadCanvas(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+pxW+'x'+pxH+'-bleed1.5mm.png');
   });
-  function applyPrintMask(c2,k){
-    /* stamp the art with the same view mask the on-screen preview uses —
-       exact window shape (rounded corners + camera) for every model */
+  function applyPrintMask(c2,k,BLEED){
+    /* stamp the art with the view mask, DILATED ~1.5mm for print bleed:
+       physical jig alignment drifts a hair — bleed keeps the rim covered */
     if(!(viewImg && viewReady)) return;
+    var cv=c2.canvas, W=cv.width, H=cv.height;
+    var bpx=BLEED;
+    /* expand the art itself so it can fill the bleed ring */
+    var snap=document.createElement('canvas'); snap.width=W; snap.height=H;
+    snap.getContext('2d').drawImage(cv,0,0);
+    c2.save();
+    c2.setTransform(1,0,0,1,0,0);
+    c2.clearRect(0,0,W,H);
+    c2.drawImage(snap, -bpx, -bpx, W+2*bpx, H+2*bpx);
+    c2.restore();
+    /* dilated mask = union of offset stamps */
+    var mk=document.createElement('canvas'); mk.width=W; mk.height=H;
+    var mx=mk.getContext('2d');
+    var mM=new DOMMatrix().translate(BLEED,BLEED).scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
+    var d7=bpx*0.707;
+    [[0,0],[bpx,0],[-bpx,0],[0,bpx],[0,-bpx],[d7,d7],[-d7,d7],[d7,-d7],[-d7,-d7]].forEach(function(o){
+      var m2=new DOMMatrix().translate(o[0],o[1]).multiply(mM);
+      mx.setTransform(m2.a,m2.b,m2.c,m2.d,m2.e,m2.f);
+      mx.drawImage(viewImg,0,0,DIM.w,DIM.h);
+    });
     c2.save();
     c2.globalCompositeOperation='destination-in';
     c2.setTransform(1,0,0,1,0,0);
-    var mM=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
-    c2.setTransform(mM.a,mM.b,mM.c,mM.d,mM.e,mM.f);
-    c2.drawImage(viewImg,0,0,DIM.w,DIM.h);
+    c2.drawImage(mk,0,0);
     c2.restore();
   }
   function kpDownloadCanvas(c,name){
