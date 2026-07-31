@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Keepsake Printing Co — One photo. One case. Made for them.</title>
 <meta name="description" content="Custom photo phone cases, UV-printed in store while you watch — ready today, not in 7–10 business days.">
 <style>
@@ -60,7 +60,7 @@
   .desktop-only{display:inline-flex}
   @media(max-width:760px){.desktop-only{display:none !important}}
   #mega{display:none}
-  #mega.open{display:block;max-height:calc(100dvh - 72px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+  #mega.open{display:block;max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 @media(max-width:900px){#mega>div{padding-bottom:150px !important}}
   .heroUnit{position:absolute;inset:0}
   .heroUnit img,.heroUnit canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;transform:scale(1.18)}
@@ -118,7 +118,7 @@
 }
 @media(max-width:900px){
 }
-  #mega.open{max-height:calc(100dvh - 72px);overflow-y:auto}
+  #mega.open{max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto}
   </style>
 </head>
 <body>
@@ -276,7 +276,7 @@
   <main style="flex:1">
 
     <!-- ═══ hero ═══ -->
-    <section id="heroSec" style="max-width:1280px;margin:0 auto;padding:76px 40px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:40px;align-items:center">
+    <section id="heroSec" style="max-width:1280px;margin:0 auto;padding:76px 40px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:40px;align-items:center;overflow:hidden">
       <div>
         <div class="heroBadge" style="animation:fadeUp .6s cubic-bezier(.2,.7,.2,1) both;display:inline-flex;align-items:center;gap:8px;background:#FBE0E1;color:#B81F24;font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:8px 16px;border-radius:999px;margin-bottom:28px">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
@@ -352,7 +352,7 @@
         <a class="kpBest" href="customizer.html?design=playful-cartoon-cherries.jpg&model=iphone-17-pro-max"><img src="assets/promo/promo-playful-cartoon-cherries.webp" alt="Cherries case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Cherries</div><div style="font-size:12px;font-weight:700;color:#9A9A9D;margin-top:2px">From $64.99</div></a>
       </div>
     </section>
-      <section id="mapsBand" style="position:relative;background:#DC282E">
+      <section id="mapsBand" style="position:relative;background:#DC282E;overflow:hidden">
         <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:30px;align-items:center;min-height:520px;padding:50px 48px">
           <div>
             <div style="font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:14px">New — the City Maps collection</div>
@@ -377,21 +377,21 @@
         <span class="kpLookHint" style="font-size:13px;font-weight:700;color:#9A9A9D">Tap any look to make it yours</span>
       </div>
       <div style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px">
-        <a href="customizer.html?design=cheerful-pink-strawberry-pattern.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life-v118.jpg" alt="Pink Berries case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Pink Berries</div></a>
-        <a href="customizer.html?design=miami-map-cream.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life2-v124-miami.jpg" alt="Miami Map case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Miami Map</div></a>
-        <a href="customizer.html?design=western-vintage-31.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life2-v118-western.jpg" alt="Desert Western case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Desert Western</div></a>
-        <a href="customizer.html?design=colorful-minimalist-wavy-stripes.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life-v119.jpg" alt="Wavy Stripes case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Wavy Stripes</div></a>
-        <a href="customizer.html?design=zodiac-leo-night-sky.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life2-v113-leo.jpg" alt="Leo Night Sky case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Leo Night Sky</div></a>
-        <a href="customizer.html?design=birth-flower-june-rose.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life2-v115-junerose.jpg" alt="June Rose case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">June Rose</div></a>
-        <a href="customizer.html?design=dog-s-with-cute-dachshunds-71830480.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life2-v122-dachshund.jpg" alt="Dachshund Parade case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Dachshund Parade</div></a>
-        <a href="customizer.html?design=charming-minimalist-black-hearts-pattern-2.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life-v116.jpg" alt="Black Hearts case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Black Hearts</div></a>
-        <a href="customizer.html?design=western-vintage-09.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life2-v107-western.jpg" alt="Aztec Quilt case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Aztec Quilt</div></a>
-        <a href="customizer.html?design=y2k-retro-04.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life2-v120-y2k.jpg" alt="Y2K Neon case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Y2K Neon</div></a>
-        <a href="customizer.html?design=birth-flower-january-carnation.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life2-v116-carnation.jpg" alt="January Carnation case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">January Carnation</div></a>
-        <a href="customizer.html?design=kawaii-watercolor-strawberry.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life-v120.jpg" alt="Kawaii Strawberry case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Kawaii Strawberry</div></a>
-        <a href="customizer.html?design=vintage-animal-print-03.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life2-v119-animal.jpg" alt="Vintage Cow case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Vintage Cow</div></a>
-        <a href="customizer.html?design=high-detail-botanical-of-winter-flora-on-white.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life-v113.jpg" alt="Winter Botanical case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Winter Botanical</div></a>
-        <a href="customizer.html?design=intricate-black-leopard-spots.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/life-v122.jpg" alt="Leopard case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Leopard</div></a>
+        <a href="customizer.html?design=cheerful-pink-strawberry-pattern.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life-v118.jpg" alt="Pink Berries case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Pink Berries</div></a>
+        <a href="customizer.html?design=miami-map-cream.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v124-miami.jpg" alt="Miami Map case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Miami Map</div></a>
+        <a href="customizer.html?design=western-vintage-31.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v118-western.jpg" alt="Desert Western case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Desert Western</div></a>
+        <a href="customizer.html?design=colorful-minimalist-wavy-stripes.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life-v119.jpg" alt="Wavy Stripes case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Wavy Stripes</div></a>
+        <a href="customizer.html?design=zodiac-leo-night-sky.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v113-leo.jpg" alt="Leo Night Sky case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Leo Night Sky</div></a>
+        <a href="customizer.html?design=birth-flower-june-rose.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v115-junerose.jpg" alt="June Rose case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">June Rose</div></a>
+        <a href="customizer.html?design=dog-s-with-cute-dachshunds-71830480.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v122-dachshund.jpg" alt="Dachshund Parade case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Dachshund Parade</div></a>
+        <a href="customizer.html?design=charming-minimalist-black-hearts-pattern-2.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life-v116.jpg" alt="Black Hearts case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Black Hearts</div></a>
+        <a href="customizer.html?design=western-vintage-09.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v107-western.jpg" alt="Aztec Quilt case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Aztec Quilt</div></a>
+        <a href="customizer.html?design=y2k-retro-04.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v120-y2k.jpg" alt="Y2K Neon case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Y2K Neon</div></a>
+        <a href="customizer.html?design=birth-flower-january-carnation.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v116-carnation.jpg" alt="January Carnation case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">January Carnation</div></a>
+        <a href="customizer.html?design=kawaii-watercolor-strawberry.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life-v120.jpg" alt="Kawaii Strawberry case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Kawaii Strawberry</div></a>
+        <a href="customizer.html?design=vintage-animal-print-03.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v119-animal.jpg" alt="Vintage Cow case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Vintage Cow</div></a>
+        <a href="customizer.html?design=high-detail-botanical-of-winter-flora-on-white.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life-v113.jpg" alt="Winter Botanical case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Winter Botanical</div></a>
+        <a href="customizer.html?design=intricate-black-leopard-spots.jpg&model=iphone-17-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life-v122.jpg" alt="Leopard case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Leopard</div></a>
       </div>
     </section>
     <!-- ═══ story chips ═══ -->
@@ -407,11 +407,11 @@
           <span style="position:absolute;top:16px;left:16px;font-weight:900;font-size:clamp(17px,2vw,24px);color:#FFFFFF;text-shadow:0 2px 12px rgba(0,0,0,.45)">City<br>Maps</span>
         </a>
         <a class="kpTile" href="gallery.html">
-          <img src="assets/lifestyle/life-v119.jpg" alt="Ready-made designs" loading="lazy">
+          <img src="assets/lifestyle/thumbs/life-v119.jpg" alt="Ready-made designs" loading="lazy">
           <span>Ready-Made<br>Designs</span>
         </a>
         <a class="kpTile" href="customizer.html">
-          <img src="assets/lifestyle/life-v118.jpg" alt="Design your own case" loading="lazy">
+          <img src="assets/lifestyle/thumbs/life-v118.jpg" alt="Design your own case" loading="lazy">
           <span>Design<br>Your Own</span>
         </a>
         <a class="kpTile wide" href="gallery.html?device=iphone-17-pro-max">
@@ -468,10 +468,10 @@
         <h2 style="font-weight:900;font-size:clamp(28px,3vw,40px);letter-spacing:-.01em;text-transform:uppercase;margin:0 0 12px">Get 10% off your first case</h2>
         <p style="font-size:16px;margin:0 0 28px;opacity:.92">Join the list for seasonal ideas — Mother's Day, back to school, the holidays — and your welcome discount.</p>
         <form id="emailForm" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-          <input id="emailInput" type="email" required placeholder="you@email.com" style="padding:15px 18px;border-radius:12px;border:0;font-size:15px;width:320px;max-width:100%;color:#2D2D3B">
+          <input id="emailInput" type="email" required placeholder="you@email.com" style="padding:15px 18px;border-radius:12px;border:0;font-size:16px;width:320px;max-width:100%;color:#2D2D3B">
           <button type="submit" style="background:#2D2D3B;color:#FFFFFF;border:0;padding:15px 28px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Sign me up</button>
         </form>
-        <div id="emailDone" style="display:none;background:rgba(255,255,255,.14);border-radius:8px;padding:18px 24px;font-weight:800;font-size:15px">You're in! Check your inbox for the 10% welcome code.</div>
+        <div id="emailDone" style="display:none;background:rgba(255,255,255,.14);border-radius:8px;padding:18px 24px;font-weight:800;font-size:15px">You're in! Use code FIRST10 at the counter for 10% off your first case.</div>
       </div>
     </section>
 
@@ -555,8 +555,8 @@
         <div id="chatAnswer" style="display:none;background:#F8F7F7;border-radius:12px;padding:14px;font-size:13px;line-height:1.6;color:#4E4E50"></div>
         <div style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9D;margin-top:6px">Or send us a message</div>
         <form id="chatForm" style="display:flex;flex-direction:column;gap:8px">
-          <input type="email" required placeholder="Your email" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:13px">
-          <textarea required placeholder="How can we help?" rows="3" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:13px;font-family:inherit;resize:vertical"></textarea>
+          <input type="email" required placeholder="Your email" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:16px">
+          <textarea required placeholder="How can we help?" rows="3" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:16px;font-family:inherit;resize:vertical"></textarea>
           <button type="submit" class="h-chatred" style="background:#DC282E;color:#FFFFFF;border:0;padding:12px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s">Send message</button>
         </form>
       </div>
@@ -657,7 +657,7 @@
     }
   };
   function slotImg(file, alt){
-    return '<img src="assets/designs/'+file+'" alt="'+(alt||'')+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">';
+    return '<img src="assets/designs/thumbs/'+file+'" alt="'+(alt||'')+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">';
   }
   document.querySelectorAll('.h-chip').forEach(function(chip){
     var spans = chip.querySelectorAll(':scope > span');
@@ -733,7 +733,7 @@
           if(oc) setTimeout(function(){ oc.style.opacity='0'; }, 650);
           front=next;
         };
-        img.src='assets/designs/'+DESIGNS[idx%DESIGNS.length]; idx++;
+        img.src='assets/designs/thumbs/'+DESIGNS[idx%DESIGNS.length]; idx++;
       }
       setTimeout(function(){ cycle(); setInterval(cycle, 3600); }, 300+ui*1200);
     });

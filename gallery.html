@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Design Library — Keepsake Printing Co</title>
 <style>
   html,body{margin:0;padding:0;background:#FFFFFF}
@@ -34,7 +34,7 @@
   @media(max-width:760px){.desktop-only{display:none !important}}
   #mega{display:none}
   @media(pointer:coarse){ .cdot{ width:22px !important; height:22px !important } }
-  #mega.open{display:block;max-height:calc(100dvh - 72px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+  #mega.open{display:block;max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 @media(max-width:900px){#mega>div{padding-bottom:150px !important}}
 .kpStep{display:none}
 @media(max-width:640px){
@@ -46,7 +46,7 @@
 }
 .kpStepN{width:26px;height:26px;border-radius:50%;background:#2D2D3B;color:#FFF;font-size:13px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .kpStepDone{background:#1E8E3E}
-  #mega.open{max-height:calc(100dvh - 72px);overflow-y:auto}
+  #mega.open{max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto}
   </style>
 </head>
 <body>
@@ -304,8 +304,8 @@
         <div id="chatAnswer" style="display:none;background:#F8F7F7;border-radius:12px;padding:14px;font-size:13px;line-height:1.6;color:#4E4E50"></div>
         <div style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9D;margin-top:6px">Or send us a message</div>
         <form id="chatForm" style="display:flex;flex-direction:column;gap:8px">
-          <input type="email" required placeholder="Your email" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:13px">
-          <textarea required placeholder="How can we help?" rows="3" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:13px;font-family:inherit;resize:vertical"></textarea>
+          <input type="email" required placeholder="Your email" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:16px">
+          <textarea required placeholder="How can we help?" rows="3" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:16px;font-family:inherit;resize:vertical"></textarea>
           <button type="submit" class="h-chatred" style="background:#DC282E;color:#FFFFFF;border:0;padding:12px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s">Send message</button>
         </form>
       </div>
