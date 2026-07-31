@@ -494,33 +494,56 @@
   }
 
   var searchQ='';
+  var wizSeries;
   function renderWizard(){
     var el=document.getElementById('wizardBar'); if(!el) return;
     document.body.classList.add('kp-device-mode');
     var cats={}; designs.forEach(function(d){ if(!d.hidden) cats[d.category]=(cats[d.category]||0)+1; });
     var opts='<option value="All">All styles ('+designs.filter(function(d){return !d.hidden;}).length+')</option>'+
       Object.keys(cats).sort().map(function(c){ return '<option value="'+c+'"'+(filter===c?' selected':'')+'>'+c+' ('+cats[c]+')</option>'; }).join('');
-    var devOpts='<option value=""'+(!device?' selected':'')+'>Flat designs — no phone preview</option>'+
-      Object.keys(KP_BRANDS).filter(function(b){return KP_BRANDS[b].length;}).map(function(b){
-        return '<optgroup label="'+b+'">'+KP_BRANDS[b].map(function(m){
-          return '<option value="'+slugify(m)+'"'+(m===device?' selected':'')+'>'+m+'</option>';
-        }).join('')+'</optgroup>';
-      }).join('');
+    function seriesOf(m){
+      if(m.indexOf('Galaxy')===0) return 'Galaxy';
+      if(m==='iPhone Air') return 'iPhone 17';
+      var g=m.match(/iPhone (\d+)/); return g ? 'iPhone '+g[1] : m;
+    }
+    var seriesList=[]; DEVICE_ORDER.forEach(function(m){ var sr=seriesOf(m); if(seriesList.indexOf(sr)<0) seriesList.push(sr); });
+    if(wizSeries===undefined) wizSeries = device ? seriesOf(device) : null;
+    var chip=function(label,on,cls,data){ return '<button class="'+cls+'" data-v="'+data+'" style="background:'+(on?'#DC282E':'#FFFFFF')+';color:'+(on?'#FFFFFF':'#4E4E50')+';border:1.5px solid '+(on?'#DC282E':'#E4E3E3')+';font-size:13.5px;font-weight:800;padding:10px 16px;border-radius:999px;cursor:pointer;transition:all .15s">'+label+'</button>'; };
+    var srRow=seriesList.map(function(sr){ return chip(sr, wizSeries===sr, 'wizSr', sr); }).join('')
+      + chip('Flat designs', !device && wizSeries===null, 'wizSr', '');
+    var mdRow='';
+    if(wizSeries){
+      var models=DEVICE_ORDER.filter(function(m){ return seriesOf(m)===wizSeries; });
+      mdRow='<div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0 36px">'+models.map(function(m){
+        var short=m.replace('iPhone ','').replace('Galaxy ','');
+        return chip(short, m===device, 'wizMd', slugify(m));
+      }).join('')+'</div>';
+    }
     el.innerHTML =
-      '<div class="kpStep"><span class="kpStepN'+(device?' kpStepDone':'')+'">'+(device?'\u2713':'1')+'</span>'+
+      '<div class="kpStep" style="flex-wrap:wrap"><span class="kpStepN'+(device?' kpStepDone':'')+'">'+(device?'\u2713':'1')+'</span>'+
       '<span style="font-weight:900;font-size:15px;color:#2D2D3B;white-space:nowrap">Your phone</span>'+
-      '<select id="wizDev" aria-label="Phone model" style="flex:1;min-width:150px;font-size:16px;font-weight:700;padding:10px 12px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF;color:#2D2D3B">'+devOpts+'</select></div>'+
+      '<span style="display:flex;gap:8px;flex-wrap:wrap;flex:1">'+srRow+'</span></div>'+
+      mdRow+
       '<div class="kpStep" style="flex-wrap:wrap"><span class="kpStepN">2</span>'+
       '<span style="font-weight:900;font-size:15px;color:#2D2D3B">Pick your style</span>'+
       '<select id="wizCat" aria-label="Design style" style="flex:1;min-width:130px;font-size:16px;font-weight:700;padding:10px 12px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF;color:#2D2D3B">'+opts+'</select>'+
       '<input id="wizSearch" type="search" placeholder="Search designs\u2026" value="'+searchQ.replace(/"/g,'&quot;')+'" aria-label="Search designs" style="flex-basis:100%;font-size:16px;padding:11px 14px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF"></div>';
-    document.getElementById('wizDev').addEventListener('change',function(){
-      var slug=this.value;
-      device = slug ? DEVICE_ORDER.filter(function(m){ return slugify(m)===slug; })[0] : null;
+    el.querySelectorAll('.wizSr').forEach(function(b){ b.addEventListener('click',function(){
+      var v=this.dataset.v;
+      if(!v){ wizSeries=null; device=null; history.replaceState(null,'',location.pathname); renderDeviceBar(); renderGrid(); return; }
+      wizSeries=v;
+      var models=DEVICE_ORDER.filter(function(m){ return seriesOf(m)===v; });
+      if(models.indexOf(device)<0) device=null;
+      if(models.length===1){ device=models[0]; history.replaceState(null,'','?device='+slugify(device)); preloadDevice(device); }
+      renderDeviceBar(); renderGrid();
+    }); });
+    el.querySelectorAll('.wizMd').forEach(function(b){ b.addEventListener('click',function(){
+      var slug=this.dataset.v;
+      device = DEVICE_ORDER.filter(function(m){ return slugify(m)===slug; })[0] || null;
       history.replaceState(null,'', location.pathname + (device ? '?device='+slug : ''));
       renderDeviceBar(); renderGrid();
       if(device) preloadDevice(device);
-    });
+    }); });
     var sel=document.getElementById('wizCat');
     sel.addEventListener('change',function(){
       filter=this.value; searchQ='';
