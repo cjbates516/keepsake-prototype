@@ -538,7 +538,7 @@
     text:'', textFont:0, textColor:'#FFFFFF', textSize:220, textPos:62, textVertical:false,
     px:0, py:0, scale:1, rot:0,
     addons:{screen:false,lens:false}, promo:null, reserved:false, fitMode:'fill',
-    layout:null, photos:[], slotTarget:null
+    layout:null, photos:[], slotTarget:null, builder:false
   };
   (function(){ var mm = /[?&]model=([^&]+)/.exec(location.search); if (!mm) return;
     var want = decodeURIComponent(mm[1]).replace(/-/g, ' ').toLowerCase();
@@ -753,6 +753,14 @@
     im.src='assets/collage/'+t.img;
     tplImgs[t.id]=im; return im;
   }
+  function tplPrevImage(t){
+    var k='p'+t.id;
+    if(tplImgs[k]) return tplImgs[k];
+    var im=new Image(); im.crossOrigin='anonymous';
+    im.onload=function(){ render(); };
+    im.src='assets/collage/'+(t.prev||t.img);
+    tplImgs[k]=im; return im;
+  }
   function hasArt(){ return !!state.photoImg || (state.layout && state.photos && state.photos.some(Boolean)); }
   function tplMap(){
     var t=curTpl(); if(!t) return null;
@@ -774,7 +782,14 @@
   }
   function drawCollageInto(c2, forPrint){
     var t=curTpl(); if(!t) return;
-    var m=tplMap(), im=tplImage(t);
+    var m=tplMap();
+    if(!forPrint && !state.builder){
+      var pim=tplPrevImage(t);
+      if(pim&&pim.complete&&pim.naturalWidth) c2.drawImage(pim, m.ox, m.oy, 1080*m.sc, 1920*m.sc);
+      else { c2.fillStyle='#F3F2F2'; c2.fillRect(m.B.x,m.B.y,m.B.w,m.B.h); }
+      return;
+    }
+    var im=tplImage(t);
     if(!(im&&im.complete&&im.naturalWidth)) { c2.fillStyle='#F3F2F2'; c2.fillRect(m.B.x,m.B.y,m.B.w,m.B.h); return; }
     c2.drawImage(im, m.ox, m.oy, 1080*m.sc, 1920*m.sc);
     var rects=slotRects();
@@ -958,12 +973,13 @@
     return { x:(evt.clientX-r.left)*DIM.w/r.width, y:(evt.clientY-r.top)*DIM.h/r.height };
   }
   var dragging=false,last=null,panning=false,panLast=null;
-  canvas.addEventListener('click',function(){ if(!state.photoImg && !state.text && !CAL.on) $('fileInput').click(); });
+  canvas.addEventListener('click',function(){ if(!state.photoImg && !state.text && !CAL.on && !state.layout) $('fileInput').click(); });
   var kpPtr=null, kpPtrs={}, pinch=null;
   function ptrCount(){ return Object.keys(kpPtrs).length; }
   function canGesture(){ return state.photoImg && !state.isLibraryDesign; }
   canvas.addEventListener('pointerdown',function(e){
     if(state.layout && !CAL.on){
+      if(!state.builder){ state.builder=true; updateUploadLabel(); updateStage(); render(); return; }
       var p=toCanvas(e), rects=slotRects(), hit=-1;
       for(var i=rects.length-1;i>=0;i--){
         var r=rects[i], cx=r.x+r.w/2, cy=r.y+r.h/2;
@@ -1047,7 +1063,7 @@
     updateBrowseLink();
     if (state.layout){
       var Th=curTpl(), tot=Th?Th.slots.length:0, fh=state.photos.filter(Boolean).length;
-      $('stageHint').textContent = fh>=tot ? 'Collage complete — tap any photo to swap it' : (Th?Th.n+' — tap a + spot to add your photos ('+fh+' of '+tot+' added)':'');
+      $('stageHint').textContent = !state.builder ? (Th?Th.n+' — example shown. Tap the case to use your own photos':'') : (fh>=tot ? 'Collage complete — tap any photo to swap it' : (Th?Th.n+' — tap a + spot to add your photos ('+fh+' of '+tot+' added)':''));
       $('kitNote').style.display='none';
     } else if (!state.photoImg && !state.text){
       $('stageHint').textContent = hasKit() ? 'Your case — upload or drop a photo to begin' : 'Upload or drop a photo to begin';
@@ -1176,8 +1192,8 @@
     if(!lc) return;
     var id=lc.dataset.l||null;
     if(state.layout===id) return;
-    state.layout=id; state.photos=[]; state.slotTarget=null;
-    if(id){ var t=curTpl(); if(t) tplImage(t); }
+    state.layout=id; state.photos=[]; state.slotTarget=null; state.builder=false;
+    if(id){ var t=curTpl(); if(t){ tplPrevImage(t); tplImage(t); } }
     state.photoImg=null; state.photoUrl=null; state.isLibraryDesign=false; state.reserved=false;
     state.px=0;state.py=0;state.scale=1;state.rot=0;
     renderLayoutChips(); updateUploadLabel(); updateStage(); updateSummary(); render();
@@ -1186,15 +1202,19 @@
     var b=$('uploadBtn'); if(!b) return;
     if(state.layout){
       var t=curTpl(), total=t?t.slots.length:0, filled=state.photos.filter(Boolean).length;
+      if(!state.builder){ b.textContent='Make it yours \u2014 add your '+total+' photos'; return; }
       b.textContent= filled>=total ? 'Replace a photo (tap it first)' : 'Add photo '+(filled+1)+' of '+total;
     } else b.textContent = state.photoImg ? 'Upload a different photo' : 'Upload a photo';
   }
   renderLayoutChips();
-  $('uploadBtn').addEventListener('click',function(){ $('fileInput').click(); });
+  $('uploadBtn').addEventListener('click',function(){
+    if(state.layout && !state.builder){ state.builder=true; updateUploadLabel(); updateStage(); render(); }
+    $('fileInput').click();
+  });
   $('fileInput').addEventListener('change',function(e){ loadPhoto(e.target.files[0]); e.target.value=''; });
   $('clearBtn').addEventListener('click',function(){
     state.photoImg=null; state.photoUrl=null; state.filter='none';
-    state.photos=[]; state.slotTarget=null;
+    state.photos=[]; state.slotTarget=null; state.builder=false;
     state.px=0;state.py=0;state.scale=1;state.rot=0;
     updateUploadLabel(); updateDpi(); updateStage(); updateSummary(); render();
   });
