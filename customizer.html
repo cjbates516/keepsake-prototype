@@ -246,12 +246,7 @@
           <h1 style="font-weight:900;font-size:clamp(30px,3.4vw,44px);letter-spacing:-.02em;color:#17171F;margin:0 0 6px">Design your keepsake</h1>
           <div style="font-size:17px;font-weight:600;color:#2D2D3B">Custom Photo Case · MagSafe Compatible</div>
           <div style="font-size:14px;color:#9A9A9D;margin-top:4px">By you — printed in store</div>
-          <div style="display:flex;align-items:center;gap:12px;margin:20px 0 28px">
-            <span id="totalTop" style="font-size:30px;font-weight:900;color:#17171F;letter-spacing:-.02em">$64.99</span>
-            <span style="border:1px solid #DC282E;color:#DC282E;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:800">Ready today</span>
-            <span id="discountTop" style="display:none;color:#1E8E3E;font-size:13px;font-weight:800"></span>
-          </div>
-
+          <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#DC282E;margin:26px 0 12px;padding-top:22px;border-top:1px solid #EFEDED">Step 1 <span style="color:#17171F">· Your phone</span></div>
           <div style="display:flex;align-items:stretch;border:1px solid #2D2D3B;border-radius:999px;overflow:hidden;background:#FFFFFF;margin-bottom:24px">
             <select id="brandSel" style="flex:1;min-width:0;padding:15px 20px;border:0;font-size:16px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer">
               <option value="Apple">Apple</option>
@@ -262,21 +257,11 @@
             <div style="width:1px;background:#E4E3E3"></div>
             <select id="modelSel" style="flex:1.4;min-width:0;padding:15px 20px;border:0;font-size:16px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer"></select>
           </div>
-          <div style="font-size:12px;font-weight:600;color:#9A9A9D;margin:-18px 0 24px;padding-left:2px"><span id="fitNote" style="display:none"></span>
-            <span id="dpiLabel" style="display:block;margin-top:6px;font-weight:800"></span>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:30px">
+            <span style="font-size:17px;font-weight:800;color:#17171F">Device color · <span id="colorName" style="font-weight:600;color:#6E6E70">Silver</span></span>
+            <div id="colorSwatches" style="display:flex;gap:8px"></div>
           </div>
-
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:28px">
-            <div>
-              <div style="font-size:15px;font-weight:600;color:#17171F;margin-bottom:10px">Protection: <span style="font-weight:800">Strong</span></div>
-              <div style="height:5px;border-radius:999px;background:#E9E8E8;overflow:hidden"><div style="height:100%;width:74%;border-radius:999px;background:#2B5FA3;transition:width .4s cubic-bezier(.2,.7,.2,1)"></div></div>
-            </div>
-            <div>
-              <div style="font-size:15px;font-weight:600;color:#17171F;margin-bottom:10px">Weight: <span style="font-weight:800">Light</span></div>
-              <div style="height:5px;border-radius:999px;background:#E9E8E8;overflow:hidden"><div style="height:100%;width:28%;border-radius:999px;background:#2B5FA3;transition:width .4s cubic-bezier(.2,.7,.2,1)"></div></div>
-            </div>
-          </div>
-
+          <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#DC282E;margin:26px 0 12px;padding-top:22px;border-top:1px solid #EFEDED">Step 2 <span style="color:#17171F">· Your case</span></div>
           <div id="ctRow" style="display:none;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:30px"><!-- KP_TOUGH_OFF: set display:grid to re-enable case-type choice -->
             <div id="ctClear" class="ctCard" data-ct="MagSafe Clear" style="cursor:pointer;text-align:center">
               <div style="position:relative;border:2px solid #DC282E;border-radius:12px;overflow:hidden;background:#F7F7F7">
@@ -300,6 +285,53 @@
             </div>
           </div>
 
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:28px">
+            <div>
+              <div style="font-size:15px;font-weight:600;color:#17171F;margin-bottom:10px">Protection: <span style="font-weight:800">Strong</span></div>
+              <div style="height:5px;border-radius:999px;background:#E9E8E8;overflow:hidden"><div style="height:100%;width:74%;border-radius:999px;background:#2B5FA3;transition:width .4s cubic-bezier(.2,.7,.2,1)"></div></div>
+            </div>
+            <div>
+              <div style="font-size:15px;font-weight:600;color:#17171F;margin-bottom:10px">Weight: <span style="font-weight:800">Light</span></div>
+              <div style="height:5px;border-radius:999px;background:#E9E8E8;overflow:hidden"><div style="height:100%;width:28%;border-radius:999px;background:#2B5FA3;transition:width .4s cubic-bezier(.2,.7,.2,1)"></div></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px;background:#F8F8FA;border:1px solid #EFEDED;border-radius:16px;padding:14px 18px;margin:-14px 0 26px">
+            <div style="position:relative;width:84px;height:64px;flex:none">
+              <div id="miniPhone" style="position:absolute;left:6px;top:6px;width:30px;height:52px;border-radius:9px;background:#F5F5F5;box-shadow:inset 0 0 0 1px rgba(46,56,61,.18),0 2px 6px rgba(46,56,61,.14);transform:rotate(-6deg)">
+                <div style="position:absolute;left:4px;top:4px;width:11px;height:11px;border-radius:4px;background:rgba(46,56,61,.28)"></div>
+              </div>
+              <div style="position:absolute;left:40px;top:3px;width:34px;height:58px;border-radius:11px;background:rgba(255,255,255,.55);border:1.5px solid #C9CCD4;box-shadow:0 3px 8px rgba(46,56,61,.12);transform:rotate(6deg)">
+                <div style="position:absolute;left:4px;top:4px;width:13px;height:13px;border-radius:5px;border:1px solid #C9CCD4;background:rgba(255,255,255,.7)"></div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+              <span style="font-size:13px;font-weight:800;color:#17171F">Your phone · <span id="colorName2" style="color:#6E6E70">Silver</span></span>
+              <span style="font-size:13px;font-weight:800;color:#17171F">Your case · <span style="color:#6E6E70">clear, so the <span id="colorName3">Silver</span> shows through</span></span>
+              <span style="font-size:12px;font-weight:600;color:#9A9A9D">The preview shows both together — case on phone</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;margin:20px 0 28px">
+            <span id="totalTop" style="font-size:30px;font-weight:900;color:#17171F;letter-spacing:-.02em">$64.99</span>
+            <span style="border:1px solid #DC282E;color:#DC282E;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:800">Ready today</span>
+            <span id="discountTop" style="display:none;color:#1E8E3E;font-size:13px;font-weight:800"></span>
+          </div>
+          <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#DC282E;margin:26px 0 12px;padding-top:22px;border-top:1px solid #EFEDED">Step 3 <span style="color:#17171F">· Your design</span></div>
+          <div id="designChooser" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px">
+            <button id="choosePhoto" style="cursor:pointer;text-align:center;background:#17171F;color:#FFF;border:0;border-radius:16px;padding:22px 14px">
+              <div style="font-size:22px">📷</div>
+              <div style="font-weight:900;font-size:14.5px;margin-top:6px">Use my photo</div>
+              <div style="font-size:12px;font-weight:600;color:#B9BDCB;margin-top:3px">One photo or a collage</div>
+            </button>
+            <a id="chooseReady" href="gallery.html" style="cursor:pointer;text-align:center;background:#FBE0E1;border:0;border-radius:16px;padding:22px 14px;text-decoration:none;display:block">
+              <div style="font-size:22px">🎨</div>
+              <div style="font-weight:900;font-size:14.5px;color:#B81F24;margin-top:6px">Ready-made design</div>
+              <div style="font-size:12px;font-weight:700;color:#4E4E50;margin-top:3px">Browse 1,000+ designs</div>
+            </a>
+          </div>
+          <div id="photoSection" style="display:none">
+          <div style="font-size:12px;font-weight:600;color:#9A9A9D;margin:-18px 0 24px;padding-left:2px"><span id="fitNote" style="display:none"></span>
+            <span id="dpiLabel" style="display:block;margin-top:6px;font-weight:800"></span>
+          </div>
           <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:12px">Your photo</div>
           <div id="layoutChipsWrap" style="margin-bottom:12px;display:none">
             <div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6E6E70;margin-bottom:8px">Collage style</div>
@@ -323,7 +355,6 @@
           <input type="file" id="fileInput" accept="image/*" style="display:none">
           <button id="clearBtn" class="h-borderink" style="display:none;width:100%;background:#FFFFFF;color:#6E6E70;border:1px solid #CECDCD;padding:13px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer;margin-top:10px;transition:border-color .2s">Start over — remove photo</button>
           <p style="font-size:12.5px;color:#9A9A9D;margin:10px 0 28px;line-height:1.5">Photos never leave your device. In store, we print straight from your phone.</p>
-
           <div id="editTools" style="display:none;animation:fadeUp .3s cubic-bezier(.2,.7,.2,1) both;margin:-8px 0 28px">
             <div style="display:flex;gap:8px;margin-bottom:14px">
               <button id="fitFill" style="flex:1;background:#2D2D3B;color:#FFF;border:1px solid #2D2D3B;padding:10px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Fill case</button>
@@ -332,7 +363,6 @@
 
 
           </div>
-
           <div style="margin:0 0 28px">
             <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:6px">Add a name <span style="font-weight:600;color:#9A9A9D;font-size:13px">· optional, printed on the case</span></div>
             <input id="nameInput" type="text" maxlength="18" placeholder="Sarah, DAD, Class of 2026…" style="width:100%;box-sizing:border-box;padding:14px 18px;border-radius:999px;border:1px solid #E4E3E3;font-size:16px;color:#17171F;outline-color:#2D2D3B">
@@ -354,26 +384,13 @@
               </div>
             </div>
           </div>
+          </div>
 
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:30px">
-            <span style="font-size:17px;font-weight:800;color:#17171F">Device color · <span id="colorName" style="font-weight:600;color:#6E6E70">Silver</span></span>
-            <div id="colorSwatches" style="display:flex;gap:8px"></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:18px;background:#F8F8FA;border:1px solid #EFEDED;border-radius:16px;padding:14px 18px;margin:-14px 0 26px">
-            <div style="position:relative;width:84px;height:64px;flex:none">
-              <div id="miniPhone" style="position:absolute;left:6px;top:6px;width:30px;height:52px;border-radius:9px;background:#F5F5F5;box-shadow:inset 0 0 0 1px rgba(46,56,61,.18),0 2px 6px rgba(46,56,61,.14);transform:rotate(-6deg)">
-                <div style="position:absolute;left:4px;top:4px;width:11px;height:11px;border-radius:4px;background:rgba(46,56,61,.28)"></div>
-              </div>
-              <div style="position:absolute;left:40px;top:3px;width:34px;height:58px;border-radius:11px;background:rgba(255,255,255,.55);border:1.5px solid #C9CCD4;box-shadow:0 3px 8px rgba(46,56,61,.12);transform:rotate(6deg)">
-                <div style="position:absolute;left:4px;top:4px;width:13px;height:13px;border-radius:5px;border:1px solid #C9CCD4;background:rgba(255,255,255,.7)"></div>
-              </div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
-              <span style="font-size:13px;font-weight:800;color:#17171F">Your phone · <span id="colorName2" style="color:#6E6E70">Silver</span></span>
-              <span style="font-size:13px;font-weight:800;color:#17171F">Your case · <span style="color:#6E6E70">clear, so the <span id="colorName3">Silver</span> shows through</span></span>
-              <span style="font-size:12px;font-weight:600;color:#9A9A9D">The preview shows both together — case on phone</span>
-            </div>
-          </div>
+
+
+
+
+
 
           <div style="margin-bottom:20px">
             <div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6E6E70;margin-bottom:10px">Add-ons</div>
@@ -542,7 +559,7 @@
     text:'', textFont:0, textColor:'#FFFFFF', textSize:220, textPos:62, textVertical:false,
     px:0, py:0, scale:1, rot:0,
     addons:{screen:false,lens:false}, promo:null, reserved:false, fitMode:'fill',
-    layout:null, photos:[], slotTarget:null, builder:false
+    layout:null, photos:[], slotTarget:null, builder:false, designPath:null
   };
   (function(){ var mm = /[?&]model=([^&]+)/.exec(location.search); if (!mm) return;
     var want = decodeURIComponent(mm[1]).replace(/-/g, ' ').toLowerCase();
@@ -1078,6 +1095,7 @@
     canvas.style.display = live ? 'block' : 'none';
     canvas.style.touchAction = state.photoImg ? 'none' : 'pan-y';
     $('stageEmpty').style.display = live ? 'none' : 'block';
+    updateStep3();
     $('exportLink').style.display = hasArt() ? 'inline' : 'none';
     $('editTools').style.display = (state.photoImg && !state.layout) ? 'block' : 'none';
     if(state.photoImg && typeof syncFitChips==='function') syncFitChips();
@@ -1232,6 +1250,14 @@
     } else b.textContent = state.photoImg ? 'Upload a different photo' : 'Upload a photo';
   }
   renderLayoutChips();
+  function updateStep3(){
+    var ch=$('designChooser'), ps=$('photoSection');
+    if(!ch||!ps) return;
+    var active = state.designPath==='photo' || !!state.photoImg || !!state.layout || !!state.text;
+    ch.style.display = active ? 'none' : 'grid';
+    ps.style.display = active ? 'block' : 'none';
+  }
+  $('choosePhoto').addEventListener('click',function(){ state.designPath='photo'; updateStep3(); });
   $('uploadBtn').addEventListener('click',function(){
     if(state.layout && !state.builder){ state.builder=true; updateUploadLabel(); updateStage(); render(); }
     var fi=$('fileInput'); fi.multiple=!!state.layout; fi.click();
@@ -1249,7 +1275,7 @@
   });
   $('clearBtn').addEventListener('click',function(){
     state.photoImg=null; state.photoUrl=null; state.filter='none';
-    state.photos=[]; state.slotTarget=null; state.builder=false;
+    state.photos=[]; state.slotTarget=null; state.builder=false; state.layout=null; state.designPath=null;
     state.px=0;state.py=0;state.scale=1;state.rot=0;
     updateUploadLabel(); updateDpi(); updateStage(); updateSummary(); render();
   });
@@ -1334,10 +1360,12 @@
   });
   function kpSlug(t){ return t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
   function updateBrowseLink(){
+    var cr=$('chooseReady');
     var a=$('browseLink'); if(!a) return;
     var sub=$('browseLinkSub');
     if (KITS[state.model]){
       a.href='gallery.html?device='+kpSlug(state.model);
+    if(cr) cr.href=a.href;
       if(sub) sub.textContent='See every design on the '+state.model;
     } else {
       a.href='gallery.html';
@@ -1924,7 +1952,8 @@
   if (/[?&]kiosk=1/.test(location.search)) {
     document.body.classList.add('kp-kiosk');
     var kst=document.createElement('style');
-    kst.textContent='.kp-kiosk #announceBar,.kp-kiosk header,.kp-kiosk #mega,.kp-kiosk footer,.kp-kiosk #kpChatWrap,.kp-kiosk #chatToggle,.kp-kiosk #cartBtn,.kp-kiosk #browseLink,.kp-kiosk #calLink{display:none !important}'+
+    kst.textContent='.kp-kiosk #announceBar,.kp-kiosk header,.kp-kiosk #mega,.kp-kiosk footer,.kp-kiosk #kpChatWrap,.kp-kiosk #chatToggle,.kp-kiosk #cartBtn,.kp-kiosk #browseLink,.kp-kiosk #calLink,.kp-kiosk #chooseReady{display:none !important}'+
+      '.kp-kiosk #designChooser{grid-template-columns:1fr !important}'+
       '.kp-kiosk body,.kp-kiosk button,.kp-kiosk a{touch-action:manipulation}'+
       '.kp-kiosk main{padding-top:12px !important}'+
       '.kp-kiosk #reserveBtn{background:#DC282E !important;color:#FFF !important;border-color:#DC282E !important;font-size:15px !important;padding:18px !important}'+
