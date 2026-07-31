@@ -265,9 +265,9 @@
           <div id="ctRow" style="display:none;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:30px"><!-- KP_TOUGH_OFF: set display:grid to re-enable case-type choice -->
             <div id="ctClear" class="ctCard" data-ct="MagSafe Clear" style="cursor:pointer;text-align:center">
               <div style="position:relative;border:2px solid #DC282E;border-radius:12px;overflow:hidden;background:#F7F7F7">
-                <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:2;background:#C6A052;color:#FFFFFF;font-size:7.5px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px;border-radius:3px;pointer-events:none;white-space:nowrap;max-width:94%">MagSafe compatible</div>
+                <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:2;background:#C6A052;color:#FFFFFF;font-size:7.5px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px;border-radius:3px;pointer-events:none;white-space:nowrap;max-width:94%">Most popular</div>
                 <div style="height:104px;display:flex;align-items:center;justify-content:center;pointer-events:none">
-                  <svg width="46" height="88" viewBox="0 0 46 88"><rect x="2" y="2" width="42" height="84" rx="10" fill="rgba(185,189,203,.45)"/><rect x="5" y="5" width="36" height="78" rx="8" fill="#FAFAFA"/><rect x="8" y="8" width="14" height="14" rx="4" fill="#E4E3E3"/></svg>
+                  <canvas id="ctThumbClear" width="92" height="176" style="width:46px;height:88px"></canvas>
                 </div>
               </div>
               <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">MagSafe Clear</div>
@@ -277,11 +277,11 @@
               <div style="position:relative;border:2px solid #E4E3E3;border-radius:12px;overflow:hidden;background:#F7F7F7">
                 <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:2;background:#2D2D3B;color:#FFFFFF;font-size:7.5px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px;border-radius:3px;pointer-events:none;white-space:nowrap;max-width:94%">Extra protection</div>
                 <div style="height:104px;display:flex;align-items:center;justify-content:center;pointer-events:none;padding:6px">
-                  <img id="toughThumb" src="assets/cases/i17-hyb-black.webp" alt="Slim Hybrid MagSafe" style="max-height:92px;max-width:100%">
+                  <canvas id="ctThumbHyb" width="92" height="176" style="width:46px;height:88px"></canvas><img id="toughThumb" src="assets/cases/i17-hyb-black.webp" alt="" style="display:none">
                 </div>
               </div>
               <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">Slim Hybrid MagSafe</div>
-              <div style="font-size:12.5px;font-weight:600;color:#9A9A9D;margin-top:2px">$69.99+</div>
+              <div style="font-size:12.5px;font-weight:600;color:#9A9A9D;margin-top:2px">+$5 · extra grip</div>
             </div>
           </div>
 
@@ -1096,6 +1096,7 @@
     canvas.style.touchAction = state.photoImg ? 'none' : 'pan-y';
     $('stageEmpty').style.display = live ? 'none' : 'block';
     updateStep3();
+    renderCtThumbs();
     $('exportLink').style.display = hasArt() ? 'inline' : 'none';
     $('editTools').style.display = (state.photoImg && !state.layout) ? 'block' : 'none';
     if(state.photoImg && typeof syncFitChips==='function') syncFitChips();
@@ -1379,13 +1380,35 @@
   });
 
   /* ── addons / promo / totals ── */
+  function kpPaintCtThumb(id, style){
+    var cv=document.getElementById(id); if(!cv) return;
+    var x=cv.getContext('2d'); var W=cv.width,H=cv.height;
+    x.clearRect(0,0,W,H);
+    function rr(x0,y0,w,h,r){ x.beginPath(); x.moveTo(x0+r,y0); x.arcTo(x0+w,y0,x0+w,y0+h,r); x.arcTo(x0+w,y0+h,x0,y0+h,r); x.arcTo(x0,y0+h,x0,y0,r); x.arcTo(x0,y0,x0+w,y0,r); x.closePath(); }
+    rr(3,3,W-6,H-6,18);
+    x.fillStyle = style==='hyb' ? '#2D2D3B' : 'rgba(185,189,203,.45)'; x.fill();
+    rr(8,8,W-16,H-16,13); x.save(); x.clip();
+    var art = state.photoImg || (state.layout && curTpl() ? tplImage(curTpl()) : null);
+    if(art && art.complete!==false && (art.naturalWidth||art.width)){
+      var iw=art.naturalWidth||art.width, ih=art.naturalHeight||art.height;
+      var k2=Math.max((W-16)/iw,(H-16)/ih);
+      x.drawImage(art, 8+(W-16-iw*k2)/2, 8+(H-16-ih*k2)/2, iw*k2, ih*k2);
+    } else { x.fillStyle='#FAFAFA'; x.fillRect(8,8,W-16,H-16); }
+    x.restore();
+    x.fillStyle='rgba(0,0,0,.35)'; rr(14,14,26,26,8); x.fill();
+    x.strokeStyle = style==='hyb' ? 'rgba(255,255,255,.5)' : 'rgba(120,124,140,.5)'; x.lineWidth=2.5;
+    rr(4.5,4.5,W-9,H-9,17); x.stroke();
+  }
+  function renderCtThumbs(){ kpPaintCtThumb('ctThumbClear','clear'); kpPaintCtThumb('ctThumbHyb','hyb'); }
   function renderAddons(){
     $('addons').innerHTML = addonDefs.map(function(a){
       var on = state.addons[a.key];
-      return '<button class="h-addon adn" data-k="'+a.key+'" style="display:flex;align-items:center;gap:12px;background:#FFFFFF;border:1px solid '+(on?'#2D2D3B':'#E4E3E3')+';border-radius:10px;padding:12px 14px;cursor:pointer;text-align:left;transition:border-color .2s">'
-        + '<span style="width:18px;height:18px;border-radius:5px;border:2px solid '+(on?'#17171F':'#CECDCD')+';background:'+(on?'#17171F':'#FFFFFF')+';display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-size:12px;font-weight:900;flex-shrink:0">'+(on?'✓':'')+'</span>'
-        + '<span style="flex:1;font-size:13px;font-weight:800;color:#17171F">'+a.name+'<span style="display:block;font-size:12px;font-weight:600;color:#9A9A9D">'+a.sub+'</span></span>'
-        + '<span style="font-size:13px;font-weight:800;color:#2D2D3B">+$'+a.price.toFixed(2)+'</span></button>';
+      var pop = a.key==='screen';
+      return '<button class="h-addon adn" data-k="'+a.key+'" style="position:relative;display:flex;align-items:center;gap:12px;background:'+(on?'#FBFAF8':'#FFFFFF')+';border:2px solid '+(on?'#2D2D3B':'#E4E3E3')+';border-radius:14px;padding:14px;cursor:pointer;text-align:left;transition:border-color .2s">'
+        + (pop?'<span style="position:absolute;top:-9px;left:14px;background:#DC282E;color:#FFF;font-size:9px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px">Most popular</span>':'')
+        + '<span style="width:20px;height:20px;border-radius:6px;border:2px solid '+(on?'#17171F':'#CECDCD')+';background:'+(on?'#17171F':'#FFFFFF')+';display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-size:13px;font-weight:900;flex-shrink:0">'+(on?'\u2713':'')+'</span>'
+        + '<span style="flex:1;font-size:13.5px;font-weight:800;color:#17171F">'+a.name+'<span style="display:block;font-size:12px;font-weight:600;color:#9A9A9D;margin-top:1px">'+a.sub+'</span></span>'
+        + '<span style="font-size:14px;font-weight:900;color:#2D2D3B">+$'+a.price.toFixed(2)+'</span></button>';
     }).join('');
   }
   document.addEventListener('click',function(e){
