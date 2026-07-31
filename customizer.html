@@ -1560,26 +1560,6 @@
     var c2=c.getContext('2d');
     var k=pxW/TPL.w;
     c2.save();
-    if(TPL_D){
-      c2.scale(k,k);
-      c2.clip(new Path2D(TPL_D),'evenodd');
-      c2.setTransform(1,0,0,1,0,0);
-    } else if(OUT_D){
-      /* no template path for this kit: build the print window from the case outline minus camera, mapped via FIT */
-      var mClip=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
-      var pClip=new Path2D();
-      pClip.addPath(new Path2D(OUT_D), mClip);
-      if(CAM_D) pClip.addPath(new Path2D(CAM_D), mClip);
-      c2.clip(pClip,'evenodd');
-    }
-    if(maskBox){
-      /* second clip: only the design window prints — everything else stays transparent (clear case) */
-      var mWin=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
-      var pWin=new Path2D(); var pWinT=new Path2D();
-      pWin.rect(maskBox.x, maskBox.y, maskBox.w, maskBox.h);
-      pWinT.addPath(pWin, mWin);
-      c2.clip(pWinT);
-    }
     var m=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y).multiply(designTransform());
     var src=state.photoImg;
     if(!src && !state.layout){
@@ -1587,6 +1567,7 @@
       c2.setTransform(m0b.a,m0b.b,m0b.c,m0b.d,m0b.e,m0b.f);
       drawTextLayer(c2);
       c2.restore();
+      applyPrintMask(c2,k);
       kpDownloadCanvas(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+pxW+'x'+pxH+'.png');
       return;
     }
@@ -1602,8 +1583,21 @@
     c2.setTransform(m0.a,m0.b,m0.c,m0.d,m0.e,m0.f);
     drawTextLayer(c2);
     c2.restore();
+    applyPrintMask(c2,k);
     kpDownloadCanvas(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+pxW+'x'+pxH+'.png');
   });
+  function applyPrintMask(c2,k){
+    /* stamp the art with the same view mask the on-screen preview uses —
+       exact window shape (rounded corners + camera) for every model */
+    if(!(viewImg && viewReady)) return;
+    c2.save();
+    c2.globalCompositeOperation='destination-in';
+    c2.setTransform(1,0,0,1,0,0);
+    var mM=new DOMMatrix().scale(k).scale(1/FIT.sx,1/FIT.sy).translate(-FIT.x,-FIT.y);
+    c2.setTransform(mM.a,mM.b,mM.c,mM.d,mM.e,mM.f);
+    c2.drawImage(viewImg,0,0,DIM.w,DIM.h);
+    c2.restore();
+  }
   function kpDownloadCanvas(c,name){
     /* refuse to hand staff a blank print file */
     var tcv=document.createElement('canvas'); tcv.width=16; tcv.height=16;
