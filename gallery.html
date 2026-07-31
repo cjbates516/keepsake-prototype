@@ -553,13 +553,34 @@
     dw.querySelectorAll('[data-pill]').forEach(function(b){ b.addEventListener('click',function(){ drawerBrand=this.dataset.pill; kpRenderDrawer(); }); });
     dw.querySelectorAll('[data-md]').forEach(function(b){ b.addEventListener('click',function(){ kpPickDevice(this.dataset.md); }); });
   }
+  var KP_SEASON={1:['Hearts','Coquette'],2:['Hearts','Coquette'],3:['Florals','Gradients & pastels'],4:['Florals','Birth flowers'],5:['Florals','Coastal'],6:['Coastal','Fruits'],7:['Coastal','Fruits'],8:['Coastal','Retro & Y2K'],9:['City maps','Hometown'],10:['Halloween','Animal print'],11:['Christmas','City maps'],12:['Christmas','Hearts']};
+  function kpTopStyles(cats){
+    var picks=(KP_SEASON[new Date().getMonth()+1]||[]).slice();
+    ['City maps','Florals','Animal print','Abstract'].forEach(function(c){ if(picks.indexOf(c)<0) picks.push(c); });
+    return picks.filter(function(c){ return cats[c]; }).slice(0,4);
+  }
+  function kpCatThumb(cat){
+    var d=designs.filter(function(x){ return x.category===cat && !x.hidden; })[0];
+    return d ? 'assets/designs/thumbs/'+d.file : '';
+  }
   function renderWizard(){
     var el=document.getElementById('wizardBar'); if(!el) return;
     document.body.classList.add('kp-device-mode');
     var cats={}; designs.forEach(function(d){ if(!d.hidden) cats[d.category]=(cats[d.category]||0)+1; });
     var opts='<option value="All">All styles ('+designs.filter(function(d){return !d.hidden;}).length+')</option>'+
       Object.keys(cats).sort().map(function(c){ return '<option value="'+c+'"'+(filter===c?' selected':'')+'>'+c+' ('+cats[c]+')</option>'; }).join('');
+    var top=kpTopStyles(cats);
+    var topHtml = top.length ? '<div style="flex:0 1 460px;min-width:300px">'
+      +'<div style="font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#9A9A9D;margin-bottom:10px">Top styles right now <span style="font-weight:600;letter-spacing:0;text-transform:none">\u00b7 updates with the season</span></div>'
+      +'<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px">'
+      +top.map(function(c){
+        return '<button class="kpTopStyle" data-c="'+c+'" style="display:flex;align-items:center;gap:10px;background:#FFF;border:1.5px solid '+(filter===c?'#DC282E':'#E9E7E4')+';border-radius:14px;padding:8px 12px 8px 8px;cursor:pointer;text-align:left">'
+          +'<img src="'+kpCatThumb(c)+'" alt="" loading="lazy" style="width:44px;height:58px;object-fit:cover;border-radius:9px;flex:none">'
+          +'<span style="font-size:13.5px;font-weight:800;color:#17171F;line-height:1.25">'+c+'<span style="display:block;font-size:11.5px;font-weight:700;color:#9A9A9D">'+cats[c]+' designs</span></span></button>';
+      }).join('')+'</div></div>' : '';
     el.innerHTML =
+      '<div style="display:flex;gap:clamp(20px,4vw,64px);flex-wrap:wrap;align-items:flex-start">'+
+      '<div style="flex:1 1 560px;max-width:720px">'+
       '<div class="kpStep"><span class="kpStepN'+(device?' kpStepDone':'')+'">'+(device?'\u2713':'1')+'</span>'+
       '<span style="font-weight:900;font-size:15px;color:#2D2D3B;white-space:nowrap">Your phone</span>'+
       '<button id="wizDevBtn" style="flex:1;min-width:170px;max-width:420px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:16px;font-weight:700;padding:12px 16px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF;color:#2D2D3B;cursor:pointer">'+
@@ -567,7 +588,12 @@
       '<div class="kpStep" style="flex-wrap:wrap"><span class="kpStepN">2</span>'+
       '<span style="font-weight:900;font-size:15px;color:#2D2D3B">Pick your style</span>'+
       '<select id="wizCat" aria-label="Design style" style="flex:1;min-width:130px;font-size:16px;font-weight:700;padding:10px 12px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF;color:#2D2D3B">'+opts+'</select>'+
-      '<input id="wizSearch" type="search" placeholder="Search designs\u2026" value="'+searchQ.replace(/"/g,'&quot;')+'" aria-label="Search designs" style="flex-basis:100%;font-size:16px;padding:11px 14px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF"></div>';
+      '<input id="wizSearch" type="search" placeholder="Search designs\u2026" value="'+searchQ.replace(/"/g,'&quot;')+'" aria-label="Search designs" style="flex-basis:100%;font-size:16px;padding:11px 14px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF"></div>'+
+      '</div>'+topHtml+'</div>';
+    el.querySelectorAll('.kpTopStyle').forEach(function(b){ b.addEventListener('click',function(){
+      filter=this.dataset.c; searchQ='';
+      renderWizard(); renderFilters(); renderStates(); renderGrid();
+    }); });
     document.getElementById('wizDevBtn').addEventListener('click',kpOpenDrawer);
     var sel=document.getElementById('wizCat');
     sel.addEventListener('change',function(){
