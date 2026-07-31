@@ -507,6 +507,11 @@
       var g=m.match(/iPhone (\d+)/); return g ? 'iPhone '+g[1] : m;
     }
     var seriesList=[]; DEVICE_ORDER.forEach(function(m){ var sr=seriesOf(m); if(seriesList.indexOf(sr)<0) seriesList.push(sr); });
+    seriesList.sort(function(a2,b2){
+      var ga=a2.match(/(\d+)/), gb=b2.match(/(\d+)/);
+      if(ga&&gb) return (+gb[1])-(+ga[1]);
+      return ga ? -1 : (gb ? 1 : 0);
+    });
     if(wizSeries===undefined) wizSeries = device ? seriesOf(device) : null;
     var chip=function(label,on,cls,data){ return '<button class="'+cls+'" data-v="'+data+'" style="background:'+(on?'#DC282E':'#FFFFFF')+';color:'+(on?'#FFFFFF':'#4E4E50')+';border:1.5px solid '+(on?'#DC282E':'#E4E3E3')+';font-size:13.5px;font-weight:800;padding:10px 16px;border-radius:999px;cursor:pointer;transition:all .15s">'+label+'</button>'; };
     var srRow=seriesList.map(function(sr){ return chip(sr, wizSeries===sr, 'wizSr', sr); }).join('')
