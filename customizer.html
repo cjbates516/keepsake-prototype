@@ -691,6 +691,8 @@
     var mean=n?sum/n:235, k=Math.min(1.6, 236/Math.max(mean,80));
     for(var j=0;j<p.length;j+=4){
       var v=Math.min(255,p[j]*k);
+      /* vibrancy: keep only gentle shading — kills MagSafe-ring ghosting through designs */
+      v=236+(v-236)*0.45; v=Math.max(200,Math.min(244,v));
       p[j]=p[j+1]=p[j+2]=v;
     }
     tc.putImageData(d,0,0);
@@ -962,7 +964,7 @@
       d2.globalAlpha=0.3;
       d2.drawImage(lightMap,0,0,DIM.w,DIM.h);
       d2.globalCompositeOperation='screen';
-      d2.globalAlpha=0.12;
+      d2.globalAlpha=0.05;
       d2.drawImage(lightMap,0,0,DIM.w,DIM.h);
       d2.globalAlpha=1;
       d2.globalCompositeOperation='source-over';

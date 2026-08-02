@@ -440,6 +440,7 @@
     var k=n?242/Math.max(sum/n,90):1;
     for(var j=0;j<p.length;j+=4){
       var v=Math.min(255,p[j]*k);
+      v=242+(v-242)*0.45; v=Math.max(206,Math.min(248,v));
       p[j]=p[j+1]=p[j+2]=v;
     }
     mc.putImageData(d,0,0);
