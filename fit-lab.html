@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="robots" content="noindex">
+<title>Fit Lab — Keepsake (staff)</title>
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font:15px/1.5 -apple-system,"Segoe UI",Roboto,sans-serif;background:#F3F2F2;color:#2D2D3B;touch-action:none;overflow:hidden;height:100dvh;min-height:100vh;display:flex;flex-direction:column}
+header{background:#2D2D3B;color:#fff;padding:10px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header b{font-size:15px;letter-spacing:.04em}
+.tab{background:rgba(255,255,255,.14);border:0;color:#fff;font-weight:800;font-size:13px;padding:8px 16px;border-radius:999px;cursor:pointer}
+.tab.on{background:#DC282E}
+#wrap{flex:1;position:relative;overflow:hidden}
+canvas{position:absolute;inset:0;width:100%;height:100%}
+#panel{background:#fff;border-top:1px solid #E4E3E3;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.ctl{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#6C6C72}
+input[type=range]{width:130px}
+#nums{flex-basis:100%;background:#F3F2F2;border-radius:10px;padding:10px 14px;font:13px/1.5 ui-monospace,Menlo,monospace;color:#2D2D3B;user-select:all;-webkit-user-select:all}
+button.act{background:#DC282E;color:#fff;border:0;padding:10px 18px;border-radius:999px;font-weight:900;font-size:12px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer}
+button.ghost{background:#fff;border:1px solid #D8D7D7;color:#2D2D3B;padding:10px 18px;border-radius:999px;font-weight:900;font-size:12px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer}
+#hint{font-size:12px;color:#6C6C72;font-weight:600}
+#copied{color:#1E8E3E;font-weight:800;font-size:12px;display:none}
+</style>
+</head>
+<body>
+<header>
+  <b>FIT LAB</b>
+  <button class="tab on" data-m="ultra">S26 Ultra</button>
+  <button class="tab" data-m="s26">S26</button>
+  <span id="hint">Drag the round handles to move the blue lines · drag anywhere else to pan</span>
+</header>
+<div id="wrap"><canvas id="cv"></canvas></div>
+<div id="panel">
+  <div class="ctl">Zoom <input type="range" id="zoom" min="0.9" max="4" step="0.05" value="1"></div>
+  <div class="ctl">Corner round <input type="range" id="rad" min="40" max="260" step="2"></div>
+  <div class="ctl">Camera size <input type="range" id="campad" min="-60" max="80" step="2" value="0"></div>
+  <div class="ctl"><label><input type="checkbox" id="showDesign" checked> design</label></div>
+  <div class="ctl"><label><input type="checkbox" id="showGrid"> grid</label></div>
+  <button class="ghost" id="reset">Reset</button>
+  <button class="act" id="copy">Copy numbers</button><span id="copied">Copied — text it to Claude ✓</span>
+  <div id="nums"></div>
+</div>
+<script>
+(function(){
+var MODELS={
+  ultra:{case:'assets/cases/s26u-clear-black.webp',
+    def:{L:709,T:311,R:1789,B:2676,r:150,pad:0,dx:0,dy:0},
+    cam:function(){ // measured plateau contour
+      var p=[[832,361],[1151,361]];
+      arc(p,1151,476,115,-90,0);
+      p.push([1266,810]);
+      var A=[1266,810],C=[1266,881],B=[1244,908];
+      for(var t=0.05;t<=1.001;t+=0.05){var u=1-t;p.push([u*u*A[0]+2*t*u*C[0]+t*t*B[0],u*u*A[1]+2*t*u*C[1]+t*t*B[1]]);}
+      p.push([1030,1172]);
+      arc(p,882.6,1037,200,Math.atan2(135,147.4)*180/Math.PI,Math.atan2(147,-135.6)*180/Math.PI);
+      p.push([747,446]);
+      arc(p,832,446,85,180,270);
+      return p; }},
+  s26:{case:'assets/cases/s26-clear-black.webp',
+    def:{L:702,T:311,R:1795,B:2676,r:150,pad:0,dx:0,dy:0},
+    cam:function(){ var p=[];rr(p,735,340,1011,1112,130);return p; }}
+};
+function arc(p,cx,cy,r,a0,a1){for(var i=0;i<=40;i++){var a=(a0+(a1-a0)*i/40)*Math.PI/180;p.push([cx+r*Math.cos(a),cy+r*Math.sin(a)]);}}
+function rr(p,x0,y0,x1,y1,r){arc(p,x0+r,y0+r,r,180,270);arc(p,x1-r,y0+r,r,270,360);arc(p,x1-r,y1-r,r,0,90);arc(p,x0+r,y1-r,r,90,180);}
+
+var cur='ultra', S=JSON.parse(JSON.stringify(MODELS.ultra.def));
+var img=new Image(), design=new Image(), imgOK=false, dOK=false;
+var cv=document.getElementById('cv'), ctx=cv.getContext('2d');
+var view={z:1,px:0,py:0}, drag=null;
+
+function loadModel(m){
+  cur=m; S=JSON.parse(JSON.stringify(MODELS[m].def));
+  document.getElementById('rad').value=S.r;
+  document.getElementById('campad').value=0;
+  imgOK=false; img=new Image();
+  img.onload=function(){imgOK=true;draw();};
+  img.src=MODELS[m].case;
+  view={z:1,px:0,py:0};
+  document.getElementById('zoom').value=1;
+  draw();
+}
+design.onload=function(){dOK=true;draw();};
+design.src='assets/designs/colorful-playful-abstract-shapes.jpg';
+
+function fitScale(){return Math.min(cv.clientWidth/2500,cv.clientHeight/3000)*view.z;}
+function toWorld(x,y){var s=fitScale();return [(x-cv.clientWidth/2-view.px)/s+1250, (y-cv.clientHeight/2-view.py)/s+1500];}
+
+function camPath(){
+  var pts=MODELS[cur].cam();
+  var cx=0,cy=0; pts.forEach(function(p){cx+=p[0];cy+=p[1];}); cx/=pts.length; cy/=pts.length;
+  var k=1+S.pad/220;
+  var path=new Path2D();
+  pts.forEach(function(p,i){
+    var x=cx+(p[0]-cx)*k+S.dx, y=cy+(p[1]-cy)*k+S.dy;
+    i?path.lineTo(x,y):path.moveTo(x,y);
+  });
+  path.closePath(); return path;
+}
+function outerPath(){
+  var p=new Path2D(), r=Math.min(S.r,(S.R-S.L)/2,(S.B-S.T)/2);
+  p.moveTo(S.L+r,S.T); p.lineTo(S.R-r,S.T); p.arcTo(S.R,S.T,S.R,S.T+r,r);
+  p.lineTo(S.R,S.B-r); p.arcTo(S.R,S.B,S.R-r,S.B,r);
+  p.lineTo(S.L+r,S.B); p.arcTo(S.L,S.B,S.L,S.B-r,r);
+  p.lineTo(S.L,S.T+r); p.arcTo(S.L,S.T,S.L+r,S.T,r); p.closePath(); return p;
+}
+function handles(){
+  var mx=(S.L+S.R)/2,my=(S.T+S.B)/2;
+  var pts=MODELS[cur].cam(); var cx=0,cy=0;pts.forEach(function(p){cx+=p[0];cy+=p[1];});cx/=pts.length;cy/=pts.length;
+  return [
+    {id:'L',x:S.L,y:my},{id:'R',x:S.R,y:my},{id:'T',x:mx,y:S.T},{id:'B',x:mx,y:S.B},
+    {id:'CAM',x:cx+S.dx,y:cy+S.dy}
+  ];
+}
+function draw(){
+  var w=cv.clientWidth,h=cv.clientHeight,dpr=window.devicePixelRatio||1;
+  if(cv.width!==w*dpr||cv.height!==h*dpr){cv.width=w*dpr;cv.height=h*dpr;}
+  ctx.setTransform(1,0,0,1,0,0); ctx.clearRect(0,0,cv.width,cv.height);
+  ctx.fillStyle='#F3F2F2'; ctx.fillRect(0,0,cv.width,cv.height);
+  var scale=fitScale()*dpr;
+  ctx.setTransform(scale,0,0,scale, cv.width/2+ view.px*dpr - 1250*scale, cv.height/2 + view.py*dpr - 1500*scale);
+  if(imgOK) ctx.drawImage(img,0,0,2500,3000);
+  // design masked
+  if(dOK && document.getElementById('showDesign').checked){
+    var t=document.createElement('canvas'); t.width=1250;t.height=1500;
+    var tc=t.getContext('2d'); tc.scale(0.5,0.5);
+    var op=outerPath(), cp=camPath();
+    tc.save();
+    var clipP=new Path2D(); clipP.addPath(op); clipP.addPath(cp);
+    tc.clip(clipP,'evenodd');
+    var bw=S.R-S.L,bh=S.B-S.T,sc=Math.max(bw/design.width,bh/design.height);
+    tc.globalAlpha=0.96;
+    tc.drawImage(design,S.L+(bw-design.width*sc)/2,S.T+(bh-design.height*sc)/2,design.width*sc,design.height*sc);
+    tc.restore();
+    ctx.drawImage(t,0,0,2500,3000);
+  }
+  // blue lines (screen-constant width)
+  ctx.lineWidth=3.5/fitScale();
+  ctx.strokeStyle='#1E50FF';
+  ctx.stroke(outerPath()); ctx.stroke(camPath());
+  // handles
+  handles().forEach(function(hd){
+    ctx.beginPath(); ctx.arc(hd.x,hd.y,26/fitScale(),0,7);
+    ctx.fillStyle=hd.id==='CAM'?'rgba(220,40,46,.92)':'rgba(30,80,255,.92)';
+    ctx.fill(); ctx.strokeStyle='#fff'; ctx.lineWidth=4/fitScale(); ctx.stroke();
+  });
+  // grid
+  if(document.getElementById('showGrid').checked){
+    ctx.lineWidth=1/fitScale(); ctx.strokeStyle='rgba(220,60,60,.5)'; ctx.fillStyle='rgba(200,30,30,1)';
+    ctx.font='bold '+(13/fitScale())+'px -apple-system';
+    for(var gx=0;gx<=2500;gx+=250){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,3000);ctx.stroke();ctx.fillText(gx,gx+6,40);}
+    for(var gy=0;gy<=3000;gy+=250){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(2500,gy);ctx.stroke();ctx.fillText(gy,8,gy-6);}
+  }
+  nums();
+}
+function nums(){
+  document.getElementById('nums').textContent =
+    (cur==='ultra'?'S26 ULTRA':'S26')+' · sides '+Math.round(S.L)+' → '+Math.round(S.R)+
+    ' · top '+Math.round(S.T)+' · bottom '+Math.round(S.B)+' · corner '+Math.round(S.r)+
+    ' · camera size '+(S.pad>=0?'+':'')+Math.round(S.pad)+' · camera moved '+Math.round(S.dx)+','+Math.round(S.dy);
+}
+function pointerPos(e){var r=cv.getBoundingClientRect();var t=e.touches?e.touches[0]:e;return [t.clientX-r.left,t.clientY-r.top];}
+function down(e){
+  var p=pointerPos(e), wpt=toWorld(p[0],p[1]);
+  var hit=null, best=1e9;
+  handles().forEach(function(hd){
+    var d=Math.hypot(hd.x-wpt[0],hd.y-wpt[1]);
+    if(d<40/fitScale() && d<best){best=d;hit=hd.id;}
+  });
+  drag={id:hit||'PAN',sx:p[0],sy:p[1],start:JSON.parse(JSON.stringify(S)),vx:view.px,vy:view.py};
+  e.preventDefault();
+}
+function move(e){
+  if(!drag) return;
+  var p=pointerPos(e);
+  if(drag.id==='PAN'){view.px=drag.vx+(p[0]-drag.sx);view.py=drag.vy+(p[1]-drag.sy);draw();e.preventDefault();return;}
+  var s=fitScale(), dx=(p[0]-drag.sx)/s, dy=(p[1]-drag.sy)/s;
+  if(drag.id==='L') S.L=Math.min(drag.start.L+dx, S.R-300);
+  if(drag.id==='R') S.R=Math.max(drag.start.R+dx, S.L+300);
+  if(drag.id==='T') S.T=Math.min(drag.start.T+dy, S.B-400);
+  if(drag.id==='B') S.B=Math.max(drag.start.B+dy, S.T+400);
+  if(drag.id==='CAM'){S.dx=drag.start.dx+dx; S.dy=drag.start.dy+dy;}
+  draw(); e.preventDefault();
+}
+function up(){drag=null;}
+cv.addEventListener('mousedown',down); cv.addEventListener('mousemove',move); window.addEventListener('mouseup',up);
+cv.addEventListener('touchstart',down,{passive:false}); cv.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',up);
+document.getElementById('zoom').addEventListener('input',function(){view.z=+this.value;draw();});
+document.getElementById('rad').addEventListener('input',function(){S.r=+this.value;draw();});
+document.getElementById('campad').addEventListener('input',function(){S.pad=+this.value;draw();});
+document.getElementById('showDesign').addEventListener('change',draw);
+document.getElementById('showGrid').addEventListener('change',draw);
+document.getElementById('reset').addEventListener('click',function(){loadModel(cur);});
+document.getElementById('copy').addEventListener('click',function(){
+  var txt=document.getElementById('nums').textContent;
+  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){
+    document.getElementById('copied').style.display='inline';
+    setTimeout(function(){document.getElementById('copied').style.display='none';},2500);
+  }).catch(function(){ prompt('Copy these numbers:', txt); });
+});
+document.querySelectorAll('.tab').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on'); loadModel(b.dataset.m);
+  });
+});
+window.addEventListener('resize',draw);
+loadModel('ultra');
+})();
+</script>
+</body>
+</html>
