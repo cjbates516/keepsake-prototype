@@ -7,6 +7,23 @@
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>Design your keepsake — Keepsake Printing Co</title>
+<meta name="description" content="Design your custom phone case: upload a photo or pick a ready-made design, see it on your exact phone, and we UV-print it in store — ready today.">
+<link rel="canonical" href="https://cjbates516.github.io/keepsake-prototype/customizer.html">
+<meta property="og:title" content="Design your keepsake — Keepsake Printing Co">
+<meta property="og:description" content="Design your custom phone case: upload a photo or pick a ready-made design, see it on your exact phone, and we UV-print it in store — ready today.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cjbates516.github.io/keepsake-prototype/customizer.html">
+<meta property="og:image" content="https://cjbates516.github.io/keepsake-prototype/assets/apple-touch-icon.png">
+<meta property="og:site_name" content="Keepsake Printing Co">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"Custom Photo Phone Case",
+"brand":{"@type":"Brand","name":"Keepsake Printing Co"},
+"description":"Custom UV-printed phone case — upload a photo or choose from 1,000+ designs, printed in store while you wait.",
+"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"34.99","highPrice":"69.99",
+"availability":"https://schema.org/InStock"}}
+</script>
+<link rel="icon" href="assets/favicon-16.png" sizes="16x16" type="image/png">
 <style>
   html,body{margin:0;padding:0;background:#FFFFFF}
   body{font-family:"Avenir","Avenir Next","Nunito Sans","Helvetica Neue",Helvetica,Arial,sans-serif;color:#4E4E50;-webkit-font-smoothing:antialiased}
@@ -52,10 +69,11 @@
   </style>
 </head>
 <body>
+<a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
 <div style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
 
   <!-- announcement -->
-  <div style="background:#2D2D3B;color:#FFFFFF;padding:11px 16px;text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;overflow:hidden">
+  <div id="announceBar" style="background:#2D2D3B;color:#FFFFFF;padding:11px 16px;text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;overflow:hidden">
     <span id="announce" style="display:inline-block;animation:fadeIn .45s cubic-bezier(.2,.7,.2,1) both">10% off your first case — code <span style="background:rgba(255,255,255,.18);border-radius:999px;padding:2px 10px;letter-spacing:.1em">FIRST10</span></span>
   </div>
 
@@ -205,7 +223,7 @@
 
 
 
-  <main style="flex:1;background:#FFFFFF">
+  <main id="main" style="flex:1;background:#FFFFFF">
     <div style="animation:fadeUp .5s cubic-bezier(.2,.7,.2,1) both;max-width:1280px;margin:0 auto;padding:36px 40px 140px">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:clamp(32px,4vw,72px);align-items:start">
 
@@ -214,16 +232,16 @@
           <div id="stageWrap" style="display:flex;align-items:center;justify-content:center;width:100%">
             <!-- empty state -->
             <div id="stageEmpty" style="position:relative;width:290px;height:554px">
-              <span style="position:absolute;inset:0;border:2px dashed #CECDCD;border-radius:44px;background:#FAFAFA;display:flex;align-items:center;justify-content:center;padding:28px;text-align:center;font-size:13px;font-weight:700;color:#9A9A9D;line-height:1.5"></span>
+              <span style="position:absolute;inset:0;border:2px dashed #CECDCD;border-radius:44px;background:#FAFAFA;display:flex;align-items:center;justify-content:center;padding:28px;text-align:center;font-size:13px;font-weight:700;color:#6C6C72;line-height:1.5"></span>
             </div>
             <!-- live preview -->
             <canvas id="stageCanvas" width="2500" height="3000" style="display:none"></canvas>
             <!-- non-17PM placeholder note wrapper reuses stageEmpty -->
           </div>
-          <div id="stageHint" style="font-size:12px;font-weight:700;color:#9A9A9D;letter-spacing:.04em">Upload or drop a photo to begin</div>
+          <div id="stageHint" style="font-size:12px;font-weight:700;color:#6C6C72;letter-spacing:.04em">Upload or drop a photo to begin</div>
           <div id="kitNote" style="display:none;font-size:11.5px;font-weight:600;color:#B9BDCB;letter-spacing:.02em;text-align:center;max-width:300px"></div>
           <div id="kpViews" style="display:none;width:100%;max-width:420px;margin-top:10px">
-            <div style="font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#9A9A9D;margin-bottom:8px">See it in real life</div>
+            <div style="font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#6C6C72;margin-bottom:8px">See it in real life</div>
             <div id="kpViewsRow" style="display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;border-radius:14px">
               <div id="kpMotion" style="position:relative;flex:0 0 auto;scroll-snap-align:start;cursor:pointer"><canvas id="kpMotionThumb" width="600" height="600" style="width:132px;height:132px;border-radius:12px;display:block;background:#F3F2F2"></canvas><span style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(220,40,46,.85);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span><span style="font-size:9px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#FFFFFF;text-shadow:0 1px 6px rgba(0,0,0,.45)">Yours · in motion</span></span></div>
               <canvas class="kpScene" data-s="pm3" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
@@ -244,18 +262,18 @@
         <!-- ══ right: product rail ══ -->
         <div>
           <h1 style="font-weight:900;font-size:clamp(30px,3.4vw,44px);letter-spacing:-.02em;color:#17171F;margin:0 0 6px">Design your keepsake</h1>
-          <div style="font-size:17px;font-weight:600;color:#2D2D3B">Custom Photo Case · MagSafe Compatible</div>
-          <div style="font-size:14px;color:#9A9A9D;margin-top:4px">By you — printed in store</div>
+          <div id="prodSub" style="font-size:17px;font-weight:600;color:#2D2D3B">Custom Photo Case · MagSafe Compatible</div>
+          <div style="font-size:14px;color:#6C6C72;margin-top:4px">By you — printed in store</div>
           <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#DC282E;margin:26px 0 12px;padding-top:22px;border-top:1px solid #EFEDED">Step 1 <span style="color:#17171F">· Your phone</span></div>
           <div style="display:flex;align-items:stretch;border:1px solid #2D2D3B;border-radius:999px;overflow:hidden;background:#FFFFFF;margin-bottom:24px">
-            <select id="brandSel" style="flex:1;min-width:0;padding:15px 20px;border:0;font-size:16px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer">
+            <select id="brandSel" aria-label="Phone brand" style="flex:1;min-width:0;padding:15px 20px;border:0;font-size:16px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer">
               <option value="Apple">Apple</option>
               <option value="Samsung">Samsung</option>
               <option value="Google" disabled>Google — coming soon</option>
               <option value="iPad" disabled>iPad — coming soon</option>
             </select>
             <div style="width:1px;background:#E4E3E3"></div>
-            <select id="modelSel" style="flex:1.4;min-width:0;padding:15px 20px;border:0;font-size:16px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer"></select>
+            <select id="modelSel" aria-label="Phone model" style="flex:1.4;min-width:0;padding:15px 20px;border:0;font-size:16px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer"></select>
           </div>
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:30px">
             <span style="font-size:17px;font-weight:800;color:#17171F">Device color · <span id="colorName" style="font-weight:600;color:#6E6E70">Silver</span></span>
@@ -271,7 +289,7 @@
                 </div>
               </div>
               <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">MagSafe Clear</div>
-              <div style="font-size:12.5px;font-weight:600;color:#9A9A9D;margin-top:2px">$64.99+</div>
+              <div style="font-size:12.5px;font-weight:600;color:#6C6C72;margin-top:2px">$64.99+</div>
             </div>
             <div id="ctTough" class="ctCard" data-ct="Slim Hybrid MagSafe" style="cursor:pointer;text-align:center">
               <div style="position:relative;border:2px solid #E4E3E3;border-radius:12px;overflow:hidden;background:#F7F7F7">
@@ -281,7 +299,7 @@
                 </div>
               </div>
               <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">Slim Hybrid MagSafe</div>
-              <div style="font-size:12.5px;font-weight:600;color:#9A9A9D;margin-top:2px">+$5 · extra grip</div>
+              <div style="font-size:12.5px;font-weight:600;color:#6C6C72;margin-top:2px">+$5 · extra grip</div>
             </div>
           </div>
 
@@ -306,8 +324,8 @@
             </div>
             <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
               <span style="font-size:13px;font-weight:800;color:#17171F">Your phone · <span id="colorName2" style="color:#6E6E70">Silver</span></span>
-              <span style="font-size:13px;font-weight:800;color:#17171F">Your case · <span style="color:#6E6E70">clear, so the <span id="colorName3">Silver</span> shows through</span></span>
-              <span style="font-size:12px;font-weight:600;color:#9A9A9D">The preview shows both together — case on phone</span>
+              <span style="font-size:13px;font-weight:800;color:#17171F">Your case · <span id="caseNature" style="color:#6E6E70">clear, so the <span id="colorName3">Silver</span> shows through</span></span>
+              <span style="font-size:12px;font-weight:600;color:#6C6C72">The preview shows both together — case on phone</span>
             </div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;margin:20px 0 28px">
@@ -329,7 +347,7 @@
             </a>
           </div>
           <div id="photoSection" style="display:none">
-          <div style="font-size:12px;font-weight:600;color:#9A9A9D;margin:-18px 0 24px;padding-left:2px"><span id="fitNote" style="display:none"></span>
+          <div style="font-size:12px;font-weight:600;color:#6C6C72;margin:-18px 0 24px;padding-left:2px"><span id="fitNote" style="display:none"></span>
             <span id="dpiLabel" style="display:block;margin-top:6px;font-weight:800"></span>
           </div>
           <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:12px">Your photo</div>
@@ -338,7 +356,7 @@
             <div id="layoutChips" style="display:flex;flex-wrap:wrap;gap:7px"></div>
           </div>
           <button id="uploadBtn" class="h-upload" style="width:100%;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s">Upload a photo</button>
-          <div style="font-size:11.5px;color:#9A9A9D;font-weight:600;margin-top:8px;text-align:center">🔒 Your photo never leaves this device — we don't upload or store it</div>
+          <div style="font-size:11.5px;color:#6C6C72;font-weight:600;margin-top:8px;text-align:center">🔒 Your photo never leaves this device — we don't upload or store it</div>
           <a id="browseLink" href="gallery.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;background:#FBE0E1;border-radius:12px;padding:14px 16px;text-decoration:none">
             <span><span style="display:block;font-size:13px;font-weight:900;color:#B81F24">Want a ready-made design instead?</span>
             <span id="browseLinkSub" style="display:block;font-size:12px;font-weight:700;color:#4E4E50;margin-top:2px">Browse the full library for your phone</span></span>
@@ -350,11 +368,11 @@
               <input id="ideaInput" type="text" placeholder="e.g. pink cowgirl boots, koi fish" style="flex:1;min-width:0;border:1.5px solid #E4E3E3;border-radius:999px;padding:12px 16px;font-size:16px;font-family:inherit" maxlength="80">
               <button id="ideaAiBtn" style="background:#DC282E;color:#FFFFFF;border:0;padding:12px 18px;border-radius:999px;font-size:13px;font-weight:900;cursor:pointer;white-space:nowrap">✨ Create</button>
             </div>
-            <div style="font-size:11px;color:#9A9A9D;font-weight:600;margin-top:6px;text-align:center">One-of-a-kind design, made just for you</div>
+            <div style="font-size:11px;color:#6C6C72;font-weight:600;margin-top:6px;text-align:center">One-of-a-kind design, made just for you</div>
           </div>
           <input type="file" id="fileInput" accept="image/*" style="display:none">
           <button id="clearBtn" class="h-borderink" style="display:none;width:100%;background:#FFFFFF;color:#6E6E70;border:1px solid #CECDCD;padding:13px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer;margin-top:10px;transition:border-color .2s">Start over — remove photo</button>
-          <p style="font-size:12.5px;color:#9A9A9D;margin:10px 0 28px;line-height:1.5">Photos never leave your device. In store, we print straight from your phone.</p>
+          <p style="font-size:12.5px;color:#6C6C72;margin:10px 0 28px;line-height:1.5">Photos never leave your device. In store, we print straight from your phone.</p>
           <div id="editTools" style="display:none;animation:fadeUp .3s cubic-bezier(.2,.7,.2,1) both;margin:-8px 0 28px">
             <div style="display:flex;gap:8px;margin-bottom:14px">
               <button id="fitFill" style="flex:1;background:#2D2D3B;color:#FFF;border:1px solid #2D2D3B;padding:10px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Fill case</button>
@@ -364,22 +382,22 @@
 
           </div>
           <div style="margin:0 0 28px">
-            <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:6px">Add a name <span style="font-weight:600;color:#9A9A9D;font-size:13px">· optional, printed on the case</span></div>
+            <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:6px">Add a name <span style="font-weight:600;color:#6C6C72;font-size:13px">· optional, printed on the case</span></div>
             <input id="nameInput" type="text" maxlength="18" placeholder="Sarah, DAD, Class of 2026…" style="width:100%;box-sizing:border-box;padding:14px 18px;border-radius:999px;border:1px solid #E4E3E3;font-size:16px;color:#17171F;outline-color:#2D2D3B">
             <div id="fontChips" style="display:none;gap:8px;overflow-x:auto;padding:12px 0 4px"></div>
             <div id="textOpts" style="display:none;animation:fadeUp .3s cubic-bezier(.2,.7,.2,1) both">
               <div style="display:flex;align-items:center;gap:10px;margin:8px 0 12px">
-                <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9D;width:52px">Color</span>
+                <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6C6C72;width:52px">Color</span>
                 <div id="textColors" style="display:flex;gap:8px"></div>
                 <span style="flex:1"></span>
                 <button id="orientBtn" class="h-borderink" style="background:#FFFFFF;border:1px solid #E4E3E3;color:#6E6E70;border-radius:999px;padding:7px 16px;font-size:12px;font-weight:800;cursor:pointer;transition:border-color .2s,color .2s">Vertical</button>
               </div>
               <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px">
-                <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9D;width:52px">Size</span>
+                <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6C6C72;width:52px">Size</span>
                 <input id="textSize" type="range" min="90" max="420" step="2" value="220" style="flex:1;accent-color:#DC282E">
               </div>
               <div style="display:flex;align-items:center;gap:14px">
-                <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9D;width:52px">Position</span>
+                <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6C6C72;width:52px">Position</span>
                 <input id="textPos" type="range" min="0" max="100" step="1" value="62" style="flex:1;accent-color:#DC282E">
               </div>
             </div>
@@ -409,12 +427,12 @@
               <div id="storeChips" style="display:flex;flex-wrap:wrap;gap:7px"></div>
             </div>
             <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="lineDevice">iPhone 17 Pro Max · MagSafe Clear</span><span id="linePrice">$64.99</span></div>
-            <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#9A9A9D;margin-bottom:6px"><span>Printed in store · <span id="colorName4">Silver</span></span><span>Included</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#6C6C72;margin-bottom:6px"><span>Printed in store · <span id="colorName4">Silver</span></span><span>Included</span></div>
             <div id="lineAddons" style="display:none;justify-content:space-between;font-size:13px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="addonSummary"></span><span id="addonTotal"></span></div>
             <div id="lineDiscount" style="display:none;justify-content:space-between;font-size:14px;font-weight:800;color:#1E8E3E;margin-bottom:6px"><span id="discountName"></span><span id="discountAmt"></span></div>
             <button id="reserveBtn" class="h-outline" style="width:100%;margin-top:14px;background:#FFFFFF;color:#17171F;border:1px solid #17171F;padding:15px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer;transition:background .2s,color .2s">Reserve — print in store</button>
             <div id="reservedBox" style="display:none;animation:fadeUp .35s cubic-bezier(.2,.7,.2,1) both;background:#FBE0E1;border-radius:10px;padding:18px;text-align:center;font-weight:800;font-size:14px;line-height:1.5;color:#2D2D3B;margin-top:14px"></div>
-            <div style="display:flex;gap:18px;margin-top:16px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#9A9A9D;flex-wrap:wrap">
+            <div style="display:flex;gap:18px;margin-top:16px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#6C6C72;flex-wrap:wrap">
               <span>10-day returns</span><span style="color:#E4E3E3">·</span><span>6-mo warranty</span>
             </div>
           </div>
@@ -443,14 +461,14 @@
         <button id="chatClose" aria-label="Close chat" style="background:none;border:0;color:#B9BDCB;font-size:18px;cursor:pointer;padding:4px">×</button>
       </div>
       <div id="chatFormWrap" style="padding:18px 20px;display:flex;flex-direction:column;gap:10px">
-        <div style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9D">Quick answers</div>
+        <div style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6C6C72">Quick answers</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px">
           <button class="chatQ" data-a="Most cases print in under an hour — you can watch it happen. During busy seasons we'll text you the moment it's ready." style="background:#F3F2F2;border:0;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;color:#2D2D3B;cursor:pointer">How fast is it?</button>
           <button class="chatQ" data-a="10-day, no-questions-asked return or exchange, plus a 6-month warranty covering a one-time replacement for defects." style="background:#F3F2F2;border:0;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;color:#2D2D3B;cursor:pointer">Returns?</button>
           <button class="chatQ" data-a="Yes — logo swag for trade shows, client gifts, and teams, with volume pricing up to 35% off. See the For Business page." style="background:#F3F2F2;border:0;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;color:#2D2D3B;cursor:pointer">Business orders?</button>
         </div>
         <div id="chatAnswer" style="display:none;background:#F8F7F7;border-radius:12px;padding:14px;font-size:13px;line-height:1.6;color:#4E4E50"></div>
-        <div style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9D;margin-top:6px">Or send us a message</div>
+        <div style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6C6C72;margin-top:6px">Or send us a message</div>
         <form id="chatForm" style="display:flex;flex-direction:column;gap:8px">
           <input type="email" required placeholder="Your email" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:16px">
           <textarea required placeholder="How can we help?" rows="3" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:16px;font-family:inherit;resize:vertical"></textarea>
@@ -510,6 +528,7 @@
     'iPhone 14 Plus':[76.1,158.8,899,1876],'iPhone 14':[70.22,146.17,829,1726],
     'iPhone 13 Pro Max':[76.75,160.5,906,1896],'iPhone 13 Pro':[71.5,146.7,845,1733],'iPhone 13':[70.22,146.17,829,1726],'iPhone 13 mini':[62.2,129.5,735,1530],
     'iPhone 12 Pro Max':[76.1,158.8,899,1876],'iPhone 12 Pro':[69.5,144.7,821,1709],'iPhone 12':[69.5,144.7,821,1709],'iPhone 12 mini':[62.2,129.5,735,1530],
+    'iPhone Air':[73.5,155.0,868,1831],
     'Samsung Galaxy S26':[71.4,149.3,843,1763],'Samsung Galaxy S26 Plus':[76.7,160.2,906,1892],  /* provisional — verify at first S26+ print */
     'Samsung Galaxy S26 Ultra':[79.0,163.4,933,1930]
   };
@@ -610,7 +629,7 @@
     }
   };
   /* KP-1516-KITS */
-  Object.assign(KITS, {"iPhone 16 Pro Max": {"light": "i16pm-light.jpg", "tpl": {"w": 218.25, "h": 461.25}, "fit": {"x": 638, "y": 250, "sx": 5.596, "sy": 5.3251}, "outD": "M 847.4 250.0 L 1649.6 250.0 A 209.4 209.4 0 0 1 1859.0 459.4 L 1859.0 2495.6 A 209.4 209.4 0 0 1 1649.6 2705.0 L 847.4 2705.0 A 209.4 209.4 0 0 1 638.0 2495.6 L 638.0 459.4 A 209.4 209.4 0 0 1 847.4 250.0 Z", "camD": "M 858.4 271.1 L 1152.0 271.1 A 189.2 189.2 0 0 1 1341.3 460.3 L 1341.3 743.7 A 189.2 189.2 0 0 1 1152.0 933.0 L 858.4 933.0 A 189.2 189.2 0 0 1 669.2 743.7 L 669.2 460.3 A 189.2 189.2 0 0 1 858.4 271.1 Z", "tplD": "M 37.4 0.0 L 180.8 0.0 A 37.4 37.4 0 0 1 218.2 37.4 L 218.2 423.6 A 37.4 37.4 0 0 1 180.8 461.0 L 37.4 461.0 A 37.4 37.4 0 0 1 0.0 423.6 L 0.0 37.4 A 37.4 37.4 0 0 1 37.4 0.0 Z M 39.4 4.0 L 91.9 4.0 A 33.8 33.8 0 0 1 125.7 37.8 L 125.7 94.4 A 33.8 33.8 0 0 1 91.9 128.3 L 39.4 128.3 A 33.8 33.8 0 0 1 5.6 94.4 L 5.6 37.8 A 33.8 33.8 0 0 1 39.4 4.0 Z", "textBounds": {"cx": 1250, "yTop": 1023, "yBot": 2565}, "colors": [{"n": "Black", "h": "#505050", "f": "i16pm-black.webp"}, {"n": "Silver", "h": "#939393", "f": "i16pm-silver.webp"}, {"n": "Titanium", "h": "#837F7C", "f": "i16pm-titan.webp"}, {"n": "Blue", "h": "#6E767D", "f": "i16pm-blue.webp"}]}, "iPhone 16 Pro": {"light": "i16p-light.jpg", "tpl": {"w": 198.0, "h": 426.0}, "fit": {"x": 685, "y": 351, "sx": 5.6997, "sy": 5.2948}, "outD": "M 887.8 351.0 L 1609.2 351.0 A 202.8 202.8 0 0 1 1812.0 553.8 L 1812.0 2400.2 A 202.8 202.8 0 0 1 1609.2 2603.0 L 887.8 2603.0 A 202.8 202.8 0 0 1 685.0 2400.2 L 685.0 553.8 A 202.8 202.8 0 0 1 887.8 351.0 Z", "camD": "M 901.7 388.2 L 1195.0 388.2 A 193.5 193.5 0 0 1 1388.5 581.6 L 1388.5 851.1 A 193.5 193.5 0 0 1 1195.0 1044.5 L 901.7 1044.5 A 193.5 193.5 0 0 1 708.3 851.1 L 708.3 581.6 A 193.5 193.5 0 0 1 901.7 388.2 Z", "tplD": "M 35.6 0.0 L 162.2 0.0 A 35.6 35.6 0 0 1 197.7 35.6 L 197.7 389.7 A 35.6 35.6 0 0 1 162.2 425.3 L 35.6 425.3 A 35.6 35.6 0 0 1 0.0 389.7 L 0.0 35.6 A 35.6 35.6 0 0 1 35.6 0.0 Z M 38.0 7.0 L 89.5 7.0 A 33.9 33.9 0 0 1 123.4 41.0 L 123.4 97.0 A 33.9 33.9 0 0 1 89.5 131.0 L 38.0 131.0 A 33.9 33.9 0 0 1 4.1 97.0 L 4.1 41.0 A 33.9 33.9 0 0 1 38.0 7.0 Z", "textBounds": {"cx": 1250, "yTop": 1135, "yBot": 2463}, "colors": [{"n": "Black", "h": "#7A7A7A", "f": "i16p-black.webp"}, {"n": "Silver", "h": "#B1B1B1", "f": "i16p-silver.webp"}, {"n": "Titanium", "h": "#AAA8A7", "f": "i16p-titan.webp"}, {"n": "Blue", "h": "#8D9194", "f": "i16p-blue.webp"}]}, "iPhone 16": {"light": "i16n-light.jpg", "tpl": {"w": 199.5, "h": 417.75}, "fit": {"x": 682, "y": 364, "sx": 5.6808, "sy": 5.33}, "outD": "M 905.9 364.0 L 1591.1 364.0 A 223.9 223.9 0 0 1 1815.0 587.9 L 1815.0 2366.1 A 223.9 223.9 0 0 1 1591.1 2590.0 L 905.9 2590.0 A 223.9 223.9 0 0 1 682.0 2366.1 L 682.0 587.9 A 223.9 223.9 0 0 1 905.9 364.0 Z", "camD": "M 886.9 381.5 L 893.1 381.5 A 188.4 188.4 0 0 1 1081.5 569.9 L 1081.5 819.2 A 188.4 188.4 0 0 1 893.1 1007.6 L 886.9 1007.6 A 188.4 188.4 0 0 1 698.5 819.2 L 698.5 569.9 A 188.4 188.4 0 0 1 886.9 381.5 Z", "tplD": "M 39.4 0.0 L 160.0 0.0 A 39.4 39.4 0 0 1 199.4 39.4 L 199.4 378.2 A 39.4 39.4 0 0 1 160.0 417.6 L 39.4 417.6 A 39.4 39.4 0 0 1 0.0 378.2 L 0.0 39.4 A 39.4 39.4 0 0 1 39.4 0.0 Z M 36.1 3.3 L 37.2 3.3 A 33.2 33.2 0 0 1 70.3 36.4 L 70.3 87.6 A 33.2 33.2 0 0 1 37.2 120.7 L 36.1 120.7 A 33.2 33.2 0 0 1 2.9 87.6 L 2.9 36.4 A 33.2 33.2 0 0 1 36.1 3.3 Z", "textBounds": {"cx": 1250, "yTop": 1098, "yBot": 2450}, "colors": [{"n": "Black", "h": "#545454", "f": "i16n-dark.webp"}, {"n": "White", "h": "#A9A9A9", "f": "i16n-white.webp"}, {"n": "Titanium", "h": "#8A8781", "f": "i16n-titan.webp"}, {"n": "Blue", "h": "#818EBA", "f": "i16n-blue.webp"}, {"n": "Pink", "h": "#B286A7", "f": "i16n-pink.webp"}]}, "iPhone 15 Pro Max": {"light": "i15pm-light.jpg", "tpl": {"w": 214.5, "h": 453.75}, "fit": {"x": 672, "y": 334, "sx": 5.4327, "sy": 5.2113}, "outD": "M 859.6 334.0 L 1649.4 334.0 A 187.6 187.6 0 0 1 1837.0 521.6 L 1837.0 2506.4 A 187.6 187.6 0 0 1 1649.4 2694.0 L 859.6 2694.0 A 187.6 187.6 0 0 1 672.0 2506.4 L 672.0 521.6 A 187.6 187.6 0 0 1 859.6 334.0 Z", "camD": "M 760.4 334.0 L 1280.3 334.0 A 88.4 88.4 0 0 1 1368.6 422.4 L 1368.6 831.9 A 88.4 88.4 0 0 1 1280.3 920.2 L 760.4 920.2 A 88.4 88.4 0 0 1 672.0 831.9 L 672.0 422.4 A 88.4 88.4 0 0 1 760.4 334.0 Z", "tplD": "M 34.5 0.0 L 179.9 0.0 A 34.5 34.5 0 0 1 214.4 34.5 L 214.4 418.3 A 34.5 34.5 0 0 1 179.9 452.9 L 34.5 452.9 A 34.5 34.5 0 0 1 0.0 418.3 L 0.0 34.5 A 34.5 34.5 0 0 1 34.5 0.0 Z M 16.3 0.0 L 112.0 0.0 A 16.3 16.3 0 0 1 128.2 16.3 L 128.2 96.2 A 16.3 16.3 0 0 1 112.0 112.5 L 16.3 112.5 A 16.3 16.3 0 0 1 0.0 96.2 L 0.0 16.3 A 16.3 16.3 0 0 1 16.3 0.0 Z", "textBounds": {"cx": 1250, "yTop": 1010, "yBot": 2554}, "colors": [{"n": "Black", "h": "#212121", "f": "i15pm-black.webp"}, {"n": "White", "h": "#6B6B6B", "f": "i15pm-white.webp"}, {"n": "Titanium", "h": "#585049", "f": "i15pm-titan.webp"}]}, "iPhone 15 Pro": {"light": "i15p-light.jpg", "tpl": {"w": 198.0, "h": 414.75}, "fit": {"x": 701, "y": 447, "sx": 5.5167, "sy": 5.2532}, "outD": "M 886.2 447.0 L 1607.8 447.0 A 185.2 185.2 0 0 1 1793.0 632.2 L 1793.0 2441.8 A 185.2 185.2 0 0 1 1607.8 2627.0 L 886.2 2627.0 A 185.2 185.2 0 0 1 701.0 2441.8 L 701.0 632.2 A 185.2 185.2 0 0 1 886.2 447.0 Z", "camD": "M 797.9 447.0 L 1315.9 447.0 A 96.9 96.9 0 0 1 1412.8 543.9 L 1412.8 932.4 A 96.9 96.9 0 0 1 1315.9 1029.4 L 797.9 1029.4 A 96.9 96.9 0 0 1 701.0 932.4 L 701.0 543.9 A 96.9 96.9 0 0 1 797.9 447.0 Z", "tplD": "M 33.6 0.0 L 164.4 0.0 A 33.6 33.6 0 0 1 197.9 33.6 L 197.9 381.4 A 33.6 33.6 0 0 1 164.4 415.0 L 33.6 415.0 A 33.6 33.6 0 0 1 0.0 381.4 L 0.0 33.6 A 33.6 33.6 0 0 1 33.6 0.0 Z M 17.6 0.0 L 111.5 0.0 A 17.6 17.6 0 0 1 129.0 17.6 L 129.0 93.3 A 17.6 17.6 0 0 1 111.5 110.9 L 17.6 110.9 A 17.6 17.6 0 0 1 0.0 93.3 L 0.0 17.6 A 17.6 17.6 0 0 1 17.6 0.0 Z", "textBounds": {"cx": 1250, "yTop": 1119, "yBot": 2487}, "colors": [{"n": "Black", "h": "#2A2A2A", "f": "i15p-black.webp"}, {"n": "Silver", "h": "#BDBDBD", "f": "i15p-silver.webp"}, {"n": "Titanium", "h": "#9A958B", "f": "i15p-titan.webp"}]}, "iPhone 15": {"light": "i15-light.jpg", "tpl": {"w": 200.25, "h": 417.75}, "fit": {"x": 705, "y": 431, "sx": 5.5437, "sy": 5.2418}, "outD": "M 877.3 431.0 L 1640.7 431.0 A 172.3 172.3 0 0 1 1813.0 603.3 L 1813.0 2443.7 A 172.3 172.3 0 0 1 1640.7 2616.0 L 877.3 2616.0 A 172.3 172.3 0 0 1 705.0 2443.7 L 705.0 603.3 A 172.3 172.3 0 0 1 877.3 431.0 Z", "camD": "M 826.7 431.0 L 1178.6 431.0 A 121.7 121.7 0 0 1 1300.3 552.7 L 1300.3 797.2 A 121.7 121.7 0 0 1 1178.6 918.9 L 826.7 918.9 A 121.7 121.7 0 0 1 705.0 797.2 L 705.0 552.7 A 121.7 121.7 0 0 1 826.7 431.0 Z", "tplD": "M 31.1 0.0 L 168.8 0.0 A 31.1 31.1 0 0 1 199.9 31.1 L 199.9 385.8 A 31.1 31.1 0 0 1 168.8 416.8 L 31.1 416.8 A 31.1 31.1 0 0 1 0.0 385.8 L 0.0 31.1 A 31.1 31.1 0 0 1 31.1 0.0 Z M 22.0 0.0 L 85.4 0.0 A 22.0 22.0 0 0 1 107.4 22.0 L 107.4 71.1 A 22.0 22.0 0 0 1 85.4 93.1 L 22.0 93.1 A 22.0 22.0 0 0 1 0.0 71.1 L 0.0 22.0 A 22.0 22.0 0 0 1 22.0 0.0 Z", "textBounds": {"cx": 1250, "yTop": 1009, "yBot": 2476}, "colors": [{"n": "Black", "h": "#303030", "f": "i15-black.webp"}, {"n": "Pink", "h": "#AD979C", "f": "i15-pink.webp"}, {"n": "Yellow", "h": "#BFB79F", "f": "i15-yellow.webp"}]}});
+  Object.assign(KITS, {"iPhone 16 Pro Max": {"light": "i16pm-light.jpg", "tpl": {"w": 218.25, "h": 461.25, "pxW": 910, "pxH": 1922}, "fit": {"x": 638, "y": 250, "sx": 5.596, "sy": 5.3251}, "outD": "M 847.4 250.0 L 1649.6 250.0 A 209.4 209.4 0 0 1 1859.0 459.4 L 1859.0 2495.6 A 209.4 209.4 0 0 1 1649.6 2705.0 L 847.4 2705.0 A 209.4 209.4 0 0 1 638.0 2495.6 L 638.0 459.4 A 209.4 209.4 0 0 1 847.4 250.0 Z", "camD": "M 858.4 271.1 L 1152.0 271.1 A 189.2 189.2 0 0 1 1341.3 460.3 L 1341.3 743.7 A 189.2 189.2 0 0 1 1152.0 933.0 L 858.4 933.0 A 189.2 189.2 0 0 1 669.2 743.7 L 669.2 460.3 A 189.2 189.2 0 0 1 858.4 271.1 Z", "tplD": "M 37.4 0.0 L 180.8 0.0 A 37.4 37.4 0 0 1 218.2 37.4 L 218.2 423.6 A 37.4 37.4 0 0 1 180.8 461.0 L 37.4 461.0 A 37.4 37.4 0 0 1 0.0 423.6 L 0.0 37.4 A 37.4 37.4 0 0 1 37.4 0.0 Z M 39.4 4.0 L 91.9 4.0 A 33.8 33.8 0 0 1 125.7 37.8 L 125.7 94.4 A 33.8 33.8 0 0 1 91.9 128.3 L 39.4 128.3 A 33.8 33.8 0 0 1 5.6 94.4 L 5.6 37.8 A 33.8 33.8 0 0 1 39.4 4.0 Z", "textBounds": {"cx": 1250, "yTop": 1023, "yBot": 2565}, "colors": [{"n": "Black", "h": "#505050", "f": "i16pm-black.webp"}, {"n": "Silver", "h": "#939393", "f": "i16pm-silver.webp"}, {"n": "Titanium", "h": "#837F7C", "f": "i16pm-titan.webp"}, {"n": "Blue", "h": "#6E767D", "f": "i16pm-blue.webp"}]}, "iPhone 16 Pro": {"light": "i16p-light.jpg", "tpl": {"w": 198.0, "h": 426.0, "pxW": 826, "pxH": 1776}, "fit": {"x": 685, "y": 351, "sx": 5.6997, "sy": 5.2948}, "outD": "M 887.8 351.0 L 1609.2 351.0 A 202.8 202.8 0 0 1 1812.0 553.8 L 1812.0 2400.2 A 202.8 202.8 0 0 1 1609.2 2603.0 L 887.8 2603.0 A 202.8 202.8 0 0 1 685.0 2400.2 L 685.0 553.8 A 202.8 202.8 0 0 1 887.8 351.0 Z", "camD": "M 901.7 388.2 L 1195.0 388.2 A 193.5 193.5 0 0 1 1388.5 581.6 L 1388.5 851.1 A 193.5 193.5 0 0 1 1195.0 1044.5 L 901.7 1044.5 A 193.5 193.5 0 0 1 708.3 851.1 L 708.3 581.6 A 193.5 193.5 0 0 1 901.7 388.2 Z", "tplD": "M 35.6 0.0 L 162.2 0.0 A 35.6 35.6 0 0 1 197.7 35.6 L 197.7 389.7 A 35.6 35.6 0 0 1 162.2 425.3 L 35.6 425.3 A 35.6 35.6 0 0 1 0.0 389.7 L 0.0 35.6 A 35.6 35.6 0 0 1 35.6 0.0 Z M 38.0 7.0 L 89.5 7.0 A 33.9 33.9 0 0 1 123.4 41.0 L 123.4 97.0 A 33.9 33.9 0 0 1 89.5 131.0 L 38.0 131.0 A 33.9 33.9 0 0 1 4.1 97.0 L 4.1 41.0 A 33.9 33.9 0 0 1 38.0 7.0 Z", "textBounds": {"cx": 1250, "yTop": 1135, "yBot": 2463}, "colors": [{"n": "Black", "h": "#7A7A7A", "f": "i16p-black.webp"}, {"n": "Silver", "h": "#B1B1B1", "f": "i16p-silver.webp"}, {"n": "Titanium", "h": "#AAA8A7", "f": "i16p-titan.webp"}, {"n": "Blue", "h": "#8D9194", "f": "i16p-blue.webp"}]}, "iPhone 16": {"light": "i16n-light.jpg", "tpl": {"w": 199.5, "h": 417.75, "pxW": 831, "pxH": 1740}, "fit": {"x": 682, "y": 364, "sx": 5.6808, "sy": 5.33}, "outD": "M 905.9 364.0 L 1591.1 364.0 A 223.9 223.9 0 0 1 1815.0 587.9 L 1815.0 2366.1 A 223.9 223.9 0 0 1 1591.1 2590.0 L 905.9 2590.0 A 223.9 223.9 0 0 1 682.0 2366.1 L 682.0 587.9 A 223.9 223.9 0 0 1 905.9 364.0 Z", "camD": "M 886.9 381.5 L 893.1 381.5 A 188.4 188.4 0 0 1 1081.5 569.9 L 1081.5 819.2 A 188.4 188.4 0 0 1 893.1 1007.6 L 886.9 1007.6 A 188.4 188.4 0 0 1 698.5 819.2 L 698.5 569.9 A 188.4 188.4 0 0 1 886.9 381.5 Z", "tplD": "M 39.4 0.0 L 160.0 0.0 A 39.4 39.4 0 0 1 199.4 39.4 L 199.4 378.2 A 39.4 39.4 0 0 1 160.0 417.6 L 39.4 417.6 A 39.4 39.4 0 0 1 0.0 378.2 L 0.0 39.4 A 39.4 39.4 0 0 1 39.4 0.0 Z M 36.1 3.3 L 37.2 3.3 A 33.2 33.2 0 0 1 70.3 36.4 L 70.3 87.6 A 33.2 33.2 0 0 1 37.2 120.7 L 36.1 120.7 A 33.2 33.2 0 0 1 2.9 87.6 L 2.9 36.4 A 33.2 33.2 0 0 1 36.1 3.3 Z", "textBounds": {"cx": 1250, "yTop": 1098, "yBot": 2450}, "colors": [{"n": "Black", "h": "#545454", "f": "i16n-dark.webp"}, {"n": "White", "h": "#A9A9A9", "f": "i16n-white.webp"}, {"n": "Titanium", "h": "#8A8781", "f": "i16n-titan.webp"}, {"n": "Blue", "h": "#818EBA", "f": "i16n-blue.webp"}, {"n": "Pink", "h": "#B286A7", "f": "i16n-pink.webp"}]}, "iPhone 15 Pro Max": {"light": "i15pm-light.jpg", "tpl": {"w": 214.5, "h": 453.75, "pxW": 895, "pxH": 1890}, "fit": {"x": 672, "y": 334, "sx": 5.4327, "sy": 5.2113}, "outD": "M 859.6 334.0 L 1649.4 334.0 A 187.6 187.6 0 0 1 1837.0 521.6 L 1837.0 2506.4 A 187.6 187.6 0 0 1 1649.4 2694.0 L 859.6 2694.0 A 187.6 187.6 0 0 1 672.0 2506.4 L 672.0 521.6 A 187.6 187.6 0 0 1 859.6 334.0 Z", "camD": "M 760.4 334.0 L 1280.3 334.0 A 88.4 88.4 0 0 1 1368.6 422.4 L 1368.6 831.9 A 88.4 88.4 0 0 1 1280.3 920.2 L 760.4 920.2 A 88.4 88.4 0 0 1 672.0 831.9 L 672.0 422.4 A 88.4 88.4 0 0 1 760.4 334.0 Z", "tplD": "M 34.5 0.0 L 179.9 0.0 A 34.5 34.5 0 0 1 214.4 34.5 L 214.4 418.3 A 34.5 34.5 0 0 1 179.9 452.9 L 34.5 452.9 A 34.5 34.5 0 0 1 0.0 418.3 L 0.0 34.5 A 34.5 34.5 0 0 1 34.5 0.0 Z M 16.3 0.0 L 112.0 0.0 A 16.3 16.3 0 0 1 128.2 16.3 L 128.2 96.2 A 16.3 16.3 0 0 1 112.0 112.5 L 16.3 112.5 A 16.3 16.3 0 0 1 0.0 96.2 L 0.0 16.3 A 16.3 16.3 0 0 1 16.3 0.0 Z", "textBounds": {"cx": 1250, "yTop": 1010, "yBot": 2554}, "colors": [{"n": "Black", "h": "#212121", "f": "i15pm-black.webp"}, {"n": "White", "h": "#6B6B6B", "f": "i15pm-white.webp"}, {"n": "Titanium", "h": "#585049", "f": "i15pm-titan.webp"}]}, "iPhone 15 Pro": {"light": "i15p-light.jpg", "tpl": {"w": 198.0, "h": 414.75, "pxW": 824, "pxH": 1727}, "fit": {"x": 701, "y": 447, "sx": 5.5167, "sy": 5.2532}, "outD": "M 886.2 447.0 L 1607.8 447.0 A 185.2 185.2 0 0 1 1793.0 632.2 L 1793.0 2441.8 A 185.2 185.2 0 0 1 1607.8 2627.0 L 886.2 2627.0 A 185.2 185.2 0 0 1 701.0 2441.8 L 701.0 632.2 A 185.2 185.2 0 0 1 886.2 447.0 Z", "camD": "M 797.9 447.0 L 1315.9 447.0 A 96.9 96.9 0 0 1 1412.8 543.9 L 1412.8 932.4 A 96.9 96.9 0 0 1 1315.9 1029.4 L 797.9 1029.4 A 96.9 96.9 0 0 1 701.0 932.4 L 701.0 543.9 A 96.9 96.9 0 0 1 797.9 447.0 Z", "tplD": "M 33.6 0.0 L 164.4 0.0 A 33.6 33.6 0 0 1 197.9 33.6 L 197.9 381.4 A 33.6 33.6 0 0 1 164.4 415.0 L 33.6 415.0 A 33.6 33.6 0 0 1 0.0 381.4 L 0.0 33.6 A 33.6 33.6 0 0 1 33.6 0.0 Z M 17.6 0.0 L 111.5 0.0 A 17.6 17.6 0 0 1 129.0 17.6 L 129.0 93.3 A 17.6 17.6 0 0 1 111.5 110.9 L 17.6 110.9 A 17.6 17.6 0 0 1 0.0 93.3 L 0.0 17.6 A 17.6 17.6 0 0 1 17.6 0.0 Z", "textBounds": {"cx": 1250, "yTop": 1119, "yBot": 2487}, "colors": [{"n": "Black", "h": "#2A2A2A", "f": "i15p-black.webp"}, {"n": "Silver", "h": "#BDBDBD", "f": "i15p-silver.webp"}, {"n": "Titanium", "h": "#9A958B", "f": "i15p-titan.webp"}]}, "iPhone 15": {"light": "i15-light.jpg", "tpl": {"w": 200.25, "h": 417.75, "pxW": 836, "pxH": 1741}, "fit": {"x": 705, "y": 431, "sx": 5.5437, "sy": 5.2418}, "outD": "M 877.3 431.0 L 1640.7 431.0 A 172.3 172.3 0 0 1 1813.0 603.3 L 1813.0 2443.7 A 172.3 172.3 0 0 1 1640.7 2616.0 L 877.3 2616.0 A 172.3 172.3 0 0 1 705.0 2443.7 L 705.0 603.3 A 172.3 172.3 0 0 1 877.3 431.0 Z", "camD": "M 826.7 431.0 L 1178.6 431.0 A 121.7 121.7 0 0 1 1300.3 552.7 L 1300.3 797.2 A 121.7 121.7 0 0 1 1178.6 918.9 L 826.7 918.9 A 121.7 121.7 0 0 1 705.0 797.2 L 705.0 552.7 A 121.7 121.7 0 0 1 826.7 431.0 Z", "tplD": "M 31.1 0.0 L 168.8 0.0 A 31.1 31.1 0 0 1 199.9 31.1 L 199.9 385.8 A 31.1 31.1 0 0 1 168.8 416.8 L 31.1 416.8 A 31.1 31.1 0 0 1 0.0 385.8 L 0.0 31.1 A 31.1 31.1 0 0 1 31.1 0.0 Z M 22.0 0.0 L 85.4 0.0 A 22.0 22.0 0 0 1 107.4 22.0 L 107.4 71.1 A 22.0 22.0 0 0 1 85.4 93.1 L 22.0 93.1 A 22.0 22.0 0 0 1 0.0 71.1 L 0.0 22.0 A 22.0 22.0 0 0 1 22.0 0.0 Z", "textBounds": {"cx": 1250, "yTop": 1009, "yBot": 2476}, "colors": [{"n": "Black", "h": "#303030", "f": "i15-black.webp"}, {"n": "Pink", "h": "#AD979C", "f": "i15-pink.webp"}, {"n": "Yellow", "h": "#BFB79F", "f": "i15-yellow.webp"}]}});
 
   var TPL, FIT, OUT_D, CAM_D, TPL_D;
   /* KP-SAMSUNG-KITS (tough case only — KishMish scene renders) */
@@ -654,7 +673,7 @@
   var canvas=$('stageCanvas'), ctx=canvas.getContext('2d');
   canvas.width=DIM.w*PS; canvas.height=DIM.h*PS;
   var caseImg=new Image(), lightMap=null, caseReady=false;
-  var viewImg=null, viewReady=false, viewSrc=null;
+  var viewImg=null, viewReady=false, viewSrc=null, viewMaskCanvas=null, viewFailed=false;
   caseImg.onload=function(){ caseReady=true; render(); };
   var lightImg=new Image(), lightReady=false;
   lightImg.onload=function(){
@@ -703,7 +722,16 @@
       if(viewSrc!==vm){
         viewReady=false; viewSrc=vm;
         viewImg=new Image();
-        viewImg.onload=function(){ viewReady=true; computeMaskBox(); render(); };
+        viewImg.onload=function(){
+          /* rasterize once: WebKit erases the layer when an <img> previously drawn source-over is reused as a destination-in source — canvas sources are immune */
+          viewMaskCanvas=document.createElement('canvas'); viewMaskCanvas.width=DIM.w; viewMaskCanvas.height=DIM.h;
+          viewMaskCanvas.getContext('2d').drawImage(viewImg,0,0,DIM.w,DIM.h);
+          viewReady=true; viewFailed=false; computeMaskBox(); render();
+        };
+        viewImg.onerror=function(){
+          if(!viewImg.__kpRetried){ viewImg.__kpRetried=true; var im=viewImg; setTimeout(function(){ im.src='assets/masks/'+vm+'?v=2&r=1'; },800); }
+          else viewFailed=true;
+        };
         viewImg.src='assets/masks/'+vm+'?v=2';
       }
     } else { viewImg=null; viewReady=false; viewSrc=null; }
@@ -800,7 +828,7 @@
     im.src='assets/collage/'+(t.prev||t.img);
     tplImgs[k]=im; return im;
   }
-  function hasArt(){ return !!state.photoImg || (state.layout && state.photos && state.photos.some(Boolean)); }
+  function hasArt(){ return !!state.photoImg || !!state.text || (state.layout && state.photos && state.photos.some(Boolean)); }
   function tplMap(){
     var t=curTpl(); if(!t) return null;
     var B=maskBox||{x:0,y:0,w:DIM.w,h:DIM.h};
@@ -941,7 +969,7 @@
       drawTextLayer(d2);
       if(useMask){
         d2.globalCompositeOperation='destination-in';
-        d2.drawImage(viewImg,0,0,DIM.w,DIM.h);
+        d2.drawImage(viewMaskCanvas,0,0,DIM.w,DIM.h);
         d2.globalCompositeOperation='source-over';
       } else { d2.restore(); }
       ctx.drawImage(dl,0,0,DIM.w,DIM.h);
@@ -961,7 +989,7 @@
       drawTextLayer(t2);
       if(useMask){
         t2.globalCompositeOperation='destination-in';
-        t2.drawImage(viewImg,0,0,DIM.w,DIM.h);
+        t2.drawImage(viewMaskCanvas,0,0,DIM.w,DIM.h);
         t2.globalCompositeOperation='source-over';
       } else { t2.restore(); }
       ctx.drawImage(dl2,0,0,DIM.w,DIM.h);
@@ -994,6 +1022,10 @@
     var y=tb.yTop+(tb.yBot-tb.yTop)*(state.textPos/100);
     c2.save();
     c2.font=f.w+state.textSize+'px '+f.css;
+    var availW=(maskBox?maskBox.w:DIM.w*0.42)*0.88;
+    if(state.textVertical) availW=(maskBox?maskBox.h:DIM.h*0.6)*0.7;
+    var twm=c2.measureText(state.text).width;
+    if(twm>availW){ c2.font=f.w+Math.max(60,Math.floor(state.textSize*availW/twm))+'px '+f.css; }
     c2.fillStyle=state.textColor;
     c2.textAlign='center'; c2.textBaseline='middle';
     c2.shadowColor='rgba(46,56,61,.18)'; c2.shadowBlur=14; c2.shadowOffsetY=5;
@@ -1279,6 +1311,8 @@
     state.photoImg=null; state.photoUrl=null; state.filter='none';
     state.photos=[]; state.slotTarget=null; state.builder=false; state.layout=null; state.designPath=null;
     state.px=0;state.py=0;state.scale=1;state.rot=0;
+    state.text=''; state.isLibraryDesign=false;
+    var ni=$('nameInput'); if(ni) ni.value='';
     updateUploadLabel(); updateDpi(); updateStage(); updateSummary(); render();
   });
   ['dragover','drop'].forEach(function(ev){
@@ -1327,7 +1361,7 @@
   document.addEventListener('click',function(e){
     var s=e.target.closest('.sw');
     if(s){ state.colorName=s.dataset.n; state.colorHex=s.dataset.h; state.reserved=false;
-      ['colorName','colorName2','colorName3','colorName4'].forEach(function(id){ $(id).textContent=state.colorName; });
+      ['colorName','colorName2','colorName3','colorName4'].forEach(function(id){ var el=$(id); if(el) el.textContent=state.colorName; });
       $('miniPhone').style.background=state.colorHex;
       if (KITS[state.model]) loadKit(state.model);
       renderSwatches(); updateSummary(); }
@@ -1335,7 +1369,7 @@
   function updateFitNote(){
     var sp = printSpec[state.model];
     if (sp){
-      $('fitNote').textContent = 'Engineered for '+state.model+' — print canvas '+sp[0]+' × '+sp[1]+' mm ('+sp[2]+' × '+sp[3]+' px @ 300 DPI) · precise camera cutout · MagSafe aligned';
+      $('fitNote').textContent = 'Engineered for '+state.model+' — print canvas '+sp[0]+' × '+sp[1]+' mm ('+sp[2]+' × '+sp[3]+' px @ 300 DPI) · precise camera cutout · '+((KITS[state.model]&&KITS[state.model].toughOnly)?'Qi2 magnet-aligned':'MagSafe aligned');
     } else {
       $('fitNote').textContent = 'Engineered for '+state.model+' — print template being finalized; sizing verified at the counter.';
     }
@@ -1355,9 +1389,13 @@
   $('brandSel').addEventListener('change',function(){
     state.brand=this.value; state.model=modelsByBrand[state.brand][0]; state.reserved=false;
     var pal=paletteFor(); state.colorName=pal[0].n; state.colorHex=pal[0].h;
-    ['colorName','colorName2','colorName3','colorName4'].forEach(function(id){ $(id).textContent=state.colorName; });
+    ['colorName','colorName2','colorName3','colorName4'].forEach(function(id){ var el=$(id); if(el) el.textContent=state.colorName; });
     $('miniPhone').style.background=state.colorHex;
-    if (KITS[state.model]) loadKit(state.model);
+    var nk=KITS[state.model];
+    if(nk&&nk.toughOnly) state.caseType='Tough Magnetic';
+    else if(state.caseType==='Tough Magnetic') state.caseType='MagSafe Clear';
+    else if(state.caseType==='Slim Hybrid MagSafe' && !(nk&&nk.hybrid)) state.caseType='MagSafe Clear';
+    if (nk) loadKit(state.model);
     fillModels(); renderSwatches(); updateFitNote(); updateDpi(); updateStage(); updateSummary();
   });
   function kpSlug(t){ return t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
@@ -1376,7 +1414,11 @@
   }
   $('modelSel').addEventListener('change',function(){
     state.model=this.value; state.reserved=false;
-    if (KITS[state.model]) loadKit(state.model);
+    var nk=KITS[state.model];
+    if(nk&&nk.toughOnly) state.caseType='Tough Magnetic';
+    else if(state.caseType==='Tough Magnetic') state.caseType='MagSafe Clear';
+    else if(state.caseType==='Slim Hybrid MagSafe' && !(nk&&nk.hybrid)) state.caseType='MagSafe Clear';
+    if (nk) loadKit(state.model);
     renderSwatches(); updateFitNote(); updateDpi(); updateStage(); updateSummary();
   });
 
@@ -1408,7 +1450,7 @@
       return '<button class="h-addon adn" data-k="'+a.key+'" style="position:relative;display:flex;align-items:center;gap:12px;background:'+(on?'#FBFAF8':'#FFFFFF')+';border:2px solid '+(on?'#2D2D3B':'#E4E3E3')+';border-radius:14px;padding:14px;cursor:pointer;text-align:left;transition:border-color .2s">'
         + (pop?'<span style="position:absolute;top:-9px;left:14px;background:#DC282E;color:#FFF;font-size:9px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px">Most popular</span>':'')
         + '<span style="width:20px;height:20px;border-radius:6px;border:2px solid '+(on?'#17171F':'#CECDCD')+';background:'+(on?'#17171F':'#FFFFFF')+';display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-size:13px;font-weight:900;flex-shrink:0">'+(on?'\u2713':'')+'</span>'
-        + '<span style="flex:1;font-size:13.5px;font-weight:800;color:#17171F">'+a.name+'<span style="display:block;font-size:12px;font-weight:600;color:#9A9A9D;margin-top:1px">'+a.sub+'</span></span>'
+        + '<span style="flex:1;font-size:13.5px;font-weight:800;color:#17171F">'+a.name+'<span style="display:block;font-size:12px;font-weight:600;color:#6C6C72;margin-top:1px">'+a.sub+'</span></span>'
         + '<span style="font-size:14px;font-weight:900;color:#2D2D3B">+$'+a.price.toFixed(2)+'</span></button>';
     }).join('');
   }
@@ -1430,6 +1472,10 @@
     else if(state.caseType==='Slim Hybrid MagSafe' && !(tkK&&tkK.hybrid)) state.caseType='MagSafe Clear';
     else if(state.caseType==='Tough Magnetic') state.caseType='MagSafe Clear';
     var rowEl=$('ctRow'); if(rowEl) rowEl.style.display=(tkK&&tkK.hybrid&&!tOnly)?'grid':'none';
+    var ps=$('prodSub'); if(ps) ps.textContent = tOnly ? 'Custom Photo Case · Tough Magnetic · Qi2 Magnet Compatible' : 'Custom Photo Case · MagSafe Compatible';
+    var cnEl=$('caseNature'); if(cnEl){
+      if(tOnly && !cnEl.__kpTough){ cnEl.__kpTough=true; cnEl.innerHTML='Tough Magnetic — solid protective back with built-in magnets<span id="colorName3" style="display:none"></span>'; }
+      else if(!tOnly && cnEl.__kpTough){ cnEl.__kpTough=false; cnEl.innerHTML='clear, so the <span id="colorName3">'+state.colorName+'</span> shows through'; } }
     var addonTotal=addonDefs.reduce(function(t,a){return t+(state.addons[a.key]?a.price:0);},0);
     var p=state.promo?promoTable[state.promo]:null;
     var bp=basePrice();
@@ -1439,7 +1485,7 @@
     $('totalTop').textContent='$'+total.toFixed(2);
     $('totalBar').textContent=total.toFixed(2);
     $('lineDevice').textContent=state.model+' · '+state.caseType;
-    var ln2=$('linePickup'); if(!ln2){ ln2=document.createElement('div'); ln2.id='linePickup'; ln2.style.cssText='font-size:12px;font-weight:600;color:#9A9A9D;margin-bottom:6px'; $('lineDevice').parentElement.insertAdjacentElement('afterend',ln2); }
+    var ln2=$('linePickup'); if(!ln2){ ln2=document.createElement('div'); ln2.id='linePickup'; ln2.style.cssText='font-size:12px;font-weight:600;color:#6C6C72;margin-bottom:6px'; $('lineDevice').parentElement.insertAdjacentElement('afterend',ln2); }
     ln2.textContent='Pickup: '+state.store+' — free, ready today';
     var names=addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return a.name.split(' ')[0]==='Tempered'?'Screen protector':'Lens protector';});
     $('lineAddons').style.display=names.length?'flex':'none';
@@ -1616,9 +1662,11 @@
     e.preventDefault();
     if(!hasArt() && !state.text) return;
     if(state.photoImg && state.photoImg.__kpIsThumb){ kpToast('Full-quality art is still loading — one moment, then try again.'); return; }
+    if(!TPL){ kpToast('Print template for this model is being finalized — see staff.'); return; }
+    if(viewSrc && !(viewImg&&viewReady&&viewMaskCanvas)){ kpToast(viewFailed ? 'Case mask failed to load — reload the page before exporting.' : 'Case mask still loading — one moment, then try again.'); return; }
     var pxW=TPL.pxW||Math.round(TPL.w*300/72), pxH=TPL.pxH||Math.round(TPL.h*300/72);
     var k=pxW/TPL.w;
-    var BLEED=Math.max(2, Math.round(4.252*k));   /* 1.5mm run-off (TPL units are points: 1.5mm = 4.252pt) */
+    var BLEED=18;   /* 1.5mm run-off at 300 DPI (constant: every printSpec/pxW is 300 DPI, template units vary) */
     var c=document.createElement('canvas'); c.width=pxW+2*BLEED; c.height=pxH+2*BLEED;
     var c2=c.getContext('2d');
     c2.save();
@@ -1722,7 +1770,7 @@
       var on = i===state.textFont;
       return '<button class="fontChip" data-i="'+i+'" style="flex:0 0 auto;background:#FFFFFF;border:2px solid '+(on?'#DC282E':'#E4E3E3')+';color:'+(on?'#17171F':'#6E6E70')+';border-radius:12px;padding:8px 14px;cursor:pointer;transition:border-color .2s">'
         + '<span style="font:'+f.w+'20px '+f.css.replace(/"/g,"&quot;")+'">Abc</span>'
-        + '<span style="display:block;font-size:9.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#9A9A9D;margin-top:2px">'+f.n+'</span></button>';
+        + '<span style="display:block;font-size:9.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#6C6C72;margin-top:2px">'+f.n+'</span></button>';
     }).join('');
     $('textColors').innerHTML = TEXT_COLORS.map(function(c){
       var on = c===state.textColor;
