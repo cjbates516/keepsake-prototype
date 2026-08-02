@@ -764,7 +764,7 @@
       var bs=src.__kpBlur;
       if(!bs){
         bs=document.createElement('canvas');
-        var bw=Math.max(8,Math.round(24*(iw>=ih?1:iw/ih))), bh=Math.max(8,Math.round(24*(ih>iw?1:ih/iw)));
+        var bw=Math.max(12,Math.round(44*(iw>=ih?1:iw/ih))), bh=Math.max(12,Math.round(44*(ih>iw?1:ih/iw)));
         bs.width=bw; bs.height=bh;
         var bx=bs.getContext('2d'); bx.imageSmoothingEnabled=true; bx.drawImage(src,0,0,bw,bh);
         src.__kpBlur=bs;
@@ -1098,7 +1098,7 @@
     updateStep3();
     renderCtThumbs();
     $('exportLink').style.display = hasArt() ? 'inline' : 'none';
-    $('editTools').style.display = (state.photoImg && !state.layout) ? 'block' : 'none';
+    $('editTools').style.display = (state.photoImg && !state.layout && !state.isLibraryDesign) ? 'block' : 'none';
     if(state.photoImg && typeof syncFitChips==='function') syncFitChips();
     $('clearBtn').style.display = (hasArt()||state.layout) ? 'block' : 'none';
     updateUploadLabel();
