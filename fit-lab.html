@@ -27,7 +27,7 @@ button.ghost{background:#fff;border:1px solid #D8D7D7;color:#2D2D3B;padding:10px
 </head>
 <body>
 <header>
-  <b>FIT LAB</b><span style="background:#1E8E3E;color:#fff;font-size:11px;font-weight:900;padding:3px 10px;border-radius:999px;letter-spacing:.08em">V4 · CORNER ROUNDS</span>
+  <b>FIT LAB</b><span style="background:#1E8E3E;color:#fff;font-size:11px;font-weight:900;padding:3px 10px;border-radius:999px;letter-spacing:.08em">V4.1 · CORNER ROUNDS</span>
   <button class="tab on" data-m="ultra">S26 Ultra</button>
   <button class="tab" data-m="s26">S26</button>
   <span id="hint">Red shade = REAL mask · red dots = camera line · blue dots = edges/corners · green dots = corner rounding · Copy numbers when done</span>
@@ -203,17 +203,17 @@ function draw(){
   }
   ctx.lineWidth=3.5/fitScale(); ctx.strokeStyle='#1E50FF';
   ctx.stroke(outerPath()); ctx.stroke(camPath());
-  // corner-round handles (green, on the curve)
-  radHandles().forEach(function(hd){
-    ctx.beginPath(); ctx.arc(hd.x,hd.y,16/fitScale(),0,7);
-    ctx.fillStyle='rgba(30,142,62,.95)'; ctx.fill();
-    ctx.strokeStyle='#fff'; ctx.lineWidth=3/fitScale(); ctx.stroke();
-  });
   // outer handles (blue)
   outerHandles().forEach(function(hd){
     ctx.beginPath(); ctx.arc(hd.x,hd.y,20/fitScale(),0,7);
     ctx.fillStyle='rgba(30,80,255,.92)'; ctx.fill();
     ctx.strokeStyle='#fff'; ctx.lineWidth=3.5/fitScale(); ctx.stroke();
+  });
+  // corner-round handles (green, on the curve)
+  radHandles().forEach(function(hd){
+    ctx.beginPath(); ctx.arc(hd.x,hd.y,16/fitScale(),0,7);
+    ctx.fillStyle='rgba(30,142,62,.95)'; ctx.fill();
+    ctx.strokeStyle='#fff'; ctx.lineWidth=3/fitScale(); ctx.stroke();
   });
   // camera vertex handles (small red) + center mover (big red)
   S.camPts.forEach(function(p){
