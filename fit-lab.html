@@ -30,7 +30,7 @@ button.ghost{background:#fff;border:1px solid #D8D7D7;color:#2D2D3B;padding:10px
   <b>FIT LAB</b>
   <button class="tab on" data-m="ultra">S26 Ultra</button>
   <button class="tab" data-m="s26">S26</button>
-  <span id="hint">Red shade = the REAL mask from the live site · blue lines start on it — drag the dots to correct it, then Copy numbers</span>
+  <span id="hint">Red shade = REAL mask · red dots = camera line · blue dots = edges/corners · green dots = corner rounding · Copy numbers when done</span>
 </header>
 <div id="wrap"><canvas id="cv"></canvas></div>
 <div id="panel">
@@ -111,6 +111,7 @@ var view={z:1,px:0,py:0}, drag=null;
 function loadModel(m){
   cur=m;
   S=JSON.parse(JSON.stringify(MODELS[m].def));
+  S.rTL=S.rTR=S.rBL=S.rBR=S.r;
   S.camPts=resample(MODELS[m].cam(),NPTS);
   maskInfo=null; maskOverlay=null;
   var mi=new Image();
@@ -153,12 +154,22 @@ function camPath(){
   }
   p.closePath(); return p;
 }
+function cr(v){ return Math.max(0, Math.min(v,(S.R-S.L)/2,(S.B-S.T)/2)); }
 function outerPath(){
-  var p=new Path2D(), r=Math.min(S.r,(S.R-S.L)/2,(S.B-S.T)/2);
-  p.moveTo(S.L+r,S.T); p.lineTo(S.R-r,S.T); p.arcTo(S.R,S.T,S.R,S.T+r,r);
-  p.lineTo(S.R,S.B-r); p.arcTo(S.R,S.B,S.R-r,S.B,r);
-  p.lineTo(S.L+r,S.B); p.arcTo(S.L,S.B,S.L,S.B-r,r);
-  p.lineTo(S.L,S.T+r); p.arcTo(S.L,S.T,S.L+r,S.T,r); p.closePath(); return p;
+  var p=new Path2D(), tl=cr(S.rTL), tr=cr(S.rTR), bl=cr(S.rBL), br=cr(S.rBR);
+  p.moveTo(S.L+tl,S.T); p.lineTo(S.R-tr,S.T); p.arcTo(S.R,S.T,S.R,S.T+tr,tr);
+  p.lineTo(S.R,S.B-br); p.arcTo(S.R,S.B,S.R-br,S.B,br);
+  p.lineTo(S.L+bl,S.B); p.arcTo(S.L,S.B,S.L,S.B-bl,bl);
+  p.lineTo(S.L,S.T+tl); p.arcTo(S.L,S.T,S.L+tl,S.T,tl); p.closePath(); return p;
+}
+var K=1-Math.SQRT1_2;
+function radHandles(){
+  return [
+    {id:'rTL',x:S.L+cr(S.rTL)*K,y:S.T+cr(S.rTL)*K},
+    {id:'rTR',x:S.R-cr(S.rTR)*K,y:S.T+cr(S.rTR)*K},
+    {id:'rBL',x:S.L+cr(S.rBL)*K,y:S.B-cr(S.rBL)*K},
+    {id:'rBR',x:S.R-cr(S.rBR)*K,y:S.B-cr(S.rBR)*K}
+  ];
 }
 function outerHandles(){
   var mx=(S.L+S.R)/2,my=(S.T+S.B)/2;
@@ -192,6 +203,12 @@ function draw(){
   }
   ctx.lineWidth=3.5/fitScale(); ctx.strokeStyle='#1E50FF';
   ctx.stroke(outerPath()); ctx.stroke(camPath());
+  // corner-round handles (green, on the curve)
+  radHandles().forEach(function(hd){
+    ctx.beginPath(); ctx.arc(hd.x,hd.y,16/fitScale(),0,7);
+    ctx.fillStyle='rgba(30,142,62,.95)'; ctx.fill();
+    ctx.strokeStyle='#fff'; ctx.lineWidth=3/fitScale(); ctx.stroke();
+  });
   // outer handles (blue)
   outerHandles().forEach(function(hd){
     ctx.beginPath(); ctx.arc(hd.x,hd.y,20/fitScale(),0,7);
@@ -219,7 +236,8 @@ function draw(){
 function nums(){
   document.getElementById('nums').textContent =
     (cur==='ultra'?'S26 ULTRA':'S26')+' · sides '+Math.round(S.L)+'→'+Math.round(S.R)+
-    ' · top '+Math.round(S.T)+' · bottom '+Math.round(S.B)+' · corner '+Math.round(S.r)+
+    ' · top '+Math.round(S.T)+' · bottom '+Math.round(S.B)+
+    ' · corners TL'+Math.round(cr(S.rTL))+' TR'+Math.round(cr(S.rTR))+' BR'+Math.round(cr(S.rBR))+' BL'+Math.round(cr(S.rBL))+
     ' · CAM '+S.camPts.map(function(p){return Math.round(p[0])+','+Math.round(p[1]);}).join(' ');
 }
 function pointerPos(e){var r=cv.getBoundingClientRect();var t=e.touches?e.touches[0]:e;return [t.clientX-r.left,t.clientY-r.top];}
@@ -237,6 +255,13 @@ function down(e){
     if(d<30/fitScale()){hit='CAM';best=d;}
   }
   if(!hit){
+    thresh=26/fitScale();
+    radHandles().forEach(function(hd){
+      var d=Math.hypot(hd.x-wpt[0],hd.y-wpt[1]);
+      if(d<thresh && d<best){best=d;hit=hd.id;}
+    });
+  }
+  if(!hit){
     thresh=32/fitScale();
     outerHandles().forEach(function(hd){
       var d=Math.hypot(hd.x-wpt[0],hd.y-wpt[1]);
@@ -251,7 +276,11 @@ function move(e){
   var p=pointerPos(e);
   if(drag.id==='PAN'){view.px=drag.vx+(p[0]-drag.sx);view.py=drag.vy+(p[1]-drag.sy);draw();e.preventDefault();return;}
   var s=fitScale(), dx=(p[0]-drag.sx)/s, dy=(p[1]-drag.sy)/s;
-  if(drag.id[0]==='V'){
+  if(drag.id[0]==='r' && drag.id.length===3){
+    var sgnx=drag.id[1]==='T'?1:1, dirx=(drag.id[2]==='L')?1:-1, diry=(drag.id[1]==='T')?1:-1;
+    var dr=((dx*dirx)+(dy*diry))/2*3.41;
+    S[drag.id]=Math.max(0,Math.min(drag.start[drag.id]+dr,(S.R-S.L)/2,(S.B-S.T)/2));
+  } else if(drag.id[0]==='V'){
     var i=+drag.id.slice(1);
     S.camPts[i]=[drag.start.camPts[i][0]+dx, drag.start.camPts[i][1]+dy];
   } else if(drag.id==='CAM'){
@@ -268,7 +297,7 @@ function up(){drag=null;}
 cv.addEventListener('mousedown',down); cv.addEventListener('mousemove',move); window.addEventListener('mouseup',up);
 cv.addEventListener('touchstart',down,{passive:false}); cv.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',up);
 document.getElementById('zoom').addEventListener('input',function(){view.z=+this.value;draw();});
-document.getElementById('rad').addEventListener('input',function(){S.r=+this.value;draw();});
+document.getElementById('rad').addEventListener('input',function(){S.r=+this.value;S.rTL=S.rTR=S.rBL=S.rBR=S.r;draw();});
 document.getElementById('camSm').addEventListener('click',function(){camScale(0.97);});
 document.getElementById('camLg').addEventListener('click',function(){camScale(1.03);});
 document.getElementById('showDesign').addEventListener('change',draw);
