@@ -15,13 +15,13 @@ header b{font-size:15px;letter-spacing:.04em}
 .tab.on{background:#DC282E}
 #wrap{flex:1;position:relative;overflow:hidden}
 canvas{position:absolute;inset:0;width:100%;height:100%}
-#panel{background:#fff;border-top:1px solid #E4E3E3;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+#panel{background:#fff;border-top:1px solid #E4E3E3;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .ctl{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#6C6C72}
-input[type=range]{width:130px}
-#nums{flex-basis:100%;background:#F3F2F2;border-radius:10px;padding:10px 14px;font:13px/1.5 ui-monospace,Menlo,monospace;color:#2D2D3B;user-select:all;-webkit-user-select:all}
+input[type=range]{width:120px}
+#nums{flex-basis:100%;background:#F3F2F2;border-radius:10px;padding:10px 14px;font:12px/1.5 ui-monospace,Menlo,monospace;color:#2D2D3B;user-select:all;-webkit-user-select:all;word-break:break-all}
 button.act{background:#DC282E;color:#fff;border:0;padding:10px 18px;border-radius:999px;font-weight:900;font-size:12px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer}
-button.ghost{background:#fff;border:1px solid #D8D7D7;color:#2D2D3B;padding:10px 18px;border-radius:999px;font-weight:900;font-size:12px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer}
-#hint{font-size:12px;color:#6C6C72;font-weight:600}
+button.ghost{background:#fff;border:1px solid #D8D7D7;color:#2D2D3B;padding:10px 14px;border-radius:999px;font-weight:900;font-size:12px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer}
+#hint{font-size:12px;color:#B9BDCB;font-weight:600}
 #copied{color:#1E8E3E;font-weight:800;font-size:12px;display:none}
 </style>
 </head>
@@ -30,13 +30,13 @@ button.ghost{background:#fff;border:1px solid #D8D7D7;color:#2D2D3B;padding:10px
   <b>FIT LAB</b>
   <button class="tab on" data-m="ultra">S26 Ultra</button>
   <button class="tab" data-m="s26">S26</button>
-  <span id="hint">Drag the round handles to move the blue lines · drag anywhere else to pan</span>
+  <span id="hint">Small red dots = camera line, drag each one · big red dot moves the whole camera shape · blue dots = outer edges &amp; corners</span>
 </header>
 <div id="wrap"><canvas id="cv"></canvas></div>
 <div id="panel">
-  <div class="ctl">Zoom <input type="range" id="zoom" min="0.9" max="4" step="0.05" value="1"></div>
+  <div class="ctl">Zoom <input type="range" id="zoom" min="0.9" max="5" step="0.05" value="1"></div>
   <div class="ctl">Corner round <input type="range" id="rad" min="40" max="260" step="2"></div>
-  <div class="ctl">Camera size <input type="range" id="campad" min="-60" max="80" step="2" value="0"></div>
+  <div class="ctl">Camera <button class="ghost" id="camSm">−</button><button class="ghost" id="camLg">+</button></div>
   <div class="ctl"><label><input type="checkbox" id="showDesign" checked> design</label></div>
   <div class="ctl"><label><input type="checkbox" id="showGrid"> grid</label></div>
   <button class="ghost" id="reset">Reset</button>
@@ -47,8 +47,8 @@ button.ghost{background:#fff;border:1px solid #D8D7D7;color:#2D2D3B;padding:10px
 (function(){
 var MODELS={
   ultra:{case:'assets/cases/s26u-clear-black.webp',
-    def:{L:709,T:311,R:1789,B:2676,r:150,pad:0,dx:0,dy:0},
-    cam:function(){ // measured plateau contour
+    def:{L:709,T:311,R:1789,B:2676,r:150},
+    cam:function(){
       var p=[[832,361],[1151,361]];
       arc(p,1151,476,115,-90,0);
       p.push([1266,810]);
@@ -60,21 +60,35 @@ var MODELS={
       arc(p,832,446,85,180,270);
       return p; }},
   s26:{case:'assets/cases/s26-clear-black.webp',
-    def:{L:702,T:311,R:1795,B:2676,r:150,pad:0,dx:0,dy:0},
+    def:{L:702,T:311,R:1795,B:2676,r:150},
     cam:function(){ var p=[];rr(p,735,340,1011,1112,130);return p; }}
 };
 function arc(p,cx,cy,r,a0,a1){for(var i=0;i<=40;i++){var a=(a0+(a1-a0)*i/40)*Math.PI/180;p.push([cx+r*Math.cos(a),cy+r*Math.sin(a)]);}}
 function rr(p,x0,y0,x1,y1,r){arc(p,x0+r,y0+r,r,180,270);arc(p,x1-r,y0+r,r,270,360);arc(p,x1-r,y1-r,r,0,90);arc(p,x0+r,y1-r,r,90,180);}
-
-var cur='ultra', S=JSON.parse(JSON.stringify(MODELS.ultra.def));
+function resample(pts,n){
+  var per=[0],L=0;
+  for(var i=1;i<pts.length;i++){L+=Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]);per.push(L);}
+  L+=Math.hypot(pts[0][0]-pts[pts.length-1][0],pts[0][1]-pts[pts.length-1][1]);
+  var out=[];
+  for(var k=0;k<n;k++){
+    var d=L*k/n, j=0;
+    while(j<per.length-1&&per[j+1]<d)j++;
+    var a=pts[j],b=pts[(j+1)%pts.length],seg=(per[(j+1)%per.length]||L)-per[j],t=seg>0?(d-per[j])/seg:0;
+    out.push([a[0]+(b[0]-a[0])*Math.min(1,t),a[1]+(b[1]-a[1])*Math.min(1,t)]);
+  }
+  return out;
+}
+var NPTS=16;
+var cur='ultra', S=null;
 var img=new Image(), design=new Image(), imgOK=false, dOK=false;
 var cv=document.getElementById('cv'), ctx=cv.getContext('2d');
 var view={z:1,px:0,py:0}, drag=null;
 
 function loadModel(m){
-  cur=m; S=JSON.parse(JSON.stringify(MODELS[m].def));
+  cur=m;
+  S=JSON.parse(JSON.stringify(MODELS[m].def));
+  S.camPts=resample(MODELS[m].cam(),NPTS);
   document.getElementById('rad').value=S.r;
-  document.getElementById('campad').value=0;
   imgOK=false; img=new Image();
   img.onload=function(){imgOK=true;draw();};
   img.src=MODELS[m].case;
@@ -87,17 +101,19 @@ design.src='assets/designs/colorful-playful-abstract-shapes.jpg';
 
 function fitScale(){return Math.min(cv.clientWidth/2500,cv.clientHeight/3000)*view.z;}
 function toWorld(x,y){var s=fitScale();return [(x-cv.clientWidth/2-view.px)/s+1250, (y-cv.clientHeight/2-view.py)/s+1500];}
+function camCenter(){var cx=0,cy=0;S.camPts.forEach(function(p){cx+=p[0];cy+=p[1];});return [cx/NPTS,cy/NPTS];}
+function camScale(k){var c=camCenter();S.camPts=S.camPts.map(function(p){return [c[0]+(p[0]-c[0])*k, c[1]+(p[1]-c[1])*k];});draw();}
 
 function camPath(){
-  var pts=MODELS[cur].cam();
-  var cx=0,cy=0; pts.forEach(function(p){cx+=p[0];cy+=p[1];}); cx/=pts.length; cy/=pts.length;
-  var k=1+S.pad/220;
-  var path=new Path2D();
-  pts.forEach(function(p,i){
-    var x=cx+(p[0]-cx)*k+S.dx, y=cy+(p[1]-cy)*k+S.dy;
-    i?path.lineTo(x,y):path.moveTo(x,y);
-  });
-  path.closePath(); return path;
+  // smooth closed curve through the points (midpoint quadratic)
+  var p=new Path2D(), pts=S.camPts, n=pts.length;
+  var m0=[(pts[0][0]+pts[n-1][0])/2,(pts[0][1]+pts[n-1][1])/2];
+  p.moveTo(m0[0],m0[1]);
+  for(var i=0;i<n;i++){
+    var a=pts[i], b=pts[(i+1)%n], mid=[(a[0]+b[0])/2,(a[1]+b[1])/2];
+    p.quadraticCurveTo(a[0],a[1],mid[0],mid[1]);
+  }
+  p.closePath(); return p;
 }
 function outerPath(){
   var p=new Path2D(), r=Math.min(S.r,(S.R-S.L)/2,(S.B-S.T)/2);
@@ -106,12 +122,11 @@ function outerPath(){
   p.lineTo(S.L+r,S.B); p.arcTo(S.L,S.B,S.L,S.B-r,r);
   p.lineTo(S.L,S.T+r); p.arcTo(S.L,S.T,S.L+r,S.T,r); p.closePath(); return p;
 }
-function handles(){
+function outerHandles(){
   var mx=(S.L+S.R)/2,my=(S.T+S.B)/2;
-  var pts=MODELS[cur].cam(); var cx=0,cy=0;pts.forEach(function(p){cx+=p[0];cy+=p[1];});cx/=pts.length;cy/=pts.length;
   return [
     {id:'L',x:S.L,y:my},{id:'R',x:S.R,y:my},{id:'T',x:mx,y:S.T},{id:'B',x:mx,y:S.B},
-    {id:'CAM',x:cx+S.dx,y:cy+S.dy}
+    {id:'TL',x:S.L,y:S.T},{id:'TR',x:S.R,y:S.T},{id:'BL',x:S.L,y:S.B},{id:'BR',x:S.R,y:S.B}
   ];
 }
 function draw(){
@@ -120,15 +135,13 @@ function draw(){
   ctx.setTransform(1,0,0,1,0,0); ctx.clearRect(0,0,cv.width,cv.height);
   ctx.fillStyle='#F3F2F2'; ctx.fillRect(0,0,cv.width,cv.height);
   var scale=fitScale()*dpr;
-  ctx.setTransform(scale,0,0,scale, cv.width/2+ view.px*dpr - 1250*scale, cv.height/2 + view.py*dpr - 1500*scale);
+  ctx.setTransform(scale,0,0,scale, cv.width/2+view.px*dpr-1250*scale, cv.height/2+view.py*dpr-1500*scale);
   if(imgOK) ctx.drawImage(img,0,0,2500,3000);
-  // design masked
   if(dOK && document.getElementById('showDesign').checked){
     var t=document.createElement('canvas'); t.width=1250;t.height=1500;
     var tc=t.getContext('2d'); tc.scale(0.5,0.5);
-    var op=outerPath(), cp=camPath();
     tc.save();
-    var clipP=new Path2D(); clipP.addPath(op); clipP.addPath(cp);
+    var clipP=new Path2D(); clipP.addPath(outerPath()); clipP.addPath(camPath());
     tc.clip(clipP,'evenodd');
     var bw=S.R-S.L,bh=S.B-S.T,sc=Math.max(bw/design.width,bh/design.height);
     tc.globalAlpha=0.96;
@@ -136,17 +149,24 @@ function draw(){
     tc.restore();
     ctx.drawImage(t,0,0,2500,3000);
   }
-  // blue lines (screen-constant width)
-  ctx.lineWidth=3.5/fitScale();
-  ctx.strokeStyle='#1E50FF';
+  ctx.lineWidth=3.5/fitScale(); ctx.strokeStyle='#1E50FF';
   ctx.stroke(outerPath()); ctx.stroke(camPath());
-  // handles
-  handles().forEach(function(hd){
-    ctx.beginPath(); ctx.arc(hd.x,hd.y,26/fitScale(),0,7);
-    ctx.fillStyle=hd.id==='CAM'?'rgba(220,40,46,.92)':'rgba(30,80,255,.92)';
-    ctx.fill(); ctx.strokeStyle='#fff'; ctx.lineWidth=4/fitScale(); ctx.stroke();
+  // outer handles (blue)
+  outerHandles().forEach(function(hd){
+    ctx.beginPath(); ctx.arc(hd.x,hd.y,20/fitScale(),0,7);
+    ctx.fillStyle='rgba(30,80,255,.92)'; ctx.fill();
+    ctx.strokeStyle='#fff'; ctx.lineWidth=3.5/fitScale(); ctx.stroke();
   });
-  // grid
+  // camera vertex handles (small red) + center mover (big red)
+  S.camPts.forEach(function(p){
+    ctx.beginPath(); ctx.arc(p[0],p[1],11/fitScale(),0,7);
+    ctx.fillStyle='rgba(220,40,46,.95)'; ctx.fill();
+    ctx.strokeStyle='#fff'; ctx.lineWidth=2.5/fitScale(); ctx.stroke();
+  });
+  var c=camCenter();
+  ctx.beginPath(); ctx.arc(c[0],c[1],20/fitScale(),0,7);
+  ctx.fillStyle='rgba(220,40,46,.55)'; ctx.fill();
+  ctx.strokeStyle='#fff'; ctx.lineWidth=3.5/fitScale(); ctx.stroke();
   if(document.getElementById('showGrid').checked){
     ctx.lineWidth=1/fitScale(); ctx.strokeStyle='rgba(220,60,60,.5)'; ctx.fillStyle='rgba(200,30,30,1)';
     ctx.font='bold '+(13/fitScale())+'px -apple-system';
@@ -157,18 +177,31 @@ function draw(){
 }
 function nums(){
   document.getElementById('nums').textContent =
-    (cur==='ultra'?'S26 ULTRA':'S26')+' · sides '+Math.round(S.L)+' → '+Math.round(S.R)+
+    (cur==='ultra'?'S26 ULTRA':'S26')+' · sides '+Math.round(S.L)+'→'+Math.round(S.R)+
     ' · top '+Math.round(S.T)+' · bottom '+Math.round(S.B)+' · corner '+Math.round(S.r)+
-    ' · camera size '+(S.pad>=0?'+':'')+Math.round(S.pad)+' · camera moved '+Math.round(S.dx)+','+Math.round(S.dy);
+    ' · CAM '+S.camPts.map(function(p){return Math.round(p[0])+','+Math.round(p[1]);}).join(' ');
 }
 function pointerPos(e){var r=cv.getBoundingClientRect();var t=e.touches?e.touches[0]:e;return [t.clientX-r.left,t.clientY-r.top];}
 function down(e){
   var p=pointerPos(e), wpt=toWorld(p[0],p[1]);
-  var hit=null, best=1e9;
-  handles().forEach(function(hd){
-    var d=Math.hypot(hd.x-wpt[0],hd.y-wpt[1]);
-    if(d<40/fitScale() && d<best){best=d;hit=hd.id;}
+  var hit=null, best=1e9, thresh;
+  // camera vertices first (finest control)
+  thresh=26/fitScale();
+  S.camPts.forEach(function(pt,i){
+    var d=Math.hypot(pt[0]-wpt[0],pt[1]-wpt[1]);
+    if(d<thresh && d<best){best=d;hit='V'+i;}
   });
+  if(!hit){
+    var c=camCenter(), d=Math.hypot(c[0]-wpt[0],c[1]-wpt[1]);
+    if(d<30/fitScale()){hit='CAM';best=d;}
+  }
+  if(!hit){
+    thresh=32/fitScale();
+    outerHandles().forEach(function(hd){
+      var d=Math.hypot(hd.x-wpt[0],hd.y-wpt[1]);
+      if(d<thresh && d<best){best=d;hit=hd.id;}
+    });
+  }
   drag={id:hit||'PAN',sx:p[0],sy:p[1],start:JSON.parse(JSON.stringify(S)),vx:view.px,vy:view.py};
   e.preventDefault();
 }
@@ -177,11 +210,17 @@ function move(e){
   var p=pointerPos(e);
   if(drag.id==='PAN'){view.px=drag.vx+(p[0]-drag.sx);view.py=drag.vy+(p[1]-drag.sy);draw();e.preventDefault();return;}
   var s=fitScale(), dx=(p[0]-drag.sx)/s, dy=(p[1]-drag.sy)/s;
-  if(drag.id==='L') S.L=Math.min(drag.start.L+dx, S.R-300);
-  if(drag.id==='R') S.R=Math.max(drag.start.R+dx, S.L+300);
-  if(drag.id==='T') S.T=Math.min(drag.start.T+dy, S.B-400);
-  if(drag.id==='B') S.B=Math.max(drag.start.B+dy, S.T+400);
-  if(drag.id==='CAM'){S.dx=drag.start.dx+dx; S.dy=drag.start.dy+dy;}
+  if(drag.id[0]==='V'){
+    var i=+drag.id.slice(1);
+    S.camPts[i]=[drag.start.camPts[i][0]+dx, drag.start.camPts[i][1]+dy];
+  } else if(drag.id==='CAM'){
+    S.camPts=drag.start.camPts.map(function(pt){return [pt[0]+dx,pt[1]+dy];});
+  } else {
+    if(drag.id.indexOf('L')>=0) S.L=Math.min(drag.start.L+dx, S.R-300);
+    if(drag.id.indexOf('R')>=0) S.R=Math.max(drag.start.R+dx, S.L+300);
+    if(drag.id.indexOf('T')>=0) S.T=Math.min(drag.start.T+dy, S.B-400);
+    if(drag.id.indexOf('B')>=0) S.B=Math.max(drag.start.B+dy, S.T+400);
+  }
   draw(); e.preventDefault();
 }
 function up(){drag=null;}
@@ -189,7 +228,8 @@ cv.addEventListener('mousedown',down); cv.addEventListener('mousemove',move); wi
 cv.addEventListener('touchstart',down,{passive:false}); cv.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',up);
 document.getElementById('zoom').addEventListener('input',function(){view.z=+this.value;draw();});
 document.getElementById('rad').addEventListener('input',function(){S.r=+this.value;draw();});
-document.getElementById('campad').addEventListener('input',function(){S.pad=+this.value;draw();});
+document.getElementById('camSm').addEventListener('click',function(){camScale(0.97);});
+document.getElementById('camLg').addEventListener('click',function(){camScale(1.03);});
 document.getElementById('showDesign').addEventListener('change',draw);
 document.getElementById('showGrid').addEventListener('change',draw);
 document.getElementById('reset').addEventListener('click',function(){loadModel(cur);});
