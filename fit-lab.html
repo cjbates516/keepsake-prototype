@@ -30,7 +30,7 @@ button.ghost{background:#fff;border:1px solid #D8D7D7;color:#2D2D3B;padding:10px
   <b>FIT LAB</b>
   <button class="tab on" data-m="ultra">S26 Ultra</button>
   <button class="tab" data-m="s26">S26</button>
-  <span id="hint">Small red dots = camera line, drag each one · big red dot moves the whole camera shape · blue dots = outer edges &amp; corners</span>
+  <span id="hint">Red shade = the REAL mask from the live site · blue lines start on it — drag the dots to correct it, then Copy numbers</span>
 </header>
 <div id="wrap"><canvas id="cv"></canvas></div>
 <div id="panel">
@@ -38,6 +38,7 @@ button.ghost{background:#fff;border:1px solid #D8D7D7;color:#2D2D3B;padding:10px
   <div class="ctl">Corner round <input type="range" id="rad" min="40" max="260" step="2"></div>
   <div class="ctl">Camera <button class="ghost" id="camSm">−</button><button class="ghost" id="camLg">+</button></div>
   <div class="ctl"><label><input type="checkbox" id="showDesign" checked> design</label></div>
+  <div class="ctl"><label><input type="checkbox" id="showMask" checked> real mask</label></div>
   <div class="ctl"><label><input type="checkbox" id="showGrid"> grid</label></div>
   <button class="ghost" id="reset">Reset</button>
   <button class="act" id="copy">Copy numbers</button><span id="copied">Copied — text it to Claude ✓</span>
@@ -46,7 +47,7 @@ button.ghost{background:#fff;border:1px solid #D8D7D7;color:#2D2D3B;padding:10px
 <script>
 (function(){
 var MODELS={
-  ultra:{case:'assets/cases/s26u-clear-black.webp',
+  ultra:{case:'assets/cases/s26u-clear-black.webp', mask:'assets/masks/view-s26u.png?v=4',
     def:{L:709,T:311,R:1789,B:2676,r:150},
     cam:function(){
       var p=[[832,361],[1151,361]];
@@ -59,7 +60,7 @@ var MODELS={
       p.push([747,446]);
       arc(p,832,446,85,180,270);
       return p; }},
-  s26:{case:'assets/cases/s26-clear-black.webp',
+  s26:{case:'assets/cases/s26-clear-black.webp', mask:'assets/masks/view-s26.png?v=4',
     def:{L:702,T:311,R:1795,B:2676,r:150},
     cam:function(){ var p=[];rr(p,735,340,1011,1112,130);return p; }}
 };
@@ -81,6 +82,39 @@ function resample(pts,n){
 var NPTS=16;
 var cur='ultra', S=null;
 var img=new Image(), design=new Image(), imgOK=false, dOK=false;
+var maskInfo=null, maskOverlay=null;
+
+function analyzeMask(mimg){
+  var W=625,H=750,c=document.createElement('canvas');c.width=W;c.height=H;
+  var x=c.getContext('2d');x.drawImage(mimg,0,0,W,H);
+  var d=x.getImageData(0,0,W,H).data;
+  var solid=new Uint8Array(W*H);
+  for(var i=0;i<W*H;i++) solid[i]=d[i*4+3]>128?1:0;
+  var out=new Uint8Array(W*H), st=[];
+  for(var xx=0;xx<W;xx++){st.push(xx);st.push((H-1)*W+xx);}
+  for(var yy=0;yy<H;yy++){st.push(yy*W);st.push(yy*W+W-1);}
+  while(st.length){var p=st.pop();
+    if(p<0||p>=W*H||out[p]||solid[p])continue;
+    out[p]=1;var px=p%W;
+    st.push(p-W);st.push(p+W);if(px>0)st.push(p-1);if(px<W-1)st.push(p+1);}
+  var minx=W,miny=H,maxx=0,maxy=0,hx=0,hy=0,hn=0;
+  for(var y2=0;y2<H;y2++)for(var x2=0;x2<W;x2++){var q=y2*W+x2;
+    if(solid[q]){if(x2<minx)minx=x2;if(x2>maxx)maxx=x2;if(y2<miny)miny=y2;if(y2>maxy)maxy=y2;}
+    else if(!out[q]){hx+=x2;hy+=y2;hn++;}}
+  if(hn){hx/=hn;hy/=hn;}
+  var pts=[];
+  for(var a=0;a<64;a++){var ang=a/64*2*Math.PI,lx=hx,ly=hy;
+    for(var r=1;r<W;r++){var sx2=Math.round(hx+Math.cos(ang)*r),sy2=Math.round(hy+Math.sin(ang)*r);
+      if(sx2<0||sy2<0||sx2>=W||sy2>=H)break;
+      var q2=sy2*W+sx2; if(solid[q2]||out[q2])break; lx=sx2;ly=sy2;}
+    pts.push([lx*2500/W,ly*3000/H]);}
+  // overlay: red where printing is blocked (hole + outside the printable silhouette)
+  var od=x.createImageData(W,H);
+  for(var k=0;k<W*H;k++){ if(!solid[k]&&!out[k]){od.data[k*4]=220;od.data[k*4+1]=40;od.data[k*4+2]=46;od.data[k*4+3]=120;} }
+  var oc=document.createElement('canvas');oc.width=W;oc.height=H;
+  oc.getContext('2d').putImageData(od,0,0);
+  return {bbox:[minx*2500/W,miny*3000/H,maxx*2500/W,maxy*3000/H], holePts:hn?pts:null, overlay:oc};
+}
 var cv=document.getElementById('cv'), ctx=cv.getContext('2d');
 var view={z:1,px:0,py:0}, drag=null;
 
@@ -88,6 +122,20 @@ function loadModel(m){
   cur=m;
   S=JSON.parse(JSON.stringify(MODELS[m].def));
   S.camPts=resample(MODELS[m].cam(),NPTS);
+  maskInfo=null; maskOverlay=null;
+  var mi=new Image();
+  mi.onload=function(){
+    try{
+      var an=analyzeMask(mi);
+      maskInfo=an; maskOverlay=an.overlay;
+      /* the blue lines now come from the REAL mask file */
+      S.L=Math.round(an.bbox[0]); S.T=Math.round(an.bbox[1]);
+      S.R=Math.round(an.bbox[2]); S.B=Math.round(an.bbox[3]);
+      if(an.holePts) S.camPts=resample(an.holePts,NPTS);
+      draw();
+    }catch(_){ draw(); }
+  };
+  mi.src=MODELS[m].mask;
   document.getElementById('rad').value=S.r;
   imgOK=false; img=new Image();
   img.onload=function(){imgOK=true;draw();};
@@ -148,6 +196,9 @@ function draw(){
     tc.drawImage(design,S.L+(bw-design.width*sc)/2,S.T+(bh-design.height*sc)/2,design.width*sc,design.height*sc);
     tc.restore();
     ctx.drawImage(t,0,0,2500,3000);
+  }
+  if(maskOverlay && document.getElementById('showMask').checked){
+    ctx.drawImage(maskOverlay,0,0,2500,3000);
   }
   ctx.lineWidth=3.5/fitScale(); ctx.strokeStyle='#1E50FF';
   ctx.stroke(outerPath()); ctx.stroke(camPath());
@@ -231,6 +282,7 @@ document.getElementById('rad').addEventListener('input',function(){S.r=+this.val
 document.getElementById('camSm').addEventListener('click',function(){camScale(0.97);});
 document.getElementById('camLg').addEventListener('click',function(){camScale(1.03);});
 document.getElementById('showDesign').addEventListener('change',draw);
+document.getElementById('showMask').addEventListener('change',draw);
 document.getElementById('showGrid').addEventListener('change',draw);
 document.getElementById('reset').addEventListener('click',function(){loadModel(cur);});
 document.getElementById('copy').addEventListener('click',function(){
