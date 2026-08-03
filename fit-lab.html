@@ -47,20 +47,10 @@ button.ghost{background:#fff;border:1px solid #D8D7D7;color:#2D2D3B;padding:10px
 <script>
 (function(){
 var MODELS={
-  ultra:{case:'assets/cases/s26u-clear-black.webp', mask:'assets/masks/view-s26u.png?v=4',
+  ultra:{case:'assets/cases/s26u-clear-black.webp', mask:'assets/masks/view-s26u.png?v=5',
     def:{L:709,T:311,R:1789,B:2676,r:150},
-    cam:function(){
-      var p=[[832,361],[1151,361]];
-      arc(p,1151,476,115,-90,0);
-      p.push([1266,810]);
-      var A=[1266,810],C=[1266,881],B=[1244,908];
-      for(var t=0.05;t<=1.001;t+=0.05){var u=1-t;p.push([u*u*A[0]+2*t*u*C[0]+t*t*B[0],u*u*A[1]+2*t*u*C[1]+t*t*B[1]]);}
-      p.push([1030,1172]);
-      arc(p,882.6,1037,200,Math.atan2(135,147.4)*180/Math.PI,Math.atan2(147,-135.6)*180/Math.PI);
-      p.push([747,446]);
-      arc(p,832,446,85,180,270);
-      return p; }},
-  s26:{case:'assets/cases/s26-clear-black.webp', mask:'assets/masks/view-s26.png?v=4',
+    cam:function(){ return [[1299,763],[1285,859],[1121,1074],[999,1220],[839,1253],[769,1190],[711,1114],[711,937],[711,760],[711,582],[713,405],[836,323],[991,326],[1187,322],[1294,412],[1298,574]]; }},
+  s26:{case:'assets/cases/s26-clear-black.webp', mask:'assets/masks/view-s26.png?v=5',
     def:{L:702,T:311,R:1795,B:2676,r:150},
     cam:function(){ var p=[];rr(p,735,340,1011,1112,130);return p; }}
 };
