@@ -382,6 +382,29 @@
   function slugify(m){ return m.toLowerCase().replace(/ /g,'-'); }
 
   var designs = [], filter = 'All', device = null;
+  /* curated front page: ~48 picks shown by default; full library behind Browse all.
+     Rotate the seasonal block (currently Halloween) when seasons change. */
+  var KP_FEATURED = ["west-chester-city-map-cream.jpg", "go-birds-kelly-green.jpg", "philadelphia-city-map-navy.jpg", "abstract-leopard-pink.jpg", "charming-minimalist-black-hearts-pattern-2.jpg", "philadelphia-city-map-cream.jpg", "zodiac-leo-night-sky.jpg", "stylish-white-daisy-floral-pattern.jpg", "where-it-all-began-heart-map-cream.jpg", "dreamy-gradient-cosmic-background-with-sparkles.jpg", "playful-cartoon-cherries.jpg", "colorful-playful-abstract-shapes.jpg", "halloween-bats-on-orange.jpg", "halloween-bold-pumpkins-on-black.jpg", "halloween-boo-crew-ghosts-on-charcoal.jpg", "halloween-cowboy-ghosts-on-cream.jpg", "baltimore-atlas.jpg", "adorable-3d-rendered-white-mouse-plush-toy-floral.jpg", "abstract-geometric-minimalist-artwork.jpg", "abstract-leopard-spots-pattern.jpg", "western-vintage-01.jpg", "zodiac-aquarius-blush.jpg", "black-heart-shapes.jpg", "bold-barbed-wire-smiley-face-digital.jpg", "coastal-summer-01.jpg", "cheerful-cartoon-sun-with-colorful-rays.jpg", "cheerful-pastel-watercolor-rainbow-pattern.jpg", "aura-chrome-gradient-butter.jpg", "cheerful-pink-strawberry-pattern.jpg", "adorable-cartoon-lion-face.jpg", "area-code-215-blush.jpg", "abstract-geometric-mountain-landscape-digital-art.jpg", "polka-dots-cherry-navy-on-ivory.jpg", "cheerful-christmas-cartoon.jpg", "bold-chevron-stripe-on-black-background.jpg", "birth-flower-april-daisy.jpg", "dog-90s-dog.jpg", "clear-mini-hearts-transparent.png", "baltimore-map-blush.jpg", "boho-floral-01.jpg", "abstract-geometric-oval-art-with-textures-and-colors.jpg", "abstract-leopard-spots-pattern-on-beige-background.jpg", "western-vintage-02.jpg", "zodiac-aquarius-gold-noir.jpg", "charming-penguin-holding-heart-watercolor.jpg", "bold-yellow-smiley-face-street-art.jpg", "coastal-summer-02.jpg", "cheerful-cartoon-sun-with-radiant-rays.jpg"];
+  var kpBrowseAll = /[?&](all|cat|q|color|state|device)=/.test(location.search);
+  var KP_TILE_CATS = ['City maps','Halloween','Florals','Abstract','Animal print','Zodiac','Hearts','Hometown'];
+  function kpCatThumb(cat){
+    var d=designs.filter(function(x){ return x.category===cat; })[0];
+    return d ? 'assets/designs/thumbs/'+d.file : '';
+  }
+  function kpCuratedFooter(total){
+    var tiles = KP_TILE_CATS.map(function(c){
+      var n = designs.filter(function(x){ return x.category===c; }).length;
+      if(!n) return '';
+      return '<button class="kpCatTile" data-cat="'+c+'" style="display:flex;align-items:center;gap:12px;background:#FFFFFF;border:1px solid #ECEAEA;border-radius:14px;padding:10px;cursor:pointer;text-align:left;transition:box-shadow .2s">'
+        + '<img src="'+kpCatThumb(c)+'" alt="" loading="lazy" style="width:52px;height:68px;object-fit:cover;border-radius:9px;flex-shrink:0">'
+        + '<span style="min-width:0"><span style="display:block;font-weight:900;font-size:14px;color:#2D2D3B">'+c+'</span>'
+        + '<span style="display:block;font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">'+n+' designs</span></span></button>';
+    }).join('');
+    return '<div style="grid-column:1/-1;margin-top:26px">'
+      + '<div style="font-weight:900;font-size:19px;color:#17171F;margin-bottom:14px">Shop by style</div>'
+      + '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px">'+tiles+'</div>'
+      + '<button class="kpBrowseAllBtn" style="display:block;width:100%;max-width:420px;margin:24px auto 8px;background:#2D2D3B;color:#FFFFFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Browse all '+total+' designs</button></div>';
+  }
   var dParam = /[?&]device=([^&]+)/.exec(location.search);
   if (dParam){
     var dp = decodeURIComponent(dParam[1]).toLowerCase();
@@ -696,7 +719,15 @@
       }
       return true;
     });
-    $('countLabel').textContent = items.length + ' design' + (items.length===1?'':'s') + (device ? ' · ' + device : '');
+    var kpCurated = !kpBrowseAll && filter==='All' && !searchQ && !colorSel && !device;
+    var kpTotal = items.length;
+    if (kpCurated){
+      var _byf={}; designs.forEach(function(x){ _byf[x.file]=x; });
+      items = KP_FEATURED.map(function(f){ return _byf[f]; }).filter(Boolean);
+    }
+    $('countLabel').textContent = kpCurated
+      ? ('Our favorites · ' + items.length + ' of ' + kpTotal + ' designs')
+      : (items.length + ' design' + (items.length===1?'':'s') + (device ? ' · ' + device : ''));
     if (!items.length){
       $('grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px">'
         + '<div style="font-weight:900;font-size:18px;color:#2D2D3B;margin-bottom:8px">No designs match</div>'
@@ -717,6 +748,7 @@
           + '<a href="customizer.html?design=' + encodeURIComponent(d.file) + '" class="h-makeone" style="background:#FFFFFF;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:9px 14px;border-radius:999px;white-space:nowrap;transition:all .2s;flex-shrink:0">Make one</a>'
           + '</div></div>';
       }).join('');
+      if (kpCurated) grid.insertAdjacentHTML('beforeend', kpCuratedFooter(kpTotal));
       return;
     }
     var dev = KP_DEVICES[device];
@@ -742,7 +774,13 @@
     cvsAll.slice(0, 8).forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, +(cv.dataset.color||0)); }); });
     if (io) cvsAll.slice(8).forEach(function(cv){ io.observe(cv); });
     else cvsAll.slice(8).forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, 0); }); });
+    if (kpCurated) grid.insertAdjacentHTML('beforeend', kpCuratedFooter(kpTotal));
   }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest ? e.target.closest('.kpCatTile') : null;
+    if (t){ filter = t.dataset.cat; kpBrowseAll = true; renderFilters(); renderStates(); renderGrid(); window.scrollTo({top:0,behavior:'smooth'}); return; }
+    if (e.target.closest && e.target.closest('.kpBrowseAllBtn')){ kpBrowseAll = true; renderGrid(); }
+  });
 
   // hover: scrub phone colors across the card
   var KP_HOVER = window.matchMedia && matchMedia('(hover:hover)').matches;
