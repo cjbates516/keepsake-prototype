@@ -17,12 +17,16 @@
 <meta property="og:site_name" content="Keepsake Printing Co">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="assets/favicon-16.png" sizes="16x16" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800;900&display=swap" rel="stylesheet">
 <style>
   html,body{margin:0;padding:0;background:#FFFFFF}
-  body{font-family:"Avenir","Avenir Next","Nunito Sans","Helvetica Neue",Helvetica,Arial,sans-serif;color:#4E4E50;-webkit-font-smoothing:antialiased}
+  body{font-family:"Nunito Sans","Avenir","Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif;color:#4E4E50;-webkit-font-smoothing:antialiased}
   a{color:#DC282E;text-decoration:none}
   a:hover{color:#B81F24;text-decoration:none}
   input,button,select,textarea{font-family:inherit}
+  @media(max-width:640px){ #grid{grid-template-columns:repeat(2,1fr) !important;gap:12px !important} }
+  .kpBadge{position:absolute;top:8px;left:8px;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 7px;border-radius:4px}
+  .kpB-new{background:#D5FFCF;color:#1E7F06}.kpB-pick{background:#EEE4FB;color:#8739D5}.kpB-season{background:#FBE0E1;color:#DC282E}
   @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   @keyframes ksPhoto{
@@ -327,7 +331,7 @@
         <div style="font-size:13px;line-height:1.6;color:#4E4E50">Thanks — we'll get back to you within one business day at the email you provided.</div>
       </div>
     </div>
-    <button id="chatToggle" aria-label="Support chat" style="width:58px;height:58px;border-radius:50%;background:#DC282E;border:0;cursor:pointer;box-shadow:0 12px 30px rgba(220,40,46,.4);display:flex;align-items:center;justify-content:center;color:#FFFFFF">
+    <button id="chatToggle" aria-label="Support chat" style="width:52px;height:52px;border-radius:50%;background:#FFFFFF;border:1.5px solid #D8D7D7;cursor:pointer;box-shadow:0 8px 22px rgba(45,45,59,.18);display:flex;align-items:center;justify-content:center;color:#2D2D3B">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
     </button>
   </div>
@@ -339,9 +343,9 @@
 (function(){
   var $ = function(id){ return document.getElementById(id); };
   var annMsgs = [
+    'Printed same-day in store — West Chester · Pottstown · Newark',
     '10% off your first case — code <span style="background:rgba(255,255,255,.18);border-radius:999px;padding:2px 10px;letter-spacing:.1em">FIRST10</span>',
-    'First responders &amp; nurses save 20% every day',
-    'Printed in store — often in under an hour'
+    'First responders &amp; nurses save 20% every day'
   ];
   var annIdx = 0;
   setInterval(function(){
@@ -408,7 +412,7 @@
     return '<div style="grid-column:1/-1;margin-top:26px">'
       + '<div style="font-weight:900;font-size:19px;color:#17171F;margin-bottom:14px">Shop by style</div>'
       + '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px">'+tiles+'</div>'
-      + '<button class="kpBrowseAllBtn" style="display:block;width:100%;max-width:420px;margin:24px auto 8px;background:#2D2D3B;color:#FFFFFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Browse all '+total+' designs</button></div>';
+      + '<button class="kpBrowseAllBtn" style="display:block;width:100%;max-width:420px;margin:24px auto 8px;background:#DC282E;color:#FFFFFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Browse all '+total+' designs</button></div>';
   }
   var dParam = /[?&]device=([^&]+)/.exec(location.search);
   if (dParam){
@@ -746,20 +750,38 @@
     var grid = $('grid');
     if (!device){
       grid.style.gridTemplateColumns = 'repeat(auto-fill,minmax(220px,1fr))';
-      grid.innerHTML = items.map(function(d){
-        return '<div class="h-card" style="animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:12px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
-          + '<div style="aspect-ratio:3/4;background:#F8F7F7"><img src="assets/designs/thumbs/' + d.file + '" onerror="this.closest(\'.h-card\').style.display=\'none\'" alt="' + d.title + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>'
-          + '<div style="padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px">'
-          + '<div style="min-width:0"><div style="font-weight:900;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
-          + '<div style="font-size:11px;color:#6C6C72;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">' + d.category + '</div></div>'
-          + '<a href="customizer.html?design=' + encodeURIComponent(d.file) + '" class="h-makeone" style="background:#FFFFFF;border:1px solid #E4E3E3;color:#DC282E;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:9px 14px;border-radius:999px;white-space:nowrap;transition:all .2s;flex-shrink:0">Make one</a>'
-          + '</div></div>';
-      }).join('');
+      var kpLimit = window.__kpLimit || 48;
+      var paged = !kpCurated && items.length > kpLimit;
+      var shown = paged ? items.slice(0, kpLimit) : items;
+      var cards = shown.map(function(d){
+        var badge = d.category==='Halloween' ? '<span class="kpBadge kpB-season">Seasonal</span>'
+          : (KP_FEATURED.indexOf(d.file)>-1 && KP_FEATURED.indexOf(d.file)<12 ? '<span class="kpBadge kpB-pick">Staff pick</span>' : '');
+        return '<a class="h-card" href="customizer.html?design=' + encodeURIComponent(d.file) + '" style="display:block;text-decoration:none;animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:16px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
+          + '<div style="position:relative;aspect-ratio:1/1;background:#F7F7F7"><img src="assets/designs/thumbs/' + d.file + '" onerror="this.closest(\'.h-card\').style.display=\'none\'" alt="' + d.title + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">' + badge + '</div>'
+          + '<div style="padding:10px 12px 12px">'
+          + '<div style="font-weight:700;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
+          + '<div style="font-size:11px;color:#6C6C72;font-weight:700;margin-top:2px">' + d.category + ' · fits all models</div>'
+          + '<div style="font-size:13px;font-weight:800;color:#17171F;margin-top:6px">$59.99</div>'
+          + '<span style="display:block;margin-top:8px;text-align:center;border:1.5px solid #DC282E;color:#DC282E;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:10px;border-radius:999px">Customize</span>'
+          + '</div></a>';
+      });
+      /* seeded your-photo card every 10th slot */
+      var photoCard = '<a class="h-card" href="customizer.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-decoration:none;border:2px dashed #DC282E;border-radius:16px;background:#FFF7F7;padding:24px 14px;min-height:230px">'
+        + '<span style="font-size:30px">📷</span><span style="font-weight:800;font-size:14px;color:#2D2D3B;text-align:center">Use your own photo</span>'
+        + '<span style="background:#DC282E;color:#FFF;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:10px 22px;border-radius:999px">Start</span></a>';
+      for (var pi = 9; pi < cards.length; pi += 11) cards.splice(pi, 0, photoCard);
+      grid.innerHTML = cards.join('');
+      if (paged) grid.insertAdjacentHTML('beforeend',
+        '<button class="kpLoadMore" style="grid-column:1/-1;display:block;width:100%;max-width:420px;margin:18px auto;background:#DC282E;color:#FFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Load more — ' + (items.length - shown.length) + ' left</button>');
       if (kpCurated) grid.insertAdjacentHTML('beforeend', kpCuratedFooter(kpTotal));
       return;
     }
     var dev = KP_DEVICES[device];
     grid.style.gridTemplateColumns = 'repeat(auto-fill,minmax(240px,1fr))';
+    var kpLimitD = window.__kpLimit || 48;
+    var kpTotalD = items.length;
+    var pagedD = items.length > kpLimitD;
+    if (pagedD) items = items.slice(0, kpLimitD);
     grid.innerHTML = items.map(function(d, i){
       var dots = dev.colors.map(function(c, ci){
         return '<span class="cdot" data-ci="' + ci + '" title="' + c.n + '" style="width:14px;height:14px;border-radius:50%;background:' + c.h + ';border:2px solid ' + (ci===0?'#DC282E':'#E4E3E3') + ';display:inline-block;cursor:pointer"></span>';
@@ -781,12 +803,14 @@
     cvsAll.slice(0, 8).forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, +(cv.dataset.color||0)); }); });
     if (io) cvsAll.slice(8).forEach(function(cv){ io.observe(cv); });
     else cvsAll.slice(8).forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, 0); }); });
-    if (kpCurated) grid.insertAdjacentHTML('beforeend', kpCuratedFooter(kpTotal));
+    if (pagedD) grid.insertAdjacentHTML('beforeend',
+      '<button class="kpLoadMore" style="grid-column:1/-1;display:block;width:100%;max-width:420px;margin:18px auto;background:#DC282E;color:#FFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Load more — ' + (kpTotalD - items.length) + ' left</button>');
   }
   document.addEventListener('click', function(e){
     var t = e.target.closest ? e.target.closest('.kpCatTile') : null;
     if (t){ filter = t.dataset.cat; kpBrowseAll = true; renderFilters(); renderStates(); renderGrid(); window.scrollTo({top:0,behavior:'smooth'}); return; }
-    if (e.target.closest && e.target.closest('.kpBrowseAllBtn')){ kpBrowseAll = true; renderGrid(); }
+    if (e.target.closest && e.target.closest('.kpBrowseAllBtn')){ kpBrowseAll = true; renderGrid(); return; }
+    if (e.target.closest && e.target.closest('.kpLoadMore')){ window.__kpLimit = (window.__kpLimit||48) + 96; renderGrid(); }
   });
 
   // hover: scrub phone colors across the card

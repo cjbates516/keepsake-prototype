@@ -24,9 +24,10 @@
 "availability":"https://schema.org/InStock"}}
 </script>
 <link rel="icon" href="assets/favicon-16.png" sizes="16x16" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800;900&display=swap" rel="stylesheet">
 <style>
   html,body{margin:0;padding:0;background:#FFFFFF}
-  body{font-family:"Avenir","Avenir Next","Nunito Sans","Helvetica Neue",Helvetica,Arial,sans-serif;color:#4E4E50;-webkit-font-smoothing:antialiased}
+  body{font-family:"Nunito Sans","Avenir","Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif;color:#4E4E50;-webkit-font-smoothing:antialiased}
   a{color:#DC282E;text-decoration:none}
   a:hover{color:#B81F24;text-decoration:none}
   input,button,select,textarea{font-family:inherit}
@@ -334,7 +335,7 @@
           </div>
           <div style="display:flex;align-items:center;gap:12px;margin:20px 0 28px">
             <span id="totalTop" style="font-size:30px;font-weight:900;color:#17171F;letter-spacing:-.02em">$59.99</span>
-            <span style="border:1px solid #DC282E;color:#DC282E;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:800">Ready today</span>
+            <span style="color:#1E8E3E;font-size:13px;font-weight:800">● Ready today in ~2 hours — free pickup</span>
             <span id="discountTop" style="display:none;color:#1E8E3E;font-size:13px;font-weight:800"></span>
           </div>
           <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#DC282E;margin:26px 0 12px;padding-top:22px;border-top:1px solid #EFEDED">Step 3 <span style="color:#17171F">· Your design</span></div>
@@ -434,10 +435,11 @@
             <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#6C6C72;margin-bottom:6px"><span>Printed in store · <span id="colorName4">Silver</span></span><span>Included</span></div>
             <div id="lineAddons" style="display:none;justify-content:space-between;font-size:13px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="addonSummary"></span><span id="addonTotal"></span></div>
             <div id="lineDiscount" style="display:none;justify-content:space-between;font-size:14px;font-weight:800;color:#1E8E3E;margin-bottom:6px"><span id="discountName"></span><span id="discountAmt"></span></div>
-            <button id="reserveBtn" class="h-outline" style="width:100%;margin-top:14px;background:#FFFFFF;color:#17171F;border:1px solid #17171F;padding:15px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer;transition:background .2s,color .2s">Order — print in store</button>
+            <button id="reserveBtn" class="h-outline" style="width:100%;margin-top:14px;background:#DC282E;color:#FFFFFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background .2s">Order — print in store</button>
             <div id="reservedBox" style="display:none;animation:fadeUp .35s cubic-bezier(.2,.7,.2,1) both;background:#FBE0E1;border-radius:10px;padding:18px;text-align:center;font-weight:800;font-size:14px;line-height:1.5;color:#2D2D3B;margin-top:14px"></div>
-            <div style="display:flex;gap:18px;margin-top:16px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#6C6C72;flex-wrap:wrap">
-              <span>12-mo print warranty</span><span style="color:#E4E3E3">·</span><span>Free redo within 7 days</span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:14px;font-size:12.5px;font-weight:700;color:#2D2D3B">
+              <span>⏱ Ready in ~2 hours</span><span>🏬 Free pickup in store</span>
+              <span>🛡 12-month print warranty</span><span>↻ Free redo within 7 days</span>
             </div>
           </div>
         </div>
@@ -448,14 +450,14 @@
     <div style="position:fixed;left:0;right:0;bottom:0;z-index:70;background:#FFFFFF;border-top:1px solid #EFEDED;padding:12px clamp(16px,4vw,40px) calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:24px">
       <div style="min-width:0">
         <div style="font-size:15px;font-weight:900;color:#17171F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Design your keepsake</div>
-        <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#2D2D3B">$<span id="totalBar">59.99</span> <span style="border:1px solid #DC282E;color:#DC282E;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:800">Ready today</span></div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#1E8E3E">⏱ Ready today · ~2 hrs · <span id="barStore">West Chester</span><span style="display:none">$<span id="totalBar">59.99</span></span></div>
       </div>
-      <button id="cartBtn" class="h-upload" style="flex:1;max-width:680px;margin-left:auto;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer;transition:background .2s">Order this case</button>
+      <button id="cartBtn" class="h-upload" style="flex:1;max-width:680px;margin-left:auto;background:#DC282E;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer;transition:background .2s">Order — $59.99</button>
     </div>
   </main>
 
   <!-- chat bubble -->
-  <div id="kpChatWrap" style="position:fixed;right:24px;bottom:24px;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:14px">
+  <div id="kpChatWrap" style="position:fixed;right:24px;bottom:104px;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:14px">
     <div id="chatPanel" style="display:none;width:340px;max-width:calc(100vw - 48px);background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;box-shadow:0 24px 60px rgba(46,56,61,.22);overflow:hidden;animation:fadeUp .3s cubic-bezier(.2,.7,.2,1) both">
       <div style="background:#2D2D3B;padding:18px 20px;display:flex;align-items:center;gap:12px">
         <div style="flex:1">
@@ -484,7 +486,7 @@
         <div style="font-size:13px;line-height:1.6;color:#4E4E50">Thanks — we'll get back to you within one business day at the email you provided.</div>
       </div>
     </div>
-    <button id="chatToggle" aria-label="Support chat" style="width:58px;height:58px;border-radius:50%;background:#DC282E;border:0;cursor:pointer;box-shadow:0 12px 30px rgba(220,40,46,.4);display:flex;align-items:center;justify-content:center;color:#FFFFFF">
+    <button id="chatToggle" aria-label="Support chat" style="width:52px;height:52px;border-radius:50%;background:#FFFFFF;border:1.5px solid #D8D7D7;cursor:pointer;box-shadow:0 8px 22px rgba(45,45,59,.18);display:flex;align-items:center;justify-content:center;color:#2D2D3B">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
     </button>
   </div>
@@ -498,9 +500,9 @@
 
   /* ── shared header behavior ── */
   var annMsgs = [
+    'Printed same-day in store — West Chester · Pottstown · Newark',
     '10% off your first case — code <span style="background:rgba(255,255,255,.18);border-radius:999px;padding:2px 10px;letter-spacing:.1em">FIRST10</span>',
-    'First responders &amp; nurses save 20% every day',
-    'Printed in store — often in under an hour'
+    'First responders &amp; nurses save 20% every day'
   ];
   var annIdx = 0;
   setInterval(function(){
@@ -1558,6 +1560,7 @@
   document.addEventListener('click',function(e){
     var sc=e.target.closest ? e.target.closest('.storeChip') : null;
     if(sc){ state.store=sc.dataset.s; state.reserved=false; renderStoreChips(); updateSummary(); }
+    var bs=$('barStore'); if(bs&&state.store) bs.textContent=state.store.replace(/, (PA|DE)$/,'');
   });
   renderStoreChips();
   /* ── ordering ── */
