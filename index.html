@@ -24,6 +24,16 @@
   a{color:#DC282E;text-decoration:none}
   a:hover{color:#B81F24;text-decoration:underline}
   input,button,select,textarea{font-family:inherit}
+  .kpMenuPhone{display:none}
+  @media(max-width:640px){
+    .kpMenuPhone{display:block;padding:8px 20px 26px}
+    #mega>div:not(.kpMenuPhone){display:none !important}
+    .kpMRow{display:flex;align-items:center;gap:14px;padding:16px 2px;font-size:16.5px;font-weight:800;color:#17171F;text-decoration:none;border-bottom:1px solid #F0EEEE}
+    .kpMRow span{font-size:20px}.kpMRow b{margin-left:auto;color:#B9BDCB;font-weight:900}
+    .kpMThumbs{display:flex;gap:10px;overflow-x:auto;padding:16px 0 4px;scrollbar-width:none}
+    .kpMThumbs img{width:64px;height:84px;object-fit:cover;border-radius:10px;flex:0 0 auto}
+    .kpMCta{display:block;text-align:center;background:#DC282E;color:#FFF;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:15px;border-radius:999px;margin-top:16px;text-decoration:none}
+  }
   .kpOcc{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;width:84px}
   .kpOcc img{width:76px;height:76px;border-radius:50%;object-fit:cover;border:2.5px solid #FFFFFF;box-shadow:0 0 0 2px #F0D5D6;transition:transform .2s}
   .kpOcc:hover img{transform:scale(1.07)}
@@ -216,6 +226,22 @@
 
   <!-- mega menu -->
   <div id="mega" style="position:sticky;top:72px;z-index:59;background:#FFFFFF;border-bottom:1px solid #E4E3E3;box-shadow:0 24px 48px rgba(46,56,61,.12);animation:fadeUp .25s cubic-bezier(.2,.7,.2,1) both">
+    <div class="kpMenuPhone">
+      <a class="kpMRow" href="customizer.html"><span>🎨</span>Design your case<b>›</b></a>
+      <a class="kpMRow" href="gallery.html"><span>🖼</span>Design library<b>›</b></a>
+      <a class="kpMRow" href="customizer.html"><span>📷</span>Use your photo<b>›</b></a>
+      <a class="kpMRow" href="gallery.html?cat=City%20maps"><span>📍</span>City maps — only at Keepsake<b>›</b></a>
+      <a class="kpMRow" href="help.html"><span>🏬</span>Stores &amp; help<b>›</b></a>
+      <div class="kpMThumbs">
+        <a href="customizer.html?design=philadelphia-city-map-navy.jpg"><img src="assets/designs/thumbs/philadelphia-city-map-navy.jpg" alt="" loading="lazy"></a>
+        <a href="customizer.html?design=abstract-leopard-pink.jpg"><img src="assets/designs/thumbs/abstract-leopard-pink.jpg" alt="" loading="lazy"></a>
+        <a href="customizer.html?design=charming-minimalist-black-hearts-pattern-2.jpg"><img src="assets/designs/thumbs/charming-minimalist-black-hearts-pattern-2.jpg" alt="" loading="lazy"></a>
+        <a href="customizer.html?design=zodiac-leo-night-sky.jpg"><img src="assets/designs/thumbs/zodiac-leo-night-sky.jpg" alt="" loading="lazy"></a>
+        <a href="customizer.html?design=halloween-bats-on-orange.jpg"><img src="assets/designs/thumbs/halloween-bats-on-orange.jpg" alt="" loading="lazy"></a>
+        <a href="customizer.html?design=dreamy-gradient-cosmic-background-with-sparkles.jpg"><img src="assets/designs/thumbs/dreamy-gradient-cosmic-background-with-sparkles.jpg" alt="" loading="lazy"></a>
+      </div>
+      <a class="kpMCta" href="customizer.html">Design yours — $59.99</a>
+    </div>
     <div style="max-width:1280px;margin:0 auto;padding:36px 40px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:clamp(20px,2.5vw,36px)">
       <div>
         <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">iPhone Cases</div>
@@ -577,45 +603,27 @@
         <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
           <div style="font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#2D2D3B;margin-bottom:4px">Shop</div>
           <a class="h-foot" href="customizer.html">Design a case</a>
-          <a class="h-foot" href="gallery.html">Idea gallery</a>
-          <a class="h-foot" href="checkout.html">Gift cards</a>
+          <a class="h-foot" href="gallery.html">Design library</a>
+          <a class="h-foot" href="customizer.html">Use your photo</a>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
-          <div style="font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#2D2D3B;margin-bottom:4px">Perks</div>
-          <a class="h-foot" href="help.html">Refer a friend</a>
-          <a class="h-foot" href="help.html">First responder discount</a>
-          <a class="h-foot" href="help.html">Student discount</a>
-          <a class="h-foot" href="teachers.html">Teachers &amp; classrooms</a>
-          <a class="h-foot" href="help.html">Keepsake Club</a>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
-          <div style="font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#2D2D3B;margin-bottom:4px">Account</div>
-          <a class="h-foot" href="account.html">My account</a>
-          <a class="h-foot" href="account.html">Order history</a>
-          <a class="h-foot" href="account.html">My referrals &amp; points</a>
-          <a class="h-foot" href="help.html">Register a warranty</a>
-          <a class="h-foot" href="checkout.html">Cart &amp; checkout</a>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
-          <div style="font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#2D2D3B;margin-bottom:4px">Business</div>
-          <a class="h-foot" href="b2b.html">B2B login</a>
-          <a class="h-foot" href="b2b.html">Wholesale pricing</a>
-          <a class="h-foot" href="b2b.html">Request a quote</a>
-          <a class="h-foot" href="b2b.html">Partner portal</a>
+          <div style="font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#2D2D3B;margin-bottom:4px">Stores</div>
+          <a class="h-foot" href="help.html">West Chester, PA</a>
+          <a class="h-foot" href="help.html">Pottstown, PA</a>
+          <a class="h-foot" href="help.html">Newark, DE</a>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
           <div style="font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#2D2D3B;margin-bottom:4px">Support</div>
-          <a class="h-foot" href="help.html">FAQ &amp; help center</a>
-          <a class="h-foot" href="help.html">Contact us</a>
+          <a class="h-foot" href="help.html">FAQ &amp; contact</a>
           <a class="h-foot" href="track.html">Track your order</a>
-          <a class="h-foot" href="gallery.html">Design library</a>
-          <a class="h-foot" href="help.html">Our story</a>
+          <a class="h-foot" href="teachers.html">Teachers &amp; schools</a>
+          <a class="h-foot" href="b2b.html">Business &amp; bulk</a>
           <a class="h-foot" href="help.html">Privacy &amp; terms</a>
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:#6E6E70">
         <span>© 2026 Keepsake Printing Co.</span><span style="opacity:.7">City map designs: map data © OpenStreetMap contributors</span>
-        <span>100% satisfaction guaranteed · 10-day returns · 6-month warranty</span>
+        <span>12-month print warranty · Free redo within 7 days · Printed same-day in store</span>
       </div>
     </div>
   </footer>
