@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Print Queue — Keepsake (staff)</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800;900&display=swap" rel="stylesheet">
+<script src="assets/kp-config.js"></script>
+<style>
+  :root{ --red:#DC282E; --red2:#B31F26; --ink:#2D2D3B; --blk:#17171F; --gray:#414346; --mute:#9A9A9D; --line:#E4E3E3; --blush:#FBE0E1; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:'Nunito Sans',system-ui,sans-serif; background:#F6F6F7; color:var(--gray); }
+  header{ background:#fff; border-bottom:1px solid var(--line); padding:12px 16px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; position:sticky; top:0; z-index:5; }
+  header b{ font-weight:900; color:var(--blk); letter-spacing:-.01em; font-size:17px; }
+  .chip{ border:1px solid var(--line); background:#fff; border-radius:999px; padding:8px 14px; font-weight:800; font-size:13px; cursor:pointer; color:var(--ink); }
+  .chip.on{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .wrap{ max-width:1200px; margin:0 auto; padding:16px; }
+  .cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; }
+  .col h2{ font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin:0 0 10px; font-weight:900; }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:12px; display:grid; grid-template-columns:96px 1fr; gap:12px; }
+  .card img{ width:96px; height:96px; object-fit:contain; background:#F6F6F7; border-radius:10px; }
+  .id{ font-weight:900; color:var(--red); font-size:18px; letter-spacing:.04em; }
+  .preset{ display:inline-block; background:var(--blk); color:#fff; font-weight:900; font-size:13px; padding:4px 10px; border-radius:999px; margin:6px 0; }
+  .meta{ font-size:13px; line-height:1.5; }
+  .meta b{ color:var(--blk); }
+  .btns{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; grid-column:1/-1; }
+  button{ font:inherit; font-weight:800; font-size:13px; border-radius:999px; padding:10px 14px; border:1px solid var(--line); background:#fff; color:var(--ink); cursor:pointer; }
+  button.primary{ background:var(--red); color:#fff; border-color:var(--red); }
+  button.dark{ background:var(--blk); color:#fff; border-color:var(--blk); }
+  button:disabled{ opacity:.5; cursor:default; }
+  .pin{ max-width:380px; margin:80px auto; background:#fff; border:1px solid var(--line); border-radius:16px; padding:24px; text-align:center; }
+  .pin input{ width:100%; font:inherit; font-size:22px; letter-spacing:.3em; text-align:center; padding:12px; border:1px solid var(--line); border-radius:10px; margin:12px 0; }
+  .note{ font-size:12px; color:var(--mute); }
+  .empty{ color:var(--mute); font-size:14px; padding:20px; text-align:center; border:1px dashed var(--line); border-radius:12px; }
+  .toast{ position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:var(--blk); color:#fff; padding:12px 18px; border-radius:999px; font-weight:800; font-size:14px; display:none; z-index:9; }
+  .age{ font-size:12px; color:var(--mute); }
+  .age.late{ color:var(--red); font-weight:800; }
+  input.search{ font:inherit; padding:9px 12px; border:1px solid var(--line); border-radius:999px; min-width:180px; }
+</style>
+</head>
+<body>
+<header>
+  <b>Keepsake · Print Queue</b>
+  <span id="storeChips"></span>
+  <input class="search" id="q" placeholder="Search name, phone, order">
+  <button id="refresh">Refresh</button>
+  <span class="note" id="status"></span>
+  <button id="logout" style="margin-left:auto">Lock</button>
+</header>
+
+<div id="pinBox" class="pin" style="display:none">
+  <div style="font-weight:900;font-size:18px;color:var(--blk)">Staff PIN</div>
+  <input id="pinIn" inputmode="numeric" maxlength="8" placeholder="••••">
+  <button class="dark" id="pinGo" style="width:100%">Open queue</button>
+  <div class="note" style="margin-top:10px">Ask Corey for the PIN. It is remembered on this device.</div>
+</div>
+
+<div id="noEndpoint" class="wrap" style="display:none">
+  <div class="empty">The order backend is not connected yet. Deploy tools/kp-orders-appsscript.js and put its URL in assets/kp-config.js.</div>
+</div>
+
+<div class="wrap" id="app" style="display:none">
+  <div class="cols">
+    <div class="col"><h2>New · print these</h2><div id="colNew"></div></div>
+    <div class="col"><h2>Printed · waiting for pickup</h2><div id="colPrinted"></div></div>
+    <div class="col"><h2>Picked up · last 14 days</h2><div id="colDone"></div></div>
+  </div>
+  <div class="note" style="margin-top:20px;line-height:1.6">
+    <b>How to print one:</b> pull the blank named on the card, wipe it, set it on the light pad. Open xTool Studio, import the file from Download print file, run Pixel Scan, pick the saved profile that matches the preset on the card, print. Inspect under the counter light, photograph it in the photo box, tap Printed. At pickup, ring the custom print SKU and tap Picked Up. Two failed prints on one order: stop and text Corey.
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var EP = (window.KP_CONFIG && KP_CONFIG.ORDERS_ENDPOINT) || '';
+  var STORES = ['West Chester, PA','Pottstown, PA','Newark, DE'];
+  var $ = function(id){ return document.getElementById(id); };
+  var pin = '', store = localStorage.getItem('kpStaffStore') || 'All', orders = [], timer = null;
+  try{ pin = localStorage.getItem('kpStaffPin') || ''; }catch(_){}
+
+  function toast(m, ms){ var t=$('toast'); t.textContent=m; t.style.display='block'; clearTimeout(t._t); t._t=setTimeout(function(){ t.style.display='none'; }, ms||2600); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function fmtPhone(p){ p=String(p||'').replace(/\D/g,''); if(p.length===11&&p[0]==='1') p=p.slice(1); return p.length===10 ? p.slice(0,3)+'.'+p.slice(3,6)+'.'+p.slice(6) : p; }
+  function age(iso){ var ms=Date.now()-Date.parse(iso); var h=Math.floor(ms/3600000); if(h<1) return Math.max(1,Math.floor(ms/60000))+' min ago'; if(h<24) return h+' hr ago'; return Math.floor(h/24)+' d ago'; }
+
+  function api(params, body){
+    var url = EP + (EP.indexOf('?')>0?'&':'?') + 'pin=' + encodeURIComponent(pin) + '&' + params;
+    if(body){ body.pin=pin; return fetch(EP,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body)}).then(function(r){return r.json();}); }
+    return fetch(url).then(function(r){ return r.json(); });
+  }
+
+  function renderStoreChips(){
+    var html = ['All'].concat(STORES).map(function(s){ return '<button class="chip'+(s===store?' on':'')+'" data-s="'+esc(s)+'">'+esc(s.replace(/, (PA|DE)$/,''))+'</button>'; }).join(' ');
+    $('storeChips').innerHTML = html;
+  }
+  $('storeChips').addEventListener('click',function(e){ var b=e.target.closest('.chip'); if(!b) return; store=b.dataset.s; localStorage.setItem('kpStaffStore',store); renderStoreChips(); draw(); });
+  $('q').addEventListener('input', draw);
+
+  function card(o){
+    var late = o.status==='New' && (Date.now()-Date.parse(o.created))>4*3600000;
+    var pv = EP + '?pin=' + encodeURIComponent(pin) + '&action=preview&id=' + encodeURIComponent(o.id);
+    return '<div class="card" data-id="'+esc(o.id)+'">'+
+      '<img alt="" data-prev="'+esc(o.id)+'" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">'+
+      '<div>'+
+        '<div class="id">'+esc(o.id)+' <span class="age'+(late?' late':'')+'">'+age(o.created)+'</span></div>'+
+        '<div class="meta"><b>'+esc(o.model)+'</b> · '+esc(o.caseType)+'</div>'+
+        '<div class="preset">'+esc(o.preset)+'</div>'+
+        '<div class="meta">'+esc(o.name)+' · <a href="tel:'+esc(o.phone)+'" style="color:inherit">'+esc(fmtPhone(o.phone))+'</a><br>'+esc(o.store)+(o.source==='counter'?' · counter':'')+(o.optIn==='Yes'?' · <span style="color:#1E8E3E">ok to share</span>':'')+'</div>'+
+        (o.notes ? '<div class="meta" style="color:var(--mute);font-size:12px">'+esc(o.notes)+'</div>' : '')+
+      '</div>'+
+      '<div class="btns">'+
+        '<button data-act="file">Download print file</button>'+
+        (o.status==='New' ? '<button class="primary" data-act="Printed">Mark Printed</button>' : '')+
+        (o.status==='Printed' ? '<button class="dark" data-act="Picked Up">Mark Picked Up</button>' : '')+
+        (o.status==='Picked Up' ? '<button data-act="Printed">Undo pickup</button>' : '')+
+      '</div>'+
+    '</div>';
+  }
+
+  function draw(){
+    var q=($('q').value||'').toLowerCase().trim();
+    var vis = orders.filter(function(o){
+      if(store!=='All' && o.store!==store) return false;
+      if(q && !(String(o.name).toLowerCase().indexOf(q)>=0 || String(o.phone).indexOf(q.replace(/\D/g,''))>=0 || String(o.id).toLowerCase().indexOf(q)>=0)) return false;
+      return true;
+    });
+    var by={New:[],Printed:[],'Picked Up':[]};
+    vis.forEach(function(o){ (by[o.status]||by.New).push(o); });
+    by.New.sort(function(a,b){ return Date.parse(a.created)-Date.parse(b.created); });
+    $('colNew').innerHTML = by.New.length ? by.New.map(card).join('') : '<div class="empty">Nothing to print. Nice.</div>';
+    $('colPrinted').innerHTML = by.Printed.length ? by.Printed.map(card).join('') : '<div class="empty">No cases waiting for pickup.</div>';
+    $('colDone').innerHTML = by['Picked Up'].length ? by['Picked Up'].map(card).join('') : '<div class="empty">No pickups yet.</div>';
+    document.querySelectorAll('img[data-prev]').forEach(function(im){
+      var id=im.dataset.prev; if(previews[id]){ im.src=previews[id]; return; }
+      api('action=preview&id='+encodeURIComponent(id)).then(function(j){ if(j&&j.ok){ previews[id]='data:'+j.mime+';base64,'+j.b64; im.src=previews[id]; } }).catch(function(){});
+    });
+  }
+  var previews={};
+
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-act]'); if(!b) return;
+    var id=b.closest('.card').dataset.id, act=b.dataset.act;
+    if(act==='file'){
+      b.disabled=true; b.textContent='Getting file…';
+      api('action=file&id='+encodeURIComponent(id)).then(function(j){
+        if(!(j&&j.ok)) throw new Error(j&&j.error||'no file');
+        var bin=atob(j.b64), u8=new Uint8Array(bin.length); for(var i=0;i<bin.length;i++) u8[i]=bin.charCodeAt(i);
+        var blob=new Blob([u8],{type:j.mime||'image/png'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=j.name||(id+'.png'); document.body.appendChild(a); a.click(); a.remove();
+        b.disabled=false; b.textContent='Download print file';
+      }).catch(function(err){ toast('Could not get the file: '+err.message); b.disabled=false; b.textContent='Download print file'; });
+      return;
+    }
+    var by = localStorage.getItem('kpStaffName') || '';
+    if(!by){ by = prompt('Your first name (saved on this device):') || ''; if(by) localStorage.setItem('kpStaffName', by); }
+    b.disabled=true;
+    api('', {action:'status', id:id, status:act, by:by}).then(function(j){
+      if(!(j&&j.ok)) throw new Error(j&&j.error||'failed');
+      var o=orders.filter(function(x){return x.id===id;})[0]; if(o) o.status=act; draw(); toast(id+' → '+act);
+    }).catch(function(err){ toast('Could not update: '+err.message); b.disabled=false; });
+  });
+
+  function load(){
+    $('status').textContent='Loading…';
+    api('action=list&days=14').then(function(j){
+      if(j && j.error==='bad pin'){ localStorage.removeItem('kpStaffPin'); pin=''; showPin('That PIN did not work.'); return; }
+      if(!(j&&j.ok)) throw new Error(j&&j.error||'load failed');
+      orders=j.orders||[]; draw();
+      $('status').textContent='Updated '+new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})+' · '+orders.filter(function(o){return o.status==='New';}).length+' to print';
+    }).catch(function(err){ $('status').textContent='Offline: '+err.message; });
+  }
+
+  function showPin(msg){ $('app').style.display='none'; $('pinBox').style.display='block'; if(msg) toast(msg); $('pinIn').value=''; $('pinIn').focus(); }
+  function start(){
+    if(!EP){ $('noEndpoint').style.display='block'; return; }
+    if(!pin){ showPin(); return; }
+    $('pinBox').style.display='none'; $('app').style.display='block'; renderStoreChips(); load();
+    clearInterval(timer); timer=setInterval(load, 60000);
+    document.addEventListener('visibilitychange',function(){ if(!document.hidden) load(); });
+  }
+  $('pinGo').addEventListener('click',function(){ pin=($('pinIn').value||'').trim(); if(!pin) return; try{ localStorage.setItem('kpStaffPin',pin); }catch(_){} start(); });
+  $('pinIn').addEventListener('keydown',function(e){ if(e.key==='Enter') $('pinGo').click(); });
+  $('refresh').addEventListener('click', load);
+  $('logout').addEventListener('click',function(){ localStorage.removeItem('kpStaffPin'); pin=''; clearInterval(timer); showPin(); });
+  start();
+})();
+</script>
+</body>
+</html>

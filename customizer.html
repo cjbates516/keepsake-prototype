@@ -20,7 +20,7 @@
 {"@context":"https://schema.org","@type":"Product","name":"Custom Photo Phone Case",
 "brand":{"@type":"Brand","name":"Keepsake Printing Co"},
 "description":"Custom UV-printed phone case — upload a photo or choose from 1,000+ designs, printed in store while you wait.",
-"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"34.99","highPrice":"69.99",
+"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"59.99","highPrice":"59.99",
 "availability":"https://schema.org/InStock"}}
 </script>
 <link rel="icon" href="assets/favicon-16.png" sizes="16x16" type="image/png">
@@ -67,6 +67,8 @@
   select:focus,input:focus,textarea:focus{outline:2px solid #4FB0E3;outline-offset:1px}button:focus-visible{outline:2px solid #4FB0E3;outline-offset:1px}
   #mega.open{max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto}
   </style>
+<script src="assets/kp-config.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.4/heic2any.min.js" defer></script>
 </head>
 <body>
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
@@ -289,7 +291,7 @@
                 </div>
               </div>
               <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">MagSafe Clear</div>
-              <div style="font-size:12.5px;font-weight:600;color:#6C6C72;margin-top:2px">$64.99+</div>
+              <div style="font-size:12.5px;font-weight:600;color:#6C6C72;margin-top:2px">$59.99</div>
             </div>
             <div id="ctTough" class="ctCard" data-ct="Slim Hybrid MagSafe" style="cursor:pointer;text-align:center">
               <div style="position:relative;border:2px solid #E4E3E3;border-radius:12px;overflow:hidden;background:#F7F7F7">
@@ -329,7 +331,7 @@
             </div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;margin:20px 0 28px">
-            <span id="totalTop" style="font-size:30px;font-weight:900;color:#17171F;letter-spacing:-.02em">$64.99</span>
+            <span id="totalTop" style="font-size:30px;font-weight:900;color:#17171F;letter-spacing:-.02em">$59.99</span>
             <span style="border:1px solid #DC282E;color:#DC282E;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:800">Ready today</span>
             <span id="discountTop" style="display:none;color:#1E8E3E;font-size:13px;font-weight:800"></span>
           </div>
@@ -426,14 +428,14 @@
               <div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6E6E70;margin-bottom:8px">Pickup store</div>
               <div id="storeChips" style="display:flex;flex-wrap:wrap;gap:7px"></div>
             </div>
-            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="lineDevice">iPhone 17 Pro Max · MagSafe Clear</span><span id="linePrice">$64.99</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="lineDevice">iPhone 17 Pro Max · MagSafe Clear</span><span id="linePrice">$59.99</span></div>
             <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#6C6C72;margin-bottom:6px"><span>Printed in store · <span id="colorName4">Silver</span></span><span>Included</span></div>
             <div id="lineAddons" style="display:none;justify-content:space-between;font-size:13px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="addonSummary"></span><span id="addonTotal"></span></div>
             <div id="lineDiscount" style="display:none;justify-content:space-between;font-size:14px;font-weight:800;color:#1E8E3E;margin-bottom:6px"><span id="discountName"></span><span id="discountAmt"></span></div>
-            <button id="reserveBtn" class="h-outline" style="width:100%;margin-top:14px;background:#FFFFFF;color:#17171F;border:1px solid #17171F;padding:15px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer;transition:background .2s,color .2s">Reserve — print in store</button>
+            <button id="reserveBtn" class="h-outline" style="width:100%;margin-top:14px;background:#FFFFFF;color:#17171F;border:1px solid #17171F;padding:15px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer;transition:background .2s,color .2s">Order — print in store</button>
             <div id="reservedBox" style="display:none;animation:fadeUp .35s cubic-bezier(.2,.7,.2,1) both;background:#FBE0E1;border-radius:10px;padding:18px;text-align:center;font-weight:800;font-size:14px;line-height:1.5;color:#2D2D3B;margin-top:14px"></div>
             <div style="display:flex;gap:18px;margin-top:16px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#6C6C72;flex-wrap:wrap">
-              <span>10-day returns</span><span style="color:#E4E3E3">·</span><span>6-mo warranty</span>
+              <span>12-mo print warranty</span><span style="color:#E4E3E3">·</span><span>Free redo within 7 days</span>
             </div>
           </div>
         </div>
@@ -444,9 +446,9 @@
     <div style="position:fixed;left:0;right:0;bottom:0;z-index:70;background:#FFFFFF;border-top:1px solid #EFEDED;padding:12px clamp(16px,4vw,40px) calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:24px">
       <div style="min-width:0">
         <div style="font-size:15px;font-weight:900;color:#17171F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Design your keepsake</div>
-        <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#2D2D3B">$<span id="totalBar">64.99</span> <span style="border:1px solid #DC282E;color:#DC282E;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:800">Ready today</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#2D2D3B">$<span id="totalBar">59.99</span> <span style="border:1px solid #DC282E;color:#DC282E;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:800">Ready today</span></div>
       </div>
-      <button id="cartBtn" class="h-upload" style="flex:1;max-width:680px;margin-left:auto;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer;transition:background .2s">Add To Cart</button>
+      <button id="cartBtn" class="h-upload" style="flex:1;max-width:680px;margin-left:auto;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer;transition:background .2s">Order this case</button>
     </div>
   </main>
 
@@ -557,9 +559,9 @@
     {key:'screen',name:'Tempered glass screen protector',sub:'Installed in store with your case',price:12.99},
     {key:'lens',name:'Camera lens protector',sub:'Sapphire-hard rings for every lens',price:9.99}
   ];
-  var BASE = 64.99;
-  var TOUGH_PRICE = 69.99;
-  var HYBRID_PRICE = 69.99;  /* Slim Hybrid MagSafe — placeholder, confirm with Corey */
+  var BASE = (window.KP_CONFIG && KP_CONFIG.PRICE) || 59.99;
+  var TOUGH_PRICE = BASE;
+  var HYBRID_PRICE = BASE;  /* Slim Hybrid MagSafe — placeholder, confirm with Corey */
   function basePrice(){ return state.caseType==='Tough Magnetic' ? TOUGH_PRICE : (state.caseType==='Slim Hybrid MagSafe' ? HYBRID_PRICE : BASE); }
   var FONTS = [
     {n:'Script', css:'"Snell Roundhand","Savoye LET","Apple Chancery",cursive', w:''},
@@ -929,6 +931,7 @@
   }
   var _rafPend=false;
   function render(){
+    if(window.__kpDpiTick) clearTimeout(window.__kpDpiTick); window.__kpDpiTick=setTimeout(updateDpi,120);
     if(_rafPend) return; _rafPend=true;
     var done=false;
     function go(){ if(done) return; done=true; _rafPend=false; renderNow(); scheduleScenes(); }
@@ -1216,7 +1219,20 @@
   function loadPhoto(f, forceSlot){
     if(!f)return;
     if(/heic|heif/i.test(f.type||'') || /\.hei[cf]$/i.test(f.name||'')){
-      kpToast("That’s an iPhone HEIC photo — this browser can’t read it. On iPhone it works in Safari, or set Camera → Formats → Most Compatible, or send yourself the photo as a JPG."); return;
+      /* iPhone HEIC: convert in the browser so the customer never has to change a setting */
+      if(f.__kpConverted){ kpToast("We couldn’t read that photo. Try another one, or a screenshot of it works great."); return; }
+      if(typeof heic2any !== 'function'){
+        if(!window.__kpHeicWait){ window.__kpHeicWait=true; setTimeout(function(){ window.__kpHeicWait=false; loadPhoto(f, forceSlot); }, 1200); kpToast('One moment — getting that photo ready…'); return; }
+        kpToast("That photo is in iPhone HEIC format. Please try again in Safari, or a screenshot of it works great."); return;
+      }
+      kpToast('Converting your photo…', 4000);
+      heic2any({ blob:f, toType:'image/jpeg', quality:0.92 }).then(function(out){
+        var b = Array.isArray(out) ? out[0] : out;
+        var nf; try{ nf = new File([b], (f.name||'photo').replace(/\.hei[cf]$/i,'')+'.jpg', { type:'image/jpeg' }); }catch(_){ nf = b; nf.name='photo.jpg'; }
+        nf.__kpConverted = true;
+        loadPhoto(nf, forceSlot);
+      }).catch(function(){ kpToast("We couldn’t convert that photo. A screenshot of it works great, or try another one."); });
+      return;
     }
     if(!/^image\//.test(f.type)){ kpToast('That file isn’t a photo we can read — JPG, PNG or WebP work best.'); return; }
     if(f.size > 40*1024*1024){ kpToast('That photo is over 40MB — please use a smaller copy (screenshots of it work great too).'); return; }
@@ -1226,6 +1242,19 @@
       URL.revokeObjectURL(url);
       kpToast("We couldn’t read that photo — it may be an unsupported format. JPG or PNG always works.");
     };
+    /* phone photos carry a rotation flag; decode with it applied so portraits never load sideways */
+    var decodeDone=false;
+    if(window.createImageBitmap){
+      try{
+        createImageBitmap(f, { imageOrientation:'from-image' }).then(function(bm){
+          if(decodeDone) return; decodeDone=true;
+          var oc=document.createElement('canvas'); oc.width=bm.width; oc.height=bm.height;
+          oc.getContext('2d').drawImage(bm,0,0); try{ bm.close(); }catch(_){}
+          oc.naturalWidth=oc.width; oc.naturalHeight=oc.height;
+          var h=img.onload; img=oc; h.call(oc);
+        }).catch(function(){ if(!decodeDone){ decodeDone=true; img.src=url; } });
+      }catch(_){ decodeDone=true; img.src=url; }
+    } else { decodeDone=true; }
     img.onload=function(){
       if((img.naturalWidth&&img.naturalWidth<150)||(img.naturalHeight&&img.naturalHeight<150)){
         URL.revokeObjectURL(url);
@@ -1255,7 +1284,7 @@
       th.getContext('2d').drawImage(src,0,0,th.width,th.height);
       kpScreenPhoto(th);
     };
-    img.src=url;
+    if(!window.createImageBitmap) img.src=url;
   }
   function renderLayoutChips(){
     var el=$('layoutChips'); if(!el) return;
@@ -1376,17 +1405,25 @@
       $('fitNote').textContent = 'Engineered for '+state.model+' — print template being finalized; sizing verified at the counter.';
     }
   }
+  /* print quality light: the photo's real pixels per inch at the size it will print, after cropping */
+  function kpEffectiveDpi(){
+    if(state.layout || !state.photoImg || state.isLibraryDesign || !TPL || !FIT) return null;
+    var src=state.photoImg, iw=src.naturalWidth||src.width, ih=src.naturalHeight||src.height;
+    var B=maskBox||{x:0,y:0,w:DIM.w,h:DIM.h};
+    var cs = (state.fitMode==='fit') ? Math.min(B.w/iw, B.h/ih)*0.93 : Math.max(B.w/iw, B.h/ih);
+    var pxW=TPL.pxW||Math.round(TPL.w*300/72);
+    var printPxPerStage = (pxW/TPL.w)/FIT.sx;           /* 300 DPI print pixels per stage pixel */
+    var photoPxPerStage = 1/(cs*(state.scale||1));       /* source photo pixels per stage pixel */
+    return Math.round(300 * photoPxPerStage / printPxPerStage);
+  }
   function updateDpi(){
-    /* quiet by default — the label only ever speaks up to warn about a low-res photo */
     var el=$('dpiLabel'); if(!el) return;
-    el.textContent='';
-    if(state.layout || !state.photoImg || state.isLibraryDesign) return;
-    var sp = printSpec[state.model] || [0,0,900,1900];
-    var ok = state.photoImg.naturalWidth >= sp[2]*0.6 && state.photoImg.naturalHeight >= sp[3]*0.6;
-    if(!ok){
-      el.textContent='Low resolution — this photo may print soft; a larger photo is better';
-      el.style.color='#C77700';
-    }
+    el.textContent=''; state.quality=null;
+    var dpi=kpEffectiveDpi(); if(dpi==null) return;
+    state.quality = dpi>=280 ? 'green' : (dpi>=200 ? 'yellow' : 'red');
+    if(state.quality==='green'){ el.textContent='Looks great. This will print sharp.'; el.style.color='#1E8E3E'; }
+    else if(state.quality==='yellow'){ el.textContent='Acceptable. This will print, but fine details may soften. Zooming out or a larger photo will look better.'; el.style.color='#C77700'; }
+    else { el.textContent='Too low for a sharp print at this size. Zoom out, or use the original photo from your camera roll instead of a screenshot or saved image.'; el.style.color='#DC282E'; }
   }
   $('brandSel').addEventListener('change',function(){
     state.brand=this.value; state.model=modelsByBrand[state.brand][0]; state.reserved=false;
@@ -1517,16 +1554,71 @@
     if(sc){ state.store=sc.dataset.s; state.reserved=false; renderStoreChips(); updateSummary(); }
   });
   renderStoreChips();
-  $('reserveBtn').addEventListener('click',function(){
+  /* ── ordering ── */
+  var KP_ORDERS = window.KP_ORDERS_ENDPOINT || '';
+  function kpPreset(){
+    /* the one word the team member matches to a saved profile in xTool Studio */
+    if(state.layout) return 'Photo';
+    if(state.isLibraryDesign && state.photoImg){ try{ if(kpHasAlpha(state.photoImg)) return 'Clear Look'; }catch(_){ } return 'Graphic'; }
+    if(!state.photoImg && state.text) return 'Text';
+    return 'Photo';
+  }
+  function kpOrderPanel(){
+    var box=$('reservedBox'); box.style.display='block'; box.style.textAlign='left'; box.style.fontWeight='600';
+    box.innerHTML=
+      '<div style="font-weight:900;font-size:15px;margin-bottom:10px;color:#17171F">Almost done — who is this for?</div>'+
+      '<input id="kpName" placeholder="Your name" autocomplete="name" style="width:100%;box-sizing:border-box;padding:12px;border:1px solid #E4E3E3;border-radius:10px;font:inherit;font-size:16px;margin-bottom:8px">'+
+      '<input id="kpPhone" placeholder="Mobile number (we text you when it is ready)" inputmode="tel" autocomplete="tel" style="width:100%;box-sizing:border-box;padding:12px;border:1px solid #E4E3E3;border-radius:10px;font:inherit;font-size:16px;margin-bottom:10px">'+
+      '<label style="display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.45;margin-bottom:8px;cursor:pointer"><input id="kpOwn" type="checkbox" style="margin-top:3px;width:18px;height:18px"> <span>This is my photo or design, or I have permission to use it. No logos, characters, or team marks.</span></label>'+
+      '<label style="display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.45;margin-bottom:12px;cursor:pointer"><input id="kpOpt" type="checkbox" style="margin-top:3px;width:18px;height:18px"> <span>You can show my finished case on your site and social (optional).</span></label>'+
+      (state.quality==='red' ? '<div style="font-size:13px;color:#DC282E;font-weight:800;margin-bottom:10px">Heads up: this photo was flagged as low resolution. It will print, but it may look soft. Zoom out or pick a larger photo for a sharper result.</div>' : '')+
+      '<button id="kpPlace" style="width:100%;background:#DC282E;color:#FFF;border:0;padding:15px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer">Place order — pay $'+basePrice().toFixed(2)+' at pickup</button>'+
+      '<div style="font-size:11.5px;color:#6C6C72;margin-top:9px;line-height:1.5">We use your photo only to print your case and delete it 90 days after pickup. Printed in store at '+state.store+', usually same day.</div>';
+    try{ var sv=JSON.parse(localStorage.getItem('kpCust')||'{}'); if(sv.name) $('kpName').value=sv.name; if(sv.phone) $('kpPhone').value=sv.phone; }catch(_){}
+    $('kpPlace').addEventListener('click', kpPlaceOrder);
+    box.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  function kpPlaceOrder(){
+    var name=($('kpName').value||'').trim(), phone=($('kpPhone').value||'').replace(/[^0-9+]/g,'');
+    if(name.length<2){ kpToast('Please add your name.'); $('kpName').focus(); return; }
+    if(phone.replace(/\D/g,'').length<10){ kpToast('Please add a 10 digit mobile number.'); $('kpPhone').focus(); return; }
+    if(!$('kpOwn').checked){ kpToast('Please confirm the photo is yours to print.'); return; }
+    var btn=$('kpPlace'); btn.disabled=true; btn.textContent='Preparing your print file…';
+    try{ localStorage.setItem('kpCust', JSON.stringify({name:name, phone:phone})); }catch(_){}
+    var ok = kpBuildPrint(function(c){
+      /* small preview for the staff queue */
+      var pv=document.createElement('canvas'); var pk=Math.min(1, 700/Math.max(c.width,c.height));
+      pv.width=Math.round(c.width*pk); pv.height=Math.round(c.height*pk);
+      var px=pv.getContext('2d'); px.fillStyle='#FFFFFF'; px.fillRect(0,0,pv.width,pv.height); px.drawImage(c,0,0,pv.width,pv.height);
+      var payload={ action:'order', model:state.model, caseType:state.caseType, store:state.store, preset:kpPreset(),
+        name:name, phone:phone, ownsPhoto:true, optIn:!!$('kpOpt').checked, source:(document.body.classList.contains('kp-kiosk')?'counter':'web'),
+        notes:[state.text?('Name print: '+state.text+(state.font?' ('+state.font+')':'')):'', state.isLibraryDesign&&state.photoUrl?('Library: '+state.photoUrl.split('/').pop()):'', state.filter&&state.filter!=='none'?('Filter: '+state.filter):'', state.quality?('Quality: '+state.quality):''].filter(Boolean).join(' · '),
+        printPng:c.toDataURL('image/png'), previewJpg:pv.toDataURL('image/jpeg',0.82) };
+      if(!KP_ORDERS){
+        /* no backend configured yet: reserve code so the counter can still print from the staff link */
+        var code='KP-'+Math.random().toString(36).slice(2,6).toUpperCase();
+        kpOrderDone({ id:code, offline:true }); return;
+      }
+      btn.textContent='Sending to '+state.store+'…';
+      fetch(KP_ORDERS, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(payload) })
+        .then(function(r){ return r.json(); })
+        .then(function(j){ if(j && j.ok) kpOrderDone(j); else throw new Error((j&&j.error)||'order failed'); })
+        .catch(function(err){ btn.disabled=false; btn.textContent='Place order — pay $'+basePrice().toFixed(2)+' at pickup'; kpToast('We could not send your order ('+(err&&err.message||'network')+'). Please try again, or show this screen at the counter.', 6000); });
+    });
+    if(ok===false){ btn.disabled=false; btn.textContent='Place order — pay $'+basePrice().toFixed(2)+' at pickup'; }
+  }
+  function kpOrderDone(j){
     state.reserved=true;
-    var code='KP-'+Math.random().toString(36).slice(2,6).toUpperCase();
-    $('reservedBox').innerHTML='Reserved at <strong>'+state.store+'</strong>! Show code <span style="color:#DC282E;letter-spacing:.1em">'+code+'</span> at the counter and watch it print.';
+    var box=$('reservedBox'); box.style.textAlign='center'; box.style.fontWeight='800';
+    box.innerHTML='<div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#6C6C72;margin-bottom:6px">Order placed</div>'+
+      '<div style="font-size:28px;color:#DC282E;letter-spacing:.06em;margin-bottom:8px">'+j.id+'</div>'+
+      '<div style="font-size:14px;line-height:1.5;color:#2D2D3B">'+(j.offline ? 'Show this code at the counter in <strong>'+state.store+'</strong> and we will print it while you wait.' : 'We have your design. Pick up at <strong>'+state.store+'</strong>, usually the same day. We will text you when it is ready.')+'</div>'+
+      '<div style="font-size:12px;color:#6C6C72;margin-top:10px">Pay $'+basePrice().toFixed(2)+' at pickup · 12 month print warranty · free redo within 7 days</div>';
+    $('cartBtn').textContent='Order placed ✓'; $('reserveBtn').style.display='none';
     updateSummary();
-  });
-  $('cartBtn').addEventListener('click',function(){
-    $('cartBtn').textContent='Added ✓ — show this design in store to print';
-    setTimeout(function(){ $('cartBtn').textContent='Add To Cart'; },2600);
-  });
+  }
+  $('reserveBtn').addEventListener('click',function(){ if(!hasArt() && !state.text){ kpToast('Add a photo or pick a design first.'); return; } kpOrderPanel(); });
+  $('cartBtn').addEventListener('click',function(){ if(!hasArt() && !state.text){ kpToast('Add a photo or pick a design first.'); return; } kpOrderPanel(); });
 
   /* KP-SCENE-VIEWS — lifestyle previews under the stage */
   var KP_SCENES={"pm3": {"cx": 599.9, "cy": 655.3, "bw": 331.3, "bh": 665.6, "ang": 0.34}, "pm2": {"cx": 600.8, "cy": 670.8, "bw": 336.5, "bh": 627.4, "ang": -0.19}, "pm10": {"cx": 604.8, "cy": 641.5, "bw": 316.7, "bh": 626.1, "ang": -1.81}, "pm12": {"cx": 539.4, "cy": 723.7, "bw": 393.8, "bh": 679.8, "ang": 43.07}, "v113": {"cx": 613.1, "cy": 639.9, "bw": 492.6, "bh": 785.4, "ang": -6.17}, "v115": {"cx": 623.1, "cy": 580.1, "bw": 351.0, "bh": 703.5, "ang": -1.0}, "v119": {"cx": 558.2, "cy": 667.0, "bw": 573.3, "bh": 694.5, "ang": 29.77}, "v124": {"cx": 615.0, "cy": 676.8, "bw": 381.3, "bh": 747.6, "ang": 0.23}};
@@ -1660,12 +1752,13 @@
   });
 
   /* ── print export (staff link) ── */
-  $('exportLink').addEventListener('click',function(e){
-    e.preventDefault();
-    if(!hasArt() && !state.text) return;
-    if(state.photoImg && state.photoImg.__kpIsThumb){ kpToast('Full-quality art is still loading — one moment, then try again.'); return; }
-    if(!TPL){ kpToast('Print template for this model is being finalized — see staff.'); return; }
-    if(viewSrc && !(viewImg&&viewReady&&viewMaskCanvas)){ kpToast(viewFailed ? 'Case mask failed to load — reload the page before exporting.' : 'Case mask still loading — one moment, then try again.'); return; }
+  $('exportLink').addEventListener('click',function(e){ e.preventDefault(); kpBuildPrint(kpDownloadCanvas); });
+  /* builds the print file; done(canvas, filename). Returns false (with a toast) when it cannot. */
+  function kpBuildPrint(done){
+    if(!hasArt() && !state.text) return false;
+    if(state.photoImg && state.photoImg.__kpIsThumb){ kpToast('Full-quality art is still loading — one moment, then try again.'); return false; }
+    if(!TPL){ kpToast('Print template for this model is being finalized — see staff.'); return false; }
+    if(viewSrc && !(viewImg&&viewReady&&viewMaskCanvas)){ kpToast(viewFailed ? 'Case mask failed to load — reload the page before exporting.' : 'Case mask still loading — one moment, then try again.'); return false; }
     var pxW=TPL.pxW||Math.round(TPL.w*300/72), pxH=TPL.pxH||Math.round(TPL.h*300/72);
     var k=pxW/TPL.w;
     var BLEED=18;   /* 1.5mm run-off at 300 DPI (constant: every printSpec/pxW is 300 DPI, template units vary) */
@@ -1680,7 +1773,7 @@
       drawTextLayer(c2);
       c2.restore();
       applyPrintMask(c2,k,BLEED);
-      kpDownloadCanvas(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+pxW+'x'+pxH+'-bleed1.5mm.png');
+      done(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+pxW+'x'+pxH+'-bleed1.5mm.png');
       return;
     }
     if(state.layout){
@@ -1696,8 +1789,9 @@
     drawTextLayer(c2);
     c2.restore();
     applyPrintMask(c2,k,BLEED);
-    kpDownloadCanvas(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+pxW+'x'+pxH+'-bleed1.5mm.png');
-  });
+    done(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+'-'+pxW+'x'+pxH+'-bleed1.5mm.png');
+    return true;
+  }
   function applyPrintMask(c2,k,BLEED){
     /* stamp the art with the view mask, DILATED ~1.5mm for print bleed:
        physical jig alignment drifts a hair — bleed keeps the rim covered */
@@ -2067,6 +2161,8 @@
   loadKit(state.model);
   $('brandSel').value=state.brand;
   fillModels(); renderSwatches(); renderAddons(); updateFitNote(); updateStage(); updateSummary();
+  /* staff and QA hook (Fit Lab, print checks): read-only access to the live state */
+  window.__kp={ get state(){ return state; }, dpi:kpEffectiveDpi, preset:kpPreset, buildPrint:kpBuildPrint, render:render };
 })();
 </script>
 <script>
