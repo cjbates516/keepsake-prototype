@@ -24,6 +24,14 @@
   a{color:#DC282E;text-decoration:none}
   a:hover{color:#B81F24;text-decoration:underline}
   input,button,select,textarea{font-family:inherit}
+  .kpOcc{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;width:84px}
+  .kpOcc img{width:76px;height:76px;border-radius:50%;object-fit:cover;border:2.5px solid #FFFFFF;box-shadow:0 0 0 2px #F0D5D6;transition:transform .2s}
+  .kpOcc:hover img{transform:scale(1.07)}
+  .kpOcc span{font-size:12px;font-weight:800;color:#2D2D3B;text-align:center}
+  .kpOccPhoto > span:first-child{display:flex;align-items:center;justify-content:center;width:76px;height:76px;border-radius:50%;background:#FFF7F7;border:2px dashed #DC282E;font-size:26px}
+  .kpMarq{animation:kpMarq 26s linear infinite}
+  @keyframes kpMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .kpSeasonChip{position:absolute;top:14px;left:14px;z-index:5;background:#F6851F;color:#17171F;font-size:13px;font-weight:900;letter-spacing:.04em;padding:9px 16px;border-radius:14px 14px 14px 3px;text-decoration:none;box-shadow:0 8px 20px rgba(246,133,31,.35)}
   img{max-width:100%}
   @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
   @keyframes reveal{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
@@ -333,6 +341,7 @@
           <img src="assets/promo/promo-stylish-white-daisy-floral-pattern.webp" alt="Daisy case">
           <img src="assets/promo/promo-playful-cartoon-cherries.webp" alt="Cherries case">
         </div>
+        <a href="gallery.html?cat=Halloween" class="kpSeasonChip">🎃 Halloween drop</a>
         <div id="heroCase" style="animation:fadeIn .7s cubic-bezier(.2,.7,.2,1) .2s both;position:relative;width:290px;height:554px;transition:transform .3s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 24px 32px rgba(46,56,61,.22))">
           
           <div id="heroTrio" style="position:absolute;inset:0">
@@ -364,6 +373,26 @@
 
 
       </div>
+
+    <!-- occasion rail -->
+    <section style="max-width:1280px;margin:0 auto;padding:18px 0 4px 20px;overflow:hidden">
+      <div style="display:flex;gap:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 20px 14px 0">
+        <a href="gallery.html?cat=Birth%20flowers" class="kpOcc"><img src="assets/designs/thumbs/birth-flower-april-daisy.jpg" alt=""><span>For Mom</span></a>
+        <a href="gallery.html?cat=Animals" class="kpOcc"><img src="assets/designs/thumbs/dog-90s-dog.jpg" alt=""><span>Pets</span></a>
+        <a href="gallery.html?cat=Hearts" class="kpOcc"><img src="assets/designs/thumbs/black-heart-shapes.jpg" alt=""><span>Couples</span></a>
+        <a href="gallery.html?cat=City%20maps" class="kpOcc"><img src="assets/designs/thumbs/philadelphia-city-map-navy.jpg" alt=""><span>City Maps</span></a>
+        <a href="gallery.html?cat=Zodiac" class="kpOcc"><img src="assets/designs/thumbs/zodiac-aquarius-blush.jpg" alt=""><span>Zodiac</span></a>
+        <a href="gallery.html?cat=Halloween" class="kpOcc"><img src="assets/designs/thumbs/halloween-bats-on-orange.jpg" alt=""><span>Halloween</span></a>
+        <a href="customizer.html" class="kpOcc kpOccPhoto"><span>📷</span><span>Your Photo</span></a>
+      </div>
+    </section>
+    <!-- marquee -->
+    <div style="background:#17171F;overflow:hidden;padding:11px 0" aria-hidden="true">
+      <div class="kpMarq" style="display:flex;gap:44px;white-space:nowrap;font-size:12.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#FFFFFF">
+        <span class="kpMarqIn"></span><span class="kpMarqIn"></span>
+      </div>
+    </div>
+
     <!-- ═══ best sellers ═══ -->
     <section style="max-width:1280px;margin:0 auto;padding:64px 40px 72px">
       <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:26px">
@@ -480,6 +509,22 @@
       </div>
     </section>
 
+
+    <!-- device matcher -->
+    <section style="background:#2D2D3B;padding:44px 20px">
+      <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;align-items:stretch">
+        <div style="color:#FFFFFF;font-weight:900;font-size:clamp(20px,3vw,26px);text-align:center">Will it fit? <span style="color:#F0A9AB">Always.</span></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center;color:#FFF;font-size:15px;font-weight:700">
+          <span>For my</span>
+          <select id="kpMatchModel" style="background:transparent;color:#FFF;border:1.5px solid rgba(255,255,255,.45);border-radius:999px;padding:12px 16px;font-size:16px;font-weight:700;max-width:230px">
+            <option>iPhone 18 Pro Max</option><option>iPhone 18 Pro</option><option>iPhone 17 Pro Max</option><option>iPhone 17 Pro</option><option>iPhone 17</option><option>iPhone Air</option><option>iPhone 16 Pro Max</option><option>iPhone 16 Pro</option><option>iPhone 16</option><option>iPhone 15 Pro Max</option><option>iPhone 15</option><option>iPhone 14</option><option>iPhone 13</option><option>Samsung Galaxy S26 Ultra</option><option>Samsung Galaxy S26 Plus</option><option>Samsung Galaxy S26</option>
+          </select>
+          <button id="kpMatchGo" style="background:#DC282E;color:#FFF;border:0;padding:14px 26px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Show my case →</button>
+        </div>
+        <div style="color:rgba(255,255,255,.55);font-size:12.5px;text-align:center">Every design auto-fits your exact model — camera cutout and all.</div>
+      </div>
+    </section>
+
     <!-- ═══ reviews wall ═══ -->
     <section class="rv" style="max-width:1280px;margin:0 auto;padding:96px 40px 24px">
       <div style="text-align:center;margin-bottom:44px">
@@ -491,6 +536,19 @@
     </section>
 
     <!-- ═══ signup band ═══ -->
+
+    <!-- trust grid -->
+    <section style="max-width:1080px;margin:0 auto;padding:54px 20px 64px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;text-align:center">
+        <div><div style="font-size:26px">🖨</div><div style="font-weight:800;font-size:13px;color:#2D2D3B;margin-top:6px">Printed in store</div></div>
+        <div><div style="font-size:26px">⚡️</div><div style="font-weight:800;font-size:13px;color:#2D2D3B;margin-top:6px">Same-day pickup</div></div>
+        <div><div style="font-size:26px">📍</div><div style="font-weight:800;font-size:13px;color:#2D2D3B;margin-top:6px">3 stores · PA &amp; DE</div></div>
+        <div><div style="font-size:26px">💎</div><div style="font-weight:800;font-size:13px;color:#2D2D3B;margin-top:6px">UV-cured ink</div></div>
+        <div><div style="font-size:26px">🛡</div><div style="font-weight:800;font-size:13px;color:#2D2D3B;margin-top:6px">12-mo print warranty</div></div>
+        <div><div style="font-size:26px">↻</div><div style="font-weight:800;font-size:13px;color:#2D2D3B;margin-top:6px">Free redo · 7 days</div></div>
+      </div>
+    </section>
+
     <section style="background:#DC282E;padding:72px 40px">
       <div style="max-width:760px;margin:0 auto;text-align:center;color:#FFFFFF">
         <h2 style="font-weight:900;font-size:clamp(28px,3vw,40px);letter-spacing:-.01em;text-transform:uppercase;margin:0 0 12px">Get 10% off your first case</h2>
@@ -640,6 +698,10 @@
   $('burger').addEventListener('click', function(e){ e.stopPropagation(); mega.classList.toggle('open'); });
   document.addEventListener('click', function(e){ if (mega.classList.contains('open') && !mega.contains(e.target)) mega.classList.remove('open'); });
 
+  var _mq='Printed today \u2726 Your photo \u2726 1,000+ designs \u2726 3 local stores \u2726 12-mo print warranty \u2726 ';
+  document.querySelectorAll('.kpMarqIn').forEach(function(el){ el.textContent=_mq+_mq; });
+  var _km=document.getElementById('kpMatchGo');
+  if(_km) _km.addEventListener('click',function(){ var m=document.getElementById('kpMatchModel').value; location.href='customizer.html?model='+m.toLowerCase().replace(/[^a-z0-9]+/g,'-'); });
   // reviews wall
   var wall = [
     { hasPhoto:false, text:'I paid $60 for a case online last year and waited two weeks. This one was done before I finished my coffee — and it’s my kids’ faces, so it wins.', name:'Sarah K.', init:'SK', when:'June 2026' },

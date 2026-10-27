@@ -311,11 +311,11 @@
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:28px">
             <div>
               <div style="font-size:15px;font-weight:600;color:#17171F;margin-bottom:10px">Protection: <span style="font-weight:800">Strong</span></div>
-              <div style="height:5px;border-radius:999px;background:#E9E8E8;overflow:hidden"><div style="height:100%;width:74%;border-radius:999px;background:#2B5FA3;transition:width .4s cubic-bezier(.2,.7,.2,1)"></div></div>
+              <div style="height:5px;border-radius:999px;background:#E9E8E8;overflow:hidden"><div style="height:100%;width:74%;border-radius:999px;background:#2D2D3B;transition:width .4s cubic-bezier(.2,.7,.2,1)"></div></div>
             </div>
             <div>
               <div style="font-size:15px;font-weight:600;color:#17171F;margin-bottom:10px">Weight: <span style="font-weight:800">Light</span></div>
-              <div style="height:5px;border-radius:999px;background:#E9E8E8;overflow:hidden"><div style="height:100%;width:28%;border-radius:999px;background:#2B5FA3;transition:width .4s cubic-bezier(.2,.7,.2,1)"></div></div>
+              <div style="height:5px;border-radius:999px;background:#E9E8E8;overflow:hidden"><div style="height:100%;width:28%;border-radius:999px;background:#2D2D3B;transition:width .4s cubic-bezier(.2,.7,.2,1)"></div></div>
             </div>
           </div>
           <div style="display:flex;align-items:center;gap:18px;background:#F8F8FA;border:1px solid #EFEDED;border-radius:16px;padding:14px 18px;margin:-14px 0 26px">
@@ -361,7 +361,7 @@
             <div id="layoutChips" style="display:flex;flex-wrap:wrap;gap:7px"></div>
           </div>
           <button id="uploadBtn" class="h-upload" style="width:100%;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s">Upload a photo</button>
-          <div style="font-size:11.5px;color:#6C6C72;font-weight:600;margin-top:8px;text-align:center">🔒 Your photo never leaves this device — we don't upload or store it</div>
+          <div style="font-size:13px;color:#1E8E3E;font-weight:700;margin-top:10px;text-align:center">🔒 Your photo never leaves this device until you order</div>
           <a id="browseLink" href="gallery.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;background:#FBE0E1;border-radius:12px;padding:14px 16px;text-decoration:none">
             <span><span style="display:block;font-size:13px;font-weight:900;color:#B81F24">Want a ready-made design instead?</span>
             <span id="browseLinkSub" style="display:block;font-size:12px;font-weight:700;color:#4E4E50;margin-top:2px">Browse the full library for your phone</span></span>
@@ -420,7 +420,8 @@
             <div id="addons" style="display:flex;flex-direction:column;gap:8px"></div>
           </div>
 
-          <div style="display:flex;gap:8px;margin-bottom:8px">
+          <a href="#" id="promoReveal" style="display:inline-block;font-size:13px;font-weight:700;color:#6C6C72;text-decoration:underline;text-underline-offset:3px;margin-bottom:10px">Have a promo code?</a>
+          <div id="promoRow" style="display:none;gap:8px;margin-bottom:8px">
             <input id="promoInput" type="text" placeholder="Promo code" style="flex:1;min-width:0;padding:13px 18px;border-radius:999px;border:1px solid #E4E3E3;font-size:16px;text-transform:uppercase;color:#17171F;outline-color:#2D2D3B">
             <button id="promoBtn" class="h-outline" style="background:#FFFFFF;color:#17171F;border:1px solid #17171F;padding:13px 24px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer;transition:background .2s,color .2s">Apply</button>
           </div>
@@ -1470,6 +1471,8 @@
   });
 
   /* ── addons / promo / totals ── */
+  var _pr=$('promoReveal');
+  if(_pr) _pr.addEventListener('click',function(e){ e.preventDefault(); _pr.style.display='none'; var r=$('promoRow'); r.style.display='flex'; $('promoInput').focus(); });
   function kpPaintCtThumb(id, style){
     var cv=document.getElementById(id); if(!cv) return;
     var x=cv.getContext('2d'); var W=cv.width,H=cv.height;
@@ -1496,7 +1499,7 @@
       var pop = a.key==='screen';
       return '<button class="h-addon adn" data-k="'+a.key+'" style="position:relative;display:flex;align-items:center;gap:12px;background:'+(on?'#FBFAF8':'#FFFFFF')+';border:2px solid '+(on?'#2D2D3B':'#E4E3E3')+';border-radius:14px;padding:14px;cursor:pointer;text-align:left;transition:border-color .2s">'
         + (pop?'<span style="position:absolute;top:-9px;left:14px;background:#DC282E;color:#FFF;font-size:9px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px">Most popular</span>':'')
-        + '<span style="width:20px;height:20px;border-radius:6px;border:2px solid '+(on?'#17171F':'#CECDCD')+';background:'+(on?'#17171F':'#FFFFFF')+';display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-size:13px;font-weight:900;flex-shrink:0">'+(on?'\u2713':'')+'</span>'
+        + '<span style="width:42px;height:25px;border-radius:999px;background:'+(on?'#1E8E3E':'#D8D7D7')+';position:relative;flex-shrink:0;transition:background .2s"><span style="position:absolute;top:2.5px;left:'+(on?'20px':'2.5px')+';width:20px;height:20px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 4px rgba(0,0,0,.25);transition:left .2s"></span></span>'
         + '<span style="flex:1;font-size:13.5px;font-weight:800;color:#17171F">'+a.name+'<span style="display:block;font-size:12px;font-weight:600;color:#6C6C72;margin-top:1px">'+a.sub+'</span></span>'
         + '<span style="font-size:14px;font-weight:900;color:#2D2D3B">+$'+a.price.toFixed(2)+'</span></button>';
     }).join('');

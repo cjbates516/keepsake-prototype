@@ -226,7 +226,7 @@
         <div>
           <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#6C6C72;margin-bottom:14px">Design library</div>
           <h1 id="shopTitle" style="font-weight:900;font-size:clamp(24px,3.6vw,48px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0;line-height:1">Pick a design.<br>Make it yours.</h1>
-          <p style="font-size:16px;font-weight:700;color:#6E6E70;margin:14px 0 0">Every design, printed in store today.</p>
+          <p style="font-size:14px;font-weight:700;color:#6E6E70;margin:10px 0 0">Every design, printed in store today · <span style="background:#FFF4CC;color:#8a6d00;font-size:11px;font-weight:700;padding:3px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:.04em">Same-day</span></p>
         </div>
         <div style="font-size:13px;font-weight:800;color:#6C6C72"><span id="countLabel"></span></div>
       </div>
@@ -237,6 +237,7 @@
       <div id="stateBar" style="display:none;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px"></div>
       <div id="colorBar" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:30px"></div>
       <div class="kpStep" id="step3Lab"><span class="kpStepN">3</span><span style="font-weight:900;font-size:15px;color:#2D2D3B">Tap a case you love</span></div>
+      <div id="kpChips" style="position:sticky;top:0;z-index:45;display:none;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);margin:0 -20px 10px;padding:10px 20px;border-bottom:1px solid #EFEDED;overflow-x:auto;white-space:nowrap;scrollbar-width:none"></div>
       <div id="grid" style="min-height:70vh;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px"></div>
     </div>
   </main>
@@ -747,6 +748,7 @@
       return;
     }
     $('shopTitle').innerHTML = device ? (device + ' cases.') : 'Pick a design.<br>Make it yours.';
+    kpChipsSync();
     var grid = $('grid');
     if (!device){
       grid.style.gridTemplateColumns = 'repeat(auto-fill,minmax(220px,1fr))';
@@ -770,6 +772,13 @@
         + '<span style="font-size:30px">📷</span><span style="font-weight:800;font-size:14px;color:#2D2D3B;text-align:center">Use your own photo</span>'
         + '<span style="background:#DC282E;color:#FFF;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:10px 22px;border-radius:999px">Start</span></a>';
       for (var pi = 9; pi < cards.length; pi += 11) cards.splice(pi, 0, photoCard);
+      if (kpCurated) cards.splice(4, 0,
+        '<a href="gallery.html?cat=City%20maps" style="grid-column:1/-1;position:relative;display:block;border-radius:16px;overflow:hidden;text-decoration:none;aspect-ratio:21/8;background:#2D2D3B">'
+        + '<img src="assets/designs/thumbs/philadelphia-city-map-navy.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;opacity:.55;display:block">'
+        + '<span style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 22px;color:#FFF">'
+        + '<span style="font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#F0A9AB">Only at Keepsake</span>'
+        + '<span style="font-size:clamp(19px,4.5vw,28px);font-weight:900;line-height:1.1;margin-top:4px">Your town, on your phone.</span>'
+        + '<span style="font-size:12.5px;font-weight:700;margin-top:6px;opacity:.85">West Chester · Pottstown · Newark · Philly neighborhoods →</span></span></a>');
       grid.innerHTML = cards.join('');
       if (paged) grid.insertAdjacentHTML('beforeend',
         '<button class="kpLoadMore" style="grid-column:1/-1;display:block;width:100%;max-width:420px;margin:18px auto;background:#DC282E;color:#FFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Load more — ' + (items.length - shown.length) + ' left</button>');
@@ -806,7 +815,18 @@
     if (pagedD) grid.insertAdjacentHTML('beforeend',
       '<button class="kpLoadMore" style="grid-column:1/-1;display:block;width:100%;max-width:420px;margin:18px auto;background:#DC282E;color:#FFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Load more — ' + (kpTotalD - items.length) + ' left</button>');
   }
+  function kpChipsSync(){
+    var el=document.getElementById('kpChips'); if(!el) return;
+    var chip=function(label,hot){ return '<button class="kpChip" style="display:inline-block;margin-right:8px;background:'+(hot?'#FBE0E1':'#FFFFFF')+';border:1px solid '+(hot?'#DC282E':'#E4E3E3')+';color:'+(hot?'#DC282E':'#4E4E50')+';font-size:12.5px;font-weight:800;padding:8px 14px;border-radius:999px;cursor:pointer">'+label+'</button>'; };
+    el.innerHTML = chip((device||'Your phone')+' \u2304', !!device) + chip((filter==='All'?'Style':filter)+' \u2304', filter!=='All') + chip('\uD83D\uDD0D Search', false);
+  }
+  window.addEventListener('scroll', function(){
+    var el=document.getElementById('kpChips'), wz=document.getElementById('wizardBar');
+    if(!el||!wz) return;
+    el.style.display = (wz.getBoundingClientRect().bottom < 0) ? 'block' : 'none';
+  }, {passive:true});
   document.addEventListener('click', function(e){
+    if (e.target.closest && e.target.closest('.kpChip')){ window.scrollTo({top:0,behavior:'smooth'}); return; }
     var t = e.target.closest ? e.target.closest('.kpCatTile') : null;
     if (t){ filter = t.dataset.cat; kpBrowseAll = true; renderFilters(); renderStates(); renderGrid(); window.scrollTo({top:0,behavior:'smooth'}); return; }
     if (e.target.closest && e.target.closest('.kpBrowseAllBtn')){ kpBrowseAll = true; renderGrid(); return; }
