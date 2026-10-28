@@ -191,8 +191,8 @@ html,body{background:var(--paper)}
 .shelfHead h2{font-size:clamp(28px,3.4vw,44px);margin:0;line-height:1.04}
 .shelfHead a{color:var(--redD);font-size:14px;font-weight:800;text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
 .caseRow{display:flex;align-items:center;justify-content:center;padding:16px 0}
-.caseTile{flex:0 0 auto;width:clamp(96px,10vw,142px);aspect-ratio:10/19.5;border-radius:22px;background-size:cover;background-position:center;position:relative;border:3px solid rgba(255,255,255,.92);box-shadow:0 24px 44px -14px rgba(0,0,0,.5);transition:transform .25s cubic-bezier(.2,.7,.2,1)}
-.caseTile::after{content:"";position:absolute;top:8px;left:8px;width:36%;aspect-ratio:1;border-radius:30%;background:radial-gradient(circle at 30% 30%,#59627a 0 15%,#20242e 16% 32%,transparent 33%),radial-gradient(circle at 72% 30%,#59627a 0 15%,#20242e 16% 32%,transparent 33%),radial-gradient(circle at 30% 73%,#59627a 0 15%,#20242e 16% 32%,transparent 33%),rgba(15,16,22,.92);box-shadow:0 2px 8px rgba(0,0,0,.45)}
+.caseTile{flex:0 0 auto;width:clamp(100px,10.4vw,150px);position:relative;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.caseTile img{width:100%;height:auto;display:block;filter:drop-shadow(0 24px 34px rgba(0,0,0,.45)) drop-shadow(0 4px 10px rgba(0,0,0,.25))}
 .caseTile:hover{transform:translateY(-8px) !important}
 .ct1{transform:rotate(-9deg) translateY(18px);z-index:1}
 .ct2{transform:rotate(-4deg) translateY(4px);margin-left:-16px;z-index:2}
@@ -471,11 +471,11 @@ html,body{background:var(--paper)}
           <p style="margin:22px 0 0;font-size:13.5px;font-weight:700;color:rgba(246,239,227,.75)">The $99 Gift Set: case + screen protector + charger · Gift cards at the counter · Free redo within 7 days — a gift that can&rsquo;t miss.</p>
         </div>
         <div class="caseRow">
-          <a class="caseTile ct1" href="customizer.html?design=cream-snowflakes-on-navy.jpg" style="background-image:url('assets/designs/thumbs/cream-snowflakes-on-navy.jpg')" aria-label="Snowflakes on navy case"></a>
-          <a class="caseTile ct2" href="customizer.html?design=cheerful-santa-faces-and-snowflakes.jpg" style="background-image:url('assets/designs/thumbs/cheerful-santa-faces-and-snowflakes.jpg')" aria-label="Santa faces case"></a>
-          <a class="caseTile ct3" href="customizer.html?design=festive-christmas-icon-grid-red-green.jpg" style="background-image:url('assets/designs/thumbs/festive-christmas-icon-grid-red-green.jpg')" aria-label="Christmas icon grid case"></a>
-          <a class="caseTile ct4" href="customizer.html?design=labrador-retrievers-in-santa-hats.jpg" style="background-image:url('assets/designs/thumbs/labrador-retrievers-in-santa-hats.jpg')" aria-label="Labradors in santa hats case"></a>
-          <a class="caseTile ct5" href="customizer.html?design=festive-gingerbread-man.jpg" style="background-image:url('assets/designs/thumbs/festive-gingerbread-man.jpg')" aria-label="Gingerbread man case"></a>
+          <a class="caseTile ct1" href="customizer.html?design=cream-snowflakes-on-navy.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-xmas-snowflakes-navy.webp" alt="Snowflakes on navy case" loading="lazy" width="640" height="1267"></a>
+          <a class="caseTile ct2" href="customizer.html?design=cheerful-santa-faces-and-snowflakes.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-xmas-santa-faces.webp" alt="Santa faces case" loading="lazy" width="640" height="1267"></a>
+          <a class="caseTile ct3" href="customizer.html?design=festive-christmas-icon-grid-red-green.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-xmas-icon-grid.webp" alt="Christmas icon grid case" loading="lazy" width="640" height="1267"></a>
+          <a class="caseTile ct4" href="customizer.html?design=labrador-retrievers-in-santa-hats.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-xmas-santa-labs.webp" alt="Labradors in santa hats case" loading="lazy" width="640" height="1267"></a>
+          <a class="caseTile ct5" href="customizer.html?design=festive-gingerbread-man.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-xmas-gingerbread.webp" alt="Gingerbread man case" loading="lazy" width="640" height="1267"></a>
         </div>
       </div>
     </section>

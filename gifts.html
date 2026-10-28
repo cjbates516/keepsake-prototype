@@ -191,8 +191,8 @@ html,body{background:var(--paper)}
 .shelfHead h2{font-size:clamp(28px,3.4vw,44px);margin:0;line-height:1.04}
 .shelfHead a{color:var(--redD);font-size:14px;font-weight:800;text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
 .caseRow{display:flex;align-items:center;justify-content:center;padding:16px 0}
-.caseTile{flex:0 0 auto;width:clamp(96px,10vw,142px);aspect-ratio:10/19.5;border-radius:22px;background-size:cover;background-position:center;position:relative;border:3px solid rgba(255,255,255,.92);box-shadow:0 24px 44px -14px rgba(0,0,0,.5);transition:transform .25s cubic-bezier(.2,.7,.2,1)}
-.caseTile::after{content:"";position:absolute;top:8px;left:8px;width:36%;aspect-ratio:1;border-radius:30%;background:radial-gradient(circle at 30% 30%,#59627a 0 15%,#20242e 16% 32%,transparent 33%),radial-gradient(circle at 72% 30%,#59627a 0 15%,#20242e 16% 32%,transparent 33%),radial-gradient(circle at 30% 73%,#59627a 0 15%,#20242e 16% 32%,transparent 33%),rgba(15,16,22,.92);box-shadow:0 2px 8px rgba(0,0,0,.45)}
+.caseTile{flex:0 0 auto;width:clamp(100px,10.4vw,150px);position:relative;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.caseTile img{width:100%;height:auto;display:block;filter:drop-shadow(0 24px 34px rgba(0,0,0,.45)) drop-shadow(0 4px 10px rgba(0,0,0,.25))}
 .caseTile:hover{transform:translateY(-8px) !important}
 .ct1{transform:rotate(-9deg) translateY(18px);z-index:1}
 .ct2{transform:rotate(-4deg) translateY(4px);margin-left:-16px;z-index:2}
