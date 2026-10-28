@@ -783,10 +783,10 @@
           viewReady=true; viewFailed=false; computeMaskBox(); render();
         };
         viewImg.onerror=function(){
-          if(!viewImg.__kpRetried){ viewImg.__kpRetried=true; var im=viewImg; setTimeout(function(){ im.src='assets/masks/'+vm+'?v=8&r=1'; },800); }
+          if(!viewImg.__kpRetried){ viewImg.__kpRetried=true; var im=viewImg; setTimeout(function(){ im.src='assets/masks/'+vm+'?v=9&r=1'; },800); }
           else viewFailed=true;
         };
-        viewImg.src='assets/masks/'+vm+'?v=8';
+        viewImg.src='assets/masks/'+vm+'?v=9';
       }
     } else { viewImg=null; viewReady=false; viewSrc=null; }
     var ls='assets/cases/'+((state.caseType==='Tough Magnetic' && k.tough) ? k.tough.file : (k.light||col.f));
