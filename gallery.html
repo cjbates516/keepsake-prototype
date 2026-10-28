@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Keepsake Printing Co">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="assets/favicon-16.png" sizes="16x16" type="image/png">
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Nunito+Sans:wght@400;700;800;900&display=swap" rel="stylesheet">
 <style>
   html,body{margin:0;padding:0;background:#FFFFFF}
   body{font-family:"Nunito Sans","Avenir","Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif;color:#4E4E50;-webkit-font-smoothing:antialiased}
@@ -71,7 +71,11 @@
 .kpStepN{width:26px;height:26px;border-radius:50%;background:#2D2D3B;color:#FFF;font-size:13px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .kpStepDone{background:#1E8E3E}
   #mega.open{max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto}
-  </style>
+  
+/* ── v2 identity carry ── */
+body{background:#FFFBF7}
+h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;letter-spacing:-.01em}
+</style>
 </head>
 <body>
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
@@ -251,7 +255,7 @@
       <div style="display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:22px">
         <div>
           <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#6C6C72;margin-bottom:14px">Design library</div>
-          <h1 id="shopTitle" style="font-weight:900;font-size:clamp(24px,3.6vw,48px);letter-spacing:-.01em;color:#2D2D3B;text-transform:uppercase;margin:0;line-height:1">Pick a design.<br>Make it yours.</h1>
+          <h1 id="shopTitle" style="font-weight:900;font-size:clamp(26px,3.8vw,52px);letter-spacing:-.01em;color:#191921;margin:0;line-height:1.02">Pick a design.<br>Make it yours.</h1>
           <p style="font-size:14px;font-weight:700;color:#6E6E70;margin:10px 0 0">Every design, printed in store today · <span style="background:#FFF4CC;color:#8a6d00;font-size:11px;font-weight:700;padding:3px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:.04em">Same-day</span></p>
         </div>
         <div style="font-size:13px;font-weight:800;color:#6C6C72"><span id="countLabel"></span></div>
@@ -402,6 +406,15 @@
   /* curated front page: ~48 picks shown by default; full library behind Browse all.
      Rotate the seasonal block (currently Halloween) when seasons change. */
   var KP_FEATURED = ["west-chester-city-map-cream.jpg", "go-birds-kelly-green.jpg", "philadelphia-city-map-navy.jpg", "abstract-leopard-pink.jpg", "charming-minimalist-black-hearts-pattern-2.jpg", "philadelphia-city-map-cream.jpg", "zodiac-leo-night-sky.jpg", "stylish-white-daisy-floral-pattern.jpg", "where-it-all-began-heart-map-cream.jpg", "dreamy-gradient-cosmic-background-with-sparkles.jpg", "playful-cartoon-cherries.jpg", "colorful-playful-abstract-shapes.jpg", "halloween-bats-on-orange.jpg", "halloween-bold-pumpkins-on-black.jpg", "halloween-boo-crew-ghosts-on-charcoal.jpg", "halloween-cowboy-ghosts-on-cream.jpg", "baltimore-atlas.jpg", "adorable-3d-rendered-white-mouse-plush-toy-floral.jpg", "abstract-geometric-minimalist-artwork.jpg", "abstract-leopard-spots-pattern.jpg", "zodiac-aquarius-blush.jpg", "black-heart-shapes.jpg", "bold-barbed-wire-smiley-face-digital.jpg", "coastal-summer-01.jpg", "cheerful-cartoon-sun-with-colorful-rays.jpg", "cheerful-pastel-watercolor-rainbow-pattern.jpg", "aura-chrome-gradient-butter.jpg", "cheerful-pink-strawberry-pattern.jpg", "adorable-cartoon-lion-face.jpg", "area-code-215-blush.jpg", "abstract-geometric-mountain-landscape-digital-art.jpg", "polka-dots-cherry-navy-on-ivory.jpg", "cheerful-christmas-cartoon.jpg", "bold-chevron-stripe-on-black-background.jpg", "birth-flower-april-daisy.jpg", "dog-90s-dog.jpg", "clear-mini-hearts-transparent.png", "baltimore-map-blush.jpg", "boho-floral-01.jpg", "abstract-geometric-oval-art-with-textures-and-colors.jpg", "abstract-leopard-spots-pattern-on-beige-background.jpg", "zodiac-aquarius-gold-noir.jpg", "charming-penguin-holding-heart-watercolor.jpg", "bold-yellow-smiley-face-street-art.jpg", "coastal-summer-02.jpg", "cheerful-cartoon-sun-with-radiant-rays.jpg", "cherries-tied-with-ribbon-bow.jpg", "aura-chrome-gradient-chrome.jpg"];
+  if (new Date() >= new Date(new Date().getFullYear(),10,1)) {
+    var _hl = document.querySelector('a[href="gallery.html?cat=Halloween"]');
+    if (_hl){ _hl.href='gallery.html?cat=Christmas'; _hl.textContent='Christmas'; }
+  }
+  // Nov 1 onward: Halloween featured slots rotate to holiday designs
+  if (new Date() >= new Date(new Date().getFullYear(), 10, 1)) {
+    var _hol = ["cheerful-santa-faces-and-snowflakes.jpg","cream-snowflakes-on-navy.jpg","festive-christmas-icon-grid-red-green.jpg","labrador-retrievers-in-santa-hats.jpg"];
+    KP_FEATURED = KP_FEATURED.map(function(f){ return f.indexOf('halloween-')===0 ? (_hol.shift()||f) : f; });
+  }
   var kpBrowseAll = /[?&](all|cat|q|color|state|device)=/.test(location.search);
   var KP_TILE_CATS = ['City maps','Halloween','Florals','Abstract','Animal print','Zodiac','Hearts','Hometown'];
   function kpCatThumb(cat){
@@ -763,7 +776,8 @@
       var paged = !kpCurated && items.length > kpLimit;
       var shown = paged ? items.slice(0, kpLimit) : items;
       var cards = shown.map(function(d){
-        var badge = d.category==='Halloween' ? '<span class="kpBadge kpB-season">Seasonal</span>'
+        var _sm=new Date().getMonth()+1; var _scat=(_sm>=11||_sm<=1)?'Christmas':'Halloween';
+        var badge = d.category===_scat ? '<span class="kpBadge kpB-season">Seasonal</span>'
           : (KP_FEATURED.indexOf(d.file)>-1 && KP_FEATURED.indexOf(d.file)<12 ? '<span class="kpBadge kpB-pick">Staff pick</span>' : '');
         return '<a class="h-card" href="customizer.html?design=' + encodeURIComponent(d.file) + '" style="display:block;text-decoration:none;animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:16px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
           + '<div style="position:relative;aspect-ratio:1/1;background:#F7F7F7"><img src="assets/designs/thumbs/' + d.file + '" onerror="this.closest(\'.h-card\').style.display=\'none\'" alt="' + d.title + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">' + badge + '</div>'

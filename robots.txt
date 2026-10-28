@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /staff.html
 Sitemap: https://cjbates516.github.io/keepsake-prototype/sitemap.xml

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://cjbates516.github.io/keepsake-prototype/</loc></url>
-  <url><loc>https://cjbates516.github.io/keepsake-prototype/gallery.html</loc></url>
-  <url><loc>https://cjbates516.github.io/keepsake-prototype/customizer.html</loc></url>
-  <url><loc>https://cjbates516.github.io/keepsake-prototype/help.html</loc></url>
-  <url><loc>https://cjbates516.github.io/keepsake-prototype/b2b.html</loc></url>
-  <url><loc>https://cjbates516.github.io/keepsake-prototype/teachers.html</loc></url>
-  <url><loc>https://cjbates516.github.io/keepsake-prototype/account.html</loc></url>
-  <url><loc>https://cjbates516.github.io/keepsake-prototype/track.html</loc></url>
-  <url><loc>https://cjbates516.github.io/keepsake-prototype/checkout.html</loc></url>
+  <url><loc>https://cjbates516.github.io/keepsake-prototype/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://cjbates516.github.io/keepsake-prototype/gallery.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cjbates516.github.io/keepsake-prototype/customizer.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cjbates516.github.io/keepsake-prototype/gifts.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://cjbates516.github.io/keepsake-prototype/help.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://cjbates516.github.io/keepsake-prototype/b2b.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://cjbates516.github.io/keepsake-prototype/teachers.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://cjbates516.github.io/keepsake-prototype/track.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
 </urlset>
