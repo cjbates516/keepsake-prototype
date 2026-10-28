@@ -10944,5 +10944,351 @@
 "Pink",
 "Yellow"
 ]
+},
+{
+"file": "christmas-reindeer-parade.jpg",
+"title": "Reindeer Parade",
+"category": "Christmas",
+"hash": "d4160c653d70",
+"color": [
+"Green",
+"Red"
+]
+},
+{
+"file": "christmas-gold-ornaments.jpg",
+"title": "Gold Ornaments",
+"category": "Christmas",
+"hash": "d7fee1a01963",
+"color": [
+"Red",
+"Yellow"
+]
+},
+{
+"file": "christmas-gingerbread-candy-pink.jpg",
+"title": "Gingerbread Candy",
+"category": "Christmas",
+"hash": "b0c4fb4ebe1e",
+"color": [
+"Pink",
+"Brown"
+]
+},
+{
+"file": "christmas-presents-on-white.jpg",
+"title": "Presents on White",
+"category": "Christmas",
+"hash": "b3da435642e3",
+"color": [
+"White",
+"Red",
+"Green"
+]
+},
+{
+"file": "christmas-cocoa-candy-canes.jpg",
+"title": "Cocoa & Candy Canes",
+"category": "Christmas",
+"hash": "455e84084944",
+"color": [
+"Beige",
+"Red"
+]
+},
+{
+"file": "christmas-wreaths-and-bows.jpg",
+"title": "Wreaths & Bows",
+"category": "Christmas",
+"hash": "7985d2f7a57a",
+"color": [
+"White",
+"Green",
+"Red"
+]
+},
+{
+"file": "christmas-penguins-on-blue.jpg",
+"title": "Penguins on Blue",
+"category": "Christmas",
+"hash": "a6c23c9ee0f1",
+"color": [
+"Blue",
+"White"
+]
+},
+{
+"file": "christmas-teddy-gifts.jpg",
+"title": "Teddy Gifts",
+"category": "Christmas",
+"hash": "ed036b82debe",
+"color": [
+"Beige",
+"Brown",
+"Red"
+]
+},
+{
+"file": "christmas-trees-on-blue.jpg",
+"title": "Trees on Blue",
+"category": "Christmas",
+"hash": "2f94d92bf5d2",
+"color": [
+"Blue",
+"Green"
+]
+},
+{
+"file": "christmas-jingle-bells.jpg",
+"title": "Jingle Bells",
+"category": "Christmas",
+"hash": "a8a42c871b7f",
+"color": [
+"White",
+"Yellow",
+"Green"
+]
+},
+{
+"file": "christmas-cupcakes.jpg",
+"title": "Christmas Cupcakes",
+"category": "Christmas",
+"hash": "dcd2841a94c7",
+"color": [
+"White",
+"Pink",
+"Red"
+]
+},
+{
+"file": "christmas-stockings-cream.jpg",
+"title": "Stockings on Cream",
+"category": "Christmas",
+"hash": "63384b6905a5",
+"color": [
+"Beige",
+"Red",
+"Green"
+]
+},
+{
+"file": "christmas-santa-and-elves.jpg",
+"title": "Santa & Elves",
+"category": "Christmas",
+"hash": "5567904bbe73",
+"color": [
+"White",
+"Red",
+"Green"
+]
+},
+{
+"file": "christmas-gingerbread-houses-teal.jpg",
+"title": "Gingerbread Houses",
+"category": "Christmas",
+"hash": "36f5a937e18f",
+"color": [
+"Blue",
+"Brown"
+]
+},
+{
+"file": "christmas-snow-globes-pink.jpg",
+"title": "Snow Globes",
+"category": "Christmas",
+"hash": "8bd8f2a3179c",
+"color": [
+"Pink",
+"Blue"
+]
+},
+{
+"file": "christmas-owls-green.jpg",
+"title": "Christmas Owls",
+"category": "Christmas",
+"hash": "532dc73606b1",
+"color": [
+"Green",
+"Brown",
+"Red"
+]
+},
+{
+"file": "christmas-snowmen-on-blue.jpg",
+"title": "Snowmen on Blue",
+"category": "Christmas",
+"hash": "cf10eae46e5b",
+"color": [
+"Blue",
+"White",
+"Red"
+]
+},
+{
+"file": "christmas-polar-bears.jpg",
+"title": "Polar Bears",
+"category": "Christmas",
+"hash": "7b35d02daff6",
+"color": [
+"Blue",
+"White",
+"Green"
+]
+},
+{
+"file": "christmas-santa-hats-white.jpg",
+"title": "Santa Hats on White",
+"category": "Christmas",
+"hash": "d0d3cd636e52",
+"color": [
+"White",
+"Red"
+]
+},
+{
+"file": "christmas-santa-faces-red.jpg",
+"title": "Santa Faces on Red",
+"category": "Christmas",
+"hash": "2057210c8d5e",
+"color": [
+"Red",
+"White"
+]
+},
+{
+"file": "christmas-toy-trains.jpg",
+"title": "Toy Trains",
+"category": "Christmas",
+"hash": "1dbd7eee1fa3",
+"color": [
+"Blue",
+"Red",
+"Green"
+]
+},
+{
+"file": "christmas-mittens-peach.jpg",
+"title": "Cozy Mittens",
+"category": "Christmas",
+"hash": "5f4f679484cb",
+"color": [
+"Orange",
+"Beige"
+]
+},
+{
+"file": "christmas-elves-cream.jpg",
+"title": "Elves on Cream",
+"category": "Christmas",
+"hash": "b07265f6c682",
+"color": [
+"Beige",
+"Green",
+"Red"
+]
+},
+{
+"file": "coquette-christmas-gold-bows.jpg",
+"title": "Gold Bows on White",
+"category": "Christmas",
+"hash": "0c947b8efdaf",
+"color": [
+"White",
+"Yellow"
+]
+},
+{
+"file": "coquette-christmas-evergreen-bows.jpg",
+"title": "Evergreen Bows",
+"category": "Christmas",
+"hash": "c8db683f32f2",
+"color": [
+"White",
+"Green"
+]
+},
+{
+"file": "coquette-christmas-red-bows.jpg",
+"title": "Red Bows on White",
+"category": "Christmas",
+"hash": "90f9bc93403d",
+"color": [
+"White",
+"Red"
+]
+},
+{
+"file": "coquette-christmas-bows-on-red.jpg",
+"title": "White Bows on Red",
+"category": "Christmas",
+"hash": "42d1bdc9c9ce",
+"color": [
+"Red",
+"White"
+]
+},
+{
+"file": "coquette-christmas-bows-on-gold.jpg",
+"title": "White Bows on Gold",
+"category": "Christmas",
+"hash": "52131239a259",
+"color": [
+"Yellow",
+"White"
+]
+},
+{
+"file": "coquette-christmas-bows-on-green.jpg",
+"title": "White Bows on Evergreen",
+"category": "Christmas",
+"hash": "46ef91392709",
+"color": [
+"Green",
+"White"
+]
+},
+{
+"file": "retro-70s-icon-toss-cream.jpg",
+"title": "70s Icon Toss",
+"category": "Retro & Y2K",
+"hash": "71f4c07b200a",
+"color": [
+"Beige",
+"Pink",
+"Orange"
+]
+},
+{
+"file": "retro-70s-yin-yang-hearts.jpg",
+"title": "Yin Yang Hearts",
+"category": "Retro & Y2K",
+"hash": "4d562d3addaa",
+"color": [
+"Blue",
+"Pink",
+"Red"
+]
+},
+{
+"file": "clear-retro-70s-transparent.png",
+"title": "Clear Retro 70s",
+"category": "Clear",
+"hash": "1112c359ebcc",
+"color": [
+"Orange",
+"Pink",
+"Yellow"
+]
+},
+{
+"file": "clear-valentine-crew-transparent.png",
+"title": "Clear Valentine Crew",
+"category": "Clear",
+"hash": "23466d58b6a9",
+"color": [
+"Red",
+"Pink",
+"Brown"
+]
 }
 ]
