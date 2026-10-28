@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>Holiday Gift Guide — Keepsake Printing Co</title>
+<link rel="canonical" href="https://cjbates516.github.io/keepsake-prototype/">
+<meta property="og:title" content="Holiday Gift Guide — Keepsake Printing Co">
+<meta property="og:description" content="Custom phone cases and photo gifts printed while you shop — West Chester, Pottstown, Newark DE.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cjbates516.github.io/keepsake-prototype/">
+<meta property="og:image" content="https://cjbates516.github.io/keepsake-prototype/assets/apple-touch-icon.png">
+<meta property="og:site_name" content="Keepsake Printing Co">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/favicon-16.png" sizes="16x16" type="image/png">
+<meta name="description" content="Holiday gift guide: custom phone cases, AirPods prints, tumblers and photo slates printed in store the same day in West Chester, Pottstown and Newark DE.">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Nunito+Sans:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;background:#FFFFFF}
+  body{font-family:"Nunito Sans","Avenir","Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif;color:#4E4E50;-webkit-font-smoothing:antialiased}
+  a{color:#DC282E;text-decoration:none}
+  a:hover{color:#B81F24;text-decoration:underline}
+  input,button,select,textarea{font-family:inherit}
+  .kpMenuPhone{display:none}
+  @media(max-width:640px){
+    .kpMenuPhone{display:block;padding:8px 20px 26px}
+    #mega>div:not(.kpMenuPhone){display:none !important}
+    .kpMRow{display:flex;align-items:center;gap:14px;padding:16px 2px;font-size:16.5px;font-weight:800;color:#17171F;text-decoration:none;border-bottom:1px solid #F0EEEE}
+    .kpMRow span{font-size:20px}.kpMRow b{margin-left:auto;color:#B9BDCB;font-weight:900}
+    .kpMThumbs{display:flex;gap:10px;overflow-x:auto;padding:16px 0 4px;scrollbar-width:none}
+    .kpMThumbs img{width:64px;height:84px;object-fit:cover;border-radius:10px;flex:0 0 auto}
+    .kpMCta{display:block;text-align:center;background:#DC282E;color:#FFF;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:15px;border-radius:999px;margin-top:16px;text-decoration:none}
+  }
+  .kpOcc{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;width:84px}
+  .kpOcc img{width:76px;height:76px;border-radius:50%;object-fit:cover;border:2.5px solid #FFFFFF;box-shadow:0 0 0 2px #F0D5D6;transition:transform .2s}
+  .kpOcc:hover img{transform:scale(1.07)}
+  .kpOcc span{font-size:12px;font-weight:800;color:#2D2D3B;text-align:center}
+  .kpOccPhoto > span:first-child{display:flex;align-items:center;justify-content:center;width:76px;height:76px;border-radius:50%;background:#FFF7F7;border:2px dashed #DC282E;font-size:26px}
+  .kpMarq{animation:kpMarq 26s linear infinite}
+  @keyframes kpMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .kpSeasonChip{position:absolute;top:14px;left:14px;z-index:5;background:#F6851F;color:#17171F;font-size:13px;font-weight:900;letter-spacing:.04em;padding:9px 16px;border-radius:14px 14px 14px 3px;text-decoration:none;box-shadow:0 8px 20px rgba(246,133,31,.35)}
+  img{max-width:100%}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes reveal{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes ksPhoto{
+    0%{transform:translate(0,0) rotate(0deg) scale(1);opacity:0}
+    8%,20%{transform:translate(0,0) rotate(0deg) scale(1);opacity:1}
+    32%{transform:translate(5px,-7px) rotate(4deg) scale(1);opacity:1}
+    56%{transform:translate(44px,9px) rotate(9deg) scale(.76);opacity:1}
+    62%,100%{transform:translate(44px,9px) rotate(9deg) scale(.76);opacity:0}
+  }
+  @keyframes ksPrint{0%,54%{opacity:0}64%,88%{opacity:1}96%,100%{opacity:0}}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important;transition:none !important} }
+  /* hover utilities (ported from style-hover attributes) */
+  .h-circle:hover{background:#F3F2F2}
+  .h-redlink:hover{color:#DC282E;text-decoration:none}
+  .h-darkred:hover{color:#B81F24;text-decoration:none}
+  .h-inklink:hover{color:#2D2D3B;text-decoration:none}
+  .h-cta{transition:background .2s,transform .2s}
+  .h-cta:hover{background:#2D2D3B !important;transform:translateY(-2px)}
+  .h-cta:active{transform:scale(.98)}
+  .h-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(78,78,80,.14)}
+  .h-cardsm:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(78,78,80,.14)}
+  .h-gal:hover{transform:translateY(-5px) rotateY(-6deg);box-shadow:0 18px 40px rgba(78,78,80,.16)}
+  .h-tilecol:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(78,78,80,.18);text-decoration:none}
+  .h-borderred:hover{border-color:#DC282E !important;color:#DC282E !important}
+  .h-borderink:hover{border-color:#2D2D3B !important;color:#2D2D3B !important}
+  .h-makeone:hover{background:#DC282E !important;color:#FFFFFF !important;border-color:#DC282E !important}
+  .h-step:hover{border-color:#DC282E !important}
+  .h-perkdark:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(220,40,46,.28)}
+  .h-perkdarker:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(46,56,61,.3)}
+  .h-b2b:hover{background:#DC282E !important}
+  .h-chatred:hover{background:#B81F24 !important}
+  .h-foot{color:#6E6E70}
+  .h-foot:hover{color:#2D2D3B;text-decoration:none}
+  .h-quiz:hover{border-color:#DC282E !important;color:#DC282E !important}
+  .h-quiz:active{transform:scale(.96)}
+  .h-chip:hover .ring{border-color:#DC282E;transform:scale(1.05)}
+  .h-chip:hover{text-decoration:none}
+  .h-navy:hover{background:#2D2D3B !important;color:#FFFFFF !important;border-color:#B81F24 !important}
+  /* placeholder image slots */
+  .slot{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#F3F2F2;color:#6C6C72;
+    font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;text-align:center;padding:10px;box-sizing:border-box;line-height:1.4}
+  .desktop-only{display:inline-flex}
+  @media(max-width:760px){.desktop-only{display:none !important}}
+  #mega{display:none}
+  #mega.open{display:block;max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+@media(max-width:900px){#mega>div{padding-bottom:150px !important}}
+  .heroUnit{position:absolute;inset:0}
+  .heroUnit img,.heroUnit canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;transform:scale(1.18)}
+  .heroUnit canvas{opacity:0;transition:opacity .6s ease}
+  #heroL{transform:translateX(-42%) scale(.8) rotate(-7deg);z-index:1;filter:drop-shadow(0 18px 24px rgba(46,56,61,.16))}
+  #heroC{z-index:2;filter:drop-shadow(0 24px 32px rgba(46,56,61,.2))}
+  #heroR{transform:translateX(42%) scale(.8) rotate(7deg);z-index:1;filter:drop-shadow(0 18px 24px rgba(46,56,61,.16))}
+  @media(max-width:640px){
+  #mapsBand > div{grid-template-columns:1fr !important;min-height:0 !important;padding:38px 22px 44px !important;gap:18px !important}
+  #mapsBand .kpFan img:first-child,#mapsBand .kpFan img:last-child{display:none !important}
+  #mapsBand .kpFan img{width:98px !important;transform:none !important}
+  #mapsBand h2{font-size:34px !important}
+  .kpLookHint{display:none}
+    #heroL{transform:translateX(-33%) scale(.72) rotate(-7deg)}
+    #heroR{transform:translateX(33%) scale(.72) rotate(7deg)}
+  }
+.kpBest{flex:0 0 205px;scroll-snap-align:start;text-decoration:none;text-align:center}
+@media(max-width:640px){.kpBest{flex:0 0 44%}}
+.kpBest:hover img{transform:translateY(-4px)}
+.kpBest img{transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.kpTile{position:relative;display:block;border-radius:24px;overflow:hidden;text-decoration:none;background:#F3F2F2}
+.kpTile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.kpTile:hover img{transform:scale(1.04)}
+.kpTile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,23,31,.38),rgba(23,23,31,0) 42%);pointer-events:none}
+.kpTile span{z-index:1;position:absolute;top:18px;left:20px;right:20px;color:#FFF;font-weight:900;font-size:clamp(20px,2.4vw,28px);line-height:1.15;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+.kpTileGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.kpTile{aspect-ratio:1/1.06}
+.kpTile.wide{grid-column:1/-1;aspect-ratio:16/9}
+@media(min-width:641px){
+  .kpTileGrid{grid-template-columns:repeat(4,1fr);gap:16px}
+  .kpTile{aspect-ratio:1/1.25}
+  .kpTile.wide{grid-column:auto;aspect-ratio:1/1.25}
+  .kpTile span{font-size:19px}
+}
+@media(max-width:640px){
+  #heroSec .heroFloat,#heroSec .heroSaleCard{display:none !important}
+  #heroSec .heroSaleTop{display:block !important}
+  #heroSec h1{font-size:34px !important;line-height:1.05 !important;margin-bottom:12px !important}
+  #heroSec{display:flex !important;flex-direction:column-reverse !important;gap:0 !important;padding:6px 22px 30px !important;background:linear-gradient(180deg,#FDF0F0 0%,#FFFFFF 86%)}
+  #heroSec .heroBadge,#heroSec .heroSub{display:none !important}
+  #heroSec .heroStats{display:block !important;font-size:12.5px !important;margin-top:14px !important}
+  #heroSec .heroEyebrow{display:block !important}
+  #heroCase{width:204px !important;height:390px !important}
+  #heroSec > div:last-child{padding:12px 0 0 !important}
+  #heroSec .h-cta{display:block !important;text-align:center;width:100% !important;box-sizing:border-box}
+  #heroTrio{transform:scale(.94);margin:0 0 -6px !important}
+  #heroSec .heroQuiz{border:0 !important;padding:12px 4px !important;font-size:12px !important;text-decoration:underline;text-underline-offset:3px}
+}
+#heroSec{background:linear-gradient(180deg,#FDF0F0 0%,#FFFFFF 100%)}
+#bsFan{display:none}
+@media(min-width:901px){
+  #bsFan img{width:128px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.35));border-radius:18px}
+  #bsFan img:nth-child(1){transform:rotate(-13deg) translate(24px,8px)}
+  #bsFan img:nth-child(2){transform:rotate(-6deg) translate(10px,-3px);z-index:1}
+  #bsFan img:nth-child(3){width:146px;transform:translateY(-12px);z-index:2}
+  #bsFan img:nth-child(4){transform:rotate(6deg) translate(-10px,-3px);z-index:1}
+  #bsFan img:nth-child(5){transform:rotate(13deg) translate(-24px,8px)}
+}
+@media(min-width:901px) and (max-width:1150px){
+}
+@media(max-width:900px){
+}
+  #mega.open{max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto}
+  
+/* ================= 2026 overhaul ================= */
+:root{--ink:#191921;--paper:#FFFBF7;--mut:#6F6A66;--red:#DC282E;--redD:#B81F24;--ever:#0E3B2E;--navy:#1D2B4F;--blush:#FFE9E3;--cream:#F6EFE3;--line:#EFE9E2}
+html,body{background:var(--paper)}
+.dsp{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;letter-spacing:-.028em;color:var(--ink)}
+.eyebrow{font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+.ctaMain{display:inline-block;background:var(--red);color:#FFF;padding:18px 34px;border-radius:999px;font-size:15px;font-weight:900;text-decoration:none;transition:transform .2s,background .2s;box-shadow:0 10px 24px rgba(220,40,46,.28)}
+.ctaMain:hover{background:var(--ink);color:#FFF;transform:translateY(-2px);text-decoration:none}
+.ctaGhost{display:inline-block;color:var(--ink);border:2px solid var(--ink);padding:16px 30px;border-radius:999px;font-size:15px;font-weight:900;text-decoration:none;transition:background .2s,color .2s}
+.ctaGhost:hover{background:var(--ink);color:#FFF;text-decoration:none}
+#heroSec2{max-width:1280px;margin:0 auto;padding:64px 40px 72px;display:grid;grid-template-columns:1.05fr 1fr;gap:30px;align-items:center}
+.kpStick{display:inline-block;background:#FFF;border:1.5px solid var(--ink);border-radius:12px 12px 12px 3px;padding:9px 16px;font-size:12.5px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);transform:rotate(-1.5deg);box-shadow:3px 3px 0 var(--red);margin-bottom:26px}
+#heroSec2 h1{font-size:clamp(46px,6.6vw,96px);line-height:.96;margin:0 0 22px}
+#heroSec2 h1 em{font-style:normal;color:var(--red)}
+.heroSub2{font-size:17px;line-height:1.6;color:var(--mut);max-width:470px;margin:0 0 30px}
+.heroStats2{margin-top:30px;font-size:14px;font-weight:700;color:var(--mut)}
+#heroArt{position:relative;display:flex;align-items:center;justify-content:center;padding:26px 0 30px;min-width:0}
+.ha{filter:drop-shadow(0 30px 38px rgba(25,25,33,.26)) drop-shadow(0 6px 12px rgba(25,25,33,.12));height:auto}
+.haC{width:clamp(190px,20vw,264px);z-index:2;position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.haL,.haR{width:clamp(150px,15.5vw,208px);z-index:1}
+.haL{transform:rotate(-8deg) translateY(20px);margin-right:-30px}
+.haR{transform:rotate(8deg) translateY(20px);margin-left:-30px}
+#heroArt:hover .haC{transform:translateY(-8px)}
+.kpHolChip{position:absolute;top:-2px;left:0;z-index:6;background:var(--ever);color:var(--cream);font-size:13px;font-weight:900;letter-spacing:.03em;padding:10px 16px;border-radius:14px 14px 14px 3px;text-decoration:none;box-shadow:0 10px 24px rgba(14,59,46,.35);transform:rotate(-2deg)}
+.kpHolChip:hover{color:#FFF;text-decoration:none}
+.kpQuote{position:absolute;bottom:-4px;right:0;z-index:6;background:#FFF;border-radius:12px;padding:12px 16px;box-shadow:0 16px 36px rgba(25,25,33,.16);transform:rotate(2deg);display:flex;flex-direction:column;gap:2px;max-width:190px}
+.kpQuote .st{color:var(--red);font-size:13px;letter-spacing:2px}
+.kpQuote b{font-size:13px;font-weight:800;color:var(--ink)}
+.kpQuote i{font-style:normal;font-size:11px;font-weight:700;color:var(--mut)}
+.shelfHead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:28px}
+.shelfHead h2{font-size:clamp(28px,3.4vw,44px);margin:0;line-height:1.04}
+.shelfHead a{color:var(--redD);font-size:14px;font-weight:800;text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
+.caseRow{display:flex;align-items:center;justify-content:center;padding:16px 0}
+.caseTile{flex:0 0 auto;width:clamp(96px,10vw,142px);aspect-ratio:10/19.5;border-radius:22px;background-size:cover;background-position:center;position:relative;border:3px solid rgba(255,255,255,.92);box-shadow:0 24px 44px -14px rgba(0,0,0,.5);transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.caseTile::after{content:"";position:absolute;top:8px;left:8px;width:36%;aspect-ratio:1;border-radius:30%;background:radial-gradient(circle at 30% 30%,#59627a 0 15%,#20242e 16% 32%,transparent 33%),radial-gradient(circle at 72% 30%,#59627a 0 15%,#20242e 16% 32%,transparent 33%),radial-gradient(circle at 30% 73%,#59627a 0 15%,#20242e 16% 32%,transparent 33%),rgba(15,16,22,.92);box-shadow:0 2px 8px rgba(0,0,0,.45)}
+.caseTile:hover{transform:translateY(-8px) !important}
+.ct1{transform:rotate(-9deg) translateY(18px);z-index:1}
+.ct2{transform:rotate(-4deg) translateY(4px);margin-left:-16px;z-index:2}
+.ct3{transform:scale(1.14);margin-left:-14px;z-index:3}
+.ct4{transform:rotate(4deg) translateY(4px);margin-left:-14px;z-index:2}
+.ct5{transform:rotate(9deg) translateY(18px);margin-left:-16px;z-index:1}
+#holidayBand{background:var(--ever);overflow:hidden}
+#holidayBand .inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:34px;align-items:center;padding:78px 48px}
+#holidayBand h2{color:var(--cream);font-size:clamp(36px,4.4vw,62px);line-height:1;margin:0 0 18px}
+#holidayBand p{color:rgba(246,239,227,.85);font-size:16.5px;line-height:1.65;max-width:440px;margin:0 0 28px}
+.ctaCream{display:inline-block;background:var(--cream);color:var(--ever);padding:17px 32px;border-radius:999px;font-weight:900;font-size:14.5px;text-decoration:none;transition:transform .2s}
+.ctaCream:hover{transform:translateY(-2px);color:var(--ever);text-decoration:none}
+.stepNum{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-size:64px;font-weight:800;line-height:1;color:var(--red);opacity:.2;margin-bottom:14px}
+.h-step2{border-top:2px solid var(--line);padding-top:26px;transition:border-color .25s}
+.h-step2:hover{border-color:var(--red)}
+.h-step2 h3{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;font-size:21px;color:var(--ink);letter-spacing:-.015em;margin:0 0 10px}
+.trustRow{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;text-align:center}
+.trustRow>div{display:flex;flex-direction:column;align-items:center;gap:9px;padding:18px 8px;background:#FFF;border:1px solid var(--line);border-radius:16px}
+.trustRow svg{color:var(--red)}
+.trustRow b{font-weight:800;font-size:13px;color:var(--ink)}
+@media(max-width:860px){
+  #heroSec2{grid-template-columns:1fr;padding:16px 22px 44px;gap:4px}
+  #heroSec2>div:last-child{order:-1}
+  #heroSec2 h1{font-size:44px}
+  .heroSub2{font-size:15.5px;margin-bottom:22px}
+  #heroSec2 .ctaMain,#heroSec2 .ctaGhost{display:block;text-align:center;width:100%;box-sizing:border-box}
+  .kpQuote{display:none}
+  .haL{margin-right:-38px}.haR{margin-left:-38px}
+  .haC{width:34vw}.haL,.haR{width:27vw}
+  #holidayBand .inner{grid-template-columns:1fr;padding:52px 24px;gap:8px}
+  #holidayBand h2{font-size:38px}
+  .ct5{display:none}
+}
+
+/* ── gift guide ── */
+.gg-hero{max-width:820px;margin:0 auto;padding:72px 24px 30px;text-align:center}
+.gg-hero h1{font-size:clamp(42px,6vw,84px);line-height:.98;margin:22px 0 18px}
+.gg-hero h1 em{font-style:normal;color:var(--red)}
+.gg-lede{font-size:17px;line-height:1.6;color:var(--mut);max-width:560px;margin:0 auto 28px}
+.gg-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.gg-rows{max-width:1180px;margin:0 auto;padding:40px 24px 10px}
+.gg-row{padding:34px 0 26px}
+.gg-sub{margin:-16px 0 6px;font-size:15px;color:var(--mut);font-weight:700}
+.gg-band{padding:84px 24px}
+.gg-band-in{max-width:880px;margin:0 auto;text-align:center}
+.gg-eyebrow{display:inline-block;font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;opacity:.85}
+.gg-band h2{font-size:clamp(32px,4.4vw,56px);line-height:1.02;margin:0 0 18px}
+.gg-band p{font-size:16px;line-height:1.65;max-width:600px;margin:0 auto 18px}
+.gg-pair{background:var(--ever);color:var(--cream)}
+.gg-pair h2{color:#FFF}
+.gg-tiers{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:30px 0 32px}
+.gg-tier{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:22px 30px;display:flex;flex-direction:column;gap:4px;min-width:150px}
+.gg-tier b{font-family:"Bricolage Grotesque",sans-serif;font-size:30px;font-weight:800;color:#FFF}
+.gg-tier span{font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;opacity:.85}
+.gg-tier-hot{background:#FFF;border-color:#FFF}
+.gg-tier-hot b{color:var(--ever)}
+.gg-tier-hot span{color:var(--ever);opacity:.75}
+.gg-stuffers{background:var(--cream);color:var(--ink)}
+.gg-skus{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.gg-sku{background:#FFF;border:1px solid var(--line);border-radius:16px;padding:26px 24px;max-width:240px;text-align:left;display:flex;flex-direction:column;gap:8px;box-shadow:0 14px 30px -18px rgba(25,25,33,.25)}
+.gg-sku b{font-size:16px;font-weight:900}
+.gg-sku em{font-style:normal;font-family:"Bricolage Grotesque",sans-serif;font-size:26px;font-weight:800;color:var(--red)}
+.gg-sku span{font-size:13.5px;line-height:1.55;color:var(--mut)}
+.gg-cards{background:var(--blush);color:var(--ink)}
+.gg-note{font-size:14px !important;font-weight:700;color:var(--mut)}
+.gg-trust{padding:80px 24px;background:#FFFBF7}
+.gg-trust-in{max-width:980px;margin:0 auto}
+.gg-trust h2{text-align:center;font-size:clamp(30px,3.8vw,48px);margin:0 0 34px}
+@media(max-width:860px){
+  .gg-hero{padding-top:48px}
+  .gg-band{padding:60px 20px}
+  .gg-tiers{gap:10px}.gg-tier{padding:16px 20px;min-width:120px}
+  .gg-rows .caseRow{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scrollbar-width:none;padding:16px 4px}
+}
+
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Keepsake Printing Co",
+"url":"https://cjbates516.github.io/keepsake-prototype/",
+"logo":"https://cjbates516.github.io/keepsake-prototype/assets/apple-touch-icon.png",
+"description":"Custom photo phone cases, UV-printed in store while you wait, at CPR Cell Phone Repair locations.",
+"areaServed":[{"@type":"City","name":"West Chester","containedInPlace":{"@type":"State","name":"Pennsylvania"}},
+{"@type":"City","name":"Pottstown","containedInPlace":{"@type":"State","name":"Pennsylvania"}},
+{"@type":"City","name":"Newark","containedInPlace":{"@type":"State","name":"Delaware"}}]}
+</script>
+</head>
+<body>
+<a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#FFFBF7">
+
+  <!-- announcement -->
+  <div style="background:#2D2D3B;color:#FFFFFF;padding:11px 16px;text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;overflow:hidden">
+    <span id="announce" style="display:inline-block;animation:fadeIn .45s cubic-bezier(.2,.7,.2,1) both">Holiday gifts printed same-day in store — West Chester · Pottstown · Newark DE · 10% off your first case, code <span style="background:rgba(255,255,255,.18);border-radius:999px;padding:2px 10px;letter-spacing:.1em">FIRST10</span></span>
+  </div>
+
+  <!-- header -->
+  <header style="position:sticky;top:0;z-index:60;background:#FFFBF7;border-bottom:1px solid #EFE9E2;padding:0 clamp(10px,2vw,28px);display:flex;align-items:center;justify-content:space-between;min-height:72px">
+    <div style="display:flex;align-items:center;gap:2px">
+      <button id="burger" aria-label="Menu" aria-expanded="false" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#2D2D3B;transition:background .2s">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="14" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
+      </button>
+      <a href="gallery.html" aria-label="Search" title="Search" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#2D2D3B;transition:background .2s">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </a>
+    </div>
+    <a href="index.html" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px;text-decoration:none;color:#2D2D3B">
+      <svg width="68" height="34" viewBox="0 0 80 40" aria-hidden="true" style="overflow:visible">
+        <g style="transform-box:fill-box;transform-origin:center;animation:ksPhoto 6s cubic-bezier(.2,.7,.2,1) infinite">
+          <g transform="rotate(-9 22 10)">
+            <rect x="15" y="1" width="17" height="20" rx="1.5" fill="#FFFFFF" stroke="#B9BDCB" stroke-width="1"></rect>
+            <rect x="17.5" y="3.5" width="12" height="11" rx="1" fill="#E8E7E7"></rect>
+            <path d="M23.5 12.6l-2.2-2.3c-.6-.62-.6-1.6 0-2.2.6-.62 1.55-.62 2.15 0l.05.05.05-.05c.6-.62 1.55-.62 2.15 0 .6.6.6 1.58 0 2.2z" fill="#DC282E"></path>
+          </g>
+        </g>
+        <rect x="4" y="14" width="32" height="23" rx="4" fill="#DC282E"></rect>
+        <rect x="7" y="17" width="26" height="17" rx="2.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1" stroke-dasharray="2.4 2.4"></rect>
+        <circle cx="9.5" cy="21" r="1.4" fill="#FFFFFF" opacity=".9"></circle>
+        <circle cx="9.5" cy="25.5" r="1.4" fill="#FFFFFF" opacity=".9"></circle>
+        <circle cx="9.5" cy="30" r="1.4" fill="#FFFFFF" opacity=".9"></circle>
+        <path d="M23 31.8l-5-5.1c-1.35-1.4-1.35-3.6 0-5 1.35-1.4 3.55-1.4 4.9 0l.1.1.1-.1c1.35-1.4 3.55-1.4 4.9 0 1.35 1.4 1.35 3.6 0 5z" fill="#F3F2F2"></path>
+        <rect x="58" y="5" width="19" height="33" rx="5.5" fill="#2D2D3B"></rect>
+        <rect x="60.5" y="7.5" width="14" height="28" rx="3.5" fill="#F3F2F2"></rect>
+        <circle cx="64" cy="11" r="1.5" fill="#2D2D3B"></circle>
+        <g style="animation:ksPrint 6s cubic-bezier(.2,.7,.2,1) infinite">
+          <rect x="60.5" y="7.5" width="14" height="28" rx="3.5" fill="#E8E7E7"></rect>
+          <circle cx="64" cy="11" r="1.5" fill="#2D2D3B"></circle>
+          <path d="M67.5 26.5l-3-3.1c-.8-.83-.8-2.15 0-2.98.8-.83 2.1-.83 2.9 0l.1.1.1-.1c.8-.83 2.1-.83 2.9 0 .8.83.8 2.15 0 2.98z" fill="#DC282E"></path>
+        </g>
+      </svg>
+      <span style="display:flex;flex-direction:column;line-height:1">
+        <span style="font-weight:900;font-size:17px;letter-spacing:-.01em;color:#2D2D3B">KEEPSAKE</span>
+        <span style="font-weight:800;font-size:8px;letter-spacing:.3em;color:#DC282E;margin-top:3px">PRINTING CO.</span>
+      </span>
+    </a>
+    <div style="display:flex;align-items:center;gap:2px">
+      <a href="account.html" aria-label="My account" title="My account" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;color:#2D2D3B;transition:background .2s">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      </a>
+      <a href="checkout.html" aria-label="Cart" title="Cart" class="h-circle" style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#2D2D3B;transition:background .2s">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- mega menu -->
+  <div id="mega" style="position:sticky;top:72px;z-index:59;background:#FFFFFF;border-bottom:1px solid #E4E3E3;box-shadow:0 24px 48px rgba(46,56,61,.12);animation:fadeUp .25s cubic-bezier(.2,.7,.2,1) both">
+    <div class="kpMenuPhone">
+      <a class="kpMRow" href="customizer.html"><span>🎨</span>Design your case<b>›</b></a>
+      <a class="kpMRow" href="gallery.html"><span>🖼</span>Design library<b>›</b></a>
+      <a class="kpMRow" href="customizer.html"><span>📷</span>Use your photo<b>›</b></a>
+      <a class="kpMRow" href="gallery.html?cat=City%20maps"><span>📍</span>City maps — only at Keepsake<b>›</b></a>
+      <a class="kpMRow" href="help.html"><span>🏬</span>Stores &amp; help<b>›</b></a>
+      <div class="kpMThumbs">
+        <a href="customizer.html?design=philadelphia-city-map-navy.jpg"><img src="assets/designs/thumbs/philadelphia-city-map-navy.jpg" alt="" loading="lazy"></a>
+        <a href="customizer.html?design=abstract-leopard-pink.jpg"><img src="assets/designs/thumbs/abstract-leopard-pink.jpg" alt="" loading="lazy"></a>
+        <a href="customizer.html?design=charming-minimalist-black-hearts-pattern-2.jpg"><img src="assets/designs/thumbs/charming-minimalist-black-hearts-pattern-2.jpg" alt="" loading="lazy"></a>
+        <a href="customizer.html?design=zodiac-leo-night-sky.jpg"><img src="assets/designs/thumbs/zodiac-leo-night-sky.jpg" alt="" loading="lazy"></a>
+        <a href="customizer.html?design=halloween-bats-on-orange.jpg"><img src="assets/designs/thumbs/halloween-bats-on-orange.jpg" alt="" loading="lazy"></a>
+        <a href="customizer.html?design=dreamy-gradient-cosmic-background-with-sparkles.jpg"><img src="assets/designs/thumbs/dreamy-gradient-cosmic-background-with-sparkles.jpg" alt="" loading="lazy"></a>
+      </div>
+      <a class="kpMCta" href="customizer.html">Design yours — $59.99</a>
+    </div>
+    <div style="max-width:1280px;margin:0 auto;padding:36px 40px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:clamp(20px,2.5vw,36px)">
+      <div>
+        <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">iPhone Cases</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a class="h-redlink" href="gallery.html?device=iphone-18-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 18 Pro Max</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-18-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 18 Pro</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-17-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 17 Pro Max</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-17-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 17 Pro</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-17" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 17</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-16-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16 Pro Max</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-16-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16 Pro</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-16" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-15-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 15 Pro Max</a>
+          <a class="h-redlink" href="gallery.html?device=iphone-15" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 15</a>
+          <div class="kpMoreModels" style="display:none;flex-direction:column;gap:10px">
+            <a class="h-redlink" href="gallery.html?device=iphone-air" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone Air</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-16-plus" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16 Plus</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-15-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 15 Pro</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-15-plus" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 15 Plus</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-14-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 14 Pro Max</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-14-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 14 Pro</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-14-plus" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 14 Plus</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-14" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 14</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-13-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 13 Pro Max</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-13-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 13 Pro</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-13" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 13</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-13-mini" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 13 mini</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-12-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 12 Pro Max</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-12-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 12 Pro</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-12" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 12</a>
+            <a class="h-redlink" href="gallery.html?device=iphone-12-mini" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 12 mini</a>
+          </div>
+          <a class="h-darkred kpAllTgl" href="#" style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#DC282E;margin-top:6px;display:inline-flex;align-items:center;gap:6px"><span class="kpAllLbl">All iPhone models</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">Samsung Cases</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a class="h-redlink" href="gallery.html?device=galaxy-s26-ultra" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S26 Ultra</a>
+          <a class="h-redlink" href="gallery.html?device=galaxy-s26-plus" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S26+</a>
+          <a class="h-redlink" href="gallery.html?device=galaxy-s26" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S26</a>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy S25 Ultra · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy S25 · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy A56 · soon</span>
+          <a class="h-darkred" href="customizer.html" style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#DC282E;margin-top:6px;display:inline-flex;align-items:center;gap:6px">All Samsung cases
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">Google Cases</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 10 Pro XL · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 10 Pro · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 10 · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 9 Pro · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 9 · soon</span>
+          <span style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#C4C4C7;margin-top:6px">Coming soon</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">iPad Cases</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Pro 13″ · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Pro 11″ · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Air 13″ · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Air 11″ · soon</span>
+          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad 10.9″ (10th gen) · soon</span>
+          <span style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#C4C4C7;margin-top:6px">Coming soon</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">Shop by Occasion</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a class="h-redlink" href="gallery.html?cat=Florals" style="font-size:14px;font-weight:600;color:#4E4E50">Mother's Day</a>
+          <a class="h-redlink" href="gallery.html?cat=Hearts" style="font-size:14px;font-weight:600;color:#4E4E50">Weddings</a>
+          <a class="h-redlink" href="gallery.html?cat=Animal%20print" style="font-size:14px;font-weight:600;color:#4E4E50">Pets</a>
+          <a class="h-redlink" href="gallery.html?cat=Stripes%20%26%20waves" style="font-size:14px;font-weight:600;color:#4E4E50">Back to school</a>
+          <a class="h-redlink" href="gallery.html" style="font-size:14px;font-weight:600;color:#4E4E50">Gifts</a>
+          <a class="h-redlink" href="gallery.html?cat=Christmas" style="font-size:14px;font-weight:600;color:#4E4E50">Christmas</a>
+          <a class="h-redlink" href="gallery.html?cat=Halloween" style="font-size:14px;font-weight:600;color:#4E4E50">Halloween</a>
+        </div>
+        <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin:22px 0 14px">Case Styles</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50;display:inline-flex;align-items:center;gap:8px">MagSafe Clear
+            <span style="background:#FBE0E1;color:#B81F24;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px">Best seller</span></a>
+          <div style="margin-top:10px;background:#F3F2F2;border-radius:10px;padding:14px 16px">
+            <div style="font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#DC282E;margin-bottom:6px">Not sure?</div>
+            <div style="font-size:13px;font-weight:600;color:#4E4E50;line-height:1.5">Start with your favorite photo — we fit it to your exact phone, and any team member can help. <a href="customizer.html" style="color:#B81F24;font-weight:800;text-decoration:underline;text-underline-offset:3px">Start designing</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" style="flex:1">
+    <section class="gg-hero">
+      <span class="kpStick">The 2026 Holiday Gift Guide</span>
+      <h1 class="dsp">Gifts printed<br><em>while you shop.</em></h1>
+      <p class="gg-lede">No shipping cutoffs, no &ldquo;arrives Dec 28.&rdquo; Pick a design or bring their photo, and walk out with the gift the same visit &mdash; in West Chester, Pottstown, or Newark DE.</p>
+      <div class="gg-ctas"><a class="ctaMain" href="customizer.html">Start with a photo</a><a class="ctaGhost" href="gallery.html?cat=Christmas">Shop Christmas designs</a></div>
+    </section>
+
+    <div class="kpMarq" aria-hidden="true"><div class="kpMarqIn"></div></div>
+
+    <section class="gg-rows">
+      <div class="gg-row">
+        <div class="shelfHead"><h2 class="dsp">For Mom</h2><a href="gallery.html">Browse all 800+ →</a></div>
+        <p class="gg-sub">Florals, soft colors, and the place your story started.</p>
+        <div class="caseRow">
+          <a class="caseTile ct1" href="customizer.html?design=stylish-white-daisy-floral-pattern.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/stylish-white-daisy-floral-pattern.jpg')" aria-label="White daisies case"></a>
+          <a class="caseTile ct2" href="customizer.html?design=pastel-pink-floral-minimalist-pattern.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/pastel-pink-floral-minimalist-pattern.jpg')" aria-label="Pink ditsy floral case"></a>
+          <a class="caseTile ct3" href="customizer.html?design=aura-chrome-gradient-rose-gold.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/aura-chrome-gradient-rose-gold.jpg')" aria-label="Rose gold aura case"></a>
+          <a class="caseTile ct4" href="customizer.html?design=where-it-all-began-heart-map-cream.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/where-it-all-began-heart-map-cream.jpg')" aria-label="Where-we-met heart map case"></a>
+          <a class="caseTile ct5" href="customizer.html?design=high-detail-botanical-of-winter-flora-on-white.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/high-detail-botanical-of-winter-flora-on-white.jpg')" aria-label="Winter botanical case"></a>
+        </div>
+      </div>
+      <div class="gg-row">
+        <div class="shelfHead"><h2 class="dsp">For Dad</h2><a href="gallery.html">Browse all 800+ →</a></div>
+        <p class="gg-sub">Maps, mountains, and the places he knows by heart.</p>
+        <div class="caseRow">
+          <a class="caseTile ct1" href="customizer.html?design=lake-george-navy.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/lake-george-navy.jpg')" aria-label="Lake George map case"></a>
+          <a class="caseTile ct2" href="customizer.html?design=abstract-geometric-mountain-landscape-digital-art.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/abstract-geometric-mountain-landscape-digital-art.jpg')" aria-label="Geometric mountains case"></a>
+          <a class="caseTile ct3" href="customizer.html?design=philadelphia-city-map-navy.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/philadelphia-city-map-navy.jpg')" aria-label="Philadelphia navy map case"></a>
+          <a class="caseTile ct4" href="customizer.html?design=mid-century-modern-abstract-shapes.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/mid-century-modern-abstract-shapes.jpg')" aria-label="Mid-century abstract case"></a>
+          <a class="caseTile ct5" href="customizer.html?design=west-chester-city-map-cream.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/west-chester-city-map-cream.jpg')" aria-label="West Chester map case"></a>
+        </div>
+      </div>
+      <div class="gg-row">
+        <div class="shelfHead"><h2 class="dsp">For the Teens</h2><a href="gallery.html">Browse all 800+ →</a></div>
+        <p class="gg-sub">Y2K, smileys, and stripes they'll actually show off.</p>
+        <div class="caseRow">
+          <a class="caseTile ct1" href="customizer.html?design=y2k-retro-04.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/y2k-retro-04.jpg')" aria-label="Y2K neon case"></a>
+          <a class="caseTile ct2" href="customizer.html?design=cheerful-smiley-face-icon-grid-retro-graphic.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/cheerful-smiley-face-icon-grid-retro-graphic.jpg')" aria-label="Smiley grid case"></a>
+          <a class="caseTile ct3" href="customizer.html?design=abstract-leopard-pink.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/abstract-leopard-pink.jpg')" aria-label="Pink leopard case"></a>
+          <a class="caseTile ct4" href="customizer.html?design=playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.jpg')" aria-label="Chevron stripes case"></a>
+          <a class="caseTile ct5" href="customizer.html?design=colorful-minimalist-wavy-stripes.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/colorful-minimalist-wavy-stripes.jpg')" aria-label="Wavy stripes case"></a>
+        </div>
+      </div>
+      <div class="gg-row">
+        <div class="shelfHead"><h2 class="dsp">For Dog People</h2><a href="gallery.html">Browse all 800+ →</a></div>
+        <p class="gg-sub">Their best friend, on the thing they hold all day.</p>
+        <div class="caseRow">
+          <a class="caseTile ct1" href="customizer.html?design=playful-boston-terrier-with-heart-shaped-sunglasses.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/playful-boston-terrier-with-heart-shaped-sunglasses.jpg')" aria-label="Boston terrier case"></a>
+          <a class="caseTile ct2" href="customizer.html?design=labrador-retrievers-in-santa-hats.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/labrador-retrievers-in-santa-hats.jpg')" aria-label="Labs in santa hats case"></a>
+          <a class="caseTile ct3" href="customizer.html?design=charming-corgi-dog-portrait-for.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/charming-corgi-dog-portrait-for.jpg')" aria-label="Corgi portrait case"></a>
+          <a class="caseTile ct4" href="customizer.html?design=dog-christmas-dog.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/dog-christmas-dog.jpg')" aria-label="Christmas dog case"></a>
+          <a class="caseTile ct5" href="customizer.html?design=dog-adorable-love-paw-dog-bone.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/dog-adorable-love-paw-dog-bone.jpg')" aria-label="Paws and bones case"></a>
+        </div>
+      </div>
+      <div class="gg-row">
+        <div class="shelfHead"><h2 class="dsp">For the One Who Moved Away</h2><a href="gallery.html">Browse all 800+ →</a></div>
+        <p class="gg-sub">Real street maps — their city, their beach, their block.</p>
+        <div class="caseRow">
+          <a class="caseTile ct1" href="customizer.html?design=philadelphia-city-map-cream.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/philadelphia-city-map-cream.jpg')" aria-label="Philadelphia map case"></a>
+          <a class="caseTile ct2" href="customizer.html?design=nyc-map-navy.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/nyc-map-navy.jpg')" aria-label="New York map case"></a>
+          <a class="caseTile ct3" href="customizer.html?design=boston-map-cream.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/boston-map-cream.jpg')" aria-label="Boston map case"></a>
+          <a class="caseTile ct4" href="customizer.html?design=bethany-beach-city-map-navy.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/bethany-beach-city-map-navy.jpg')" aria-label="Bethany Beach map case"></a>
+          <a class="caseTile ct5" href="customizer.html?design=los-angeles-map-blush.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/los-angeles-map-blush.jpg')" aria-label="Los Angeles map case"></a>
+        </div>
+      </div>
+      <div class="gg-row">
+        <div class="shelfHead"><h2 class="dsp">For the Astrology Friend</h2><a href="gallery.html">Browse all 800+ →</a></div>
+        <p class="gg-sub">Their constellation, printed in the night sky.</p>
+        <div class="caseRow">
+          <a class="caseTile ct1" href="customizer.html?design=zodiac-leo-night-sky.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/zodiac-leo-night-sky.jpg')" aria-label="Leo night sky case"></a>
+          <a class="caseTile ct2" href="customizer.html?design=zodiac-aquarius-night-sky.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/zodiac-aquarius-night-sky.jpg')" aria-label="Aquarius night sky case"></a>
+          <a class="caseTile ct3" href="customizer.html?design=zodiac-gemini-night-sky.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/zodiac-gemini-night-sky.jpg')" aria-label="Gemini night sky case"></a>
+          <a class="caseTile ct4" href="customizer.html?design=zodiac-scorpio-night-sky.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/zodiac-scorpio-night-sky.jpg')" aria-label="Scorpio night sky case"></a>
+          <a class="caseTile ct5" href="customizer.html?design=zodiac-virgo-night-sky.jpg&model=iphone-16-pro-max" style="background-image:url('assets/designs/thumbs/zodiac-virgo-night-sky.jpg')" aria-label="Virgo night sky case"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="gg-band gg-pair">
+      <div class="gg-band-in">
+        <span class="gg-eyebrow">Family pricing</span>
+        <h2 class="dsp">One is a gift.<br>Two is a moment.</h2>
+        <p>Matching cases for the group chat, grandma and the grandkids, or the two of you. Every case is the same MagSafe clear case, printed while you shop.</p>
+        <div class="gg-tiers">
+          <div class="gg-tier"><b>$59.99</b><span>one case</span></div>
+          <div class="gg-tier gg-tier-hot"><b>$99.99</b><span>pair of cases</span></div>
+          <div class="gg-tier"><b>$139.99</b><span>three cases</span></div>
+        </div>
+        <a class="ctaCream" href="customizer.html">Start the first one</a>
+      </div>
+    </section>
+
+    <section class="gg-band gg-stuffers">
+      <div class="gg-band-in">
+        <span class="gg-eyebrow">Under the $59.99 line</span>
+        <h2 class="dsp">Stocking stuffers,<br>printed in store.</h2>
+        <p>Same UV printer, smaller canvases. Ask at the counter &mdash; printed the same visit.</p>
+        <div class="gg-skus">
+          <div class="gg-sku"><b>AirPods case print</b><em>$19.99</em><span>Their photo or any design, on an AirPods case.</span></div>
+          <div class="gg-sku"><b>Custom tumbler</b><em>$29.99</em><span>Full-wrap print on a tumbler they&rsquo;ll use daily.</span></div>
+          <div class="gg-sku"><b>Photo slate</b><em>$34.99</em><span>A favorite photo printed on stone &mdash; desk-ready.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gg-band gg-cards">
+      <div class="gg-band-in">
+        <span class="gg-eyebrow">Don&rsquo;t know their phone model?</span>
+        <h2 class="dsp">Gift cards solve it.</h2>
+        <p>Available at the counter in all three stores &mdash; $25, $60, or $100. The $60 card covers one full case: their design, their call. We even UV-print the card itself, so it already looks like a gift.</p>
+        <p class="gg-note">After the shipping deadlines pass, a Keepsake gift card is the custom-case gift that still makes it under the tree.</p>
+      </div>
+    </section>
+
+    <section class="gg-trust">
+      <div class="gg-trust-in">
+        <h2 class="dsp">Gift it with confidence.</h2>
+        <div class="trustRow">
+          <div class="trustItem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC282E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg><span>Free redo within 7 days</span></div>
+          <div class="trustItem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC282E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><span>12-month print warranty</span></div>
+          <div class="trustItem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC282E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>Printed in about 2 hours</span></div>
+          <div class="trustItem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC282E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span>3 local stores &middot; PA &amp; DE</span></div>
+        </div>
+        <p class="gg-note" style="text-align:center;margin-top:26px">Wrong size, wrong vibe, changed their mind? We reprint it free within 7 days &mdash; a gift that can&rsquo;t miss.</p>
+      </div>
+    </section>
+
+    <section style="background:var(--blush);padding:76px 40px">
+      <div style="max-width:760px;margin:0 auto;text-align:center">
+        <h2 class="dsp" style="font-size:clamp(28px,3vw,42px);margin:0 0 12px">Get 10% off your first case</h2>
+        <p style="font-size:16px;color:var(--mut);margin:0 0 28px">Join the list for seasonal ideas — the holidays, Mother’s Day, back to school — and your welcome discount.</p>
+        <form id="emailForm" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <input id="emailInput" type="email" required aria-label="Email address" placeholder="you@email.com" style="padding:15px 18px;border-radius:12px;border:1px solid #E8D5CE;font-size:16px;width:320px;max-width:100%;color:#2D2D3B">
+          <button type="submit" style="background:#DC282E;color:#FFFFFF;border:0;padding:15px 28px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Sign me up</button>
+        </form>
+        <div id="emailDone" style="display:none;background:rgba(220,40,46,.1);border-radius:8px;padding:18px 24px;font-weight:800;font-size:15px;color:var(--ink)">Your code: <b>FIRST10</b> — show it at any counter for 10% off your first case.</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer style="background:#FFFBF7;color:#6E6E70;border-top:1px solid #EFE9E2;padding:64px 40px 36px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;padding-bottom:40px;border-bottom:1px solid #EFEDED">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><g transform="rotate(-9 22 10)"><rect x="15" y="1" width="17" height="20" rx="1.5" fill="#F3F2F2" stroke="#6C6C72" stroke-width="1"></rect><rect x="17.5" y="3.5" width="12" height="11" rx="1" fill="#E8E7E7"></rect></g><rect x="4" y="14" width="32" height="23" rx="4" fill="#DC282E"></rect><rect x="7" y="17" width="26" height="17" rx="2.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1" stroke-dasharray="2.4 2.4"></rect><circle cx="9.5" cy="21" r="1.4" fill="#FFFFFF" opacity=".9"></circle><circle cx="9.5" cy="25.5" r="1.4" fill="#FFFFFF" opacity=".9"></circle><circle cx="9.5" cy="30" r="1.4" fill="#FFFFFF" opacity=".9"></circle><path d="M23 31.8l-5-5.1c-1.35-1.4-1.35-3.6 0-5 1.35-1.4 3.55-1.4 4.9 0l.1.1.1-.1c1.35-1.4 3.55-1.4 4.9 0 1.35 1.4 1.35 3.6 0 5z" fill="#F3F2F2"></path></svg>
+            <span style="font-weight:900;font-size:16px;color:#2D2D3B;letter-spacing:-.01em">KEEPSAKE <span style="color:#DC282E">PRINTING CO.</span></span>
+          </div>
+          <p style="font-size:13px;line-height:1.6;margin:0;max-width:300px">Custom photo cases printed in store while you watch.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+          <div style="font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#2D2D3B;margin-bottom:4px">Shop</div>
+          <a class="h-foot" href="customizer.html">Design a case</a>
+          <a class="h-foot" href="gallery.html">Design library</a>
+          <a class="h-foot" href="customizer.html">Use your photo</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+          <div style="font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#2D2D3B;margin-bottom:4px">Stores</div>
+          <a class="h-foot" href="help.html">West Chester, PA</a>
+          <a class="h-foot" href="help.html">Pottstown, PA</a>
+          <a class="h-foot" href="help.html">Newark, DE</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+          <div style="font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#2D2D3B;margin-bottom:4px">Support</div>
+          <a class="h-foot" href="help.html">FAQ &amp; contact</a>
+          <a class="h-foot" href="track.html">Track your order</a>
+          <a class="h-foot" href="teachers.html">Teachers &amp; schools</a>
+          <a class="h-foot" href="b2b.html">Business &amp; bulk</a>
+          <a class="h-foot" href="help.html">Privacy &amp; terms</a>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:#6E6E70">
+        <span>© 2026 Keepsake Printing Co.</span><span style="opacity:.7">City map designs: map data © OpenStreetMap contributors</span>
+        <span>12-month print warranty · Free redo within 7 days · Printed same-day in store</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- chat bubble -->
+  <div id="kpChatWrap" style="position:fixed;right:24px;bottom:24px;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:14px">
+    <div id="chatPanel" style="display:none;width:340px;max-width:calc(100vw - 48px);background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;box-shadow:0 24px 60px rgba(46,56,61,.22);overflow:hidden;animation:fadeUp .3s cubic-bezier(.2,.7,.2,1) both">
+      <div style="background:#2D2D3B;padding:18px 20px;display:flex;align-items:center;gap:12px">
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:900;color:#FFFFFF">Keepsake support</div>
+          <div style="font-size:11px;font-weight:600;color:#B9BDCB">Fastest answers in store — West Chester · Pottstown · Newark DE</div>
+        </div>
+        <button id="chatClose" aria-label="Close chat" style="background:none;border:0;color:#B9BDCB;font-size:18px;cursor:pointer;padding:4px">×</button>
+      </div>
+      <div id="chatFormWrap" style="padding:18px 20px;display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6C6C72">Quick answers</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <button class="chatQ" data-a="Most cases print in under an hour — you can watch it happen. During busy seasons we'll text you the moment it's ready." style="background:#F3F2F2;border:0;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;color:#2D2D3B;cursor:pointer">How fast is it?</button>
+          <button class="chatQ" data-a="If it's not right, we make it right — print defects are covered and replacement prints happen same-day in store. Ask any team member for the full policy." style="background:#F3F2F2;border:0;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;color:#2D2D3B;cursor:pointer">Returns?</button>
+          <button class="chatQ" data-a="Yes — logo swag for trade shows, client gifts, and teams, with volume pricing up to 35% off. See the For Business page." style="background:#F3F2F2;border:0;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;color:#2D2D3B;cursor:pointer">Business orders?</button>
+        </div>
+        <div id="chatAnswer" style="display:none;background:#F8F7F7;border-radius:12px;padding:14px;font-size:13px;line-height:1.6;color:#4E4E50"></div>
+        <div style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6C6C72;margin-top:6px">Or send us a message</div>
+        <form id="chatForm" style="display:flex;flex-direction:column;gap:8px">
+          <input type="email" required placeholder="Your email" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:16px">
+          <textarea required placeholder="How can we help?" rows="3" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:16px;font-family:inherit;resize:vertical"></textarea>
+          <button type="submit" class="h-chatred" style="background:#DC282E;color:#FFFFFF;border:0;padding:12px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s">Send message</button>
+        </form>
+      </div>
+      <div id="chatSent" style="display:none;padding:28px 20px;text-align:center">
+        <div style="font-size:15px;font-weight:900;color:#1E8E3E;margin-bottom:6px">Thanks!</div>
+        <div style="font-size:13px;line-height:1.6;color:#4E4E50">Our online inbox opens with the full store this fall. For anything right now, call or stop by any Keepsake counter — West Chester, Pottstown, or Newark DE.</div>
+      </div>
+    </div>
+    <button id="chatToggle" aria-label="Support chat" style="width:52px;height:52px;border-radius:50%;background:#FFFFFF;border:1.5px solid #D8D7D7;cursor:pointer;box-shadow:0 8px 22px rgba(45,45,59,.18);display:flex;align-items:center;justify-content:center;color:#2D2D3B">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </button>
+  </div>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+
+  // section reveal on scroll (IntersectionObserver — no scroll-driven CSS)
+  var rvs = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    rvs.forEach(function(el){ io.observe(el); });
+  } else {
+    rvs.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // mega menu
+  var mega = $('mega');
+  $('burger').addEventListener('click', function(e){ e.stopPropagation(); mega.classList.toggle('open'); });
+  document.addEventListener('click', function(e){ if (mega.classList.contains('open') && !mega.contains(e.target)) mega.classList.remove('open'); });
+
+  var _mq='Printed today \u2726 The Holiday Shop is open \u2726 Your photo on a case \u2726 800+ designs \u2726 3 local stores \u2726 12-mo print warranty \u2726 ';
+  document.querySelectorAll('.kpMarqIn').forEach(function(el){ el.textContent=_mq+_mq; });
+
+  // seasonal announce flips (KP_BF: Black Friday offer \u2014 OFF until Corey approves the offer)
+  var KP_BF = false;
+  (function(){
+    var an = document.getElementById('announce'); if(!an) return;
+    var now = new Date(), y = now.getFullYear();
+    function between(m1,d1,m2,d2){ var a=new Date(y,m1-1,d1), b=new Date(y,m2-1,d2,23,59,59); return now>=a && now<=b; }
+    if (KP_BF && between(11,27,11,30)) {
+      an.innerHTML = 'Black Friday at Keepsake \u2014 gift card bonus at the counter, this weekend only \u00b7 West Chester \u00b7 Pottstown \u00b7 Newark DE';
+    } else if (between(12,10,12,24)) {
+      an.innerHTML = 'Missed the shipping deadlines? We print while you shop \u2014 right up to Christmas Eve \u00b7 West Chester \u00b7 Pottstown \u00b7 Newark DE';
+    }
+  })();
+  var _km=document.getElementById('kpMatchGo');
+  if(_km) _km.addEventListener('click',function(){ var m=document.getElementById('kpMatchModel').value; location.href='customizer.html?model='+m.toLowerCase().replace(/[^a-z0-9]+/g,'-'); });
+  // reviews wall
+  var wall = [
+    { hasPhoto:false, text:'I paid $60 for a case online last year and waited two weeks. This one was done before I finished my coffee — and it’s my kids’ faces, so it wins.', name:'Sarah K.', init:'SK', when:'June 2026' },
+    { hasPhoto:false, text:'Got one made for my wife for Mother’s Day with the kids’ beach photo. She cried. 10/10 will be back for Christmas.', name:'Mike D.', init:'MD', when:'May 2026' },
+    { hasPhoto:false, text:'Watching it print is half the fun. My daughter picked the photo, positioned it herself on the screen, and the case matched exactly.', name:'Jennifer R.', init:'JR', when:'June 2026' },
+    { hasPhoto:false, text:'Brought in our dog’s portrait. Print quality is sharper than the $70 case I ordered online — and it was ready the same afternoon.', name:'Alex T.', init:'AT', when:'April 2026' },
+    { hasPhoto:false, text:'Ordered 12 for my bridesmaids with a photo from the engagement shoot. They matched, they shipped on time, everyone asked where they came from.', name:'Priya M.', init:'PM', when:'May 2026' },
+    { hasPhoto:false, text:'First responder discount plus the referral credit made this cheaper than a plain case at the mall. And it’s got my son’s hockey photo on it.', name:'Dan W.', init:'DW', when:'June 2026' }
+  ];
+  var __rw=document.getElementById('reviewsWall'); if(__rw) __rw.innerHTML = wall.map(function(r){
+    return '<div style="background:#FFFFFF;border:1px solid #EFEDED;border-radius:10px;padding:26px;display:flex;flex-direction:column;gap:12px">'
+      + (r.hasPhoto ? '<div style="height:150px;border-radius:8px;overflow:hidden;background:#F3F2F2"><span class="slot">Drop this customer’s case photo</span></div>' : '')
+      + '<div style="color:#DC282E;letter-spacing:2px;font-size:14px">★★★★★</div>'
+      + '<p style="font-size:14px;line-height:1.6;color:#4E4E50;margin:0">"'+r.text+'"</p>'
+      + '<div style="display:flex;align-items:center;gap:10px;margin-top:auto">'
+      + '<span style="width:34px;height:34px;border-radius:50%;background:#FBE0E1;color:#B81F24;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:12px">'+r.init+'</span>'
+      + '<span style="display:flex;flex-direction:column"><span style="font-weight:900;font-size:13px;color:#2D2D3B">'+r.name+'</span><span style="font-size:11px;font-weight:700;color:#6C6C72">'+r.when+'</span></span>'
+      + '</div></div>';
+  }).join('');
+
+
+  // email band
+  $('emailForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    $('emailForm').style.display = 'none';
+    $('emailDone').style.display = 'inline-block';
+  });
+
+  // library patterns into home slots + collection drop
+  var SLOT_FILLS = {
+    chips: {
+      'New ideas':'vibrant-abstract-curved-shapes.jpg',
+      "Mother's Day":'pastel-pink-floral-minimalist-pattern.jpg',
+      'Pets':'abstract-leopard-pink.jpg',
+      'Back to school':'playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.jpg',
+      'Christmas':'high-detail-botanical-of-winter-flora-on-white.jpg',
+      'Case quiz':'colorful-minimalist-wavy-stripes.jpg',
+      'Gift cards':'minimalist-white-heart-pattern.jpg',
+      'For business':'mid-century-modern-abstract-shapes.jpg'
+    }
+  };
+  function slotImg(file, alt){
+    return '<img src="assets/designs/thumbs/'+file+'" alt="'+(alt||'')+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">';
+  }
+  document.querySelectorAll('.h-chip').forEach(function(chip){
+    var spans = chip.querySelectorAll(':scope > span');
+    var label = spans.length ? spans[spans.length-1].textContent.trim() : '';
+    var file = SLOT_FILLS.chips[label];
+    if (file){
+      var slot = chip.querySelector('.slot');
+      if (slot) slot.outerHTML = slotImg(file, label);
+    }
+  });
+  // chat
+  $('chatToggle').addEventListener('click', function(){
+    var p = $('chatPanel');
+    p.style.display = p.style.display === 'none' || !p.style.display ? 'block' : 'none';
+  });
+  $('chatClose').addEventListener('click', function(){ $('chatPanel').style.display = 'none'; });
+  document.querySelectorAll('.chatQ').forEach(function(b){
+    b.addEventListener('click', function(){
+      var a = $('chatAnswer'); a.textContent = b.dataset.a; a.style.display = 'block';
+    });
+  });
+  $('chatForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    $('chatFormWrap').style.display = 'none';
+    $('chatSent').style.display = 'block';
+  });
+})();
+</script>
+<script>
+  document.addEventListener('click',function(e){
+    var t=e.target.closest ? e.target.closest('.kpAllTgl') : null;
+    if(!t) return;
+    e.preventDefault();
+    var col=t.parentElement;
+    var more=col.querySelector('.kpMoreModels');
+    if(!more) return;
+    var open=more.style.display!=='none';
+    more.style.display=open?'none':'flex';
+    var lbl=t.querySelector('.kpAllLbl'); if(lbl) lbl.textContent=open?'All iPhone models':'Fewer models';
+    var svg=t.querySelector('svg'); if(svg) svg.style.transform=open?'':'rotate(90deg)';
+  });
+</script>
+</body>
+</html>

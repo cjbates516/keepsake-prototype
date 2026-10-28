@@ -462,8 +462,9 @@ html,body{background:var(--paper)}
           <p>Christmas designs printed while you shop — ready in about two hours. No shipping cutoffs, no “arrives Dec 28,” no gamble.</p>
           <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
             <a class="ctaCream" href="gallery.html?cat=Christmas">Shop holiday designs</a>
-            <a href="customizer.html" style="color:var(--cream);font-weight:800;font-size:14px;text-decoration:underline;text-underline-offset:4px">or print their photo →</a>
+            <a href="gifts.html" style="color:var(--cream);font-weight:800;font-size:14px;text-decoration:underline;text-underline-offset:4px">Browse the Gift Guide →</a>
           </div>
+          <p style="margin:22px 0 0;font-size:13.5px;font-weight:700;color:rgba(246,239,227,.75)">Pairs from $99.99 · Gift cards at the counter · Free redo within 7 days — a gift that can&rsquo;t miss.</p>
         </div>
         <div class="caseRow">
           <a class="caseTile ct1" href="customizer.html?design=cream-snowflakes-on-navy.jpg" style="background-image:url('assets/designs/thumbs/cream-snowflakes-on-navy.jpg')" aria-label="Snowflakes on navy case"></a>
@@ -725,6 +726,19 @@ html,body{background:var(--paper)}
 
   var _mq='Printed today \u2726 The Holiday Shop is open \u2726 Your photo on a case \u2726 800+ designs \u2726 3 local stores \u2726 12-mo print warranty \u2726 ';
   document.querySelectorAll('.kpMarqIn').forEach(function(el){ el.textContent=_mq+_mq; });
+
+  // seasonal announce flips (KP_BF: Black Friday offer \u2014 OFF until Corey approves the offer)
+  var KP_BF = false;
+  (function(){
+    var an = document.getElementById('announce'); if(!an) return;
+    var now = new Date(), y = now.getFullYear();
+    function between(m1,d1,m2,d2){ var a=new Date(y,m1-1,d1), b=new Date(y,m2-1,d2,23,59,59); return now>=a && now<=b; }
+    if (KP_BF && between(11,27,11,30)) {
+      an.innerHTML = 'Black Friday at Keepsake \u2014 gift card bonus at the counter, this weekend only \u00b7 West Chester \u00b7 Pottstown \u00b7 Newark DE';
+    } else if (between(12,10,12,24)) {
+      an.innerHTML = 'Missed the shipping deadlines? We print while you shop \u2014 right up to Christmas Eve \u00b7 West Chester \u00b7 Pottstown \u00b7 Newark DE';
+    }
+  })();
   var _km=document.getElementById('kpMatchGo');
   if(_km) _km.addEventListener('click',function(){ var m=document.getElementById('kpMatchModel').value; location.href='customizer.html?model='+m.toLowerCase().replace(/[^a-z0-9]+/g,'-'); });
   // reviews wall
