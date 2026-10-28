@@ -10804,5 +10804,145 @@
 "Purple",
 "White"
 ]
+},
+{
+"file": "clear-daisy-toss-transparent.png",
+"title": "Clear Daisy Toss",
+"category": "Clear",
+"hash": "28be952ef06b",
+"color": [
+"White",
+"Yellow"
+]
+},
+{
+"file": "clear-sunflower-toss-transparent.png",
+"title": "Clear Sunflower Toss",
+"category": "Clear",
+"hash": "f9850a7a69d5",
+"color": [
+"Yellow",
+"Black"
+]
+},
+{
+"file": "clear-groovy-flowers-transparent.png",
+"title": "Clear Groovy Flowers",
+"category": "Clear",
+"hash": "3ed13b7bec43",
+"color": [
+"Orange",
+"Green",
+"Beige"
+]
+},
+{
+"file": "clear-cat-doodles-transparent.png",
+"title": "Clear Cat Doodles",
+"category": "Clear",
+"hash": "ab0fe82286ed",
+"color": [
+"Red",
+"Beige"
+]
+},
+{
+"file": "clear-christmas-doodles-transparent.png",
+"title": "Clear Christmas Doodles",
+"category": "Clear",
+"hash": "fc5ba0896a91",
+"color": [
+"Red",
+"Green"
+]
+},
+{
+"file": "coquette-daisies-and-bows-pink.jpg",
+"title": "Daisies & Bows",
+"category": "Coquette",
+"hash": "c3c509ae2d81",
+"color": [
+"Pink",
+"White"
+]
+},
+{
+"file": "coquette-bow-toss-mauve.jpg",
+"title": "Bow Toss Mauve",
+"category": "Coquette",
+"hash": "00b65d289ce0",
+"color": [
+"Pink",
+"Purple"
+]
+},
+{
+"file": "coquette-blossom-bows-magenta.jpg",
+"title": "Blossom Bows",
+"category": "Coquette",
+"hash": "4566289ed686",
+"color": [
+"Pink",
+"White"
+]
+},
+{
+"file": "coquette-scarlet-bows-magenta.jpg",
+"title": "Scarlet Bows",
+"category": "Coquette",
+"hash": "5b8a9b43e861",
+"color": [
+"Red",
+"Pink"
+]
+},
+{
+"file": "coquette-ribbon-daisies-red.jpg",
+"title": "Ribbon Daisies",
+"category": "Coquette",
+"hash": "260540b4ee25",
+"color": [
+"Red",
+"White"
+]
+},
+{
+"file": "coquette-doodle-bows-pink.jpg",
+"title": "Doodle Bows",
+"category": "Coquette",
+"hash": "80d3b46a33ca",
+"color": [
+"Pink"
+]
+},
+{
+"file": "coquette-line-bows-wine.jpg",
+"title": "Bows in Line",
+"category": "Coquette",
+"hash": "2fc97c30cd95",
+"color": [
+"White",
+"Purple"
+]
+},
+{
+"file": "coquette-hot-pink-daisies.jpg",
+"title": "Hot Pink Daisies",
+"category": "Coquette",
+"hash": "ce590487a280",
+"color": [
+"Pink",
+"White"
+]
+},
+{
+"file": "coquette-bows-and-mustard.jpg",
+"title": "Bows & Mustard",
+"category": "Coquette",
+"hash": "15a271bb8b01",
+"color": [
+"Pink",
+"Yellow"
+]
 }
 ]
