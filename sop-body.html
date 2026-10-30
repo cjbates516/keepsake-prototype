@@ -1,0 +1,164 @@
+<title>Case Print SOP</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Nunito+Sans:wght@400;700;800&display=swap">
+<style>
+/* Layout: single column bench card, numbered stations, size table appendix */
+:root{
+  --ink:#191921; --paper:#FFFBF7; --mut:#6F6A66; --red:#DC282E; --ever:#0E3B2E;
+  --cream:#F6EFE3; --line:#EFE9E2; --card:#FFFFFF; --warn:#FFF4CC; --warntx:#8a6d00;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --ink:#F2EEE9; --paper:#17171C; --mut:#A7A19B; --red:#F0554F; --ever:#7FBFA5;
+  --cream:#24231F; --line:#2E2D33; --card:#1F1F25; --warn:#3A3215; --warntx:#E8C96A;
+  color-scheme: dark } }
+:root[data-theme="dark"]{
+  --ink:#F2EEE9; --paper:#17171C; --mut:#A7A19B; --red:#F0554F; --ever:#7FBFA5;
+  --cream:#24231F; --line:#2E2D33; --card:#1F1F25; --warn:#3A3215; --warntx:#E8C96A;
+  color-scheme: dark }
+body{background:var(--paper);color:var(--ink);font-family:"Nunito Sans",system-ui,sans-serif;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0;line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding-block:34px 60px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;font-size:clamp(30px,6vw,44px);
+  letter-spacing:-.01em;line-height:1.05;margin:6px 0 6px;text-wrap:balance}
+.sub{color:var(--mut);font-size:15px;margin:0 0 26px;max-width:58ch}
+h2{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;font-size:21px;margin:34px 0 10px;
+  display:flex;align-items:center;gap:12px;text-wrap:balance}
+.n{flex:none;width:30px;height:30px;border-radius:999px;background:var(--ever);color:var(--paper);
+  display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-family:"Nunito Sans",sans-serif;font-weight:800}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:0}
+ul,ol{margin:8px 0;padding-left:22px}
+li{margin:5px 0}
+li::marker{color:var(--mut);font-weight:700}
+b{font-weight:800}
+.never{background:var(--warn);color:var(--warntx);border-radius:8px;padding:2px 8px;font-weight:800;white-space:nowrap}
+.tip{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:28px 0;font-size:14.5px}
+.tip b{color:var(--red)}
+.settings{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:10px}
+.set{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px}
+.set span{display:block;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card);min-width:0}
+th{font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);
+  text-align:left;padding:10px 14px;border-bottom:1px solid var(--line)}
+td{padding:7px 14px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+td:nth-child(2),td:nth-child(3),th:nth-child(2),th:nth-child(3){text-align:right}
+.fail{border:1.5px solid var(--red);border-radius:14px;padding:14px 18px;margin-top:30px}
+.fail h2{margin:0 0 6px;font-size:18px}
+footer{margin-top:40px;color:var(--mut);font-size:12.5px;border-top:1px solid var(--line);padding-top:14px}
+@media print{
+  body{background:#fff;color:#000}
+  .tip,.card,.set,.tablebox,.fail{border-color:#bbb}
+  h2{break-after:avoid} .tablebox{break-inside:avoid}
+}
+</style>
+<div class="wrap">
+<div class="eyebrow">Keepsake Printing Co · xTool O1 Omni</div>
+<h1>Printing a case, start to finish</h1>
+<p class="sub">One job takes about 12 minutes of your attention and 8 to 10 minutes of machine time. The size table at the bottom is the law. When a step fights you, stop and read, do not wing it.</p>
+
+<h2><span class="n">1</span>Set the blank</h2>
+<div class="card"><ul>
+<li>Pull the blank named on the order card. Confirm the model on the inside of the package, not by eye.</li>
+<li>Wipe the print side with a 70 percent alcohol wipe and let it flash dry.</li>
+<li>Lay the case on the bed <b>back up, camera end to the left</b>, inside the printable area.</li>
+<li>Once it is scanned, <b>do not bump or move it.</b> Moved case means rescan, no exceptions.</li>
+</ul></div>
+
+<h2><span class="n">2</span>Scan it</h2>
+<div class="card"><ul>
+<li>In xTool Studio press <b>Scan</b>, then <b>Smart mask</b>, method <b>Subject</b>, then <b>Apply</b>.</li>
+<li>The scan should show the whole case with the camera bump clearly visible.</li>
+</ul></div>
+
+<h2><span class="n">3</span>Get the print file</h2>
+<div class="card"><ul>
+<li><b>Customer order:</b> open the staff page, find the order card, press <b>Download print file</b>.</li>
+<li><b>Shelf stock or demo:</b> open the customizer, <b>pick the phone model first</b>, open the design, press <b>Download print file (staff)</b> under the case preview.</li>
+<li>The file lands in Downloads and the name starts with <b>print-</b> and includes the model.</li>
+</ul></div>
+
+<h2><span class="n">4</span>Import and size it</h2>
+<div class="card"><ul>
+<li>Press the <b>insert</b> icon (plus square, left toolbar), pick the file from Downloads.</li>
+<li>When it asks about the working area choose <b>Keep size</b>. <span class="never">Never Scale to fit</span></li>
+<li>Type the <b>W</b> value from the size table below into the W field. The lock between W and H must be closed so H follows. Confirm H matches the table.</li>
+<li>Set rotation to <b>270</b> so the camera hole in the art sits over the camera bump. If it lands on the wrong end use 90 instead.</li>
+<li>Slide the art over the scanned case. Color should hang about <b>1 mm past the case edge on every side</b>, that overhang is the bleed and it belongs there. Arrow keys nudge in small steps.</li>
+</ul></div>
+
+<h2><span class="n">5</span>Check the settings</h2>
+<div class="settings">
+<div class="set"><span>Mode</span>UV flatbed</div>
+<div class="set"><span>Ink mode</span>Normal, White + Color</div>
+<div class="set"><span>White to color</span>1 and 1</div>
+<div class="set"><span>White ink choke</span>0.05 mm</div>
+<div class="set"><span>Precision</span>High quality</div>
+<div class="set"><span>Expected cost</span>About 7 cents of ink</div>
+</div>
+
+<h2><span class="n">6</span>Print</h2>
+<div class="card"><ul>
+<li>Press <b>Process</b>, review the summary. Time should read 8 to 10 minutes. A wildly different number means the size is wrong, go back to step 4.</li>
+<li>Press <b>Print</b>. Stay within earshot for the first minute.</li>
+</ul></div>
+
+<h2><span class="n">7</span>Inspect and log</h2>
+<div class="card"><ul>
+<li>Under the counter light check three things: the <b>camera ring</b> is clean, the color <b>wraps the corners</b> with no bare rim, and the colors are <b>solid, not milky</b>. Milky color means the white layer failed.</li>
+<li>Photograph the case in the photo box.</li>
+<li>Orders: tap <b>Printed</b> on the card. At pickup ring the custom print SKU and tap <b>Picked Up</b>.</li>
+</ul></div>
+
+<div class="tip"><b>Shortcut:</b> Claude can run steps 3 through 6 for you. Scan the blank, then tell Claude the design and the phone model and watch it line everything up. A team member still inspects every print.</div>
+
+<div class="fail">
+<h2>When it goes wrong</h2>
+<ul>
+<li>First failed print: check the size against the table, rescan the case, try once more.</li>
+<li><b>Two failed prints on one order: stop and text Corey.</b></li>
+<li>Banding or missing lines: run a nozzle check before the next job.</li>
+</ul>
+</div>
+
+<h2 style="margin-top:38px">Size table</h2>
+<p class="sub" style="margin-bottom:12px">Width and height of the print file in millimeters, bleed included. W goes in the W field. These match the numbers in the file name, already converted, so trust the table and skip the math.</p>
+<div class="tablebox"><table>
+<tr><th>Model</th><th>W (mm)</th><th>H (mm)</th></tr>
+<tr><td>iPhone 18 Pro Max</td><td>80.6</td><td>167.4</td></tr>
+<tr><td>iPhone 18 Pro</td><td>74.7</td><td>153.6</td></tr>
+<tr><td>iPhone 17 Pro Max</td><td>80.6</td><td>167.4</td></tr>
+<tr><td>iPhone 17 Pro</td><td>74.7</td><td>153.6</td></tr>
+<tr><td>iPhone 17</td><td>74.1</td><td>153.1</td></tr>
+<tr><td>iPhone 17e</td><td>72.5</td><td>147.7</td></tr>
+<tr><td>iPhone Air</td><td>76.5</td><td>158.0</td></tr>
+<tr><td>iPhone 16 Pro Max</td><td>80.1</td><td>165.8</td></tr>
+<tr><td>iPhone 16 Pro</td><td>73.0</td><td>153.4</td></tr>
+<tr><td>iPhone 16 Plus</td><td>81.0</td><td>163.9</td></tr>
+<tr><td>iPhone 16</td><td>73.4</td><td>150.3</td></tr>
+<tr><td>iPhone 16e</td><td>72.5</td><td>147.7</td></tr>
+<tr><td>iPhone 15 Pro Max</td><td>78.8</td><td>163.1</td></tr>
+<tr><td>iPhone 15 Pro</td><td>72.8</td><td>149.3</td></tr>
+<tr><td>iPhone 15 Plus</td><td>78.8</td><td>161.9</td></tr>
+<tr><td>iPhone 15</td><td>73.8</td><td>150.4</td></tr>
+<tr><td>iPhone 14 Pro Max</td><td>79.3</td><td>162.5</td></tr>
+<tr><td>iPhone 14 Pro</td><td>73.1</td><td>150.0</td></tr>
+<tr><td>iPhone 14 Plus</td><td>79.1</td><td>161.8</td></tr>
+<tr><td>iPhone 14</td><td>73.3</td><td>149.2</td></tr>
+<tr><td>iPhone 13 Pro Max</td><td>79.8</td><td>163.5</td></tr>
+<tr><td>iPhone 13 Pro</td><td>74.5</td><td>149.7</td></tr>
+<tr><td>iPhone 13</td><td>73.3</td><td>149.2</td></tr>
+<tr><td>iPhone 13 mini</td><td>65.2</td><td>132.5</td></tr>
+<tr><td>iPhone 12 Pro Max</td><td>79.1</td><td>161.8</td></tr>
+<tr><td>iPhone 12 Pro</td><td>72.5</td><td>147.7</td></tr>
+<tr><td>iPhone 12</td><td>72.5</td><td>147.7</td></tr>
+<tr><td>iPhone 12 mini</td><td>65.2</td><td>132.5</td></tr>
+<tr><td>Galaxy S26</td><td>74.4</td><td>152.3</td></tr>
+<tr><td>Galaxy S26 Plus</td><td>79.7</td><td>163.2</td></tr>
+<tr><td>Galaxy S26 Ultra</td><td>82.0</td><td>166.4</td></tr>
+</table></div>
+
+<footer>Keepsake Printing Co · Case Print SOP v1 · October 2026 · Questions go to Corey. Print files are 300 DPI with 1.5 mm bleed baked in.</footer>
+</div>
