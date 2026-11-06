@@ -11365,5 +11365,105 @@
 "White",
 "Red"
 ]
+},
+{
+"file": "white-polka-dots-on-red.jpg",
+"title": "White Dots on Red",
+"category": "Polka dots",
+"hash": "ea9c0b1c1918",
+"color": [
+"Red",
+"White"
+]
+},
+{
+"file": "confetti-dots-on-cream.jpg",
+"title": "Confetti Dots",
+"category": "Polka dots",
+"hash": "b7c0e588716e",
+"color": [
+"Red",
+"Pink",
+"Blue",
+"Yellow",
+"Beige"
+]
+},
+{
+"file": "candy-waves-red-pink.jpg",
+"title": "Candy Waves",
+"category": "Stripes & waves",
+"hash": "a75fa5e430b6",
+"color": [
+"Red",
+"Pink",
+"Beige"
+]
+},
+{
+"file": "pastel-pink-mint-checkerboard.jpg",
+"title": "Pastel Check",
+"category": "Retro & Y2K",
+"hash": "bc8dd382705b",
+"color": [
+"Pink",
+"Green"
+]
+},
+{
+"file": "christmas-cats-mini-red.jpg",
+"title": "Mini Christmas Cats",
+"category": "Christmas",
+"hash": "7cf54d4552cf",
+"color": [
+"Red",
+"Beige"
+]
+},
+{
+"file": "retro-cartoon-cars-on-cream.jpg",
+"title": "Toy Box Cars",
+"category": "Cars",
+"hash": "b7effedbd4fb",
+"color": [
+"Red",
+"Blue",
+"Yellow",
+"Beige"
+]
+},
+{
+"file": "sports-car-desert-dusk.jpg",
+"title": "Desert Run",
+"category": "Cars",
+"hash": "b21e596eaa32",
+"color": [
+"Orange",
+"Yellow",
+"Blue"
+]
+},
+{
+"file": "sports-car-neon-city.jpg",
+"title": "Night Drive",
+"category": "Cars",
+"hash": "1895f855e227",
+"color": [
+"Red",
+"Purple",
+"Blue",
+"Black"
+]
+},
+{
+"file": "convertible-coast-road.jpg",
+"title": "Coast Cruiser",
+"category": "Cars",
+"hash": "98bcca241877",
+"color": [
+"Red",
+"Orange",
+"Blue"
+]
 }
 ]
