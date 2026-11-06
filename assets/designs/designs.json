@@ -11290,5 +11290,69 @@
 "Pink",
 "Brown"
 ]
+},
+{
+"file": "candy-hearts-pastel-pattern.jpg",
+"title": "Candy Hearts",
+"category": "Hearts",
+"hash": "784843c0a140",
+"color": [
+"Pink",
+"Green",
+"Purple",
+"Yellow",
+"White"
+]
+},
+{
+"file": "coquette-blush-bows-and-hearts.jpg",
+"title": "Blush Bows & Hearts",
+"category": "Coquette",
+"hash": "07ee7a2c9767",
+"color": [
+"Pink"
+]
+},
+{
+"file": "doodle-red-hearts-on-pink.jpg",
+"title": "Doodle Hearts",
+"category": "Hearts",
+"hash": "a87465ffc745",
+"color": [
+"Red",
+"Pink"
+]
+},
+{
+"file": "red-heart-checkerboard.jpg",
+"title": "Heart Check",
+"category": "Hearts",
+"hash": "d5eb46a658a2",
+"color": [
+"Red",
+"White"
+]
+},
+{
+"file": "leopard-print-hearts.jpg",
+"title": "Leopard Hearts",
+"category": "Hearts",
+"hash": "697576c6df1f",
+"color": [
+"Brown",
+"Black",
+"Beige"
+]
+},
+{
+"file": "sweetheart-toss-red-pink-cream.jpg",
+"title": "Sweetheart Toss",
+"category": "Hearts",
+"hash": "ba1bb030b753",
+"color": [
+"Red",
+"Pink",
+"Beige"
+]
 }
 ]
