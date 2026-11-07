@@ -11377,5 +11377,103 @@
 "Purple",
 "Blue"
 ]
+},
+{
+"file": "cow-print-black-on-white.jpg",
+"title": "Cow Print",
+"category": "Animal print",
+"hash": "b21dfc4695a5",
+"color": [
+"Black",
+"White"
+]
+},
+{
+"file": "cow-print-pink-on-cream.jpg",
+"title": "Pink Cow Print",
+"category": "Animal print",
+"hash": "260c47ef53d1",
+"color": [
+"Pink",
+"Beige"
+]
+},
+{
+"file": "monarch-butterflies-wildflowers.jpg",
+"title": "Monarch Meadow",
+"category": "Animals",
+"hash": "59cf4409e8c8",
+"color": [
+"Orange",
+"Black",
+"Beige"
+]
+},
+{
+"file": "black-cat-windowsill-night.jpg",
+"title": "Night Watch Cat",
+"category": "Animals",
+"hash": "f69644f2253c",
+"color": [
+"Blue",
+"Teal",
+"Yellow"
+]
+},
+{
+"file": "playful-cats-pattern-cream.jpg",
+"title": "Cat Nap Club",
+"category": "Animals",
+"hash": "a3d7b27b2d39",
+"color": [
+"Orange",
+"Black",
+"Beige"
+]
+},
+{
+"file": "cowgirl-pink-western-icons.jpg",
+"title": "Rodeo Pink",
+"category": "Coquette",
+"hash": "471fae20d332",
+"color": [
+"Pink",
+"Red",
+"Beige"
+]
+},
+{
+"file": "cute-dinosaurs-volcano-pattern.jpg",
+"title": "Dino Days",
+"category": "Cute & kids",
+"hash": "626b96756a54",
+"color": [
+"Green",
+"Orange",
+"Teal"
+]
+},
+{
+"file": "wild-horses-golden-prairie.jpg",
+"title": "Wild Horses",
+"category": "Animals",
+"hash": "d0f3a1fd1b77",
+"color": [
+"Orange",
+"Teal",
+"Yellow"
+]
+},
+{
+"file": "clear-y2k-stickers-transparent.png",
+"title": "Y2K Stickers",
+"category": "Clear",
+"hash": "ccfb55744e58",
+"color": [
+"Yellow",
+"Pink",
+"Green",
+"Blue"
+]
 }
 ]
