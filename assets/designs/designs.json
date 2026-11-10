@@ -11763,5 +11763,139 @@
 "Green",
 "Blue"
 ]
+},
+{
+"file": "pop-daisy-sky.jpg",
+"title": "Pop Daisy Sky",
+"category": "Bright Pop",
+"hash": "39ae7309bbc5",
+"color": [
+"Blue",
+"Pink",
+"Yellow"
+]
+},
+{
+"file": "big-bloom-pop.jpg",
+"title": "Big Bloom",
+"category": "Bright Pop",
+"hash": "b18b42dc3772",
+"color": [
+"Pink",
+"Yellow",
+"Teal"
+]
+},
+{
+"file": "wavy-rainbow-check.jpg",
+"title": "Wavy Rainbow Check",
+"category": "Bright Pop",
+"hash": "d303aebaf111",
+"color": [
+"Red",
+"Blue",
+"Green",
+"Purple"
+]
+},
+{
+"file": "smiley-flower-power.jpg",
+"title": "Smiley Flower Power",
+"category": "Bright Pop",
+"hash": "d217a948ab21",
+"color": [
+"Orange",
+"Yellow",
+"Blue"
+]
+},
+{
+"file": "cherry-pop-check.jpg",
+"title": "Cherry Pop Check",
+"category": "Bright Pop",
+"hash": "ad62d0bc91e7",
+"color": [
+"Pink",
+"Red",
+"White"
+]
+},
+{
+"file": "butterfly-burst.jpg",
+"title": "Butterfly Burst",
+"category": "Bright Pop",
+"hash": "b79d4d1c5771",
+"color": [
+"Purple",
+"Green",
+"Pink"
+]
+},
+{
+"file": "daisy-dots-yellow.jpg",
+"title": "Daisy Dots",
+"category": "Bright Pop",
+"hash": "85a6cfe5f508",
+"color": [
+"Yellow",
+"White",
+"Orange"
+]
+},
+{
+"file": "hearts-and-flowers-red.jpg",
+"title": "Hearts and Flowers",
+"category": "Bright Pop",
+"hash": "30abc203436e",
+"color": [
+"Red",
+"Pink",
+"Yellow"
+]
+},
+{
+"file": "mushroom-garden.jpg",
+"title": "Mushroom Garden",
+"category": "Bright Pop",
+"hash": "67cdc5b3c8a6",
+"color": [
+"Green",
+"Red",
+"Purple"
+]
+},
+{
+"file": "rainbow-sky-pop.jpg",
+"title": "Rainbow Sky",
+"category": "Bright Pop",
+"hash": "2d0dabc3d3e8",
+"color": [
+"Blue",
+"Red",
+"Yellow"
+]
+},
+{
+"file": "starry-night-pop.jpg",
+"title": "Starry Night Pop",
+"category": "Bright Pop",
+"hash": "3b5b88552a71",
+"color": [
+"Navy",
+"Yellow",
+"Pink"
+]
+},
+{
+"file": "wavy-rainbow-stripes.jpg",
+"title": "Wavy Rainbow Stripes",
+"category": "Bright Pop",
+"hash": "b4f5c8e55c87",
+"color": [
+"Red",
+"Orange",
+"Green",
+"Blue"
+]
 }
 ]

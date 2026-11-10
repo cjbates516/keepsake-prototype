@@ -413,7 +413,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   var designs = [], filter = 'All', device = null;
   /* curated front page: ~48 picks shown by default; full library behind Browse all.
      Rotate the seasonal block (currently Halloween) when seasons change. */
-  var KP_FEATURED = ["west-chester-city-map-cream.jpg", "go-birds-kelly-green.jpg", "philadelphia-city-map-navy.jpg", "abstract-leopard-pink.jpg", "charming-minimalist-black-hearts-pattern-2.jpg", "philadelphia-city-map-cream.jpg", "zodiac-leo-night-sky.jpg", "stylish-white-daisy-floral-pattern.jpg", "where-it-all-began-heart-map-cream.jpg", "playful-cartoon-cherries.jpg", "colorful-playful-abstract-shapes.jpg", "halloween-bats-on-orange.jpg", "halloween-bold-pumpkins-on-black.jpg", "halloween-boo-crew-ghosts-on-charcoal.jpg", "halloween-cowboy-ghosts-on-cream.jpg", "baltimore-atlas.jpg", "abstract-leopard-spots-pattern.jpg", "zodiac-aquarius-blush.jpg", "black-heart-shapes.jpg", "coastal-summer-01.jpg", "cheerful-cartoon-sun-with-colorful-rays.jpg", "cheerful-pastel-watercolor-rainbow-pattern.jpg", "cheerful-pink-strawberry-pattern.jpg", "adorable-cartoon-lion-face.jpg", "area-code-215-blush.jpg", "polka-dots-cherry-navy-on-ivory.jpg", "cheerful-christmas-cartoon.jpg", "birth-flower-april-daisy.jpg", "dog-90s-dog.jpg", "clear-mini-hearts-transparent.png", "baltimore-map-blush.jpg", "boho-floral-01.jpg", "zodiac-aquarius-gold-noir.jpg", "coastal-summer-02.jpg", "cherries-tied-with-ribbon-bow.jpg"];
+  var KP_FEATURED = ["pop-daisy-sky.jpg", "big-bloom-pop.jpg", "wavy-rainbow-check.jpg", "smiley-flower-power.jpg", "cherry-pop-check.jpg", "butterfly-burst.jpg", "west-chester-city-map-cream.jpg", "go-birds-kelly-green.jpg", "philadelphia-city-map-navy.jpg", "abstract-leopard-pink.jpg", "charming-minimalist-black-hearts-pattern-2.jpg", "philadelphia-city-map-cream.jpg", "zodiac-leo-night-sky.jpg", "stylish-white-daisy-floral-pattern.jpg", "where-it-all-began-heart-map-cream.jpg", "playful-cartoon-cherries.jpg", "colorful-playful-abstract-shapes.jpg", "halloween-bats-on-orange.jpg", "halloween-bold-pumpkins-on-black.jpg", "halloween-boo-crew-ghosts-on-charcoal.jpg", "halloween-cowboy-ghosts-on-cream.jpg", "baltimore-atlas.jpg", "abstract-leopard-spots-pattern.jpg", "zodiac-aquarius-blush.jpg", "black-heart-shapes.jpg", "coastal-summer-01.jpg", "cheerful-cartoon-sun-with-colorful-rays.jpg", "cheerful-pastel-watercolor-rainbow-pattern.jpg", "cheerful-pink-strawberry-pattern.jpg", "adorable-cartoon-lion-face.jpg", "area-code-215-blush.jpg", "polka-dots-cherry-navy-on-ivory.jpg", "cheerful-christmas-cartoon.jpg", "birth-flower-april-daisy.jpg", "dog-90s-dog.jpg", "clear-mini-hearts-transparent.png", "baltimore-map-blush.jpg", "boho-floral-01.jpg", "zodiac-aquarius-gold-noir.jpg", "coastal-summer-02.jpg", "cherries-tied-with-ribbon-bow.jpg"];
   if (new Date() >= new Date(new Date().getFullYear(),10,1)) {
     var _hl = document.querySelector('a[href="gallery.html?cat=Halloween"]');
     if (_hl){ _hl.href='gallery.html?cat=Christmas'; _hl.textContent='Christmas'; }
@@ -455,6 +455,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   /* Shop-by-style strip under the title; seasonal slot is month-driven */
   var KP_STRIP_BASE = [
+    ['Bright Pop','big-bloom-pop.jpg'],
     ['City maps','philadelphia-city-map-navy.jpg'],
     ['Florals','stylish-white-daisy-floral-pattern.jpg'],
     ['Abstract','colorful-abstract-mosaic-pattern-with-organic-cells.jpg'],
@@ -463,7 +464,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ['Zodiac','zodiac-leo-night-sky.jpg'],
     ['Retro & Y2K','y2k-retro-05.jpg'],
     ['Fruits','stylized-orange-with-geometric.jpg'],
-    ['Western','western-vintage-06.jpg']
+    ['Polka dots','polka-dots-red-on-white.jpg']
   ];
   function renderCatStrip(){
     var el=document.getElementById('kpCatStrip'); if(!el) return;
