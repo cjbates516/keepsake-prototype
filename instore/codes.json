@@ -20,6 +20,7 @@
 "HRT": 41,
 "KID": 46,
 "MAP": 108,
+"NEO": 6,
 "OUT": 6,
 "POP": 12,
 "SCN": 38,
@@ -2031,6 +2032,30 @@
 "kp-mallards-dusty.jpg": {
 "c": "HIM",
 "n": 11
+},
+"kp-neon-arcade-after-dark.png": {
+"c": "NEO",
+"n": 1
+},
+"kp-neon-cosmic-squiggle.png": {
+"c": "NEO",
+"n": 2
+},
+"kp-neon-electric-confetti.png": {
+"c": "NEO",
+"n": 3
+},
+"kp-neon-glow-grid.png": {
+"c": "NEO",
+"n": 4
+},
+"kp-neon-miami-doodle.png": {
+"c": "NEO",
+"n": 5
+},
+"kp-neon-neon-recess.png": {
+"c": "NEO",
+"n": 6
 },
 "kp-olives-cabana.jpg": {
 "c": "FRU",

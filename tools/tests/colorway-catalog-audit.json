@@ -1,0 +1,202 @@
+{
+  "active": 721,
+  "prepared": 721,
+  "mapsHaveIslands": true,
+  "framed": 24,
+  "examples": {
+    "boho-floral-01.jpg": {
+      "background": {
+        "color": [
+          246.3561776061776,
+          238.2292471042471,
+          219.31821106821107
+        ],
+        "transparent": false
+      },
+      "colors": [
+        [
+          "Rose",
+          "#d7b7c6"
+        ],
+        [
+          "Apricot",
+          "#e5dfd1"
+        ],
+        [
+          "Meadow",
+          "#c3dcc1"
+        ],
+        [
+          "Sky",
+          "#aac8cf"
+        ],
+        [
+          "Periwinkle",
+          "#dfd8e9"
+        ]
+      ],
+      "coverage": 0.396,
+      "group": "floral",
+      "hash": "b46cd12dd264",
+      "islands": true,
+      "method": "palette",
+      "paletteVersion": 1,
+      "preparedHash": "b46cd12dd264"
+    },
+    "baltimore-atlas.jpg": {
+      "background": {
+        "color": [
+          241.7537728355838,
+          243.7727693936987,
+          238.76648133439238
+        ],
+        "transparent": false
+      },
+      "colors": [
+        [
+          "Apricot",
+          "#d7c9b7"
+        ],
+        [
+          "Meadow",
+          "#d7e5d1"
+        ],
+        [
+          "Sea Glass",
+          "#c1dcdc"
+        ],
+        [
+          "Periwinkle",
+          "#b3aacf"
+        ],
+        [
+          "Orchid",
+          "#e9d8e1"
+        ]
+      ],
+      "coverage": 0.573,
+      "group": "maps",
+      "hash": "e3a8c3613c7d",
+      "islands": true,
+      "method": "map",
+      "paletteVersion": 1,
+      "preparedHash": "e3a8c3613c7d"
+    },
+    "fishing-lake-aerial-view.jpg": {
+      "background": {
+        "color": [
+          0.5643459915611815,
+          102.542194092827,
+          169.03955696202533
+        ],
+        "transparent": false
+      },
+      "colors": [
+        [
+          "Meadow Night",
+          "#2a4125"
+        ],
+        [
+          "Sea Glass",
+          "#c4dedd"
+        ],
+        [
+          "Periwinkle",
+          "#5c4f8c"
+        ],
+        [
+          "Orchid Night",
+          "#522e41"
+        ],
+        [
+          "Apricot",
+          "#c8bc9d"
+        ]
+      ],
+      "coverage": 0.467,
+      "group": "outdoors",
+      "hash": "58eaebd78261",
+      "islands": false,
+      "method": "framed",
+      "paletteVersion": 1,
+      "preparedHash": "58eaebd78261"
+    },
+    "clear-mini-hearts-transparent.png": {
+      "background": {
+        "color": [
+          220.04076086956522,
+          39.84510869565217,
+          45.86684782608695
+        ],
+        "transparent": true
+      },
+      "colors": [
+        [
+          "Lilac Night",
+          "#311f33"
+        ],
+        [
+          "Coral Night",
+          "#492d2c"
+        ],
+        [
+          "Butter Night",
+          "#353d24"
+        ],
+        [
+          "Sea Glass Night",
+          "#365949"
+        ],
+        [
+          "Blue Night",
+          "#1b1e2d"
+        ]
+      ],
+      "coverage": 0.077,
+      "group": "pastel",
+      "hash": "6110bb8b4b9a",
+      "islands": false,
+      "method": "palette",
+      "paletteVersion": 1,
+      "preparedHash": "6110bb8b4b9a"
+    },
+    "kp-neon-electric-confetti.png": {
+      "group": "bright",
+      "hash": "b7aaaf05e2cc",
+      "method": "palette",
+      "colors": [
+        [
+          "Poolside Night",
+          "#102e35"
+        ],
+        [
+          "Purple Party",
+          "#2e163a"
+        ],
+        [
+          "Berry Night",
+          "#371b30"
+        ],
+        [
+          "Midnight Blue",
+          "#15223e"
+        ],
+        [
+          "Charcoal",
+          "#2c2932"
+        ]
+      ],
+      "background": {
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "transparent": false
+      },
+      "islands": true,
+      "paletteVersion": 1,
+      "preparedHash": "b7aaaf05e2cc"
+    }
+  }
+}

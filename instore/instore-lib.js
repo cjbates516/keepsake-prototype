@@ -108,9 +108,15 @@
   };
 
   /* null when the design has no registered number yet: callers must then show no code */
-  KPI.pickCode = function (model, design) {
+  KPI.colorways = function(d){return window.KPDesignColorways?KPDesignColorways.choicesFor({__kpDesignFile:d.file}):[{id:'original',name:'Original'}];};
+  KPI.pickCode = function (model, design, colorway) {
     if (!model || !design || design._n == null) return null;
-    return model.id + '-' + design._col.code + '-' + pad3(design._n);
+    var code=model.id+'-'+design._col.code+'-'+pad3(design._n);
+    if(colorway&&colorway!=='original'){
+      var selected=KPI.colorways(design).find(function(c){return c.id===colorway;});
+      if(!selected||!selected.code)return null;code+='-C'+selected.code;
+    }
+    return code;
   };
   KPI.pad3 = pad3;
   KPI.fallbackCode = function (cat, used) {
@@ -127,14 +133,17 @@
      matched against the known ids (longest first), because ids and collection codes both use letters. */
   KPI.parseCode = function (text, modelIds) {
     var t = String(text || '').toUpperCase().trim().replace(/[\s_.\u2010-\u2015\u2212]+/g, '-').replace(/-+/g, '-');
+    var suffix=t.match(/(\d)-?C([1-5])$/),colorway=suffix?Number(suffix[2]):0;
+    if(suffix)t=t.slice(0,suffix.index)+suffix[1];
+    function result(model,col,n){var p={model:model,col:col,n:n};if(colorway)p.colorway=colorway;return p;}
     var m = t.match(/^([A-Z0-9]+)-([A-Z0-9]{3})-(\d{1,4})$/);
-    if (m) return { model: m[1], col: m[2], n: parseInt(m[3], 10) };
+    if (m) return result(m[1],m[2],parseInt(m[3],10));
     var flat = t.replace(/-/g, ''), ids = (modelIds || []).slice().sort(function (a, b) { return b.length - a.length; });
     for (var i = 0; i < ids.length; i++) {
       var id = String(ids[i]).toUpperCase();
       if (flat.indexOf(id) !== 0) continue;
       var rest = flat.slice(id.length).match(/^([A-Z0-9]{3})(\d{1,4})$/);
-      if (rest) return { model: id, col: rest[1], n: parseInt(rest[2], 10) };
+      if (rest) return result(id,rest[1],parseInt(rest[2],10));
     }
     return null;
   };
@@ -155,8 +164,8 @@
   KPI.formatPrice = function (p) { return '$' + Number(p).toFixed(2); };
   KPI.thumbUrl = function (d) { return ROOT + 'assets/designs/thumbs/' + encodeURIComponent(d.file) + '?v=' + (d.hash || '1'); };
   KPI.fullUrl = function (d) { return ROOT + 'assets/designs/' + encodeURIComponent(d.file) + '?v=' + (d.hash || '1'); };
-  KPI.customizerUrl = function (model, d) {
-    return ROOT + 'customizer.html?design=' + encodeURIComponent(d.file) + '&model=' + encodeURIComponent(model.name.replace(/ /g, '-'));
+  KPI.customizerUrl = function (model, d, colorway) {
+    return ROOT + 'customizer.html?design=' + encodeURIComponent(d.file) + '&model=' + encodeURIComponent(model.name.replace(/ /g, '-'))+(colorway&&colorway!=='original'?'&colorway='+encodeURIComponent(colorway):'');
   };
 
   /* ---------- images ---------- */
@@ -179,6 +188,7 @@
       im.onload = function () { finish(true); };
       im.onerror = function () { finish(false); };
       if (opts.timeout) timer = setTimeout(function () { finish(false); }, opts.timeout);
+      if(src.indexOf('assets/designs/')>=0) im.__kpDesignFile=decodeURIComponent(src.split('?')[0].split('/').pop());
       im.src = src;
     });
     if (keep) { imgCache[src] = p; p.catch(function () { delete imgCache[src]; }); }
@@ -264,7 +274,7 @@
       tc.clearRect(0, 0, prep.W, prep.H);
       var b = prep.box, iw = designImg.naturalWidth || designImg.width, ih = designImg.naturalHeight || designImg.height;
       var s = Math.max(b[2] / iw, b[3] / ih), w = iw * s, h = ih * s;
-      try { tc.filter = 'saturate(1.08) contrast(1.03)'; } catch (e) {}
+      try { tc.filter = 'none'; } catch (e) {}
       tc.drawImage(designImg, b[0] + (b[2] - w) / 2, b[1] + (b[3] - h) / 2, w, h);
       try { tc.filter = 'none'; } catch (e) {}
       tc.globalAlpha = 0.22; tc.globalCompositeOperation = 'multiply';
@@ -279,8 +289,11 @@
 
   /* Render to an object URL (keeps memory low with hundreds of tiles).
      With a background colour it is a small JPEG; without one it is a PNG so the area around the case stays clear. */
-  KPI.renderToUrl = function (prep, designImg, bg) {
+  KPI.renderToUrl = function (prep, designImg, bg, colorway) {
+    var composed=null;
+    if(window.KPDesignColorways&&KPDesignColorways.profile(designImg)){composed=KPDesignColorways.make(designImg,colorway||'original',1200);designImg=composed;}
     var c = KPI.render(prep, designImg, bg, prep._out || (prep._out = canvas(prep.W, prep.H)));
+    if(composed)composed.width=composed.height=0;
     var type = bg ? 'image/jpeg' : 'image/png', q = bg ? 0.86 : undefined;
     return new Promise(function (resolve) {
       if (c.toBlob) {

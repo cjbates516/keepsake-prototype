@@ -17,7 +17,7 @@ and pushes. The Design Library page renders whatever is in the manifest.
 
 ## Ordering backend and staff queue (added Oct 2026)
 
-- `assets/kp-config.js` — site config: `ORDERS_ENDPOINT` (Apps Script web app URL), `PRICE` (59.99), `CASE_NAME`.
+- `assets/kp-config.js` — site config: `ORDERS_ENDPOINT` (Apps Script web app URL), `PRICE` (44.99), `CASE_NAME`.
 - `tools/kp-orders-appsscript.js` — the order backend. Paste into a Google Apps Script project, run `setup()` once,
   deploy as a Web app (execute as me, anyone), paste the URL into `kp-config.js`. Orders become rows in the
   "Keepsake Orders" Google Sheet; print files and previews land in Drive, "Keepsake Orders / Print Files";
@@ -67,3 +67,21 @@ pick code lookup, customizer load, print export, idle reset, offline, failures).
 Lock the store iPad with Guided Access (an iPad setting, not code): Settings, Accessibility, Guided Access,
 turn it on and set a passcode. Open the In Store page in Safari, triple click the side or top button, tap Start.
 Add the page to the Home Screen first if you want it full screen. Triple click again and enter the passcode to leave.
+
+## Storefront and design colorways
+
+All case designs are $44.99. Tempered glass is $29.99 separately, with $10 off when added to a case ($19.99 glass; $64.98 bundle before any other applicable promotion). Runtime prices live in `assets/kp-config.js`; storefront copy mirrors those prices.
+
+Colorways preserve the focal artwork while changing the surrounding background. Every active library design has five alternatives plus the original. Each design has a frozen palette in `assets/colorway-catalog.js`; ordinary uploaded photos are not recolored. Neon Doodles adds six original neon patterns. Detailed scenery uses a framed treatment that preserves the full image. `assets/design-colorways.js` is the shared local composition renderer. Selected colorways must travel with the design into preview, staff handoff and print export.
+
+Generated lifestyle scenes and sample collage tiles are removed. Physical printer alignment still needs a store hardware check.
+
+Colorway maintenance:
+- `python3 tools/build_colorway_catalog.py` registers new designs and preserves existing palette slots.
+- `node tools/prepare_colorways.cjs` samples new source art and prepares per-design palettes; set `PW_CORE` if playwright-core is installed elsewhere. Review generated artwork before release. Designs without prepared palettes show Original only.
+- `node tools/export_colorways.cjs /absolute/output/path` exports individual PNG masters and manifests, plus visual review sheets; `CATEGORY="Neon Doodles"` limits a batch.
+- Save every batch to Keepsake Printing Co / Design Colorways in Google Drive, including the manifest. Drive uploads in this workflow run through the connected agent, not a background daemon. Split archives below 100 MiB and verify returned file IDs/sizes.
+- Pick-code suffixes `-C1` through `-C5` identify the frozen colorway slots; the original retains its existing code. Changing palette order after release would change old codes, so never reorder existing slots.
+- When changing the colorway renderer or catalog, bump `instore/sw.js`'s shell version so store iPads refresh the precached scripts.
+
+Software verification: in-store suite 125/125 (including offline colorway selection) (Chromium + WebKit); customizer pricing/uploads/all 15 active phone print exports; selected-colorway lookup-to-print across Yosemite, florals, maps, transparent art, framed scenery and all six Neon Doodles. No production customer orders or physical prints were created by these checks.

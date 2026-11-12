@@ -169,6 +169,7 @@
           <h1 class="dname" id="dname"></h1>
           <p class="dmeta" id="dmeta"></p>
           <p class="price" id="price"></p>
+          <div id="colorwayPicker" hidden style="margin:16px 0"><p style="font-size:18px;font-weight:800">Choose your colorway</p><div id="colorwayButtons" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"></div></div>
           <button class="cta" type="button" id="showBtn">Show a team member</button>
           <div class="codecard" id="codecard" aria-live="polite">
             <p class="codelabel" id="codelabel">YOUR PICK CODE</p>
@@ -202,6 +203,8 @@
   </div>
 </div>
 
+<script src="../assets/colorway-catalog.js"></script>
+<script src="../assets/design-colorways.js"></script>
 <script src="instore-lib.js"></script>
 <script>
 (function () {
@@ -209,10 +212,11 @@
   var TILE_W = 360, BIG_W = 900, TILE_BG = '#FFFFFF';
   var $ = function (id) { return document.getElementById(id); };
   var data = null;
-  var state = { screen: 1, model: null, design: null, filter: 'all' };
+  var state = { screen: 1, model: null, design: null, colorway:'original', filter: 'all' };
   var urls = {};           /* model id -> { file: objectURL } */
   var blankUrl = {};       /* model id -> phone only render */
   var queue = [], active = 0, MAX_JOBS = 4, gen = 0, io = null;
+  var bigImageFile=null,bigImagePromise=null;
   var bigUrl = null;       /* the large confirm preview, freed as soon as it is replaced */
   var previewSeq = 0;      /* each confirm preview request gets a number; only the newest may show */
   var RETRY_MIN = 5000, RETRY_MAX = 60000;
@@ -434,35 +438,37 @@
   }
 
   /* ---------- screen 3 ---------- */
-  function pickDesign(file) {
+  function pickDesign(file, colorway) {
     var d = findDesign(file), m = state.model;
     if (!d || !m) return;
-    state.design = d;
+    var sameDesign=state.design===d;
+    state.design = d;state.colorway=colorway||'original';
+    var options=KPI.colorways(d),selected=options.find(function(c){return c.id===state.colorway;})||options[0];
+    state.colorway=selected.id;
+    $('colorwayPicker').hidden=options.length<2;
+    $('colorwayButtons').innerHTML=options.map(function(c){return '<button type="button" data-colorway="'+esc(c.id)+'" aria-pressed="'+(c.id===state.colorway)+'" style="min-height:52px;font-family:inherit;font-size:18px;font-weight:700;border:2px solid '+(c.id===state.colorway?'#dc282e':'#ddd')+';border-radius:10px;background:#fff;color:#191921;padding:10px">'+esc(c.name)+'</button>';}).join('');
     var title = cleanTitle(d.title);
     $('dname').textContent = title;
-    $('dmeta').textContent = 'For your ' + m.name;
+    $('dmeta').textContent = 'For your '+m.name+(options.length>1?' · '+selected.name:'');
     $('price').textContent = KPI.formatPrice(data.price);
-    var code = KPI.pickCode(m, d);
+    var code = KPI.pickCode(m, d, state.colorway);
     /* no registered code (new design or code list missing): show no code rather than a guessed one */
     $('code').textContent = code || '';
     $('code').hidden = !code;
     $('codelabel').textContent = code ? 'YOUR PICK CODE' : 'SHOW THIS TO A TEAM MEMBER';
     $('hint').textContent = code ? 'A team member will take it from here.' : 'A team member will find it by its name.';
-    $('cname').textContent = title;
+    $('cname').textContent = title+(options.length>1?' · '+selected.name:'');
     $('cmodel').textContent = m.name;
     $('codecard').classList.remove('on');
     $('showBtn').style.display = '';
     var pv = $('pv'), tileUrl = (urls[m.id] || {})[file];
-    var old = bigUrl; bigUrl = null;
-    pv.src = tileUrl || blankUrl[m.id] || '';
-    revoke(old);
+    if(!sameDesign){var old = bigUrl; bigUrl = null;pv.src = tileUrl || blankUrl[m.id] || '';revoke(old);}
     show(3);
-    var mine = d, seq = ++previewSeq;
+    var mine = d, look=state.colorway, seq = ++previewSeq;
     KPI.prepModel(m, BIG_W).then(function (prep) {
-      return KPI.loadImage(KPI.fullUrl(d), { cache: false, timeout: 15000 }).catch(function () {
-        return KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 });
-      }).then(function (im) {
-        return KPI.renderToUrl(prep, im, null);
+      if(bigImageFile!==file||!bigImagePromise){bigImageFile=file;bigImagePromise=KPI.loadImage(KPI.fullUrl(d), { cache: false, timeout: 15000 }).catch(function () {if(bigImageFile===file)bigImagePromise=null;return KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 });});bigImagePromise.catch(function(){if(bigImageFile===file)bigImagePromise=null;});}
+      return bigImagePromise.then(function (im) {
+        return KPI.renderToUrl(prep, im, null, look);
       });
     }).then(function (u) {
       /* only the newest request for the phone and design on screen may replace the preview */
@@ -481,10 +487,10 @@
   function openSheet() { $('ownSheet').classList.add('on'); }
   function closeSheet() { $('ownSheet').classList.remove('on'); }
   function reset() {
-    closeSheet();
+    closeSheet();bigImageFile=bigImagePromise=null;
     previewSeq++;
     $('pv').removeAttribute('src'); revoke(bigUrl); bigUrl = null;
-    state.model = null; state.design = null; state.filter = 'all';
+    state.model = null; state.design = null;state.colorway='original'; state.filter = 'all';
     gen++; queue.length = 0;
     $('codecard').classList.remove('on');
     $('showBtn').style.display = '';
@@ -515,6 +521,7 @@
     lastTap = { x: e.clientX, y: e.clientY };
     var t = e.target.closest('button');
     if (!t) { if (e.target === $('ownSheet')) closeSheet(); return; }
+    if(t.hasAttribute('data-colorway'))return pickDesign(state.design.file,t.getAttribute('data-colorway'));
     if (t.hasAttribute('data-model')) return pickModel(t.getAttribute('data-model'));
     if (t.hasAttribute('data-col')) return setFilter(t.getAttribute('data-col'));
     if (t.hasAttribute('data-file')) return pickDesign(t.getAttribute('data-file'));

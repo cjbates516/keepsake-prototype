@@ -236,8 +236,9 @@ html,body{background:var(--paper)}
 {"@type":"City","name":"Pottstown","containedInPlace":{"@type":"State","name":"Pennsylvania"}},
 {"@type":"City","name":"Newark","containedInPlace":{"@type":"State","name":"Delaware"}}]}
 </script>
+<link rel="stylesheet" href="assets/storefront.css">
 </head>
-<body>
+<body class="kp-storefront kp-home">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
 <div style="min-height:100vh;display:flex;flex-direction:column;background:#FFFBF7">
 
@@ -313,7 +314,7 @@ html,body{background:var(--paper)}
         <a href="customizer.html?design=festive-christmas-ornaments-and-trees.jpg"><img src="assets/designs/thumbs/festive-christmas-ornaments-and-trees.jpg" alt="" loading="lazy"></a>
         <a href="customizer.html?design=celestial-planet-doodles-noir.jpg"><img src="assets/designs/thumbs/celestial-planet-doodles-noir.jpg" alt="" loading="lazy"></a>
       </div>
-      <a class="kpMCta" href="customizer.html">Design yours — $59.99</a>
+      <a class="kpMCta" href="customizer.html">Design yours — $44.99</a>
     </div>
     <div style="max-width:1280px;margin:0 auto;padding:36px 40px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:clamp(20px,2.5vw,36px)">
       <div>
@@ -412,24 +413,34 @@ html,body{background:var(--paper)}
 
   <main id="main" style="flex:1">
 
-    <!-- hero -->
-    <section id="heroSec2">
-      <div>
-        <div class="kpStick">UV-printed in store · ready in ~2 hours</div>
-        <h1 class="dsp">Your photo.<br>Your case.<br><em>Printed today.</em></h1>
-        <p class="heroSub2">Bring the photo that means something — or pick from 800+ designs — and watch it UV-printed onto a MagSafe clear case right at the counter. No shipping, no waiting a week.</p>
-        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
-          <a class="ctaMain" href="customizer.html">Start with your photo — $59.99</a>
-          <a class="ctaGhost" href="gallery.html">Shop the designs</a>
-        </div>
-        <div class="heroStats2"><span style="color:var(--red);letter-spacing:2px">★★★★★</span> 4.9 · 312 in-store reviews · West Chester · Pottstown · Newark DE</div>
+    <nav class="edit-nav" aria-label="Explore Keepsake">
+      <a href="gallery.html">All designs</a><a href="gallery.html?cat=Neon%20Doodles">Neon Doodles</a><a href="gallery.html?cat=Bright%20Pop">Bright &amp; bold</a><a href="gallery.html?cat=City%20maps">City maps</a><a href="gallery.html?cat=Christmas">Holiday shop</a><a href="customizer.html">Your photo</a><a href="instore/">In-store kiosk <span aria-hidden="true">↗</span></a>
+    </nav>
+    <section class="campaign" aria-labelledby="campaign-title">
+      <div class="campaign-copy">
+        <p class="campaign-kicker">Made for your everyday. Anything but ordinary.</p>
+        <h1 id="campaign-title">A little<br>more <em>you.</em></h1>
+        <p class="campaign-description">Your favorite photo. Your kind of print. A case with personality, made right here in store.</p>
+        <div class="campaign-actions"><a class="campaign-primary" href="gallery.html">Find your favorite <span aria-hidden="true">↗</span></a><a class="campaign-secondary" href="customizer.html">Make it personal <span aria-hidden="true">→</span></a></div>
+        <p class="campaign-footnote">Designed by you. Printed today.</p>
       </div>
-      <div id="heroArt">
-        <a href="gallery.html?cat=Christmas" class="kpHolChip">🎄 The Holiday Shop is open</a>
-        <img class="ha haL" src="assets/home/hero2-dog.webp" alt="Boston terrier design printed on an iPhone 16 Pro case" width="640" height="1257">
-        <img class="ha haC" src="assets/home/hero2-abstract.webp" alt="Colorful abstract design printed on an iPhone 16 Pro Max case" width="640" height="1267">
-        <img class="ha haR" src="assets/home/hero2-waves.webp" alt="Wavy stripes design printed on a Galaxy S26 Ultra case" width="640" height="1271">
-        <div class="kpQuote"><span class="st">★★★★★</span><b>"She cried. Best gift ever."</b><i>Priya K. · Mother’s Day</i></div>
+      <div class="campaign-art">
+        <span class="campaign-outline" aria-hidden="true">KEEP IT<br>PERSONAL.</span>
+        <div class="campaign-cases">
+          <img class="campaign-case case-left" src="assets/home/hero2-dog.webp" alt="Dog portrait case with blue heart sunglasses" width="640" height="1257" fetchpriority="high">
+          <img class="campaign-case case-center" src="assets/home/hero2-abstract.webp" alt="Colorful abstract shapes on a clear phone case" width="640" height="1267" fetchpriority="high">
+          <img class="campaign-case case-right" src="assets/home/hero2-waves.webp" alt="Bright wavy stripe phone case" width="640" height="1271">
+        </div>
+        <a class="campaign-stamp" href="gallery.html">Pick it.<br>Print it.<br><span>Love it. ↗</span></a>
+        <span class="campaign-art-label">THE EVERYDAY, REMIXED / KEEPSAKE</span>
+      </div>
+    </section>
+    <section class="collection-edit" aria-labelledby="collection-title">
+      <div class="edit-heading"><div><p class="edit-eyebrow">Different moods. Same you.</p><h2 id="collection-title">Find your thing.</h2></div><a href="gallery.html">Explore the library <span aria-hidden="true">↗</span></a></div>
+      <div class="edit-collections">
+        <a class="edit-collection collection-pop" href="gallery.html?cat=Bright%20Pop"><div><span class="edit-eyebrow">Turn up the color</span><h3>Big print.<br>Big energy.</h3><span class="collection-link">Shop bright &amp; bold ↗</span></div><img src="assets/home/hero2-abstract.webp" alt="" width="640" height="1267" loading="lazy"></a>
+        <a class="edit-collection collection-local" href="gallery.html?cat=City%20maps"><div><span class="edit-eyebrow">Keep your city close</span><h3>Hometown<br>heart.</h3><span class="collection-link">Shop city maps ↗</span></div><img src="assets/promo/promo2-philly-map-cream.webp" alt="" loading="lazy"></a>
+        <a class="edit-collection collection-floral" href="gallery.html?cat=Florals"><div><span class="edit-eyebrow">A fresh perspective</span><h3>Full<br>bloom.</h3><span class="collection-link">Shop florals ↗</span></div><img src="assets/promo/promo2-white-daisies.webp" alt="" loading="lazy"></a>
       </div>
     </section>
 
@@ -440,21 +451,21 @@ html,body{background:var(--paper)}
       </div>
     </div>
 
-    <!-- best sellers -->
-    <section style="max-width:1280px;margin:0 auto;padding:72px 40px 64px">
+    <!-- design edit -->
+    <section class="design-edit" style="max-width:1280px;margin:0 auto;padding:72px 40px 64px">
       <div class="shelfHead">
-        <h2 class="dsp">This week’s most-printed</h2>
+        <h2 class="dsp">The design edit</h2>
         <a href="gallery.html">Shop all designs</a>
       </div>
-      <div style="display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px">
-        <a class="kpBest" href="customizer.html?design=abstract-leopard-pink.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-pink-leopard.webp" alt="Pink Leopard case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Pink Leopard</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$59.99</div></a>
-        <a class="kpBest" href="customizer.html?design=philadelphia-city-map-cream.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-philly-map-cream.webp" alt="Philadelphia Map case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Philadelphia Map</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$59.99</div></a>
-        <a class="kpBest" href="customizer.html?design=charming-minimalist-black-hearts-pattern-2.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-black-hearts.webp" alt="Black Hearts case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Black Hearts</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$59.99</div></a>
-        <a class="kpBest" href="customizer.html?design=zodiac-leo-night-sky.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-leo-night-sky.webp" alt="Leo — Night Sky case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Leo — Night Sky</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$59.99</div></a>
-        <a class="kpBest" href="customizer.html?design=stylish-white-daisy-floral-pattern.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-white-daisies.webp" alt="White Daisies case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">White Daisies</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$59.99</div></a>
-        <a class="kpBest" href="customizer.html?design=where-it-all-began-heart-map-cream.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-heart-map-cream.webp" alt="Where We Met case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Where We Met</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$59.99</div></a>
-        <a class="kpBest" href="customizer.html?design=celestial-planet-doodles-noir.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-cosmic-sparkle.webp" alt="Cosmic Sparkle case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Cosmic Sparkle</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$59.99</div></a>
-        <a class="kpBest" href="customizer.html?design=playful-cartoon-cherries.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-cherries.webp" alt="Cherries case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Cherries</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$59.99</div></a>
+      <div class="design-edit-row" role="region" tabindex="0" aria-label="Featured designs, scroll for more" style="display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px">
+        <a class="kpBest" href="customizer.html?design=abstract-leopard-pink.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-pink-leopard.webp" alt="Pink Leopard case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Pink Leopard</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$44.99</div></a>
+        <a class="kpBest" href="customizer.html?design=philadelphia-city-map-cream.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-philly-map-cream.webp" alt="Philadelphia Map case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Philadelphia Map</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$44.99</div></a>
+        <a class="kpBest" href="customizer.html?design=charming-minimalist-black-hearts-pattern-2.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-black-hearts.webp" alt="Black Hearts case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Black Hearts</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$44.99</div></a>
+        <a class="kpBest" href="customizer.html?design=zodiac-leo-night-sky.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-leo-night-sky.webp" alt="Leo — Night Sky case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Leo — Night Sky</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$44.99</div></a>
+        <a class="kpBest" href="customizer.html?design=stylish-white-daisy-floral-pattern.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-white-daisies.webp" alt="White Daisies case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">White Daisies</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$44.99</div></a>
+        <a class="kpBest" href="customizer.html?design=where-it-all-began-heart-map-cream.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-heart-map-cream.webp" alt="Where We Met case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Where We Met</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$44.99</div></a>
+        <a class="kpBest" href="customizer.html?design=celestial-planet-doodles-noir.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-cosmic-sparkle.webp" alt="Cosmic Sparkle case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Cosmic Sparkle</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$44.99</div></a>
+        <a class="kpBest" href="customizer.html?design=playful-cartoon-cherries.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-cherries.webp" alt="Cherries case" loading="lazy" style="width:100%;filter:drop-shadow(0 14px 20px rgba(45,45,59,.18))"><div style="font-weight:700;font-size:14px;color:#2D2D3B;margin-top:10px">Cherries</div><div style="font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">$44.99</div></a>
       </div>
     </section>
 
@@ -469,7 +480,7 @@ html,body{background:var(--paper)}
             <a class="ctaCream" href="gallery.html?cat=Christmas">Shop holiday designs</a>
             <a href="gifts.html" style="color:var(--cream);font-weight:800;font-size:14px;text-decoration:underline;text-underline-offset:4px">Browse the Gift Guide →</a>
           </div>
-          <p style="margin:22px 0 0;font-size:13.5px;font-weight:700;color:rgba(246,239,227,.75)">The $99 Gift Set: case + screen protector + charger · Gift cards at the counter · Free redo within 7 days — a gift that can&rsquo;t miss.</p>
+          <p style="margin:22px 0 0;font-size:13.5px;font-weight:700;color:rgba(246,239,227,.75)">Case + tempered glass: $64.98 (save $10 on glass) · Gift cards at the counter · Free redo within 7 days — a gift that can&rsquo;t miss.</p>
         </div>
         <div class="caseRow">
           <a class="caseTile ct1" href="customizer.html?design=cream-snowflakes-on-navy.jpg&model=iphone-16-pro-max"><img src="assets/promo/promo2-xmas-snowflakes-navy.webp" alt="Snowflakes on navy case" loading="lazy" width="640" height="1267"></a>
@@ -499,28 +510,6 @@ html,body{background:var(--paper)}
         </div>
       </section>
 
-    <!-- lookbook -->
-    <section style="max-width:1280px;margin:0 auto;padding:72px 40px 64px">
-      <div class="shelfHead">
-        <h2 class="dsp">Spotted in the wild</h2>
-        <span class="kpLookHint" style="font-size:13px;font-weight:700;color:var(--mut)">Tap any look to make it yours</span>
-      </div>
-      <div style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px">
-        <a href="customizer.html?design=cheerful-pink-strawberry-pattern.jpg&model=iphone-16-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life-v118.jpg" alt="Pink Berries case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Pink Berries</div></a>
-        <a href="customizer.html?design=miami-map-cream.jpg&model=iphone-16-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v124-miami.jpg" alt="Miami Map case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Miami Map</div></a>
-        <a href="customizer.html?design=colorful-minimalist-wavy-stripes.jpg&model=iphone-16-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life-v119.jpg" alt="Wavy Stripes case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Wavy Stripes</div></a>
-        <a href="customizer.html?design=zodiac-leo-night-sky.jpg&model=iphone-16-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v113-leo.jpg" alt="Leo Night Sky case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Leo Night Sky</div></a>
-        <a href="customizer.html?design=birth-flower-june-rose.jpg&model=iphone-16-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v115-junerose.jpg" alt="June Rose case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">June Rose</div></a>
-        <a href="customizer.html?design=dog-s-with-cute-dachshunds-71830480.jpg&model=iphone-16-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v122-dachshund.jpg" alt="Dachshund Parade case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Dachshund Parade</div></a>
-        <a href="customizer.html?design=charming-minimalist-black-hearts-pattern-2.jpg&model=iphone-16-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life-v116.jpg" alt="Black Hearts case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Black Hearts</div></a>
-        <a href="customizer.html?design=y2k-retro-04.jpg&model=iphone-16-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v120-y2k.jpg" alt="Y2K Neon case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Y2K Neon</div></a>
-        <a href="customizer.html?design=birth-flower-january-carnation.jpg&model=iphone-16-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life2-v116-carnation.jpg" alt="January Carnation case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">January Carnation</div></a>
-        <a href="customizer.html?design=kawaii-watercolor-strawberry.jpg&model=iphone-16-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life-v120.jpg" alt="Kawaii Strawberry case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Kawaii Strawberry</div></a>
-        <a href="customizer.html?design=high-detail-botanical-of-winter-flora-on-white.jpg&model=iphone-16-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life-v113.jpg" alt="Winter Botanical case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Winter Botanical</div></a>
-        <a href="customizer.html?design=intricate-black-leopard-spots.jpg&model=iphone-16-pro-max" style="flex:0 0 230px;scroll-snap-align:start;text-decoration:none"><img src="assets/lifestyle/thumbs/life-v122.jpg" alt="Leopard case in real life" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px"><div style="font-weight:700;font-size:13px;color:#2D2D3B;margin-top:8px">Leopard</div></a>
-      </div>
-    </section>
-
     <!-- shop by vibe -->
     <section style="max-width:1280px;margin:0 auto;padding:0 40px 72px">
       <div class="shelfHead"><h2 class="dsp">Shop by vibe</h2><a href="gallery.html">See everything</a></div>
@@ -535,11 +524,11 @@ html,body{background:var(--paper)}
           <span style="position:absolute;top:16px;left:16px;font-weight:900;font-size:clamp(17px,2vw,24px);color:#FFFFFF;text-shadow:0 2px 12px rgba(0,0,0,.45)">City<br>Maps</span>
         </a>
         <a class="kpTile" href="gallery.html">
-          <img src="assets/lifestyle/thumbs/life-v119.jpg" alt="Ready-made designs" loading="lazy">
+          <img src="assets/home/hero2-waves.webp" alt="Wavy stripe case design" style="object-fit:contain;padding:24px;box-sizing:border-box;background:#c4e7f2" loading="lazy">
           <span>Ready-Made<br>Designs</span>
         </a>
         <a class="kpTile" href="customizer.html">
-          <img src="assets/lifestyle/thumbs/life-v118.jpg" alt="Design your own case" loading="lazy">
+          <img src="assets/home/hero2-dog.webp" alt="Photo printed on a case" style="object-fit:contain;padding:24px;box-sizing:border-box;background:#ffd4df" loading="lazy">
           <span>Design<br>Your Own</span>
         </a>
         <a class="kpTile wide" href="gallery.html?device=iphone-17-pro-max">
@@ -730,7 +719,7 @@ html,body{background:var(--paper)}
   $('burger').addEventListener('click', function(e){ e.stopPropagation(); mega.classList.toggle('open'); });
   document.addEventListener('click', function(e){ if (mega.classList.contains('open') && !mega.contains(e.target)) mega.classList.remove('open'); });
 
-  var _mq='Printed today \u2726 The Holiday Shop is open \u2726 Your photo on a case \u2726 800+ designs \u2726 3 local stores \u2726 12-mo print warranty \u2726 ';
+  var _mq='Printed today \u2726 The Holiday Shop is open \u2726 Your photo on a case \u2726 Hundreds of designs \u2726 3 local stores \u2726 12-mo print warranty \u2726 ';
   document.querySelectorAll('.kpMarqIn').forEach(function(el){ el.textContent=_mq+_mq; });
 
   // seasonal announce flips (KP_BF: Black Friday offer \u2014 OFF until Corey approves the offer)

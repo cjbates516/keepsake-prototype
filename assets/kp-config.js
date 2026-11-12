@@ -3,7 +3,9 @@ window.KP_CONFIG = {
   /* Google Apps Script web app URL from tools/kp-orders-appsscript.js (Deploy, Web app). Empty = orders fall back to a reserve code. */
   ORDERS_ENDPOINT: '',
   /* One case option for launch. */
-  PRICE: 59.99,
+  PRICE: 44.99,
+  GLASS_PRICE: 29.99,
+  GLASS_BUNDLE_DISCOUNT: 10.00,
   CASE_NAME: 'MagSafe Clear',
   /* Optional: Cloudflare worker URL for AI designs (tools/kp-ai-worker.js). Empty = AI idea box hidden. */
   AI_ENDPOINT: ''

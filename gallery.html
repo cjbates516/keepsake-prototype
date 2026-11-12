@@ -83,8 +83,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 .kpCatCard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,25,33,.5),rgba(25,25,33,.06) 58%,rgba(25,25,33,0))}
 .kpCatCard span{position:absolute;top:11px;left:14px;z-index:1;color:#FFF;font-weight:900;font-size:14.5px;letter-spacing:.01em;text-shadow:0 1px 6px rgba(25,25,33,.4)}
 </style>
+<link rel="stylesheet" href="assets/storefront.css">
+<script src="assets/colorway-catalog.js"></script>
+<script src="assets/design-colorways.js"></script>
 </head>
-<body>
+<body class="kp-storefront kp-library">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
 <div style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
 
@@ -159,7 +162,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         <a href="customizer.html?design=halloween-bats-on-orange.jpg"><img src="assets/designs/thumbs/halloween-bats-on-orange.jpg" alt="" loading="lazy"></a>
         <a href="customizer.html?design=celestial-planet-doodles-noir.jpg"><img src="assets/designs/thumbs/celestial-planet-doodles-noir.jpg" alt="" loading="lazy"></a>
       </div>
-      <a class="kpMCta" href="customizer.html">Design yours — $59.99</a>
+      <a class="kpMCta" href="customizer.html">Design yours — $44.99</a>
     </div>
     <div style="max-width:1280px;margin:0 auto;padding:36px 40px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:clamp(20px,2.5vw,36px)">
       <div>
@@ -260,10 +263,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   <main id="main" style="flex:1;background:#F3F2F2">
     <div style="max-width:1760px;margin:0 auto;padding:56px clamp(24px,3vw,56px) 96px">
-      <div style="display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:22px">
+      <div class="library-intro" style="display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:22px">
         <div>
           <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#6C6C72;margin-bottom:14px">Design library</div>
-          <h1 id="shopTitle" style="font-weight:900;font-size:clamp(26px,3.8vw,52px);letter-spacing:-.01em;color:#191921;margin:0;line-height:1.02">Pick a design.<br>Make it yours.</h1>
+          <h1 id="shopTitle" style="font-weight:900;font-size:clamp(26px,3.8vw,52px);letter-spacing:-.01em;color:#191921;margin:0;line-height:1.02">Your case.<br>Your kind of statement.</h1>
           <p style="font-size:14px;font-weight:700;color:#6E6E70;margin:10px 0 0">Every design, printed in store today · <span style="background:#FFF4CC;color:#8a6d00;font-size:11px;font-weight:700;padding:3px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:.04em">Same-day</span></p>
         </div>
         <div style="font-size:13px;font-weight:800;color:#6C6C72"><span id="countLabel"></span></div>
@@ -271,7 +274,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       <div id="kpCatStrip" class="kpCatStrip" aria-label="Shop by style"></div>
       <div id="deviceBar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center"></div>
       <div id="wizardBar"></div>
-      <input id="deskSearch" type="search" placeholder="Search 1,000+ designs — try &quot;dog&quot;, &quot;philly&quot;, &quot;hearts&quot;…" aria-label="Search designs" style="width:100%;max-width:440px;font-size:16px;padding:12px 16px;border:1px solid #E4E3E3;border-radius:12px;background:#FFFFFF;margin-bottom:16px">
+      <input id="deskSearch" type="search" placeholder="Search designs — try &quot;dog&quot;, &quot;philly&quot;, &quot;hearts&quot;…" aria-label="Search designs" style="width:100%;max-width:440px;font-size:16px;padding:12px 16px;border:1px solid #E4E3E3;border-radius:12px;background:#FFFFFF;margin-bottom:16px">
       <div id="filters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"></div>
       <div id="stateBar" style="display:none;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px"></div>
       <div id="colorBar" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:30px"></div>
@@ -456,6 +459,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   /* Shop-by-style strip under the title; seasonal slot is month-driven */
   var KP_STRIP_BASE = [
+    ['Neon Doodles','kp-neon-electric-confetti.png'],
     ['Bright Pop','big-bloom-pop.jpg'],
     ['For Him','kp-mallards-dusty.jpg'],
     ['City maps','philadelphia-city-map-navy.jpg'],
@@ -545,6 +549,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var layer = caseLayers[device + '|' + colorIdx];
     var dImg = designImgs[file];
     if (!layer || !dImg || !dImg.complete) return;
+    dImg.__kpDesignFile=file;var composed=null;
+    if(KPDesignColorways.profile(dImg)){composed=KPDesignColorways.make(dImg,'original',700);dImg=composed;}
     var ctx = cv.getContext('2d');
     ctx.clearRect(0, 0, CW, CH);
     ctx.drawImage(layer, 0, 0);
@@ -563,6 +569,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       tc.globalAlpha = 1; tc.globalCompositeOperation = 'destination-in';
       tc.drawImage(vmask, 0, 0, CW, CH);
       ctx.drawImage(t, 0, 0);
+      if(composed)composed.width=composed.height=0;
       return;
     }
     ctx.save();
@@ -577,6 +584,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ctx.globalAlpha = .32; ctx.globalCompositeOperation = 'multiply';
     ctx.drawImage(layer, 0, 0);
     ctx.restore();
+    if(composed)composed.width=composed.height=0;
   }
 
   var KP_BRANDS = { 'Apple': DEVICE_ORDER.filter(function(m){ return m.indexOf('iPhone')===0; }), 'Samsung': DEVICE_ORDER.filter(function(m){ return m.indexOf('Galaxy')===0; }), 'Google': [] };
@@ -798,7 +806,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         + '<button class="wizClearAll" style="background:#DC282E;color:#FFF;border:0;padding:12px 24px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Show everything</button></div>';
       return;
     }
-    $('shopTitle').innerHTML = device ? (device + ' cases.') : 'Pick a design.<br>Make it yours.';
+    $('shopTitle').innerHTML = device ? (device + ' cases.') : 'Your case.<br>Your kind of statement.';
     kpChipsSync();
     var grid = $('grid');
     if (!device){
@@ -815,7 +823,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           + '<div style="padding:10px 12px 12px">'
           + '<div style="font-weight:700;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
           + '<div style="font-size:11px;color:#6C6C72;font-weight:700;margin-top:2px">' + d.category + ' · fits all models</div>'
-          + '<div style="font-size:13px;font-weight:800;color:#17171F;margin-top:6px">$59.99</div>'
+          + '<div style="font-size:13px;font-weight:800;color:#17171F;margin-top:6px">$44.99</div>'
           + '<span style="display:block;margin-top:8px;text-align:center;border:1.5px solid #DC282E;color:#DC282E;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:10px;border-radius:999px">Customize</span>'
           + '</div></a>';
       });
@@ -859,7 +867,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         + '<canvas width="' + CW + '" height="' + CH + '" data-file="' + d.file + '" data-color="0" role="img" aria-label="' + d.title + ' on ' + device + '" style="width:100%;height:auto;aspect-ratio:440/528;display:block"></canvas></a>'
         + '<div style="padding:12px 16px 6px;display:flex;align-items:center;justify-content:space-between;gap:8px">'
         + '<div style="min-width:0"><div style="font-weight:900;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
-        + '<div style="font-size:11px;color:#6C6C72;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">' + 'MagSafe Clear · $59.99' + '</div></div>'
+        + '<div style="font-size:11px;color:#6C6C72;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">' + 'MagSafe Clear · $44.99' + '</div></div>'
         + '<div style="display:flex;gap:5px;flex-shrink:0">' + dots + '</div></div>'
         + '<div style="padding:8px 16px 14px;display:flex;gap:8px">'
         + (canBuy() ? '<button class="kpAdd" data-file="' + d.file + '" style="flex:1;background:#2D2D3B;color:#FFFFFF;border:0;padding:11px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:background .2s">Add to cart</button>' : '')

@@ -209,6 +209,8 @@ def main():
         mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); mod.main()
     except Exception as e:
         print("  ! In Store pick codes not updated, run tools/instore_codes.py:", e)
+    subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'build_colorway_catalog.py')], check=True)
+    print('Prepare new per-design palettes with: node tools/prepare_colorways.cjs; review and save artwork batches to Drive before release.')
     for c, n in sorted(cats.items()):
         print(f"  {c}: {n}")
 
