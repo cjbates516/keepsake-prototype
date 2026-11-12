@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#F6F4F2">
+<title>Keepsake In Store</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="dmsans" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&display=swap" rel="stylesheet" crossorigin="anonymous" media="print" onload="this.media='all'">
+<style>
+  :root{
+    --red:#DC282E; --red-press:#B91F25; --red-tint:#FCECEC;
+    --ink:#4E4E50; --ink-strong:#4E4E50; --muted:#6B6B6F;
+    --bg:#F6F4F2; --card:#FFFFFF; --line:#E5E0DB; --tile:#FFFFFF;
+    --radius:20px; --gap:16px;
+    --font:'DM Sans',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:18px;line-height:1.45;
+    -webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
+    touch-action:manipulation;overscroll-behavior-y:none}
+  button{font:inherit;color:inherit;touch-action:manipulation}
+  img{-webkit-user-drag:none;-webkit-touch-callout:none}
+  :focus-visible{outline:3px solid var(--red);outline-offset:3px}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 max(24px,env(safe-area-inset-left)) 48px max(24px,env(safe-area-inset-right))}
+
+  /* top bar */
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px;padding-top:env(safe-area-inset-top)}
+  .brand{display:flex;align-items:center;gap:12px;color:var(--ink-strong);font-weight:800;font-size:20px;letter-spacing:-.01em}
+  .brand img{width:40px;height:40px}
+  .steps{display:flex;gap:8px;list-style:none;margin:0;padding:0}
+  .steps li{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:500;color:var(--muted);padding:6px 12px 6px 6px;border-radius:999px}
+  .steps li b{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--card);border:1px solid var(--line);font-weight:700;color:var(--ink)}
+  .steps li[aria-current="step"]{background:var(--card);color:var(--ink-strong);font-weight:700;box-shadow:0 1px 0 var(--line)}
+  .steps li[aria-current="step"] b{background:var(--red);border-color:var(--red);color:#fff}
+  @media (max-width:820px){ .steps li:not([aria-current]) span{display:none} .steps li:not([aria-current]){padding:6px} }
+
+  h1{font-size:clamp(34px,4.4vw,48px);line-height:1.08;letter-spacing:-.02em;color:var(--ink-strong);margin:18px 0 8px;font-weight:800;text-wrap:balance}
+  .lede{font-size:20px;margin:0 0 28px;color:var(--ink)}
+  .screen{display:none}
+  .screen.on{display:block;animation:in .22s ease-out both}
+  @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  /* screen 1: phones */
+  .group{margin-top:8px}
+  .group h2{font-size:20px;font-weight:700;color:var(--muted);margin:0 0 12px;letter-spacing:.02em}
+  .phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+  @media (min-width:1000px){ .phones{grid-template-columns:repeat(6,minmax(0,1fr))} }
+  .phone{display:flex;flex-direction:column;align-items:center;gap:10px;min-height:48px;padding:14px 10px 18px;background:var(--card);
+    border:2px solid var(--line);border-radius:var(--radius);cursor:pointer;text-align:center;transition:transform .12s,border-color .12s}
+  .phone:active{transform:scale(.97);border-color:var(--red)}
+  .phone .pimg{width:100%;aspect-ratio:var(--ar,.55);display:flex;align-items:center;justify-content:center}
+  .phone .pimg img{width:78%;height:100%;object-fit:contain}
+  .phone .pname{font-size:19px;font-weight:700;color:var(--ink-strong);line-height:1.2}
+  .soon{margin-top:28px;font-size:18px;color:var(--muted)}
+
+  /* screen 2: designs */
+  .s2top{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0 12px;margin:0 -4px;padding-left:4px;padding-right:4px}
+  .row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .row h1{margin:6px 0 2px;flex:1 1 auto}
+  .sub{margin:0;font-size:19px}
+  .back{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 20px 0 14px;border-radius:999px;background:var(--card);
+    border:2px solid var(--line);font-size:18px;font-weight:700;color:var(--ink-strong);cursor:pointer}
+  .back:active{border-color:var(--red)}
+  .back svg{flex:none}
+  .chips{display:flex;gap:10px;overflow-x:auto;padding:14px 56px 4px 2px;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 64px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 64px),transparent);scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none;min-height:52px;padding:0 22px;border-radius:999px;background:var(--card);border:2px solid var(--line);
+    font-size:18px;font-weight:700;color:var(--ink-strong);cursor:pointer;white-space:nowrap;scroll-snap-align:start}
+  .chip[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:var(--gap);margin-top:8px}
+  .tile{display:flex;flex-direction:column;gap:8px;padding:10px 10px 14px;background:var(--card);border:2px solid var(--line);
+    border-radius:var(--radius);cursor:pointer;text-align:left;min-height:48px;content-visibility:auto;contain-intrinsic-size:auto 360px}
+  .tile:active{transform:scale(.97);border-color:var(--red)}
+  .tile .timg{position:relative;width:100%;aspect-ratio:var(--ar,.55);border-radius:12px;overflow:hidden;background:var(--tile)}
+  .tile .timg img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+  .tile .timg img:not([src]){visibility:hidden}
+  /* plain phone shape behind every tile, so a tile is never empty even before any picture arrives */
+  .tile[data-file] .timg::before{content:"";position:absolute;inset:4% 20%;border-radius:18%/9%;background:#EEEBE7}
+  .tile .timg img.wait{opacity:.55;animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{50%{opacity:.3}}
+  .tile .tname{font-size:18px;font-weight:500;color:var(--ink-strong);line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.5em}
+  .own{border-style:dashed;border-color:#E9A9AB;background:#FFF9F9}
+  .own .timg{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--red-tint);color:var(--red)}
+  .own .tname{color:var(--red);font-weight:700}
+  .count{margin:14px 2px 0;font-size:18px;color:var(--muted)}
+
+  /* screen 3: confirm */
+  .confirm{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:40px;align-items:center;margin-top:12px}
+  @media (orientation:portrait),(max-width:900px){ .confirm{grid-template-columns:1fr;gap:20px} }
+  .pv{display:flex;justify-content:center;background:var(--card);border:2px solid var(--line);border-radius:28px;padding:20px}
+  .pv img{width:auto;height:min(62vh,620px);max-width:100%;object-fit:contain}
+  @media (orientation:portrait){ .pv img{height:min(38vh,520px)} }
+  .dname{font-size:clamp(30px,3.4vw,40px);margin:0 0 6px}
+  .dmeta{font-size:20px;margin:0}
+  .price{font-size:44px;font-weight:800;color:var(--ink-strong);margin:18px 0 22px;letter-spacing:-.01em}
+  .cta{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:76px;border:0;border-radius:18px;background:var(--red);color:#fff;
+    font-size:24px;font-weight:800;cursor:pointer;box-shadow:0 10px 24px rgba(220,40,46,.25)}
+  .cta:active{background:var(--red-press);transform:scale(.99)}
+  .codecard{display:none;margin-top:4px;padding:24px;border-radius:22px;background:var(--card);border:2px solid var(--red)}
+  .codecard.on{display:block;animation:in .2s ease-out both}
+  .codecard .codelabel{margin:0;font-size:18px;font-weight:700;color:var(--red);letter-spacing:.04em}
+  .codecard .code{margin:4px 0 10px;font-size:clamp(44px,5.6vw,60px);font-weight:800;color:var(--ink-strong);letter-spacing:.04em;font-variant-numeric:tabular-nums;line-height:1.05}
+  .codecard p{margin:2px 0;font-size:20px}
+  .codecard .hint{margin-top:12px;color:var(--muted);font-size:18px}
+  .after{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+  .ghost{min-height:56px;padding:0 22px;border-radius:999px;background:var(--card);border:2px solid var(--line);font-size:18px;font-weight:700;color:var(--ink-strong);cursor:pointer}
+  .ghost:active{border-color:var(--red)}
+  .linkbtn{min-height:56px;padding:0 12px;background:none;border:0;font-size:18px;font-weight:700;color:var(--red);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
+  /* sheet + states */
+  .scrim{position:fixed;inset:0;background:rgba(30,30,32,.45);display:none;align-items:center;justify-content:center;padding:24px;z-index:20}
+  .scrim.on{display:flex}
+  .sheet{max-width:520px;width:100%;background:var(--card);border-radius:26px;padding:32px;text-align:center;box-shadow:0 30px 60px rgba(0,0,0,.25)}
+  .sheet .ic{width:72px;height:72px;margin:0 auto 12px;border-radius:50%;background:var(--red-tint);color:var(--red);display:flex;align-items:center;justify-content:center}
+  .sheet h2{font-size:30px;margin:0 0 8px;color:var(--ink-strong);line-height:1.15}
+  .sheet p{font-size:21px;margin:0 0 24px}
+  .msg{padding:60px 0;text-align:center}
+  .msg p{font-size:20px}
+  @media (prefers-reduced-motion:reduce){ *{animation:none !important;transition:none !important} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="bar">
+    <div class="brand"><img src="../assets/favicon.svg" alt=""><span>Keepsake Printing Co</span></div>
+    <ol class="steps" aria-label="Steps">
+      <li id="st1" aria-current="step"><b>1</b><span>Your phone</span></li>
+      <li id="st2"><b>2</b><span>Your design</span></li>
+      <li id="st3"><b>3</b><span>Show us</span></li>
+    </ol>
+  </header>
+
+  <main>
+    <section id="s1" class="screen on" aria-labelledby="s1h">
+      <h1 id="s1h">Which phone do you have?</h1>
+      <p class="lede">Tap yours and we'll show every design on it.</p>
+      <div id="phones"></div>
+    </section>
+
+    <section id="s2" class="screen" aria-labelledby="s2h">
+      <div class="s2top">
+        <div class="row">
+          <button class="back" type="button" data-act="phone">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            Change phone
+          </button>
+          <div style="flex:1 1 320px">
+            <h1 id="s2h">Pick a design</h1>
+            <p class="sub" id="s2sub"></p>
+          </div>
+        </div>
+        <div class="chips" id="chips" role="group" aria-label="Collections"></div>
+      </div>
+      <div class="grid" id="grid"></div>
+      <p class="count" id="count"></p>
+    </section>
+
+    <section id="s3" class="screen" aria-labelledby="dname">
+      <div class="confirm">
+        <div class="pv"><img id="pv" alt=""></div>
+        <div>
+          <h1 class="dname" id="dname"></h1>
+          <p class="dmeta" id="dmeta"></p>
+          <p class="price" id="price"></p>
+          <button class="cta" type="button" id="showBtn">Show a team member</button>
+          <div class="codecard" id="codecard" aria-live="polite">
+            <p class="codelabel" id="codelabel">YOUR PICK CODE</p>
+            <p class="code" id="code"></p>
+            <p id="cname"></p>
+            <p id="cmodel"></p>
+            <p class="hint" id="hint">A team member will take it from here.</p>
+          </div>
+          <div class="after">
+            <button class="ghost" type="button" data-act="designs">Pick a different design</button>
+            <button class="linkbtn" type="button" data-act="reset">Start over</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sErr" class="screen msg" aria-live="polite">
+      <h1>We can't load the designs right now</h1>
+      <p>Please ask a team member for a hand.</p>
+      <button class="ghost" type="button" onclick="location.reload()">Try again</button>
+    </section>
+  </main>
+</div>
+
+<div class="scrim" id="ownSheet" role="dialog" aria-modal="true" aria-labelledby="ownH">
+  <div class="sheet">
+    <div class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+    <h2 id="ownH">Use your own photo</h2>
+    <p>Show a team member and they'll print your photo for you.</p>
+    <button class="cta" type="button" data-act="closeSheet">Got it</button>
+  </div>
+</div>
+
+<script src="instore-lib.js"></script>
+<script>
+(function () {
+  'use strict';
+  var TILE_W = 360, BIG_W = 900, TILE_BG = '#FFFFFF';
+  var $ = function (id) { return document.getElementById(id); };
+  var data = null;
+  var state = { screen: 1, model: null, design: null, filter: 'all' };
+  var urls = {};           /* model id -> { file: objectURL } */
+  var blankUrl = {};       /* model id -> phone only render */
+  var queue = [], active = 0, MAX_JOBS = 4, gen = 0, io = null;
+  var bigUrl = null;       /* the large confirm preview, freed as soon as it is replaced */
+  var previewSeq = 0;      /* each confirm preview request gets a number; only the newest may show */
+  var RETRY_MIN = 5000, RETRY_MAX = 60000;
+  /* a double tap must not pick something on the next screen: a tap on the same spot as the tap that just
+     changed the screen, within 450ms, is ignored. Quick taps somewhere else still work. */
+  var changedAt = 0, lastTap = { x: -999, y: -999 }, changeTap = { x: -999, y: -999 };
+  var MAX_TILE_URLS = 250, urlOrder = [];   /* rendered tiles kept per phone; older off screen ones are re-rendered on demand */
+  function revoke(u) { if (u && u.indexOf('blob:') === 0) URL.revokeObjectURL(u); }
+
+  /* /instore without the slash would break relative paths */
+  if (!/\/$|\.html$/.test(location.pathname)) { location.replace(location.pathname + '/' + location.search); return; }
+
+  var cleanTitle = KPI.cleanTitle;
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  /* ---------- screens ---------- */
+  function show(n, push) {
+    if (state.screen !== n) { changedAt = Date.now(); changeTap = { x: lastTap.x, y: lastTap.y }; }
+    state.screen = n;
+    if (n === 2) setTimeout(retryFailed, 0);
+    ['s1', 's2', 's3', 'sErr'].forEach(function (id) { $(id).classList.toggle('on', id === (n === 0 ? 'sErr' : 's' + n)); });
+    [1, 2, 3].forEach(function (i) { $('st' + i).toggleAttribute('aria-current', i === n); if (i === n) $('st' + i).setAttribute('aria-current', 'step'); });
+    window.scrollTo(0, 0);
+  }
+  /* Back button or back swipe: step back one screen inside the page and never leave In Store mode.
+     The guard entry is added on the first tap (with user activation, so browsers keep it). */
+  var guarded = false;
+  function guard() {
+    if (guarded) return; guarded = true;
+    try { history.replaceState({ kp: 'base' }, ''); history.pushState({ kp: 'app' }, ''); } catch (e) {}
+  }
+  window.addEventListener('popstate', function () {
+    try { history.pushState({ kp: 'app' }, ''); } catch (e) {}
+    if ($('ownSheet').classList.contains('on')) return closeSheet();
+    if (state.screen === 3) { state.design = null; show(2); }
+    else if (state.screen === 2) show(1);
+  });
+
+  /* ---------- screen 1 ---------- */
+  function buildPhones() {
+    var byBrand = {};
+    data.activeModels.forEach(function (m) { (byBrand[m.brand || 'Apple'] = byBrand[m.brand || 'Apple'] || []).push(m); });
+    var html = '';
+    Object.keys(byBrand).forEach(function (b) {
+      html += '<div class="group"><h2>' + (b === 'Apple' ? 'iPhone' : esc(b)) + '</h2><div class="phones">' +
+        byBrand[b].map(function (m) {
+          return '<button class="phone" type="button" data-model="' + esc(m.id) + '"><span class="pimg"><img alt="" data-ph="' + esc(m.id) + '"></span>' +
+            '<span class="pname">' + esc(m.name) + '</span></button>';
+        }).join('') + '</div></div>';
+    });
+    if (!byBrand.Samsung) html += '<p class="soon">More phones are coming soon.</p>';
+    $('phones').innerHTML = html;
+    data.activeModels.forEach(function (m) {
+      KPI.prepModel(m, 260, false).then(function (prep) {
+        var img = $('phones').querySelector('img[data-ph="' + m.id + '"]');
+        if (img) img.parentNode.style.setProperty('--ar', prep.W / prep.H);
+        return KPI.renderToUrl(prep, null, TILE_BG).then(function (u) { if (img) img.src = u; });
+      }).catch(function () {});
+    });
+  }
+
+  /* ---------- screen 2 ---------- */
+  function pickModel(id) {
+    var m = data.modelById(id);
+    if (!m || !m.active) return;
+    Object.keys(urls).forEach(function (id) { if (id !== m.id) dropUrls(id); });
+    data.models.forEach(function (x) { if (x.id !== m.id) KPI.releaseModel(x.id, ['260n']); });
+    state.model = m; state.design = null; state.filter = 'all';
+    $('s2sub').textContent = 'Shown on your ' + m.name;
+    buildChips();
+    buildGrid();
+    show(2);
+  }
+  function designsNow() {
+    var list = data.designsFor(state.model);
+    if (state.filter === 'all') return list;
+    return list.filter(function (d) { return d._col.code === state.filter; });
+  }
+  function buildChips() {
+    var list = data.designsFor(state.model), has = {};
+    list.forEach(function (d) { has[d._col.code] = true; });
+    var html = '<button class="chip" type="button" data-col="all" aria-pressed="true">All designs</button>';
+    data.collections.forEach(function (c) {
+      if (has[c.code]) html += '<button class="chip" type="button" data-col="' + esc(c.code) + '" aria-pressed="false">' + esc(c.label) + '</button>';
+    });
+    $('chips').innerHTML = html;
+    $('chips').scrollLeft = 0;
+  }
+  function setFilter(code) {
+    state.filter = code;
+    Array.prototype.forEach.call($('chips').children, function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-col') === code)); });
+    buildGrid();
+    var top = $('s2').getBoundingClientRect().top + window.scrollY;
+    if (window.scrollY > top) window.scrollTo(0, top);
+  }
+  function buildGrid() {
+    gen++; queue.length = 0;
+    var m = state.model, list = designsNow(), cache = urls[m.id] || (urls[m.id] = {});
+    var html = '<button class="tile own" type="button" data-act="own"><span class="timg">' +
+      '<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>' +
+      '</span><span class="tname">Use your own photo</span></button>';
+    html += list.map(function (d) {
+      var u = cache[d.file];
+      return '<button class="tile" type="button" data-file="' + esc(d.file) + '"><span class="timg"><img alt=""' +
+        (u ? ' src="' + u + '"' : ' class="wait"' + (blankUrl[m.id] ? ' src="' + blankUrl[m.id] + '"' : '')) +
+        '></span><span class="tname">' + esc(cleanTitle(d.title)) + '</span></button>';
+    }).join('');
+    $('grid').innerHTML = html;
+    $('count').textContent = list.length === 1 ? '1 design' : list.length + ' designs';
+    KPI.prepModel(m, TILE_W).then(function (prep) {
+      $('grid').style.setProperty('--ar', prep.W / prep.H);
+      if (!blankUrl[m.id]) {
+        KPI.renderToUrl(prep, null, TILE_BG).then(function (u) {
+          blankUrl[m.id] = u;
+          Array.prototype.forEach.call($('grid').querySelectorAll('img.wait:not([src]), img.fail:not([src])'), function (im) { im.src = u; });
+        });
+      }
+    }).catch(function () {});
+    observeTiles();
+  }
+  /* observe the tile itself: its contents are skipped by content-visibility until near the screen,
+     and WebKit never reports skipped content as intersecting */
+  function observeTiles() {
+    if (io) io.disconnect();
+    var tiles = $('grid').querySelectorAll('.tile[data-file]');
+    if (!('IntersectionObserver' in window)) { Array.prototype.forEach.call(tiles, function (t) { enqueue(t.querySelector('img')); }); return; }
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var img = e.target.querySelector('img');
+        if (e.isIntersecting && img && (img.classList.contains('wait') || retryDue(img))) { io.unobserve(e.target); enqueue(img); }
+      });
+    }, { rootMargin: '700px 0px' });
+    Array.prototype.forEach.call(tiles, function (t) { if (t.querySelector('img.wait, img.fail')) io.observe(t); });
+  }
+  /* failed tiles are retried with a growing pause (5s, 10s, 20s ... up to 60s) */
+  function retryDue(img) { return img.classList.contains('fail') && Date.now() >= Number(img.getAttribute('data-retry-at') || 0); }
+  function retryFailed() {
+    if (state.screen !== 2 || !state.model) return;
+    Array.prototype.forEach.call($('grid').querySelectorAll('img.fail'), function (im) {
+      var tile = im.closest('.tile');
+      if (!retryDue(im)) { if (io && tile) io.observe(tile); return; }
+      if (tile && nearScreen(tile)) enqueue(im); else if (io && tile) io.observe(tile);
+    });
+  }
+  setInterval(function () { if (navigator.onLine !== false) retryFailed(); }, 15000);
+  function nearScreen(el) {
+    var r = el.getBoundingClientRect(), h = window.innerHeight;
+    return r.bottom > -h && r.top < 2 * h;
+  }
+  function enqueue(img) { queue.push({ img: img, gen: gen }); pump(); }
+  /* up to MAX_JOBS tiles load at once, newest request first (what the customer is looking at now);
+     a tile that was flung past is handed back to the observer. Every job has a hard time limit,
+     so one hung download can never hold up the rest of the grid. */
+  function pump() {
+    while (active < MAX_JOBS && queue.length) {
+      var job = queue.pop();
+      if (job.gen !== gen || !job.img.isConnected) continue;
+      var tile = job.img.closest('.tile');
+      if (tile && !nearScreen(tile)) { if (io) io.observe(tile); continue; }
+      run(job);
+    }
+  }
+  function markFail(img, m) {
+    var tries = Number(img.getAttribute('data-tries') || 0) + 1;
+    img.setAttribute('data-tries', tries);
+    img.setAttribute('data-retry-at', Date.now() + Math.min(RETRY_MAX, RETRY_MIN * Math.pow(2, tries - 1)));
+    img.classList.remove('wait'); img.classList.add('fail');
+    if (!img.getAttribute('src') && blankUrl[m.id]) img.src = blankUrl[m.id];
+  }
+  function run(job) {
+    var m = state.model, tile = job.img.closest('.tile'), file = tile && tile.getAttribute('data-file');
+    var d = file && findDesign(file), finished = false;
+    active++;
+    function done() { if (finished) return; finished = true; clearTimeout(guard); active--; setTimeout(pump, 0); }
+    var guard = setTimeout(function () { markFail(job.img, m); done(); }, 20000);
+    if (!d || !m) { done(); return; }
+    var cache = urls[m.id] || (urls[m.id] = {});
+    if (cache[file]) { job.img.src = cache[file]; job.img.classList.remove('wait', 'fail'); done(); return; }
+    Promise.all([KPI.prepModel(m, TILE_W), KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 })]).then(function (r) {
+      return KPI.renderToUrl(r[0], r[1], TILE_BG);
+    }).then(function (u) {
+      if (state.model !== m) { revoke(u); done(); return; }
+      var c = urls[m.id] || (urls[m.id] = {});
+      if (c[file] && c[file] !== u) { revoke(u); u = c[file]; } else { c[file] = u; urlOrder.push(file); trimUrls(m); }
+      if (job.img.isConnected) { job.img.src = u; job.img.classList.remove('wait', 'fail'); job.img.removeAttribute('data-retry-at'); }
+      done();
+    }).catch(function () {
+      /* offline and not cached yet: show the case outline, retry when the connection comes back */
+      if (state.model === m) markFail(job.img, m);
+      done();
+    });
+  }
+  window.addEventListener('online', function () {
+    /* the connection is back: failed tiles may try again right away */
+    Array.prototype.forEach.call($('grid').querySelectorAll('img.fail'), function (im) { im.setAttribute('data-retry-at', '0'); });
+    retryFailed();
+  });
+  /* keep at most MAX_TILE_URLS rendered tiles for the phone on screen: free the oldest ones that are
+     far off screen and put their tiles back in the queue for when the customer scrolls back */
+  function trimUrls(m) {
+    var c = urls[m.id] || {}, i = 0;
+    while (urlOrder.length > MAX_TILE_URLS && i < urlOrder.length) {
+      var f = urlOrder[i], img = $('grid').querySelector('.tile[data-file="' + (window.CSS && CSS.escape ? CSS.escape(f) : f) + '"] img');
+      if (img && img.getAttribute('src') === c[f] && nearScreen(img.closest('.tile'))) { i++; continue; }
+      urlOrder.splice(i, 1);
+      if (c[f]) { revoke(c[f]); delete c[f]; }
+      if (img) { if (blankUrl[m.id]) img.src = blankUrl[m.id]; else img.removeAttribute('src'); img.classList.add('wait'); if (io) io.observe(img.closest('.tile')); }
+    }
+  }
+  function dropUrls(id) {
+    var c = urls[id]; if (!c) return;
+    Object.keys(c).forEach(function (f) { if (c[f].indexOf('blob:') === 0) URL.revokeObjectURL(c[f]); });
+    delete urls[id];
+    urlOrder = [];
+  }
+  function findDesign(file) {
+    for (var i = 0; i < data.designs.length; i++) if (data.designs[i].file === file) return data.designs[i];
+    return null;
+  }
+
+  /* ---------- screen 3 ---------- */
+  function pickDesign(file) {
+    var d = findDesign(file), m = state.model;
+    if (!d || !m) return;
+    state.design = d;
+    var title = cleanTitle(d.title);
+    $('dname').textContent = title;
+    $('dmeta').textContent = 'For your ' + m.name;
+    $('price').textContent = KPI.formatPrice(data.price);
+    var code = KPI.pickCode(m, d);
+    /* no registered code (new design or code list missing): show no code rather than a guessed one */
+    $('code').textContent = code || '';
+    $('code').hidden = !code;
+    $('codelabel').textContent = code ? 'YOUR PICK CODE' : 'SHOW THIS TO A TEAM MEMBER';
+    $('hint').textContent = code ? 'A team member will take it from here.' : 'A team member will find it by its name.';
+    $('cname').textContent = title;
+    $('cmodel').textContent = m.name;
+    $('codecard').classList.remove('on');
+    $('showBtn').style.display = '';
+    var pv = $('pv'), tileUrl = (urls[m.id] || {})[file];
+    var old = bigUrl; bigUrl = null;
+    pv.src = tileUrl || blankUrl[m.id] || '';
+    revoke(old);
+    show(3);
+    var mine = d, seq = ++previewSeq;
+    KPI.prepModel(m, BIG_W).then(function (prep) {
+      return KPI.loadImage(KPI.fullUrl(d), { cache: false, timeout: 15000 }).catch(function () {
+        return KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 });
+      }).then(function (im) {
+        return KPI.renderToUrl(prep, im, null);
+      });
+    }).then(function (u) {
+      /* only the newest request for the phone and design on screen may replace the preview */
+      if (seq === previewSeq && state.model === m && state.design === mine && state.screen === 3) { revoke(bigUrl); bigUrl = u; pv.src = u; }
+      else revoke(u);
+    }).catch(function () {});
+  }
+  function revealCode() {
+    $('codecard').classList.add('on');
+    $('showBtn').style.display = 'none';
+    var after = document.querySelector('#s3 .after');
+    if (after && after.scrollIntoView) setTimeout(function () { after.scrollIntoView({ block: 'nearest' }); }, 60);
+  }
+
+  /* ---------- sheet, reset, idle ---------- */
+  function openSheet() { $('ownSheet').classList.add('on'); }
+  function closeSheet() { $('ownSheet').classList.remove('on'); }
+  function reset() {
+    closeSheet();
+    previewSeq++;
+    $('pv').removeAttribute('src'); revoke(bigUrl); bigUrl = null;
+    state.model = null; state.design = null; state.filter = 'all';
+    gen++; queue.length = 0;
+    $('codecard').classList.remove('on');
+    $('showBtn').style.display = '';
+    $('grid').innerHTML = ''; $('chips').innerHTML = '';
+    show(1);
+  }
+  var last = Date.now();
+  function touch() { last = Date.now(); }
+  ['pointerdown', 'touchstart', 'keydown', 'wheel', 'scroll'].forEach(function (ev) {
+    window.addEventListener(ev, touch, { passive: true, capture: true });
+  });
+  ['pointerdown', 'touchstart', 'keydown'].forEach(function (ev) {
+    window.addEventListener(ev, guard, { passive: true, capture: true });
+  });
+  setInterval(function () {
+    /* the "can't load" screen retries by itself, so an unattended iPad recovers when the network does */
+    if (!data) { if (state.screen === 0 && Date.now() - last >= 20000) location.reload(); return; }
+    if (Date.now() - last >= data.idleMs) {
+      touch();
+      if (state.screen !== 1 || state.model || window.scrollY > 0 || $('ownSheet').classList.contains('on')) reset();
+    }
+  }, 1000);
+  window.__kpInStore = { state: state, reset: reset, idle: function () { last = 0; } };
+
+  /* ---------- taps ---------- */
+  document.addEventListener('click', function (e) {
+    if (Date.now() - changedAt < 450 && Math.abs(e.clientX - changeTap.x) < 40 && Math.abs(e.clientY - changeTap.y) < 40) return;
+    lastTap = { x: e.clientX, y: e.clientY };
+    var t = e.target.closest('button');
+    if (!t) { if (e.target === $('ownSheet')) closeSheet(); return; }
+    if (t.hasAttribute('data-model')) return pickModel(t.getAttribute('data-model'));
+    if (t.hasAttribute('data-col')) return setFilter(t.getAttribute('data-col'));
+    if (t.hasAttribute('data-file')) return pickDesign(t.getAttribute('data-file'));
+    var act = t.getAttribute('data-act');
+    if (act === 'own') return openSheet();
+    if (act === 'closeSheet') return closeSheet();
+    if (act === 'phone') { state.design = null; return show(1); }
+    if (act === 'designs') { state.design = null; return show(2); }
+    if (act === 'reset') return reset();
+    if (t.id === 'showBtn') return revealCode();
+  });
+
+  /* ---------- offline cache ---------- */
+  function warmCache() {
+    if (!navigator.serviceWorker || !navigator.serviceWorker.controller) return;
+    var list = data.designs.map(KPI.thumbUrl);
+    data.activeModels.forEach(function (m) { list.push(KPI.maskUrl(m), KPI.caseUrl(m)); });
+    /* the DM Sans stylesheet and its font files, so the brand font also works offline */
+    var css = $('dmsans') && $('dmsans').href;
+    if (css) fetch(css, { mode: 'cors' }).then(function (r) { return r.ok ? r.text() : ''; }).then(function (t) {
+      (t.match(/url\((https:[^)]+)\)/g) || []).forEach(function (u) { list.push(u.slice(4, -1)); });
+    }).catch(function () {});
+    var i = 0, running = 0;
+    function next() {
+      if (i >= list.length) return;
+      if (active || queue.length || !navigator.onLine) { setTimeout(next, 1500); return; }
+      if (running >= 2) return;
+      running++;
+      var u = list[i++];
+      fetch(u, /^https:/.test(u) ? { mode: 'cors' } : undefined).catch(function () {}).then(function () { running--; setTimeout(next, 60); });
+      next();
+    }
+    next();
+  }
+
+  /* if loading has not finished after 25s (a network that never answers), show the ask a team member screen;
+     it reloads by itself, and a late success still brings the phones back */
+  var loadWatch = setTimeout(function () { if (!data) { last = Date.now(); show(0); } }, 25000);
+  KPI.load().then(function (d) {
+    clearTimeout(loadWatch);
+    data = d;
+    if (state.screen === 0) show(1);
+    buildPhones();
+    setTimeout(warmCache, 6000);
+  }).catch(function () { clearTimeout(loadWatch); last = Date.now(); show(0); });
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
+})();
+</script>
+</body>
+</html>

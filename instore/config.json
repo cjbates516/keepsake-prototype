@@ -1,0 +1,149 @@
+{
+ "_readme": "In Store mode settings. price shows on the confirm screen. idle_seconds sends the iPad back to the first screen. assets_version is added to case photo and mask URLs: raise it when a mask or case photo file is replaced so iPads fetch the new one. collections sets the filter chip order, the chip label and the 3 letter code used in pick codes; category must match designs.json and a code must never change once live. exclude_files (optional, empty by default) keeps listed design files off the store iPad without touching the website; only Corey decides what goes in it.",
+ "price": 44.99,
+ "idle_seconds": 75,
+ "assets_version": "11",
+ "collections": [
+  {
+   "category": "Florals",
+   "label": "Florals",
+   "code": "FLR"
+  },
+  {
+   "category": "Bright Pop",
+   "label": "Bright Pop",
+   "code": "POP"
+  },
+  {
+   "category": "Christmas",
+   "label": "Christmas",
+   "code": "XMS"
+  },
+  {
+   "category": "Animal print",
+   "label": "Animal Print",
+   "code": "APR"
+  },
+  {
+   "category": "Zodiac",
+   "label": "Zodiac",
+   "code": "ZOD"
+  },
+  {
+   "category": "Clear",
+   "label": "Clear Case",
+   "code": "CLR"
+  },
+  {
+   "category": "City maps",
+   "label": "City Maps",
+   "code": "MAP"
+  },
+  {
+   "category": "Hometown",
+   "label": "Hometown",
+   "code": "HOM"
+  },
+  {
+   "category": "For Him",
+   "label": "For Him",
+   "code": "HIM"
+  },
+  {
+   "category": "Fruits",
+   "label": "Fruits",
+   "code": "FRU"
+  },
+  {
+   "category": "Hearts",
+   "label": "Hearts",
+   "code": "HRT"
+  },
+  {
+   "category": "Coquette",
+   "label": "Coquette",
+   "code": "COQ"
+  },
+  {
+   "category": "Birth flowers",
+   "label": "Birth Flowers",
+   "code": "BTH"
+  },
+  {
+   "category": "Cute & kids",
+   "label": "Cute and Kids",
+   "code": "KID"
+  },
+  {
+   "category": "Animals",
+   "label": "Animals",
+   "code": "ANI"
+  },
+  {
+   "category": "Retro & Y2K",
+   "label": "Retro and Y2K",
+   "code": "Y2K"
+  },
+  {
+   "category": "Abstract",
+   "label": "Abstract",
+   "code": "ABS"
+  },
+  {
+   "category": "Scenery",
+   "label": "Scenery",
+   "code": "SCN"
+  },
+  {
+   "category": "Coastal",
+   "label": "Coastal",
+   "code": "CST"
+  },
+  {
+   "category": "Celestial",
+   "label": "Celestial",
+   "code": "CEL"
+  },
+  {
+   "category": "Stripes & waves",
+   "label": "Stripes and Waves",
+   "code": "STR"
+  },
+  {
+   "category": "Polka dots",
+   "label": "Polka Dots",
+   "code": "DOT"
+  },
+  {
+   "category": "Gradients & pastels",
+   "label": "Gradients and Pastels",
+   "code": "GRD"
+  },
+  {
+   "category": "Outdoors",
+   "label": "Outdoors",
+   "code": "OUT"
+  },
+  {
+   "category": "Sports",
+   "label": "Sports",
+   "code": "SPT"
+  },
+  {
+   "category": "Cars",
+   "label": "Cars",
+   "code": "CAR"
+  },
+  {
+   "category": "Halloween",
+   "label": "Halloween",
+   "code": "HAL"
+  },
+  {
+   "category": "Western",
+   "label": "Western",
+   "code": "WES"
+  }
+ ],
+ "exclude_files": []
+}

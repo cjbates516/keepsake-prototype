@@ -142,3 +142,7 @@ button, a, .h-chip, .cdot { touch-action: manipulation }
 }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
   outline:2px solid #DC282E; outline-offset:2px }
+
+/* In Store mode link (store iPads): 48px tap target, hidden on phones */
+.nav-right a.kpInStoreLink{display:inline-flex;align-items:center;min-height:48px;padding:0 4px}
+@media (max-width:760px){.nav-right a.kpInStoreLink{display:none}}

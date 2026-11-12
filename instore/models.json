@@ -1,0 +1,545 @@
+{
+ "_readme": "Phones shown in In Store mode. Set active to true only when we stock a blank AND have a print mask for it. mask = file in assets/masks, case = phone photo in assets/cases. Boxes are in the 2500x3000 mockup space.",
+ "models": [
+  {
+   "id": "17PM",
+   "name": "iPhone 17 Pro Max",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i17pm.png",
+   "mask_box": [
+    754,
+    1024,
+    1741,
+    2656
+   ],
+   "case": "i17pm-silver.webp",
+   "case_box": [
+    668,
+    344,
+    1828,
+    2650
+   ]
+  },
+  {
+   "id": "17P",
+   "name": "iPhone 17 Pro",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i17p.png",
+   "mask_box": [
+    776,
+    1113,
+    1721,
+    2570
+   ],
+   "case": "i17p-silver.webp",
+   "case_box": [
+    668,
+    350,
+    1834,
+    2650
+   ]
+  },
+  {
+   "id": "17",
+   "name": "iPhone 17",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i17.png",
+   "mask_box": [
+    747,
+    425,
+    1750,
+    2575
+   ],
+   "case": "i17-black.webp",
+   "case_box": [
+    668,
+    350,
+    1828,
+    2650
+   ]
+  },
+  {
+   "id": "AIR",
+   "name": "iPhone Air",
+   "brand": "Apple",
+   "active": false,
+   "mask": "view-i17a.png",
+   "mask_box": [
+    723,
+    786,
+    1774,
+    2624
+   ],
+   "case": "i17a-black.webp",
+   "case_box": [
+    668,
+    350,
+    1828,
+    2650
+   ]
+  },
+  {
+   "id": "16PM",
+   "name": "iPhone 16 Pro Max",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i16pm.png",
+   "mask_box": [
+    684,
+    283,
+    1811,
+    2670
+   ],
+   "case": "i16pm-black.webp",
+   "case_box": [
+    638,
+    250,
+    1859,
+    2705
+   ]
+  },
+  {
+   "id": "16P",
+   "name": "iPhone 16 Pro",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i16p.png",
+   "mask_box": [
+    731,
+    388,
+    1765,
+    2565
+   ],
+   "case": "i16p-black.webp",
+   "case_box": [
+    685,
+    351,
+    1812,
+    2603
+   ]
+  },
+  {
+   "id": "16",
+   "name": "iPhone 16",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i16n.png",
+   "mask_box": [
+    728,
+    397,
+    1768,
+    2556
+   ],
+   "case": "i16n-dark.webp",
+   "case_box": [
+    682,
+    364,
+    1815,
+    2590
+   ]
+  },
+  {
+   "id": "16PL",
+   "name": "iPhone 16 Plus",
+   "brand": "Apple",
+   "active": false,
+   "mask": "view-i16m.png",
+   "mask_box": [
+    685,
+    304,
+    1811,
+    2649
+   ],
+   "case": "i16m-dark.webp",
+   "case_box": [
+    640,
+    271,
+    1856,
+    2682
+   ]
+  },
+  {
+   "id": "15PM",
+   "name": "iPhone 15 Pro Max",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i15pm.png",
+   "mask_box": [
+    692,
+    348,
+    1813,
+    2667
+   ],
+   "case": "i15pm-black.webp",
+   "case_box": [
+    672,
+    334,
+    1837,
+    2694
+   ]
+  },
+  {
+   "id": "15P",
+   "name": "iPhone 15 Pro",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i15p.png",
+   "mask_box": [
+    735,
+    473,
+    1759,
+    2591
+   ],
+   "case": "i15p-black.webp",
+   "case_box": [
+    701,
+    447,
+    1793,
+    2627
+   ]
+  },
+  {
+   "id": "15",
+   "name": "iPhone 15",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i15.png",
+   "mask_box": [
+    745,
+    461,
+    1778,
+    2575
+   ],
+   "case": "i15-black.webp",
+   "case_box": [
+    705,
+    431,
+    1813,
+    2616
+   ]
+  },
+  {
+   "id": "15PL",
+   "name": "iPhone 15 Plus",
+   "brand": "Apple",
+   "active": false,
+   "mask": "view-i15m.png",
+   "mask_box": [
+    688,
+    349,
+    1812,
+    2683
+   ],
+   "case": "i15m-black.webp",
+   "case_box": [
+    659,
+    324,
+    1848,
+    2713
+   ]
+  },
+  {
+   "id": "14PM",
+   "name": "iPhone 14 Pro Max",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i14pm.png",
+   "mask_box": [
+    774,
+    485,
+    1725,
+    2520
+   ],
+   "case": "i14pm-black.webp",
+   "case_box": [
+    717,
+    444,
+    1783,
+    2556
+   ]
+  },
+  {
+   "id": "14P",
+   "name": "iPhone 14 Pro",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i14p.png",
+   "mask_box": [
+    808,
+    567,
+    1690,
+    2430
+   ],
+   "case": "i14p-whte.webp",
+   "case_box": [
+    759,
+    534,
+    1740,
+    2466
+   ]
+  },
+  {
+   "id": "14",
+   "name": "iPhone 14",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i14.png",
+   "mask_box": [
+    807,
+    571,
+    1691,
+    2428
+   ],
+   "case": "i14-black.webp",
+   "case_box": [
+    760,
+    536,
+    1739,
+    2464
+   ]
+  },
+  {
+   "id": "14PL",
+   "name": "iPhone 14 Plus",
+   "brand": "Apple",
+   "active": false,
+   "mask": "view-i14m.png",
+   "mask_box": [
+    775,
+    489,
+    1745,
+    2512
+   ],
+   "case": "i14m-black.webp",
+   "case_box": [
+    731,
+    452,
+    1797,
+    2553
+   ]
+  },
+  {
+   "id": "13PM",
+   "name": "iPhone 13 Pro Max",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i13pm.png",
+   "mask_box": [
+    775,
+    502,
+    1724,
+    2497
+   ],
+   "case": "i13pm-black.webp",
+   "case_box": [
+    729,
+    466,
+    1772,
+    2535
+   ]
+  },
+  {
+   "id": "13P",
+   "name": "iPhone 13 Pro",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i13p.png",
+   "mask_box": [
+    816,
+    590,
+    1683,
+    2409
+   ],
+   "case": "i13p-black.webp",
+   "case_box": [
+    771,
+    556,
+    1730,
+    2445
+   ]
+  },
+  {
+   "id": "13",
+   "name": "iPhone 13",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i13.png",
+   "mask_box": [
+    816,
+    590,
+    1684,
+    2409
+   ],
+   "case": "i13-black.webp",
+   "case_box": [
+    771,
+    555,
+    1730,
+    2446
+   ]
+  },
+  {
+   "id": "13MN",
+   "name": "iPhone 13 mini",
+   "brand": "Apple",
+   "active": false,
+   "mask": "view-i13mn.png",
+   "mask_box": [
+    865,
+    692,
+    1634,
+    2306
+   ],
+   "case": "i13mn-black.webp",
+   "case_box": [
+    818,
+    652,
+    1683,
+    2349
+   ]
+  },
+  {
+   "id": "12PM",
+   "name": "iPhone 12 Pro Max",
+   "brand": "Apple",
+   "active": false,
+   "mask": "view-i12pm.png",
+   "mask_box": [
+    773,
+    502,
+    1726,
+    2502
+   ],
+   "case": "i12pm-black.webp",
+   "case_box": [
+    726,
+    462,
+    1775,
+    2539
+   ]
+  },
+  {
+   "id": "12P",
+   "name": "iPhone 12 Pro",
+   "brand": "Apple",
+   "active": false,
+   "mask": "view-i12p.png",
+   "mask_box": [
+    820,
+    595,
+    1679,
+    2400
+   ],
+   "case": "i12p-black.webp",
+   "case_box": [
+    770,
+    555,
+    1731,
+    2447
+   ]
+  },
+  {
+   "id": "12",
+   "name": "iPhone 12",
+   "brand": "Apple",
+   "active": false,
+   "mask": "view-i12.png",
+   "mask_box": [
+    820,
+    595,
+    1679,
+    2400
+   ],
+   "case": "i12-black.webp",
+   "case_box": [
+    770,
+    555,
+    1731,
+    2447
+   ]
+  },
+  {
+   "id": "12MN",
+   "name": "iPhone 12 mini",
+   "brand": "Apple",
+   "active": false,
+   "mask": "view-i12mn.png",
+   "mask_box": [
+    867,
+    691,
+    1631,
+    2308
+   ],
+   "case": "i12mn-black.webp",
+   "case_box": [
+    818,
+    652,
+    1683,
+    2349
+   ]
+  },
+  {
+   "id": "S26U",
+   "name": "Galaxy S26 Ultra",
+   "brand": "Samsung",
+   "active": false,
+   "mask": "view-s26u.png",
+   "mask_box": [
+    690,
+    308,
+    1799,
+    2676
+   ],
+   "case": "s26u-clear-black.webp",
+   "case_box": [
+    636,
+    251,
+    1863,
+    2749
+   ]
+  },
+  {
+   "id": "S26PL",
+   "name": "Galaxy S26 Plus",
+   "brand": "Samsung",
+   "active": false,
+   "mask": "view-s26.png",
+   "mask_box": [
+    702,
+    311,
+    1795,
+    2676
+   ],
+   "case": "s26-clear-black.webp",
+   "case_box": [
+    629,
+    251,
+    1869,
+    2749
+   ]
+  },
+  {
+   "id": "S26",
+   "name": "Galaxy S26",
+   "brand": "Samsung",
+   "active": false,
+   "mask": "view-s26.png",
+   "mask_box": [
+    702,
+    311,
+    1795,
+    2676
+   ],
+   "case": "s26-clear-black.webp",
+   "case_box": [
+    629,
+    251,
+    1869,
+    2749
+   ]
+  }
+ ]
+}

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Find a Pick Code</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700;9..40,800&display=swap" rel="stylesheet" crossorigin="anonymous">
+<style>
+  :root{--red:#DC282E;--ink:#4E4E50;--ink-strong:#2A2A2D;--muted:#6B6B6F;--bg:#F6F4F2;--card:#FFFFFF;--line:#E5E0DB;
+    --font:'DM Sans',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:18px;line-height:1.45}
+  .wrap{max-width:860px;margin:0 auto;padding:28px 24px 60px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;color:var(--ink-strong)}
+  .brand img{width:36px;height:36px}
+  h1{font-size:38px;line-height:1.1;margin:28px 0 8px;color:var(--ink-strong);letter-spacing:-.02em}
+  form{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 8px}
+  input{flex:1 1 280px;min-height:60px;padding:0 18px;border:2px solid var(--line);border-radius:16px;font:inherit;font-size:26px;font-weight:800;
+    letter-spacing:.05em;text-transform:uppercase;color:var(--ink-strong);background:var(--card)}
+  input:focus{outline:none;border-color:var(--red)}
+  button,.btn{min-height:60px;padding:0 26px;border:0;border-radius:16px;background:var(--red);color:#fff;font:inherit;font-size:20px;font-weight:800;cursor:pointer;
+    text-decoration:none;display:inline-flex;align-items:center}
+  .hint{color:var(--muted);margin:0}
+  .result{display:none;grid-template-columns:220px 1fr;gap:28px;align-items:center;margin-top:28px;padding:24px;background:var(--card);border:2px solid var(--line);border-radius:22px}
+  .result.on{display:grid}
+  .result img{width:100%;height:auto}
+  .result h2{font-size:28px;margin:0 0 4px;color:var(--ink-strong);line-height:1.15}
+  .result p{margin:2px 0 0;font-size:20px}
+  .result .btn{margin-top:18px}
+  .err{display:none;margin-top:18px;color:var(--red);font-weight:700;font-size:20px}
+  .err.on{display:block}
+  @media (max-width:640px){ .result{grid-template-columns:1fr} .result img{max-width:220px;margin:0 auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><img src="../assets/favicon.svg" alt=""><span>Keepsake Printing Co</span></div>
+  <h1>Find a pick code</h1>
+  <p class="hint">For team members. Type the code from the store iPad, then open it in the designer to make the print file.</p>
+  <form id="f" autocomplete="off">
+    <input id="q" name="q" placeholder="17P-FLR-012" aria-label="Pick code" spellcheck="false" autocapitalize="characters">
+    <button type="submit">Find it</button>
+  </form>
+  <p class="err" id="err" role="alert"></p>
+  <div class="result" id="res" aria-live="polite">
+    <img id="rimg" alt="">
+    <div>
+      <p id="rcode" style="font-weight:800;color:var(--red);letter-spacing:.05em"></p>
+      <h2 id="rname"></h2>
+      <p id="rmodel"></p>
+      <a class="btn" id="ropen" href="#">Open in the designer</a>
+    </div>
+  </div>
+</div>
+<script src="instore-lib.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  /* load lazily and forget a failed load, so pressing Find it again retries once the connection is back */
+  var ready = null, lookupSeq = 0, shownUrl = null;
+  function load() { return ready || (ready = KPI.load().catch(function (e) { ready = null; throw e; })); }
+  function revoke(u) { if (u && u.indexOf('blob:') === 0) URL.revokeObjectURL(u); }
+  load().catch(function () {});
+  function fail(msg) { $('res').classList.remove('on'); $('err').textContent = msg; $('err').classList.add('on'); }
+  function lookup(text) {
+    $('err').classList.remove('on');
+    var seq = ++lookupSeq;
+    load().then(function (data) {
+      if (seq !== lookupSeq) return;
+      var p = KPI.parseCode(text, data.models.map(function (x) { return x.id; }));
+      if (!p) return fail('That does not look like a pick code. It should look like 17P-FLR-012.');
+      var m = data.modelById(p.model);
+      if (!m) return fail('We do not have a phone with the code ' + p.model + '.');
+      var d = data.findByCode(p);
+      if (!d) return fail('No design matches ' + p.col + ' number ' + p.n + '.');
+      var now = KPI.pickCode(m, d), typed = m.id + '-' + p.col + '-' + KPI.pad3(p.n);
+      $('rcode').textContent = now && now !== typed ? typed + ' (now ' + now + ')' : typed;
+      $('rname').textContent = KPI.cleanTitle(d.title);
+      var notes = [];
+      if (!m.active) notes.push('we do not stock this phone in store');
+      if (d.hidden) notes.push('this design is hidden from the store');
+      $('rmodel').textContent = m.name + (notes.length ? ' (' + notes.join(', ') + ')' : '');
+      $('ropen').href = KPI.customizerUrl(m, d);
+      $('rimg').removeAttribute('src'); revoke(shownUrl); shownUrl = null;
+      $('res').classList.add('on');
+      Promise.all([KPI.prepModel(m, 440), KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 })]).then(function (r) {
+        return KPI.renderToUrl(r[0], r[1], '#FFFFFF');
+      }).then(function (u) {
+        /* only the newest lookup may show its picture; older ones are thrown away */
+        if (seq !== lookupSeq) { revoke(u); return; }
+        revoke(shownUrl); shownUrl = u; $('rimg').src = u;
+      }).catch(function () {});
+    }).catch(function () {
+      if (seq === lookupSeq) fail('The design list or the pick code list did not load. Check the connection and press Find it again.');
+    });
+  }
+  $('f').addEventListener('submit', function (e) { e.preventDefault(); lookup($('q').value); });
+  var pre = new URLSearchParams(location.search).get('code');
+  if (pre) { $('q').value = pre; lookup(pre); }
+})();
+</script>
+</body>
+</html>
