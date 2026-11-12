@@ -17,7 +17,7 @@ and pushes. The Design Library page renders whatever is in the manifest.
 
 ## Ordering backend and staff queue (added Oct 2026)
 
-- `assets/kp-config.js` — site config: `ORDERS_ENDPOINT` (Apps Script web app URL), `PRICE` (59.99), `CASE_NAME`.
+- `assets/kp-config.js` — site config: `ORDERS_ENDPOINT` (Apps Script web app URL), `PRICE` (44.99), `CASE_NAME`.
 - `tools/kp-orders-appsscript.js` — the order backend. Paste into a Google Apps Script project, run `setup()` once,
   deploy as a Web app (execute as me, anyone), paste the URL into `kp-config.js`. Orders become rows in the
   "Keepsake Orders" Google Sheet; print files and previews land in Drive, "Keepsake Orders / Print Files";
@@ -67,3 +67,17 @@ pick code lookup, customizer load, print export, idle reset, offline, failures).
 Lock the store iPad with Guided Access (an iPad setting, not code): Settings, Accessibility, Guided Access,
 turn it on and set a passcode. Open the In Store page in Safari, triple click the side or top button, tap Start.
 Add the page to the Home Screen first if you want it full screen. Triple click again and enter the passcode to leave.
+
+## Storefront and image variations
+
+All case designs are $44.99. Tempered glass is $29.99 separately, with $10 off when added to a case ($19.99 glass; $64.98 bundle before any other applicable promotion). Shared runtime prices live in `assets/kp-config.js`; storefront copy mirrors those prices.
+
+The customizer offers Original, Vivid, Warm, Cool, Black & White, and Soft using the selected image. Processing stays on the device. The same processed image is used for preview and print; Original leaves the source unchanged. Generated lifestyle scenes and sample collage tiles are no longer shown.
+
+Run the customizer regression suite with Playwright Chromium/WebKit installed:
+
+```sh
+PW_CORE=/path/to/playwright-core node tools/tests/customizer_looks_e2e.cjs /tmp/keepsake-customizer-qa
+```
+
+This checks looks, print pixels and transparency, all active phone models, source loading recovery, reset, and case/glass totals without placing orders. Physical printer alignment still needs a store hardware check.

@@ -20,7 +20,7 @@
 {"@context":"https://schema.org","@type":"Product","name":"Custom Photo Phone Case",
 "brand":{"@type":"Brand","name":"Keepsake Printing Co"},
 "description":"Custom UV-printed phone case — upload a photo or choose from 1,000+ designs, printed in store while you wait.",
-"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"59.99","highPrice":"59.99",
+"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"44.99","highPrice":"44.99",
 "availability":"https://schema.org/InStock"}}
 </script>
 <link rel="icon" href="assets/favicon-16.png" sizes="16x16" type="image/png">
@@ -90,6 +90,15 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 </style>
 <script src="assets/kp-config.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.4/heic2any.min.js" defer></script>
+<script src="assets/photo-looks.js"></script>
+<style>
+.photo-looks{display:flex;gap:10px;overflow-x:auto;padding:6px 6px 14px;scroll-snap-type:x proximity}
+.photo-look{flex:0 0 106px;padding:6px;background:#fff;border:2px solid #dedad6;border-radius:12px;cursor:pointer;scroll-snap-align:start;color:#191921;font:800 12px "Nunito Sans",sans-serif}
+.photo-look[aria-pressed="true"]{border-color:#dc282e;background:#fff3f3}
+.photo-look:focus-visible{outline:3px solid #191921;outline-offset:2px}
+.photo-look canvas{display:block;width:90px;height:128px;object-fit:cover;border-radius:7px;background:#f0eeeb;margin:0 auto 9px}
+.photo-look span{display:block;min-height:28px;line-height:1.2}
+</style>
 </head>
 <body>
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
@@ -166,7 +175,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         <a href="customizer.html?design=halloween-bats-on-orange.jpg"><img src="assets/designs/thumbs/halloween-bats-on-orange.jpg" alt="" loading="lazy"></a>
         <a href="customizer.html?design=celestial-planet-doodles-noir.jpg"><img src="assets/designs/thumbs/celestial-planet-doodles-noir.jpg" alt="" loading="lazy"></a>
       </div>
-      <a class="kpMCta" href="customizer.html">Design yours — $59.99</a>
+      <a class="kpMCta" href="customizer.html">Design yours — $44.99</a>
     </div>
     <div style="max-width:1280px;margin:0 auto;padding:36px 40px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:clamp(20px,2.5vw,36px)">
       <div>
@@ -282,21 +291,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           </div>
           <div id="stageHint" style="font-size:12px;font-weight:700;color:#6C6C72;letter-spacing:.04em">Upload or drop a photo to begin</div>
           <div id="kitNote" style="display:none;font-size:11.5px;font-weight:600;color:#B9BDCB;letter-spacing:.02em;text-align:center;max-width:300px"></div>
-          <div id="kpViews" style="display:none;width:100%;max-width:420px;margin-top:10px">
-            <div style="font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#6C6C72;margin-bottom:8px">See it in real life</div>
-            <div id="kpViewsRow" style="display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;border-radius:14px">
-              <div id="kpMotion" style="position:relative;flex:0 0 auto;scroll-snap-align:start;cursor:pointer"><canvas id="kpMotionThumb" width="600" height="600" style="width:132px;height:132px;border-radius:12px;display:block;background:#F3F2F2"></canvas><span style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;pointer-events:none"><span style="width:38px;height:38px;border-radius:50%;background:rgba(220,40,46,.85);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></span><span style="font-size:9px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#FFFFFF;text-shadow:0 1px 6px rgba(0,0,0,.45)">Yours · in motion</span></span></div>
-              <canvas class="kpScene" data-s="pm3" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
-              <canvas class="kpScene" data-s="pm2" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
-              <canvas class="kpScene" data-s="pm10" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
-              <canvas class="kpScene" data-s="pm12" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
-              <canvas class="kpScene" data-s="v113" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
-              <canvas class="kpScene" data-s="v115" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
-              <canvas class="kpScene" data-s="v119" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
-              <canvas class="kpScene" data-s="v124" width="600" height="600" style="width:132px;height:132px;border-radius:12px;flex:0 0 auto;scroll-snap-align:start;background:#F3F2F2"></canvas>
-            </div>
-          </div>
-
           <a id="exportLink" href="#" style="display:none;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B9BDCB">Download print file (staff)</a>
           <a id="calLink" href="#" style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B9BDCB">Adjust fit (staff)</a>
         </div>
@@ -332,7 +326,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
                 </div>
               </div>
               <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">MagSafe Clear</div>
-              <div style="font-size:12.5px;font-weight:600;color:#6C6C72;margin-top:2px">$59.99</div>
+              <div style="font-size:12.5px;font-weight:600;color:#6C6C72;margin-top:2px">$44.99</div>
             </div>
             <div id="ctTough" class="ctCard" data-ct="Slim Hybrid MagSafe" style="cursor:pointer;text-align:center">
               <div style="position:relative;border:2px solid #E4E3E3;border-radius:12px;overflow:hidden;background:#F7F7F7">
@@ -342,7 +336,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
                 </div>
               </div>
               <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">Slim Hybrid MagSafe</div>
-              <div style="font-size:12.5px;font-weight:600;color:#6C6C72;margin-top:2px">+$5 · extra grip</div>
+              <div style="font-size:12.5px;font-weight:600;color:#6C6C72;margin-top:2px">$44.99 · extra grip</div>
             </div>
           </div>
 
@@ -372,22 +366,22 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             </div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;margin:20px 0 28px">
-            <span id="totalTop" style="font-size:30px;font-weight:900;color:#17171F;letter-spacing:-.02em">$59.99</span>
+            <span id="totalTop" style="font-size:30px;font-weight:900;color:#17171F;letter-spacing:-.02em">$44.99</span>
             <span style="color:#1E8E3E;font-size:13px;font-weight:800">● Ready today in ~2 hours — free pickup</span>
             <span id="discountTop" style="display:none;color:#1E8E3E;font-size:13px;font-weight:800"></span>
           </div>
-          <div style="display:flex;align-items:flex-start;gap:9px;background:#F6EFE3;border:1px solid #EFE9E2;border-radius:12px;padding:11px 14px;margin:-12px 0 8px;font-size:13px;font-weight:700;color:#191921;line-height:1.45"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#DC282E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;margin-top:1px"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg><span>Make it the <b>$99 Gift Set</b> &mdash; add a screen protector (installed on the spot) and a fast charger at pickup.</span></div>
+          <div style="display:flex;align-items:flex-start;gap:9px;background:#F6EFE3;border:1px solid #EFE9E2;border-radius:12px;padding:11px 14px;margin:-12px 0 8px;font-size:13px;font-weight:700;color:#191921;line-height:1.45"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#DC282E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;margin-top:1px"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg><span>Add tempered glass for <b>$19.99</b> with your case &mdash; normally $29.99. <b>Case + glass: $64.98.</b></span></div>
 <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#DC282E;margin:26px 0 12px;padding-top:22px;border-top:1px solid #EFEDED">Step 3 <span style="color:#17171F">· Your design</span></div>
           <div id="designChooser" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px">
             <button id="choosePhoto" style="cursor:pointer;text-align:center;background:#17171F;color:#FFF;border:0;border-radius:16px;padding:22px 14px">
               <div style="font-size:22px">📷</div>
               <div style="font-weight:900;font-size:14.5px;margin-top:6px">Use my photo</div>
-              <div style="font-size:12px;font-weight:600;color:#B9BDCB;margin-top:3px">One photo or a collage</div>
+              <div style="font-size:12px;font-weight:600;color:#B9BDCB;margin-top:3px">Your photo, your favorite look</div>
             </button>
             <a id="chooseReady" href="gallery.html" style="cursor:pointer;text-align:center;background:#FBE0E1;border:0;border-radius:16px;padding:22px 14px;text-decoration:none;display:block">
               <div style="font-size:22px">🎨</div>
               <div style="font-weight:900;font-size:14.5px;color:#B81F24;margin-top:6px">Ready-made design</div>
-              <div style="font-size:12px;font-weight:700;color:#4E4E50;margin-top:3px">Browse 1,000+ designs</div>
+              <div style="font-size:12px;font-weight:700;color:#4E4E50;margin-top:3px">Browse the design library</div>
             </a>
           </div>
           <div id="photoSection" style="display:none">
@@ -395,10 +389,12 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <span id="dpiLabel" style="display:block;margin-top:6px;font-weight:800"></span>
           </div>
           <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:12px">Your photo</div>
-          <div id="layoutChipsWrap" style="margin-bottom:12px;display:none">
-            <div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6E6E70;margin-bottom:8px">Collage style</div>
-            <div id="layoutChips" style="display:flex;flex-wrap:wrap;gap:7px"></div>
-          </div>
+          <section id="photoLooksWrap" aria-labelledby="photoLooksTitle" hidden style="margin-bottom:12px">
+            <h2 id="photoLooksTitle" style="font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin:0 0 6px">Your image. A few different looks.</h2>
+            <p style="font-size:13px;color:#555;margin:0 0 6px">Tap a variation to preview it on your case. You can always return to Original.</p>
+            <div id="photoLooks" class="photo-looks" role="group" aria-label="Image variations"></div>
+            <p id="photoLookStatus" aria-live="polite" style="font-size:12px;color:#555;margin:0">Original selected</p>
+          </section>
           <button id="uploadBtn" class="h-upload" style="width:100%;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s">Upload a photo</button>
           <div style="font-size:13px;color:#1E8E3E;font-weight:700;margin-top:10px;text-align:center">🔒 Your photo never leaves this device until you order</div>
           <a id="browseLink" href="gallery.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;background:#FBE0E1;border-radius:12px;padding:14px 16px;text-decoration:none">
@@ -471,7 +467,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
               <div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6E6E70;margin-bottom:8px">Pickup store</div>
               <div id="storeChips" style="display:flex;flex-wrap:wrap;gap:7px"></div>
             </div>
-            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="lineDevice">iPhone 17 Pro Max · MagSafe Clear</span><span id="linePrice">$59.99</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="lineDevice">iPhone 17 Pro Max · MagSafe Clear</span><span id="linePrice">$44.99</span></div>
             <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#6C6C72;margin-bottom:6px"><span>Printed in store · <span id="colorName4">Silver</span></span><span>Included</span></div>
             <div id="lineAddons" style="display:none;justify-content:space-between;font-size:13px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="addonSummary"></span><span id="addonTotal"></span></div>
             <div id="lineDiscount" style="display:none;justify-content:space-between;font-size:14px;font-weight:800;color:#1E8E3E;margin-bottom:6px"><span id="discountName"></span><span id="discountAmt"></span></div>
@@ -490,9 +486,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     <div style="position:fixed;left:0;right:0;bottom:0;z-index:70;background:#FFFFFF;border-top:1px solid #EFEDED;padding:12px clamp(16px,4vw,40px) calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:24px">
       <div style="min-width:0">
         <div style="font-size:15px;font-weight:900;color:#17171F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Design your keepsake</div>
-        <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#1E8E3E">⏱ Ready today · ~2 hrs · <span id="barStore">West Chester</span><span style="display:none">$<span id="totalBar">59.99</span></span></div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#1E8E3E">⏱ Ready today · ~2 hrs · <span id="barStore">West Chester</span><span style="display:none">$<span id="totalBar">44.99</span></span></div>
       </div>
-      <button id="cartBtn" class="h-upload" style="flex:1;max-width:680px;margin-left:auto;background:#DC282E;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer;transition:background .2s">Order — $59.99</button>
+      <button id="cartBtn" class="h-upload" style="flex:1;max-width:680px;margin-left:auto;background:#DC282E;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer;transition:background .2s">Order — $44.99</button>
     </div>
   </main>
 
@@ -592,15 +588,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     AppleOld: [{n:'Silver',h:'#E8E7E7'},{n:'Titanium',h:'#B9B4AC'},{n:'Deep Blue',h:'#32374A'},{n:'Black',h:'#2A2A30'}],
     Other: [{n:'Silver',h:'#E8E7E7'},{n:'Navy',h:'#44546A'}]
   };
-  var filters = [
-    {name:'Original',css:'none'},
-    {name:'Noir',css:'grayscale(1) contrast(1.08)'},
-    {name:'Vintage',css:'sepia(.45) contrast(.95) saturate(.85)'},
-    {name:'Fade',css:'contrast(.85) brightness(1.1) saturate(.75)'},
-    {name:'Vivid',css:'saturate(1.45) contrast(1.1)'},
-    {name:'Warm',css:'sepia(.22) saturate(1.15) brightness(1.03)'},
-    {name:'Cool',css:'saturate(1.05) hue-rotate(-12deg) brightness(1.02)'}
-  ];
   var promoTable = {
     FIRST10:{name:'First purchase — 10% off',pct:0.10},
     HERO20:{name:'First responders & nurses — 20% off',pct:0.20},
@@ -609,13 +596,22 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     KEEP5:{name:'Referral reward — $5 off',flat:5}
   };
   var addonDefs = [
-    {key:'screen',name:'Tempered glass screen protector',sub:'Installed in store with your case',price:12.99},
+    {key:'screen',name:'Tempered glass screen protector',sub:'$29.99 separately · save $10 with your case',price:Math.round((((window.KP_CONFIG&&KP_CONFIG.GLASS_PRICE)||29.99)-((window.KP_CONFIG&&KP_CONFIG.GLASS_BUNDLE_DISCOUNT)||10))*100)/100},
     {key:'lens',name:'Camera lens protector',sub:'Sapphire-hard rings for every lens',price:9.99}
   ];
-  var BASE = (window.KP_CONFIG && KP_CONFIG.PRICE) || 59.99;
+  var BASE = (window.KP_CONFIG && KP_CONFIG.PRICE) || 44.99;
   var TOUGH_PRICE = BASE;
-  var HYBRID_PRICE = BASE;  /* Slim Hybrid MagSafe — placeholder, confirm with Corey */
+  var HYBRID_PRICE = BASE;  /* All case designs use the same price. */
   function basePrice(){ return state.caseType==='Tough Magnetic' ? TOUGH_PRICE : (state.caseType==='Slim Hybrid MagSafe' ? HYBRID_PRICE : BASE); }
+  function orderPricing(){
+    var base=basePrice(),addons=addonDefs.reduce(function(t,a){return t+(state.addons[a.key]?a.price:0);},0);
+    var promo=state.promo?promoTable[state.promo]:null;
+    addons=Math.round(addons*100)/100;
+    var discount=promo?(promo.flat!=null?promo.flat:base*promo.pct):0;
+    discount=Math.min(base,Math.round(discount*100)/100);
+    return {base:base,addons:addons,discount:discount,total:Math.round((base-discount+addons)*100)/100};
+  }
+
   var FONTS = [
     {n:'Script', css:'"Snell Roundhand","Savoye LET","Apple Chancery",cursive', w:''},
     {n:'Hand', css:'"Bradley Hand","Segoe Script","Comic Sans MS",cursive', w:''},
@@ -628,7 +624,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   var state = {
     brand:'Apple', model:'iPhone 18 Pro Max', colorName:'Silver', colorHex:'#F5F5F5',
-    photo:null, photoImg:null, photoUrl:null, filter:'none',
+    photo:null, photoImg:null, photoUrl:null, filter:'none', variant:'original',
     caseType:'MagSafe Clear',
     isLibraryDesign:false,
     text:'', textFont:0, textColor:'#FFFFFF', textSize:220, textPos:62, textVertical:false,
@@ -834,6 +830,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     return src.__edge;
   }
   function drawDesignInto(c2, src, filterCss){
+    src=KPPhotoLooks.source(src,state.variant);
     var iw=src.naturalWidth||src.width, ih=src.naturalHeight||src.height;
     var B=maskBox||{x:0,y:0,w:DIM.w,h:DIM.h};
     if(state.fitMode==='fit'){
@@ -871,7 +868,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   /* ── KP-COLLAGE: multi-photo layouts (slots are fractions of the print window) ── */
   var KP_TPLS=[]; var tplImgs={};
-  fetch('assets/collage/templates.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){ KP_TPLS=d; renderLayoutChips(); var w=$('layoutChipsWrap'); if(w) w.style.display='block'; });
+
   function curTpl(){ return KP_TPLS.find(function(t){return 'tpl:'+t.id===state.layout;}) || null; }
   function tplImage(t){
     if(tplImgs[t.id]) return tplImgs[t.id];
@@ -990,7 +987,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(window.__kpDpiTick) clearTimeout(window.__kpDpiTick); window.__kpDpiTick=setTimeout(updateDpi,120);
     if(_rafPend) return; _rafPend=true;
     var done=false;
-    function go(){ if(done) return; done=true; _rafPend=false; renderNow(); scheduleScenes(); }
+    function go(){ if(done) return; done=true; _rafPend=false; renderNow(); }
     requestAnimationFrame(go);
     setTimeout(go, 80);   // backstop: rAF is paused/throttled in some contexts
   }
@@ -1190,6 +1187,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     canvas.style.touchAction = state.photoImg ? 'none' : 'pan-y';
     $('stageEmpty').style.display = live ? 'none' : 'block';
     updateStep3();
+    renderFilterChips();
     renderCtThumbs();
     $('exportLink').style.display = hasArt() ? 'inline' : 'none';
     $('editTools').style.display = (state.photoImg && !state.layout && !state.isLibraryDesign) ? 'block' : 'none';
@@ -1248,7 +1246,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         var bad=0;
         preds.forEach(function(p){ if(p.className==='Porn'||p.className==='Hentai') bad+=p.probability; });
         if(bad>0.6 && state.photoImg===img){
-          state.photoImg=null; state.photoUrl=null; state.isLibraryDesign=false;
+          state.photoImg=null; state.photoUrl=null; state.isLibraryDesign=false; state.variant='original';
           state.px=0; state.py=0; state.scale=1; state.rot=0;
           updateStage(); updateSummary();
           $('stageHint').textContent='Upload or drop a photo to begin';
@@ -1273,6 +1271,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   /* ── photo load ── */
   function loadPhoto(f, forceSlot){
+    kpLibraryRequest++;
     if(!f)return;
     if(/heic|heif/i.test(f.type||'') || /\.hei[cf]$/i.test(f.name||'')){
       /* iPhone HEIC: convert in the browser so the customer never has to change a setting */
@@ -1332,7 +1331,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       } else {
       state.photoImg=src; state.photoUrl=null; state.isLibraryDesign=false;
       state.fitMode = (w/h > 1.15) ? 'fit' : 'fill';
-      state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none'; state.reserved=false;
+      state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none'; state.variant='original'; state.reserved=false;
       updateUploadLabel();
       renderFilterChips(); updateDpi(); updateStage(); updateSummary(); }
       var th=document.createElement('canvas'); var tk=Math.min(1, 512/Math.max(src.naturalWidth,src.naturalHeight));
@@ -1342,26 +1341,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     };
     if(!window.createImageBitmap) img.src=url;
   }
-  function renderLayoutChips(){
-    var el=$('layoutChips'); if(!el) return;
-    var single='<button class="layChip" data-l="" style="flex:0 0 auto;scroll-snap-align:start;font-size:12px;font-weight:800;padding:9px 13px;border-radius:12px;cursor:pointer;height:118px;background:'+(!state.layout?'#2D2D3B':'#FFFFFF')+';color:'+(!state.layout?'#FFFFFF':'#4E4E50')+';border:1.5px solid '+(!state.layout?'#2D2D3B':'#E4E3E3')+'">Single<br>photo</button>';
-    el.style.cssText='display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:4px';
-    el.innerHTML=single+KP_TPLS.map(function(t){
-      var on=(state.layout==='tpl:'+t.id);
-      return '<button class="layChip" data-l="tpl:'+t.id+'" title="'+t.n+'" style="flex:0 0 auto;scroll-snap-align:start;padding:0;border-radius:12px;cursor:pointer;overflow:hidden;border:2px solid '+(on?'#DC282E':'#E4E3E3')+';background:#FFF"><img src="assets/collage/'+t.thumb+'" alt="'+t.n+'" loading="lazy" decoding="async" style="height:114px;display:block"></button>';
-    }).join('');
-  }
-  document.addEventListener('click',function(e){
-    var lc=e.target.closest ? e.target.closest('.layChip') : null;
-    if(!lc) return;
-    var id=lc.dataset.l||null;
-    if(state.layout===id) return;
-    state.layout=id; state.photos=[]; state.slotTarget=null; state.builder=false;
-    if(id){ var t=curTpl(); if(t){ tplPrevImage(t); tplImage(t); } }
-    state.photoImg=null; state.photoUrl=null; state.isLibraryDesign=false; state.reserved=false;
-    state.px=0;state.py=0;state.scale=1;state.rot=0;
-    renderLayoutChips(); updateUploadLabel(); updateStage(); updateSummary(); render();
-  });
   function updateUploadLabel(){
     var b=$('uploadBtn'); if(!b) return;
     if(state.layout){
@@ -1370,7 +1349,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       b.textContent= filled>=total ? 'Replace a photo (tap it first)' : 'Add photo '+(filled+1)+' of '+total;
     } else b.textContent = state.photoImg ? 'Upload a different photo' : 'Upload a photo';
   }
-  renderLayoutChips();
+
   function updateStep3(){
     var ch=$('designChooser'), ps=$('photoSection');
     if(!ch||!ps) return;
@@ -1395,7 +1374,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     } else loadPhoto(files[0]);
   });
   $('clearBtn').addEventListener('click',function(){
-    state.photoImg=null; state.photoUrl=null; state.filter='none';
+    kpLibraryRequest++;
+    state.photoImg=null; state.photoUrl=null; state.filter='none'; state.variant='original';
     state.photos=[]; state.slotTarget=null; state.builder=false; state.layout=null; state.designPath=null;
     state.px=0;state.py=0;state.scale=1;state.rot=0;
     state.text=''; state.isLibraryDesign=false;
@@ -1417,12 +1397,32 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   $('fitFit').addEventListener('click',function(){ state.fitMode='fit'; syncFitChips(); render(); });
 
 
-  /* ── filters ── */
-  var KP_FILTER_OK=(function(){ try{ var x=document.createElement('canvas').getContext('2d'); x.filter='blur(1px)'; return x.filter!=='none'; }catch(_){ return false; } })();
-  function renderFilterChips(){}
-  document.addEventListener('click',function(e){
-    var c=e.target.closest('.fchip');
-    if(c){ state.filter=filters[+c.dataset.i].css; renderFilterChips(); render(); }
+  /* Variations use the selected image only; no network calls or sample photos. */
+  var looksSource=null,looksSize='';
+  function renderFilterChips(){
+    var wrap=$('photoLooksWrap'),row=$('photoLooks'),src=state.photoImg;
+    if(!wrap||!row)return;
+    var ready=src&&src.complete!==false&&(src.naturalWidth||src.width)>0&&(src.naturalHeight||src.height)>0;
+    wrap.hidden=!ready;
+    if(!ready){row.replaceChildren();looksSource=null;KPPhotoLooks.clear();return;}
+    var size=(src.naturalWidth||src.width)+'x'+(src.naturalHeight||src.height);
+    if(looksSource!==src||looksSize!==size){
+      row.replaceChildren();KPPhotoLooks.clear();looksSource=src;looksSize=size;
+      KPPhotoLooks.choices.forEach(function(look){
+        var button=document.createElement('button');button.type='button';button.className='photo-look';button.dataset.look=look.id;
+        button.setAttribute('aria-label',look.name+' variation');
+        var thumb=KPPhotoLooks.make(src,look.id,192);thumb.setAttribute('aria-hidden','true');
+        var label=document.createElement('span');label.textContent=look.name;button.append(thumb,label);row.append(button);
+      });
+    }
+    row.querySelectorAll('.photo-look').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.look===(state.variant||'original')));});
+    var selected=KPPhotoLooks.choices.find(function(v){return v.id===state.variant;})||KPPhotoLooks.choices[0];
+    $('photoLookStatus').textContent=selected.name+' selected';
+  }
+  $('photoLooks').addEventListener('click',function(e){
+    var button=e.target.closest('.photo-look');if(!button||!state.photoImg)return;
+    state.variant=button.dataset.look;state.filter='none';state.reserved=false;
+    renderFilterChips();updateStage();updateSummary();
   });
 
   /* ── model / brand ── */
@@ -1562,7 +1562,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     rr(3,3,W-6,H-6,18);
     x.fillStyle = style==='hyb' ? '#2D2D3B' : 'rgba(185,189,203,.45)'; x.fill();
     rr(8,8,W-16,H-16,13); x.save(); x.clip();
-    var art = state.photoImg || (state.layout && curTpl() ? tplImage(curTpl()) : null);
+    var art = KPPhotoLooks.source(state.photoImg,state.variant) || (state.layout && curTpl() ? tplImage(curTpl()) : null);
     if(art && art.complete!==false && (art.naturalWidth||art.width)){
       var iw=art.naturalWidth||art.width, ih=art.naturalHeight||art.height;
       var k2=Math.max((W-16)/iw,(H-16)/ih);
@@ -1607,12 +1607,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var cnEl=$('caseNature'); if(cnEl){
       if(tOnly && !cnEl.__kpTough){ cnEl.__kpTough=true; cnEl.innerHTML='Tough Magnetic — solid protective back with built-in magnets<span id="colorName3" style="display:none"></span>'; }
       else if(!tOnly && cnEl.__kpTough){ cnEl.__kpTough=false; cnEl.innerHTML='clear, so the <span id="colorName3">'+state.colorName+'</span> shows through'; } }
-    var addonTotal=addonDefs.reduce(function(t,a){return t+(state.addons[a.key]?a.price:0);},0);
-    var p=state.promo?promoTable[state.promo]:null;
-    var bp=basePrice();
+    var pricing=orderPricing(),addonTotal=pricing.addons,disc=pricing.discount,total=pricing.total;
+    var p=state.promo?promoTable[state.promo]:null,bp=basePrice();
     var lp=document.getElementById('linePrice'); if(lp) lp.textContent='$'+bp.toFixed(2);
-    var disc=p?(p.flat!=null?p.flat:bp*p.pct):0;
-    var total=Math.max(0,bp-disc)+addonTotal;
+    if(!state.reserved) $('cartBtn').textContent='Order — $'+total.toFixed(2);
+    var place=$('kpPlace');if(place&&!place.disabled)place.textContent='Place order — pay $'+total.toFixed(2)+' at pickup';
     $('totalTop').textContent='$'+total.toFixed(2);
     $('totalBar').textContent=total.toFixed(2);
     $('lineDevice').textContent=state.model+' · '+state.caseType;
@@ -1652,7 +1651,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function kpPreset(){
     /* the one word the team member matches to a saved profile in xTool Studio */
     if(state.layout) return 'Photo';
-    if(state.isLibraryDesign && state.photoImg){ try{ if(kpHasAlpha(state.photoImg)) return 'Clear Look'; }catch(_){ } return 'Graphic'; }
+    if(state.isLibraryDesign && state.photoImg){ try{ if(photoHasAlpha()) return 'Clear Look'; }catch(_){ } return 'Graphic'; }
     if(!state.photoImg && state.text) return 'Text';
     return 'Photo';
   }
@@ -1665,7 +1664,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       '<label style="display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.45;margin-bottom:8px;cursor:pointer"><input id="kpOwn" type="checkbox" style="margin-top:3px;width:18px;height:18px"> <span>This is my photo or design, or I have permission to use it. No logos, characters, or team marks.</span></label>'+
       '<label style="display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.45;margin-bottom:12px;cursor:pointer"><input id="kpOpt" type="checkbox" style="margin-top:3px;width:18px;height:18px"> <span>You can show my finished case on your site and social (optional).</span></label>'+
       (state.quality==='red' ? '<div style="font-size:13px;color:#DC282E;font-weight:800;margin-bottom:10px">Heads up: this photo was flagged as low resolution. It will print, but it may look soft. Zoom out or pick a larger photo for a sharper result.</div>' : '')+
-      '<button id="kpPlace" style="width:100%;background:#DC282E;color:#FFF;border:0;padding:15px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer">Place order — pay $'+basePrice().toFixed(2)+' at pickup</button>'+
+      '<button id="kpPlace" style="width:100%;background:#DC282E;color:#FFF;border:0;padding:15px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer">Place order — pay $'+orderPricing().total.toFixed(2)+' at pickup</button>'+
       '<div style="font-size:11.5px;color:#6C6C72;margin-top:9px;line-height:1.5">We use your photo only to print your case and delete it 90 days after pickup. Printed in store at '+state.store+', usually same day.</div>';
     try{ var sv=JSON.parse(localStorage.getItem('kpCust')||'{}'); if(sv.name) $('kpName').value=sv.name; if(sv.phone) $('kpPhone').value=sv.phone; }catch(_){}
     $('kpPlace').addEventListener('click', kpPlaceOrder);
@@ -1685,7 +1684,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       var px=pv.getContext('2d'); px.fillStyle='#FFFFFF'; px.fillRect(0,0,pv.width,pv.height); px.drawImage(c,0,0,pv.width,pv.height);
       var payload={ action:'order', model:state.model, caseType:state.caseType, store:state.store, preset:kpPreset(),
         name:name, phone:phone, ownsPhoto:true, optIn:!!$('kpOpt').checked, source:(document.body.classList.contains('kp-kiosk')?'counter':'web'),
-        notes:[state.text?('Name print: '+state.text+(state.font?' ('+state.font+')':'')):'', state.isLibraryDesign&&state.photoUrl?('Library: '+state.photoUrl.split('/').pop()):'', state.filter&&state.filter!=='none'?('Filter: '+state.filter):'', state.quality?('Quality: '+state.quality):''].filter(Boolean).join(' · '),
+        price:orderPricing().total, addons:addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return {name:a.name,price:a.price};}),
+        notes:['Total at pickup: $'+orderPricing().total.toFixed(2),addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return a.name+' $'+a.price.toFixed(2);}).join(', '),state.photoImg&&state.variant&&state.variant!=='original'?('Image look already applied: '+state.variant):'',state.text?('Name print: '+state.text+(state.font?' ('+state.font+')':'')):'', state.isLibraryDesign&&state.photoUrl?('Library: '+state.photoUrl.split('/').pop()):'', state.filter&&state.filter!=='none'?('Filter: '+state.filter):'', state.quality?('Quality: '+state.quality):''].filter(Boolean).join(' · '),
         printPng:c.toDataURL('image/png'), previewJpg:pv.toDataURL('image/jpeg',0.82) };
       if(!KP_ORDERS){
         /* no backend configured yet: reserve code so the counter can still print from the staff link */
@@ -1696,9 +1696,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       fetch(KP_ORDERS, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(payload) })
         .then(function(r){ return r.json(); })
         .then(function(j){ if(j && j.ok) kpOrderDone(j); else throw new Error((j&&j.error)||'order failed'); })
-        .catch(function(err){ btn.disabled=false; btn.textContent='Place order — pay $'+basePrice().toFixed(2)+' at pickup'; kpToast('We could not send your order ('+(err&&err.message||'network')+'). Please try again, or show this screen at the counter.', 6000); });
+        .catch(function(err){ btn.disabled=false; btn.textContent='Place order — pay $'+orderPricing().total.toFixed(2)+' at pickup'; kpToast('We could not send your order ('+(err&&err.message||'network')+'). Please try again, or show this screen at the counter.', 6000); });
     });
-    if(ok===false){ btn.disabled=false; btn.textContent='Place order — pay $'+basePrice().toFixed(2)+' at pickup'; }
+    if(ok===false){ btn.disabled=false; btn.textContent='Place order — pay $'+orderPricing().total.toFixed(2)+' at pickup'; }
   }
   function kpOrderDone(j){
     state.reserved=true;
@@ -1706,150 +1706,19 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     box.innerHTML='<div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#6C6C72;margin-bottom:6px">Order placed</div>'+
       '<div style="font-size:28px;color:#DC282E;letter-spacing:.06em;margin-bottom:8px">'+j.id+'</div>'+
       '<div style="font-size:14px;line-height:1.5;color:#2D2D3B">'+(j.offline ? 'Show this code at the counter in <strong>'+state.store+'</strong> and we will print it while you wait.' : 'We have your design. Pick up at <strong>'+state.store+'</strong>, usually the same day. We will text you when it is ready.')+'</div>'+
-      '<div style="font-size:12px;color:#6C6C72;margin-top:10px">Pay $'+basePrice().toFixed(2)+' at pickup · 12 month print warranty · free redo within 7 days</div>';
+      '<div style="font-size:12px;color:#6C6C72;margin-top:10px">Pay $'+orderPricing().total.toFixed(2)+' at pickup · 12 month print warranty · free redo within 7 days</div>';
     $('cartBtn').textContent='Order placed ✓'; $('reserveBtn').style.display='none';
     updateSummary();
   }
   $('reserveBtn').addEventListener('click',function(){ if(!hasArt() && !state.text){ kpToast('Add a photo or pick a design first.'); return; } kpOrderPanel(); });
   $('cartBtn').addEventListener('click',function(){ if(!hasArt() && !state.text){ kpToast('Add a photo or pick a design first.'); return; } kpOrderPanel(); });
 
-  /* KP-SCENE-VIEWS — lifestyle previews under the stage */
-  var KP_SCENES={"pm3": {"cx": 599.9, "cy": 655.3, "bw": 331.3, "bh": 665.6, "ang": 0.34}, "pm2": {"cx": 600.8, "cy": 670.8, "bw": 336.5, "bh": 627.4, "ang": -0.19}, "pm10": {"cx": 604.8, "cy": 641.5, "bw": 316.7, "bh": 626.1, "ang": -1.81}, "pm12": {"cx": 539.4, "cy": 723.7, "bw": 393.8, "bh": 679.8, "ang": 43.07}, "v113": {"cx": 613.1, "cy": 639.9, "bw": 492.6, "bh": 785.4, "ang": -6.17}, "v115": {"cx": 623.1, "cy": 580.1, "bw": 351.0, "bh": 703.5, "ang": -1.0}, "v119": {"cx": 558.2, "cy": 667.0, "bw": 573.3, "bh": 694.5, "ang": 29.77}, "v124": {"cx": 615.0, "cy": 676.8, "bw": 381.3, "bh": 747.6, "ang": 0.23}};
-  var sceneImgs={}, scenesLoaded=false, scenePend=null;
-  function loadScenes(cb){
-    if(scenesLoaded){ cb&&cb(); return; }
-    var keys=Object.keys(KP_SCENES), n=0;
-    keys.forEach(function(k){
-      var im=new Image(); im.crossOrigin='anonymous';
-      im.onload=im.onerror=function(){ if(++n===keys.length){ scenesLoaded=true; cb&&cb(); } };
-      im.src='assets/scenes/'+k+'.webp';
-      sceneImgs[k]=im;
-    });
-  }
-  function renderScenes(){
-    if(!state.photoImg) return;
-    var mt=document.getElementById('kpMotionThumb');
-    if(mt && state.photoImg){ var firstK=Object.keys(KP_SCENES)[0]; if(sceneImgs[firstK]&&sceneImgs[firstK].complete) renderSceneTo(mt.getContext('2d'),firstK,600); }
-    document.querySelectorAll('#kpViewsRow .kpScene').forEach(function(cv){
-      var k=cv.dataset.s, m=KP_SCENES[k], im=sceneImgs[k];
-      if(!m||!im||!im.complete||!im.naturalWidth) return;
-      var c=cv.getContext('2d'), S=0.5;
-      c.setTransform(1,0,0,1,0,0);
-      c.fillStyle='#FFFFFF'; c.fillRect(0,0,600,600);
-      var d=state.photoImg, iw=d.naturalWidth||d.width, ih=d.naturalHeight||d.height;
-      var sc=Math.max(m.bw/iw,m.bh/ih)*1.28;
-      c.save();
-      c.translate(m.cx*S,m.cy*S);
-      c.rotate(m.ang*Math.PI/180);
-      try{ c.filter='saturate(1.06)'; }catch(_){ }
-      c.drawImage(d,-iw*sc/2*S,-ih*sc/2*S,iw*sc*S,ih*sc*S);
-      try{ c.filter='none'; }catch(_){ }
-      c.restore();
-      c.drawImage(im,0,0,600,600);
-    });
-  }
-  function scheduleScenes(){
-    var box=$('kpViews'); if(!box) return;
-    var show=!!state.photoImg && state.brand==='Apple';
-    box.style.display=show?'block':'none';
-    if(!show) return;
-    clearTimeout(scenePend);
-    scenePend=setTimeout(function(){ loadScenes(renderScenes); },350);
-  }
-
-  /* KP-SCENE-LIGHTBOX v2: shared renderer, big video player, motion preview */
-  function renderSceneTo(c,k,S){
-    var m=KP_SCENES[k], im=sceneImgs[k];
-    if(!m||!im||!im.complete||!state.photoImg) return false;
-    c.fillStyle='#FFFFFF'; c.fillRect(0,0,S,S);
-    var f=S/1200;
-    var d=state.photoImg, iw=d.naturalWidth||d.width, ih=d.naturalHeight||d.height;
-    var sc=Math.max(m.bw/iw,m.bh/ih)*1.28*f;
-    c.save(); c.translate(m.cx*f,m.cy*f); c.rotate(m.ang*Math.PI/180);
-    try{ c.filter='saturate(1.06)'; }catch(_){ }
-    c.drawImage(d,-iw*sc/2,-ih*sc/2,iw*sc,ih*sc);
-    try{ c.filter='none'; }catch(_){ }
-    c.restore(); c.drawImage(im,0,0,S,S);
-    return true;
-  }
-  function kpOverlay(inner){
-    var ov=document.createElement('div');
-    ov.style.cssText='position:fixed;inset:0;z-index:220;background:rgba(23,23,31,.86);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;animation:fadeUp .2s ease both';
-    ov.appendChild(inner); document.body.appendChild(ov);
-    function close(){ ov.remove(); document.removeEventListener('keydown',onk); if(ov.__onclose) ov.__onclose(); }
-    function onk(ev){ if(ev.key==='Escape') close(); }
-    ov.addEventListener('click',function(ev){ if(ev.target===ov||inner.tagName==='CANVAS') close(); });
-    document.addEventListener('keydown',onk);
-    return ov;
-  }
-  document.addEventListener('click',function(e){
-    var mo=e.target.closest ? e.target.closest('#kpMotion') : null;
-    if(mo && state.photoImg){
-      loadScenes(function(){
-        var keys=Object.keys(KP_SCENES).filter(function(k){ return sceneImgs[k]&&sceneImgs[k].complete; });
-        if(!keys.length) return;
-        var S=1200;
-        var frames=keys.map(function(k){
-          var t=document.createElement('canvas'); t.width=S; t.height=S;
-          renderSceneTo(t.getContext('2d'),k,S);
-          return t;
-        });
-        var big=document.createElement('canvas'); big.width=S; big.height=S;
-        big.style.cssText='max-width:min(92vw,640px);max-height:86vh;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.5)';
-        var ov=kpOverlay(big);
-        var c=big.getContext('2d');
-        var HOLD=2800, FADE=500, t0=performance.now(), iv=0;
-        function kb(cv,p,alpha,zin){
-          var z=1.03+(zin?p*0.09:(1-p)*0.05);
-          var w=S/z, h=S/z;
-          var x=(S-w)*(0.5+ (zin?p:1-p)*0.08 -0.04), y=(S-h)*0.5;
-          c.globalAlpha=alpha;
-          c.drawImage(cv,x,y,w,h,0,0,S,S);
-        }
-        function tick(now){
-          var t=(now-t0)%(HOLD*frames.length);
-          var i=Math.floor(t/HOLD), p=(t%HOLD)/HOLD;
-          c.globalAlpha=1;
-          kb(frames[i],p,1,true);
-          if(p>1-FADE/HOLD){
-            var q=(p-(1-FADE/HOLD))/(FADE/HOLD);
-            kb(frames[(i+1)%frames.length],0,q,true);
-          }
-          c.globalAlpha=1;
-        }
-        iv=setInterval(function(){ tick(performance.now()); }, 40);
-        tick(performance.now());
-        ov.__onclose=function(){ clearInterval(iv); };
-      });
-      return;
-    }
-    var vid=e.target.closest ? e.target.closest('.kpVid') : null;
-    if(vid){
-      var src=vid.querySelector('video').getAttribute('src');
-      var v=document.createElement('video');
-      v.src=src; v.controls=true; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
-      v.setAttribute('playsinline','');
-      v.style.cssText='max-width:min(92vw,640px);max-height:86vh;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.5);background:#000';
-      var ovv=kpOverlay(v);
-      ovv.__onclose=function(){ try{ v.pause(); v.removeAttribute('src'); v.load(); }catch(_){ } };
-      return;
-    }
-    var cv=e.target.closest ? e.target.closest('.kpScene') : null;
-    if(!cv) return;
-    var k=cv.dataset.s;
-    if(!(KP_SCENES[k]&&sceneImgs[k]&&sceneImgs[k].complete&&state.photoImg)) return;
-    var big=document.createElement('canvas'); big.width=1200; big.height=1200;
-    big.style.cssText='max-width:min(92vw,640px);max-height:86vh;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.5)';
-    renderSceneTo(big.getContext('2d'),k,1200);
-    kpOverlay(big);
-  });
-
   /* ── print export (staff link) ── */
   $('exportLink').addEventListener('click',function(e){ e.preventDefault(); kpBuildPrint(kpDownloadCanvas); });
   /* builds the print file; done(canvas, filename). Returns false (with a toast) when it cannot. */
   function kpBuildPrint(done){
     if(!hasArt() && !state.text) return false;
-    if(state.photoImg && state.photoImg.__kpIsThumb){ kpToast('Full-quality art is still loading — one moment, then try again.'); return false; }
+    if(state.photoImg && (state.photoImg.__kpIsThumb || state.photoImg.complete===false || !(state.photoImg.naturalWidth||state.photoImg.width))){ kpToast('Full-quality art is still loading — one moment, then try again.'); return false; }
     if(!TPL){ kpToast('Print template for this model is being finalized — see staff.'); return false; }
     if(viewSrc && !(viewImg&&viewReady&&viewMaskCanvas)){ kpToast(viewFailed ? 'Case mask failed to load — reload the page before exporting.' : 'Case mask still loading — one moment, then try again.'); return false; }
     var pxW=TPL.pxW||Math.round(TPL.w*300/72), pxH=TPL.pxH||Math.round(TPL.h*300/72);
@@ -2010,10 +1879,14 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     }catch(_){ im.__kpUni=false; }
     return im.__kpUni;
   }
+  var kpLibraryRequest=0;
   function kpLoadLibraryDesign(file, hint){
+    var request=++kpLibraryRequest;
+    state.variant='original'; state.photoUrl='assets/designs/'+file;
     /* thumb first (instant on cellular), full print-res swaps in when ready */
     var setImg=function(im, isThumb){
       im.__kpIsThumb=isThumb;
+      if(state.photoUrl!=='assets/designs/'+file) state.variant='original';
       state.photoImg=im; state.photoUrl='assets/designs/'+file; state.isLibraryDesign=true;
       state.fitMode='fill';
       state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none';
@@ -2022,14 +1895,16 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     };
     var full=new Image();
     full.onload=function(){
-      if(state.photoUrl==='assets/designs/'+file){ setImg(full,false); render(); }
+      if(request===kpLibraryRequest&&state.photoUrl==='assets/designs/'+file){ setImg(full,false); render(); }
     };
     var th=new Image();
     th.onload=function(){
+      if(request!==kpLibraryRequest)return;
       if(!state.photoImg || state.photoUrl!=='assets/designs/'+file) setImg(th,true);
       full.src='assets/designs/'+file;
     };
-    th.onerror=function(){ full.src='assets/designs/'+file; setImg(full,false); };
+    th.onerror=function(){ if(request!==kpLibraryRequest)return; state.photoUrl='assets/designs/'+file; state.photoImg=null; updateStage(); $('stageHint').textContent='Loading full-quality design…'; full.src='assets/designs/'+file; };
+    full.onerror=function(){ if(request!==kpLibraryRequest)return; $('stageHint').textContent='Could not load the full-quality design. Reload to try again.'; };
     th.src='assets/designs/thumbs/'+file;
   }
   function applyLibraryDesign(file){
@@ -2049,7 +1924,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       .then(function(j){
         var img=new Image();
         img.onload=function(){
-          state.photoImg=img; state.photoUrl='ai:'+prompt.slice(0,60); state.isLibraryDesign=false;
+          state.variant='original'; state.photoImg=img; state.photoUrl='ai:'+prompt.slice(0,60); state.isLibraryDesign=false;
           state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none';
           renderFilterChips(); updateDpi(); updateStage(); updateSummary();
           $('stageHint').textContent='Your AI design is on the case \u2014 drag to position';
@@ -2106,7 +1981,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function shareSetup(){
     var setup={m:state.model, ct:state.caseType,
       cal:{dx:CAL.dx,dy:CAL.dy,s:+CAL.s.toFixed(4),cdx:CAL.cdx,cdy:CAL.cdy,cs:+CAL.cs.toFixed(4)},
-      ph:{px:Math.round(state.px),py:Math.round(state.py),sc:+state.scale.toFixed(3),rot:state.rot,f:state.filter},
+      ph:{px:Math.round(state.px),py:Math.round(state.py),sc:+state.scale.toFixed(3),rot:state.rot,f:state.filter,v:state.variant},
       d: state.isLibraryDesign && state.photoUrl ? state.photoUrl.split('/').pop() : null,
       txt: state.text ? {t:state.text,f:state.textFont,c:state.textColor,sz:state.textSize,p:state.textPos,v:state.textVertical} : null};
     var url=location.origin+location.pathname+'?setup='+encodeURIComponent(JSON.stringify(setup));
@@ -2168,7 +2043,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         loadKit(state.model);
         updateFitNote(); updateStage(); updateSummary();
         var applyRest=function(){
-          if(su.ph){ state.px=su.ph.px; state.py=su.ph.py; state.scale=su.ph.sc; state.rot=su.ph.rot; state.filter=su.ph.f||'none';
+          if(su.ph){ state.px=su.ph.px; state.py=su.ph.py; state.scale=su.ph.sc; state.rot=su.ph.rot; state.filter='none'; state.variant=KPPhotoLooks.valid(su.ph.v)?su.ph.v:'original';
             }
           if(su.txt){ state.text=su.txt.t; state.textFont=su.txt.f; state.textColor=su.txt.c; state.textSize=su.txt.sz; state.textPos=su.txt.p; state.textVertical=su.txt.v;
             $('nameInput').value=state.text; renderFontChips(); }
