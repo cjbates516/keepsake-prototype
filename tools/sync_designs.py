@@ -202,6 +202,13 @@ def main():
     for m in manifest:
         cats[m["category"]] = cats.get(m["category"], 0) + 1
     print(f"added {added} · skipped {skipped} duplicates · total {len(manifest)}")
+    # In Store pick codes: give new designs their permanent numbers (instore/codes.json)
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("instore_codes", os.path.join(os.path.dirname(os.path.abspath(__file__)), "instore_codes.py"))
+        mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); mod.main()
+    except Exception as e:
+        print("  ! In Store pick codes not updated, run tools/instore_codes.py:", e)
     for c, n in sorted(cats.items()):
         print(f"  {c}: {n}")
 
