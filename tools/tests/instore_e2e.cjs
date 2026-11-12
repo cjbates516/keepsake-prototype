@@ -151,7 +151,7 @@ async function flow(browser, base, vp, modelId) {
     codeSize: parseFloat(getComputedStyle(code).fontSize), cname: cname.textContent, cmodel: cmodel.textContent }));
   const want = expectedCode(m, d);
   check(`${vp.tag}: confirm shows design, model, $44.99 and the registered pick code`,
-    got.price === '$44.99' && got.meta.includes(m.name) && got.cmodel === m.name && got.code === want && got.codeVisible && got.cname === got.name, { got, want });
+    got.price === '$44.99' && got.meta.includes(m.name) && got.cmodel === m.name && got.code === want && got.codeVisible && got.cname === got.name+' · Original', { got, want });
   check(`${vp.tag}: pick code is large`, got.codeSize >= 40, got.codeSize);
   mm = await measure(page, '#s3'); check(`${vp.tag}: screen 3 targets>=48, text>=18, no overflow`, !mm.bad.length && !mm.small.length && mm.overflow <= 0, mm);
   await page.screenshot({ path: path.join(OUT, `s3-${vp.tag}.png`) });
@@ -316,11 +316,16 @@ async function serviceWorker(browser, base) {
   await page.waitForTimeout(1500);
   const fontOff = await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('700 20px "DM Sans"') && [...document.fonts].some(f => f.family.replace(/"/g, '') === 'DM Sans' && f.status === 'loaded'); });
   check('offline: the brand font DM Sans still loads', fontOff);
+  check('offline: colorway catalog and renderer load', await page.evaluate(()=>!!window.KP_COLORWAY_CATALOG&&!!window.KPDesignColorways&&Object.keys(KP_COLORWAY_CATALOG).length>=721));
   await page.waitForSelector('#phones button', { timeout: 15000 }).catch(() => {});
   await page.tap('button[data-model="17P"]').catch(() => {});
   await page.waitForTimeout(4000);
   const off = await page.evaluate(() => { const imgs = [...document.querySelectorAll('#grid .tile[data-file] img')].slice(0, 12); return { phones: document.querySelectorAll('#phones button').length, rendered: imgs.filter(i => !i.classList.contains('wait') && !i.classList.contains('fail')).length, total: imgs.length }; });
   check('offline after warming: page loads and seen tiles still render', off.phones === activeModels.length && off.total === 12 && off.rendered === 12, off);
+  await page.tap('#grid .tile[data-file]');
+  await page.tap('[data-colorway="c3"]');
+  await page.tap('#showBtn');
+  check('offline: selected colorway receives a stable code', (await page.locator('#code').textContent()).endsWith('-C3'));
   await page.screenshot({ path: path.join(OUT, 'offline-s2.png') });
   await ctx.close();
 }

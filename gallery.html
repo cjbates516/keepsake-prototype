@@ -84,6 +84,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 .kpCatCard span{position:absolute;top:11px;left:14px;z-index:1;color:#FFF;font-weight:900;font-size:14.5px;letter-spacing:.01em;text-shadow:0 1px 6px rgba(25,25,33,.4)}
 </style>
 <link rel="stylesheet" href="assets/storefront.css">
+<script src="assets/colorway-catalog.js"></script>
+<script src="assets/design-colorways.js"></script>
 </head>
 <body class="kp-storefront kp-library">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
@@ -457,6 +459,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   /* Shop-by-style strip under the title; seasonal slot is month-driven */
   var KP_STRIP_BASE = [
+    ['Neon Doodles','kp-neon-electric-confetti.png'],
     ['Bright Pop','big-bloom-pop.jpg'],
     ['For Him','kp-mallards-dusty.jpg'],
     ['City maps','philadelphia-city-map-navy.jpg'],
@@ -546,6 +549,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var layer = caseLayers[device + '|' + colorIdx];
     var dImg = designImgs[file];
     if (!layer || !dImg || !dImg.complete) return;
+    dImg.__kpDesignFile=file;var composed=null;
+    if(KPDesignColorways.profile(dImg)){composed=KPDesignColorways.make(dImg,'original',700);dImg=composed;}
     var ctx = cv.getContext('2d');
     ctx.clearRect(0, 0, CW, CH);
     ctx.drawImage(layer, 0, 0);
@@ -564,6 +569,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       tc.globalAlpha = 1; tc.globalCompositeOperation = 'destination-in';
       tc.drawImage(vmask, 0, 0, CW, CH);
       ctx.drawImage(t, 0, 0);
+      if(composed)composed.width=composed.height=0;
       return;
     }
     ctx.save();
@@ -578,6 +584,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ctx.globalAlpha = .32; ctx.globalCompositeOperation = 'multiply';
     ctx.drawImage(layer, 0, 0);
     ctx.restore();
+    if(composed)composed.width=composed.height=0;
   }
 
   var KP_BRANDS = { 'Apple': DEVICE_ORDER.filter(function(m){ return m.indexOf('iPhone')===0; }), 'Samsung': DEVICE_ORDER.filter(function(m){ return m.indexOf('Galaxy')===0; }), 'Google': [] };

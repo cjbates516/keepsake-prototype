@@ -90,7 +90,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 </style>
 <script src="assets/kp-config.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.4/heic2any.min.js" defer></script>
-<script src="assets/photo-looks.js"></script>
+<script src="assets/colorway-catalog.js"></script>
+<script src="assets/design-colorways.js"></script>
 <style>
 .photo-looks{display:flex;gap:10px;overflow-x:auto;padding:6px 6px 14px;scroll-snap-type:x proximity}
 .photo-look{flex:0 0 106px;padding:6px;background:#fff;border:2px solid #dedad6;border-radius:12px;cursor:pointer;scroll-snap-align:start;color:#191921;font:800 12px "Nunito Sans",sans-serif}
@@ -390,9 +391,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           </div>
           <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:12px">Your photo</div>
           <section id="photoLooksWrap" aria-labelledby="photoLooksTitle" hidden style="margin-bottom:12px">
-            <h2 id="photoLooksTitle" style="font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin:0 0 6px">Your image. A few different looks.</h2>
-            <p style="font-size:13px;color:#555;margin:0 0 6px">Tap a variation to preview it on your case. You can always return to Original.</p>
-            <div id="photoLooks" class="photo-looks" role="group" aria-label="Image variations"></div>
+            <h2 id="photoLooksTitle" style="font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin:0 0 6px">Choose your colorway.</h2>
+            <p style="font-size:13px;color:#555;margin:0 0 6px">The same artwork, five different backgrounds. Tap a colorway to see it on your case.</p>
+            <div id="photoLooks" class="photo-looks" role="group" aria-label="Design colorways"></div>
             <p id="photoLookStatus" aria-live="polite" style="font-size:12px;color:#555;margin:0">Original selected</p>
           </section>
           <button id="uploadBtn" class="h-upload" style="width:100%;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s">Upload a photo</button>
@@ -830,7 +831,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     return src.__edge;
   }
   function drawDesignInto(c2, src, filterCss){
-    src=KPPhotoLooks.source(src,state.variant);
+    src=KPDesignColorways.source(src,state.variant);
     var iw=src.naturalWidth||src.width, ih=src.naturalHeight||src.height;
     var B=maskBox||{x:0,y:0,w:DIM.w,h:DIM.h};
     if(state.fitMode==='fit'){
@@ -1216,6 +1217,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       $('kitNote').textContent = state.model + ' case photo coming soon — your design still saves correctly.';
       $('kitNote').style.display='block';
     }
+    if(state.fullFailed)$('stageHint').textContent='Could not load the full-quality design. Reload to try again.';
     render();
   }
 
@@ -1239,13 +1241,14 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       .then(function(m){ kpScreen.model=m; kpScreen.loading=false; cb(); })
       .catch(function(){ kpScreen.loading=false; cb(); });
   }
-  function kpScreenPhoto(img){
+  function kpScreenPhoto(img, owner){
+    owner=owner||img;
     kpEnsureScreen(function(){
-      if(!kpScreen.model || state.photoImg!==img) return;
+      if(!kpScreen.model || state.photoImg!==owner) return;
       kpScreen.model.classify(img).then(function(preds){
         var bad=0;
         preds.forEach(function(p){ if(p.className==='Porn'||p.className==='Hentai') bad+=p.probability; });
-        if(bad>0.6 && state.photoImg===img){
+        if(bad>0.6 && state.photoImg===owner){
           state.photoImg=null; state.photoUrl=null; state.isLibraryDesign=false; state.variant='original';
           state.px=0; state.py=0; state.scale=1; state.rot=0;
           updateStage(); updateSummary();
@@ -1269,77 +1272,58 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     window.addEventListener(ev,function(e){ e.preventDefault(); });
   });
 
-  /* ── photo load ── */
+  /* Decode directly into a bounded working copy; stale uploads never restore a reset. */
+  var kpUploadRequest=0;
+  function releaseWorkingPhoto(){
+    if(state.photoImg instanceof HTMLCanvasElement){state.photoImg.width=0;state.photoImg.height=0;}
+    KPDesignColorways.clear();
+  }
   function loadPhoto(f, forceSlot){
-    kpLibraryRequest++;
     if(!f)return;
-    if(/heic|heif/i.test(f.type||'') || /\.hei[cf]$/i.test(f.name||'')){
-      /* iPhone HEIC: convert in the browser so the customer never has to change a setting */
-      if(f.__kpConverted){ kpToast("We couldn’t read that photo. Try another one, or a screenshot of it works great."); return; }
-      if(typeof heic2any !== 'function'){
-        if(!window.__kpHeicWait){ window.__kpHeicWait=true; setTimeout(function(){ window.__kpHeicWait=false; loadPhoto(f, forceSlot); }, 1200); kpToast('One moment — getting that photo ready…'); return; }
-        kpToast("That photo is in iPhone HEIC format. Please try again in Safari, or a screenshot of it works great."); return;
+    var request=++kpUploadRequest;kpLibraryRequest++;
+    function current(){return request===kpUploadRequest;}
+    if(f.size>40*1024*1024){kpToast('That photo is over 40MB — please use a smaller copy.');return;}
+    if(/heic|heif/i.test(f.type||'')||/\.hei[cf]$/i.test(f.name||'')){
+      if(typeof heic2any!=='function'){
+        if(!f.__kpWaited){f.__kpWaited=true;setTimeout(function(){if(current())loadPhoto(f,forceSlot);},1200);kpToast('One moment — getting that photo ready…');}
+        else kpToast('We could not load HEIC support. Try a JPG, PNG, or screenshot.');
+        return;
       }
-      kpToast('Converting your photo…', 4000);
-      heic2any({ blob:f, toType:'image/jpeg', quality:0.92 }).then(function(out){
-        var b = Array.isArray(out) ? out[0] : out;
-        var nf; try{ nf = new File([b], (f.name||'photo').replace(/\.hei[cf]$/i,'')+'.jpg', { type:'image/jpeg' }); }catch(_){ nf = b; nf.name='photo.jpg'; }
-        nf.__kpConverted = true;
-        loadPhoto(nf, forceSlot);
-      }).catch(function(){ kpToast("We couldn’t convert that photo. A screenshot of it works great, or try another one."); });
-      return;
+      kpToast('Converting your photo…',4000);
+      heic2any({blob:f,toType:'image/jpeg',quality:.92}).then(function(out){
+        if(!current())return;var blob=Array.isArray(out)?out[0]:out;
+        loadPhoto(new File([blob],'converted-photo.jpg',{type:'image/jpeg'}),forceSlot);
+      }).catch(function(){if(current())kpToast('We could not convert that photo. Try a JPG, PNG, or screenshot.');});return;
     }
-    if(!/^image\//.test(f.type)){ kpToast('That file isn’t a photo we can read — JPG, PNG or WebP work best.'); return; }
-    if(f.size > 40*1024*1024){ kpToast('That photo is over 40MB — please use a smaller copy (screenshots of it work great too).'); return; }
-    var url=URL.createObjectURL(f);
-    var img=new Image();
-    img.onerror=function(){
-      URL.revokeObjectURL(url);
-      kpToast("We couldn’t read that photo — it may be an unsupported format. JPG or PNG always works.");
-    };
-    /* phone photos carry a rotation flag; decode with it applied so portraits never load sideways */
-    var decodeDone=false;
-    if(window.createImageBitmap){
+    if(!/^image\//.test(f.type)){kpToast('Please choose a JPG, PNG, or WebP photo.');return;}
+    var url=URL.createObjectURL(f),img=new Image();
+    function failed(){URL.revokeObjectURL(url);if(current())kpToast('We could not read that photo. Try a smaller copy, JPG, or PNG.');}
+    function accept(decoded){
+      if(!current()){URL.revokeObjectURL(url);return;}
+      var w=decoded.naturalWidth||decoded.width,h=decoded.naturalHeight||decoded.height;
+      if(w<150||h<150){URL.revokeObjectURL(url);kpToast('That image is too small to print well — please use one at least 150×150 pixels.');return;}
+      var k=Math.min(1,3072/Math.max(w,h)),src=document.createElement('canvas');
       try{
-        createImageBitmap(f, { imageOrientation:'from-image' }).then(function(bm){
-          if(decodeDone) return; decodeDone=true;
-          var oc=document.createElement('canvas'); oc.width=bm.width; oc.height=bm.height;
-          oc.getContext('2d').drawImage(bm,0,0); try{ bm.close(); }catch(_){}
-          oc.naturalWidth=oc.width; oc.naturalHeight=oc.height;
-          var h=img.onload; img=oc; h.call(oc);
-        }).catch(function(){ if(!decodeDone){ decodeDone=true; img.src=url; } });
-      }catch(_){ decodeDone=true; img.src=url; }
-    } else { decodeDone=true; }
-    img.onload=function(){
-      if((img.naturalWidth&&img.naturalWidth<150)||(img.naturalHeight&&img.naturalHeight<150)){
-        URL.revokeObjectURL(url);
-        kpToast('That image is too small to print well — please use one at least 150×150 pixels.'); return;
-      }
-      /* downscale huge photos to a fast working copy; full quality is far above print needs */
-      /* always copy into a canvas: an <img> backed by a revoked blob URL can lose its
-         decoded bitmap under iOS memory pressure and go blank mid-session */
-      var MAXE=3072, w=img.naturalWidth, h=img.naturalHeight, k=Math.min(1, MAXE/Math.max(w,h));
-      var wc=document.createElement('canvas'); wc.width=Math.max(1,Math.round(w*k)); wc.height=Math.max(1,Math.round(h*k));
-      var wctx=wc.getContext('2d'); wctx.imageSmoothingQuality='high'; wctx.drawImage(img,0,0,wc.width,wc.height);
-      wc.naturalWidth=wc.width; wc.naturalHeight=wc.height; var src=wc;
-      URL.revokeObjectURL(url);
-      if(state.layout){
-        var t=curTpl(), nslots=t?t.slots.length:1;
-        var idx=(forceSlot!=null)?forceSlot:(state.slotTarget!=null)?state.slotTarget:(function(){for(var i=0;i<nslots;i++){if(!state.photos[i])return i;}return 0;})();
-        state.photos[idx]=src; state.slotTarget=null; state.reserved=false;
-        updateUploadLabel(); updateStage(); updateSummary(); render();
-      } else {
-      state.photoImg=src; state.photoUrl=null; state.isLibraryDesign=false;
-      state.fitMode = (w/h > 1.15) ? 'fit' : 'fill';
-      state.px=0; state.py=0; state.scale=1; state.rot=0; state.filter='none'; state.variant='original'; state.reserved=false;
-      updateUploadLabel();
-      renderFilterChips(); updateDpi(); updateStage(); updateSummary(); }
-      var th=document.createElement('canvas'); var tk=Math.min(1, 512/Math.max(src.naturalWidth,src.naturalHeight));
-      th.width=Math.max(1,Math.round(src.naturalWidth*tk)); th.height=Math.max(1,Math.round(src.naturalHeight*tk));
-      th.getContext('2d').drawImage(src,0,0,th.width,th.height);
-      kpScreenPhoto(th);
-    };
-    if(!window.createImageBitmap) img.src=url;
+        src.width=Math.max(1,Math.round(w*k));src.height=Math.max(1,Math.round(h*k));
+        var cx=src.getContext('2d');if(!cx)throw new Error('Canvas unavailable');
+        cx.imageSmoothingQuality='high';cx.drawImage(decoded,0,0,src.width,src.height);
+        src.naturalWidth=src.width;src.naturalHeight=src.height;
+      }catch(e){src.width=src.height=0;failed();return;}
+      URL.revokeObjectURL(url);releaseWorkingPhoto();
+      state.photoImg=src;state.photoUrl=null;state.isLibraryDesign=false;state.fullFailed=false;
+      state.fitMode=w/h>1.15?'fit':'fill';state.layout=null;
+      state.px=0;state.py=0;state.scale=1;state.rot=0;state.filter='none';state.variant='original';state.reserved=false;
+      updateUploadLabel();renderFilterChips();updateDpi();updateStage();updateSummary();
+      var th=document.createElement('canvas'),tk=Math.min(1,512/Math.max(src.width,src.height));
+      th.width=Math.max(1,Math.round(src.width*tk));th.height=Math.max(1,Math.round(src.height*tk));
+      th.getContext('2d').drawImage(src,0,0,th.width,th.height);kpScreenPhoto(th,src);
+    }
+    img.onload=function(){accept(img);};img.onerror=failed;
+    function fallback(){if(current())img.src=url;else URL.revokeObjectURL(url);}
+    if(window.createImageBitmap){
+      try{createImageBitmap(f,{imageOrientation:'from-image'}).then(function(bitmap){try{accept(bitmap);}finally{bitmap.close();}},fallback);}
+      catch(e){fallback();}
+    }else fallback();
   }
   function updateUploadLabel(){
     var b=$('uploadBtn'); if(!b) return;
@@ -1374,7 +1358,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     } else loadPhoto(files[0]);
   });
   $('clearBtn').addEventListener('click',function(){
-    kpLibraryRequest++;
+    kpLibraryRequest++;kpUploadRequest++;releaseWorkingPhoto();
     state.photoImg=null; state.photoUrl=null; state.filter='none'; state.variant='original';
     state.photos=[]; state.slotTarget=null; state.builder=false; state.layout=null; state.designPath=null;
     state.px=0;state.py=0;state.scale=1;state.rot=0;
@@ -1403,25 +1387,25 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var wrap=$('photoLooksWrap'),row=$('photoLooks'),src=state.photoImg;
     if(!wrap||!row)return;
     var ready=src&&src.complete!==false&&(src.naturalWidth||src.width)>0&&(src.naturalHeight||src.height)>0;
-    wrap.hidden=!ready;
-    if(!ready){row.replaceChildren();looksSource=null;KPPhotoLooks.clear();return;}
+    wrap.hidden=!ready||KPDesignColorways.choicesFor(src).length<2;
+    if(!ready){row.replaceChildren();looksSource=null;KPDesignColorways.clear();return;}
     var size=(src.naturalWidth||src.width)+'x'+(src.naturalHeight||src.height);
     if(looksSource!==src||looksSize!==size){
-      row.replaceChildren();KPPhotoLooks.clear();looksSource=src;looksSize=size;
-      KPPhotoLooks.choices.forEach(function(look){
+      row.replaceChildren();KPDesignColorways.clear();looksSource=src;looksSize=size;
+      KPDesignColorways.choicesFor(src).forEach(function(look){
         var button=document.createElement('button');button.type='button';button.className='photo-look';button.dataset.look=look.id;
-        button.setAttribute('aria-label',look.name+' variation');
-        var thumb=KPPhotoLooks.make(src,look.id,192);thumb.setAttribute('aria-hidden','true');
+        button.setAttribute('aria-label',look.name+' colorway');
+        var thumb=KPDesignColorways.make(src,look.id,192);thumb.setAttribute('aria-hidden','true');
         var label=document.createElement('span');label.textContent=look.name;button.append(thumb,label);row.append(button);
       });
     }
     row.querySelectorAll('.photo-look').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.look===(state.variant||'original')));});
-    var selected=KPPhotoLooks.choices.find(function(v){return v.id===state.variant;})||KPPhotoLooks.choices[0];
+    var selected=KPDesignColorways.choicesFor(src).find(function(v){return v.id===state.variant;})||KPDesignColorways.choices[0];
     $('photoLookStatus').textContent=selected.name+' selected';
   }
   $('photoLooks').addEventListener('click',function(e){
     var button=e.target.closest('.photo-look');if(!button||!state.photoImg)return;
-    state.variant=button.dataset.look;state.filter='none';state.reserved=false;
+    state.variant=button.dataset.look;state.fitMode='fill';state.filter='none';state.reserved=false;
     renderFilterChips();updateStage();updateSummary();
   });
 
@@ -1562,7 +1546,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     rr(3,3,W-6,H-6,18);
     x.fillStyle = style==='hyb' ? '#2D2D3B' : 'rgba(185,189,203,.45)'; x.fill();
     rr(8,8,W-16,H-16,13); x.save(); x.clip();
-    var art = KPPhotoLooks.source(state.photoImg,state.variant) || (state.layout && curTpl() ? tplImage(curTpl()) : null);
+    var art = KPDesignColorways.source(state.photoImg,state.variant) || (state.layout && curTpl() ? tplImage(curTpl()) : null);
     if(art && art.complete!==false && (art.naturalWidth||art.width)){
       var iw=art.naturalWidth||art.width, ih=art.naturalHeight||art.height;
       var k2=Math.max((W-16)/iw,(H-16)/ih);
@@ -1651,7 +1635,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function kpPreset(){
     /* the one word the team member matches to a saved profile in xTool Studio */
     if(state.layout) return 'Photo';
-    if(state.isLibraryDesign && state.photoImg){ try{ if(photoHasAlpha()) return 'Clear Look'; }catch(_){ } return 'Graphic'; }
+    if(state.isLibraryDesign && state.photoImg){ if(state.variant&&state.variant!=='original'&&KPDesignColorways.profile(state.photoImg))return 'Graphic'; try{ if(photoHasAlpha()) return 'Clear Look'; }catch(_){ } return 'Graphic'; }
     if(!state.photoImg && state.text) return 'Text';
     return 'Photo';
   }
@@ -1685,7 +1669,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       var payload={ action:'order', model:state.model, caseType:state.caseType, store:state.store, preset:kpPreset(),
         name:name, phone:phone, ownsPhoto:true, optIn:!!$('kpOpt').checked, source:(document.body.classList.contains('kp-kiosk')?'counter':'web'),
         price:orderPricing().total, addons:addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return {name:a.name,price:a.price};}),
-        notes:['Total at pickup: $'+orderPricing().total.toFixed(2),addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return a.name+' $'+a.price.toFixed(2);}).join(', '),state.photoImg&&state.variant&&state.variant!=='original'?('Image look already applied: '+state.variant):'',state.text?('Name print: '+state.text+(state.font?' ('+state.font+')':'')):'', state.isLibraryDesign&&state.photoUrl?('Library: '+state.photoUrl.split('/').pop()):'', state.filter&&state.filter!=='none'?('Filter: '+state.filter):'', state.quality?('Quality: '+state.quality):''].filter(Boolean).join(' · '),
+        notes:['Total at pickup: $'+orderPricing().total.toFixed(2),addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return a.name+' $'+a.price.toFixed(2);}).join(', '),state.photoImg&&state.variant&&state.variant!=='original'?('Design colorway already applied: '+(KPDesignColorways.choicesFor(state.photoImg).find(function(c){return c.id===state.variant;})||{}).name+' ('+state.variant+')'):'',state.text?('Name print: '+state.text+(FONTS[state.textFont]?' ('+FONTS[state.textFont].n+')':'')):'', state.isLibraryDesign&&state.photoUrl?('Library: '+state.photoUrl.split('/').pop()):'', state.filter&&state.filter!=='none'?('Filter: '+state.filter):'', state.quality?('Quality: '+state.quality):''].filter(Boolean).join(' · '),
         printPng:c.toDataURL('image/png'), previewJpg:pv.toDataURL('image/jpeg',0.82) };
       if(!KP_ORDERS){
         /* no backend configured yet: reserve code so the counter can still print from the staff link */
@@ -1718,6 +1702,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* builds the print file; done(canvas, filename). Returns false (with a toast) when it cannot. */
   function kpBuildPrint(done){
     if(!hasArt() && !state.text) return false;
+    if(state.fullFailed){kpToast('Full-quality design could not load. Reload to try again.');return false;}
     if(state.photoImg && (state.photoImg.__kpIsThumb || state.photoImg.complete===false || !(state.photoImg.naturalWidth||state.photoImg.width))){ kpToast('Full-quality art is still loading — one moment, then try again.'); return false; }
     if(!TPL){ kpToast('Print template for this model is being finalized — see staff.'); return false; }
     if(viewSrc && !(viewImg&&viewReady&&viewMaskCanvas)){ kpToast(viewFailed ? 'Case mask failed to load — reload the page before exporting.' : 'Case mask still loading — one moment, then try again.'); return false; }
@@ -1881,11 +1866,12 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   var kpLibraryRequest=0;
   function kpLoadLibraryDesign(file, hint){
-    var request=++kpLibraryRequest;
-    state.variant='original'; state.photoUrl='assets/designs/'+file;
+    var request=++kpLibraryRequest;kpUploadRequest++;state.fullFailed=false;
+    var requested=new URLSearchParams(location.search).get('colorway');
+    state.variant=KPDesignColorways.choicesFor({__kpDesignFile:file}).some(function(c){return c.id===requested;})?requested:'original';state.photoUrl='assets/designs/'+file;
     /* thumb first (instant on cellular), full print-res swaps in when ready */
     var setImg=function(im, isThumb){
-      im.__kpIsThumb=isThumb;
+      im.__kpIsThumb=isThumb;im.__kpDesignFile=file;
       if(state.photoUrl!=='assets/designs/'+file) state.variant='original';
       state.photoImg=im; state.photoUrl='assets/designs/'+file; state.isLibraryDesign=true;
       state.fitMode='fill';
@@ -1904,7 +1890,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       full.src='assets/designs/'+file;
     };
     th.onerror=function(){ if(request!==kpLibraryRequest)return; state.photoUrl='assets/designs/'+file; state.photoImg=null; updateStage(); $('stageHint').textContent='Loading full-quality design…'; full.src='assets/designs/'+file; };
-    full.onerror=function(){ if(request!==kpLibraryRequest)return; $('stageHint').textContent='Could not load the full-quality design. Reload to try again.'; };
+    full.onerror=function(){ if(request!==kpLibraryRequest)return; state.fullFailed=true; $('stageHint').textContent='Could not load the full-quality design. Reload to try again.'; };
     th.src='assets/designs/thumbs/'+file;
   }
   function applyLibraryDesign(file){
@@ -2043,7 +2029,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         loadKit(state.model);
         updateFitNote(); updateStage(); updateSummary();
         var applyRest=function(){
-          if(su.ph){ state.px=su.ph.px; state.py=su.ph.py; state.scale=su.ph.sc; state.rot=su.ph.rot; state.filter='none'; state.variant=KPPhotoLooks.valid(su.ph.v)?su.ph.v:'original';
+          if(su.ph){ state.px=su.ph.px; state.py=su.ph.py; state.scale=su.ph.sc; state.rot=su.ph.rot; state.filter='none'; state.variant=KPDesignColorways.choicesFor(state.photoImg).some(function(c){return c.id===su.ph.v;})?su.ph.v:'original';
             }
           if(su.txt){ state.text=su.txt.t; state.textFont=su.txt.f; state.textColor=su.txt.c; state.textSize=su.txt.sz; state.textPos=su.txt.p; state.textVertical=su.txt.v;
             $('nameInput').value=state.text; renderFontChips(); }
@@ -2051,7 +2037,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         };
         if(su.d && /^[a-z0-9-]+\.(jpg|png)$/.test(su.d)){
           var img=new Image();
-          img.onload=function(){ state.photoImg=img; state.photoUrl='assets/designs/'+su.d; state.isLibraryDesign=true; renderFilterChips(); applyRest(); };
+          img.onload=function(){ img.__kpDesignFile=su.d;state.photoImg=img; state.photoUrl='assets/designs/'+su.d; state.isLibraryDesign=true; renderFilterChips(); applyRest(); };
           img.src='assets/designs/'+su.d;
         } else applyRest();
       }, 900);

@@ -54,6 +54,8 @@
     </div>
   </div>
 </div>
+<script src="../assets/colorway-catalog.js"></script>
+<script src="../assets/design-colorways.js"></script>
 <script src="instore-lib.js"></script>
 <script>
 (function () {
@@ -75,18 +77,20 @@
       if (!m) return fail('We do not have a phone with the code ' + p.model + '.');
       var d = data.findByCode(p);
       if (!d) return fail('No design matches ' + p.col + ' number ' + p.n + '.');
-      var now = KPI.pickCode(m, d), typed = m.id + '-' + p.col + '-' + KPI.pad3(p.n);
+      var options=KPI.colorways(d),selected=p.colorway?options.find(function(c){return c.code===p.colorway;}):options[0];
+      if(!selected)return fail('That colorway is not available for this design. Ask the customer to choose again.');
+      var now = KPI.pickCode(m, d, selected.id), typed = m.id + '-' + p.col + '-' + KPI.pad3(p.n)+(p.colorway?'-C'+p.colorway:'');
       $('rcode').textContent = now && now !== typed ? typed + ' (now ' + now + ')' : typed;
-      $('rname').textContent = KPI.cleanTitle(d.title);
+      $('rname').textContent = KPI.cleanTitle(d.title)+(options.length>1?' · '+selected.name:'');
       var notes = [];
       if (!m.active) notes.push('we do not stock this phone in store');
       if (d.hidden) notes.push('this design is hidden from the store');
       $('rmodel').textContent = m.name + (notes.length ? ' (' + notes.join(', ') + ')' : '');
-      $('ropen').href = KPI.customizerUrl(m, d);
+      $('ropen').href = KPI.customizerUrl(m, d, selected.id);
       $('rimg').removeAttribute('src'); revoke(shownUrl); shownUrl = null;
       $('res').classList.add('on');
-      Promise.all([KPI.prepModel(m, 440), KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 })]).then(function (r) {
-        return KPI.renderToUrl(r[0], r[1], '#FFFFFF');
+      Promise.all([KPI.prepModel(m, 440), KPI.loadImage(KPI.fullUrl(d), { cache: false, timeout: 12000 })]).then(function (r) {
+        return KPI.renderToUrl(r[0], r[1], '#FFFFFF', selected.id);
       }).then(function (u) {
         /* only the newest lookup may show its picture; older ones are thrown away */
         if (seq !== lookupSeq) { revoke(u); return; }

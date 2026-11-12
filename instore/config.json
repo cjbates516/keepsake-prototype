@@ -5,6 +5,11 @@
  "assets_version": "11",
  "collections": [
   {
+   "category": "Neon Doodles",
+   "label": "Neon Doodles",
+   "code": "NEO"
+  },
+  {
    "category": "Florals",
    "label": "Florals",
    "code": "FLR"

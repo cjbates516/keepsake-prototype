@@ -1,0 +1,35 @@
+{
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "name": "neon-recess",
+      "prompt": "Create one original flat print-ready surface pattern for Keepsake phone cases, called Neon Recess (do not write the name). Style: 1990s Memphis neon doodle pattern. Portrait 1:2 proportion. Solid pure black background. Dense but airy scatter of small hand-drawn smooth neon cyan, mint green, hot pink, lavender squiggles, tiny outline rings, open triangles, zigzag strokes, little dashes and dots, with consistent rounded line weight and balanced sizes. Shapes occupy about 25 percent of the surface, black negative space 75 percent. Sophisticated playful screen-print look, crisp flat solid colors, no glow blur or gradients. Pattern reaches all edges and remains balanced when cropped to phone cases. This is the artwork only: no phone, camera hole, product mockup, border, text, logos, watermark or lighting. Make a fresh original arrangement.",
+      "file": "assets/designs/kp-neon-neon-recess.png"
+    },
+    {
+      "name": "arcade-after-dark",
+      "prompt": "Create one ORIGINAL flat print-ready surface pattern for a phone case. Portrait 1:2 ratio, solid pure black background, edge-to-edge pattern. Dense scattered angular lightning bolts, stepped zigzags, plus signs, tiny outlined diamonds and rings. Electric cyan, hot pink, violet, acid lime. Dynamic 1980s arcade energy. Crisp rounded linework, saturated flat colors. About 30 percent colorful marks and 70 percent black negative space, comfortably dense so a phone case crop contains many small marks. No gradients, glow, texture, shadows or perspective. Artwork only: no phone, camera cutout, mockup, border, words, letters, logos or watermark. Keep every mark separate, with mostly open black space inside outline shapes.",
+      "file": "assets/designs/kp-neon-arcade-after-dark.png"
+    },
+    {
+      "name": "electric-confetti",
+      "prompt": "Create one ORIGINAL flat print-ready surface pattern for a phone case. Portrait 1:2 ratio, solid pure black background, edge-to-edge pattern. Dense lively scatter of tiny hand-drawn confetti: short curving strokes, thin hollow rings, triangles, dots and mini loops. Neon coral pink, turquoise, lavender, mint. About 180 small separate marks, varied angles, no orderly grid. Crisp rounded linework, saturated flat colors. About 30 percent colorful marks and 70 percent black negative space, comfortably dense so a phone case crop contains many small marks. No gradients, glow, texture, shadows or perspective. Artwork only: no phone, camera cutout, mockup, border, words, letters, logos or watermark. Keep every mark separate, with mostly open black space inside outline shapes.",
+      "file": "assets/designs/kp-neon-electric-confetti.png"
+    },
+    {
+      "name": "miami-doodle",
+      "prompt": "Create one ORIGINAL flat print-ready surface pattern for a phone case. Portrait 1:2 ratio, solid pure black background, edge-to-edge pattern. A playful dense 1990s Memphis scatter of wavy squiggles, outline semicircles, triangles, little rings and parallel dashes. Punchy turquoise, flamingo pink, peach orange, soft lilac. Small loose hand-drawn shapes with a balanced irregular arrangement. Crisp rounded linework, saturated flat colors. About 30 percent colorful marks and 70 percent black negative space, comfortably dense so a phone case crop contains many small marks. No gradients, glow, texture, shadows or perspective. Artwork only: no phone, camera cutout, mockup, border, words, letters, logos or watermark. Keep every mark separate, with mostly open black space inside outline shapes.",
+      "file": "assets/designs/kp-neon-miami-doodle.png"
+    },
+    {
+      "name": "cosmic-squiggle",
+      "prompt": "Create one ORIGINAL flat print-ready surface pattern for a phone case, portrait 1:2 ratio. Pure black background. An irregular scatter of tiny outlined four-point sparkles, small rings, miniature crescent moons, wavy squiggles, orbit-like loops and little dots. Bright neon cyan, lavender, hot pink and mint green. Cosmic retro notebook-doodle mood. Dense small-scale pattern of at least 150 marks, with roughly 30 percent colored strokes and 70 percent black space, each motif separated. Smooth round stroke ends, crisp saturated flat colors. Balanced and varied arrangement, pattern extends to all edges. No gradients, glow haze, 3D, lighting, shadows or texture. Only the rectangular artwork, no phone, camera opening, product mockup, words, logos, border or watermark.",
+      "file": "assets/designs/kp-neon-cosmic-squiggle.png"
+    },
+    {
+      "name": "glow-grid",
+      "prompt": "Create one ORIGINAL flat print-ready surface pattern for a phone case, portrait 1:2 ratio. Pure black background. An irregular scatter of small open circles, rounded outline squares, right-angle zigzags, short wavy lines, triangles, double dashes and tiny dots. Bright electric blue, neon lime, hot pink and purple. Energetic abstract Memphis geometry; no literal grid and no large focal shapes. Dense small-scale pattern of at least 150 marks, with roughly 30 percent colored strokes and 70 percent black space, each motif separated. Smooth round stroke ends, crisp saturated flat colors. Balanced and varied arrangement, pattern extends to all edges. No gradients, glow haze, 3D, lighting, shadows or texture. Only the rectangular artwork, no phone, camera opening, product mockup, words, logos, border or watermark.",
+      "file": "assets/designs/kp-neon-glow-grid.png"
+    }
+  ]
+}
