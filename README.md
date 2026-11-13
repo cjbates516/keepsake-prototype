@@ -108,7 +108,7 @@ The exporter preserves artwork proportions, uses exact source-derived mask geome
 The homepage and gift guide link to this page. A size choice produces a counter
 selection summary, not a submitted order, reservation or payment. Customers bring
 their original photo to staff; the private QR upload service is not deployed.
-The page uses real licensed family stock photos in labeled sample slate mockups until actual finished-product photos are supplied. Photo provenance and permitted marketing-only use are recorded in `docs/SLATE-PHOTO-SOURCES.md`.
+The page uses two labeled digital slate composites made with licensed family stock photos and supplier slate references, with complete stone edges and display supports visible. These are AI-assisted mockups, not photographs of finished Keepsake prints. Photo provenance and permitted marketing-only use are recorded in `docs/SLATE-PHOTO-SOURCES.md`.
 No slate print masks or physical dimensions are inferred by this storefront feature.
 
 Run `node tools/tests/slates.cjs <output-directory>` against a local server on port8766,
