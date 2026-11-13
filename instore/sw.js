@@ -4,7 +4,7 @@
    short timeout, so updates still arrive but a dead connection falls back to the last good copy.
    CacheStorage is shared by the whole origin, so this worker only ever touches caches named kp-instore-*. */
 var NS = 'kp-instore-';
-var VERSION = NS + 'v8';
+var VERSION = NS + 'v9';
 var SHELL = VERSION + '-shell';
 /* pictures are keyed by ?v=<design hash>, so this cache can outlive worker versions and stay warm across updates */
 var PICS = NS + 'pics-1';
@@ -89,7 +89,7 @@ self.addEventListener('fetch', function (e) {
   if (req.method !== 'GET') return;
   var url = new URL(req.url);
   if (url.origin === self.location.origin && isDesignList(url)) { e.respondWith(networkFirst(req, 3500)); return; }
-  if (url.origin === self.location.origin && /\/assets\/(colorway-catalog|design-colorways|print-layouts)\.js$/.test(url.pathname)) { e.respondWith(networkFirst(req, 3500)); return; }
+  if (url.origin === self.location.origin && /\/assets\/(colorway-catalog|design-colorways|print-layouts|preview-edge)\.js$/.test(url.pathname)) { e.respondWith(networkFirst(req, 3500)); return; }
   if (isPicture(url)) { e.respondWith(cacheFirst(req)); return; }
   if (url.hostname === 'fonts.googleapis.com') { e.respondWith(networkFirst(req, 2500)); return; }
   if (url.origin === self.location.origin &&
