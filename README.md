@@ -130,3 +130,9 @@ The slate page also shows the exact 8×10 supplier’s product detail image with
 The homepage uses `assets/homepage.css` and `assets/homepage.js`: a responsive product hero, curated case designs, photo-slate feature, in-store steps, glass bundle and store navigation. Product renders and the AI-assisted slate composite are explicitly labeled. All case designs remain $44.99; the glass bundle total is $64.98 before tax. Photo selection in the customizer is local; this change does not deploy private QR intake.
 
 Run `node tools/tests/homepage.cjs` with the local server on port 8766, or set `KP_BASE` to the deployed base URL. It checks Chromium and WebKit at 320, 390, 760, 820 and 1440 px, images, overflow, catalog links, pricing, menu keyboard/focus behavior, and the no-JavaScript menu. Physical print validation remains pending.
+
+### Gallery and design studio refresh
+
+`assets/shop-refresh.css` applies the homepage visual language to the gallery and customizer without changing canvas geometry. `assets/shop-dialogs.js` adds keyboard focus/escape handling to existing phone selectors. Gallery finish swatches are buttons and retain explicit selection after hover. With no configured order backend, the public customizer shows a counter-review message without collecting contact details or pretending to submit an order. Private QR deployment remains held.
+
+The homepage now includes a GET-only phone finder and visual collection cards. `tools/tests/shop_refresh.cjs` checks search/empty recovery, keyboard finish controls, phone selector dialogs, colorways/name editing, counter-review behavior and the homepage handoff in Chromium/WebKit at 320/390/820/1440 px. Run the existing staff workspace suite separately for print exports and customer cleanup.

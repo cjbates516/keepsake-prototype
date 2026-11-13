@@ -17,7 +17,7 @@ let checks=0;function check(ok,label){if(!ok)throw Error(label);checks++;}
    check(await p.locator('.design-label').evaluateAll(es=>es.length===4&&es.every(e=>e.textContent.includes('$44.99'))),'case prices');
    check((await p.locator('.glass-band').innerText()).includes('$64.98'),'bundle total');
    check(await p.locator('.gift-photo p').evaluate(e=>parseFloat(getComputedStyle(e).fontSize)>=12&&e.textContent.includes('AI-assisted')),'mockup disclosure');
-   check(await p.locator('form').count()===0,'no simulated forms');
+   check(await p.locator('form').count()===1&&await p.locator('.phone-finder form').getAttribute('method')==='get','device finder uses navigation only');
    const links=await p.locator('a').evaluateAll(es=>es.map(e=>e.getAttribute('href')));
    for(const href of links){
     if(href.startsWith('#')){check(await p.locator(href).count()===1,'anchor '+href);continue;}

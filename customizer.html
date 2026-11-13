@@ -14,10 +14,10 @@
 <script src="assets/print-layouts.js"></script>
 <script src="assets/preview-edge.js"></script>
 <title>Design your keepsake — Keepsake Printing Co</title>
-<meta name="description" content="Design your custom phone case: upload a photo or pick a ready-made design, see it on your exact phone, and we UV-print it in store — ready today.">
+<meta name="description" content="Design your custom phone case: upload a photo or pick a ready-made design, see it on your exact phone, and review your design with our team in store.">
 <link rel="canonical" href="https://cjbates516.github.io/keepsake-prototype/customizer.html">
 <meta property="og:title" content="Design your keepsake — Keepsake Printing Co">
-<meta property="og:description" content="Design your custom phone case: upload a photo or pick a ready-made design, see it on your exact phone, and we UV-print it in store — ready today.">
+<meta property="og:description" content="Design your custom phone case: upload a photo or pick a ready-made design, see it on your exact phone, and review your design with our team in store.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cjbates516.github.io/keepsake-prototype/customizer.html">
 <meta property="og:image" content="https://cjbates516.github.io/keepsake-prototype/assets/apple-touch-icon.png">
@@ -26,9 +26,8 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Product","name":"Custom Photo Phone Case",
 "brand":{"@type":"Brand","name":"Keepsake Printing Co"},
-"description":"Custom UV-printed phone case — upload a photo or choose from 1,000+ designs, printed in store while you wait.",
-"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"44.99","highPrice":"44.99",
-"availability":"https://schema.org/InStock"}}
+"description":"Custom UV-printed phone case — upload a photo or choose from 1,000+ designs, personalized in store.",
+"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"44.99","highPrice":"44.99"}}
 </script>
 <link rel="icon" href="assets/favicon-16.png" sizes="16x16" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Nunito+Sans:wght@400;700;800;900&display=swap" rel="stylesheet">
@@ -107,180 +106,21 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 .photo-look canvas{display:block;width:90px;height:128px;object-fit:cover;border-radius:7px;background:#f0eeeb;margin:0 auto 9px}
 .photo-look span{display:block;min-height:28px;line-height:1.2}
 </style>
+<link rel="stylesheet" href="assets/shop-refresh.css">
+<script src="assets/homepage.js" defer></script>
+<script src="assets/shop-dialogs.js" defer></script>
 </head>
-<body>
+<body class="kp-shop kp-customizer">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
-<div style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
+<div class="kp-page" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
 
-  <!-- announcement -->
-  <div id="announceBar" style="background:#2D2D3B;color:#FFFFFF;padding:11px 16px;text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;overflow:hidden">
-    <span id="announce" style="display:inline-block;animation:fadeIn .45s cubic-bezier(.2,.7,.2,1) both">10% off your first case — code <span style="background:rgba(255,255,255,.18);border-radius:999px;padding:2px 10px;letter-spacing:.1em">FIRST10</span></span>
-  </div>
-
-  <!-- header -->
-  <header id="siteHeader" style="position:sticky;top:0;z-index:60;background:#FFFFFF;border-bottom:1px solid #F3F2F2;padding:0 clamp(10px,2vw,28px);display:flex;align-items:center;justify-content:space-between;min-height:72px">
-    <div style="display:flex;align-items:center;gap:2px">
-      <button id="burger" aria-label="Menu" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#17171F;transition:background .2s">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="14" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
-      </button>
-      <a href="gallery.html" aria-label="Search" title="Search" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#17171F;transition:background .2s">
-        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      </a>
-    </div>
-    <a href="index.html" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px;text-decoration:none;color:#2D2D3B">
-      <svg width="68" height="34" viewBox="0 0 80 40" aria-hidden="true" style="overflow:visible">
-        <g style="transform-box:fill-box;transform-origin:center;animation:ksPhoto 6s cubic-bezier(.2,.7,.2,1) infinite">
-          <g transform="rotate(-9 22 10)">
-            <rect x="15" y="1" width="17" height="20" rx="1.5" fill="#FFFFFF" stroke="#B9BDCB" stroke-width="1"></rect>
-            <rect x="17.5" y="3.5" width="12" height="11" rx="1" fill="#E8E7E7"></rect>
-            <path d="M23.5 12.6l-2.2-2.3c-.6-.62-.6-1.6 0-2.2.6-.62 1.55-.62 2.15 0l.05.05.05-.05c.6-.62 1.55-.62 2.15 0 .6.6.6 1.58 0 2.2z" fill="#DC282E"></path>
-          </g>
-        </g>
-        <rect x="4" y="14" width="32" height="23" rx="4" fill="#DC282E"></rect>
-        <rect x="7" y="17" width="26" height="17" rx="2.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1" stroke-dasharray="2.4 2.4"></rect>
-        <circle cx="9.5" cy="21" r="1.4" fill="#FFFFFF" opacity=".9"></circle>
-        <circle cx="9.5" cy="25.5" r="1.4" fill="#FFFFFF" opacity=".9"></circle>
-        <circle cx="9.5" cy="30" r="1.4" fill="#FFFFFF" opacity=".9"></circle>
-        <path d="M23 31.8l-5-5.1c-1.35-1.4-1.35-3.6 0-5 1.35-1.4 3.55-1.4 4.9 0l.1.1.1-.1c1.35-1.4 3.55-1.4 4.9 0 1.35 1.4 1.35 3.6 0 5z" fill="#F3F2F2"></path>
-        <rect x="58" y="5" width="19" height="33" rx="5.5" fill="#2D2D3B"></rect>
-        <rect x="60.5" y="7.5" width="14" height="28" rx="3.5" fill="#F3F2F2"></rect>
-        <circle cx="64" cy="11" r="1.5" fill="#17171F"></circle>
-        <g style="animation:ksPrint 6s cubic-bezier(.2,.7,.2,1) infinite">
-          <rect x="60.5" y="7.5" width="14" height="28" rx="3.5" fill="#E8E7E7"></rect>
-          <circle cx="64" cy="11" r="1.5" fill="#17171F"></circle>
-          <path d="M67.5 26.5l-3-3.1c-.8-.83-.8-2.15 0-2.98.8-.83 2.1-.83 2.9 0l.1.1.1-.1c.8-.83 2.1-.83 2.9 0 .8.83.8 2.15 0 2.98z" fill="#DC282E"></path>
-        </g>
-      </svg>
-      <span style="display:flex;flex-direction:column;line-height:1">
-        <span style="font-weight:900;font-size:17px;letter-spacing:-.01em;color:#2D2D3B">KEEPSAKE</span>
-        <span style="font-weight:800;font-size:8px;letter-spacing:.3em;color:#DC282E;margin-top:3px">PRINTING CO.</span>
-      </span>
-    </a>
-    <div style="display:flex;align-items:center;gap:2px">
-      <a href="instore/" class="kpInStore desktop-only" title="In Store mode for the store iPad" style="align-items:center;gap:6px;height:48px;padding:0 16px;margin-right:8px;border:1.5px solid #DC282E;border-radius:999px;color:#DC282E;font-size:13px;font-weight:800;letter-spacing:.02em;text-decoration:none;white-space:nowrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13v7h14v-7"/></svg>In Store</a>
-      <a href="account.html" aria-label="My account" title="My account" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;color:#17171F;transition:background .2s">
-        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-      </a>
-      <a href="checkout.html" aria-label="Cart" title="Cart" class="h-circle" style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#17171F;transition:background .2s">
-        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-      </a>
-    </div>
-  </header>
-
-  <!-- mega menu -->
-  <div id="mega" style="position:sticky;top:72px;z-index:59;background:#FFFFFF;border-bottom:1px solid #E4E3E3;box-shadow:0 24px 48px rgba(46,56,61,.12);animation:fadeUp .25s cubic-bezier(.2,.7,.2,1) both">
-    <div class="kpMenuPhone">
-      <a class="kpMRow" href="customizer.html"><span>🎨</span>Design your case<b>›</b></a>
-      <a class="kpMRow" href="gallery.html"><span>🖼</span>Design library<b>›</b></a>
-      <a class="kpMRow" href="customizer.html"><span>📷</span>Use your photo<b>›</b></a>
-      <a class="kpMRow" href="gallery.html?cat=City%20maps"><span>📍</span>City maps — only at Keepsake<b>›</b></a>
-      <a class="kpMRow" href="help.html"><span>🏬</span>Stores &amp; help<b>›</b></a>
-      <div class="kpMThumbs">
-        <a href="customizer.html?design=philadelphia-city-map-navy.jpg"><img src="assets/designs/thumbs/philadelphia-city-map-navy.jpg" alt="" loading="lazy"></a>
-        <a href="customizer.html?design=abstract-leopard-pink.jpg"><img src="assets/designs/thumbs/abstract-leopard-pink.jpg" alt="" loading="lazy"></a>
-        <a href="customizer.html?design=charming-minimalist-black-hearts-pattern-2.jpg"><img src="assets/designs/thumbs/charming-minimalist-black-hearts-pattern-2.jpg" alt="" loading="lazy"></a>
-        <a href="customizer.html?design=zodiac-leo-night-sky.jpg"><img src="assets/designs/thumbs/zodiac-leo-night-sky.jpg" alt="" loading="lazy"></a>
-        <a href="customizer.html?design=halloween-bats-on-orange.jpg"><img src="assets/designs/thumbs/halloween-bats-on-orange.jpg" alt="" loading="lazy"></a>
-        <a href="customizer.html?design=celestial-planet-doodles-noir.jpg"><img src="assets/designs/thumbs/celestial-planet-doodles-noir.jpg" alt="" loading="lazy"></a>
-      </div>
-      <a class="kpMCta" href="customizer.html">Design yours — $44.99</a>
-    </div>
-    <div style="max-width:1280px;margin:0 auto;padding:36px 40px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:clamp(20px,2.5vw,36px)">
-      <div>
-        <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">iPhone Cases</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <a class="h-redlink" href="gallery.html?device=iphone-18-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 18 Pro Max</a>
-          <a class="h-redlink" href="gallery.html?device=iphone-18-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 18 Pro</a>
-          <a class="h-redlink" href="gallery.html?device=iphone-17-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 17 Pro Max</a>
-          <a class="h-redlink" href="gallery.html?device=iphone-17-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 17 Pro</a>
-          <a class="h-redlink" href="gallery.html?device=iphone-17" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 17</a>
-          <a class="h-redlink" href="gallery.html?device=iphone-16-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16 Pro Max</a>
-          <a class="h-redlink" href="gallery.html?device=iphone-16-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16 Pro</a>
-          <a class="h-redlink" href="gallery.html?device=iphone-16" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16</a>
-          <a class="h-redlink" href="gallery.html?device=iphone-15-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 15 Pro Max</a>
-          <a class="h-redlink" href="gallery.html?device=iphone-15" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 15</a>
-          <div class="kpMoreModels" style="display:none;flex-direction:column;gap:10px">
-            <a class="h-redlink" href="gallery.html?device=iphone-air" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone Air</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-16-plus" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 16 Plus</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-15-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 15 Pro</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-15-plus" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 15 Plus</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-14-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 14 Pro Max</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-14-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 14 Pro</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-14-plus" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 14 Plus</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-14" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 14</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-13-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 13 Pro Max</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-13-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 13 Pro</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-13" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 13</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-13-mini" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 13 mini</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-12-pro-max" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 12 Pro Max</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-12-pro" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 12 Pro</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-12" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 12</a>
-            <a class="h-redlink" href="gallery.html?device=iphone-12-mini" style="font-size:14px;font-weight:600;color:#4E4E50">iPhone 12 mini</a>
-          </div>
-          <a class="h-darkred kpAllTgl" href="#" style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#DC282E;margin-top:6px;display:inline-flex;align-items:center;gap:6px"><span class="kpAllLbl">All iPhone models</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-        </div>
-      </div>
-      <div>
-        <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">Samsung Cases</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <a class="h-redlink" href="gallery.html?device=galaxy-s26-ultra" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S26 Ultra</a>
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy S26+ · soon</span>
-          <a class="h-redlink" href="gallery.html?device=galaxy-s26" style="font-size:14px;font-weight:600;color:#4E4E50">Galaxy S26</a>
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy S25 Ultra · soon</span>
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy S25 · soon</span>
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Galaxy A56 · soon</span>
-          <a class="h-darkred" href="customizer.html" style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#DC282E;margin-top:6px;display:inline-flex;align-items:center;gap:6px">All Samsung cases
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-        </div>
-      </div>
-      <div>
-        <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">Google Cases</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 10 Pro XL · soon</span>
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 10 Pro · soon</span>
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 10 · soon</span>
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 9 Pro · soon</span>
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">Pixel 9 · soon</span>
-          <span style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#C4C4C7;margin-top:6px">Coming soon</span>
-        </div>
-      </div>
-      <div>
-        <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">iPad Cases</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Pro 13″ · soon</span>
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Pro 11″ · soon</span>
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Air 13″ · soon</span>
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad Air 11″ · soon</span>
-          <span style="font-size:14px;font-weight:600;color:#C4C4C7;cursor:default">iPad 10.9″ (10th gen) · soon</span>
-          <span style="font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#C4C4C7;margin-top:6px">Coming soon</span>
-        </div>
-      </div>
-      <div>
-        <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin-bottom:16px">Shop by Occasion</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <a class="h-redlink" href="gallery.html?cat=Florals" style="font-size:14px;font-weight:600;color:#4E4E50">Mother's Day</a>
-          <a class="h-redlink" href="gallery.html?cat=Hearts" style="font-size:14px;font-weight:600;color:#4E4E50">Weddings</a>
-          <a class="h-redlink" href="gallery.html?cat=Animal%20print" style="font-size:14px;font-weight:600;color:#4E4E50">Pets</a>
-          <a class="h-redlink" href="gallery.html?cat=Stripes%20%26%20waves" style="font-size:14px;font-weight:600;color:#4E4E50">Back to school</a>
-          <a class="h-redlink" href="gallery.html" style="font-size:14px;font-weight:600;color:#4E4E50">Gifts</a>
-          <a class="h-redlink" href="gallery.html?cat=Christmas" style="font-size:14px;font-weight:600;color:#4E4E50">Christmas</a>
-          <a class="h-redlink" href="gallery.html?cat=Halloween" style="font-size:14px;font-weight:600;color:#4E4E50">Halloween</a>
-        </div>
-        <div style="font-weight:900;font-size:15px;color:#2D2D3B;margin:22px 0 14px">Case Styles</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <a class="h-redlink" href="customizer.html" style="font-size:14px;font-weight:600;color:#4E4E50;display:inline-flex;align-items:center;gap:8px">MagSafe Clear
-            <span style="background:#FBE0E1;color:#B81F24;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px">Best seller</span></a>
-          <div style="margin-top:10px;background:#F3F2F2;border-radius:10px;padding:14px 16px">
-            <div style="font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#DC282E;margin-bottom:6px">Not sure?</div>
-            <a class="h-redlink" href="gallery.html" style="font-size:13px;font-weight:800;color:#2D2D3B">Browse all designs</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+<div id="announceBar" class="announcement"><span>PERSONALIZED IN STORE · PENNSYLVANIA + DELAWARE</span><a href="index.html#stores">Find your Keepsake counter ↗</a></div>
+<header id="siteHeader" class="home-header">
+<a class="wordmark" href="index.html" aria-label="Keepsake Printing Co. home"><img src="assets/favicon.svg" width="40" height="40" alt=""><span>KEEPSAKE<small>PRINTING CO.</small></span></a>
+<nav class="desktop-nav" aria-label="Main navigation"><a href="gallery.html">Phone cases</a><a href="slates.html">Photo slates</a><a href="index.html#how-it-works">How it works</a><a href="index.html#stores">Visit us</a></nav>
+<a class="header-cta" href="instore/">In-store browsing <span aria-hidden="true">↗</span></a>
+<details class="mobile-menu" id="mobileMenu"><summary>Menu <span aria-hidden="true">☰</span></summary><nav aria-label="Mobile navigation"><a href="gallery.html">Browse phone cases ↗</a><a href="customizer.html">Use your own photo ↗</a><a href="slates.html">Photo slates ↗</a><a href="index.html#how-it-works">How it works</a><a href="index.html#stores">Visit a store</a><a href="instore/">In-store browsing ↗</a></nav></details>
+</header>
 
   <main id="main" style="flex:1;background:#FFFFFF">
     <div style="animation:fadeUp .5s cubic-bezier(.2,.7,.2,1) both;max-width:1280px;margin:0 auto;padding:36px 40px 140px">
@@ -304,8 +144,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         </div>
 
         <!-- ══ right: product rail ══ -->
-        <div>
-          <h1 style="font-weight:900;font-size:clamp(30px,3.4vw,44px);letter-spacing:-.02em;color:#17171F;margin:0 0 6px">Design your keepsake</h1>
+        <div class="design-rail">
+          <p class="shop-eyebrow">THE KEEPSAKE DESIGN STUDIO</p>
+          <h1 style="font-weight:900;font-size:clamp(30px,3.4vw,44px);letter-spacing:-.02em;color:#17171F;margin:0 0 6px">Make it <em>yours.</em></h1>
           <div id="prodSub" style="font-size:17px;font-weight:600;color:#2D2D3B">Custom Photo Case · MagSafe Compatible</div>
           <div style="font-size:14px;color:#6C6C72;margin-top:4px">By you — printed in store</div>
           <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#DC282E;margin:26px 0 12px;padding-top:22px;border-top:1px solid #EFEDED">Step 1 <span style="color:#17171F">· Your phone</span></div>
@@ -375,7 +216,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           </div>
           <div id="retailPrice" style="display:flex;align-items:center;gap:12px;margin:20px 0 28px">
             <span id="totalTop" style="font-size:30px;font-weight:900;color:#17171F;letter-spacing:-.02em">$44.99</span>
-            <span style="color:#1E8E3E;font-size:13px;font-weight:800">● Ready today in ~2 hours — free pickup</span>
+            <span style="color:#1E8E3E;font-size:13px;font-weight:800">Personalized in store · Confirm pickup with our team</span>
             <span id="discountTop" style="display:none;color:#1E8E3E;font-size:13px;font-weight:800"></span>
           </div>
           <div id="retailBundle" style="display:flex;align-items:flex-start;gap:9px;background:#F6EFE3;border:1px solid #EFE9E2;border-radius:12px;padding:11px 14px;margin:-12px 0 8px;font-size:13px;font-weight:700;color:#191921;line-height:1.45"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#DC282E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;margin-top:1px"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg><span>Add tempered glass for <b>$19.99</b> with your case &mdash; normally $29.99. <b>Case + glass: $64.98.</b></span></div>
@@ -431,7 +272,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           </div>
           <div style="margin:0 0 28px">
             <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:6px">Add a name <span style="font-weight:600;color:#6C6C72;font-size:13px">· optional, printed on the case</span></div>
-            <input id="nameInput" type="text" maxlength="18" placeholder="Sarah, DAD, Class of 2026…" style="width:100%;box-sizing:border-box;padding:14px 18px;border-radius:999px;border:1px solid #E4E3E3;font-size:16px;color:#17171F;outline-color:#2D2D3B">
+            <input id="nameInput" aria-label="Name or monogram" type="text" maxlength="18" placeholder="Sarah, DAD, Class of 2026…" style="width:100%;box-sizing:border-box;padding:14px 18px;border-radius:999px;border:1px solid #E4E3E3;font-size:16px;color:#17171F;outline-color:#2D2D3B">
             <div id="fontChips" style="display:none;gap:8px;overflow-x:auto;padding:12px 0 4px"></div>
             <div id="textOpts" style="display:none;animation:fadeUp .3s cubic-bezier(.2,.7,.2,1) both">
               <div style="display:flex;align-items:center;gap:10px;margin:8px 0 12px">
@@ -442,11 +283,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
               </div>
               <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px">
                 <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6C6C72;width:52px">Size</span>
-                <input id="textSize" type="range" min="90" max="420" step="2" value="220" style="flex:1;accent-color:#DC282E">
+                <input id="textSize" aria-label="Text size" type="range" min="90" max="420" step="2" value="220" style="flex:1;accent-color:#DC282E">
               </div>
               <div style="display:flex;align-items:center;gap:14px">
                 <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6C6C72;width:52px">Position</span>
-                <input id="textPos" type="range" min="0" max="100" step="1" value="62" style="flex:1;accent-color:#DC282E">
+                <input id="textPos" aria-label="Text position" type="range" min="0" max="100" step="1" value="62" style="flex:1;accent-color:#DC282E">
               </div>
             </div>
           </div>
@@ -465,7 +306,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
           <a href="#" id="promoReveal" style="display:inline-block;font-size:13px;font-weight:700;color:#6C6C72;text-decoration:underline;text-underline-offset:3px;margin-bottom:10px">Have a promo code?</a>
           <div id="promoRow" style="display:none;gap:8px;margin-bottom:8px">
-            <input id="promoInput" type="text" placeholder="Promo code" style="flex:1;min-width:0;padding:13px 18px;border-radius:999px;border:1px solid #E4E3E3;font-size:16px;text-transform:uppercase;color:#17171F;outline-color:#2D2D3B">
+            <input id="promoInput" aria-label="Promo code" type="text" placeholder="Promo code" style="flex:1;min-width:0;padding:13px 18px;border-radius:999px;border:1px solid #E4E3E3;font-size:16px;text-transform:uppercase;color:#17171F;outline-color:#2D2D3B">
             <button id="promoBtn" class="h-outline" style="background:#FFFFFF;color:#17171F;border:1px solid #17171F;padding:13px 24px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer;transition:background .2s,color .2s">Apply</button>
           </div>
           <div id="promoMsg" style="font-size:13px;font-weight:700;margin-bottom:20px;min-height:18px"></div>
@@ -482,8 +323,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <button id="reserveBtn" class="h-outline" style="width:100%;margin-top:14px;background:#DC282E;color:#FFFFFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background .2s">Order — print in store</button>
             <div id="reservedBox" style="display:none;animation:fadeUp .35s cubic-bezier(.2,.7,.2,1) both;background:#FBE0E1;border-radius:10px;padding:18px;text-align:center;font-weight:800;font-size:14px;line-height:1.5;color:#2D2D3B;margin-top:14px"></div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:14px;font-size:12.5px;font-weight:700;color:#2D2D3B">
-              <span>⏱ Ready in ~2 hours</span><span>🏬 Free pickup in store</span>
-              <span>🛡 12-month print warranty</span><span>↻ Free redo within 7 days</span>
+              <span>Personalized in store</span><span>Review with our team</span>
+              <span>Confirm stock at the counter</span><span>Ask about pickup timing</span>
             </div>
           </div>
         </div>
@@ -494,7 +335,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     <div id="orderBar" style="position:fixed;left:0;right:0;bottom:0;z-index:70;background:#FFFFFF;border-top:1px solid #EFEDED;padding:12px clamp(16px,4vw,40px) calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:24px">
       <div style="min-width:0">
         <div style="font-size:15px;font-weight:900;color:#17171F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Design your keepsake</div>
-        <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#1E8E3E">⏱ Ready today · ~2 hrs · <span id="barStore">West Chester</span><span style="display:none">$<span id="totalBar">44.99</span></span></div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#1E8E3E">Print in store · <span id="barStore">West Chester</span><span style="display:none">$<span id="totalBar">44.99</span></span></div>
       </div>
       <button id="cartBtn" class="h-upload" style="flex:1;max-width:680px;margin-left:auto;background:#DC282E;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer;transition:background .2s">Order — $44.99</button>
     </div>
@@ -508,41 +349,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     </div>
     <div id="kpSheetList" style="overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:env(safe-area-inset-bottom)"></div>
   </div>
-  <!-- chat bubble -->
-  <div id="kpChatWrap" style="position:fixed;right:24px;bottom:104px;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:14px">
-    <div id="chatPanel" style="display:none;width:340px;max-width:calc(100vw - 48px);background:#FFFFFF;border:1px solid #E4E3E3;border-radius:16px;box-shadow:0 24px 60px rgba(46,56,61,.22);overflow:hidden;animation:fadeUp .3s cubic-bezier(.2,.7,.2,1) both">
-      <div style="background:#2D2D3B;padding:18px 20px;display:flex;align-items:center;gap:12px">
-        <div style="flex:1">
-          <div style="font-size:14px;font-weight:900;color:#FFFFFF">Keepsake support</div>
-          <div style="font-size:11px;font-weight:600;color:#B9BDCB">We reply within one business day</div>
-        </div>
-        <button id="chatClose" aria-label="Close chat" style="background:none;border:0;color:#B9BDCB;font-size:18px;cursor:pointer;padding:4px">×</button>
-      </div>
-      <div id="chatFormWrap" style="padding:18px 20px;display:flex;flex-direction:column;gap:10px">
-        <div style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6C6C72">Quick answers</div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px">
-          <button class="chatQ" data-a="Most cases print in under an hour — you can watch it happen. During busy seasons we'll text you the moment it's ready." style="background:#F3F2F2;border:0;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;color:#2D2D3B;cursor:pointer">How fast is it?</button>
-          <button class="chatQ" data-a="10-day, no-questions-asked return or exchange, plus a 6-month warranty covering a one-time replacement for defects." style="background:#F3F2F2;border:0;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;color:#2D2D3B;cursor:pointer">Returns?</button>
-          <button class="chatQ" data-a="Yes — logo swag for trade shows, client gifts, and teams, with volume pricing up to 35% off. See the For Business page." style="background:#F3F2F2;border:0;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;color:#2D2D3B;cursor:pointer">Business orders?</button>
-        </div>
-        <div id="chatAnswer" style="display:none;background:#F8F7F7;border-radius:12px;padding:14px;font-size:13px;line-height:1.6;color:#4E4E50"></div>
-        <div style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6C6C72;margin-top:6px">Or send us a message</div>
-        <form id="chatForm" style="display:flex;flex-direction:column;gap:8px">
-          <input type="email" required placeholder="Your email" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:16px">
-          <textarea required placeholder="How can we help?" rows="3" style="border:1px solid #D8D7D7;border-radius:8px;padding:11px 12px;font-size:16px;font-family:inherit;resize:vertical"></textarea>
-          <button type="submit" class="h-chatred" style="background:#DC282E;color:#FFFFFF;border:0;padding:12px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s">Send message</button>
-        </form>
-      </div>
-      <div id="chatSent" style="display:none;padding:28px 20px;text-align:center">
-        <div style="font-size:15px;font-weight:900;color:#1E8E3E;margin-bottom:6px">Message sent</div>
-        <div style="font-size:13px;line-height:1.6;color:#4E4E50">Thanks — we'll get back to you within one business day at the email you provided.</div>
-      </div>
-    </div>
-    <button id="chatToggle" aria-label="Support chat" style="width:52px;height:52px;border-radius:50%;background:#FFFFFF;border:1.5px solid #D8D7D7;cursor:pointer;box-shadow:0 8px 22px rgba(45,45,59,.18);display:flex;align-items:center;justify-content:center;color:#2D2D3B">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-    </button>
-  </div>
-
 
 </div>
 
@@ -551,23 +357,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   var $ = function(id){ return document.getElementById(id); };
 
   /* ── shared header behavior ── */
-  var annMsgs = [
-    'Printed same-day in store — West Chester · Pottstown · Newark',
-    '10% off your first case — code <span style="background:rgba(255,255,255,.18);border-radius:999px;padding:2px 10px;letter-spacing:.1em">FIRST10</span>',
-    'First responders &amp; nurses save 20% every day'
-  ];
-  var annIdx = 0;
-  setInterval(function(){
-    annIdx = (annIdx+1) % annMsgs.length;
-    var el = $('announce');
-    el.style.animation='none'; void el.offsetWidth;
-    el.innerHTML = annMsgs[annIdx];
-    el.style.animation='fadeIn .45s cubic-bezier(.2,.7,.2,1) both';
-  }, 4200);
-  var mega = $('mega');
-  $('burger').addEventListener('click', function(e){ e.stopPropagation(); mega.classList.toggle('open'); });
-  document.addEventListener('click', function(e){ if (mega.classList.contains('open') && !mega.contains(e.target)) mega.classList.remove('open'); });
-
   /* ── data ── */
   var modelsByBrand = {
     Apple: ['iPhone 18 Pro Max','iPhone 18 Pro','iPhone 17 Pro Max','iPhone 17 Pro','iPhone Air','iPhone 17','iPhone 17e','iPhone 16 Pro Max','iPhone 16 Pro','iPhone 16 Plus','iPhone 16','iPhone 16e','iPhone 15 Pro Max','iPhone 15 Pro','iPhone 15 Plus','iPhone 15','iPhone 14 Pro Max','iPhone 14 Pro','iPhone 14 Plus','iPhone 14','iPhone 13 Pro Max','iPhone 13 Pro','iPhone 13','iPhone 13 mini','iPhone 12 Pro Max','iPhone 12 Pro','iPhone 12','iPhone 12 mini'],
@@ -1624,7 +1413,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     $('totalBar').textContent=total.toFixed(2);
     $('lineDevice').textContent=state.model+' · '+state.caseType;
     var ln2=$('linePickup'); if(!ln2){ ln2=document.createElement('div'); ln2.id='linePickup'; ln2.style.cssText='font-size:12px;font-weight:600;color:#6C6C72;margin-bottom:6px'; $('lineDevice').parentElement.insertAdjacentElement('afterend',ln2); }
-    ln2.textContent='Pickup: '+state.store+' — free, ready today';
+    ln2.textContent='Pickup: '+state.store+' — confirm timing with our team';
     var names=addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return a.name.split(' ')[0]==='Tempered'?'Screen protector':'Lens protector';});
     $('lineAddons').style.display=names.length?'flex':'none';
     if(names.length){ $('addonSummary').textContent=names.join(' + '); $('addonTotal').textContent='+$'+addonTotal.toFixed(2); }
@@ -1671,10 +1460,14 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(orderInFlight||state.reserved)return;
     if(document.documentElement.classList.contains('staff-mode'))return;
     var box=$('reservedBox'); box.style.display='block'; box.style.textAlign='left'; box.style.fontWeight='600';
+    if(!KP_ORDERS){
+      box.innerHTML='<strong>Your design is ready to review.</strong><p>No order or photo has been sent. Keep this screen open and show our team. We’ll confirm your phone, design, colorway, crop, price and pickup timing before printing.</p>';
+      box.setAttribute('tabindex','-1');box.focus();return;
+    }
     box.innerHTML=
       '<div style="font-weight:900;font-size:15px;margin-bottom:10px;color:#17171F">Almost done — who is this for?</div>'+
-      '<input id="kpName" placeholder="Your name" autocomplete="off" style="width:100%;box-sizing:border-box;padding:12px;border:1px solid #E4E3E3;border-radius:10px;font:inherit;font-size:16px;margin-bottom:8px">'+
-      '<input id="kpPhone" placeholder="Mobile number (we text you when it is ready)" inputmode="tel" autocomplete="off" style="width:100%;box-sizing:border-box;padding:12px;border:1px solid #E4E3E3;border-radius:10px;font:inherit;font-size:16px;margin-bottom:10px">'+
+      '<input id="kpName" aria-label="Your name" placeholder="Your name" autocomplete="off" style="width:100%;box-sizing:border-box;padding:12px;border:1px solid #E4E3E3;border-radius:10px;font:inherit;font-size:16px;margin-bottom:8px">'+
+      '<input id="kpPhone" aria-label="Mobile number" placeholder="Mobile number (we text you when it is ready)" inputmode="tel" autocomplete="off" style="width:100%;box-sizing:border-box;padding:12px;border:1px solid #E4E3E3;border-radius:10px;font:inherit;font-size:16px;margin-bottom:10px">'+
       '<label style="display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.45;margin-bottom:8px;cursor:pointer"><input id="kpOwn" type="checkbox" style="margin-top:3px;width:18px;height:18px"> <span>This is my photo or design, or I have permission to use it. No logos, characters, or team marks.</span></label>'+
       '<label style="display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.45;margin-bottom:12px;cursor:pointer"><input id="kpOpt" type="checkbox" style="margin-top:3px;width:18px;height:18px"> <span>You can show my finished case on your site and social (optional).</span></label>'+
       (state.quality==='red' ? '<div style="font-size:13px;color:#DC282E;font-weight:800;margin-bottom:10px">Heads up: this photo was flagged as low resolution. It will print, but it may look soft. Zoom out or pick a larger photo for a sharper result.</div>' : '')+
@@ -1813,23 +1606,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       setTimeout(function(){URL.revokeObjectURL(u);},60000);
     },function(){kpToast('Could not prepare the print file. Please try again.');});
   }
-
-  /* ── chat ── */
-  $('chatToggle').addEventListener('click',function(){
-    var p=$('chatPanel');
-    p.style.display = p.style.display==='none'||!p.style.display?'block':'none';
-  });
-  $('chatClose').addEventListener('click',function(){ $('chatPanel').style.display='none'; });
-  document.querySelectorAll('.chatQ').forEach(function(b){
-    b.addEventListener('click',function(){
-      var a=$('chatAnswer'); a.textContent=b.dataset.a; a.style.display='block';
-    });
-  });
-  $('chatForm').addEventListener('submit',function(e){
-    e.preventDefault();
-    $('chatFormWrap').style.display='none';
-    $('chatSent').style.display='block';
-  });
 
   /* ── name/monogram tool ── */
   function renderFontChips(){
