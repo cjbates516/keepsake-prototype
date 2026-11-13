@@ -484,6 +484,7 @@ async function header(browser, base) {
     const browser = await ({ webkit, chromium })[name].launch();
     console.log(`\n== ${name}`);
     const before = results.length;
+    if(args.includes('--only=offline')){if(name==='chromium')await serviceWorker(browser,base);}else{
     for (const vp of VIEWS) await flow(browser, base, vp, vp.tag === 'portrait' ? '17P' : '14PM');
     await idleReset(browser, base);
     await failures(browser, base);
@@ -492,6 +493,7 @@ async function header(browser, base) {
     await touchQuirks(browser, base);
     if (name === 'webkit') { await header(browser, base); await lookupAndPrint(browser, base); }
     if (name === 'chromium') await serviceWorker(browser, base);
+    }
     results.slice(before).forEach(r => { r.browser = name; });
     await browser.close();
   }

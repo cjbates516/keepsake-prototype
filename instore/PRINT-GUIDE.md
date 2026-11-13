@@ -9,8 +9,8 @@ Customer iPad: [Open browsing](./). Print computer: [Open the print counter](fin
 3. Tap **Show a team member**. The code includes the selected colorway. A displayed code remains for five minutes without interaction. Ordinary browsing resets after 75 seconds. A reminder appears during the final 15 seconds.
 4. On the print computer, enter the code at **Find a pick code**. Check the phone, title and colorway with the customer. If no code is available, select the phone and search by design name.
 5. Open **Prepare print**. Add a name if requested. Confirm spelling, crop, camera opening and the physical blank before downloading.
-6. Choose **Download print PNG**. The file is transparent and has 300 DPI metadata. The workspace shows its exact pixel and millimetre dimensions, including the existing 1.5 mm bleed. The filename identifies the phone, artwork and colorway.
-7. Import the PNG into xTool Studio. Confirm both dimensions against the workspace, even if the software reads the resolution automatically. Do not use fit-to-page or add a background. Use the matching blank, jig and the store’s validated print preset.
+6. Choose **Download print PNG**. The file is transparent and has 300 DPI metadata. The workspace shows its exact pixel and millimetre dimensions, including the existing 18-pixel mask bleed (about 1.5 mm). Physical edge coverage still needs a blank check. The filename identifies the phone, artwork and colorway.
+7. Import the PNG into xTool Studio. Confirm both dimensions against the workspace, even if the software reads the resolution automatically. Choose **Keep size** if xTool asks to scale the image to fit. Do not use fit-to-page or add a background. Use the matching blank, jig and the store’s validated print preset.
 8. Preview with the customer before committing ink. Inspect alignment, camera opening, banding and cure quality under counter light. Ring the sale at the counter. Downloading does not submit a paid order or send the file to the printer.
 9. Choose **Next customer** when finished. It clears the workspace photo and name before returning to the counter page.
 
@@ -41,3 +41,5 @@ Software tests cover browsing, lookup, photos, names, colorways, downloads, PNG 
 - Check that **Next customer** clears the previous photo and name, and that both idle timings work in Guided Access.
 
 Source for supported PNG import and image-size settings: [xTool Studio overview](https://support.xtool.com/article/2442). DPI metadata does not replace the physical alignment check.
+
+Software geometry details and remaining per-blank checks: [Print fidelity](../docs/PRINT-FIDELITY.md). Future customer-file intake and retention recommendations: [Next iterations](../docs/NEXT-ITERATIONS.md).

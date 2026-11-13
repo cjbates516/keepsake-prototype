@@ -4,20 +4,26 @@
    short timeout, so updates still arrive but a dead connection falls back to the last good copy.
    CacheStorage is shared by the whole origin, so this worker only ever touches caches named kp-instore-*. */
 var NS = 'kp-instore-';
-var VERSION = NS + 'v5';
+var VERSION = NS + 'v7';
 var SHELL = VERSION + '-shell';
 /* pictures are keyed by ?v=<design hash>, so this cache can outlive worker versions and stay warm across updates */
 var PICS = NS + 'pics-1';
 var OURS = [SHELL, PICS];
 /* REQUIRED: if any of these fails to download, the update is rejected and the old worker (with its complete
    offline copy) stays in charge; the browser tries the update again on a later visit. */
-var REQUIRED = ['./', '../assets/design-colorways.js', '../assets/colorway-catalog.js', 'instore-lib.js', 'config.json', 'models.json', 'codes.json', '../assets/designs/designs.json'];
+var REQUIRED = ['./', '../assets/print-layouts.js', '../assets/design-colorways.js', '../assets/colorway-catalog.js', 'instore-lib.js', 'config.json', 'models.json', 'codes.json', '../assets/designs/designs.json'];
 var OPTIONAL = ['../assets/favicon.svg'];
 var PIC_TIMEOUT_MS = 9000, NET_LIMIT_MS = 15000;
 
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(SHELL).then(function (c) {
-    return c.addAll(REQUIRED).then(function () {
+    return Promise.all(REQUIRED.map(function(file){
+      var req=new Request(new URL(file,self.location.href).href);
+      return fetch(req).then(function(res){
+        if(!res.ok||wrongType(req,res))throw new Error('Incomplete in-store shell: '+file);
+        return {req:req,res:res};
+      });
+    })).then(function(entries){return Promise.all(entries.map(function(item){return c.put(item.req,item.res);}));}).then(function () {
       return Promise.all(OPTIONAL.map(function (f) { return c.add(f).catch(function () {}); }));
     });
   }).then(function () { return self.skipWaiting(); }));
@@ -83,7 +89,7 @@ self.addEventListener('fetch', function (e) {
   if (req.method !== 'GET') return;
   var url = new URL(req.url);
   if (url.origin === self.location.origin && isDesignList(url)) { e.respondWith(networkFirst(req, 3500)); return; }
-  if (url.origin === self.location.origin && /\/assets\/(colorway-catalog|design-colorways)\.js$/.test(url.pathname)) { e.respondWith(networkFirst(req, 3500)); return; }
+  if (url.origin === self.location.origin && /\/assets\/(colorway-catalog|design-colorways|print-layouts)\.js$/.test(url.pathname)) { e.respondWith(networkFirst(req, 3500)); return; }
   if (isPicture(url)) { e.respondWith(cacheFirst(req)); return; }
   if (url.hostname === 'fonts.googleapis.com') { e.respondWith(networkFirst(req, 2500)); return; }
   if (url.origin === self.location.origin &&
