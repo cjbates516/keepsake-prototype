@@ -41,3 +41,11 @@ In the preceding disconnected xTool Studio check, an 882 × 1815 PNG imported as
 8. Run the final Guided Access/idle-reset check on the actual store iPad.
 
 Do not overwrite the original Drive colorway masters because print geometry changed. Those files are reusable artwork; this batch changes the final case-specific render, not the authored colorways.
+
+## November 13 bottom-edge display follow-up (local, not released)
+
+Corey identified a clear strip at the bottom of the gallery’s iPhone 17/18 Pro Max preview. `assets/preview-edge.js` extends only the lower display-mask boundary by the existing 18-pixel print bleed mapped into mockup coordinates. Max-alpha union preserves antialiasing. The source mask, camera opening and top boundary are unchanged. Gallery, kiosk and customizer share the helper; service worker v8 requires it for offline use.
+
+Chromium and WebKit confirm byte-identical print PNGs with the helper enabled versus disabled, no alpha changes above the lower band, and unchanged masks for other models. Sixteen targeted fidelity checks and 127 in-store/offline checks pass. Before/after images are in `../collaboration/gallery-clip-before.png` and `gallery-edge-after.png`.
+
+The preview now displays coverage already present in the print file. Actual visible coverage on the stocked blank still needs the disconnected printer’s physical acceptance check.

@@ -85,6 +85,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 </style>
 <link rel="stylesheet" href="assets/storefront.css">
 <script src="assets/print-layouts.js"></script>
+<script src="assets/preview-edge.js"></script>
 <script src="assets/colorway-catalog.js"></script>
 <script src="assets/design-colorways.js"></script>
 </head>
@@ -575,7 +576,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       tc.globalAlpha = .22; tc.globalCompositeOperation = 'multiply';
       tc.drawImage(shadeOf(device + '|' + colorIdx, layer), 0, 0, CW, CH);
       tc.globalAlpha = 1; tc.globalCompositeOperation = 'destination-in';
-      tc.drawImage(vmask, 0, 0, CW, CH);
+      tc.drawImage(window.KPPreviewEdge?KPPreviewEdge.mask(vmask,layout):vmask, 0, 0, CW, CH);
       ctx.drawImage(t, 0, 0);
       if(composed)composed.width=composed.height=0;
       return;

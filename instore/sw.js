@@ -4,14 +4,14 @@
    short timeout, so updates still arrive but a dead connection falls back to the last good copy.
    CacheStorage is shared by the whole origin, so this worker only ever touches caches named kp-instore-*. */
 var NS = 'kp-instore-';
-var VERSION = NS + 'v7';
+var VERSION = NS + 'v8';
 var SHELL = VERSION + '-shell';
 /* pictures are keyed by ?v=<design hash>, so this cache can outlive worker versions and stay warm across updates */
 var PICS = NS + 'pics-1';
 var OURS = [SHELL, PICS];
 /* REQUIRED: if any of these fails to download, the update is rejected and the old worker (with its complete
    offline copy) stays in charge; the browser tries the update again on a later visit. */
-var REQUIRED = ['./', '../assets/print-layouts.js', '../assets/design-colorways.js', '../assets/colorway-catalog.js', 'instore-lib.js', 'config.json', 'models.json', 'codes.json', '../assets/designs/designs.json'];
+var REQUIRED = ['./', '../assets/print-layouts.js', '../assets/preview-edge.js', '../assets/design-colorways.js', '../assets/colorway-catalog.js', 'instore-lib.js', 'config.json', 'models.json', 'codes.json', '../assets/designs/designs.json'];
 var OPTIONAL = ['../assets/favicon.svg'];
 var PIC_TIMEOUT_MS = 9000, NET_LIMIT_MS = 15000;
 
