@@ -133,7 +133,7 @@ async function flow(browser, base, vp, modelId) {
   await page.tap('#chips button[data-col="all"]');
   await page.tap('#grid .tile.own');
   const sheet = await page.textContent('#ownSheet p');
-  check(`${vp.tag}: own photo sheet text`, sheet.trim() === "Show a team member and they'll print your photo for you.", sheet);
+  check(`${vp.tag}: own photo sheet text`, sheet.includes("original photo") && sheet.includes("check the crop with you"), sheet);
   mm = await measure(page, '#ownSheet'); check(`${vp.tag}: sheet targets and text`, !mm.bad.length && !mm.small.length, mm);
   await page.tap('#ownSheet button');
   await page.waitForFunction(() => { const imgs = [...document.querySelectorAll('#grid .tile[data-file] img')].slice(0, 12); return imgs.length && imgs.every(i => !i.classList.contains('wait') && i.getAttribute('src')); }, null, { timeout: 25000 })
@@ -218,7 +218,10 @@ async function idleReset(browser, base) {
   await page.tap('#showBtn');
   await page.clock.fastForward(76000);
   let st = await page.evaluate(() => ({ s1: s1.classList.contains('on'), model: !!__kpInStore.state.model, card: codecard.classList.contains('on') }));
-  check('idle 76s on confirm returns to screen 1 and clears the pick', st.s1 && !st.model && !st.card, st);
+  check('pick code remains visible after 76 seconds', !st.s1 && st.model && st.card, st);
+  await page.clock.fastForward(225000);
+  st = await page.evaluate(() => ({ s1: s1.classList.contains('on'), model: !!__kpInStore.state.model, card: codecard.classList.contains('on') }));
+  check('idle five minutes clears the pick code', st.s1 && !st.model && !st.card, st);
   await page.tap('button[data-model="15"]');
   await page.tap('#grid .tile.own');
   await page.clock.fastForward(70000);

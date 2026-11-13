@@ -124,10 +124,20 @@
   .msg{padding:60px 0;text-align:center}
   .msg p{font-size:20px}
   @media (prefers-reduced-motion:reduce){ *{animation:none !important;transition:none !important} }
+
+  .store-promise{display:flex;align-items:center;gap:20px;flex-wrap:wrap;background:#252633;color:white;border-radius:20px;padding:22px 26px;margin:20px 0}.store-promise strong{font-size:24px}.store-promise span{font-size:18px;color:#e6e5ef}
+  .phone-help{font-size:18px;margin:0 0 24px}.phone-help summary{cursor:pointer;min-height:48px;display:flex;align-items:center;font-weight:700}.phone-help p{max-width:760px;margin:0 0 16px}
+  .phone{transition:border-color .15s,box-shadow .15s}.phone:hover,.tile:hover{border-color:#c8a6aa;box-shadow:0 6px 18px #29293609}
+  .search-row{display:flex;align-items:end;gap:12px;margin-top:14px}.search-box{flex:1;min-width:0;font-size:18px;font-weight:700}.search-box span{display:block;margin-bottom:6px}.search-box input{width:100%;box-sizing:border-box;min-height:52px;border:2px solid var(--line);background:white;border-radius:16px;padding:10px 16px;color:var(--ink-strong);font:inherit;-webkit-user-select:text;user-select:text}.search-box input:focus{outline:2px solid var(--red);outline-offset:2px}
+  .empty-results{padding:24px;background:white;border-radius:18px;font-size:20px}.bundle-note{font-size:18px;margin:-10px 0 20px;line-height:1.5;color:var(--muted)}
+  body.offline .s2top{top:var(--notice-height,80px)}#connectionNotice{position:sticky;top:0;z-index:15;font-size:18px;padding:16px 24px;background:#fff0be;color:#3e3421;text-align:center}#idleNotice{position:fixed;z-index:30;bottom:16px;left:50%;transform:translateX(-50%);width:min(640px,calc(100% - 32px));box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#252633;color:white;border-radius:20px;padding:16px 20px;font-size:18px;box-shadow:0 12px 30px #0003}#idleNotice[hidden],#connectionNotice[hidden]{display:none}#idleNotice .ghost{flex-shrink:0}
+  @media(max-width:600px){.search-row{flex-wrap:wrap}.search-box{flex-basis:100%}.store-promise{padding:20px;gap:8px}#idleNotice{flex-wrap:wrap}.brand{font-size:18px}.steps{gap:0}}
+
 </style>
 </head>
 <body>
 <div class="wrap">
+<div id="connectionNotice" role="status" hidden>You’re offline. Previously viewed designs may still work. Ask a team member if a preview won’t load.</div>
   <header class="bar">
     <div class="brand"><img src="../assets/favicon.svg" alt=""><span>Keepsake Printing Co</span></div>
     <ol class="steps" aria-label="Steps">
@@ -140,7 +150,9 @@
   <main>
     <section id="s1" class="screen on" aria-labelledby="s1h">
       <h1 id="s1h">Which phone do you have?</h1>
-      <p class="lede">Tap yours and we'll show every design on it.</p>
+      <p class="lede">Your phone. Your style. Made right here.</p>
+      <div class="store-promise"><strong>Every design · $44.99</strong><span>Pick a design, make it yours, and let us print it.</span></div>
+      <details class="phone-help"><summary>Not sure which iPhone you have?</summary><p>On your phone, open Settings → General → About and look for Model Name. If your model is not listed, ask a team member to check the available blanks.</p></details>
       <div id="phones"></div>
     </section>
 
@@ -156,9 +168,10 @@
             <p class="sub" id="s2sub"></p>
           </div>
         </div>
+        <div class="search-row"><label class="search-box"><span>Find your style</span><input type="search" id="designSearch" placeholder="Try hearts, Yosemite, neon…" autocomplete="off" autocapitalize="none"></label><button class="ghost" type="button" id="clearSearch">Clear search</button></div>
         <div class="chips" id="chips" role="group" aria-label="Collections"></div>
       </div>
-      <div class="grid" id="grid"></div>
+      <div class="grid" id="grid"></div><p id="noResults" class="empty-results" hidden>No designs match yet. Try a different word or collection.</p>
       <p class="count" id="count"></p>
     </section>
 
@@ -168,7 +181,7 @@
         <div>
           <h1 class="dname" id="dname"></h1>
           <p class="dmeta" id="dmeta"></p>
-          <p class="price" id="price"></p>
+          <p class="price" id="price"></p><p class="bundle-note">Add tempered glass for $19.99 with your case. Save $10 off the $29.99 glass price. Ask your team member.</p>
           <div id="colorwayPicker" hidden style="margin:16px 0"><p style="font-size:18px;font-weight:800">Choose your colorway</p><div id="colorwayButtons" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"></div></div>
           <button class="cta" type="button" id="showBtn">Show a team member</button>
           <div class="codecard" id="codecard" aria-live="polite">
@@ -198,11 +211,13 @@
   <div class="sheet">
     <div class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
     <h2 id="ownH">Use your own photo</h2>
-    <p>Show a team member and they'll print your photo for you.</p>
+    <p>Bring your phone to the counter. A team member will help transfer your original photo, fit it to your case and check the crop with you.</p><p class="own-model" id="ownModel"></p><p>Your photo is not uploaded or stored on this browsing iPad.</p>
     <button class="cta" type="button" data-act="closeSheet">Got it</button>
   </div>
 </div>
 
+
+<div id="idleNotice" hidden role="status"><span>Still browsing? This iPad will reset soon.</span><button type="button" class="ghost" id="keepBrowsing">Keep browsing</button></div>
 <script src="../assets/colorway-catalog.js"></script>
 <script src="../assets/design-colorways.js"></script>
 <script src="instore-lib.js"></script>
@@ -212,11 +227,11 @@
   var TILE_W = 360, BIG_W = 900, TILE_BG = '#FFFFFF';
   var $ = function (id) { return document.getElementById(id); };
   var data = null;
-  var state = { screen: 1, model: null, design: null, colorway:'original', filter: 'all' };
+  var state = { screen: 1, model: null, design: null, colorway:'original', filter: 'all', query:'' };
   var urls = {};           /* model id -> { file: objectURL } */
   var blankUrl = {};       /* model id -> phone only render */
   var queue = [], active = 0, MAX_JOBS = 4, gen = 0, io = null;
-  var bigImageFile=null,bigImagePromise=null;
+  var bigImageFile=null,bigImagePromise=null,rememberedLooks={};
   var bigUrl = null;       /* the large confirm preview, freed as soon as it is replaced */
   var previewSeq = 0;      /* each confirm preview request gets a number; only the newest may show */
   var RETRY_MIN = 5000, RETRY_MAX = 60000;
@@ -284,7 +299,7 @@
     if (!m || !m.active) return;
     Object.keys(urls).forEach(function (id) { if (id !== m.id) dropUrls(id); });
     data.models.forEach(function (x) { if (x.id !== m.id) KPI.releaseModel(x.id, ['260n']); });
-    state.model = m; state.design = null; state.filter = 'all';
+    state.model = m; state.design = null; state.filter = 'all';state.query='';$('designSearch').value='';
     $('s2sub').textContent = 'Shown on your ' + m.name;
     buildChips();
     buildGrid();
@@ -292,8 +307,9 @@
   }
   function designsNow() {
     var list = data.designsFor(state.model);
-    if (state.filter === 'all') return list;
-    return list.filter(function (d) { return d._col.code === state.filter; });
+    if(state.filter!=='all')list=list.filter(function(d){return d._col.code===state.filter;});
+    var words=state.query.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    return list.filter(function(d){var text=(cleanTitle(d.title)+' '+d._col.label).toLowerCase();return words.every(function(w){return text.indexOf(w)!==-1;});});
   }
   function buildChips() {
     var list = data.designsFor(state.model), has = {};
@@ -325,7 +341,8 @@
         '></span><span class="tname">' + esc(cleanTitle(d.title)) + '</span></button>';
     }).join('');
     $('grid').innerHTML = html;
-    $('count').textContent = list.length === 1 ? '1 design' : list.length + ' designs';
+    $('noResults').hidden=list.length>0;
+    $('count').textContent = list.length === 1 ? '1 design' : list.length + ' designs';$('count').setAttribute('aria-live','polite');
     KPI.prepModel(m, TILE_W).then(function (prep) {
       $('grid').style.setProperty('--ar', prep.W / prep.H);
       if (!blankUrl[m.id]) {
@@ -442,11 +459,11 @@
     var d = findDesign(file), m = state.model;
     if (!d || !m) return;
     var sameDesign=state.design===d;
-    state.design = d;state.colorway=colorway||'original';
+    state.design = d;state.colorway=colorway||rememberedLooks[file]||'original';
     var options=KPI.colorways(d),selected=options.find(function(c){return c.id===state.colorway;})||options[0];
-    state.colorway=selected.id;
+    state.colorway=selected.id;rememberedLooks[file]=selected.id;
     $('colorwayPicker').hidden=options.length<2;
-    $('colorwayButtons').innerHTML=options.map(function(c){return '<button type="button" data-colorway="'+esc(c.id)+'" aria-pressed="'+(c.id===state.colorway)+'" style="min-height:52px;font-family:inherit;font-size:18px;font-weight:700;border:2px solid '+(c.id===state.colorway?'#dc282e':'#ddd')+';border-radius:10px;background:#fff;color:#191921;padding:10px">'+esc(c.name)+'</button>';}).join('');
+    $('colorwayButtons').innerHTML=options.map(function(c){return '<button type="button" data-colorway="'+esc(c.id)+'" aria-pressed="'+(c.id===state.colorway)+'" style="min-height:52px;font-family:inherit;font-size:18px;font-weight:700;border:2px solid '+(c.id===state.colorway?'#dc282e':'#ddd')+';border-radius:10px;background:#fff;color:#191921;padding:10px"><span aria-hidden="true" style="display:inline-block;width:18px;height:18px;border:1px solid #aaa;border-radius:50%;vertical-align:middle;margin-right:8px;background:'+esc(c.bg||'#dedee3')+'"></span>'+esc(c.name)+'</button>';}).join('');
     var title = cleanTitle(d.title);
     $('dname').textContent = title;
     $('dmeta').textContent = 'For your '+m.name+(options.length>1?' · '+selected.name:'');
@@ -474,7 +491,7 @@
       /* only the newest request for the phone and design on screen may replace the preview */
       if (seq === previewSeq && state.model === m && state.design === mine && state.screen === 3) { revoke(bigUrl); bigUrl = u; pv.src = u; $('showBtn').disabled=false; }
       else revoke(u);
-    }).catch(function () {if(seq===previewSeq){bigImagePromise=null;revoke(bigUrl);bigUrl=null;if(blankUrl[m.id])pv.src=blankUrl[m.id];else pv.removeAttribute('src');$('dmeta').textContent='This colorway could not load. Choose Original, or reconnect and try again.';$('showBtn').disabled=true;}});
+    }).catch(function () {if(seq===previewSeq){bigImagePromise=null;revoke(bigUrl);bigUrl=null;if(blankUrl[m.id])pv.src=blankUrl[m.id];else pv.removeAttribute('src');$('dmeta').textContent=look==='original'?'This design could not load. Reconnect and try again, or ask a team member.':'This colorway could not load. Choose Original, or reconnect and try again.';$('showBtn').disabled=true;}});
   }
   function revealCode() {
     if($('showBtn').disabled)return;
@@ -485,13 +502,21 @@
   }
 
   /* ---------- sheet, reset, idle ---------- */
-  function openSheet() { $('ownSheet').classList.add('on'); }
-  function closeSheet() { $('ownSheet').classList.remove('on'); }
+  var sheetReturn=null;
+  function openSheet() {sheetReturn=document.activeElement;$('ownModel').textContent=state.model?'For your '+state.model.name+' · '+KPI.formatPrice(data.price):'';$('ownSheet').classList.add('on');$('ownSheet').querySelector('button').focus();}
+  function closeSheet() {var wasOpen=$('ownSheet').classList.contains('on');$('ownSheet').classList.remove('on');if(wasOpen&&sheetReturn&&sheetReturn.isConnected)sheetReturn.focus();}
+  document.addEventListener('keydown',function(e){if(!$('ownSheet').classList.contains('on'))return;if(e.key==='Escape'){e.preventDefault();closeSheet();}if(e.key==='Tab'){e.preventDefault();$('ownSheet').querySelector('button').focus();}});
+  var searchTimer;
+  $('designSearch').addEventListener('input',function(){state.query=this.value;clearTimeout(searchTimer);searchTimer=setTimeout(function(){if(state.model&&state.screen===2)buildGrid();},160);});
+  $('clearSearch').addEventListener('click',function(){clearTimeout(searchTimer);state.query='';$('designSearch').value='';if(state.model)buildGrid();$('designSearch').focus();});
+  function connection(){ $('connectionNotice').hidden=navigator.onLine;document.body.classList.toggle('offline',!navigator.onLine);document.documentElement.style.setProperty('--notice-height',$('connectionNotice').getBoundingClientRect().height+'px'); }
+  window.addEventListener('resize',connection);window.addEventListener('online',connection);window.addEventListener('offline',connection);connection();
+  $('keepBrowsing').addEventListener('click',function(){touch();});
   function reset() {
-    closeSheet();bigImageFile=bigImagePromise=null;
+    closeSheet();bigImageFile=bigImagePromise=null;rememberedLooks={};
     previewSeq++;
     $('pv').removeAttribute('src'); revoke(bigUrl); bigUrl = null;
-    state.model = null; state.design = null;state.colorway='original'; state.filter = 'all';
+    state.model = null; state.design = null;state.colorway='original'; state.filter = 'all';state.query='';$('designSearch').value='';clearTimeout(searchTimer);$('idleNotice').hidden=true;
     gen++; queue.length = 0;
     $('codecard').classList.remove('on');
     $('showBtn').style.display = ''; $('showBtn').disabled=true;
@@ -499,7 +524,7 @@
     show(1);
   }
   var last = Date.now();
-  function touch() { last = Date.now(); }
+  function touch() { last = Date.now();$('idleNotice').hidden=true; }
   ['pointerdown', 'touchstart', 'keydown', 'wheel', 'scroll'].forEach(function (ev) {
     window.addEventListener(ev, touch, { passive: true, capture: true });
   });
@@ -509,7 +534,9 @@
   setInterval(function () {
     /* the "can't load" screen retries by itself, so an unattended iPad recovers when the network does */
     if (!data) { if (state.screen === 0 && Date.now() - last >= 20000) location.reload(); return; }
-    if (Date.now() - last >= data.idleMs) {
+    var idleLimit=$('codecard').classList.contains('on')&&state.screen===3?Math.max(data.idleMs,(Number(data.config.code_hold_seconds)||300)*1000):data.idleMs;
+    $('idleNotice').hidden=state.screen===1||Date.now()-last<idleLimit-15000;
+    if (Date.now() - last >= idleLimit) {
       touch();
       if (state.screen !== 1 || state.model || window.scrollY > 0 || $('ownSheet').classList.contains('on')) reset();
     }

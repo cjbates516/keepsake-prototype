@@ -3,7 +3,7 @@
 Custom phone case e-commerce prototype. Live site: https://cjbates516.github.io/keepsake-prototype/
 
 - `index.html` — home page (hero, how-it-works, occasions, programs)
-- `customizer.html` — iPhone 17 Pro Max case customizer (photo upload, drag/zoom/rotate, print export)
+- `customizer.html` — phone case customizer and staff print workspace (photo upload, drag/zoom/rotate, print export)
 - `checkout / b2b / teachers / account / track / gallery / help` — section pages (in progress)
 - `assets/photos/` — case product renders (17 / 17 Air / 17 Pro / 17 Pro Max)
 - `assets/masks/` — vector print templates (authoritative customizer geometry)
@@ -38,7 +38,7 @@ team member a pick code. No checkout, no uploads, nothing about the customer is 
   In Store button in the site header (shown on iPad and desktop, hidden on phones).
 - Three screens: Your phone, Your design (filter chips by collection, plus a Use your own photo tile that
   tells the customer to ask a team member), Show us (big preview, price, Show a team member reveals the pick code).
-- After 75 seconds with no taps it goes back to the first screen and clears the pick. Back swipes step back
+- After 75 seconds with no taps while browsing (five minutes while a pick code is displayed), it goes back to the first screen and clears the pick. Back swipes step back
   one screen and never leave the page. If the design list cannot load, the page says to ask a team member and
   retries by itself every 20 seconds.
 - Design thumbnails, case photos, masks and the DM Sans font are cached by `instore/sw.js`, so a slow or dropped
@@ -50,7 +50,7 @@ team member a pick code. No checkout, no uploads, nothing about the customer is 
 Settings, no code changes needed:
 - `instore/models.json`: phones. Set `active` to true only when we stock the blank and have the print mask.
   Samsung entries are there and switched off.
-- `instore/config.json`: price, idle seconds, `assets_version` (raise it after replacing a mask or case photo so
+- `instore/config.json`: price, idle seconds, displayed-code hold seconds, `assets_version` (raise it after replacing a mask or case photo so
   iPads fetch the new file), collection chips (order, label, 3 letter code), and an optional `exclude_files`
   list that keeps designs off the iPad only (empty unless Corey asks).
 - `instore/codes.json`: pick code numbers, made by `tools/instore_codes.py`, which `tools/sync_designs.py` now runs
@@ -84,4 +84,14 @@ Colorway maintenance:
 - Pick-code suffixes `-C1` through `-C5` identify the frozen colorway slots; the original retains its existing code. Changing palette order after release would change old codes, so never reorder existing slots.
 - When changing the colorway renderer or catalog, bump `instore/sw.js`'s shell version so store iPads refresh the precached scripts.
 
-Software verification: in-store suite 125/125 (including offline colorway selection) (Chromium + WebKit); customizer pricing/uploads/all 15 active phone print exports; selected-colorway lookup-to-print across Yosemite, florals, maps, transparent art, framed scenery and all six Neon Doodles. No production customer orders or physical prints were created by these checks.
+Software verification for the in-store release: 127/127 browsing, lookup, reset and offline checks; 78/78 staff workspace, actual PNG download and shared-computer checks; 38/38 colorway failure/recovery checks in Chromium and WebKit. Actual print exports confirm that iPhone 18 Pro and Pro Max reuse their respective 17 print geometry. No production customer orders or physical prints were created by these checks.
+
+## Print counter workspace
+
+`instore/find.html` supports pick codes, name search with colorways, and a required phone selector for customer-photo or name-only jobs. It opens `customizer.html?staff=1`, a local print workspace with retail checkout disabled in both presentation and code. It shows the model, artwork, colorway, print preset and actual export dimensions.
+
+`assets/print-png.js` embeds 300 DPI pHYs metadata without changing image pixels. `assets/staff-print.js` prepares identifiable downloads, blocks unready or empty prints and resets the status when artwork changes. Next customer clears the current photo and name.
+
+Read [the store printing guide](instore/PRINT-GUIDE.md) for the complete workflow and physical acceptance checks. Downloads do not communicate with the printer or ring a sale. Hardware validation remains required.
+
+Tests: `node tools/tests/instore_workspace.cjs <outDir>` covers the staff workflow and actual PNG downloads in Chromium and WebKit. The in-store suite covers the five-minute code hold, 75-second browse reset and offline flow.

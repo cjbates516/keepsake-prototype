@@ -1,0 +1,11 @@
+html.staff-mode #retailPrice,html.staff-mode #retailBundle,html.staff-mode #siteHeader,html.staff-mode #announceBar,html.staff-mode #retailAddons,html.staff-mode #retailPickup,html.staff-mode #promoReveal,html.staff-mode #promoRow,html.staff-mode #promoMsg,html.staff-mode #mega,html.staff-mode #kpChatWrap,html.staff-mode #orderBar,html.staff-mode #reserveBtn,html.staff-mode #exportLink,html.staff-mode #calLink{display:none!important}
+.staff-top,.staff-dock{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px max(24px,calc((100vw - 1200px)/2));background:#252633;color:white}
+.staff-top a{color:white;text-decoration:none;font-weight:800;min-height:44px;display:inline-flex;align-items:center}
+.staff-top strong{display:block;font-size:20px}.staff-top small{color:#d8d9e5}
+html.staff-mode #stageStick{top:20px!important}
+.staff-summary{width:100%;box-sizing:border-box;padding:22px;background:#f6f4ef;border:1px solid #e3dfd5;border-radius:20px;color:#292a37}
+.staff-summary h2{margin:0 0 12px;font-size:20px}.staff-summary dl{display:grid;grid-template-columns:110px 1fr;gap:8px;font-size:14px;margin:0}.staff-summary dt{color:#656573}.staff-summary dd{margin:0;font-weight:800;overflow-wrap:anywhere}.staff-summary p{font-size:14px;line-height:1.6;margin-bottom:0}
+.staff-summary details{margin-top:16px;font-size:14px;line-height:1.6}.staff-summary summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}
+.staff-dock{position:fixed;bottom:0;left:0;right:0;z-index:80;box-shadow:0 -8px 30px #25263318;padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+.staff-dock p{margin:0;font-size:14px;max-width:560px}.staff-dock button{border:0;background:#dc282e;color:white;font:800 16px inherit;font-family:inherit;font-weight:800;font-size:16px;min-height:54px;border-radius:99px;padding:12px 28px;cursor:pointer;flex-shrink:0}.staff-dock button:disabled{opacity:.55;cursor:wait}
+@media(max-width:640px){.staff-top{padding:14px 20px}.staff-top strong{font-size:17px}.staff-top small{font-size:11px}.staff-dock{padding:14px 18px;gap:10px;flex-wrap:wrap}.staff-dock button{width:100%}.staff-summary dl{grid-template-columns:90px 1fr}html.staff-mode #main>div{padding-left:20px!important;padding-right:20px!important;padding-bottom:180px!important}}
