@@ -1368,7 +1368,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     } else loadPhoto(files[0]);
   });
   $('clearBtn').addEventListener('click',function(){
-    kpLibraryRequest++;kpUploadRequest++;releaseWorkingPhoto();
+    kpLibraryRequest++;kpUploadRequest++;releaseWorkingPhoto();$('fileInput').value='';
     state.photoImg=null; state.photoUrl=null; state.filter='none'; state.variant='original';
     state.photos=[]; state.slotTarget=null; state.builder=false; state.layout=null; state.designPath=null;
     state.px=0;state.py=0;state.scale=1;state.rot=0;
