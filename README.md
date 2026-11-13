@@ -108,9 +108,13 @@ The exporter preserves artwork proportions, uses exact source-derived mask geome
 The homepage and gift guide link to this page. A size choice produces a counter
 selection summary, not a submitted order, reservation or payment. Customers bring
 their original photo to staff; the private QR upload service is not deployed.
-The page uses a labeled illustration until actual finished-product photos are supplied.
+The page uses real licensed family stock photos in labeled sample slate mockups until actual finished-product photos are supplied. Photo provenance and permitted marketing-only use are recorded in `docs/SLATE-PHOTO-SOURCES.md`.
 No slate print masks or physical dimensions are inferred by this storefront feature.
 
 Run `node tools/tests/slates.cjs <output-directory>` against a local server on port8766,
 or set `KP_BASE` to a deployed base URL. Checks cover Chromium/WebKit, mobile/desktop,
-all prices, illustration ratios, summary focus, links and the no-JavaScript fallback.
+all prices, loaded sample photos and labels, illustration ratios, summary focus, links and the no-JavaScript fallback at 320, 390, 768 and 1440 px in Chromium and WebKit.
+
+### Pending print exports
+
+Staff downloads are canceled if the model, crop, name, colorway or photo changes while PNG encoding is pending. Encoder failures release the button so staff can retry without clearing the customer. `node tools/tests/print_pending.cjs` (local server on port 8766, or `KP_BASE`) deliberately delays encoding and injects synchronous, rejected and invalid-output failures in Chromium and WebKit. This is software validation only; printer, blank and jig acceptance remains separate.

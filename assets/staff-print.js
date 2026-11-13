@@ -7,14 +7,37 @@
   var box=document.createElement('section');box.className='staff-summary';box.innerHTML='<h2>Print details</h2><dl><dt>Case price</dt><dd>$44.99 · glass +$19.99 bundled</dd><dt>Phone</dt><dd id="spModel"></dd><dt>Artwork</dt><dd id="spArt"></dd><dt>Colorway</dt><dd id="spLook"></dd><dt>Print size</dt><dd id="spSize"></dd><dt>Preset</dt><dd id="spPreset"></dd></dl><p>Transparent PNG · 300 DPI · includes edge allowance. Verify the physical blank.</p><details><summary>Before you print</summary><ol><li>Confirm the phone model and blank with the customer.</li><li>Check the crop, camera opening, name spelling and colorway.</li><li>Import the PNG into xTool Studio and confirm both dimensions match the size shown above. Choose “Keep size” if prompted. Do not use “fit to page” or add a background.</li><li>Use the matching jig and the printer’s validated preset. Confirm alignment before the first print for a blank.</li></ol><p>Download prepares a file; it does not send anything to the printer or mark an order paid.</p></details>';document.getElementById('stageStick').appendChild(box);
   var dock=document.createElement('div');dock.className='staff-dock';dock.innerHTML='<p id="spStatus" role="status">Choose artwork or add a name, then download the print PNG.</p><button id="spDownload" type="button">Download print PNG</button>';document.body.appendChild(dock);
   function put(id,text){document.getElementById(id).textContent=text;}
-  function signature(){var s=api.state;return JSON.stringify([s.model,s.caseType,s.variant,s.text,s.textFont,s.textColor,s.textSize,s.textPos,s.textVertical,s.px,s.py,s.scale,s.rot,s.fitMode]);}
+  function signature(){var s=api.state;return JSON.stringify([s.model,s.caseType,s.variant,s.text,s.textFont,s.textColor,s.textSize,s.textPos,s.textVertical,s.px,s.py,s.scale,s.rot,s.fitMode,s.filter,s.layout]);}
   function refresh(){var s=api.state,spec=api.printSpec(),file=s.isLibraryDesign&&s.photoUrl?s.photoUrl.split('/').pop():null,options=window.KPDesignColorways.choicesFor(s.photoImg),look=options.find(function(x){return x.id===s.variant;});var issue=api.printIssue();document.getElementById('spDownload').disabled=busy||!!issue;if(!busy&&(issue!==lastIssue||signature()!==lastSignature||s.photoImg!==lastImage)){put('spStatus',issue||'Ready to download. Confirm the crop and phone with the customer.');lastIssue=issue;lastSignature=signature();lastImage=s.photoImg;}put('spModel',s.handoffError?'Choose a valid phone at the print counter':s.model);put('spArt',file?file.replace(/\.[^.]+$/,'').replace(/^kp-/,'').replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();}):s.photoImg?'Customer photo':s.text?'Name only':'Add artwork');put('spLook',look?look.name:'Original');put('spSize',s.handoffError?'Resolve the handoff before printing':spec?spec.w+' × '+spec.h+' px · '+(spec.w/300*25.4).toFixed(2)+' × '+(spec.h/300*25.4).toFixed(2)+' mm':'Template not available');put('spPreset',api.preset());}
   refresh();setInterval(refresh,500);
   document.getElementById('spDownload').addEventListener('click',function(){
-    var button=this;var started=false,generation=customerGeneration;
-    var result=api.buildPrint(function(canvas,name){started=true;lastSignature=signature();lastImage=api.state.photoImg;busy=true;button.disabled=true;put('spStatus','Preparing your print PNG…');var s=api.state,tag=s.isLibraryDesign&&s.photoUrl?s.photoUrl.split('/').pop().replace(/\.[^.]+$/,''):'custom';tag=tag.replace(/[^a-z0-9-]/gi,'').slice(0,90);var filename=name.replace(/\.png$/,'-'+tag+'-'+(s.variant||'original')+'.png');
-      KPPrintPng.encode(canvas).then(function(blob){if(generation!==customerGeneration)return;var url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(function(){URL.revokeObjectURL(url);},60000);put('spStatus','PNG prepared and download started. Open it in your print software at the dimensions shown.');},function(error){if(generation!==customerGeneration)return;put('spStatus',error.message==='Print contains no visible artwork. Adjust the image or add a name.'?error.message:'The PNG could not be prepared. Try again.');}).then(function(){if(generation===customerGeneration){busy=false;refresh();}});
-    });
-    if(result===false&&!started)put('spStatus','Print is not ready. Check the artwork and any message above, then try again.');
+    if(busy)return;
+    var button=this,started=false,generation=customerGeneration;
+    var preparedSignature=signature(),preparedImage=api.state.photoImg;
+    busy=true;button.disabled=true;
+    function current(){return generation===customerGeneration;}
+    function unchanged(){return preparedSignature===signature()&&preparedImage===api.state.photoImg&&!api.printIssue();}
+    function cleanup(){if(current()){busy=false;refresh();}}
+    function fail(error){if(current())put('spStatus',error&&error.message==='Print contains no visible artwork. Adjust the image or add a name.'?error.message:'The PNG could not be prepared. Try again.');}
+    try{
+      var result=api.buildPrint(function(canvas,name){
+        started=true;if(!current())return;
+        lastSignature=preparedSignature;lastImage=preparedImage;
+        put('spStatus','Preparing your print PNG…');
+        var s=api.state,tag=s.isLibraryDesign&&s.photoUrl?s.photoUrl.split('/').pop().replace(/\.[^.]+$/,''):'custom';
+        tag=tag.replace(/[^a-z0-9-]/gi,'').slice(0,90);
+        var variant=String(s.variant||'original').replace(/[^a-z0-9-]/gi,'').slice(0,40);
+        var filename=name.replace(/\.png$/i,'')+'-'+tag+'-'+variant+'.png';
+        Promise.resolve().then(function(){return KPPrintPng.encode(canvas);}).then(function(blob){
+          if(!current())return;
+          if(!unchanged()){put('spStatus','Artwork changed. Review the current design and download again.');return;}
+          if(!(blob instanceof Blob))throw new Error('Invalid PNG output');
+          var url=URL.createObjectURL(blob),a=document.createElement('a');
+          try{a.href=url;a.download=filename;a.click();}finally{setTimeout(function(){URL.revokeObjectURL(url);},60000);}
+          put('spStatus','PNG prepared and download started. Open it in your print software at the dimensions shown.');
+        }).catch(fail).finally(cleanup);
+      });
+      if(result===false&&!started){cleanup();put('spStatus','Print is not ready. Check the artwork and any message above, then try again.');}
+    }catch(error){fail(error);cleanup();}
   });
 })();
