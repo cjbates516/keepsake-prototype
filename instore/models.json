@@ -2,6 +2,46 @@
  "_readme": "Phones shown in In Store mode. Set active to true only when we stock a blank AND have a print mask for it. mask = file in assets/masks, case = phone photo in assets/cases. Boxes are in the 2500x3000 mockup space.",
  "models": [
   {
+   "id": "18PM",
+   "name": "iPhone 18 Pro Max",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i17pm.png",
+   "mask_box": [
+    754,
+    1024,
+    1741,
+    2656
+   ],
+   "case": "i18pm-silver.svg",
+   "case_box": [
+    668,
+    344,
+    1828,
+    2650
+   ]
+  },
+  {
+   "id": "18P",
+   "name": "iPhone 18 Pro",
+   "brand": "Apple",
+   "active": true,
+   "mask": "view-i17p.png",
+   "mask_box": [
+    776,
+    1113,
+    1721,
+    2570
+   ],
+   "case": "i18p-silver.svg",
+   "case_box": [
+    668,
+    350,
+    1834,
+    2650
+   ]
+  },
+  {
    "id": "17PM",
    "name": "iPhone 17 Pro Max",
    "brand": "Apple",

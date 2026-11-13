@@ -5,6 +5,21 @@
  "assets_version": "11",
  "collections": [
   {
+   "category": "Liquid Color",
+   "label": "Liquid Color",
+   "code": "LIQ"
+  },
+  {
+   "category": "Neon Hearts",
+   "label": "Neon Hearts",
+   "code": "NE1"
+  },
+  {
+   "category": "Paint Party",
+   "label": "Paint Party",
+   "code": "PAI"
+  },
+  {
    "category": "Neon Doodles",
    "label": "Neon Doodles",
    "code": "NEO"

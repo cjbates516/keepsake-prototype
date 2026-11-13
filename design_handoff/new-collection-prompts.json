@@ -1,0 +1,33 @@
+{
+  "tool": "built-in image_gen",
+  "liquid": "Use case: stylized-concept. Asset type: original print artwork for Keepsake phone cases, flat rectangular master. Create LIQUID PRISM: bold luminous rainbow liquid paint, long fluid ribbons folding and swirling into one another, electric cyan, royal blue, violet, hot pink, vivid coral, acid yellow and small lime accents, glossy enamel-like highlights, deep inky channels giving dimensional contrast. Rich smooth hydro-dip marbling, irregular organic flowing contours and a few rounded liquid cells; strong larger forms readable on a phone, no tiny noisy grain. Full bleed portrait 1:2 composition, crisp high resolution, entire image is artwork. No phone, camera holes, mockup, lettering, logos, border or watermark. Original arrangement.",
+  "liquidVariants": [
+    [
+      "c1",
+      "Aurora",
+      "emerald, turquoise, cyan, deep blue, violet with icy pale highlights"
+    ],
+    [
+      "c2",
+      "Solar",
+      "scarlet, vermilion, hot coral, orange, yellow, deep burgundy with warm ivory highlights"
+    ],
+    [
+      "c3",
+      "Candy",
+      "hot pink, raspberry, lilac, violet and pale blush with small cherry accents"
+    ],
+    [
+      "c4",
+      "Lagoon",
+      "navy, cobalt, electric turquoise, sea glass and pearl white with small silver accents"
+    ],
+    [
+      "c5",
+      "Molten",
+      "ink black, graphite, metallic-looking gold, amber and creamy champagne highlights"
+    ]
+  ],
+  "sparkle": "Original flat print artwork named PAINT PARTY for a phone case. Portrait 1:2 full bleed. Dense scattered chunky palette-knife paint confetti dabs in pink, coral, sunny yellow, cyan, cobalt, mint and lavender, with tiny irregular silver-gold foil glints between. Crisp tactile impasto ridges, playful irregular spacing and varied dab direction. Clean pure white background visible through gaps, no shadows outside paint. No phone, text, logos, borders or camera holes. This is artwork, not a product mockup.",
+  "hearts": "Original flat print artwork named HEART RIOT for a phone case. Portrait 1:2 full bleed. Loose overlapping large open hearts drawn with expressive neon paint strokes in hot pink, electric orange, turquoise, violet and lime, on pure clean white background. Heart outlines twist and cross at varied angles, asymmetrical hand-painted rhythm, occasional thin downward paint drips and small bright splatters. Give the composition a distinct diagonal sweep and airy negative space, varied heart sizes. No text, logo, phone, camera holes or borders. Crisp high resolution."
+}

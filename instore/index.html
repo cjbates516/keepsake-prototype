@@ -460,23 +460,24 @@
     $('cname').textContent = title+(options.length>1?' · '+selected.name:'');
     $('cmodel').textContent = m.name;
     $('codecard').classList.remove('on');
-    $('showBtn').style.display = '';
+    $('showBtn').style.display = ''; $('showBtn').disabled=true;
     var pv = $('pv'), tileUrl = (urls[m.id] || {})[file];
     if(!sameDesign){var old = bigUrl; bigUrl = null;pv.src = tileUrl || blankUrl[m.id] || '';revoke(old);}
     show(3);
     var mine = d, look=state.colorway, seq = ++previewSeq;
     KPI.prepModel(m, BIG_W).then(function (prep) {
-      if(bigImageFile!==file||!bigImagePromise){bigImageFile=file;bigImagePromise=KPI.loadImage(KPI.fullUrl(d), { cache: false, timeout: 15000 }).catch(function () {if(bigImageFile===file)bigImagePromise=null;return KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 });});bigImagePromise.catch(function(){if(bigImageFile===file)bigImagePromise=null;});}
+      if(bigImageFile!==file||!bigImagePromise){bigImageFile=file;bigImagePromise=KPI.loadImage(KPI.fullUrl(d), { cache: false, timeout: 15000 }).catch(function () {return KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 });});bigImagePromise.catch(function(){if(bigImageFile===file)bigImagePromise=null;});}
       return bigImagePromise.then(function (im) {
         return KPI.renderToUrl(prep, im, null, look);
       });
     }).then(function (u) {
       /* only the newest request for the phone and design on screen may replace the preview */
-      if (seq === previewSeq && state.model === m && state.design === mine && state.screen === 3) { revoke(bigUrl); bigUrl = u; pv.src = u; }
+      if (seq === previewSeq && state.model === m && state.design === mine && state.screen === 3) { revoke(bigUrl); bigUrl = u; pv.src = u; $('showBtn').disabled=false; }
       else revoke(u);
-    }).catch(function () {});
+    }).catch(function () {if(seq===previewSeq){bigImagePromise=null;revoke(bigUrl);bigUrl=null;if(blankUrl[m.id])pv.src=blankUrl[m.id];else pv.removeAttribute('src');$('dmeta').textContent='This colorway could not load. Choose Original, or reconnect and try again.';$('showBtn').disabled=true;}});
   }
   function revealCode() {
+    if($('showBtn').disabled)return;
     $('codecard').classList.add('on');
     $('showBtn').style.display = 'none';
     var after = document.querySelector('#s3 .after');
@@ -493,7 +494,7 @@
     state.model = null; state.design = null;state.colorway='original'; state.filter = 'all';
     gen++; queue.length = 0;
     $('codecard').classList.remove('on');
-    $('showBtn').style.display = '';
+    $('showBtn').style.display = ''; $('showBtn').disabled=true;
     $('grid').innerHTML = ''; $('chips').innerHTML = '';
     show(1);
   }

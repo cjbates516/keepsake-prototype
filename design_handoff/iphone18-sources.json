@@ -1,0 +1,13 @@
+{
+  "colorsSource": "https://www.apple.com/iphone-18-pro/specs/",
+  "renderSource": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+  "colors": [
+    "Silver",
+    "Black",
+    "Glacier",
+    "Burgundy"
+  ],
+  "geometry": "Existing Corey-confirmed shared 17/18 case kits and print dimensions; device body dimensions are not substituted for blank print templates.",
+  "preview": "Official device rear view cropped using an SVG view component, with illustrative clear rim.",
+  "physicalValidation": "Store printer alignment remains unverified."
+}

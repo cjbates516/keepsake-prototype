@@ -19,9 +19,12 @@
 "HOM": 38,
 "HRT": 41,
 "KID": 46,
+"LIQ": 1,
 "MAP": 108,
+"NE1": 1,
 "NEO": 6,
 "OUT": 6,
+"PAI": 1,
 "POP": 12,
 "SCN": 38,
 "SPT": 5,
@@ -2001,6 +2004,10 @@
 "c": "HIM",
 "n": 9
 },
+"kp-heart-riot.png": {
+"c": "NE1",
+"n": 1
+},
 "kp-lemons-bubblegum.jpg": {
 "c": "FRU",
 "n": 27
@@ -2024,6 +2031,10 @@
 "kp-limes-stripe.jpg": {
 "c": "FRU",
 "n": 17
+},
+"kp-liquid-prism.png": {
+"c": "LIQ",
+"n": 1
 },
 "kp-mallards-cream.jpg": {
 "c": "HIM",
@@ -2068,6 +2079,10 @@
 "kp-olives-grove.jpg": {
 "c": "FRU",
 "n": 24
+},
+"kp-paint-party.png": {
+"c": "PAI",
+"n": 1
 },
 "kp-peaches-clear.png": {
 "c": "CLR",
