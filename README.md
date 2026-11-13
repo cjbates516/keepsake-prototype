@@ -84,7 +84,7 @@ Colorway maintenance:
 - Pick-code suffixes `-C1` through `-C5` identify the frozen colorway slots; the original retains its existing code. Changing palette order after release would change old codes, so never reorder existing slots.
 - When changing the colorway renderer or catalog, bump `instore/sw.js`'s shell version so store iPads refresh the precached scripts.
 
-Software verification for the print-fidelity release: 127/127 browsing, lookup, reset and offline checks; 78/78 staff workspace checks; 205/205 geometry checks across all 29 customizer kits; 36/36 targeted recovery/privacy/order-encoding checks in Chromium and WebKit. All 58 exported mask PNGs also match an independent Pillow/NumPy/SciPy reference pixel for pixel. Synthetic order tests intercept all traffic locally; the production order backend is not certified by these tests. Actual print exports confirm that iPhone 18 Pro and Pro Max reuse their respective 17 print geometry. No production customer orders or physical prints were created by these checks.
+Software verification for the print-fidelity release: 127/127 browsing, lookup, reset and offline checks; 78/78 staff workspace checks; 205/205 geometry checks across all 29 customizer kits; 42/42 targeted recovery/privacy/order-encoding checks in Chromium and WebKit. All 58 exported mask PNGs also match an independent Pillow/NumPy/SciPy reference pixel for pixel. Synthetic order tests intercept all traffic locally; the production order backend is not certified by these tests. Actual print exports confirm that iPhone 18 Pro and Pro Max reuse their respective 17 print geometry. No production customer orders or physical prints were created by these checks.
 
 ## Print counter workspace
 

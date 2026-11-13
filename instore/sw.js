@@ -17,7 +17,13 @@ var PIC_TIMEOUT_MS = 9000, NET_LIMIT_MS = 15000;
 
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(SHELL).then(function (c) {
-    return c.addAll(REQUIRED).then(function () {
+    return Promise.all(REQUIRED.map(function(file){
+      var req=new Request(new URL(file,self.location.href).href);
+      return fetch(req).then(function(res){
+        if(!res.ok||wrongType(req,res))throw new Error('Incomplete in-store shell: '+file);
+        return {req:req,res:res};
+      });
+    })).then(function(entries){return Promise.all(entries.map(function(item){return c.put(item.req,item.res);}));}).then(function () {
       return Promise.all(OPTIONAL.map(function (f) { return c.add(f).catch(function () {}); }));
     });
   }).then(function () { return self.skipWaiting(); }));

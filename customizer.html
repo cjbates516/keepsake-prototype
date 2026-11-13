@@ -1664,18 +1664,19 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* Contact data is never carried between customers on this device. */
   try{localStorage.removeItem('kpCust');}catch(_){}
   var orderInFlight=false;
+  function orderSignature(){var s=state;return JSON.stringify([s.model,s.caseType,s.store,s.variant,s.text,s.textFont,s.textColor,s.textSize,s.textPos,s.textVertical,s.px,s.py,s.scale,s.rot,s.fitMode,s.filter,s.addons,s.promo]);}
   function kpOrderPanel(){
     if(orderInFlight||state.reserved)return;
     if(document.documentElement.classList.contains('staff-mode'))return;
     var box=$('reservedBox'); box.style.display='block'; box.style.textAlign='left'; box.style.fontWeight='600';
     box.innerHTML=
       '<div style="font-weight:900;font-size:15px;margin-bottom:10px;color:#17171F">Almost done — who is this for?</div>'+
-      '<input id="kpName" placeholder="Your name" autocomplete="name" style="width:100%;box-sizing:border-box;padding:12px;border:1px solid #E4E3E3;border-radius:10px;font:inherit;font-size:16px;margin-bottom:8px">'+
-      '<input id="kpPhone" placeholder="Mobile number (we text you when it is ready)" inputmode="tel" autocomplete="tel" style="width:100%;box-sizing:border-box;padding:12px;border:1px solid #E4E3E3;border-radius:10px;font:inherit;font-size:16px;margin-bottom:10px">'+
+      '<input id="kpName" placeholder="Your name" autocomplete="off" style="width:100%;box-sizing:border-box;padding:12px;border:1px solid #E4E3E3;border-radius:10px;font:inherit;font-size:16px;margin-bottom:8px">'+
+      '<input id="kpPhone" placeholder="Mobile number (we text you when it is ready)" inputmode="tel" autocomplete="off" style="width:100%;box-sizing:border-box;padding:12px;border:1px solid #E4E3E3;border-radius:10px;font:inherit;font-size:16px;margin-bottom:10px">'+
       '<label style="display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.45;margin-bottom:8px;cursor:pointer"><input id="kpOwn" type="checkbox" style="margin-top:3px;width:18px;height:18px"> <span>This is my photo or design, or I have permission to use it. No logos, characters, or team marks.</span></label>'+
       '<label style="display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.45;margin-bottom:12px;cursor:pointer"><input id="kpOpt" type="checkbox" style="margin-top:3px;width:18px;height:18px"> <span>You can show my finished case on your site and social (optional).</span></label>'+
       (state.quality==='red' ? '<div style="font-size:13px;color:#DC282E;font-weight:800;margin-bottom:10px">Heads up: this photo was flagged as low resolution. It will print, but it may look soft. Zoom out or pick a larger photo for a sharper result.</div>' : '')+
-      '<button id="kpPlace" style="width:100%;background:#DC282E;color:#FFF;border:0;padding:15px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer">Place order — pay $'+orderPricing().total.toFixed(2)+' at pickup</button>'+
+      '<button id="kpPlace" style="width:100%;background:#DC282E;color:#FFF;border:0;padding:15px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer">'+(KP_ORDERS?'Place order — pay $'+orderPricing().total.toFixed(2)+' at pickup':'Show this design at the counter')+'</button>'+
       '<div style="font-size:11.5px;color:#6C6C72;margin-top:9px;line-height:1.5">We use your photo only to print your case and delete it 90 days after pickup. Printed in store at '+state.store+', usually same day.</div>';
     $('kpPlace').addEventListener('click', kpPlaceOrder);
     box.scrollIntoView({behavior:'smooth',block:'center'});
@@ -1687,6 +1688,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(name.length<2){ kpToast('Please add your name.'); $('kpName').focus(); return; }
     if(phone.replace(/\D/g,'').length<10){ kpToast('Please add a 10 digit mobile number.'); $('kpPhone').focus(); return; }
     if(!$('kpOwn').checked){ kpToast('Please confirm the photo is yours to print.'); return; }
+    var submitted={signature:orderSignature(),image:state.photoImg,store:state.store,total:orderPricing().total};
     orderInFlight=true;var btn=$('kpPlace'); btn.disabled=true; btn.textContent='Preparing your print file…';
     var ok = kpBuildPrint(function(c){
       /* small preview for the staff queue */
@@ -1707,21 +1709,23 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       btn.textContent='Sending to '+state.store+'…';
       return fetch(KP_ORDERS, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(payload) })
         .then(function(r){ return r.json(); })
-        .then(function(j){ if(j && j.ok) kpOrderDone(j); else throw new Error((j&&j.error)||'order failed'); });
-      }).catch(function(err){ orderInFlight=false;btn.disabled=false; btn.textContent='Place order — pay $'+orderPricing().total.toFixed(2)+' at pickup'; kpToast('We could not send your order ('+(err&&err.message||'network')+'). Please try again, or show this screen at the counter.', 6000); });
+        .then(function(j){ if(j && j.ok) kpOrderDone(j,submitted); else throw new Error((j&&j.error)||'order failed'); });
+      }).catch(function(err){ orderInFlight=false;btn.disabled=false; btn.textContent=KP_ORDERS?'Place order — pay $'+orderPricing().total.toFixed(2)+' at pickup':'Show this design at the counter'; kpToast('We could not send your order ('+(err&&err.message||'network')+'). Please try again, or show this screen at the counter.', 6000); });
     });
-    if(ok===false){ orderInFlight=false;btn.disabled=false; btn.textContent='Place order — pay $'+orderPricing().total.toFixed(2)+' at pickup'; }
+    if(ok===false){ orderInFlight=false;btn.disabled=false; btn.textContent=KP_ORDERS?'Place order — pay $'+orderPricing().total.toFixed(2)+' at pickup':'Show this design at the counter'; }
   }
-  function kpOrderDone(j){
-    orderInFlight=false;state.reserved=true;
-    var box=$('reservedBox'); box.style.textAlign='center'; box.style.fontWeight='800';
+  function kpOrderDone(j,submitted){
+    orderInFlight=false;
+    var unchanged=submitted.signature===orderSignature()&&submitted.image===state.photoImg;
+    state.reserved=unchanged;
+    var box=$('reservedBox');box.style.display='block';box.style.textAlign='center';box.style.fontWeight='800';
     box.innerHTML='<div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#6C6C72;margin-bottom:6px">Order placed</div>'+
       '<div id="kpOrderId" style="font-size:28px;color:#DC282E;letter-spacing:.06em;margin-bottom:8px"></div>'+
-      '<div style="font-size:14px;line-height:1.5;color:#2D2D3B">'+(j.offline ? 'Show this code at the counter in <strong>'+state.store+'</strong> and we will print it while you wait.' : 'We have your design. Pick up at <strong>'+state.store+'</strong>, usually the same day. We will text you when it is ready.')+'</div>'+
-      '<div style="font-size:12px;color:#6C6C72;margin-top:10px">Pay $'+orderPricing().total.toFixed(2)+' at pickup · 12 month print warranty · free redo within 7 days</div>';
+      '<div id="kpOrderReceipt" style="font-size:14px;line-height:1.5;color:#2D2D3B"></div>';
     $('kpOrderId').textContent=String(j.id||'Received');
-    $('cartBtn').textContent='Order placed ✓'; $('reserveBtn').style.display='none';
-    updateSummary();
+    $('kpOrderReceipt').textContent='Your submitted design is saved for pickup at '+submitted.store+'. Pay $'+submitted.total.toFixed(2)+' at pickup.'+(unchanged?'':' Changes you made while it was sending are not included in this order.');
+    $('cartBtn').textContent=unchanged?'Order placed ✓':'Order this design';$('reserveBtn').style.display=unchanged?'none':'';
+    updateSummary();box.style.display='block';
   }
   $('reserveBtn').addEventListener('click',function(){ if(!hasArt() && !state.text){ kpToast('Add a photo or pick a design first.'); return; } kpOrderPanel(); });
   $('cartBtn').addEventListener('click',function(){ if(!hasArt() && !state.text){ kpToast('Add a photo or pick a design first.'); return; } kpOrderPanel(); });
