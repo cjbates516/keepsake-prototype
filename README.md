@@ -84,7 +84,7 @@ Colorway maintenance:
 - Pick-code suffixes `-C1` through `-C5` identify the frozen colorway slots; the original retains its existing code. Changing palette order after release would change old codes, so never reorder existing slots.
 - When changing the colorway renderer or catalog, bump `instore/sw.js`'s shell version so store iPads refresh the precached scripts.
 
-Software verification for the in-store release: 127/127 browsing, lookup, reset and offline checks; 78/78 staff workspace, actual PNG download and shared-computer checks; 38/38 colorway failure/recovery checks in Chromium and WebKit. Actual print exports confirm that iPhone 18 Pro and Pro Max reuse their respective 17 print geometry. No production customer orders or physical prints were created by these checks.
+Software verification for the print-fidelity release: 127/127 browsing, lookup, reset and offline checks; 78/78 staff workspace checks; 205/205 geometry checks across all 29 customizer kits; 36/36 targeted recovery/privacy/order-encoding checks in Chromium and WebKit. All 58 exported mask PNGs also match an independent Pillow/NumPy/SciPy reference pixel for pixel. Synthetic order tests intercept all traffic locally; the production order backend is not certified by these tests. Actual print exports confirm that iPhone 18 Pro and Pro Max reuse their respective 17 print geometry. No production customer orders or physical prints were created by these checks.
 
 ## Print counter workspace
 
@@ -95,3 +95,7 @@ Software verification for the in-store release: 127/127 browsing, lookup, reset 
 Read [the store printing guide](instore/PRINT-GUIDE.md) for the complete workflow and physical acceptance checks. Downloads do not communicate with the printer or ring a sale. Hardware validation remains required.
 
 Tests: `node tools/tests/instore_workspace.cjs <outDir>` covers the staff workflow and actual PNG downloads in Chromium and WebKit. The in-store suite covers the five-minute code hold, 75-second browse reset and offline flow.
+
+## Print fidelity and next iterations
+
+The exporter preserves artwork proportions, uses exact source-derived mask geometry, and adds bleed without stretching the rendered canvas. Kiosk/gallery preview proportions match the customizer. See [print fidelity](docs/PRINT-FIDELITY.md) for test commands, generated-data maintenance and explicit hardware limitations. See [next iterations and private customer file intake](docs/NEXT-ITERATIONS.md) for the prioritized roadmap, proposed QR upload workflow and retention choices. Physical jig/camera validation remains required.

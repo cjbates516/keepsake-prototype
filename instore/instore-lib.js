@@ -227,14 +227,16 @@
     var jobs = [KPI.loadImage(KPI.caseUrl(model), { timeout: 15000, cache: false })];
     if (withMask !== false) jobs.push(KPI.loadImage(KPI.maskUrl(model), { timeout: 15000, cache: false }));
     prepCache[key] = Promise.all(jobs).then(function (imgs) {
-      var ob = model.case_box, vb = model.mask_box, padX = 40, padY = 40;
+      var layout=(window.KP_PRINT_LAYOUTS||{})[model.name];
+      if(withMask!==false&&!layout)throw new Error('Print preview geometry unavailable. Reload to try again.');
+      var ob = model.case_box, vb = layout?layout.box:model.mask_box, padX = 40, padY = 40;
       var x0 = Math.min(ob[0], vb[0]) - padX, y0 = Math.min(ob[1], vb[1]) - padY;
       var x1 = Math.max(ob[2], vb[2]) + padX, y1 = Math.max(ob[3], vb[3]) + padY;
       var k = width / (x1 - x0), W = Math.round((x1 - x0) * k), H = Math.round((y1 - y0) * k);
       var full = [-x0 * k, -y0 * k, MOCK_W * k, MOCK_H * k];
       var caseC = canvas(W, H);
       caseC.getContext('2d').drawImage(imgs[0], full[0], full[1], full[2], full[3]);
-      var prep = { model: model, W: W, H: H, full: full, caseC: caseC, shade: shadeOf(imgs[0]),
+      var prep = { model: model, artRatio:layout?layout.rx:1, bleedX:layout?layout.bleedX*k:0, bleedY:layout?layout.bleedY*k:0, W: W, H: H, full: full, caseC: caseC, shade: shadeOf(imgs[0]),
         box: [(vb[0] - x0) * k, (vb[1] - y0) * k, (vb[2] - vb[0]) * k, (vb[3] - vb[1]) * k] };
       if (imgs[1]) {
         /* rasterize the mask once: WebKit mis-composites an <img> used as a destination-in source */
@@ -273,7 +275,8 @@
       tc.globalAlpha = 1; tc.globalCompositeOperation = 'source-over';
       tc.clearRect(0, 0, prep.W, prep.H);
       var b = prep.box, iw = designImg.naturalWidth || designImg.width, ih = designImg.naturalHeight || designImg.height;
-      var s = Math.max(b[2] / iw, b[3] / ih), w = iw * s, h = ih * s;
+      var rx=prep.artRatio||1;
+      var s = Math.max((b[2]+2*prep.bleedX) / rx / iw, (b[3]+2*prep.bleedY) / ih), w = iw * s * rx, h = ih * s;
       try { tc.filter = 'none'; } catch (e) {}
       tc.drawImage(designImg, b[0] + (b[2] - w) / 2, b[1] + (b[3] - h) / 2, w, h);
       try { tc.filter = 'none'; } catch (e) {}
