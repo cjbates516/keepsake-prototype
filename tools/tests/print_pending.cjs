@@ -11,14 +11,24 @@ const base=process.env.KP_BASE||'http://127.0.0.1:8766/';
  await p.locator('#spDownload').click();await p.locator('#nameInput').fill('After');
  await p.evaluate(()=>finishHeld());await p.locator('#spDownload:not([disabled])').waitFor();await p.waitForTimeout(300);
  assert.equal(downloads,0,engine+': stale artwork must not download');
+ assert.match(await p.locator('#spStatus').innerText(),/Artwork changed/,engine+': cancellation remains visible');
  for(const mode of ['throw','reject','null']){
- await p.evaluate(mode=>{KPPrintPng.encode=()=>{if(mode==='throw')throw Error('Injected failure');if(mode==='reject')return Promise.reject(null);return Promise.resolve(null);};},mode);
+ await p.evaluate(mode=>{document.getElementById('spStatus').textContent='';KPPrintPng.encode=()=>{if(mode==='throw')throw Error('Injected failure');if(mode==='reject')return Promise.reject(null);return Promise.resolve(null);};},mode);
  await p.locator('#spDownload').click();await p.waitForFunction(()=>document.getElementById('spStatus').textContent.includes('could not be prepared'));
  assert.equal(await p.locator('#spDownload').isEnabled(),true,engine+': failure releases button');
  assert.equal(downloads,0,engine+': failure cannot download');
  }
- assert.deepEqual(errors,[],engine+': no unhandled errors');
+
+ await p.evaluate(()=>{window.originalBuild=__kp.buildPrint;});
+ for(const mode of ['buildThrow','buildFalse','badFilename']){
+ await p.evaluate(mode=>{document.getElementById('spStatus').textContent='';__kp.buildPrint=cb=>{if(mode==='buildThrow')throw Error('Injected build failure');if(mode==='buildFalse')return false;return originalBuild(c=>cb(c,null));};},mode);
+ await p.locator('#spDownload').click();await p.waitForFunction(()=>/could not be prepared|Print is not ready/.test(document.getElementById('spStatus').textContent));
+ assert.equal(await p.locator('#spDownload').isEnabled(),true,engine+': build failure releases button');
+ assert.equal(downloads,0,engine+': build failure cannot download');
+ }
+ await p.evaluate(()=>{__kp.buildPrint=originalBuild;});
  await p.evaluate(()=>restoreEncode());const ready=p.waitForEvent('download');await p.locator('#spDownload').click();const file=await ready;assert.equal(await file.failure(),null);assert.equal(downloads,1);
+ assert.deepEqual(errors,[],engine+': no unhandled errors');
  console.log(engine+': changed artwork cancels pending export; sync/rejected/invalid encoding recovers; current artwork downloads');
  }finally{await b.close();}
 }})().catch(e=>{console.error(e);process.exit(1)});

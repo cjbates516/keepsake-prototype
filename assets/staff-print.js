@@ -24,13 +24,16 @@
         started=true;if(!current())return;
         lastSignature=preparedSignature;lastImage=preparedImage;
         put('spStatus','Preparing your print PNG…');
-        var s=api.state,tag=s.isLibraryDesign&&s.photoUrl?s.photoUrl.split('/').pop().replace(/\.[^.]+$/,''):'custom';
-        tag=tag.replace(/[^a-z0-9-]/gi,'').slice(0,90);
-        var variant=String(s.variant||'original').replace(/[^a-z0-9-]/gi,'').slice(0,40);
-        var filename=name.replace(/\.png$/i,'')+'-'+tag+'-'+variant+'.png';
-        Promise.resolve().then(function(){return KPPrintPng.encode(canvas);}).then(function(blob){
+        var filename;
+        Promise.resolve().then(function(){
+          var s=api.state,tag=s.isLibraryDesign&&s.photoUrl?s.photoUrl.split('/').pop().replace(/\.[^.]+$/,''):'custom';
+          tag=tag.replace(/[^a-z0-9-]/gi,'').slice(0,90);
+          var variant=String(s.variant||'original').replace(/[^a-z0-9-]/gi,'').slice(0,40);
+          filename=name.replace(/\.png$/i,'')+'-'+tag+'-'+variant+'.png';
+          return KPPrintPng.encode(canvas);
+        }).then(function(blob){
           if(!current())return;
-          if(!unchanged()){put('spStatus','Artwork changed. Review the current design and download again.');return;}
+          if(!unchanged()){lastSignature=signature();lastImage=api.state.photoImg;lastIssue=api.printIssue();put('spStatus','Artwork changed. Review the current design and download again.');return;}
           if(!(blob instanceof Blob))throw new Error('Invalid PNG output');
           var url=URL.createObjectURL(blob),a=document.createElement('a');
           try{a.href=url;a.download=filename;a.click();}finally{setTimeout(function(){URL.revokeObjectURL(url);},60000);}
