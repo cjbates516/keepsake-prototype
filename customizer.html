@@ -6,6 +6,9 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script>if(new URLSearchParams(location.search).get('staff')==='1')document.documentElement.classList.add('staff-mode');</script>
+<link rel="stylesheet" href="assets/staff-print.css">
+<script src="assets/print-png.js"></script>
 <title>Design your keepsake — Keepsake Printing Co</title>
 <meta name="description" content="Design your custom phone case: upload a photo or pick a ready-made design, see it on your exact phone, and we UV-print it in store — ready today.">
 <link rel="canonical" href="https://cjbates516.github.io/keepsake-prototype/customizer.html">
@@ -111,7 +114,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   </div>
 
   <!-- header -->
-  <header style="position:sticky;top:0;z-index:60;background:#FFFFFF;border-bottom:1px solid #F3F2F2;padding:0 clamp(10px,2vw,28px);display:flex;align-items:center;justify-content:space-between;min-height:72px">
+  <header id="siteHeader" style="position:sticky;top:0;z-index:60;background:#FFFFFF;border-bottom:1px solid #F3F2F2;padding:0 clamp(10px,2vw,28px);display:flex;align-items:center;justify-content:space-between;min-height:72px">
     <div style="display:flex;align-items:center;gap:2px">
       <button id="burger" aria-label="Menu" class="h-circle" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:none;border:0;cursor:pointer;color:#17171F;transition:background .2s">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="14" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
@@ -366,12 +369,12 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
               <span style="font-size:12px;font-weight:600;color:#6C6C72">The preview shows both together — case on phone</span>
             </div>
           </div>
-          <div style="display:flex;align-items:center;gap:12px;margin:20px 0 28px">
+          <div id="retailPrice" style="display:flex;align-items:center;gap:12px;margin:20px 0 28px">
             <span id="totalTop" style="font-size:30px;font-weight:900;color:#17171F;letter-spacing:-.02em">$44.99</span>
             <span style="color:#1E8E3E;font-size:13px;font-weight:800">● Ready today in ~2 hours — free pickup</span>
             <span id="discountTop" style="display:none;color:#1E8E3E;font-size:13px;font-weight:800"></span>
           </div>
-          <div style="display:flex;align-items:flex-start;gap:9px;background:#F6EFE3;border:1px solid #EFE9E2;border-radius:12px;padding:11px 14px;margin:-12px 0 8px;font-size:13px;font-weight:700;color:#191921;line-height:1.45"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#DC282E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;margin-top:1px"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg><span>Add tempered glass for <b>$19.99</b> with your case &mdash; normally $29.99. <b>Case + glass: $64.98.</b></span></div>
+          <div id="retailBundle" style="display:flex;align-items:flex-start;gap:9px;background:#F6EFE3;border:1px solid #EFE9E2;border-radius:12px;padding:11px 14px;margin:-12px 0 8px;font-size:13px;font-weight:700;color:#191921;line-height:1.45"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#DC282E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;margin-top:1px"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg><span>Add tempered glass for <b>$19.99</b> with your case &mdash; normally $29.99. <b>Case + glass: $64.98.</b></span></div>
 <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#DC282E;margin:26px 0 12px;padding-top:22px;border-top:1px solid #EFEDED">Step 3 <span style="color:#17171F">· Your design</span></div>
           <div id="designChooser" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px">
             <button id="choosePhoto" style="cursor:pointer;text-align:center;background:#17171F;color:#FFF;border:0;border-radius:16px;padding:22px 14px">
@@ -397,7 +400,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <p id="photoLookStatus" aria-live="polite" style="font-size:12px;color:#555;margin:0">Original selected</p>
           </section>
           <button id="uploadBtn" class="h-upload" style="width:100%;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s">Upload a photo</button>
-          <div style="font-size:13px;color:#1E8E3E;font-weight:700;margin-top:10px;text-align:center">🔒 Your photo never leaves this device until you order</div>
+          <div id="photoPrivacy" style="font-size:13px;color:#1E8E3E;font-weight:700;margin-top:10px;text-align:center">🔒 Your photo never leaves this device until you order</div>
           <a id="browseLink" href="gallery.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;background:#FBE0E1;border-radius:12px;padding:14px 16px;text-decoration:none">
             <span><span style="display:block;font-size:13px;font-weight:900;color:#B81F24">Want a ready-made design instead?</span>
             <span id="browseLinkSub" style="display:block;font-size:12px;font-weight:700;color:#4E4E50;margin-top:2px">Browse the full library for your phone</span></span>
@@ -413,7 +416,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           </div>
           <input type="file" id="fileInput" accept="image/*" style="display:none">
           <button id="clearBtn" class="h-borderink" style="display:none;width:100%;background:#FFFFFF;color:#6E6E70;border:1px solid #CECDCD;padding:13px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer;margin-top:10px;transition:border-color .2s">Start over — remove photo</button>
-          <p style="font-size:12.5px;color:#6C6C72;margin:10px 0 28px;line-height:1.5">Photos never leave your device. In store, we print straight from your phone.</p>
+          <p style="font-size:12.5px;color:#6C6C72;margin:10px 0 28px;line-height:1.5">Photos are edited on this device. A team member can help transfer your original file to the print computer.</p>
           <div id="editTools" style="display:none;animation:fadeUp .3s cubic-bezier(.2,.7,.2,1) both;margin:-8px 0 28px">
             <div style="display:flex;gap:8px;margin-bottom:14px">
               <button id="fitFill" style="flex:1;background:#2D2D3B;color:#FFF;border:1px solid #2D2D3B;padding:10px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Fill case</button>
@@ -451,7 +454,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
 
 
-          <div style="margin-bottom:20px">
+          <div id="retailAddons" style="margin-bottom:20px">
             <div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6E6E70;margin-bottom:10px">Add-ons</div>
             <div id="addons" style="display:flex;flex-direction:column;gap:8px"></div>
           </div>
@@ -463,7 +466,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           </div>
           <div id="promoMsg" style="font-size:13px;font-weight:700;margin-bottom:20px;min-height:18px"></div>
 
-          <div style="border-top:1px solid #EFEDED;padding-top:18px">
+          <div id="retailPickup" style="border-top:1px solid #EFEDED;padding-top:18px">
             <div style="margin-bottom:14px">
               <div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6E6E70;margin-bottom:8px">Pickup store</div>
               <div id="storeChips" style="display:flex;flex-wrap:wrap;gap:7px"></div>
@@ -484,7 +487,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     </div>
 
     <!-- sticky bottom bar -->
-    <div style="position:fixed;left:0;right:0;bottom:0;z-index:70;background:#FFFFFF;border-top:1px solid #EFEDED;padding:12px clamp(16px,4vw,40px) calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:24px">
+    <div id="orderBar" style="position:fixed;left:0;right:0;bottom:0;z-index:70;background:#FFFFFF;border-top:1px solid #EFEDED;padding:12px clamp(16px,4vw,40px) calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:24px">
       <div style="min-width:0">
         <div style="font-size:15px;font-weight:900;color:#17171F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Design your keepsake</div>
         <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#1E8E3E">⏱ Ready today · ~2 hrs · <span id="barStore">West Chester</span><span style="display:none">$<span id="totalBar">44.99</span></span></div>
@@ -633,11 +636,13 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     addons:{screen:false,lens:false}, promo:null, reserved:false, fitMode:'fill',
     layout:null, photos:[], slotTarget:null, builder:false, designPath:null
   };
-  (function(){ var mm = /[?&]model=([^&]+)/.exec(location.search); if (!mm) return;
+  (function(){ var mm = /[?&]model=([^&]+)/.exec(location.search);var staffMode=new URLSearchParams(location.search).get('staff')==='1';if(staffMode){state.handoffErrorType='model';state.handoffError='Choose a valid phone from the print counter before printing.';}if (!mm) return;
     var want = decodeURIComponent(mm[1]).replace(/-/g, ' ').toLowerCase();
     for (var b in modelsByBrand){ modelsByBrand[b].forEach(function(md){
       var mdl = md.toLowerCase();
-      if (mdl === want || mdl.replace(/^samsung |^google /,'') === want){ state.brand = b; state.model = md; } }); } })();
+      if (mdl === want || mdl.replace(/^samsung |^google /,'') === want){ state.brand = b; state.model = md;state.handoffError=null;state.handoffErrorType=null; } }); } })();
+
+  if(new URLSearchParams(location.search).get('staff')==='1'){var requestedFile=new URLSearchParams(location.search).get('design');if(requestedFile&&!/^[a-z0-9-]+\.(jpg|png)$/.test(requestedFile)){state.handoffErrorType='design';state.handoffError='This design link is invalid. Return to the print counter and find it again.';}}
 
   /* ── canvas compositor (17 Pro Max) ── */
   var DIM={w:2500,h:3000};
@@ -1195,7 +1200,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     updateStep3();
     renderFilterChips();
     renderCtThumbs();
-    $('exportLink').style.display = hasArt() ? 'inline' : 'none';
+    $('exportLink').style.display = (hasArt()||state.text) ? 'inline' : 'none';
     $('editTools').style.display = (state.photoImg && !state.layout && !state.isLibraryDesign) ? 'block' : 'none';
     if(state.photoImg && typeof syncFitChips==='function') syncFitChips();
     $('clearBtn').style.display = (hasArt()||state.layout) ? 'block' : 'none';
@@ -1342,7 +1347,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function updateStep3(){
     var ch=$('designChooser'), ps=$('photoSection');
     if(!ch||!ps) return;
-    var active = state.designPath==='photo' || !!state.photoImg || !!state.layout || !!state.text;
+    var active = document.documentElement.classList.contains('staff-mode') || state.designPath==='photo' || !!state.photoImg || !!state.layout || !!state.text;
     ch.style.display = active ? 'none' : 'grid';
     ps.style.display = active ? 'block' : 'none';
   }
@@ -1487,6 +1492,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var cr=$('chooseReady');
     var a=$('browseLink'); if(!a) return;
     var sub=$('browseLinkSub');
+    if(document.documentElement.classList.contains('staff-mode')){a.href='instore/find.html?model='+encodeURIComponent(state.model);if(cr)cr.href=a.href;if(sub)sub.textContent='Find another design at the print counter';return;}
     if (KITS[state.model]){
       a.href='gallery.html?device='+kpSlug(state.model);
     if(cr) cr.href=a.href;
@@ -1497,7 +1503,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     }
   }
   $('modelSel').addEventListener('change',function(){
-    state.model=this.value; state.reserved=false;
+    state.model=this.value; state.reserved=false;if(state.handoffErrorType==='model'){state.handoffError=null;state.handoffErrorType=null;}
     var nk=KITS[state.model];
     if(nk&&nk.toughOnly) state.caseType='Tough Magnetic';
     else if(state.caseType==='Tough Magnetic') state.caseType='MagSafe Clear';
@@ -1645,6 +1651,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     return 'Photo';
   }
   function kpOrderPanel(){
+    if(document.documentElement.classList.contains('staff-mode'))return;
     var box=$('reservedBox'); box.style.display='block'; box.style.textAlign='left'; box.style.fontWeight='600';
     box.innerHTML=
       '<div style="font-weight:900;font-size:15px;margin-bottom:10px;color:#17171F">Almost done — who is this for?</div>'+
@@ -1660,6 +1667,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     box.scrollIntoView({behavior:'smooth',block:'center'});
   }
   function kpPlaceOrder(){
+    if(document.documentElement.classList.contains('staff-mode'))return;
     var name=($('kpName').value||'').trim(), phone=($('kpPhone').value||'').replace(/[^0-9+]/g,'');
     if(name.length<2){ kpToast('Please add your name.'); $('kpName').focus(); return; }
     if(phone.replace(/\D/g,'').length<10){ kpToast('Please add a 10 digit mobile number.'); $('kpPhone').focus(); return; }
@@ -1705,14 +1713,19 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* ── print export (staff link) ── */
   $('exportLink').addEventListener('click',function(e){ e.preventDefault(); kpBuildPrint(kpDownloadCanvas); });
   /* builds the print file; done(canvas, filename). Returns false (with a toast) when it cannot. */
+  function kpPrintIssue(){
+    if(state.handoffError)return state.handoffError;
+    if(!hasArt()&&!state.text)return 'Add a photo, choose a design or enter a name.';
+    if(state.libraryLoading)return 'Full-quality artwork is still loading.';
+    if(state.colorwayUnavailable)return 'Choose an available colorway before printing.';
+    if(state.fullFailed)return 'Full-quality design could not load. Reload to try again.';
+    if(state.photoImg&&(state.photoImg.__kpIsThumb||state.photoImg.complete===false||!(state.photoImg.naturalWidth||state.photoImg.width)))return 'Full-quality artwork is still loading.';
+    if(!TPL)return 'Print template is not available for this model.';
+    if(viewSrc&&!(viewImg&&viewReady&&viewMaskCanvas))return viewFailed?'Case mask failed to load. Reload before printing.':'Case mask is still loading.';
+    return '';
+  }
   function kpBuildPrint(done){
-    if(!hasArt() && !state.text) return false;
-    if(state.libraryLoading){kpToast('Full-quality art is still loading. Please wait.');return false;}
-    if(state.colorwayUnavailable){kpToast('Choose an available colorway before printing.');return false;}
-    if(state.fullFailed){kpToast('Full-quality design could not load. Reload to try again.');return false;}
-    if(state.photoImg && (state.photoImg.__kpIsThumb || state.photoImg.complete===false || !(state.photoImg.naturalWidth||state.photoImg.width))){ kpToast('Full-quality art is still loading — one moment, then try again.'); return false; }
-    if(!TPL){ kpToast('Print template for this model is being finalized — see staff.'); return false; }
-    if(viewSrc && !(viewImg&&viewReady&&viewMaskCanvas)){ kpToast(viewFailed ? 'Case mask failed to load — reload the page before exporting.' : 'Case mask still loading — one moment, then try again.'); return false; }
+    var issue=kpPrintIssue();if(issue){kpToast(issue);return false;}
     var pxW=TPL.pxW||Math.round(TPL.w*300/72), pxH=TPL.pxH||Math.round(TPL.h*300/72);
     var k=pxW/TPL.w;
     var BLEED=18;   /* 1.5mm run-off at 300 DPI (constant: every printSpec/pxW is 300 DPI, template units vary) */
@@ -1783,14 +1796,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var td=tx.getImageData(0,0,16,16).data, any=false;
     for(var q=3;q<td.length;q+=4){ if(td[q]>8){ any=true; break; } }
     if(!any){ kpToast('Something went wrong — the print file came out empty. Please tell staff.'); return; }
-    var a=document.createElement('a'); a.download=name;
-    if(c.toBlob){
-      c.toBlob(function(b){
-        if(!b){ a.href=c.toDataURL('image/png'); a.click(); return; }
-        var u=URL.createObjectURL(b); a.href=u; a.click();
-        setTimeout(function(){ URL.revokeObjectURL(u); }, 60000);
-      },'image/png');
-    } else { a.href=c.toDataURL('image/png'); a.click(); }
+    KPPrintPng.encode(c).then(function(blob){
+      var a=document.createElement('a'),u=URL.createObjectURL(blob);a.download=name;a.href=u;a.click();
+      setTimeout(function(){URL.revokeObjectURL(u);},60000);
+    },function(){kpToast('Could not prepare the print file. Please try again.');});
   }
 
   /* ── chat ── */
@@ -1876,7 +1885,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var request=++kpLibraryRequest;kpUploadRequest++;state.fullFailed=false;state.colorwayUnavailable=false;state.libraryLoading=true;
     var assetVersion=encodeURIComponent(((window.KP_COLORWAY_CATALOG||{})[file]||{}).hash||'1');
     var requested=new URLSearchParams(location.search).get('colorway');
-    state.variant=KPDesignColorways.choicesFor({__kpDesignFile:file}).some(function(c){return c.id===requested;})?requested:'original';state.photoUrl='assets/designs/'+file;
+    state.variant=KPDesignColorways.choicesFor({__kpDesignFile:file}).some(function(c){return c.id===requested;})?requested:'original';state.colorwayUnavailable=!!requested&&requested!==state.variant;state.photoUrl='assets/designs/'+file;
     /* thumb first (instant on cellular), full print-res swaps in when ready */
     var setImg=function(im, isThumb){
       im.__kpIsThumb=isThumb;im.__kpDesignFile=file;
@@ -2144,7 +2153,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   $('brandSel').value=state.brand;
   fillModels(); renderSwatches(); renderAddons(); updateFitNote(); updateStage(); updateSummary();
   /* staff and QA hook (Fit Lab, print checks): read-only access to the live state */
-  window.__kp={ get state(){ return state; }, dpi:kpEffectiveDpi, preset:kpPreset, buildPrint:kpBuildPrint, render:render };
+  window.__kp={ get state(){ return state; }, printSpec:function(){return TPL?{w:(TPL.pxW||Math.round(TPL.w*300/72))+36,h:(TPL.pxH||Math.round(TPL.h*300/72))+36}:null;}, printIssue:kpPrintIssue, dpi:kpEffectiveDpi, preset:kpPreset, buildPrint:kpBuildPrint, render:render };
 })();
 </script>
 <script>
@@ -2161,5 +2170,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var svg=t.querySelector('svg'); if(svg) svg.style.transform=open?'':'rotate(90deg)';
   });
 </script>
+<script src="assets/staff-print.js"></script>
 </body>
 </html>

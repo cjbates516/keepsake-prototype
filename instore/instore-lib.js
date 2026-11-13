@@ -165,7 +165,7 @@
   KPI.thumbUrl = function (d) { return ROOT + 'assets/designs/thumbs/' + encodeURIComponent(d.file) + '?v=' + (d.hash || '1'); };
   KPI.fullUrl = function (d) { return ROOT + 'assets/designs/' + encodeURIComponent(d.file) + '?v=' + (d.hash || '1'); };
   KPI.customizerUrl = function (model, d, colorway) {
-    return ROOT + 'customizer.html?design=' + encodeURIComponent(d.file) + '&model=' + encodeURIComponent(model.name.replace(/ /g, '-'))+(colorway&&colorway!=='original'?'&colorway='+encodeURIComponent(colorway):'');
+    return ROOT + 'customizer.html?staff=1&design=' + encodeURIComponent(d.file) + '&model=' + encodeURIComponent(model.name.replace(/ /g, '-'))+(colorway&&colorway!=='original'?'&colorway='+encodeURIComponent(colorway):'');
   };
 
   /* ---------- images ---------- */

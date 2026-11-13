@@ -2,6 +2,7 @@
  "_readme": "In Store mode settings. price shows on the confirm screen. idle_seconds sends the iPad back to the first screen. assets_version is added to case photo and mask URLs: raise it when a mask or case photo file is replaced so iPads fetch the new one. collections sets the filter chip order, the chip label and the 3 letter code used in pick codes; category must match designs.json and a code must never change once live. exclude_files (optional, empty by default) keeps listed design files off the store iPad without touching the website; only Corey decides what goes in it.",
  "price": 44.99,
  "idle_seconds": 75,
+ "code_hold_seconds": 300,
  "assets_version": "11",
  "collections": [
   {

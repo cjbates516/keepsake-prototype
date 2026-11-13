@@ -32,27 +32,32 @@
   .err{display:none;margin-top:18px;color:var(--red);font-weight:700;font-size:20px}
   .err.on{display:block}
   @media (max-width:640px){ .result{grid-template-columns:1fr} .result img{max-width:220px;margin:0 auto} }
+
+  .wrap{max-width:1040px}.eyebrow{margin:40px 0 0;color:var(--red);font-weight:800;letter-spacing:.12em;font-size:13px}h1{font-size:clamp(36px,5vw,58px);margin-top:10px}.brand{justify-content:space-between}.brand:after{content:'STAFF';font-size:12px;letter-spacing:.12em;background:#252633;color:white;border-radius:99px;padding:8px 12px}
+  .other-path{margin-top:40px;border-top:1px solid var(--line);padding-top:30px}.other-path h2{font-size:28px;color:var(--ink-strong);margin:0 0 8px}.other-path label{display:block;font-size:15px;font-weight:800;margin:20px 0 6px}select{font:inherit;min-height:54px;border:2px solid var(--line);border-radius:12px;padding:10px;background:white;max-width:100%;color:var(--ink-strong)}.secondary{background:#252633;margin:12px 0 12px 10px;font-size:17px}.photo-note{font-size:15px;color:var(--muted);line-height:1.6;margin-top:26px}.name-result{display:grid;grid-template-columns:minmax(0,1fr) 180px auto;align-items:center;gap:16px;background:white;border:1px solid var(--line);border-radius:16px;padding:18px;margin:10px 0}.name-result .btn{font-size:16px;padding:12px 18px}#rprice{margin-top:14px;font-weight:800}#rpreviewStatus{font-size:15px;color:var(--muted)}#rimg:not([src]){visibility:hidden}#lookupStatus:empty{display:none}:focus-visible{outline:3px solid var(--red);outline-offset:3px}a[aria-disabled="true"]{opacity:.5;cursor:wait}
+  @media(max-width:640px){.name-result{grid-template-columns:1fr}.secondary{margin-left:0}form input{min-width:0;width:100%}.wrap{padding:22px 18px}h1{font-size:38px}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="brand"><img src="../assets/favicon.svg" alt=""><span>Keepsake Printing Co</span></div>
-  <h1>Find a pick code</h1>
-  <p class="hint">For team members. Type the code from the store iPad, then open it in the designer to make the print file.</p>
+  <p class="eyebrow">THE PRINT COUNTER</p><h1>From picked to printed.</h1>
+  <p class="hint">Enter the customer’s pick code to open the exact phone, design and colorway in the print workspace.</p>
   <form id="f" autocomplete="off">
     <input id="q" name="q" placeholder="17P-FLR-012" aria-label="Pick code" spellcheck="false" autocapitalize="characters">
     <button type="submit">Find it</button>
   </form>
-  <p class="err" id="err" role="alert"></p>
+  <p id="lookupStatus" role="status"></p><p class="err" id="err" role="alert"></p>
   <div class="result" id="res" aria-live="polite">
     <img id="rimg" alt="">
     <div>
       <p id="rcode" style="font-weight:800;color:var(--red);letter-spacing:.05em"></p>
       <h2 id="rname"></h2>
-      <p id="rmodel"></p>
-      <a class="btn" id="ropen" href="#">Open in the designer</a>
+      <p id="rmodel"></p><p id="rprice"></p><p id="rpreviewStatus" role="status"></p>
+      <a class="btn" id="ropen" href="#">Prepare print →</a>
     </div>
   </div>
+<section class="other-path"><h2>No pick code? Start here.</h2><p>Choose the customer’s phone, then use their photo or find a design by name.</p><label for="staffModel">Customer’s phone</label><select id="staffModel"><option value="">Loading phones…</option></select><a class="btn secondary" id="ownOpen" aria-disabled="true">Use a customer photo or name →</a><form id="nameForm"><input id="designName" type="search" placeholder="Find a design by name" aria-label="Design name"><button type="submit">Search</button></form><p id="nameStatus" role="status"></p><div id="nameResults"></div><p class="photo-note">For personal photos, ask the customer to share the original file using the store’s transfer method. Upload it on this print computer, check the crop together, then remove the transferred photo and downloaded print file after the job according to store policy. This print workspace does not submit photos to an order server.</p></section>
 </div>
 <script src="../assets/colorway-catalog.js"></script>
 <script src="../assets/design-colorways.js"></script>
@@ -61,13 +66,13 @@
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   /* load lazily and forget a failed load, so pressing Find it again retries once the connection is back */
-  var ready = null, lookupSeq = 0, shownUrl = null;
+  var ready = null, lookupSeq = 0, shownUrl = null,nameSeq=0;
   function load() { return ready || (ready = KPI.load().catch(function (e) { ready = null; throw e; })); }
   function revoke(u) { if (u && u.indexOf('blob:') === 0) URL.revokeObjectURL(u); }
   load().catch(function () {});
-  function fail(msg) { $('res').classList.remove('on'); $('err').textContent = msg; $('err').classList.add('on'); }
+  function fail(msg) {revoke(shownUrl);shownUrl=null;$('rimg').removeAttribute('src');$('lookupStatus').textContent=''; $('res').classList.remove('on'); $('err').textContent = msg; $('err').classList.add('on'); }
   function lookup(text) {
-    $('err').classList.remove('on');
+    $('err').classList.remove('on');$('res').classList.remove('on');$('lookupStatus').textContent='Finding your design…';
     var seq = ++lookupSeq;
     load().then(function (data) {
       if (seq !== lookupSeq) return;
@@ -86,6 +91,7 @@
       if (!m.active) notes.push('we do not stock this phone in store');
       if (d.hidden) notes.push('this design is hidden from the store');
       $('rmodel').textContent = m.name + (notes.length ? ' (' + notes.join(', ') + ')' : '');
+      $('lookupStatus').textContent='';$('rprice').textContent=KPI.formatPrice(data.price)+' case · glass +$19.99 bundled';$('rpreviewStatus').textContent='Loading preview…';
       $('ropen').href = KPI.customizerUrl(m, d, selected.id);
       $('rimg').removeAttribute('src'); revoke(shownUrl); shownUrl = null;
       $('res').classList.add('on');
@@ -94,13 +100,18 @@
       }).then(function (u) {
         /* only the newest lookup may show its picture; older ones are thrown away */
         if (seq !== lookupSeq) { revoke(u); return; }
-        revoke(shownUrl); shownUrl = u; $('rimg').src = u;
-      }).catch(function () {});
+        revoke(shownUrl); shownUrl = u; $('rimg').src = u;$('rpreviewStatus').textContent='';
+      }).catch(function () {if(seq===lookupSeq)$('rpreviewStatus').textContent='Preview could not load. Open the print workspace to retry; unavailable artwork cannot print.';});
     }).catch(function () {
       if (seq === lookupSeq) fail('The design list or the pick code list did not load. Check the connection and press Find it again.');
     });
   }
   $('f').addEventListener('submit', function (e) { e.preventDefault(); lookup($('q').value); });
+  function ownUrl(){var model=$('staffModel').value;$('ownOpen').href='../customizer.html?staff=1&model='+encodeURIComponent(model);$('ownOpen').setAttribute('aria-disabled',String(!model));}
+  load().then(function(data){$('staffModel').innerHTML='<option value="">Choose a phone</option>';data.activeModels.forEach(function(m){var opt=document.createElement('option');opt.value=m.name;opt.textContent=m.name;$('staffModel').appendChild(opt);});var requestedModel=new URLSearchParams(location.search).get('model');if(data.activeModels.some(function(m){return m.name===requestedModel;}))$('staffModel').value=requestedModel;ownUrl();}).catch(function(){$('staffModel').innerHTML='<option value="">Reload to load phones</option>';});
+  $('ownOpen').addEventListener('click',function(e){if(! $('staffModel').value)e.preventDefault();});
+  $('staffModel').addEventListener('change',function(){nameSeq++;ownUrl();$('nameResults').innerHTML='';$('nameStatus').textContent='Search again for this phone.';});
+  $('nameForm').addEventListener('submit',function(e){e.preventDefault();var seq=++nameSeq;var query=$('designName').value.trim().toLowerCase(),phone=$('staffModel').value; $('nameResults').innerHTML='';if(!query){$('nameStatus').textContent='Type part of a design name.';return;}$('nameStatus').textContent='Searching…';load().then(function(data){if(seq!==nameSeq||phone!==$('staffModel').value)return;var model=data.activeModels.find(function(m){return m.name===phone;});if(!model){$('nameStatus').textContent='Choose the customer’s phone first.';return;}var matches=data.designsFor(model).filter(function(d){return (KPI.cleanTitle(d.title)+' '+d.file).toLowerCase().indexOf(query)!==-1;});$('nameStatus').textContent=matches.length+' matching designs'+(matches.length>30?' · Showing the first 30. Narrow your search.':'.');matches.slice(0,30).forEach(function(d){var card=document.createElement('div');card.className='name-result';var title=document.createElement('strong');title.textContent=KPI.cleanTitle(d.title);var looks=document.createElement('select');looks.setAttribute('aria-label','Colorway for '+KPI.cleanTitle(d.title));KPI.colorways(d).forEach(function(c){var opt=document.createElement('option');opt.value=c.id;opt.textContent=c.name;looks.appendChild(opt);});var link=document.createElement('a');link.className='btn';link.textContent='Prepare print';function update(){link.href=KPI.customizerUrl(model,d,looks.value);}looks.addEventListener('change',update);update();card.append(title,looks,link);$('nameResults').appendChild(card);});}).catch(function(){if(seq!==nameSeq)return;$('nameStatus').textContent='Could not load designs. Check the connection and try again.';});});
   var pre = new URLSearchParams(location.search).get('code');
   if (pre) { $('q').value = pre; lookup(pre); }
 })();

@@ -38,7 +38,7 @@ team member a pick code. No checkout, no uploads, nothing about the customer is 
   In Store button in the site header (shown on iPad and desktop, hidden on phones).
 - Three screens: Your phone, Your design (filter chips by collection, plus a Use your own photo tile that
   tells the customer to ask a team member), Show us (big preview, price, Show a team member reveals the pick code).
-- After 75 seconds with no taps it goes back to the first screen and clears the pick. Back swipes step back
+- After 75 seconds with no taps while browsing (five minutes while a pick code is displayed), it goes back to the first screen and clears the pick. Back swipes step back
   one screen and never leave the page. If the design list cannot load, the page says to ask a team member and
   retries by itself every 20 seconds.
 - Design thumbnails, case photos, masks and the DM Sans font are cached by `instore/sw.js`, so a slow or dropped
@@ -85,3 +85,13 @@ Colorway maintenance:
 - When changing the colorway renderer or catalog, bump `instore/sw.js`'s shell version so store iPads refresh the precached scripts.
 
 Software verification: in-store suite 125/125 (including offline colorway selection) (Chromium + WebKit); customizer pricing/uploads/all 15 active phone print exports; selected-colorway lookup-to-print across Yosemite, florals, maps, transparent art, framed scenery and all six Neon Doodles. No production customer orders or physical prints were created by these checks.
+
+## Print counter workspace
+
+`instore/find.html` supports pick codes, name search with colorways, and a required phone selector for customer-photo or name-only jobs. It opens `customizer.html?staff=1`, a local print workspace with retail checkout disabled in both presentation and code. It shows the model, artwork, colorway, print preset and actual export dimensions.
+
+`assets/print-png.js` embeds 300 DPI pHYs metadata without changing image pixels. `assets/staff-print.js` prepares identifiable downloads, blocks unready or empty prints and resets the status when artwork changes. Next customer clears the current photo and name.
+
+Read [the store printing guide](instore/PRINT-GUIDE.md) for the complete workflow and physical acceptance checks. Downloads do not communicate with the printer or ring a sale. Hardware validation remains required.
+
+Tests: `node tools/tests/instore_workspace.cjs <outDir>` covers the staff workflow and actual PNG downloads in Chromium and WebKit. The in-store suite covers the five-minute code hold, 75-second browse reset and offline flow.
