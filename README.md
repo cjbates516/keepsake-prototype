@@ -99,3 +99,18 @@ Tests: `node tools/tests/instore_workspace.cjs <outDir>` covers the staff workfl
 ## Print fidelity and next iterations
 
 The exporter preserves artwork proportions, uses exact source-derived mask geometry, and adds bleed without stretching the rendered canvas. Kiosk/gallery preview proportions match the customizer. See [print fidelity](docs/PRINT-FIDELITY.md) for test commands, generated-data maintenance and explicit hardware limitations. See [next iterations and private customer file intake](docs/NEXT-ITERATIONS.md) for the prioritized roadmap, proposed QR upload workflow and retention choices. Physical jig/camera validation remains required.
+
+## Photo slates
+
+`slates.html` lists the approved in-store slate prices: 4 × 6 inches $29.99,
+5.9 × 7.9 inches $39.99, and 8 × 10 inches $49.99. The holiday pair is two
+4 × 6 slates for $49.99. Stands, basic cropping and an optional name/date are included.
+The homepage and gift guide link to this page. A size choice produces a counter
+selection summary, not a submitted order, reservation or payment. Customers bring
+their original photo to staff; the private QR upload service is not deployed.
+The page uses a labeled illustration until actual finished-product photos are supplied.
+No slate print masks or physical dimensions are inferred by this storefront feature.
+
+Run `node tools/tests/slates.cjs <output-directory>` against a local server on port8766,
+or set `KP_BASE` to a deployed base URL. Checks cover Chromium/WebKit, mobile/desktop,
+all prices, illustration ratios, summary focus, links and the no-JavaScript fallback.
