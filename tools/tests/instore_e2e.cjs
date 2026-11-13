@@ -311,6 +311,11 @@ async function serviceWorker(browser, base) {
     return false;
   }, null, { timeout: 30000, polling: 1000 }).then(() => true, () => false);
   check('the DM Sans stylesheet is stored for offline use', fontCached);
+  /* Authored raster colorways must have been viewed online before offline use. */
+  await page.tap('#grid .tile[data-file]');
+  await page.tap('[data-colorway="c3"]');
+  await page.locator('#showBtn:not([disabled])').waitFor();
+  await page.tap('#showBtn');
   await ctx.setOffline(true);
   await page.reload({ waitUntil: 'domcontentloaded' });
   await page.waitForTimeout(1500);

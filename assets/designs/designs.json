@@ -1,5 +1,50 @@
 [
 {
+"file": "kp-heart-riot.png",
+"title": "Heart Riot",
+"category": "Neon Hearts",
+"hash": "f471d7135e0c",
+"color": [
+"Pink",
+"Blue",
+"Purple",
+"Yellow",
+"Orange",
+"Green"
+],
+"active": true
+},
+{
+"file": "kp-paint-party.png",
+"title": "Paint Party",
+"category": "Paint Party",
+"hash": "bcf6199e4f55",
+"color": [
+"Pink",
+"Blue",
+"Purple",
+"Yellow",
+"Orange",
+"Green"
+],
+"active": true
+},
+{
+"file": "kp-liquid-prism.png",
+"title": "Liquid Prism",
+"category": "Liquid Color",
+"hash": "c77001bc0067",
+"color": [
+"Pink",
+"Blue",
+"Purple",
+"Yellow",
+"Orange",
+"Green"
+],
+"active": true
+},
+{
 "file": "abstract-geometric-minimalist-artwork.jpg",
 "title": "Abstract Geometric Minimalist Artwork",
 "category": "Abstract",

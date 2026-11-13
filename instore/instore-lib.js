@@ -290,6 +290,8 @@
   /* Render to an object URL (keeps memory low with hundreds of tiles).
      With a background colour it is a small JPEG; without one it is a PNG so the area around the case stays clear. */
   KPI.renderToUrl = function (prep, designImg, bg, colorway) {
+    var ready=window.KPDesignColorways&&colorway&&colorway!=='original'?KPDesignColorways.prepare(designImg):Promise.resolve();
+    return ready.then(function(){
     var composed=null;
     if(window.KPDesignColorways&&KPDesignColorways.profile(designImg)){composed=KPDesignColorways.make(designImg,colorway||'original',1200);designImg=composed;}
     var c = KPI.render(prep, designImg, bg, prep._out || (prep._out = canvas(prep.W, prep.H)));
@@ -301,6 +303,7 @@
       } else {
         resolve(c.toDataURL(type, q));
       }
+    });
     });
   };
 })();

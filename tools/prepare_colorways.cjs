@@ -10,7 +10,7 @@ const catalog=KP_COLORWAY_CATALOG;
 function hsl(r,g,b){r/=255;g/=255;b/=255;let max=Math.max(r,g,b),min=Math.min(r,g,b),d=max-min,h=0,l=(max+min)/2,s=d?d/(1-Math.abs(2*l-1)):0;if(d)h=60*(max===r?((g-b)/d)%6:max===g?(b-r)/d+2:(r-g)/d+4);return[(h+360)%360,s,l]}
 function hex(h,s,l){let a=s*Math.min(l,1-l);return '#'+[0,8,4].map(n=>{let k=(n+h/30)%12;return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1)))).toString(16).padStart(2,'0')}).join('')}
 for(const [file,pf] of Object.entries(catalog)){
-if(pf.method==='yosemite'||(pf.colors&&pf.background&&pf.preparedHash===pf.hash))continue;
+if(pf.method==='yosemite'||pf.method==='assets'||(pf.colors&&pf.background&&pf.preparedHash===pf.hash))continue;
 try {
 const im=new Image();im.src=base+'/assets/designs/'+encodeURIComponent(file);await im.decode();const c=document.createElement('canvas');c.width=c.height=96;const cx=c.getContext('2d',{willReadFrequently:true});cx.drawImage(im,0,0,96,96);const d=cx.getImageData(0,0,96,96).data,bins={};let transparent=0;
 for(let i=0;i<d.length;i+=4){if(d[i+3]<240){transparent++;continue}let n=i/4,x=n%96,y=Math.floor(n/96),w=x<3||x>92||y<3||y>92?24:1,key=[d[i]>>4,d[i+1]>>4,d[i+2]>>4].join(',');let b=bins[key]??=[0,0,0,0];b[0]+=w;for(let k=0;k<3;k++)b[k+1]+=d[i+k]*w;}
