@@ -118,3 +118,9 @@ all prices, loaded sample photos and labels, illustration ratios, summary focus,
 ### Pending print exports
 
 Staff downloads are canceled if the model, crop, name, colorway or photo changes while PNG encoding is pending. Encoder failures release the button so staff can retry without clearing the customer. `node tools/tests/print_pending.cjs` (local server on port 8766, or `KP_BASE`) deliberately delays encoding and injects synchronous, rejected and invalid-output failures in Chromium and WebKit. This is software validation only; printer, blank and jig acceptance remains separate.
+
+### Counter discovery and recovery
+
+Staff design-name results include original-artwork thumbnails, explicitly labeled so a selected colorway is not confused with the thumbnail. Phone lists recover after an initial fetch failure with a retry button or a successful pick-code lookup. Retry preserves keyboard focus; incompatible design/phone combinations are blocked, and designs no longer offered in store are marked for staff. `tools/tests/counter_recovery.cjs` verifies failure/retry, compatibility, handoff links and 320–1440 px layouts in Chromium/WebKit.
+
+The slate page also shows the exact 8×10 supplier’s product detail image with a full-size link, distinct from the stock-family digital examples. No supplier measurements are used as production masks.

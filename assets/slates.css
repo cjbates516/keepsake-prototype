@@ -13,3 +13,5 @@
 .slate-memory p:not(.slate-eyebrow){line-height:1.7;max-width:440px}
 .slate-credits{font-size:12px;max-width:650px;margin:0 auto 24px;color:#d5d4dc}
 @media(max-width:700px){.slate-memory{grid-template-columns:1fr;gap:28px}.slate-memory-figure{padding:28px}.slate-art{padding:32px 12px}.slate-sample{width:94%}.slate-sample-portrait{width:min(100%,250px)}}
+
+.slate-product{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.slate-product p{line-height:1.7;max-width:480px}.slate-product figure{margin:0}.slate-product img{display:block;width:100%;height:auto;background:white}.slate-product figcaption{font-size:12px;line-height:1.6;margin-top:12px}.slate-product a{color:#92202a}@media(max-width:700px){.slate-product{grid-template-columns:1fr;gap:20px}}

@@ -19,7 +19,7 @@
   form{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 8px}
   input{flex:1 1 280px;min-height:60px;padding:0 18px;border:2px solid var(--line);border-radius:16px;font:inherit;font-size:26px;font-weight:800;
     letter-spacing:.05em;text-transform:uppercase;color:var(--ink-strong);background:var(--card)}
-  input:focus{outline:none;border-color:var(--red)}
+  input:focus{border-color:var(--red)}
   button,.btn{min-height:60px;padding:0 26px;border:0;border-radius:16px;background:var(--red);color:#fff;font:inherit;font-size:20px;font-weight:800;cursor:pointer;
     text-decoration:none;display:inline-flex;align-items:center}
   .hint{color:var(--muted);margin:0}
@@ -34,21 +34,22 @@
   @media (max-width:640px){ .result{grid-template-columns:1fr} .result img{max-width:220px;margin:0 auto} }
 
   .wrap{max-width:1040px}.eyebrow{margin:40px 0 0;color:var(--red);font-weight:800;letter-spacing:.12em;font-size:13px}h1{font-size:clamp(36px,5vw,58px);margin-top:10px}.brand{justify-content:space-between}.brand:after{content:'STAFF';font-size:12px;letter-spacing:.12em;background:#252633;color:white;border-radius:99px;padding:8px 12px}
-  .other-path{margin-top:40px;border-top:1px solid var(--line);padding-top:30px}.other-path h2{font-size:28px;color:var(--ink-strong);margin:0 0 8px}.other-path label{display:block;font-size:15px;font-weight:800;margin:20px 0 6px}select{font:inherit;min-height:54px;border:2px solid var(--line);border-radius:12px;padding:10px;background:white;max-width:100%;color:var(--ink-strong)}.secondary{background:#252633;margin:12px 0 12px 10px;font-size:17px}.photo-note{font-size:15px;color:var(--muted);line-height:1.6;margin-top:26px}.name-result{display:grid;grid-template-columns:minmax(0,1fr) 180px auto;align-items:center;gap:16px;background:white;border:1px solid var(--line);border-radius:16px;padding:18px;margin:10px 0}.name-result .btn{font-size:16px;padding:12px 18px}#rprice{margin-top:14px;font-weight:800}#rpreviewStatus{font-size:15px;color:var(--muted)}#rimg:not([src]){visibility:hidden}#lookupStatus:empty{display:none}:focus-visible{outline:3px solid var(--red);outline-offset:3px}a[aria-disabled="true"]{opacity:.5;cursor:wait}
+  .other-path{margin-top:40px;border-top:1px solid var(--line);padding-top:30px}.other-path h2{font-size:28px;color:var(--ink-strong);margin:0 0 8px}.other-path label{display:block;font-size:15px;font-weight:800;margin:20px 0 6px}select{font:inherit;min-height:54px;border:2px solid var(--line);border-radius:12px;padding:10px;background:white;max-width:100%;color:var(--ink-strong)}.secondary{background:#252633;margin:12px 0 12px 10px;font-size:17px}.photo-note{font-size:15px;color:var(--muted);line-height:1.6;margin-top:26px}.name-result{display:grid;grid-template-columns:minmax(0,1fr) 180px auto;align-items:center;gap:16px;background:white;border:1px solid var(--line);border-radius:16px;padding:18px;margin:10px 0}.name-result .btn{font-size:16px;padding:12px 18px}#rprice{margin-top:14px;font-weight:800}#rpreviewStatus{font-size:15px;color:var(--muted)}#rimg:not([src]){visibility:hidden}#lookupStatus:empty{display:none}:focus-visible{outline:3px solid var(--red);outline-offset:3px}a[aria-disabled="true"]{opacity:.5;cursor:not-allowed}
   @media(max-width:640px){.name-result{grid-template-columns:1fr}.secondary{margin-left:0}form input{min-width:0;width:100%}.wrap{padding:22px 18px}h1{font-size:38px}}
+.name-result{grid-template-columns:100px minmax(0,1fr) 160px auto}.name-thumb{margin:0;text-align:center}.name-thumb img{width:100px;height:120px;object-fit:contain}.name-thumb figcaption{font-size:12px;color:var(--muted);line-height:1.4}.eyebrow{color:#b31d25}input:focus-visible{outline:3px solid var(--red);outline-offset:3px}#phoneHint{font-size:15px}#retryPhones{margin:12px;font-size:16px;min-height:48px}#retryPhones[hidden]{display:none}#designName{text-transform:none;letter-spacing:normal}@media(max-width:640px){.name-result{grid-template-columns:100px minmax(0,1fr)}.name-result select,.name-result .btn{grid-column:1/-1}.name-result strong{overflow-wrap:anywhere}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="brand"><img src="../assets/favicon.svg" alt=""><span>Keepsake Printing Co</span></div>
   <p class="eyebrow">THE PRINT COUNTER</p><h1>From picked to printed.</h1>
-  <p class="hint">Enter the customer’s pick code to open the exact phone, design and colorway in the print workspace.</p>
+  <p class="hint" id="pickHint">Enter the customer’s pick code to open the exact phone, design and colorway in the print workspace.</p>
   <form id="f" autocomplete="off">
-    <input id="q" name="q" placeholder="17P-FLR-012" aria-label="Pick code" spellcheck="false" autocapitalize="characters">
+    <input id="q" name="q" placeholder="17P-FLR-012" aria-label="Pick code" aria-describedby="pickHint" spellcheck="false" autocapitalize="characters">
     <button type="submit">Find it</button>
   </form>
   <p id="lookupStatus" role="status"></p><p class="err" id="err" role="alert"></p>
-  <div class="result" id="res" aria-live="polite">
+  <div class="result" id="res">
     <img id="rimg" alt="">
     <div>
       <p id="rcode" style="font-weight:800;color:var(--red);letter-spacing:.05em"></p>
@@ -57,7 +58,7 @@
       <a class="btn" id="ropen" href="#">Prepare print →</a>
     </div>
   </div>
-<section class="other-path"><h2>No pick code? Start here.</h2><p>Choose the customer’s phone, then use their photo or find a design by name.</p><label for="staffModel">Customer’s phone</label><select id="staffModel"><option value="">Loading phones…</option></select><a class="btn secondary" id="ownOpen" aria-disabled="true">Use a customer photo or name →</a><form id="nameForm"><input id="designName" type="search" placeholder="Find a design by name" aria-label="Design name"><button type="submit">Search</button></form><p id="nameStatus" role="status"></p><div id="nameResults"></div><p class="photo-note">For personal photos, ask the customer to share the original file using the store’s transfer method. Upload it on this print computer, check the crop together, then remove the transferred photo and downloaded print file after the job according to store policy. This print workspace does not submit photos to an order server.</p></section>
+<section class="other-path"><h2>No pick code? Start here.</h2><p>Choose the customer’s phone, then use their photo or find a design by name.</p><label for="staffModel">Customer’s phone</label><select id="staffModel" disabled aria-describedby="phoneHint"><option value="">Loading phones…</option></select><button type="button" id="retryPhones" hidden>Retry loading phones</button><p id="phoneHint" role="status" tabindex="-1">Choose the customer’s phone first.</p><a class="btn secondary" id="ownOpen" href="#staffModel" aria-describedby="phoneHint" aria-disabled="true">Use a customer photo or name →</a><form id="nameForm"><input id="designName" type="search" placeholder="Find a design by name" aria-label="Design name"><button type="submit">Search</button></form><p id="nameStatus" role="status"></p><div id="nameResults" role="list" aria-label="Matching designs"></div><p class="photo-note">For personal photos, ask the customer to share the original file using the store’s transfer method. Upload it on this print computer, check the crop together, then remove the transferred photo and downloaded print file after the job according to store policy. This print workspace does not submit photos to an order server.</p></section>
 </div>
 <script src="../assets/colorway-catalog.js"></script>
 <script src="../assets/design-colorways.js"></script>
@@ -68,22 +69,24 @@
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   /* load lazily and forget a failed load, so pressing Find it again retries once the connection is back */
-  var ready = null, lookupSeq = 0, shownUrl = null,nameSeq=0;
-  function load() { return ready || (ready = KPI.load().catch(function (e) { ready = null; throw e; })); }
+  var ready = null, lookupSeq = 0, shownUrl = null,nameSeq=0,modelsReady=false;
+  function load() { return ready || (ready = KPI.load().then(function(data){populateModels(data);return data;}).catch(function (e) { ready = null; throw e; })); }
   function revoke(u) { if (u && u.indexOf('blob:') === 0) URL.revokeObjectURL(u); }
   load().catch(function () {});
   function fail(msg) {revoke(shownUrl);shownUrl=null;$('rimg').removeAttribute('src');$('lookupStatus').textContent=''; $('res').classList.remove('on'); $('err').textContent = msg; $('err').classList.add('on'); }
   function lookup(text) {
-    $('err').classList.remove('on');$('res').classList.remove('on');$('lookupStatus').textContent='Finding your design…';
-    var seq = ++lookupSeq;
+    $('err').textContent='';$('err').classList.remove('on');$('res').classList.remove('on');$('lookupStatus').textContent='Finding your design…';
+    var seq = ++lookupSeq, loaded=false;
     load().then(function (data) {
       if (seq !== lookupSeq) return;
+      loaded=true;
       var p = KPI.parseCode(text, data.models.map(function (x) { return x.id; }));
       if (!p) return fail('That does not look like a pick code. It should look like 17P-FLR-012.');
       var m = data.modelById(p.model);
       if (!m) return fail('We do not have a phone with the code ' + p.model + '.');
       var d = data.findByCode(p);
       if (!d) return fail('No design matches ' + p.col + ' number ' + p.n + '.');
+      if(d.compatible_models&&d.compatible_models.indexOf(m.id)===-1)return fail('This design is not available for '+m.name+'. Check the phone and pick code.');
       var options=KPI.colorways(d),selected=p.colorway?options.find(function(c){return c.code===p.colorway;}):options[0];
       if(!selected)return fail('That colorway is not available for this design. Ask the customer to choose again.');
       var now = KPI.pickCode(m, d, selected.id), typed = m.id + '-' + p.col + '-' + KPI.pad3(p.n)+(p.colorway?'-C'+p.colorway:'');
@@ -91,9 +94,9 @@
       $('rname').textContent = KPI.cleanTitle(d.title)+(options.length>1?' · '+selected.name:'');
       var notes = [];
       if (!m.active) notes.push('we do not stock this phone in store');
-      if (d.hidden) notes.push('this design is hidden from the store');
+      if (data.designs.indexOf(d)===-1) notes.push('this design is not currently offered in store; confirm availability before preparing');
       $('rmodel').textContent = m.name + (notes.length ? ' (' + notes.join(', ') + ')' : '');
-      $('lookupStatus').textContent='';$('rprice').textContent=KPI.formatPrice(data.price)+' case · glass +$19.99 bundled';$('rpreviewStatus').textContent='Loading preview…';
+      $('lookupStatus').textContent='Found: '+KPI.cleanTitle(d.title)+' · '+selected.name+' · '+m.name+'.';$('rprice').textContent=KPI.formatPrice(data.price)+' case · Add glass for $19.99';$('rpreviewStatus').textContent='Loading preview…';
       $('ropen').href = KPI.customizerUrl(m, d, selected.id);
       $('rimg').removeAttribute('src'); revoke(shownUrl); shownUrl = null;
       $('res').classList.add('on');
@@ -105,15 +108,18 @@
         revoke(shownUrl); shownUrl = u; $('rimg').src = u;$('rpreviewStatus').textContent='';
       }).catch(function () {if(seq===lookupSeq)$('rpreviewStatus').textContent='Preview could not load. Open the print workspace to retry; unavailable artwork cannot print.';});
     }).catch(function () {
-      if (seq === lookupSeq) fail('The design list or the pick code list did not load. Check the connection and press Find it again.');
+      if (seq === lookupSeq) fail(loaded?'Could not prepare this design lookup. Try another code or use design search below.':'The design list or the pick code list did not load. Check the connection and press Find it again.');
     });
   }
   $('f').addEventListener('submit', function (e) { e.preventDefault(); lookup($('q').value); });
-  function ownUrl(){var model=$('staffModel').value;$('ownOpen').href='../customizer.html?staff=1&model='+encodeURIComponent(model);$('ownOpen').setAttribute('aria-disabled',String(!model));}
-  load().then(function(data){$('staffModel').innerHTML='<option value="">Choose a phone</option>';data.activeModels.forEach(function(m){var opt=document.createElement('option');opt.value=m.name;opt.textContent=m.name;$('staffModel').appendChild(opt);});var requestedModel=new URLSearchParams(location.search).get('model');if(data.activeModels.some(function(m){return m.name===requestedModel;}))$('staffModel').value=requestedModel;ownUrl();}).catch(function(){$('staffModel').innerHTML='<option value="">Reload to load phones</option>';});
-  $('ownOpen').addEventListener('click',function(e){if(! $('staffModel').value)e.preventDefault();});
+  function ownUrl(){var model=$('staffModel').value;$('ownOpen').href=model?'../customizer.html?staff=1&model='+encodeURIComponent(model):'#staffModel';$('ownOpen').setAttribute('aria-disabled',String(!model));$('phoneHint').textContent=model?'Selected: '+model+'.':'Choose the customer’s phone first.';}
+  function populateModels(data){if(modelsReady)return;modelsReady=true;$('staffModel').innerHTML='<option value="">Choose a phone</option>';data.activeModels.forEach(function(m){var opt=document.createElement('option');opt.value=m.name;opt.textContent=m.name;$('staffModel').appendChild(opt);});var requestedModel=new URLSearchParams(location.search).get('model');var requested=data.activeModels.find(function(m){return m.id===requestedModel||m.name.toLowerCase()===(requestedModel||'').replace(/-/g,' ').toLowerCase();});if(requested)$('staffModel').value=requested.name;$('staffModel').disabled=false;$('retryPhones').hidden=true;ownUrl();}
+  function loadPhones(focus){$('retryPhones').disabled=true;$('phoneHint').textContent='Loading phones…';load().then(function(){if(focus)$('staffModel').focus();}).catch(function(){$('staffModel').innerHTML='<option value="">Phones unavailable</option>';$('staffModel').disabled=true;$('phoneHint').textContent='Could not load phones. Check the connection and retry.';$('retryPhones').hidden=false;$('retryPhones').disabled=false;if(focus)$('retryPhones').focus();}).finally(function(){$('retryPhones').disabled=false;});}
+  loadPhones(false);
+  $('retryPhones').addEventListener('click',function(){loadPhones(true);});
+  $('ownOpen').addEventListener('click',function(e){if(!$('staffModel').value){e.preventDefault();if($('staffModel').disabled){if($('retryPhones').hidden)$('phoneHint').focus();else $('retryPhones').focus();}else $('staffModel').focus();}});
   $('staffModel').addEventListener('change',function(){nameSeq++;ownUrl();$('nameResults').innerHTML='';$('nameStatus').textContent='Search again for this phone.';});
-  $('nameForm').addEventListener('submit',function(e){e.preventDefault();var seq=++nameSeq;var query=$('designName').value.trim().toLowerCase(),phone=$('staffModel').value; $('nameResults').innerHTML='';if(!query){$('nameStatus').textContent='Type part of a design name.';return;}$('nameStatus').textContent='Searching…';load().then(function(data){if(seq!==nameSeq||phone!==$('staffModel').value)return;var model=data.activeModels.find(function(m){return m.name===phone;});if(!model){$('nameStatus').textContent='Choose the customer’s phone first.';return;}var matches=data.designsFor(model).filter(function(d){return (KPI.cleanTitle(d.title)+' '+d.file).toLowerCase().indexOf(query)!==-1;});$('nameStatus').textContent=matches.length+' matching designs'+(matches.length>30?' · Showing the first 30. Narrow your search.':'.');matches.slice(0,30).forEach(function(d){var card=document.createElement('div');card.className='name-result';var title=document.createElement('strong');title.textContent=KPI.cleanTitle(d.title);var looks=document.createElement('select');looks.setAttribute('aria-label','Colorway for '+KPI.cleanTitle(d.title));KPI.colorways(d).forEach(function(c){var opt=document.createElement('option');opt.value=c.id;opt.textContent=c.name;looks.appendChild(opt);});var link=document.createElement('a');link.className='btn';link.textContent='Prepare print';function update(){link.href=KPI.customizerUrl(model,d,looks.value);}looks.addEventListener('change',update);update();card.append(title,looks,link);$('nameResults').appendChild(card);});}).catch(function(){if(seq!==nameSeq)return;$('nameStatus').textContent='Could not load designs. Check the connection and try again.';});});
+  $('nameForm').addEventListener('submit',function(e){e.preventDefault();var seq=++nameSeq;var query=$('designName').value.trim().toLowerCase(),phone=$('staffModel').value; $('nameResults').innerHTML='';if(!query){$('nameStatus').textContent='Type part of a design name.';return;}$('nameStatus').textContent='Searching…';load().then(function(data){if(seq!==nameSeq)return;if(phone!==$('staffModel').value){$('nameStatus').textContent='Search again for this phone.';return;}var model=data.activeModels.find(function(m){return m.name===phone;});if(!model){$('nameStatus').textContent='Choose the customer’s phone first.';return;}var matches=data.designsFor(model).filter(function(d){return (KPI.cleanTitle(d.title)+' '+d.file).toLowerCase().indexOf(query)!==-1;});$('nameStatus').textContent=matches.length+(matches.length===1?' matching design':' matching designs')+(matches.length>30?' · Showing the first 30. Narrow your search.':'.');matches.slice(0,30).forEach(function(d){var card=document.createElement('div');card.className='name-result';card.setAttribute('role','listitem');var title=document.createElement('strong');title.textContent=KPI.cleanTitle(d.title);var looks=document.createElement('select');looks.setAttribute('aria-label','Colorway for '+KPI.cleanTitle(d.title));KPI.colorways(d).forEach(function(c){var opt=document.createElement('option');opt.value=c.id;opt.textContent=c.name;looks.appendChild(opt);});var link=document.createElement('a');link.className='btn';link.textContent='Prepare print';function update(){link.href=KPI.customizerUrl(model,d,looks.value);link.setAttribute('aria-label','Prepare print: '+KPI.cleanTitle(d.title)+' · '+looks.options[looks.selectedIndex].textContent+' · '+model.name);}looks.addEventListener('change',update);update();var picture=document.createElement('figure');picture.className='name-thumb';var img=document.createElement('img');img.src=KPI.thumbUrl(d);img.alt='';img.loading='lazy';img.decoding='async';img.width=100;img.height=120;var caption=document.createElement('figcaption');caption.textContent='Original artwork';img.addEventListener('error',function(){img.hidden=true;caption.textContent='Preview unavailable';});picture.append(img,caption);card.append(picture,title,looks,link);$('nameResults').appendChild(card);});}).catch(function(){if(seq!==nameSeq)return;$('nameStatus').textContent='Could not load designs. Check the connection and try again.';});});
   var pre = new URLSearchParams(location.search).get('code');
   if (pre) { $('q').value = pre; lookup(pre); }
 })();
