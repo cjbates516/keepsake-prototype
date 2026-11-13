@@ -124,3 +124,9 @@ Staff downloads are canceled if the model, crop, name, colorway or photo changes
 Staff design-name results include original-artwork thumbnails, explicitly labeled so a selected colorway is not confused with the thumbnail. Phone lists recover after an initial fetch failure with a retry button or a successful pick-code lookup. Retry preserves keyboard focus; incompatible design/phone combinations are blocked, and designs no longer offered in store are marked for staff. `tools/tests/counter_recovery.cjs` verifies failure/retry, compatibility, handoff links and 320–1440 px layouts in Chromium/WebKit.
 
 The slate page also shows the exact 8×10 supplier’s product detail image with a full-size link, distinct from the stock-family digital examples. No supplier measurements are used as production masks.
+
+### Homepage storefront
+
+The homepage uses `assets/homepage.css` and `assets/homepage.js`: a responsive product hero, curated case designs, photo-slate feature, in-store steps, glass bundle and store navigation. Product renders and the AI-assisted slate composite are explicitly labeled. All case designs remain $44.99; the glass bundle total is $64.98 before tax. Photo selection in the customizer is local; this change does not deploy private QR intake.
+
+Run `node tools/tests/homepage.cjs` with the local server on port 8766, or set `KP_BASE` to the deployed base URL. It checks Chromium and WebKit at 320, 390, 760, 820 and 1440 px, images, overflow, catalog links, pricing, menu keyboard/focus behavior, and the no-JavaScript menu. Physical print validation remains pending.
