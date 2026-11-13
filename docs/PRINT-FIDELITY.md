@@ -44,7 +44,7 @@ Do not overwrite the original Drive colorway masters because print geometry chan
 
 ## November 13 bottom-edge display follow-up
 
-Corey identified a clear strip at the bottom of the gallery’s iPhone 17/18 Pro Max preview. `assets/preview-edge.js` extends only the lower display-mask boundary by the existing 18-pixel print bleed mapped into mockup coordinates. Max-alpha union preserves antialiasing. The source mask, camera opening and top boundary are unchanged. Gallery, kiosk and customizer share the helper; service worker v8 requires it for offline use.
+Corey identified a clear strip at the bottom of the gallery’s iPhone 17/18 Pro Max preview. `assets/preview-edge.js` extends only the lower display-mask boundary by the existing 18-pixel print bleed mapped into mockup coordinates. Max-alpha union preserves antialiasing. The source mask, camera opening and top boundary are unchanged. Gallery, kiosk and customizer share the helper; service worker v9 requires it and routes its requests through the offline cache.
 
 Chromium and WebKit confirm byte-identical print PNGs with the helper enabled versus disabled, no alpha changes above the lower band, and unchanged masks for other models. Sixteen targeted fidelity checks and 127 in-store/offline checks pass. Before/after images are in `../collaboration/gallery-clip-before.png` and `gallery-edge-after.png`.
 
