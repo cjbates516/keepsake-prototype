@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src 'self' blob:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<title>Photo slate · Keepsake print counter</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#faf7f2;color:#24242b;font:16px/1.5 system-ui,sans-serif}main{max-width:800px;margin:auto;padding:20px}h1{line-height:1.15}fieldset{border:1px solid #d6d0c9;border-radius:12px;background:white;margin:16px 0;padding:16px}label,legend{font-weight:650}label{display:block;margin:12px 0}input,select,button{font:inherit;max-width:100%;padding:9px;min-height:44px}input:not([type=checkbox]),select{display:block;width:100%}button{cursor:pointer;border:1px solid #292832;border-radius:8px;background:#292832;color:white}button:disabled{background:#eee;color:#555;border-color:#aaa;cursor:default}a{color:#95252b}canvas{display:block;max-width:100%;max-height:420px;width:auto;height:auto;background:#ddd;margin:12px auto}canvas[hidden]{display:none}.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+</style><script defer src="../assets/slate-products.js"></script><script defer src="../assets/print-png.js"></script><script defer src="slate.js"></script></head>
+<body><main><a href="find.html">← Print counter</a><h1>Prepare a photo slate</h1>
+<label>Customer’s selection<select id="product"><option value="">Choose a slate</option></select></label><p id="price" role="status"></p>
+<fieldset id="job" disabled><legend>Photo and crop</legend><p>Have the customer share the original with this print computer using the store’s file transfer method. Open the local file here.</p>
+<label>Photo (JPG or PNG)<input id="file" type="file" accept="image/jpeg,image/png"></label>
+<label>Orientation<select id="orientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></label>
+<p>Enter the printable width and height from the blank’s template in the chosen orientation. Check against the actual coated face before printing.</p>
+<div class="pair"><label>Width (in)<input id="width" type="number" min="0.1" max="12" step="0.01" inputmode="decimal"></label><label>Height (in)<input id="height" type="number" min="0.1" max="12" step="0.01" inputmode="decimal"></label></div>
+<label>Horizontal crop<input id="x" type="range" min="0" max="100" value="50"></label>
+<label>Vertical crop<input id="y" type="range" min="0" max="100" value="50"></label>
+<label>Zoom<input id="zoom" type="range" min="100" max="200" value="100"></label>
+<label>Name or date (optional)<input id="caption" maxlength="40" autocomplete="off"></label>
+<canvas id="preview" hidden aria-label="Photo crop for this slate" role="img"></canvas>
+<label><input id="approved" type="checkbox"> I checked the print area against the template and reviewed this crop with the customer.</label>
+<button id="save" type="button" disabled>Download print PNG</button> <button id="clear" type="button">Clear photo</button></fieldset>
+<p id="status" role="status"></p><p>Import the PNG at its stated size in the print software. After the job, clear the photo here and remove the transferred original and downloaded print file from this computer according to store policy.</p><a href="find.html">Next customer →</a></main></body></html>

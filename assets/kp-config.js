@@ -10,5 +10,6 @@ window.KP_CONFIG = {
   /* Optional: Cloudflare worker URL for AI designs (tools/kp-ai-worker.js). Empty = AI idea box hidden. */
   AI_ENDPOINT: ''
 };
+window.KP_CONFIG.bundledGlass = Math.round((window.KP_CONFIG.GLASS_PRICE - window.KP_CONFIG.GLASS_BUNDLE_DISCOUNT) * 100) / 100;
 window.KP_ORDERS_ENDPOINT = window.KP_CONFIG.ORDERS_ENDPOINT;
 window.KP_AI_ENDPOINT = window.KP_AI_ENDPOINT || window.KP_CONFIG.AI_ENDPOINT;
