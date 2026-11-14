@@ -12,6 +12,16 @@ let checks=0;function check(ok,label){if(!ok)throw Error(label);checks++;}
    await p.goto(base,{waitUntil:'networkidle'});
    await p.locator('img').evaluateAll(async es=>{es.forEach(e=>e.loading='eager');await Promise.all(es.map(e=>e.decode()))});
    check(await p.locator('h1').count()===1,'single h1');
+   if(width===390){
+     const active=p.locator('.case-slide:visible');
+     check(await p.getByRole('button',{name:'Play slideshow'}).isVisible(),'reduced motion starts paused');
+     for(const name of ['Wrong Way Duck','Liquid Prism','Cherry Dot']){
+       await p.getByRole('button',{name:'Next case'}).click();
+       check((await active.innerText()).includes(name),'next case: '+name);
+     }
+     await p.getByRole('button',{name:'Previous case'}).click();
+     check((await active.locator('a').getAttribute('href')).includes('design=kp-liquid-prism.png'),'previous wraps to matching product');
+   }
    check(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),engine+width+' overflow');
    check(await p.locator('img').evaluateAll(es=>es.every(e=>e.naturalWidth>0)),'loaded images');
    check(await p.locator('.design-label').evaluateAll(es=>es.length===4&&es.every(e=>e.textContent.includes('$44.99'))),'case prices');
@@ -36,7 +46,7 @@ let checks=0;function check(ok,label){if(!ok)throw Error(label);checks++;}
    check(!errors.length&&!posts.length,'no errors or submissions');
    await p.close();
   }
-  const p=await browser.newPage({javaScriptEnabled:false,viewport:{width:390,height:844}});await p.goto(base);await p.locator('#mobileMenu summary').click();check(await p.locator('#mobileMenu a[href="slates.html"]').isVisible(),'no JS menu');await browser.close();
+  const p=await browser.newPage({javaScriptEnabled:false,viewport:{width:390,height:844}});await p.goto(base);check(await p.locator('.case-slide:visible').count()===1&&!await p.locator('.edit-controls').isVisible(),'no JS shows one shoppable case without controls');await p.locator('#mobileMenu summary').click();check(await p.locator('#mobileMenu a[href="slates.html"]').isVisible(),'no JS menu');await browser.close();
  }
  console.log(checks+' homepage checks passed');
 })().catch(e=>{console.error(e);process.exit(1)});

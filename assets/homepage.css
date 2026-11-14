@@ -235,3 +235,24 @@ h1,h2,h3{font-family:var(--display)}
   .phone-finder { margin: 18px 16px 0; padding: 18px; }
   .phone-finder form { margin-top: 14px; }
 }
+
+/* The Case Edit — one photographed blank, styled as three shop windows. */
+.case-edit{width:100%;min-width:0;border:1px solid #272426;border-radius:5px;overflow:hidden;background:var(--paper)}
+.case-slide[hidden],.edit-controls[hidden]{display:none}
+.case-story{isolation:isolate;display:block;position:relative;overflow:hidden;background:var(--wash);color:var(--accent);height:clamp(370px,35vw,550px);touch-action:pan-y}
+.case-story:focus-visible{outline-offset:-5px}
+.case-story::before{content:"";position:absolute;inset:18% -16% -34% 40%;border-radius:50%;border:1px solid currentColor;opacity:.22;pointer-events:none}
+.edit-kicker,.edit-shop{position:absolute;left:6%;z-index:2}
+.edit-kicker{top:7%;font-size:11px;letter-spacing:.16em;font-weight:900}
+.edit-head{position:absolute;top:26%;left:6%;max-width:47%;font:800 clamp(44px,5.2vw,90px)/.92 var(--display);letter-spacing:-.07em;text-wrap:balance}
+.edit-phone{height:82%;width:auto;max-width:46%;position:absolute;right:8%;top:8%;transform:rotate(8deg);filter:drop-shadow(6px 12px 8px #23192938)}
+.edit-shop{bottom:8%;display:inline-flex;gap:8px;align-items:center;min-height:44px;max-width:50%;font-size:14px;font-weight:900;text-decoration:underline;text-underline-offset:5px}
+.case-story:hover .edit-shop{text-decoration-thickness:2px}
+.edit-footer{display:flex;align-items:center;justify-content:space-between;min-height:46px;padding-left:5%;border-top:1px solid #292529}
+.edit-footer small{font-size:11px;font-weight:800;color:#474449}
+.edit-controls{display:flex}.edit-controls button{border:0;border-left:1px solid #d1c9c6;background:transparent;color:var(--ink);width:46px;height:46px;cursor:pointer;font-weight:800;font-size:20px}
+.edit-controls button:hover{background:#eee9e4}.edit-controls button:focus-visible{outline:3px solid #087395;outline-offset:-4px}
+.edit-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+@media(max-width:760px){.case-story{height:clamp(240px,62vw,388px)}.edit-head{font-size:clamp(38px,9vw,65px)}.edit-shop{font-size:13px}}
+@media(max-width:600px){.case-edit{grid-row:1}.edit-footer small{font-size:10px}.edit-kicker{font-size:10px}}
+@media(prefers-reduced-motion:no-preference){.case-slide:not([hidden]) .edit-phone{animation:edit-arrive .35s ease-out}@keyframes edit-arrive{from{transform:translateX(10px) rotate(11deg)}to{transform:rotate(8deg)}}}
