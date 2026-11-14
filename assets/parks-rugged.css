@@ -19,7 +19,12 @@
 .look span {margin-top: 11px; display: block; font-size: clamp(12px, 1.3vw, 16px); font-weight: 800;}
 .look:hover span, .look:focus-visible span {text-decoration: underline;}
 .look i {width: .8em; height: .8em; display: inline-block; border-radius: 50%; border: 1px solid #0003; margin-right: .35em;}
+#canyon .look {background: #f1dfd3;}
+#rocky .look {background: #e5e8d9;}
+#smokies .look {background: #e3e5ef;}
 @media (max-width: 620px) {
+  .park-nav {column-gap: 18px; row-gap: 0;}
   .looks {grid-template-columns: repeat(2, minmax(0, 1fr));}
   .look img {max-height: 198px;}
+  .look:last-child:nth-child(odd) {grid-column: 1 / -1; width: calc((100% - clamp(7px, 1.6vw, 20px)) / 2); justify-self: center;}
 }

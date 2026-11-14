@@ -1,5 +1,41 @@
 [
 {
+"file": "kp-great-smoky-mountains-newfound-gap.png",
+"title": "Great Smoky Mountains · Newfound Gap",
+"category": "National Parks",
+"hash": "aad41e15bf69",
+"color": [
+"Blue",
+"Pink",
+"Green"
+],
+"active": true
+},
+{
+"file": "kp-rocky-mountain-moraine-elk.png",
+"title": "Rocky Mountain · Moraine Park Elk",
+"category": "National Parks",
+"hash": "554296b74e13",
+"color": [
+"Yellow",
+"Green",
+"Blue"
+],
+"active": true
+},
+{
+"file": "kp-grand-canyon-mather-point.png",
+"title": "Grand Canyon · Mather Point",
+"category": "National Parks",
+"hash": "337f5d9167ef",
+"color": [
+"Orange",
+"Purple",
+"Green"
+],
+"active": true
+},
+{
 "file": "kp-grand-teton-reflection.png",
 "title": "Grand Teton · Schwabacher Reflection",
 "category": "National Parks",
