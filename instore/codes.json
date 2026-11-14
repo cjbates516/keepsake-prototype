@@ -23,7 +23,7 @@
 "MAP": 108,
 "NE1": 1,
 "NEO": 6,
-"NPK": 8,
+"NPK": 11,
 "OUT": 6,
 "PAI": 1,
 "POP": 12,
@@ -2016,9 +2016,17 @@
 "c": "HIM",
 "n": 9
 },
+"kp-grand-canyon-mather-point.png": {
+"c": "NPK",
+"n": 9
+},
 "kp-grand-teton-reflection.png": {
 "c": "NPK",
 "n": 6
+},
+"kp-great-smoky-mountains-newfound-gap.png": {
+"c": "NPK",
+"n": 10
 },
 "kp-half-dome-river.png": {
 "c": "NPK",
@@ -2135,6 +2143,10 @@
 "kp-plaid-forest.jpg": {
 "c": "HIM",
 "n": 7
+},
+"kp-rocky-mountain-moraine-elk.png": {
+"c": "NPK",
+"n": 11
 },
 "kp-solid-army.jpg": {
 "c": "HIM",
