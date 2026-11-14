@@ -1,0 +1,14 @@
+.ks-menu-toggle{display:none}
+#ks-menu-panel{box-sizing:border-box;margin:0 auto 0 0;position:fixed;inset:0 auto 0 0;width:min(91vw,400px);max-width:none;height:100%;height:100dvh;max-height:none;overflow:auto;overscroll-behavior:contain;padding:0 20px max(20px,env(safe-area-inset-bottom));border:0;background:#fffaf4;color:#242223;font:500 16px/1.35 system-ui,sans-serif}
+#ks-menu-panel::backdrop{background:#1e1d24a8}
+.ks-menu-open{overflow:hidden}
+.ks-menu-top{display:flex;align-items:center;justify-content:space-between;height:66px;border-bottom:1px solid #c9bfb4;position:sticky;top:0;background:#fffaf4;z-index:1}
+.ks-menu-top b{letter-spacing:.02em;font-weight:950}.ks-menu-top button,.ks-menu-toggle{background:transparent;color:inherit;border:0;cursor:pointer;width:44px;height:44px}.ks-menu-top button{font-size:34px}
+#ks-menu-panel nav{display:block}#ks-menu-panel nav a{display:flex;align-items:center;gap:13px;border-bottom:1px solid #d9d0c6;padding:12px 0;color:inherit;text-decoration:none}#ks-menu-panel img{width:50px;height:50px;border-radius:50%;object-fit:contain;background:#e7e1d7}#ks-menu-panel strong,#ks-menu-panel small{display:block}#ks-menu-panel small{font-size:13px;color:#514942}#ks-menu-panel i{margin-left:auto;font:22px system-ui}.ks-menu-extra{display:flex;flex-wrap:wrap;gap:8px 15px;padding:18px 0}.ks-menu-extra a{color:inherit;padding:8px 0}
+@media(max-width:900px){
+ .ks-drawer-header{display:flex!important;align-items:center;justify-content:flex-start!important;gap:10px!important}.ks-drawer-header>.ks-menu-toggle{display:inline-grid;place-items:center;flex:none;order:-2}.ks-drawer-header>.mobile-menu,.ks-drawer-header>.desktop-nav,.ks-drawer-header>.header-cta,.ks-drawer-header>.nav-left,.ks-drawer-header>.nav-right,.slate-header.ks-drawer-header>nav{display:none!important}
+ body.kp-library #grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.park-lookbook .looks,.lineup,.ks-mobile-two{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+
+a[hidden]{display:none!important}
+@media(max-width:900px){.parks-prints,.design-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
