@@ -39,6 +39,24 @@
     schedule();
   }
   function stop() { playing = false; schedule(); }
+  for (const picker of edit.querySelectorAll('.scene-picks')) {
+    const slide = picker.closest('.case-slide');
+    const link = slide.querySelector('.case-story');
+    picker.addEventListener('click', event => {
+      const choice = event.target.closest('button[data-variant]');
+      if (!choice) return;
+      stop();
+      const url = new URL(link.href);
+      url.searchParams.set('colorway', choice.dataset.variant);
+      link.href = url.href;
+      slide.querySelector('.scene-art').setAttribute('href', 'assets/home/case-edit/' + choice.dataset.art);
+      slide.querySelector('.scene-name').textContent = choice.textContent;
+      for (const button of picker.querySelectorAll('button')) {
+        button.setAttribute('aria-pressed', String(button === choice));
+      }
+    });
+    picker.hidden = false;
+  }
   controls.hidden = false;
   controls.addEventListener('click', e => {
     const key=e.target.closest('button')?.dataset.edit;

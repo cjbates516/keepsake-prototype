@@ -1,5 +1,44 @@
 [
 {
+"file": "kp-arches-sandstone.png",
+"title": "Arches · Sandstone Window",
+"category": "National Parks",
+"hash": "5fa39b3b60e5",
+"color": [
+"Green",
+"Blue",
+"Orange",
+"Purple"
+],
+"active": true
+},
+{
+"file": "kp-yosemite-trail-patches.png",
+"title": "Yosemite Trail Patches",
+"category": "National Parks",
+"hash": "43bebab88fa6",
+"color": [
+"Green",
+"Blue",
+"Orange",
+"Purple"
+],
+"active": true
+},
+{
+"file": "kp-half-dome-river.png",
+"title": "Half Dome · Merced River",
+"category": "National Parks",
+"hash": "61a707f7f1b1",
+"color": [
+"Green",
+"Blue",
+"Orange",
+"Purple"
+],
+"active": true
+},
+{
 "file": "kp-cherry-dot.png",
 "title": "Cherry Dot",
 "category": "Fruits",
@@ -549,8 +588,8 @@
 },
 {
 "file": "modern-yosemite-national-park-logo-for-mug.jpg",
-"title": "Modern Yosemite National Park Logo for Mug",
-"category": "Abstract",
+"title": "Yosemite Valley Badge",
+"category": "National Parks",
 "hash": "8e0c8b48c528",
 "color": [
 "White"
@@ -1228,8 +1267,8 @@
 },
 {
 "file": "vintage-glacier-national-park-bear-graphic-t-shirt.jpg",
-"title": "Vintage Glacier National Park Bear Graphic T-Shirt",
-"category": "Abstract",
+"title": "Glacier Bear",
+"category": "National Parks",
 "hash": "164a2ad5b51e",
 "color": [
 "Blue"
