@@ -26,7 +26,7 @@ input::placeholder{color:#626269;opacity:1}
   .hint{color:var(--muted);margin:0}
   .result{display:none;grid-template-columns:220px 1fr;gap:28px;align-items:center;margin-top:28px;padding:24px;background:var(--card);border:2px solid var(--line);border-radius:22px}
   .result.on{display:grid}
-  .result img{width:100%;height:auto}
+  .result img{width:100%;height:auto;aspect-ratio:1/2;object-fit:contain}.result #rpreviewStatus{min-height:1.45em}
   .result h2{font-size:28px;margin:0 0 4px;color:var(--ink-strong);line-height:1.15}
   .result p{margin:2px 0 0;font-size:20px}
   .result .btn{margin-top:18px}
@@ -44,27 +44,34 @@ input::placeholder{color:#626269;opacity:1}
 <main class="wrap">
   <div class="brand"><img src="../assets/favicon.svg" alt=""><span>Keepsake Printing Co</span></div>
   <p class="eyebrow">THE PRINT COUNTER</p><h1>From picked to printed.</h1>
-  <p class="hint" id="pickHint">Enter the customer’s pick code to open the exact phone, design and colorway in the print workspace.</p>
+  <p class="hint" id="pickHint">Enter the case or photo slate pick code from the customer’s screen.</p>
   <form id="f" autocomplete="off">
     <input id="q" name="q" placeholder="17P-FLR-012" aria-label="Pick code" aria-describedby="pickHint" spellcheck="false" autocapitalize="characters">
     <button type="submit">Find it</button>
   </form>
   <p id="lookupStatus" role="status"></p><p class="err" id="err" role="alert"></p>
+  <section class="other-path" id="slateResult" hidden aria-live="polite">
+    <h2 id="slateProduct"></h2><p id="slatePrice"></p>
+    <a class="btn" id="slateOpen">Prepare photo slate →</a>
+  </section>
   <div class="result" id="res">
     <img id="rimg" alt="">
     <div>
       <p id="rcode" style="font-weight:800;color:var(--red);letter-spacing:.05em"></p>
       <h2 id="rname"></h2>
       <p id="rmodel"></p><p id="rprice"></p><p id="rpreviewStatus" role="status"></p>
+      <p>For a code without -G, confirm whether to add glass. Check the customer’s screen for the case finish, crop, personalization and any other extras.</p>
       <a class="btn" id="ropen" href="#">Prepare print →</a>
     </div>
   </div>
-<section class="other-path"><h2>No pick code? Start here.</h2><p>Choose the customer’s phone, then use their photo or find a design by name.</p><label for="staffModel">Customer’s phone</label><select id="staffModel" disabled aria-describedby="phoneHint"><option value="">Loading phones…</option></select><button type="button" id="retryPhones" hidden>Retry loading phones</button><p id="phoneHint" role="status" tabindex="-1">Choose the customer’s phone first.</p><a class="btn secondary" id="ownOpen" href="#staffModel" aria-describedby="phoneHint" aria-disabled="true">Use a customer photo or name →</a><form id="nameForm"><input id="designName" type="search" placeholder="Find a design by name" aria-label="Design name"><button type="submit">Search</button></form><p id="nameStatus" role="status"></p><div id="nameResults" role="list" aria-label="Matching designs"></div><p class="photo-note">For personal photos, ask the customer to share the original file using the store’s transfer method. Upload it on this print computer, check the crop together, then remove the transferred photo and downloaded print file after the job according to store policy. This print workspace does not submit photos to an order server.</p></section>
+<section class="other-path"><h2>No pick code? Start here.</h2><p>Choose the customer’s phone, then use their photo or find a design by name.</p><label for="staffModel">Customer’s phone</label><select id="staffModel" disabled aria-describedby="phoneHint"><option value="">Loading phones…</option></select><button type="button" id="retryPhones" hidden>Retry loading phones</button><p id="phoneHint" role="status" tabindex="-1">Choose the customer’s phone first.</p><a class="btn secondary" id="ownOpen" href="#staffModel" aria-describedby="phoneHint" aria-disabled="true">Use a customer photo or name →</a><form id="nameForm"><input id="designName" type="search" placeholder="Find a design by name" aria-label="Design name"><button type="submit">Search</button></form><p id="nameStatus" role="status"></p><div id="nameResults" role="list" aria-label="Matching designs"></div><p class="photo-note">For personal photos, ask the customer to share the original file using the store’s transfer method. Upload it on this print computer, check the crop together, then remove the transferred photo and downloaded print file after the job according to store policy. This print workspace does not submit photos to an order server.</p><a class="btn secondary" href="slate.html">Prepare a photo slate →</a></section>
 </main>
 <script src="../assets/colorway-catalog.js"></script>
 <script src="../assets/design-colorways.js"></script>
 <script src="../assets/print-layouts.js"></script>
 <script src="../assets/preview-edge.js"></script>
+<script src="../assets/kp-config.js"></script>
+<script src="../assets/slate-products.js"></script>
 <script src="instore-lib.js"></script>
 <script>
 (function () {
@@ -78,11 +85,20 @@ input::placeholder{color:#626269;opacity:1}
   function lookup(text) {
     $('err').textContent='';$('err').classList.remove('on');$('res').classList.remove('on');$('lookupStatus').textContent='Finding your design…';
     var seq = ++lookupSeq, loaded=false;
+    var slate=window.KPSlates && KPSlates.byCode(text);
+    $('slateResult').hidden=!slate;
+    if(slate){
+      revoke(shownUrl);shownUrl=null;$('rimg').removeAttribute('src');
+      $('slateProduct').textContent=slate.label;
+      $('slatePrice').textContent='$'+slate.price.toFixed(2)+' before applicable tax';
+      $('slateOpen').href='slate.html?code='+encodeURIComponent(slate.code);
+      $('lookupStatus').textContent='Found photo slate.';return;
+    }
     load().then(function (data) {
       if (seq !== lookupSeq) return;
       loaded=true;
       var p = KPI.parseCode(text, data.models.map(function (x) { return x.id; }));
-      if (!p) return fail('That does not look like a pick code. It should look like 17P-FLR-012.');
+      if (!p) return fail('Check the pick code on the customer’s screen, for example 17P-FLR-012 or SL-46.');
       var m = data.modelById(p.model);
       if (!m) return fail('We do not have a phone with the code ' + p.model + '.');
       var d = data.findByCode(p);
@@ -90,15 +106,15 @@ input::placeholder{color:#626269;opacity:1}
       if(d.compatible_models&&d.compatible_models.indexOf(m.id)===-1)return fail('This design is not available for '+m.name+'. Check the phone and pick code.');
       var options=KPI.colorways(d),selected=p.colorway?options.find(function(c){return c.code===p.colorway;}):options[0];
       if(!selected)return fail('That colorway is not available for this design. Ask the customer to choose again.');
-      var now = KPI.pickCode(m, d, selected.id), typed = m.id + '-' + p.col + '-' + KPI.pad3(p.n)+(p.colorway?'-C'+p.colorway:'');
+      var now = KPI.pickCode(m, d, selected.id, p.glass), typed = m.id + '-' + p.col + '-' + KPI.pad3(p.n)+(p.colorway?'-C'+p.colorway:'')+(p.glass?'-G':'');
       $('rcode').textContent = now && now !== typed ? typed + ' (now ' + now + ')' : typed;
       $('rname').textContent = KPI.cleanTitle(d.title)+(options.length>1?' · '+selected.name:'');
       var notes = [];
       if (!m.active) notes.push('we do not stock this phone in store');
       if (data.designs.indexOf(d)===-1) notes.push('this design is not currently offered in store; confirm availability before preparing');
       $('rmodel').textContent = m.name + (notes.length ? ' (' + notes.join(', ') + ')' : '');
-      $('lookupStatus').textContent='Found: '+KPI.cleanTitle(d.title)+' · '+selected.name+' · '+m.name+'.';$('rprice').textContent=KPI.formatPrice(data.price)+' case · Add glass for $19.99';$('rpreviewStatus').textContent='Loading preview…';
-      $('ropen').href = KPI.customizerUrl(m, d, selected.id);
+      $('lookupStatus').textContent='Found: '+KPI.cleanTitle(d.title)+' · '+selected.name+' · '+m.name+'.';$('rprice').textContent=(p.glass?'Case + tempered glass · ':'Case · ')+KPI.formatPrice(data.price+(p.glass?KP_CONFIG.bundledGlass:0))+' before tax';$('rpreviewStatus').textContent='Loading preview…';
+      $('ropen').href = KPI.customizerUrl(m, d, selected.id, p.glass);
       $('rimg').removeAttribute('src'); revoke(shownUrl); shownUrl = null;
       $('res').classList.add('on');
       Promise.all([KPI.prepModel(m, 440), KPI.loadImage(KPI.fullUrl(d), { cache: false, timeout: 12000 })]).then(function (r) {
@@ -121,6 +137,7 @@ input::placeholder{color:#626269;opacity:1}
   $('ownOpen').addEventListener('click',function(e){if(!$('staffModel').value){e.preventDefault();if($('staffModel').disabled){if($('retryPhones').hidden)$('phoneHint').focus();else $('retryPhones').focus();}else $('staffModel').focus();}});
   $('staffModel').addEventListener('change',function(){nameSeq++;ownUrl();$('nameResults').innerHTML='';$('nameStatus').textContent='Search again for this phone.';});
   $('nameForm').addEventListener('submit',function(e){e.preventDefault();var seq=++nameSeq;var query=$('designName').value.trim().toLowerCase(),phone=$('staffModel').value; $('nameResults').innerHTML='';if(!query){$('nameStatus').textContent='Type part of a design name.';return;}$('nameStatus').textContent='Searching…';load().then(function(data){if(seq!==nameSeq)return;if(phone!==$('staffModel').value){$('nameStatus').textContent='Search again for this phone.';return;}var model=data.activeModels.find(function(m){return m.name===phone;});if(!model){$('nameStatus').textContent='Choose the customer’s phone first.';return;}var matches=data.designsFor(model).filter(function(d){return (KPI.cleanTitle(d.title)+' '+d.file).toLowerCase().indexOf(query)!==-1;});$('nameStatus').textContent=matches.length+(matches.length===1?' matching design':' matching designs')+(matches.length>30?' · Showing the first 30. Narrow your search.':'.');matches.slice(0,30).forEach(function(d){var card=document.createElement('div');card.className='name-result';card.setAttribute('role','listitem');var title=document.createElement('strong');title.textContent=KPI.cleanTitle(d.title);var looks=document.createElement('select');looks.setAttribute('aria-label','Colorway for '+KPI.cleanTitle(d.title));KPI.colorways(d).forEach(function(c){var opt=document.createElement('option');opt.value=c.id;opt.textContent=c.name;looks.appendChild(opt);});var link=document.createElement('a');link.className='btn';link.textContent='Prepare print';function update(){link.href=KPI.customizerUrl(model,d,looks.value);link.setAttribute('aria-label','Prepare print: '+KPI.cleanTitle(d.title)+' · '+looks.options[looks.selectedIndex].textContent+' · '+model.name);}looks.addEventListener('change',update);update();var picture=document.createElement('figure');picture.className='name-thumb';var img=document.createElement('img');img.src=KPI.thumbUrl(d);img.alt='';img.loading='lazy';img.decoding='async';img.width=100;img.height=120;var caption=document.createElement('figcaption');caption.textContent='Original artwork';img.addEventListener('error',function(){img.hidden=true;caption.textContent='Preview unavailable';});picture.append(img,caption);card.append(picture,title,looks,link);$('nameResults').appendChild(card);});}).catch(function(){if(seq!==nameSeq)return;$('nameStatus').textContent='Could not load designs. Check the connection and try again.';});});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});
   var pre = new URLSearchParams(location.search).get('code');
   if (pre) { $('q').value = pre; lookup(pre); }
 })();

@@ -348,7 +348,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     <canvas id="reviewPreview" width="300" height="360" aria-label="Your case preview" role="img"></canvas>
     <div id="reviewCode" role="status"></div>
     <dl id="reviewDetails"></dl>
-    <p>Show the team this preview to confirm your selections and place your order in store.</p>
+    <p>Keep this screen open for the team to check the preview, any personalization, and the total before you pay.</p>
     <form method="dialog"><button autofocus>Back to my design</button></form>
   </dialog>
 
@@ -404,7 +404,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     KEEP5:{name:'Referral reward — $5 off',flat:5}
   };
   var addonDefs = [
-    {key:'screen',name:'Tempered glass screen protector',sub:'$29.99 separately · save $10 with your case',price:Math.round((((window.KP_CONFIG&&KP_CONFIG.GLASS_PRICE)||29.99)-((window.KP_CONFIG&&KP_CONFIG.GLASS_BUNDLE_DISCOUNT)||10))*100)/100},
+    {key:'screen',name:'Tempered glass screen protector',sub:'$29.99 separately · save $10 with your case',price:(window.KP_CONFIG ? KP_CONFIG.bundledGlass : 19.99)},
     {key:'lens',name:'Camera lens protector',sub:'Sapphire-hard rings for every lens',price:9.99}
   ];
   var BASE = (window.KP_CONFIG && KP_CONFIG.PRICE) || 44.99;
@@ -437,7 +437,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     isLibraryDesign:false,
     text:'', textFont:0, textColor:'#FFFFFF', textSize:220, textPos:62, textVertical:false,
     px:0, py:0, scale:1, rot:0,
-    addons:{screen:false,lens:false}, promo:null, reserved:false, fitMode:'fill',
+    addons:{screen:new URLSearchParams(location.search).get('staff')==='1' && new URLSearchParams(location.search).get('glass')==='1',lens:false}, promo:null, reserved:false, fitMode:'fill',
     layout:null, photos:[], slotTarget:null, builder:false, designPath:null
   };
   (function(){ var mm = /[?&]model=([^&]+)/.exec(location.search);var staffMode=new URLSearchParams(location.search).get('staff')==='1';if(staffMode){state.handoffErrorType='model';state.handoffError='Choose a valid phone from the print counter before printing.';}if (!mm) return;
@@ -1405,7 +1405,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     $('addons').innerHTML = addonDefs.map(function(a){
       var on = state.addons[a.key];
       var pop = a.key==='screen';
-      return '<button class="h-addon adn" data-k="'+a.key+'" style="position:relative;display:flex;align-items:center;gap:12px;background:'+(on?'#FBFAF8':'#FFFFFF')+';border:2px solid '+(on?'#2D2D3B':'#E4E3E3')+';border-radius:14px;padding:14px;cursor:pointer;text-align:left;transition:border-color .2s">'
+      return '<button class="h-addon adn" data-k="'+a.key+'" aria-pressed="'+on+'" style="position:relative;display:flex;align-items:center;gap:12px;background:'+(on?'#FBFAF8':'#FFFFFF')+';border:2px solid '+(on?'#2D2D3B':'#E4E3E3')+';border-radius:14px;padding:14px;cursor:pointer;text-align:left;transition:border-color .2s">'
         + (pop?'<span style="position:absolute;top:-9px;left:14px;background:#DC282E;color:#FFF;font-size:9px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px">Most popular</span>':'')
         + '<span style="width:42px;height:25px;border-radius:999px;background:'+(on?'#1E8E3E':'#D8D7D7')+';position:relative;flex-shrink:0;transition:background .2s"><span style="position:absolute;top:2.5px;left:'+(on?'20px':'2.5px')+';width:20px;height:20px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 4px rgba(0,0,0,.25);transition:left .2s"></span></span>'
         + '<span style="flex:1;font-size:13.5px;font-weight:800;color:#17171F">'+a.name+'<span style="display:block;font-size:12px;font-weight:600;color:#6C6C72;margin-top:1px">'+a.sub+'</span></span>'
@@ -1534,9 +1534,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(version!==reviewVersion||!dialog.open)return;
       var m=data.activeModels.find(function(item){return item.name===model;});
       var d=m&&data.designsFor(m).find(function(item){return item.file===file;});
-      var key=d&&KPI.pickCode(m,d,variant);
+      var key=d&&KPI.pickCode(m,d,variant,state.addons.screen);
       if(d)title.textContent=KPI.cleanTitle(d.title);
-      code.textContent=key?'Design code · '+key:'Ask the team to match this preview.';
+      code.textContent=key?'Pick code · '+key:'Ask the team to match this preview.';
     }).catch(function(){if(version===reviewVersion&&dialog.open)code.textContent='Design code unavailable. Show the team this preview.';});
   }
   function kpOrderPanel(){
@@ -2026,7 +2026,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   $('brandSel').value=state.brand;
   fillModels(); renderSwatches(); renderAddons(); updateFitNote(); updateStage(); updateSummary();
   /* staff and QA hook (Fit Lab, print checks): read-only access to the live state */
-  window.__kp={ get state(){ return state; }, printSpec:function(){return TPL?{w:(TPL.pxW||Math.round(TPL.w*300/72))+36,h:(TPL.pxH||Math.round(TPL.h*300/72))+36}:null;}, printIssue:kpPrintIssue, dpi:kpEffectiveDpi, preset:kpPreset, buildPrint:kpBuildPrint, render:render };
+  window.__kp={orderPricing:orderPricing, get state(){ return state; }, printSpec:function(){return TPL?{w:(TPL.pxW||Math.round(TPL.w*300/72))+36,h:(TPL.pxH||Math.round(TPL.h*300/72))+36}:null;}, printIssue:kpPrintIssue, dpi:kpEffectiveDpi, preset:kpPreset, buildPrint:kpBuildPrint, render:render };
 })();
 </script>
 <script>

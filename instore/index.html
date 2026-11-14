@@ -106,7 +106,7 @@
   .codecard{display:none;margin-top:4px;padding:24px;border-radius:22px;background:var(--card);border:2px solid var(--red)}
   .codecard.on{display:block;animation:in .2s ease-out both}
   .codecard .codelabel{margin:0;font-size:18px;font-weight:700;color:var(--red);letter-spacing:.04em}
-  .codecard .code{margin:4px 0 10px;font-size:clamp(44px,5.6vw,60px);font-weight:800;color:var(--ink-strong);letter-spacing:.04em;font-variant-numeric:tabular-nums;line-height:1.05}
+  .codecard .code{overflow-wrap:anywhere;margin:4px 0 10px;font-size:clamp(44px,5.6vw,60px);font-weight:800;color:var(--ink-strong);letter-spacing:.04em;font-variant-numeric:tabular-nums;line-height:1.05}
   .codecard p{margin:2px 0;font-size:20px}
   .codecard .hint{margin-top:12px;color:var(--muted);font-size:18px}
   .after{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
@@ -129,7 +129,7 @@
   .phone-help{font-size:18px;margin:0 0 24px}.phone-help summary{cursor:pointer;min-height:48px;display:flex;align-items:center;font-weight:700}.phone-help p{max-width:760px;margin:0 0 16px}
   .phone{transition:border-color .15s,box-shadow .15s}.phone:hover,.tile:hover{border-color:#c8a6aa;box-shadow:0 6px 18px #29293609}
   .search-row{display:flex;align-items:end;gap:12px;margin-top:14px}.search-box{flex:1;min-width:0;font-size:18px;font-weight:700}.search-box span{display:block;margin-bottom:6px}.search-box input{width:100%;box-sizing:border-box;min-height:52px;border:2px solid var(--line);background:white;border-radius:16px;padding:10px 16px;color:var(--ink-strong);font:inherit;-webkit-user-select:text;user-select:text}.search-box input:focus{outline:2px solid var(--red);outline-offset:2px}
-  .empty-results{padding:24px;background:white;border-radius:18px;font-size:20px}.bundle-note{font-size:18px;margin:-10px 0 20px;line-height:1.5;color:var(--muted)}
+  .empty-results{padding:24px;background:white;border-radius:18px;font-size:20px}.bundle-note{display:flex;align-items:center;gap:10px;min-height:48px;cursor:pointer;font-size:18px;margin:-10px 0 20px;line-height:1.5;color:var(--muted)}
   body.offline .s2top{top:var(--notice-height,80px)}#connectionNotice{position:sticky;top:0;z-index:15;font-size:18px;padding:16px 24px;background:#fff0be;color:#3e3421;text-align:center}#idleNotice{position:fixed;z-index:30;bottom:16px;left:50%;transform:translateX(-50%);width:min(640px,calc(100% - 32px));box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#252633;color:white;border-radius:20px;padding:16px 20px;font-size:18px;box-shadow:0 12px 30px #0003}#idleNotice[hidden],#connectionNotice[hidden]{display:none}#idleNotice .ghost{flex-shrink:0}
   @media(max-width:600px){.search-row{flex-wrap:wrap}.search-box{flex-basis:100%}.store-promise{padding:20px;gap:8px}#idleNotice{flex-wrap:wrap}.brand{font-size:18px}.steps{gap:0}}
 
@@ -185,14 +185,14 @@
         <div>
           <h1 class="dname" id="dname"></h1>
           <p class="dmeta" id="dmeta"></p>
-          <p class="price" id="price"></p><p class="bundle-note">Add tempered glass for $19.99 with your case. Save $10 off the $29.99 glass price. Ask your team member.</p>
+          <p class="price" id="price"></p><label class="bundle-note"><input id="glass" type="checkbox"> <span id="glassLabel">Add tempered glass</span></label>
           <div id="colorwayPicker" hidden style="margin:16px 0"><p style="font-size:18px;font-weight:800">Choose your colorway</p><div id="colorwayButtons" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"></div></div>
           <button class="cta" type="button" id="showBtn">Show a team member</button>
           <div class="codecard" id="codecard" aria-live="polite">
             <p class="codelabel" id="codelabel">YOUR PICK CODE</p>
             <p class="code" id="code"></p>
             <p id="cname"></p>
-            <p id="cmodel"></p>
+            <p id="cmodel"></p><p id="cprice"></p>
             <p class="hint" id="hint">A team member will take it from here.</p>
           </div>
           <div class="after">
@@ -226,6 +226,7 @@
 <script src="../assets/design-colorways.js"></script>
 <script src="../assets/print-layouts.js"></script>
 <script src="../assets/preview-edge.js"></script>
+<script src="../assets/kp-config.js"></script>
 <script src="instore-lib.js"></script>
 <script>
 (function () {
@@ -473,13 +474,7 @@
     var title = cleanTitle(d.title);
     $('dname').textContent = title;
     $('dmeta').textContent = 'For your '+m.name+(options.length>1?' · '+selected.name:'');
-    $('price').textContent = KPI.formatPrice(data.price);
-    var code = KPI.pickCode(m, d, state.colorway);
-    /* no registered code (new design or code list missing): show no code rather than a guessed one */
-    $('code').textContent = code || '';
-    $('code').hidden = !code;
-    $('codelabel').textContent = code ? 'YOUR PICK CODE' : 'SHOW THIS TO A TEAM MEMBER';
-    $('hint').textContent = code ? 'A team member will take it from here.' : 'A team member will find it by its name.';
+    updatePurchase();
     $('cname').textContent = title+(options.length>1?' · '+selected.name:'');
     $('cmodel').textContent = m.name;
     $('codecard').classList.remove('on');
@@ -499,12 +494,26 @@
       else revoke(u);
     }).catch(function () {if(seq===previewSeq){bigImagePromise=null;revoke(bigUrl);bigUrl=null;if(blankUrl[m.id])pv.src=blankUrl[m.id];else pv.removeAttribute('src');$('dmeta').textContent=look==='original'?'This design could not load. Reconnect and try again, or ask a team member.':'This colorway could not load. Choose Original, or reconnect and try again.';$('showBtn').disabled=true;}});
   }
+  function updatePurchase() {
+    var glass=$('glass').checked;
+    $('glassLabel').textContent='Add tempered glass for '+KPI.formatPrice(KP_CONFIG.bundledGlass)+' · save '+KPI.formatPrice(KP_CONFIG.GLASS_BUNDLE_DISCOUNT);
+    $('price').textContent = KPI.formatPrice(data.price+(glass?KP_CONFIG.bundledGlass:0));
+    $('cprice').textContent = (glass?'Case + tempered glass · ':'Case only · ')+$('price').textContent+' before tax';
+    var code = KPI.pickCode(state.model, state.design, state.colorway, glass);
+    /* no registered code (new design or code list missing): show no code rather than a guessed one */
+    $('code').textContent = code || '';
+    $('code').hidden = !code;
+    $('codelabel').textContent = code ? 'YOUR PICK CODE' : 'SHOW THIS TO A TEAM MEMBER';
+    $('hint').textContent = code ? 'A team member will take it from here.' : 'A team member will find it by its name.';
+  }
+  $('glass').addEventListener('change',updatePurchase);
   function revealCode() {
     if($('showBtn').disabled)return;
     $('codecard').classList.add('on');
     $('showBtn').style.display = 'none';
+    $('codecard').tabIndex=-1;$('codecard').focus();
     var after = document.querySelector('#s3 .after');
-    if (after && after.scrollIntoView) setTimeout(function () { after.scrollIntoView({ block: 'nearest' }); }, 60);
+    if(after)after.scrollIntoView({block:'nearest'});
   }
 
   /* ---------- sheet, reset, idle ---------- */
@@ -519,7 +528,7 @@
   window.addEventListener('resize',connection);window.addEventListener('online',connection);window.addEventListener('offline',connection);connection();
   $('keepBrowsing').addEventListener('click',function(){touch();});
   function reset() {
-    closeSheet();bigImageFile=bigImagePromise=null;rememberedLooks={};
+    $('glass').checked=false;closeSheet();bigImageFile=bigImagePromise=null;rememberedLooks={};
     previewSeq++;
     $('pv').removeAttribute('src'); revoke(bigUrl); bigUrl = null;
     state.model = null; state.design = null;state.colorway='original'; state.filter = 'all';state.query='';$('designSearch').value='';clearTimeout(searchTimer);$('idleNotice').hidden=true;

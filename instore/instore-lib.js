@@ -110,14 +110,14 @@
 
   /* null when the design has no registered number yet: callers must then show no code */
   KPI.colorways = function(d){return window.KPDesignColorways?KPDesignColorways.choicesFor({__kpDesignFile:d.file}):[{id:'original',name:'Original'}];};
-  KPI.pickCode = function (model, design, colorway) {
+  KPI.pickCode = function (model, design, colorway, glass) {
     if (!model || !design || design._n == null) return null;
     var code=model.id+'-'+design._col.code+'-'+pad3(design._n);
     if(colorway&&colorway!=='original'){
       var selected=KPI.colorways(design).find(function(c){return c.id===colorway;});
       if(!selected||!selected.code)return null;code+='-C'+selected.code;
     }
-    return code;
+    return code + (glass ? '-G' : '');
   };
   KPI.pad3 = pad3;
   KPI.fallbackCode = function (cat, used) {
@@ -134,9 +134,11 @@
      matched against the known ids (longest first), because ids and collection codes both use letters. */
   KPI.parseCode = function (text, modelIds) {
     var t = String(text || '').toUpperCase().trim().replace(/[\s_.\u2010-\u2015\u2212]+/g, '-').replace(/-+/g, '-');
+    var glass=/[0-9]-?G$/.test(t);
+    if(glass)t=t.replace(/-?G$/, '');
     var suffix=t.match(/(\d)-?C([1-5])$/),colorway=suffix?Number(suffix[2]):0;
     if(suffix)t=t.slice(0,suffix.index)+suffix[1];
-    function result(model,col,n){var p={model:model,col:col,n:n};if(colorway)p.colorway=colorway;return p;}
+    function result(model,col,n){var p={model:model,col:col,n:n};if(colorway)p.colorway=colorway;if(glass)p.glass=true;return p;}
     var m = t.match(/^([A-Z0-9]+)-([A-Z0-9]{3})-(\d{1,4})$/);
     if (m) return result(m[1],m[2],parseInt(m[3],10));
     var flat = t.replace(/-/g, ''), ids = (modelIds || []).slice().sort(function (a, b) { return b.length - a.length; });
@@ -165,8 +167,8 @@
   KPI.formatPrice = function (p) { return '$' + Number(p).toFixed(2); };
   KPI.thumbUrl = function (d) { return ROOT + 'assets/designs/thumbs/' + encodeURIComponent(d.file) + '?v=' + (d.hash || '1'); };
   KPI.fullUrl = function (d) { return ROOT + 'assets/designs/' + encodeURIComponent(d.file) + '?v=' + (d.hash || '1'); };
-  KPI.customizerUrl = function (model, d, colorway) {
-    return ROOT + 'customizer.html?staff=1&design=' + encodeURIComponent(d.file) + '&model=' + encodeURIComponent(model.name.replace(/ /g, '-'))+(colorway&&colorway!=='original'?'&colorway='+encodeURIComponent(colorway):'');
+  KPI.customizerUrl = function (model, d, colorway, glass) {
+    return ROOT + 'customizer.html?staff=1&design=' + encodeURIComponent(d.file) + '&model=' + encodeURIComponent(model.name.replace(/ /g, '-'))+(colorway&&colorway!=='original'?'&colorway='+encodeURIComponent(colorway):'')+(glass?'&glass=1':'');
   };
 
   /* ---------- images ---------- */

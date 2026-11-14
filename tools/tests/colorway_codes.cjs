@@ -16,6 +16,9 @@ for(const file of ['assets/colorway-catalog.js','assets/design-colorways.js','in
    assert.ok(!seen.has(code),'Duplicate pick code '+code);seen.add(code);
    const parsed=k.parseCode(code);assert.ok(parsed,'Cannot parse '+code);
    assert.equal(parsed.model,m.id);assert.equal(parsed.col,design._col.code);assert.equal(parsed.n,design._n);assert.equal(parsed.colorway||0,color.code||0);
+   const bundled=k.pickCode(m,design,color.id,true);
+   assert.equal(bundled,code+'-G');
+   assert.deepEqual(k.parseCode(bundled),Object.assign(parsed,{glass:true}));
    count++;
    }
   }
