@@ -4,7 +4,7 @@
    short timeout, so updates still arrive but a dead connection falls back to the last good copy.
    CacheStorage is shared by the whole origin, so this worker only ever touches caches named kp-instore-*. */
 var NS = 'kp-instore-';
-var VERSION = NS + 'v17';
+var VERSION = NS + 'v18';
 var SHELL = VERSION + '-shell';
 /* pictures are keyed by ?v=<design hash>, so this cache can outlive worker versions and stay warm across updates */
 var PICS = NS + 'pics-1';
@@ -22,7 +22,13 @@ var REQUIRED = ['./', 'find.html', 'slate.html', 'slate.js', '../assets/slate-pr
   '../assets/photos/slates/acadia-landscape-print.jpg',
   '../assets/photos/slates/joshua-landscape-print.jpg',
   '../assets/photos/slates/olympic-landscape-print.jpg',
-  '../assets/photos/slates/olympic-photo-credit.pdf'];
+  '../assets/photos/slates/olympic-photo-credit.pdf',
+  '../assets/photos/seasonal-credits/rain.pdf',
+  '../assets/photos/seasonal-credits/winter.pdf',
+  '../assets/photos/seasonal-credits/fall.pdf',
+  '../assets/photos/seasonal-credits/summer.pdf',
+  '../assets/photos/golf-credits/pebble.pdf',
+  '../assets/photos/golf-credits/andrews.pdf'];
 var OPTIONAL = ['../assets/favicon.svg'];
 var PIC_TIMEOUT_MS = 9000, NET_LIMIT_MS = 15000;
 

@@ -6,6 +6,16 @@
  "assets_version": "12",
  "collections": [
   {
+   "category": "Signature Golf",
+   "label": "Signature Golf",
+   "code": "GLF"
+  },
+  {
+   "category": "Seasonal Weather",
+   "label": "Seasonal Weather",
+   "code": "WTH"
+  },
+  {
    "category": "National Parks",
    "label": "National Parks",
    "code": "NPK"

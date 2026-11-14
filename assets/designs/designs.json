@@ -1,5 +1,71 @@
 [
 {
+"file": "kp-golf-pebble-beach.jpg",
+"title": "Pebble Beach",
+"category": "Signature Golf",
+"hash": "39ad18a56cdb",
+"color": [
+"Green",
+"Blue"
+],
+"active": true
+},
+{
+"file": "kp-golf-st-andrews.jpg",
+"title": "St Andrews",
+"category": "Signature Golf",
+"hash": "c03d8ff0a1a1",
+"color": [
+"Green",
+"Gray"
+],
+"active": true
+},
+{
+"file": "kp-weather-window-seat.jpg",
+"title": "Window Seat · Rain",
+"category": "Seasonal Weather",
+"hash": "80367822979e",
+"color": [
+"Green",
+"Blue"
+],
+"active": true
+},
+{
+"file": "kp-weather-frost-fern.jpg",
+"title": "Frost Fern · Winter",
+"category": "Seasonal Weather",
+"hash": "8d7fd0f2db42",
+"color": [
+"Gray",
+"Blue"
+],
+"active": true
+},
+{
+"file": "kp-weather-october-drift.jpg",
+"title": "October Drift · Fall",
+"category": "Seasonal Weather",
+"hash": "7a30418c0f6d",
+"color": [
+"Brown",
+"Orange"
+],
+"active": true
+},
+{
+"file": "kp-weather-ripple-prism.jpg",
+"title": "Ripple Prism · Summer",
+"category": "Seasonal Weather",
+"hash": "efc0bafd81df",
+"color": [
+"Green",
+"Blue"
+],
+"active": true
+},
+{
 "file": "kp-canyon-duck-on-a-rock-photo.jpg",
 "title": "Grand Canyon · Duck on a Rock Photo",
 "category": "National Parks",
