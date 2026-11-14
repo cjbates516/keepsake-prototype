@@ -13,6 +13,7 @@
 "DOT": 12,
 "FLR": 108,
 "FRU": 70,
+"GLF": 2,
 "GRD": 28,
 "HAL": 51,
 "HIM": 36,
@@ -31,6 +32,7 @@
 "SPT": 5,
 "STR": 27,
 "WES": 63,
+"WTH": 4,
 "XMS": 59,
 "Y2K": 43,
 "ZOD": 48
@@ -2028,6 +2030,14 @@
 "c": "HIM",
 "n": 9
 },
+"kp-golf-pebble-beach.jpg": {
+"c": "GLF",
+"n": 1
+},
+"kp-golf-st-andrews.jpg": {
+"c": "GLF",
+"n": 2
+},
 "kp-grand-canyon-mather-point.png": {
 "c": "NPK",
 "n": 9
@@ -2295,6 +2305,22 @@
 "kp-watermelon-picnic.jpg": {
 "c": "FRU",
 "n": 69
+},
+"kp-weather-frost-fern.jpg": {
+"c": "WTH",
+"n": 1
+},
+"kp-weather-october-drift.jpg": {
+"c": "WTH",
+"n": 2
+},
+"kp-weather-ripple-prism.jpg": {
+"c": "WTH",
+"n": 3
+},
+"kp-weather-window-seat.jpg": {
+"c": "WTH",
+"n": 4
 },
 "kp-wrong-way-duck.png": {
 "c": "ANI",

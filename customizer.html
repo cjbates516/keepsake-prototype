@@ -6,6 +6,8 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/personal-studio.css">
+
 <script>if(new URLSearchParams(location.search).get('staff')==='1')document.documentElement.classList.add('staff-mode');</script>
 <link rel="stylesheet" href="assets/staff-print.css">
 <script src="assets/print-png.js"></script>
@@ -235,6 +237,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
               <div style="font-size:12px;font-weight:700;color:#4E4E50;margin-top:3px">Browse the design library</div>
             </a>
           </div>
+          <div id="personalStudio" hidden></div>
           <div id="photoSection" style="display:none">
           <div style="font-size:12px;font-weight:600;color:#6C6C72;margin:-18px 0 24px;padding-left:2px"><span id="fitNote" style="display:none"></span>
             <span id="dpiLabel" style="display:block;margin-top:6px;font-weight:800"></span>
@@ -362,6 +365,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
 </div>
 
+<script src="assets/night-sky.js"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -628,6 +632,18 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function artRatio(){ return TPL&&FIT&&window.KPPrintGeometry?KPPrintGeometry.metrics(TPL,FIT).rx:1; }
   function artMatrix(){ return new DOMMatrix().translate(DIM.w/2,0).scale(artRatio(),1).translate(-DIM.w/2,0); }
   function artX(x){ return DIM.w/2+(x-DIM.w/2)/artRatio(); }
+  var studioMode = new URLSearchParams(location.search).get('studio');
+  if (new URLSearchParams(location.search).has('design')) studioMode = null;
+  var drawingStudio = studioMode === 'drawing', skyStudio = studioMode === 'sky';
+  var skyDirty = false;
+  function photoBox(){
+    var box = artBox(state.fitMode !== 'fit');
+    if (drawingStudio && !state.isLibraryDesign && state.fitMode === 'fit') {
+      // Keep the sheet in the lower panel, clear of supported camera islands.
+      return {x:box.x, y:box.y + box.h * .34, w:box.w, h:box.h * .61};
+    }
+    return box;
+  }
   function artBox(bleed){
     var b=maskBox||{x:0,y:0,w:DIM.w,h:DIM.h},m=TPL&&FIT&&window.KPPrintGeometry?KPPrintGeometry.metrics(TPL,FIT):null;
     var ex=bleed&&m?18/m.x:0,ey=bleed&&m?18/m.y:0;
@@ -659,8 +675,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var clearArt=KPDesignColorways.isArtworkOnly(src,state.variant) || (!state.isLibraryDesign && photoHasAlpha());
     src=KPDesignColorways.source(src,state.variant);
     var iw=src.naturalWidth||src.width, ih=src.naturalHeight||src.height;
-    var B=artBox(state.fitMode!=='fit');
-    if(state.fitMode==='fit' && clearArt) {
+    var B=photoBox();
+    if(state.fitMode==='fit' && (clearArt || drawingStudio && !state.isLibraryDesign)) {
       var cs=Math.min(B.w/iw,B.h/ih)*0.93;
     } else if(state.fitMode==='fit'){
       var cvr=Math.max(B.w/iw, B.h/ih);
@@ -1115,7 +1131,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     KPDesignColorways.clear();
   }
   function loadPhoto(f, forceSlot){
-    if(!f)return;
+    if(!f || skyStudio)return;
     var request=++kpUploadRequest;kpLibraryRequest++;
     function current(){return request===kpUploadRequest;}
     if(f.size>40*1024*1024){kpToast('That photo is over 40MB — please use a smaller copy.');return;}
@@ -1147,7 +1163,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       }catch(e){src.width=src.height=0;failed();return;}
       URL.revokeObjectURL(url);releaseWorkingPhoto();
       state.photoImg=src;state.photoUrl=null;state.isLibraryDesign=false;state.colorwayUnavailable=false;state.libraryLoading=false;state.fullFailed=false;
-      state.fitMode=w/h>1.15?'fit':'fill';state.layout=null;
+      state.fitMode=drawingStudio || w/h>1.15?'fit':'fill';state.layout=null;
       state.px=0;state.py=0;state.scale=1;state.rot=0;state.filter='none';state.variant='original';state.reserved=false;
       updateUploadLabel();renderFilterChips();updateDpi();updateStage();updateSummary();
       var th=document.createElement('canvas'),tk=Math.min(1,512/Math.max(src.width,src.height));
@@ -1167,13 +1183,14 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       var t=curTpl(), total=t?t.slots.length:0, filled=state.photos.filter(Boolean).length;
       if(!state.builder){ b.textContent='Make it yours \u2014 add your '+total+' photos'; return; }
       b.textContent= filled>=total ? 'Replace a photo (tap it first)' : 'Add photo '+(filled+1)+' of '+total;
-    } else b.textContent = state.photoImg ? 'Upload a different photo' : 'Upload a photo';
+    } else if (drawingStudio) b.textContent = state.photoImg ? 'Choose a different drawing' : 'Choose a photo of the drawing';
+    else b.textContent = state.photoImg ? 'Upload a different photo' : 'Upload a photo';
   }
 
   function updateStep3(){
     var ch=$('designChooser'), ps=$('photoSection');
     if(!ch||!ps) return;
-    var active = document.documentElement.classList.contains('staff-mode') || state.designPath==='photo' || !!state.photoImg || !!state.layout || !!state.text;
+    var active = document.documentElement.classList.contains('staff-mode') || drawingStudio || skyStudio || state.designPath==='photo' || !!state.photoImg || !!state.layout || !!state.text;
     ch.style.display = active ? 'none' : 'grid';
     ps.style.display = active ? 'block' : 'none';
   }
@@ -1194,6 +1211,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     } else loadPhoto(files[0]);
   });
   $('clearBtn').addEventListener('click',function(){
+    if(skyStudio) $('personalStudio').dispatchEvent(new Event('skyreset'));
     kpLibraryRequest++;kpUploadRequest++;releaseWorkingPhoto();$('fileInput').value='';
     state.photoImg=null; state.photoUrl=null; state.filter='none'; state.variant='original';
     state.photos=[]; state.slotTarget=null; state.builder=false; state.layout=null; state.designPath=null;
@@ -1300,7 +1318,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function kpEffectiveDpi(){
     if(state.layout || !state.photoImg || state.isLibraryDesign || !TPL || !FIT || !window.KPPrintGeometry) return null;
     var src=state.photoImg, iw=src.naturalWidth||src.width, ih=src.naturalHeight||src.height;
-    var B=artBox(state.fitMode!=='fit');
+    var B=photoBox();
     var cs = (state.fitMode==='fit') ? Math.min(B.w/iw, B.h/ih)*0.93 : Math.max(B.w/iw, B.h/ih);
     var printPxPerStage = KPPrintGeometry.metrics(TPL,FIT).y;           /* 300 DPI print pixels per stage pixel */
     var photoPxPerStage = 1/(cs*(state.scale||1));       /* source photo pixels per stage pixel */
@@ -1488,6 +1506,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   var KP_ORDERS = window.KP_ORDERS_ENDPOINT || '';
   function kpPreset(){
     /* the one word the team member matches to a saved profile in xTool Studio */
+    if(drawingStudio && state.photoImg && state.fitMode==='fit') return 'Clear Look';
     if(state.layout) return 'Photo';
     if(state.isLibraryDesign && state.photoImg){ if(KPDesignColorways.isArtworkOnly(state.photoImg,state.variant))return 'Clear Look'; if(state.variant&&state.variant!=='original'&&KPDesignColorways.profile(state.photoImg))return 'Graphic'; try{ if(photoHasAlpha()) return 'Clear Look'; }catch(_){ } return 'Graphic'; }
     if(!state.photoImg && state.text) return 'Text';
@@ -1520,7 +1539,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     renderNow();
     var preview=$('reviewPreview'),px=preview.getContext('2d');
     px.clearRect(0,0,preview.width,preview.height);px.drawImage(canvas,0,0,preview.width,preview.height);
-    var title=detail('Design',file?file.replace(/^kp-|\.(jpg|png)$/g,'').replace(/-/g,' '):state.layout?'Photo collage':state.photoImg?'Your photo':'Text design');
+    var title=detail('Design',file?file.replace(/^kp-|\.(jpg|png)$/g,'').replace(/-/g,' '):state.layout?'Photo collage':state.photoImg?(skyStudio?'Personalized night sky':drawingStudio?'Your child’s artwork':'Your photo'):'Text design');
     if(file){
       var look=KPDesignColorways.choicesFor(state.photoImg).find(function(item){return item.id===variant;});
       if(look)detail('Design color',look.name);
@@ -1535,7 +1554,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(newark)detail('Sales tax','$0.00');
     detail(newark?'Total':'Total before tax','$'+orderPricing().total.toFixed(2));
     dialog.showModal();dialog.scrollTop=0;
-    if(!file)return;
+    if(!file){
+      if (skyStudio) code.textContent='Save your sky artwork below and bring the file to the counter.';
+      if (drawingStudio) code.textContent='Bring the original drawing photo with this preview so the team can prepare your case.';
+      return;
+    }
     code.textContent='Looking up the design code…';
     if(!counterCatalog)counterCatalog=KPI.load('instore/').catch(function(err){counterCatalog=null;throw err;});
     counterCatalog.then(function(data){
@@ -1617,6 +1640,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   $('exportLink').addEventListener('click',function(e){ e.preventDefault(); kpBuildPrint(kpDownloadCanvas); });
   /* builds the print file; done(canvas, filename). Returns false (with a toast) when it cannot. */
   function kpPrintIssue(){
+    if(skyStudio && skyDirty)return 'Update your sky map to use the latest details.';
     if(!window.KPPrintGeometry||!window.KPPrintPng)return 'Print tools did not load. Reload before printing.';
     if(!KITS[state.model])return 'Print template is not available for this model.';
     if(state.handoffError)return state.handoffError;
@@ -2029,6 +2053,30 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     document.body.style.background='#FFFFFF';
   }
 
+  if (drawingStudio || skyStudio) {
+    var host = $('personalStudio');
+    host.hidden = false;
+    document.body.classList.add('personal-studio', drawingStudio ? 'drawing-studio' : 'sky-studio');
+    var title = document.querySelector('.design-rail h1');
+    title.textContent = drawingStudio ? 'Their drawing, your case.' : 'The night we met';
+    document.title = title.textContent + ' | Keepsake Printing Co.';
+    if (drawingStudio) {
+      host.innerHTML = '<h2>Start with their drawing</h2><p>Photograph the page straight on in daylight. Crop to the edges of the paper in your photo app, then choose the image below. We’ll fit it below the camera.</p>';
+      $('fitFit').textContent = 'Fit whole drawing';
+      $('photoPrivacy').textContent = 'Your drawing stays on this device while you preview it.';
+    } else {
+      KPNightSky.mount(host, {
+        changed:function(){skyDirty=true;state.reserved=false;},
+        apply:function(chart) {
+          kpUploadRequest++;kpLibraryRequest++;releaseWorkingPhoto();
+          state.photoImg=chart; state.photoUrl=null;state.isLibraryDesign=false;
+          state.fitMode='fill';state.scale=1;state.px=0;state.py=0;state.rot=0;
+          state.filter='none';state.variant='original';state.reserved=false;skyDirty=false;
+          updateDpi();updateStage();updateSummary();
+        }
+      });
+    }
+  }
   /* ── init ── */
   loadKit(state.model);
   $('brandSel').value=state.brand;
