@@ -1516,11 +1516,13 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   try{localStorage.removeItem('kpCust');}catch(_){}
   var orderInFlight=false;
   function orderSignature(){var s=state;return JSON.stringify([s.model,s.caseType,s.store,s.variant,s.text,s.textFont,s.textColor,s.textSize,s.textPos,s.textVertical,s.px,s.py,s.scale,s.rot,s.fitMode,s.filter,s.addons,s.promo]);}
-  var counterCatalog, reviewVersion=0;
+  var counterCatalog, reviewVersion=0, reviewDownloadUrl;
   $('counterReview').addEventListener('close',function(){
     ++reviewVersion;
     $('reviewDetails').replaceChildren();
     $('reviewCode').textContent='';
+    if (reviewDownloadUrl) URL.revokeObjectURL(reviewDownloadUrl);
+    reviewDownloadUrl=null;
     var preview=$('reviewPreview');
     preview.getContext('2d').clearRect(0,0,preview.width,preview.height);
   });
@@ -1555,8 +1557,24 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     detail(newark?'Total':'Total before tax','$'+orderPricing().total.toFixed(2));
     dialog.showModal();dialog.scrollTop=0;
     if(!file){
-      if (skyStudio) code.textContent='Save your sky artwork below and bring the file to the counter.';
+      if (skyStudio && state.photoImg && typeof state.photoImg.toBlob === 'function') {
+        code.textContent='Preparing your sky artwork…';
+        state.photoImg.toBlob(function(blob) {
+          if (version!==reviewVersion || !dialog.open) return;
+          if (!blob) {
+            code.textContent='Return to your design and tap Save my sky artwork.';
+            return;
+          }
+          var download=document.createElement('a');
+          reviewDownloadUrl=URL.createObjectURL(blob);
+          download.href=reviewDownloadUrl;
+          download.download='keepsake-night-sky.png';
+          download.textContent='Save sky artwork for the counter';
+          code.replaceChildren(download);
+        }, 'image/png');
+      }
       if (drawingStudio) code.textContent='Bring the original drawing photo with this preview so the team can prepare your case.';
+      else if (!skyStudio && (state.photoImg || state.layout)) code.textContent='Bring the original photos on your phone and show this preview at the counter.';
       return;
     }
     code.textContent='Looking up the design code…';
