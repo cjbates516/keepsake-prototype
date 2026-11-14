@@ -6,12 +6,18 @@ for(const file of ['assets/colorway-catalog.js','assets/design-colorways.js','in
  const k=ctx.window.KPI,d=await k.load();let count=0;
  for(const m of d.activeModels){
   const seen=new Set();
-  for(const design of d.designsFor(m))for(const color of (assert.equal(k.colorways(design).length,6,'Unprepared colorways: '+design.file),k.colorways(design))){
+  for (const design of d.designsFor(m)) {
+   const profile = ctx.window.KP_COLORWAY_CATALOG[design.file];
+   const choices = k.colorways(design);
+   const expected = profile && profile.originalColor ? 5 : 6;
+   assert.equal(choices.length, expected, 'Unprepared colorways: ' + design.file);
+   for (const color of choices) {
    const code=k.pickCode(m,design,color.id);assert.ok(code,'Active design has no stable pick code');
    assert.ok(!seen.has(code),'Duplicate pick code '+code);seen.add(code);
    const parsed=k.parseCode(code);assert.ok(parsed,'Cannot parse '+code);
    assert.equal(parsed.model,m.id);assert.equal(parsed.col,design._col.code);assert.equal(parsed.n,design._n);assert.equal(parsed.colorway||0,color.code||0);
    count++;
+   }
   }
  }
  assert.equal(k.parseCode('17PABC3',d.activeModels.map(m=>m.id)).n,3);assert.equal(k.parseCode('17PFLR012C3',d.activeModels.map(m=>m.id)).colorway,3);

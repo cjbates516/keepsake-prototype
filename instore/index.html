@@ -133,6 +133,10 @@
   body.offline .s2top{top:var(--notice-height,80px)}#connectionNotice{position:sticky;top:0;z-index:15;font-size:18px;padding:16px 24px;background:#fff0be;color:#3e3421;text-align:center}#idleNotice{position:fixed;z-index:30;bottom:16px;left:50%;transform:translateX(-50%);width:min(640px,calc(100% - 32px));box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#252633;color:white;border-radius:20px;padding:16px 20px;font-size:18px;box-shadow:0 12px 30px #0003}#idleNotice[hidden],#connectionNotice[hidden]{display:none}#idleNotice .ghost{flex-shrink:0}
   @media(max-width:600px){.search-row{flex-wrap:wrap}.search-box{flex-basis:100%}.store-promise{padding:20px;gap:8px}#idleNotice{flex-wrap:wrap}.brand{font-size:18px}.steps{gap:0}}
 
+@media(max-width:480px){
+    .bar{flex-wrap:wrap;gap:0 12px;align-content:center;padding-block:8px}
+    .steps{flex-wrap:wrap}
+  }
 </style>
 </head>
 <body>
