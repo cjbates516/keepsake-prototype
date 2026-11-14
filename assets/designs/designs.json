@@ -1,5 +1,38 @@
 [
 {
+"file": "kp-canyon-duck-on-a-rock-photo.jpg",
+"title": "Grand Canyon · Duck on a Rock Photo",
+"category": "National Parks",
+"hash": "ea5da22253d7",
+"color": [
+"Orange",
+"Brown"
+],
+"active": true
+},
+{
+"file": "kp-rocky-dream-lake-photo.jpg",
+"title": "Rocky Mountain · Dream Lake Photo",
+"category": "National Parks",
+"hash": "8bd6ad009480",
+"color": [
+"Green",
+"Blue"
+],
+"active": true
+},
+{
+"file": "kp-smokies-grotto-falls-photo.jpg",
+"title": "Great Smoky Mountains · Grotto Falls Photo",
+"category": "National Parks",
+"hash": "a74b2c14b3db",
+"color": [
+"Blue",
+"Gray"
+],
+"active": true
+},
+{
 "file": "kp-yellowstone-old-faithful-photo.jpg",
 "title": "Yellowstone · Old Faithful Photo",
 "category": "National Parks",

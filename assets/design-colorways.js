@@ -117,10 +117,31 @@
       });
     }
   }
+  // Keep the original lettering together beneath the camera, with its paper color extending to the edges.
+  function centeredPoster(src, look, profile, maxEdge) {
+    const height = maxEdge || 2400;
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(height / 2);
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    const art = look.id === 'original' ? src : paletteCanvas(src, look, height, profile);
+    const width = art.naturalWidth || art.width;
+    const artHeight = art.naturalHeight || art.height;
+    // Glacier's square source includes a paper border around all four sides.
+    const printWidth = Math.min(canvas.width * 1.14, height * 0.70 * width / artHeight);
+    const printHeight = printWidth * artHeight / width;
+    const x = (canvas.width - printWidth) / 2;
+    const y = canvas.height * 0.61 - printHeight / 2;
+    ctx.fillStyle = look.id === 'original' ? 'rgb(' + profile.background.color.map(Math.round).join(',') + ')' : look.bg;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(art, x, y, printWidth, printHeight);
+    return canvas;
+  }
   function make(src,id,maxEdge){
     var iw=src.naturalWidth||src.width,ih=src.naturalHeight||src.height;
     if(!iw||!ih||src.complete===false)throw new Error('Artwork is still loading');
     var pf=profile(src),look=choicesFor(src).find(function(c){return c.id===id;})||choices[0];
+    if (pf && pf.method === 'palette' && pf.caseLayout === 'centered-poster') return centeredPoster(src, look, pf, maxEdge);
     if(pf&&pf.method==='assets'&&id&&id!=='original'&&!choicesFor(src).some(function(c){return c.id===id;}))throw new Error('This colorway is unavailable. Choose Original or reconnect.');
     if(pf&&pf.method==='assets'&&look.id!=='original'){
       var variant=src.__kpVariantImages&&src.__kpVariantImages[look.code-1];
@@ -160,7 +181,7 @@
   }
   function source(src,id){
     if(profile(src)&&profile(src).method==='assets'&&id&&id!=='original'&&!choicesFor(src).some(function(c){return c.id===id;}))throw new Error('Selected colorway is unavailable');
-    if(!src||!choicesFor(src).some(function(c){return c.id===id;})||!profile(src)||(id==='original'&&profile(src).method!=='yosemite')){clear();return src;}
+    if(!src||!choicesFor(src).some(function(c){return c.id===id;})||!profile(src)||(id==='original'&&profile(src).method!=='yosemite'&&profile(src).caseLayout!=='centered-poster')){clear();return src;}
     var w=src.naturalWidth||src.width,h=src.naturalHeight||src.height;if(!w||!h||src.complete===false)return src;
     var size=w+'x'+h;
     if(cacheSource!==src||cacheId!==id||cacheSize!==size){clear();cacheCanvas=make(src,id);cacheSource=src;cacheId=id;cacheSize=size;}
