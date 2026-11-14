@@ -1,5 +1,41 @@
 [
 {
+"file": "kp-grand-teton-reflection.png",
+"title": "Grand Teton · Schwabacher Reflection",
+"category": "National Parks",
+"hash": "c2a7f3b8ad87",
+"color": [
+"Blue",
+"Green",
+"Purple"
+],
+"active": true
+},
+{
+"file": "kp-zion-watchman-bend.png",
+"title": "Zion · Watchman Bend",
+"category": "National Parks",
+"hash": "e051e41dab2c",
+"color": [
+"Orange",
+"Green",
+"Pink"
+],
+"active": true
+},
+{
+"file": "kp-yellowstone-grand-prismatic.png",
+"title": "Yellowstone · Grand Prismatic",
+"category": "National Parks",
+"hash": "998306b4d322",
+"color": [
+"Blue",
+"Orange",
+"Yellow"
+],
+"active": true
+},
+{
 "file": "kp-arches-sandstone.png",
 "title": "Arches · Sandstone Window",
 "category": "National Parks",

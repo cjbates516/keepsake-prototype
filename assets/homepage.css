@@ -272,3 +272,5 @@ h1,h2,h3{font-family:var(--display)}
 .parks-feature h2{font-size:clamp(35px,5vw,70px);letter-spacing:-.055em;line-height:.98;margin:0 0 14px}.parks-feature p{line-height:1.55;max-width:32ch}.parks-feature .text-link{text-decoration:underline;text-underline-offset:5px}
 .parks-prints{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(7px,1.4vw,20px)}.parks-prints img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:4px}.parks-prints strong{display:block;font-size:14px;padding:9px 0}.parks-rugged{grid-column:1/-1;width:fit-content}
 @media(max-width:760px){.parks-feature{grid-template-columns:1fr;margin:24px 16px 0}.parks-feature p{max-width:none;margin-bottom:3px}.parks-prints strong{font-size:12px}.scene-yosemite .edit-head,.scene-hearts .edit-head{font-size:clamp(29px,7.3vw,49px)}.case-edit:has(.scene-picks:not([hidden])) .case-slide:not(:has(.scene-picks)) .case-story{height:calc(clamp(240px,62vw,388px) + 57px)}}
+
+.parks-prints img.rugged-tile {object-fit: contain; background: #dfe8e5; padding: 8% 4%;}

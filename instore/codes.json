@@ -23,7 +23,7 @@
 "MAP": 108,
 "NE1": 1,
 "NEO": 6,
-"NPK": 5,
+"NPK": 8,
 "OUT": 6,
 "PAI": 1,
 "POP": 12,
@@ -2016,6 +2016,10 @@
 "c": "HIM",
 "n": 9
 },
+"kp-grand-teton-reflection.png": {
+"c": "NPK",
+"n": 6
+},
 "kp-half-dome-river.png": {
 "c": "NPK",
 "n": 3
@@ -2240,9 +2244,17 @@
 "c": "ANI",
 "n": 29
 },
+"kp-yellowstone-grand-prismatic.png": {
+"c": "NPK",
+"n": 7
+},
 "kp-yosemite-trail-patches.png": {
 "c": "NPK",
 "n": 4
+},
+"kp-zion-watchman-bend.png": {
+"c": "NPK",
+"n": 8
 },
 "labrador-retrievers-in-santa-hats.jpg": {
 "c": "XMS",
