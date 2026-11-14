@@ -12,7 +12,6 @@
 <script src="assets/print-geometry.js"></script>
 <script src="assets/mask-geometry.js"></script>
 <script src="assets/print-layouts.js"></script>
-<script src="assets/preview-edge.js"></script>
 <title>Design your keepsake — Keepsake Printing Co</title>
 <meta name="description" content="Design your custom phone case: upload a photo or pick a ready-made design, see it on your exact phone, and review your design with our team in store.">
 <link rel="canonical" href="https://cjbates516.github.io/keepsake-prototype/customizer.html">
@@ -614,10 +613,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         };
         viewImg.onerror=function(){
           if(viewImg!==loadingMask)return;
-          if(!viewImg.__kpRetried){ viewImg.__kpRetried=true; var im=viewImg; setTimeout(function(){ im.src='assets/masks/'+vm+'?v=11&r=1'; },800); }
+          if(!viewImg.__kpRetried){ viewImg.__kpRetried=true; var im=viewImg; setTimeout(function(){ im.src='assets/masks/'+vm+'?v=12&r=1'; },800); }
           else viewFailed=true;
         };
-        viewImg.src='assets/masks/'+vm+'?v=11';
+        viewImg.src='assets/masks/'+vm+'?v=12';
       } else if(viewReady){computeMaskBox();}
     } else { viewImg=null; viewReady=false; viewSrc=null; viewMaskCanvas=null; }
     var ls='assets/cases/'+((state.caseType==='Tough Magnetic' && k.tough) ? k.tough.file : (k.light||col.f));
@@ -854,7 +853,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       drawTextLayer(d2);
       if(useMask){
         d2.globalCompositeOperation='destination-in';
-        d2.drawImage(window.KPPreviewEdge?KPPreviewEdge.mask(viewMaskCanvas,(window.KP_PRINT_LAYOUTS||{})[state.model]):viewMaskCanvas,0,0,DIM.w,DIM.h);
+        d2.drawImage(viewMaskCanvas,0,0,DIM.w,DIM.h);
         d2.globalCompositeOperation='source-over';
       } else { d2.restore(); }
       ctx.drawImage(dl,0,0,DIM.w,DIM.h);
@@ -874,7 +873,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       drawTextLayer(t2);
       if(useMask){
         t2.globalCompositeOperation='destination-in';
-        t2.drawImage(window.KPPreviewEdge?KPPreviewEdge.mask(viewMaskCanvas,(window.KP_PRINT_LAYOUTS||{})[state.model]):viewMaskCanvas,0,0,DIM.w,DIM.h);
+        t2.drawImage(viewMaskCanvas,0,0,DIM.w,DIM.h);
         t2.globalCompositeOperation='source-over';
       } else { t2.restore(); }
       ctx.drawImage(dl2,0,0,DIM.w,DIM.h);

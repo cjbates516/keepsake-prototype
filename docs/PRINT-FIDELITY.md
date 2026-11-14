@@ -42,10 +42,8 @@ In the preceding disconnected xTool Studio check, an 882 × 1815 PNG imported as
 
 Do not overwrite the original Drive colorway masters because print geometry changed. Those files are reusable artwork; this batch changes the final case-specific render, not the authored colorways.
 
-## November 13 bottom-edge display follow-up
+## Luneli clear Pro and Pro Max panels
 
-Corey identified a clear strip at the bottom of the gallery’s iPhone 17/18 Pro Max preview. `assets/preview-edge.js` extends only the lower display-mask boundary by the existing 18-pixel print bleed mapped into mockup coordinates. Max-alpha union preserves antialiasing. The source mask, camera opening and top boundary are unchanged. Gallery, kiosk and customizer share the helper; service worker v9 requires it and routes its requests through the offline cache.
+Each 18 model reuses its corresponding 17 clear panel. The Pro outline measures 69.372 × 103.294 mm and the Pro Max outline measures 75.559 × 116.806 mm. Both use the external silhouette from the flat face of the corresponding Luneli stencil. Its camera recess faces up and the shallow center notch faces down in the rear view. Magnet pockets are on the opposite face.
 
-Chromium and WebKit confirm byte-identical print PNGs with the helper enabled versus disabled, no alpha changes above the lower band, and unchanged masks for other models. Sixteen targeted fidelity checks and 127 in-store/offline checks pass. Before/after images are in `../collaboration/gallery-clip-before.png` and `gallery-edge-after.png`.
-
-The preview now displays coverage already present in the print file. Actual visible coverage on the stocked blank still needs the disconnected printer’s physical acceptance check.
+The native mask contains the trim. Preview compositors draw that mask directly. The print exporter adds the existing 18-pixel radial bleed at 300 DPI. The current registration uses the original horizontal panel center and lowest displayed panel edge. The STL describes the panel alone, so final placement on the jig still needs a physical proof. The 18 device-finish images are placed inside the corresponding 17 case bounds.
