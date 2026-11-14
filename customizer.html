@@ -1520,7 +1520,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(state.text)detail('Personalization',state.text);
     var extras=addonDefs.filter(function(a){return state.addons[a.key];});
     extras.forEach(function(a){detail(a.name,'+$'+a.price.toFixed(2));});
-    if(state.promo)detail('Discount',promoTable[state.promo].name);
+    if(state.promo&&promoTable[state.promo])detail('Discount',promoTable[state.promo].name);
     detail('Store',state.store);
     var newark=state.store==='Newark, DE';
     if(newark)detail('Sales tax','$0.00');
