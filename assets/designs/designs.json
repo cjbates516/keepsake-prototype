@@ -1,5 +1,38 @@
 [
 {
+"file": "kp-yellowstone-old-faithful-photo.jpg",
+"title": "Yellowstone · Old Faithful Photo",
+"category": "National Parks",
+"hash": "8d64380ac927",
+"color": [
+"Blue",
+"Green"
+],
+"active": true
+},
+{
+"file": "kp-zion-the-narrows-photo.jpg",
+"title": "Zion · The Narrows Photo",
+"category": "National Parks",
+"hash": "9f5e4369bfd8",
+"color": [
+"Orange",
+"Brown"
+],
+"active": true
+},
+{
+"file": "kp-teton-jenny-lake-photo.jpg",
+"title": "Grand Teton · Jenny Lake Photo",
+"category": "National Parks",
+"hash": "5820a6115057",
+"color": [
+"Blue",
+"Gray"
+],
+"active": true
+},
+{
 "file": "kp-scoop-shop.png",
 "title": "Scoop Shop · Ice Cream",
 "category": "Bright Pop",
