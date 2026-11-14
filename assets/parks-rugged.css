@@ -37,3 +37,7 @@
 #olympic .look {background: #dce9e1;}
 .photo-jumps {display: flex; flex-wrap: wrap; align-items: center; gap: 0 18px;}
 .photo-jumps a {display: inline-flex; min-height: 44px; align-items: center; text-decoration: underline;}
+
+.course-detail {margin:0 0 14px;}
+.course-detail summary {width:fit-content;padding:12px 0;font-weight:800;cursor:pointer;text-decoration:underline;text-underline-offset:4px;}
+.course-detail img {width:auto;height:auto;max-width:100%;max-height:78dvh;border-radius:5px;}
