@@ -137,6 +137,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <canvas id="stageCanvas" width="2500" height="3000" style="display:none"></canvas>
             <!-- non-17PM placeholder note wrapper reuses stageEmpty -->
           </div>
+          <section id="mobileDesignPicker" hidden aria-label="Preview options"></section>
           <div id="stageHint" style="font-size:12px;font-weight:700;color:#6C6C72;letter-spacing:.04em">Upload or drop a photo to begin</div>
           <div id="kitNote" style="display:none;font-size:11.5px;font-weight:600;color:#B9BDCB;letter-spacing:.02em;text-align:center;max-width:300px"></div>
           <a id="exportLink" href="#" style="display:none;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B9BDCB">Download print file (staff)</a>
@@ -528,6 +529,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     inversePath.addPath(po); inversePath.addPath(pc);
     CAL._po=po; CAL._pc=pc;
   }
+  var requestedFinish=new URLSearchParams(location.search).get('finish');
+  var selectedKit=KITS[state.model];
+  if(selectedKit&&selectedKit.colors.some(function(c){return c.n===requestedFinish;}))state.colorName=requestedFinish;
+
   var canvas=$('stageCanvas'), ctx=canvas.getContext('2d');
   canvas.width=DIM.w*PS; canvas.height=DIM.h*PS;
   var caseImg=new Image(), lightMap=null, caseReady=false;
@@ -1196,9 +1201,24 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   /* Colorways use this design’s background palettes or authored variant assets. */
   var looksSource=null,looksSize='';
+  var mobilePickerQuery=matchMedia('(max-width:640px)');
+  var pickerParts=[$('kpModelTrig'),$('colorSwatches').parentElement,$('photoLooksWrap')];
+  var pickerHomes=pickerParts.map(function(el){
+    var marker=document.createComment('Picker position');el.before(marker);return marker;
+  });
+  function positionPicker(){
+    var compact=mobilePickerQuery.matches&&state.isLibraryDesign&&!document.documentElement.classList.contains('staff-mode');
+    var panel=$('mobileDesignPicker');
+    if(panel.hidden===!compact)return;
+    panel.hidden=!compact;
+    pickerParts.forEach(function(el,i){if(compact)panel.append(el);else pickerHomes[i].after(el);});
+    document.body.classList.toggle('preview-picker-open',compact);
+  }
+  mobilePickerQuery.addEventListener('change',positionPicker);
   function renderFilterChips(){
     var wrap=$('photoLooksWrap'),row=$('photoLooks'),src=state.photoImg;
     if(!wrap||!row)return;
+    if(pickerParts)positionPicker();
     var ready=src&&src.complete!==false&&(src.naturalWidth||src.width)>0&&(src.naturalHeight||src.height)>0;
     wrap.hidden=!ready||(KPDesignColorways.choicesFor(src).length<2&&!state.colorwayUnavailable);
     if(!ready){row.replaceChildren();looksSource=null;KPDesignColorways.clear();return;}
@@ -1239,7 +1259,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function renderSwatches(){
     $('colorSwatches').innerHTML = paletteFor().map(function(c){
       var on = c.n===state.colorName;
-      return '<button class="h-swatch sw" data-n="'+c.n+'" data-h="'+c.h+'" title="'+c.n+'" style="width:34px;height:34px;border-radius:50%;cursor:pointer;background:'+c.h+';border:3px solid '+(on?'#DC282E':'#E4E3E3')+'"></button>';
+      return '<button class="h-swatch sw" aria-pressed="'+on+'" aria-label="'+c.n+' phone finish" data-n="'+c.n+'" data-h="'+c.h+'" title="'+c.n+'" style="width:34px;height:34px;border-radius:50%;cursor:pointer;background:'+c.h+';border:3px solid '+(on?'#DC282E':'#E4E3E3')+'"></button>';
     }).join('');
   }
   document.addEventListener('click',function(e){
