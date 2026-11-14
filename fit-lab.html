@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Fit Lab — Keepsake (staff)</title>
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -27,16 +27,16 @@ button.ghost{background:#fff;border:1px solid #D8D7D7;color:#2D2D3B;padding:10px
 </head>
 <body>
 <header>
-  <b>FIT LAB</b><span style="background:#1E8E3E;color:#fff;font-size:11px;font-weight:900;padding:3px 10px;border-radius:999px;letter-spacing:.08em">V4.1 · CORNER ROUNDS</span>
+  <h1 style="font-size:15px;letter-spacing:.04em;margin:0">Fit Lab</h1><span style="background:#1E8E3E;color:#fff;font-size:11px;font-weight:900;padding:3px 10px;border-radius:999px;letter-spacing:.08em">V4.1 · CORNER ROUNDS</span>
   <button class="tab on" data-m="ultra">S26 Ultra</button>
   <button class="tab" data-m="s26">S26</button>
   <span id="hint">Red shade = REAL mask · red dots = camera line · blue dots = edges/corners · green dots = corner rounding · Copy numbers when done</span>
 </header>
-<div id="wrap"><canvas id="cv"></canvas></div>
+<main id="wrap" aria-label="Fit preview"><canvas id="cv" aria-label="Case fit overlay"></canvas></main>
 <div id="panel">
-  <div class="ctl">Zoom <input type="range" id="zoom" min="0.9" max="5" step="0.05" value="1"></div>
-  <div class="ctl">Corner round <input type="range" id="rad" min="40" max="260" step="2"></div>
-  <div class="ctl">Camera <button class="ghost" id="camSm">−</button><button class="ghost" id="camLg">+</button></div>
+  <div class="ctl">Zoom <input type="range" id="zoom" aria-label="Preview zoom" min="0.9" max="5" step="0.05" value="1"></div>
+  <div class="ctl">Corner round <input type="range" id="rad" aria-label="Corner round" min="40" max="260" step="2"></div>
+  <div class="ctl">Camera <button class="ghost" id="camSm" aria-label="Decrease camera opening">−</button><button class="ghost" id="camLg" aria-label="Increase camera opening">+</button></div>
   <div class="ctl"><label><input type="checkbox" id="showDesign" checked> design</label></div>
   <div class="ctl"><label><input type="checkbox" id="showMask" checked> real mask</label></div>
   <div class="ctl"><label><input type="checkbox" id="showGrid"> grid</label></div>

@@ -13,9 +13,10 @@ await p.goto(base+'/customizer.html?model=iphone-16-pro-max&design=boho-floral-0
 check(engine+' six looks',await p.locator('.photo-look').count()===6);
 check(engine+' no fake scenes/collage',await p.locator('#kpViews,.layChip').count()===0&&unwanted.length===0,unwanted);
 check(engine+' base price',await p.locator('#totalTop').textContent()==='$44.99');
-await p.locator('.adn[data-k="screen"]').click();check(engine+' bundled total',await p.locator('#totalTop').textContent()==='$64.98'&&await p.locator('#cartBtn').textContent()==='Order — $64.98');
-await p.locator('#cartBtn').click();check(engine+' order panel total',(await p.locator('#kpPlace').textContent()).includes('$64.98'));
-await p.locator('.adn[data-k="screen"]').click();check(engine+' unbundle updates panel',(await p.locator('#kpPlace').textContent()).includes('$44.99'));
+await p.locator('.adn[data-k="screen"]').click();check(engine+' bundled total',await p.locator('#totalTop').textContent()==='$64.98'&&await p.locator('#cartBtn').textContent()==='Counter review · $64.98');
+await p.locator('#cartBtn').click();check(engine+' order panel total',(await p.locator('#reviewDetails').innerText()).includes('$64.98'));
+await p.locator('#counterReview button').click();await p.locator('.adn[data-k="screen"]').click();await p.locator('#cartBtn').click();check(engine+' unbundle updates panel',(await p.locator('#reviewDetails').innerText()).includes('$44.99'));
+await p.locator('#counterReview button').click();
 async function print(){for(let i=0;i<30;i++){let value=await p.evaluate(()=>{let out=null;__kp.buildPrint((c)=>{let d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let hash=2166136261,clear=0,solid=0,mono=true;for(let n=0;n<d.length;n+=4){if(!d[n+3])clear++;else{solid++;if(Math.abs(d[n]-d[n+1])>2||Math.abs(d[n+1]-d[n+2])>2)mono=false;}for(let j=0;j<4;j++)hash=Math.imul(hash^d[n+j],16777619);}out={hash:hash>>>0,w:c.width,h:c.height,clear,solid,mono};});return out});if(value)return value;await p.waitForTimeout(300)}throw Error('Print unavailable')}
 const original=await print();let hashes=new Set([original.hash]);for(const look of ['c1','c2','c3','c4','c5']){await p.locator('[data-look="'+look+'"]').click();const x=await print();check(engine+' '+look+' print',x.hash!==original.hash&&x.w===original.w&&x.h===original.h&&x.clear===original.clear&&x.solid>0,x);hashes.add(x.hash);}
 check(engine+' six distinct looks',hashes.size===6);await p.locator('[data-look="original"]').click();check(engine+' Original restores print',(await print()).hash===original.hash);
@@ -40,7 +41,7 @@ await p.locator('#fileInput').setInputFiles({name:'24mp-test.png',mimeType:'imag
 const models=JSON.parse(fs.readFileSync(path.join(root,'instore/models.json'))).models.filter(m=>m.active);
 for(const m of models){await p.goto(base+'/customizer.html?model='+m.name.toLowerCase().replaceAll(' ','-')+'&design=boho-floral-01.jpg');await p.waitForFunction(()=>window.__kp&&__kp.state.photoImg&&!__kp.state.photoImg.__kpIsThumb);const x=await print();check(engine+' model export '+m.name,x.clear>0&&x.solid>0&&x.w>500&&x.h>1000);}
 await p.setViewportSize({width:390,height:844});await p.locator('#photoLooksWrap').scrollIntoViewIfNeeded();await p.screenshot({path:path.join(out,engine+'-mobile.png')});check(engine+' mobile no overflow',await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));check(engine+' no JS errors',errors.length===0,errors);
-let pending=[];const fullURL='**/assets/designs/boho-floral-01.jpg',thumbURL='**/assets/designs/thumbs/boho-floral-01.jpg';
+let pending=[];const fullURL=url=>url.pathname.endsWith('/assets/designs/boho-floral-01.jpg'),thumbURL=url=>url.pathname.endsWith('/assets/designs/thumbs/boho-floral-01.jpg');
 await p.route(thumbURL,r=>r.fulfill({status:404,body:''}));await p.route(fullURL,r=>{pending.push(r)});
 await p.goto(base+'/customizer.html?model=iphone-16-pro-max&design=boho-floral-01.jpg',{waitUntil:'domcontentloaded'});
 await p.waitForFunction(()=>window.__kp&&__kp.state.photoUrl&&__kp.state.photoUrl.endsWith('boho-floral-01.jpg')&&!__kp.state.photoImg);

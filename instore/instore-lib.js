@@ -27,14 +27,15 @@
   function pad3(n) { n = String(n); while (n.length < 3) n = '0' + n; return n; }
 
   /* ---------- data ---------- */
-  KPI.load = function () {
+  KPI.load = function (prefix) {
+    prefix = prefix || "";
     return Promise.all([
-      getJSON('config.json'),
-      getJSON('models.json'),
-      getJSON(ROOT + 'assets/designs/designs.json'),
+      getJSON(prefix+'config.json'),
+      getJSON(prefix+'models.json'),
+      getJSON(prefix+ROOT+'assets/designs/designs.json'),
       /* the pick code list is REQUIRED: if it does not load, loading fails and the page shows its
          "ask a team member" screen, so no code is ever shown that the team cannot look up (fail closed) */
-      getJSON('codes.json').then(function (c) {
+      getJSON(prefix+'codes.json').then(function (c) {
         if (!c || typeof c.codes !== 'object') throw new Error('codes.json has no codes');
         c._ok = true; return c;
       })

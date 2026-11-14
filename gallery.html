@@ -256,7 +256,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     };
     img.src = 'assets/cases/' + c.f;
   }
-  function preloadDevice(dev){ loadViewMask(dev, refreshVisible); KP_DEVICES[dev].colors.forEach(function(_, i){ loadCase(dev, i, i===0 ? refreshVisible : null); }); }
+  function preloadDevice(dev){ loadViewMask(dev, refreshVisible); loadCase(dev, 0, refreshVisible); }
 
   function loadDesign(file, cb){
     if (designImgs[file]) { if (designImgs[file].complete) cb && cb(); else designImgs[file].addEventListener('load', function(){ cb && cb(); }); return; }

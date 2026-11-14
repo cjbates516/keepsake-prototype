@@ -98,6 +98,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.4/heic2any.min.js" defer></script>
 <script src="assets/colorway-catalog.js"></script>
 <script src="assets/design-colorways.js"></script>
+<script src="instore/instore-lib.js"></script>
 <style>
 .photo-looks{display:flex;gap:10px;overflow-x:auto;padding:6px 6px 14px;scroll-snap-type:x proximity}
 .photo-look{flex:0 0 106px;padding:6px;background:#fff;border:2px solid #dedad6;border-radius:12px;cursor:pointer;scroll-snap-align:start;color:#191921;font:800 12px "Nunito Sans",sans-serif}
@@ -341,6 +342,14 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       <button id="cartBtn" class="h-upload" style="flex:1;max-width:680px;margin-left:auto;background:#DC282E;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer;transition:background .2s">Order — $44.99</button>
     </div>
   </main>
+  <dialog id="counterReview" aria-labelledby="reviewHeading">
+    <h2 id="reviewHeading">Show this at the counter</h2>
+    <canvas id="reviewPreview" width="300" height="360" aria-label="Your case preview" role="img"></canvas>
+    <div id="reviewCode" role="status"></div>
+    <dl id="reviewDetails"></dl>
+    <p>Show the team this preview to confirm your selections and place your order in store.</p>
+    <form method="dialog"><button autofocus>Back to my design</button></form>
+  </dialog>
 
   <div id="kpSheetScrim"></div>
   <div id="kpSheet">
@@ -1427,13 +1436,16 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var pricing=orderPricing(),addonTotal=pricing.addons,disc=pricing.discount,total=pricing.total;
     var p=state.promo?promoTable[state.promo]:null,bp=basePrice();
     var lp=document.getElementById('linePrice'); if(lp) lp.textContent='$'+bp.toFixed(2);
-    if(!state.reserved) $('cartBtn').textContent='Order — $'+total.toFixed(2);
+    if(!state.reserved){
+      $('cartBtn').textContent=(KP_ORDERS?'Order':'Counter review')+' · $'+total.toFixed(2);
+      $('reserveBtn').textContent=KP_ORDERS?'Order — print in store':'Show this design at the counter';
+    }
     var place=$('kpPlace');if(place&&!place.disabled)place.textContent=KP_ORDERS?'Place order — pay $'+total.toFixed(2)+' at pickup':'Show this design at the counter';
     $('totalTop').textContent='$'+total.toFixed(2);
     $('totalBar').textContent=total.toFixed(2);
     $('lineDevice').textContent=state.model+' · '+state.caseType;
     var ln2=$('linePickup'); if(!ln2){ ln2=document.createElement('div'); ln2.id='linePickup'; ln2.style.cssText='font-size:12px;font-weight:600;color:#6C6C72;margin-bottom:6px'; $('lineDevice').parentElement.insertAdjacentElement('afterend',ln2); }
-    ln2.textContent='Pickup: '+state.store+' — confirm timing with our team';
+    ln2.textContent='Pickup: '+state.store+(state.store==='Newark, DE'?' · No sales tax':' · Price before applicable tax');
     var names=addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return a.name.split(' ')[0]==='Tempered'?'Screen protector':'Lens protector';});
     $('lineAddons').style.display=names.length?'flex':'none';
     if(names.length){ $('addonSummary').textContent=names.join(' + '); $('addonTotal').textContent='+$'+addonTotal.toFixed(2); }
@@ -1476,14 +1488,61 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   try{localStorage.removeItem('kpCust');}catch(_){}
   var orderInFlight=false;
   function orderSignature(){var s=state;return JSON.stringify([s.model,s.caseType,s.store,s.variant,s.text,s.textFont,s.textColor,s.textSize,s.textPos,s.textVertical,s.px,s.py,s.scale,s.rot,s.fitMode,s.filter,s.addons,s.promo]);}
+  var counterCatalog, reviewVersion=0;
+  $('counterReview').addEventListener('close',function(){
+    ++reviewVersion;
+    $('reviewDetails').replaceChildren();
+    $('reviewCode').textContent='';
+    var preview=$('reviewPreview');
+    preview.getContext('2d').clearRect(0,0,preview.width,preview.height);
+  });
+  function showCounterReview(){
+    var issue=kpPrintIssue();
+    if(issue||!caseReady||!lightReady){kpToast(issue||'Your case preview is loading. Try again in a moment.');return;}
+    var dialog=$('counterReview'), details=$('reviewDetails'), code=$('reviewCode');
+    var version=++reviewVersion, model=state.model, variant=state.variant;
+    var file=state.isLibraryDesign&&state.photoImg&&state.photoImg.__kpDesignFile;
+    function detail(label,value){
+      var term=document.createElement('dt'), description=document.createElement('dd');
+      term.textContent=label;description.textContent=value;details.append(term,description);
+      return description;
+    }
+    details.replaceChildren();code.textContent='';
+    renderNow();
+    var preview=$('reviewPreview'),px=preview.getContext('2d');
+    px.clearRect(0,0,preview.width,preview.height);px.drawImage(canvas,0,0,preview.width,preview.height);
+    var title=detail('Design',file?file.replace(/^kp-|\.(jpg|png)$/g,'').replace(/-/g,' '):state.layout?'Photo collage':state.photoImg?'Your photo':'Text design');
+    if(file){
+      var look=KPDesignColorways.choicesFor(state.photoImg).find(function(item){return item.id===variant;});
+      if(look)detail('Design color',look.name);
+    }
+    detail('Phone',model+' · '+state.colorName);detail('Case',state.caseType);
+    if(state.text)detail('Personalization',state.text);
+    var extras=addonDefs.filter(function(a){return state.addons[a.key];});
+    extras.forEach(function(a){detail(a.name,'+$'+a.price.toFixed(2));});
+    if(state.promo&&promoTable[state.promo])detail('Discount',promoTable[state.promo].name);
+    detail('Store',state.store);
+    var newark=state.store==='Newark, DE';
+    if(newark)detail('Sales tax','$0.00');
+    detail(newark?'Total':'Total before tax','$'+orderPricing().total.toFixed(2));
+    dialog.showModal();dialog.scrollTop=0;
+    if(!file)return;
+    code.textContent='Looking up the design code…';
+    if(!counterCatalog)counterCatalog=KPI.load('instore/').catch(function(err){counterCatalog=null;throw err;});
+    counterCatalog.then(function(data){
+      if(version!==reviewVersion||!dialog.open)return;
+      var m=data.activeModels.find(function(item){return item.name===model;});
+      var d=m&&data.designsFor(m).find(function(item){return item.file===file;});
+      var key=d&&KPI.pickCode(m,d,variant);
+      if(d)title.textContent=KPI.cleanTitle(d.title);
+      code.textContent=key?'Design code · '+key:'Ask the team to match this preview.';
+    }).catch(function(){if(version===reviewVersion&&dialog.open)code.textContent='Design code unavailable. Show the team this preview.';});
+  }
   function kpOrderPanel(){
     if(orderInFlight||state.reserved)return;
     if(document.documentElement.classList.contains('staff-mode'))return;
+    if(!KP_ORDERS){showCounterReview();return;}
     var box=$('reservedBox'); box.style.display='block'; box.style.textAlign='left'; box.style.fontWeight='600';
-    if(!KP_ORDERS){
-      box.innerHTML='<strong>Your design is ready to review.</strong><p>No order or photo has been sent. Keep this screen open and show our team. We’ll confirm your phone, design, colorway, crop, price and pickup timing before printing.</p>';
-      box.setAttribute('tabindex','-1');box.focus();return;
-    }
     box.innerHTML=
       '<div style="font-weight:900;font-size:15px;margin-bottom:10px;color:#17171F">Almost done — who is this for?</div>'+
       '<input id="kpName" aria-label="Your name" placeholder="Your name" autocomplete="off" style="width:100%;box-sizing:border-box;padding:12px;border:1px solid #E4E3E3;border-radius:10px;font:inherit;font-size:16px;margin-bottom:8px">'+

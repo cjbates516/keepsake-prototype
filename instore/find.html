@@ -40,7 +40,7 @@
 </style>
 </head>
 <body>
-<div class="wrap">
+<main class="wrap">
   <div class="brand"><img src="../assets/favicon.svg" alt=""><span>Keepsake Printing Co</span></div>
   <p class="eyebrow">THE PRINT COUNTER</p><h1>From picked to printed.</h1>
   <p class="hint" id="pickHint">Enter the customer’s pick code to open the exact phone, design and colorway in the print workspace.</p>
@@ -59,7 +59,7 @@
     </div>
   </div>
 <section class="other-path"><h2>No pick code? Start here.</h2><p>Choose the customer’s phone, then use their photo or find a design by name.</p><label for="staffModel">Customer’s phone</label><select id="staffModel" disabled aria-describedby="phoneHint"><option value="">Loading phones…</option></select><button type="button" id="retryPhones" hidden>Retry loading phones</button><p id="phoneHint" role="status" tabindex="-1">Choose the customer’s phone first.</p><a class="btn secondary" id="ownOpen" href="#staffModel" aria-describedby="phoneHint" aria-disabled="true">Use a customer photo or name →</a><form id="nameForm"><input id="designName" type="search" placeholder="Find a design by name" aria-label="Design name"><button type="submit">Search</button></form><p id="nameStatus" role="status"></p><div id="nameResults" role="list" aria-label="Matching designs"></div><p class="photo-note">For personal photos, ask the customer to share the original file using the store’s transfer method. Upload it on this print computer, check the crop together, then remove the transferred photo and downloaded print file after the job according to store policy. This print workspace does not submit photos to an order server.</p></section>
-</div>
+</main>
 <script src="../assets/colorway-catalog.js"></script>
 <script src="../assets/design-colorways.js"></script>
 <script src="../assets/print-layouts.js"></script>

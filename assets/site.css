@@ -50,7 +50,8 @@ a:hover{color:var(--red-hover)}
 .nav-right a:hover{color:var(--red)}
 @media(max-width:720px){
   .nav-left{display:none}
-  .site-header .bar{grid-template-columns:auto 1fr}
+  .site-header .bar{grid-template-columns:minmax(0,1fr) auto;gap:8px;padding-inline:14px}
+  .site-header .wordmark{justify-self:start;letter-spacing:.2em}
   .nav-right{gap:12px}
 }
 
