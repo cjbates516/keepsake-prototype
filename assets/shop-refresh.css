@@ -143,3 +143,23 @@ html:not(.staff-mode) .kp-customizer #exportLink,html:not(.staff-mode) .kp-custo
 #reviewDetails{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:5px 14px;font-size:14px}
 #reviewDetails dt{color:#595459}#reviewDetails dd{font-weight:750;margin:0;text-align:right;overflow-wrap:anywhere;white-space:pre-wrap}
 #counterReview p{font-size:13px;line-height:1.45}#counterReview button{min-height:44px;width:100%;background:#222027;color:white;border:0;border-radius:5px;font:inherit;font-weight:800}
+
+/* Short landscape touch screens, including a foldable opened mid-design. */
+@media (pointer:coarse) and (orientation:landscape) and (min-width:650px) and (max-width:1050px) and (max-height:740px) {
+  .kp-customizer #main > div:first-child {padding:16px max(18px,env(safe-area-inset-right)) 132px max(18px,env(safe-area-inset-left))!important;}
+  .kp-customizer #main > div:first-child > div:first-child {grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;gap:18px!important;}
+  html:not(.staff-mode) .kp-customizer #stageStick {position:sticky!important;top:8px!important;gap:7px!important;padding:10px!important;}
+  .kp-customizer #stageCanvas {width:min(100%,max(148px,calc((100dvh - 224px) * .82)));height:auto;}
+  .kp-customizer #stageEmpty {height:min(35dvh,240px)!important;}
+  .kp-customizer #orderBar {padding-block:6px calc(6px + env(safe-area-inset-bottom))!important;}
+  .kp-customizer #counterReview {max-height:calc(100dvh - 24px);}
+  .kp-customizer #reviewPreview {max-height:30dvh;width:auto;max-width:100%;}
+}
+@media (pointer:coarse) and (min-width:400px) and (max-width:520px) and (max-height:720px) {
+  .preview-picker-open #stageStick {padding:10px!important;}
+  .preview-picker-open #stageCanvas {width:min(47vw,24dvh);}
+}
+
+@media (pointer:coarse) and (orientation:landscape) and (max-height:410px) {
+  html:not(.staff-mode) .kp-customizer #stageStick {position:static!important;}
+}
