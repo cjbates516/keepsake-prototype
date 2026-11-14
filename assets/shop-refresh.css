@@ -80,3 +80,34 @@ html:not(.staff-mode) .kp-customizer #exportLink,html:not(.staff-mode) .kp-custo
 .kp-library .cdot{min-width:24px;min-height:24px;box-sizing:border-box;flex-shrink:0}
 .kp-shop :is(#kpSelRow,#grid,.kpCatStrip,.photo-looks) :focus-visible{outline-offset:-3px!important}
 .kp-library .kpCard>div>div:last-child{flex-wrap:wrap}
+
+/* Keep the first row of art visible alongside the mobile browsing controls. */
+@media (max-width: 600px) {
+  .kp-library #main > div:first-child { padding: 18px 16px 56px !important; }
+  .kp-library .library-intro { gap: 8px !important; padding-bottom: 12px; margin-bottom: 12px !important; }
+  .kp-library .library-intro > div > div:first-child { margin-bottom: 6px !important; }
+  .kp-library #shopTitle { font-size: clamp(28px, 7.75vw, 38px) !important; }
+  .kp-library .library-intro p { font-size: 14px !important; margin-top: 5px !important; }
+  .kp-library .kpCatStrip { gap: 8px; margin-bottom: 14px; }
+  .kp-library .kpCatCard { width: 134px; height: 64px; }
+  .kp-library .kpCatCard span { font-size: 14px; }
+  .kp-library #wizardBar .kpStep {
+    display: grid;
+    grid-template-columns: minmax(72px, .56fr) minmax(0, 1.44fr);
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: center;
+  }
+  .kp-library #wizardBar .kpStepN { display: none; }
+  .kp-library #wizDevBtn, .kp-library #wizCat, .kp-library #wizSearch {
+    min-width: 0 !important;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 44px;
+  }
+  .kp-library #wizSearch { grid-column: 1 / -1; }
+  .kp-library.kp-device-mode #colorBar { margin-block: 4px 10px; }
+  .kp-library #step3Lab { margin-bottom: 8px; }
+  .kp-library #step3Lab .kpStepN { display: none; }
+  .kp-library .kpChip { min-height: 44px; }
+}

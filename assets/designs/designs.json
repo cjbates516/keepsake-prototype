@@ -1,5 +1,32 @@
 [
 {
+"file": "kp-cherry-dot.png",
+"title": "Cherry Dot",
+"category": "Fruits",
+"hash": "f46ed905af5b",
+"color": [
+"Blue",
+"Pink",
+"Yellow",
+"Green",
+"Black"
+],
+"active": true
+},
+{
+"file": "kp-wrong-way-duck.png",
+"title": "Wrong Way Duck",
+"category": "Animals",
+"hash": "cb78d9a6d6fc",
+"color": [
+"Blue",
+"Purple",
+"Green",
+"Pink"
+],
+"active": true
+},
+{
 "file": "kp-heart-riot.png",
 "title": "Heart Riot",
 "category": "Neon Hearts",
@@ -328,7 +355,7 @@
 },
 {
 "file": "i-ny-minimalist-graphic-t-shirt.jpg",
-"title": "I \u2665 NY Minimalist Graphic T-Shirt",
+"title": "I ♥ NY Minimalist Graphic T-Shirt",
 "category": "Abstract",
 "hash": "4b66565cdc76",
 "color": [
