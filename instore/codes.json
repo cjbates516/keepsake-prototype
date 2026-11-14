@@ -23,6 +23,7 @@
 "MAP": 108,
 "NE1": 1,
 "NEO": 6,
+"NPK": 5,
 "OUT": 6,
 "PAI": 1,
 "POP": 12,
@@ -34,7 +35,10 @@
 "Y2K": 43,
 "ZOD": 48
 },
-"retired": {},
+"retired": {
+"ABS-050": "modern-yosemite-national-park-logo-for-mug.jpg",
+"ABS-117": "vintage-glacier-national-park-bear-graphic-t-shirt.jpg"
+},
 "codes": {
 "abstract-geometric-minimalist-artwork.jpg": {
 "c": "ABS",
@@ -1920,6 +1924,10 @@
 "c": "KID",
 "n": 19
 },
+"kp-arches-sandstone.png": {
+"c": "NPK",
+"n": 1
+},
 "kp-blueberries-clear.png": {
 "c": "CLR",
 "n": 1
@@ -2007,6 +2015,10 @@
 "kp-golf-navy.jpg": {
 "c": "HIM",
 "n": 9
+},
+"kp-half-dome-river.png": {
+"c": "NPK",
+"n": 3
 },
 "kp-heart-riot.png": {
 "c": "NE1",
@@ -2227,6 +2239,10 @@
 "kp-wrong-way-duck.png": {
 "c": "ANI",
 "n": 29
+},
+"kp-yosemite-trail-patches.png": {
+"c": "NPK",
+"n": 4
 },
 "labrador-retrievers-in-santa-hats.jpg": {
 "c": "XMS",
@@ -2557,8 +2573,8 @@
 "n": 14
 },
 "modern-yosemite-national-park-logo-for-mug.jpg": {
-"c": "ABS",
-"n": 50
+"c": "NPK",
+"n": 5
 },
 "monarch-butterflies-wildflowers.jpg": {
 "c": "ANI",
@@ -4297,8 +4313,8 @@
 "n": 107
 },
 "vintage-glacier-national-park-bear-graphic-t-shirt.jpg": {
-"c": "ABS",
-"n": 117
+"c": "NPK",
+"n": 2
 },
 "vintage-handmade-christmas-tree.jpg": {
 "c": "XMS",

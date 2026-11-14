@@ -15,7 +15,7 @@ let checks=0;function check(ok,label){if(!ok)throw Error(label);checks++;}
    if(width===390){
      const active=p.locator('.case-slide:visible');
      check(await p.getByRole('button',{name:'Play slideshow'}).isVisible(),'reduced motion starts paused');
-     for(const name of ['Wrong Way Duck','Liquid Prism','Cherry Dot']){
+     for(const name of ['Cherry Dot','Neon Hearts','Wrong Way Duck','Liquid Prism','Yosemite']){
        await p.getByRole('button',{name:'Next case'}).click();
        check((await active.innerText()).includes(name),'next case: '+name);
      }

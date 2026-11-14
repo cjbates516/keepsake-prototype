@@ -6,6 +6,11 @@
  "assets_version": "12",
  "collections": [
   {
+   "category": "National Parks",
+   "label": "National Parks",
+   "code": "NPK"
+  },
+  {
    "category": "Liquid Color",
    "label": "Liquid Color",
    "code": "LIQ"
