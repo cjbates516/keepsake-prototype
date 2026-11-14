@@ -137,6 +137,7 @@
     .bar{flex-wrap:wrap;gap:0 12px;align-content:center;padding-block:8px}
     .steps{flex-wrap:wrap}
   }
+@media(max-width:900px){.phones,.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
 <body>
@@ -186,7 +187,7 @@
           <h1 class="dname" id="dname"></h1>
           <p class="dmeta" id="dmeta"></p>
           <p class="price" id="price"></p><label class="bundle-note"><input id="glass" type="checkbox"> <span id="glassLabel">Add tempered glass</span></label>
-          <div id="colorwayPicker" hidden style="margin:16px 0"><p style="font-size:18px;font-weight:800">Choose your colorway</p><div id="colorwayButtons" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"></div></div>
+          <div id="colorwayPicker" hidden style="margin:16px 0"><p style="font-size:18px;font-weight:800">Choose your background</p><div id="colorwayButtons" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"></div></div>
           <button class="cta" type="button" id="showBtn">Show a team member</button>
           <div class="codecard" id="codecard" aria-live="polite">
             <p class="codelabel" id="codelabel">YOUR PICK CODE</p>
@@ -226,7 +227,7 @@
 <script src="../assets/design-colorways.js"></script>
 <script src="../assets/print-layouts.js"></script>
 <script src="../assets/kp-config.js"></script>
-<script src="instore-lib.js"></script>
+<script src="../assets/seasonal-visibility.js"></script><script src="instore-lib.js"></script>
 <script>
 (function () {
   'use strict';
@@ -312,13 +313,13 @@
     show(2);
   }
   function designsNow() {
-    var list = data.designsFor(state.model);
+    var list = data.designsFor(state.model).filter(function(d){return KPSeason.visible(d);});
     if(state.filter!=='all')list=list.filter(function(d){return d._col.code===state.filter;});
     var words=state.query.toLowerCase().trim().split(/\s+/).filter(Boolean);
     return list.filter(function(d){var text=(cleanTitle(d.title)+' '+d._col.label).toLowerCase();return words.every(function(w){return text.indexOf(w)!==-1;});});
   }
   function buildChips() {
-    var list = data.designsFor(state.model), has = {};
+    var list = data.designsFor(state.model).filter(function(d){return KPSeason.visible(d);}), has = {};
     list.forEach(function (d) { has[d._col.code] = true; });
     var html = '<button class="chip" type="button" data-col="all" aria-pressed="true">All designs</button>';
     data.collections.forEach(function (c) {

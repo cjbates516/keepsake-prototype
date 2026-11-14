@@ -1,5 +1,772 @@
 [
 {
+"file": "kp-sunday-scramble.png",
+"title": "Sunday Scramble",
+"category": "Signature Golf",
+"hash": "a020048b1f86",
+"color": [
+"Cream",
+"Green",
+"Blue",
+"Pink"
+],
+"active": true
+},
+{
+"file": "city-scene-new-york.png",
+"title": "New York · Brooklyn Bridge",
+"category": "City Scenes",
+"hash": "9dd715d45f57",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-los-angeles.png",
+"title": "Los Angeles · Griffith Observatory",
+"category": "City Scenes",
+"hash": "ada620ca47bf",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-chicago.png",
+"title": "Chicago · Chicago River",
+"category": "City Scenes",
+"hash": "86e988f08498",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-houston.png",
+"title": "Houston · Buffalo Bayou",
+"category": "City Scenes",
+"hash": "8e65040d0927",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-phoenix.png",
+"title": "Phoenix · Camelback Mountain",
+"category": "City Scenes",
+"hash": "65cf357bc20a",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-philadelphia.png",
+"title": "Philadelphia · City Hall",
+"category": "City Scenes",
+"hash": "335da0c81741",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-san-antonio.png",
+"title": "San Antonio · River Walk",
+"category": "City Scenes",
+"hash": "0f85b3bff2dc",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-san-diego.png",
+"title": "San Diego · Coronado Bridge",
+"category": "City Scenes",
+"hash": "2f77f125e7be",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-dallas.png",
+"title": "Dallas · Reunion Tower",
+"category": "City Scenes",
+"hash": "5d4237d6a884",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-fort-worth.png",
+"title": "Fort Worth · Stockyards",
+"category": "City Scenes",
+"hash": "03089b376b7e",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-jacksonville.png",
+"title": "Jacksonville · Main Street Bridge",
+"category": "City Scenes",
+"hash": "b0e254d7322a",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-austin.png",
+"title": "Austin · Congress Avenue Bridge",
+"category": "City Scenes",
+"hash": "23235eb6f04c",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-san-jose.png",
+"title": "San Jose · Lick Observatory",
+"category": "City Scenes",
+"hash": "d4a44dc2e3c2",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-charlotte.png",
+"title": "Charlotte · Uptown",
+"category": "City Scenes",
+"hash": "a43438d6176f",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-columbus.png",
+"title": "Columbus · Scioto Mile",
+"category": "City Scenes",
+"hash": "9ca7a40b115c",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-indianapolis.png",
+"title": "Indianapolis · Monument Circle",
+"category": "City Scenes",
+"hash": "68090440f0b1",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-san-francisco.png",
+"title": "San Francisco · Golden Gate Bridge",
+"category": "City Scenes",
+"hash": "1dec24be3fac",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-seattle.png",
+"title": "Seattle · Space Needle",
+"category": "City Scenes",
+"hash": "34a0af407f87",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-denver.png",
+"title": "Denver · Front Range",
+"category": "City Scenes",
+"hash": "6daad2590634",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-nashville.png",
+"title": "Nashville · Cumberland River",
+"category": "City Scenes",
+"hash": "4f9d04a6a308",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-oklahoma-city.png",
+"title": "Oklahoma City · Skydance Bridge",
+"category": "City Scenes",
+"hash": "ca24e3dfd22d",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-washington.png",
+"title": "Washington · Washington Monument",
+"category": "City Scenes",
+"hash": "1406fe815217",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-el-paso.png",
+"title": "El Paso · Franklin Mountains",
+"category": "City Scenes",
+"hash": "d90cd61ee3c6",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-las-vegas.png",
+"title": "Las Vegas · Stratosphere Tower",
+"category": "City Scenes",
+"hash": "b6903d5d5085",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-boston.png",
+"title": "Boston · Zakim Bridge",
+"category": "City Scenes",
+"hash": "dbc16bb12e69",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-detroit.png",
+"title": "Detroit · Renaissance Center",
+"category": "City Scenes",
+"hash": "43bb400e3509",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-louisville.png",
+"title": "Louisville · Big Four Bridge",
+"category": "City Scenes",
+"hash": "3c2ab5dd0c33",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-portland.png",
+"title": "Portland · St. Johns Bridge",
+"category": "City Scenes",
+"hash": "c0254eee7eec",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-memphis.png",
+"title": "Memphis · Mississippi River",
+"category": "City Scenes",
+"hash": "cc9d9098c600",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-baltimore.png",
+"title": "Baltimore · Inner Harbor",
+"category": "City Scenes",
+"hash": "a039ae3aab6c",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-milwaukee.png",
+"title": "Milwaukee · Lakefront",
+"category": "City Scenes",
+"hash": "c534ecf1d1eb",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-albuquerque.png",
+"title": "Albuquerque · Sandia Mountains",
+"category": "City Scenes",
+"hash": "e5caa2b1c64a",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-fresno.png",
+"title": "Fresno · Sierra Nevada",
+"category": "City Scenes",
+"hash": "4916f4247c92",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-tucson.png",
+"title": "Tucson · Santa Catalina Mountains",
+"category": "City Scenes",
+"hash": "1df6700d7b7f",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-sacramento.png",
+"title": "Sacramento · Tower Bridge",
+"category": "City Scenes",
+"hash": "ae2f361daa55",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-atlanta.png",
+"title": "Atlanta · Peachtree Street",
+"category": "City Scenes",
+"hash": "76ae30158b78",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-kansas-city.png",
+"title": "Kansas City · Liberty Memorial",
+"category": "City Scenes",
+"hash": "1699630ff0c6",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-mesa.png",
+"title": "Mesa · Superstition Mountains",
+"category": "City Scenes",
+"hash": "5675fa18f32e",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-raleigh.png",
+"title": "Raleigh · State Capitol",
+"category": "City Scenes",
+"hash": "650fa3b07516",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-colorado-springs.png",
+"title": "Colorado Springs · Garden of the Gods",
+"category": "City Scenes",
+"hash": "f9a413ef0cfc",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-miami.png",
+"title": "Miami · Biscayne Bay",
+"category": "City Scenes",
+"hash": "238142a04825",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-omaha.png",
+"title": "Omaha · Missouri River",
+"category": "City Scenes",
+"hash": "b0ad8d9178bf",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-virginia-beach.png",
+"title": "Virginia Beach · Cape Henry",
+"category": "City Scenes",
+"hash": "fb557c13a80c",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-long-beach.png",
+"title": "Long Beach · Rainbow Harbor",
+"category": "City Scenes",
+"hash": "85581320a65c",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-oakland.png",
+"title": "Oakland · Port of Oakland",
+"category": "City Scenes",
+"hash": "91e36d4cd6e6",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-minneapolis.png",
+"title": "Minneapolis · Stone Arch Bridge",
+"category": "City Scenes",
+"hash": "6456e24538df",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-bakersfield.png",
+"title": "Bakersfield · Sierra Foothills",
+"category": "City Scenes",
+"hash": "360df5baad24",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-tulsa.png",
+"title": "Tulsa · Art Deco District",
+"category": "City Scenes",
+"hash": "d1408d859792",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-tampa.png",
+"title": "Tampa · Hillsborough River",
+"category": "City Scenes",
+"hash": "cb7f9d988dfa",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-aurora.png",
+"title": "Aurora · Cherry Creek Reservoir",
+"category": "City Scenes",
+"hash": "5b6dc5903d8a",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-new-orleans.png",
+"title": "New Orleans · French Quarter",
+"category": "City Scenes",
+"hash": "fdce212d5ea4",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-honolulu.png",
+"title": "Honolulu · Diamond Head",
+"category": "City Scenes",
+"hash": "f3c1da38aa80",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-orlando.png",
+"title": "Orlando · Lake Eola",
+"category": "City Scenes",
+"hash": "cd27e139269f",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-pittsburgh.png",
+"title": "Pittsburgh · Three Rivers",
+"category": "City Scenes",
+"hash": "0f533dc50a17",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-st-louis.png",
+"title": "St. Louis · Gateway Arch",
+"category": "City Scenes",
+"hash": "0ddef6300bc8",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-charleston.png",
+"title": "Charleston · Rainbow Row",
+"category": "City Scenes",
+"hash": "0e4f440459aa",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-savannah.png",
+"title": "Savannah · Forsyth Park",
+"category": "City Scenes",
+"hash": "042e52b348d3",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
+"file": "city-scene-santa-fe.png",
+"title": "Santa Fe · Sangre de Cristo Mountains",
+"category": "City Scenes",
+"hash": "05a52a7b4736",
+"active": true,
+"color": [
+"Cream",
+"Blue",
+"Green",
+"Pink"
+]
+},
+{
 "file": "kp-golf-pebble-beach.jpg",
 "title": "Pebble Beach",
 "category": "Signature Golf",

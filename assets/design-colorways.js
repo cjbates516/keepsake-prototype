@@ -50,37 +50,18 @@
     return src.__kpVariantPromise;
   }
   function valid(id){return id===artworkOnly.id||id==='original'||/^c[1-5]$/.test(id)||choices.some(function(c){return c.id===id;});}
-  function rgb(hex){return [parseInt(hex.slice(1,3),16),parseInt(hex.slice(3,5),16),parseInt(hex.slice(5,7),16)];}
-  function dominant(src){
-    if(src.__kpDominant)return src.__kpDominant;
-    var sample=document.createElement('canvas');sample.width=sample.height=96;var cx=sample.getContext('2d',{willReadFrequently:true});cx.drawImage(src,0,0,96,96);
-    var p=cx.getImageData(0,0,96,96).data,bins={},transparent=0;
-    for(var i=0;i<p.length;i+=4){if(p[i+3]<240){transparent++;continue;}var key=(p[i]>>4)+','+(p[i+1]>>4)+','+(p[i+2]>>4),bin=bins[key]||(bins[key]=[0,0,0,0]);var n=i/4,x=n%96,y=Math.floor(n/96),weight=x<8||x>87||y<8||y>87?3:1;bin[0]+=weight;bin[1]+=p[i]*weight;bin[2]+=p[i+1]*weight;bin[3]+=p[i+2]*weight;}
-    var best=Object.keys(bins).reduce(function(a,k){return !a||bins[k][0]>bins[a][0]?k:a;},null),v=best?bins[best]:[1,255,255,255];
-    var result={color:[v[1]/v[0],v[2]/v[0],v[3]/v[0]],transparent:transparent/(96*96)>.05};sample.width=sample.height=0;src.__kpDominant=result;return result;
-  }
   function paletteCanvas(src,look,maxEdge,pf){
     var iw=src.naturalWidth||src.width,ih=src.naturalHeight||src.height,k=Math.min(1,(maxEdge||2048)/Math.max(iw,ih));
     var cv=document.createElement('canvas');cv.width=Math.max(1,Math.round(iw*k));cv.height=Math.max(1,Math.round(ih*k));var cx=cv.getContext('2d',{willReadFrequently:true});cx.drawImage(src,0,0,cv.width,cv.height);
-    var bg=pf.background||dominant(src),target=rgb(look.bg);
-    if(bg.transparent){cx.globalCompositeOperation='destination-over';cx.fillStyle=look.bg;cx.fillRect(0,0,cv.width,cv.height);cx.globalCompositeOperation='source-over';}
-    else {
-      var image=cx.getImageData(0,0,cv.width,cv.height),p=image.data;
-      // Only the connected background changes. Enclosed highlights and artwork remain intact.
-      var count=cv.width*cv.height,mask=new Uint8Array(count),queue=new Int32Array(count),head=0,tail=0;
-      function enqueue(n){if(mask[n])return;var i=n*4,dr=p[i]-bg.color[0],dg=p[i+1]-bg.color[1],db=p[i+2]-bg.color[2];
-        if(dr*dr+dg*dg+db*db>2304)return;mask[n]=1;queue[tail++]=n;}
-      for(var x=0;x<cv.width;x++){enqueue(x);enqueue(count-cv.width+x);}
-      for(var y=0;y<cv.height;y++){enqueue(y*cv.width);enqueue(y*cv.width+cv.width-1);}
-      while(head<tail){var n=queue[head++],x=n%cv.width;if(x)enqueue(n-1);if(x<cv.width-1)enqueue(n+1);if(n>=cv.width)enqueue(n-cv.width);if(n<count-cv.width)enqueue(n+cv.width);}
-      for(var n=0;n<count;n++){
-        var i=n*4,dr=p[i]-bg.color[0],dg=p[i+1]-bg.color[1],db=p[i+2]-bg.color[2];
-        // Maps and repeat patterns have many separate background islands; exact color key is opt-in.
-        if(!mask[n]&&!(pf.islands&&dr*dr+dg*dg+db*db<576))continue;
-        var amount=Math.max(0,Math.min(1,(48-Math.sqrt(dr*dr+dg*dg+db*db))/24));
-        p[i]=p[i]*(1-amount)+target[0]*amount;p[i+1]=p[i+1]*(1-amount)+target[1]*amount;p[i+2]=p[i+2]*(1-amount)+target[2]*amount;
-      }
-      cx.putImageData(image,0,0);
+    if (pf.background && pf.background.transparent) {
+      cx.globalCompositeOperation='destination-over';cx.fillStyle=look.bg;cx.fillRect(0,0,cv.width,cv.height);cx.globalCompositeOperation='source-over';
+    } else {
+      // Flattened artwork has no trustworthy foreground mask. Mount the original on a mat;
+      // never color-key matching details inside a photograph, map or illustration.
+      cv.height=maxEdge||2048;cv.width=Math.round(cv.height/2);
+      cx.fillStyle=look.bg;cx.fillRect(0,0,cv.width,cv.height);
+      var scale=Math.min(cv.width*.90/iw,cv.height*.70/ih),dw=iw*scale,dh=ih*scale;
+      cx.drawImage(src,(cv.width-dw)/2,cv.height*.60-dh/2,dw,dh);
     }
     cv.naturalWidth=cv.width;cv.naturalHeight=cv.height;return cv;
   }
@@ -124,7 +105,7 @@
     canvas.width = Math.round(height / 2);
     canvas.height = height;
     const ctx = canvas.getContext('2d');
-    const art = look.id === 'original' ? src : paletteCanvas(src, look, height, profile);
+    const art = src;
     const width = art.naturalWidth || art.width;
     const artHeight = art.naturalHeight || art.height;
     // Glacier's square source includes a paper border around all four sides.
@@ -170,12 +151,12 @@
       var bx=.12*w,by=.34*h,bw=.76*w,bh=bw*(ih*.524)/(iw*.456);
       cx.save();cx.beginPath();cx.moveTo(bx+bw/2,by);cx.lineTo(bx+bw,by+bh*.25);cx.lineTo(bx+bw,by+bh*.75);cx.lineTo(bx+bw/2,by+bh);cx.lineTo(bx,by+bh*.75);cx.lineTo(bx,by+bh*.25);cx.closePath();
       cx.strokeStyle='#fff';cx.lineWidth=w*.009;cx.stroke();cx.clip();cx.drawImage(src,iw*.2715,ih*.1455,iw*.456,ih*.524,bx,by,bw,bh);cx.restore();
-      // Keep the exact original lettering, changing ink to white for contrast on dark backgrounds.
+      // Preserve the navy lettering on every background; a cream backing keeps the title legible.
       var text=document.createElement('canvas');text.width=Math.round(w*.92);text.height=Math.round(text.width*(ih*.14)/(iw*.64));
       var tx=text.getContext('2d',{willReadFrequently:true});tx.drawImage(src,iw*.18,ih*.713,iw*.64,ih*.14,0,0,text.width,text.height);
       var data=tx.getImageData(0,0,text.width,text.height),p=data.data;
-      for(var j=0;j<p.length;j+=4){var alpha=Math.max(0,Math.min(1,(205-Math.max(p[j],p[j+1],p[j+2]))/125));var darkInk=id==='original'||id===artworkOnly.id;p[j]=darkInk?6:255;p[j+1]=darkInk?36:255;p[j+2]=darkInk?68:255;p[j+3]=Math.round(alpha*255);}
-      tx.putImageData(data,0,0);cx.drawImage(text,w*.04,by+bh+h*.025);text.width=text.height=0;
+      for(var j=0;j<p.length;j+=4){var alpha=Math.max(0,Math.min(1,(205-Math.max(p[j],p[j+1],p[j+2]))/125));p[j]=6;p[j+1]=36;p[j+2]=68;p[j+3]=Math.round(alpha*255);}
+      tx.putImageData(data,0,0);cx.save();cx.shadowColor='#fffcf2';cx.shadowBlur=w*.006;cx.drawImage(text,w*.04,by+bh+h*.025);cx.restore();text.width=text.height=0;
     }
     cv.naturalWidth=cv.width;cv.naturalHeight=cv.height;return cv;
   }

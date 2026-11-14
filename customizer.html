@@ -112,7 +112,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/shop-refresh.css">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-</head>
+<link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js" defer></script></head>
 <body class="kp-shop kp-customizer">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
 <div class="kp-page" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
@@ -244,9 +244,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           </div>
           <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:12px">Your photo</div>
           <section id="photoLooksWrap" aria-labelledby="photoLooksTitle" hidden style="margin-bottom:12px">
-            <h2 id="photoLooksTitle" style="font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin:0 0 6px">Choose your colorway.</h2>
-            <p style="font-size:13px;color:#555;margin:0 0 6px">Tap a look to see it on your case.</p>
-            <div id="photoLooks" class="photo-looks" role="group" aria-label="Design colorways"></div>
+            <h2 id="photoLooksTitle" style="font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin:0 0 6px">Choose your background.</h2>
+            <p style="font-size:13px;color:#555;margin:0 0 6px">Your artwork keeps its original colors.</p>
+            <div id="photoLooks" class="photo-looks" role="group" aria-label="Background options"></div>
             <p id="photoLookStatus" aria-live="polite" style="font-size:12px;color:#555;margin:0">Original selected</p>
           </section>
           <button id="uploadBtn" class="h-upload" style="width:100%;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s">Upload a photo</button>
@@ -1263,7 +1263,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       row.replaceChildren();KPDesignColorways.clear();looksSource=src;looksSize=size;
       KPDesignColorways.choicesFor(src).forEach(function(look){
         var button=document.createElement('button');button.type='button';button.className='photo-look';button.dataset.look=look.id;
-        button.setAttribute('aria-label',look.name+' colorway');
+        button.setAttribute('aria-label',look.name+' background');
         var thumb=KPDesignColorways.make(src,look.id,192);thumb.setAttribute('aria-hidden','true');
         var label=document.createElement('span');label.textContent=look.name;button.append(thumb,label);row.append(button);
       });
@@ -1542,7 +1542,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var title=detail('Design',file?file.replace(/^kp-|\.(jpg|png)$/g,'').replace(/-/g,' '):state.layout?'Photo collage':state.photoImg?(skyStudio?'Personalized night sky':drawingStudio?'Your child’s artwork':'Your photo'):'Text design');
     if(file){
       var look=KPDesignColorways.choicesFor(state.photoImg).find(function(item){return item.id===variant;});
-      if(look)detail('Design color',look.name);
+      if(look)detail('Background',look.name);
     }
     detail('Phone',model+' · '+state.colorName);detail('Case',state.caseType);
     if(state.text)detail('Personalization',state.text);

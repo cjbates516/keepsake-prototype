@@ -5,6 +5,7 @@
  "code_hold_seconds": 300,
  "assets_version": "12",
  "collections": [
+  {"category":"City Scenes","label":"City Scenes","code":"SCN"},
   {
    "category": "Signature Golf",
    "label": "Signature Golf",

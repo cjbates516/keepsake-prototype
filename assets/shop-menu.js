@@ -1,0 +1,21 @@
+(() => {
+ const header=document.querySelector('.home-header,.slate-header,.site-header .bar');
+ if(!header || typeof document.createElement('dialog').showModal!=='function')return;
+ const rows=[
+  ['iPhone cases','Pick your iPhone model','gallery.html?brand=Apple','assets/home/cherry-duck/cherry-dot-original.webp'],
+  ['Samsung cases','Pick your Galaxy model','gallery.html?brand=Samsung','assets/home/signature-golf/sunday-scramble-original.webp'],
+  ['All phone cases','Browse prints before picking a phone','gallery.html','assets/home/cherry-duck/wrong-way-duck-original.webp'],
+  ['City Scenes','Find your city','gallery.html?cat=City%20Scenes','assets/designs/thumbs/city-scene-philadelphia.png'],
+  ['Signature Golf','Course maps and Sunday Scramble','signature-golf.html','assets/home/signature-golf/pebble-original.webp'],
+  ['National Parks','Illustrations and real park photos','parks-rugged.html','assets/home/parks-rugged/acadia-original.webp'],
+  ['Design your own','Start with your photo or drawing','customizer.html','assets/photos/i17PM-hero.jpg'],
+  ['Photo slates','Personalized stone prints','slates.html','assets/photos/slates/yosemite-valley-print.jpg']
+ ];
+ const trigger=document.createElement('button');trigger.className='ks-menu-toggle';trigger.type='button';trigger.setAttribute('aria-label','Open navigation menu');trigger.setAttribute('aria-haspopup','dialog');trigger.setAttribute('aria-controls','ks-menu-panel');trigger.setAttribute('aria-expanded','false');trigger.innerHTML='<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20M2 12h20M2 19h20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
+ const panel=document.createElement('dialog');panel.id='ks-menu-panel';panel.setAttribute('aria-label','Shop Keepsake');panel.innerHTML='<div class="ks-menu-top"><button type="button" autofocus aria-label="Close navigation menu">×</button><b>KEEPSAKE</b></div><nav aria-label="Shop by category">'+rows.map(([name,sub,href,img])=>'<a href="'+href+'"><img alt="" loading="lazy" decoding="async" width="48" height="48" src="'+img+'"><span><strong>'+name+'</strong><small>'+sub+'</small></span><i aria-hidden="true">›</i></a>').join('')+'</nav><div class="ks-menu-extra"><a href="index.html#stores">Visit a store</a><a href="instore/">In-store browsing</a><a href="gifts.html">Gift guide</a><a href="help.html">Help</a><a href="account.html">Account</a><a href="checkout.html">Cart</a></div>';
+ header.prepend(trigger);header.classList.add('ks-drawer-header');document.body.append(panel);
+ let restoreFocus=true;trigger.onclick=()=>{restoreFocus=true;panel.showModal();trigger.setAttribute('aria-expanded','true');document.documentElement.classList.add('ks-menu-open');};
+ panel.querySelector('button').onclick=()=>panel.close();panel.addEventListener('click',e=>{const link=e.target.closest('a');if(link)restoreFocus=false;if(link||(e.target===panel&&e.clientX>=panel.getBoundingClientRect().right))panel.close();});
+ panel.addEventListener('close',()=>{document.documentElement.classList.remove('ks-menu-open');trigger.setAttribute('aria-expanded','false');if(restoreFocus&&trigger.offsetWidth)trigger.focus({preventScroll:true});});
+ matchMedia('(max-width:900px)').addEventListener('change',e=>{if(!e.matches&&panel.open)panel.close()});
+})();
