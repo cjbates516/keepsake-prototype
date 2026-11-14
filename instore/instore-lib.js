@@ -136,7 +136,7 @@
     var t = String(text || '').toUpperCase().trim().replace(/[\s_.\u2010-\u2015\u2212]+/g, '-').replace(/-+/g, '-');
     var glass=/[0-9]-?G$/.test(t);
     if(glass)t=t.replace(/-?G$/, '');
-    var suffix=t.match(/(\d)-?C([1-5])$/),colorway=suffix?Number(suffix[2]):0;
+    var suffix=t.match(/(\d)-?C([1-6])$/),colorway=suffix?Number(suffix[2]):0;
     if(suffix)t=t.slice(0,suffix.index)+suffix[1];
     function result(model,col,n){var p={model:model,col:col,n:n};if(colorway)p.colorway=colorway;if(glass)p.glass=true;return p;}
     var m = t.match(/^([A-Z0-9]+)-([A-Z0-9]{3})-(\d{1,4})$/);

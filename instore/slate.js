@@ -26,9 +26,21 @@
     clearPhoto();
     const item = selected();
     el('job').disabled = !item;
-    el('orientation').value = 'portrait';
+    el('orientation').value = item?.artwork ? 'landscape' : 'portrait';
     el('width').value = el('height').value = '';
     el('price').textContent = item ? item.code + ' · $' + item.price.toFixed(2) + ' before applicable tax' : '';
+    if (item?.artwork) {
+      const version = loadVersion;
+      const image = new Image();
+      image.src = item.artwork;
+      image.decode().then(() => {
+        if (version !== loadVersion) return;
+        photo = image;
+        refresh();
+      }).catch(() => {
+        if (version === loadVersion) message('The Yosemite photograph could not load. Reopen the selection to retry.');
+      });
+    }
     message(item === KPSlates.products.bundle ? 'Prepare each of the two 4 × 6 prints. Clear the photo between different images.' : '');
   }
   function dimensions() {
@@ -95,7 +107,8 @@
     });
   }
   el('clear').addEventListener('click', () => { clearPhoto();message('Photo cleared.'); });
-  window.addEventListener('pagehide', selectSlate);
+  window.addEventListener('pagehide', () => clearPhoto());
+  window.addEventListener('pageshow', event => { if (event.persisted) selectSlate(); });
   save.addEventListener('click', async () => {
     const size = dimensions(), version = revision;
     if (busy || !photo || !size || !el('approved').checked) return;

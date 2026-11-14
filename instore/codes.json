@@ -23,10 +23,10 @@
 "MAP": 108,
 "NE1": 1,
 "NEO": 6,
-"NPK": 17,
+"NPK": 18,
 "OUT": 6,
 "PAI": 1,
-"POP": 12,
+"POP": 13,
 "SCN": 38,
 "SPT": 5,
 "STR": 27,
@@ -2172,6 +2172,10 @@
 "c": "NPK",
 "n": 11
 },
+"kp-scoop-shop.png": {
+"c": "POP",
+"n": 13
+},
 "kp-solid-army.jpg": {
 "c": "HIM",
 "n": 16
@@ -2283,6 +2287,10 @@
 "kp-yellowstone-grand-prismatic.png": {
 "c": "NPK",
 "n": 7
+},
+"kp-yosemite-half-dome-sunset.jpg": {
+"c": "NPK",
+"n": 18
 },
 "kp-yosemite-trail-patches.png": {
 "c": "NPK",
