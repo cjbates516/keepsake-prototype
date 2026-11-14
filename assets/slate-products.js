@@ -18,6 +18,12 @@
       price:49.99, width:8, height:10, artwork:'../assets/photos/slates/rocky-landscape-print.jpg'},
     smokies: {code:'SL-810-GSM', label:'Great Smoky Mountains · Oconaluftee Sunrise · 8 × 10 inch landscape slate',
       price:49.99, width:8, height:10, artwork:'../assets/photos/slates/smokies-landscape-print.jpg'},
+    acadia: {code:'SL-810-ACD', label:'Acadia · Jordan Pond at Sunset · 8 × 10 inch landscape slate',
+      price:49.99, width:8, height:10, artwork:'../assets/photos/slates/acadia-landscape-print.jpg'},
+    joshua: {code:'SL-810-JTR', label:'Joshua Tree · Cholla Garden at Sunset · 8 × 10 inch landscape slate',
+      price:49.99, width:8, height:10, artwork:'../assets/photos/slates/joshua-landscape-print.jpg'},
+    olympic: {code:'SL-810-OLY', label:'Olympic · Lake Crescent Reflections · 8 × 10 inch landscape slate',
+      price:49.99, width:8, height:10, artwork:'../assets/photos/slates/olympic-landscape-print.jpg', creditSlip:'../assets/photos/slates/olympic-photo-credit.pdf'},
     bundle: {code:'SL-PAIR', label:'Holiday pair · two 4 × 6 inch photo slates', price:49.99, width:4, height:6}
   };
   window.KPSlates = {products:products, byCode:function (value) {

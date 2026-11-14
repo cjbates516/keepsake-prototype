@@ -29,6 +29,9 @@
     el('orientation').value = item?.artwork ? 'landscape' : 'portrait';
     el('width').value = el('height').value = '';
     el('price').textContent = item ? item.code + ' · $' + item.price.toFixed(2) + ' before applicable tax' : '';
+    el('creditSlip').hidden = !item?.creditSlip;
+    if (item?.creditSlip) el('creditDownload').href = item.creditSlip;
+    else el('creditDownload').removeAttribute('href');
     el('reloadPark').hidden = !item?.artwork;
     message(item === KPSlates.products.bundle ? 'Prepare each of the two 4 × 6 prints. Clear the photo between different images.' : '');
     if (item?.artwork) loadParkPhoto(item);
