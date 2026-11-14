@@ -23,7 +23,7 @@
 "MAP": 108,
 "NE1": 1,
 "NEO": 6,
-"NPK": 21,
+"NPK": 24,
 "OUT": 6,
 "PAI": 1,
 "POP": 13,
@@ -1976,6 +1976,10 @@
 "c": "HIM",
 "n": 2
 },
+"kp-canyon-duck-on-a-rock-photo.jpg": {
+"c": "NPK",
+"n": 22
+},
 "kp-carbon-weave.jpg": {
 "c": "HIM",
 "n": 5
@@ -2168,6 +2172,10 @@
 "c": "HIM",
 "n": 7
 },
+"kp-rocky-dream-lake-photo.jpg": {
+"c": "NPK",
+"n": 24
+},
 "kp-rocky-mountain-moraine-elk.png": {
 "c": "NPK",
 "n": 11
@@ -2175,6 +2183,10 @@
 "kp-scoop-shop.png": {
 "c": "POP",
 "n": 13
+},
+"kp-smokies-grotto-falls-photo.jpg": {
+"c": "NPK",
+"n": 23
 },
 "kp-solid-army.jpg": {
 "c": "HIM",

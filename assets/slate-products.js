@@ -12,6 +12,12 @@
       price:49.99, width:8, height:10, artwork:'../assets/photos/slates/zion-landscape-print.jpg'},
     teton: {code:'SL-810-TET', label:'Grand Teton · Snake River Overlook · 8 × 10 inch landscape slate',
       price:49.99, width:8, height:10, artwork:'../assets/photos/slates/teton-landscape-print.jpg'},
+    canyon: {code:'SL-810-GCN', label:'Grand Canyon · Powell Point Sunset · 8 × 10 inch landscape slate',
+      price:49.99, width:8, height:10, artwork:'../assets/photos/slates/canyon-landscape-print.jpg'},
+    rocky: {code:'SL-810-RMT', label:'Rocky Mountain · Sprague Lake · 8 × 10 inch landscape slate',
+      price:49.99, width:8, height:10, artwork:'../assets/photos/slates/rocky-landscape-print.jpg'},
+    smokies: {code:'SL-810-GSM', label:'Great Smoky Mountains · Oconaluftee Sunrise · 8 × 10 inch landscape slate',
+      price:49.99, width:8, height:10, artwork:'../assets/photos/slates/smokies-landscape-print.jpg'},
     bundle: {code:'SL-PAIR', label:'Holiday pair · two 4 × 6 inch photo slates', price:49.99, width:4, height:6}
   };
   window.KPSlates = {products:products, byCode:function (value) {
