@@ -12,14 +12,17 @@ let checks=0;function check(ok,label){if(!ok)throw Error(label);checks++;}
    await p.goto(base,{waitUntil:'networkidle'});
    await p.locator('img').evaluateAll(async es=>{es.forEach(e=>e.loading='eager');await Promise.all(es.map(e=>e.decode()))});
    check(await p.locator('h1').count()===1,'single h1');
+   const bounds=await p.locator('.case-edit').boundingBox();
+   check(bounds.x===0 && bounds.width===width && Math.abs(bounds.y+bounds.height-950)<=2,'full viewport hero '+width);
    if(width===390){
      const active=p.locator('.case-slide:visible');
-     check(await p.getByRole('button',{name:'Play slideshow'}).isVisible(),'reduced motion starts paused');
+     check(await p.locator('.case-edit button').count()===0,'no slideshow control bar');
+     await active.locator('a').focus();
      for(const name of ['Cherry Dot','Neon Hearts','Wrong Way Duck','Liquid Prism','Yosemite']){
-       await p.getByRole('button',{name:'Next case'}).click();
+       await p.keyboard.press('ArrowRight');
        check((await active.innerText()).includes(name),'next case: '+name);
      }
-     await p.getByRole('button',{name:'Previous case'}).click();
+     await p.keyboard.press('ArrowLeft');
      check((await active.locator('a').getAttribute('href')).includes('design=kp-liquid-prism.png'),'previous wraps to matching product');
    }
    check(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),engine+width+' overflow');

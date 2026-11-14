@@ -18,68 +18,99 @@
 })();
 
 (function () {
-  'use strict';
-  const edit = document.querySelector('.case-edit');
-  if (!edit) return;
-  const slides = Array.from(edit.querySelectorAll('.case-slide'));
-  const controls = edit.querySelector('.edit-controls'), toggle = controls.querySelector('[data-edit="play"]');
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
-  let index = 0, playing = !reduce.matches, onscreen = false, hovering = false, timer, start;
+  const hero = document.querySelector('.case-edit');
+  if (!hero) return;
+  const slides = Array.from(hero.querySelectorAll('.case-slide'));
+  const status = hero.querySelector('[aria-live]');
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  const header = document.querySelector('.home-header');
+  const announcement = document.querySelector('.announcement');
+  let current = 0;
+  let timer, start;
+  let visible = true, stopped = false, suppressClick = false;
+
+  function measureHeader() {
+    hero.style.setProperty('--hero-header', (header.offsetHeight + announcement.offsetHeight) + 'px');
+  }
+  measureHeader();
+  if ('ResizeObserver' in window) {
+    const observer = new ResizeObserver(measureHeader);
+    observer.observe(header);
+    observer.observe(announcement);
+  }
   function schedule() {
     clearTimeout(timer);
-    toggle.textContent = playing ? 'Ⅱ' : '▷';
-    toggle.setAttribute('aria-label',playing ? 'Pause slideshow' : 'Play slideshow');
-    if (playing && onscreen && !hovering && !document.hidden) timer = setTimeout(() => show(1, false), 6500);
+    if (!stopped && !motion.matches && visible && !document.hidden) {
+      timer = setTimeout(() => advance(1, false), 6500);
+    }
   }
-  function show(step, manual) {
-    slides[index].hidden = true;
-    index = (index + step + slides.length) % slides.length;
-    slides[index].hidden = false;
-    if (manual) { playing = false; edit.querySelector('.edit-status').textContent = slides[index].getAttribute('aria-label'); }
+  function cycleColor(slide) {
+    if (!slide.dataset.altArt) return;
+    const link = slide.querySelector('.case-story');
+    const art = slide.querySelector('.scene-art');
+    const label = slide.querySelector('.campaign-shop');
+    const url = new URL(link.href);
+    const previous = [art.getAttribute('href').split('/').pop(), url.searchParams.get('colorway'), label.textContent];
+    art.setAttribute('href', 'assets/home/case-edit/' + slide.dataset.altArt);
+    url.searchParams.set('colorway', slide.dataset.altVariant);
+    link.href = url.href;
+    label.textContent = slide.dataset.altLabel;
+    [slide.dataset.altArt, slide.dataset.altVariant, slide.dataset.altLabel] = previous;
+  }
+  function advance(step, manual) {
+    const previous = slides[current];
+    previous.hidden = true;
+    current = (current + step + slides.length) % slides.length;
+    const next = slides[current];
+    next.hidden = false;
+    if (manual) {
+      stopped = true;
+      status.textContent = next.getAttribute('aria-label');
+    } else {
+      cycleColor(previous);
+    }
     schedule();
   }
-  function stop() { playing = false; schedule(); }
-  for (const picker of edit.querySelectorAll('.scene-picks')) {
-    const slide = picker.closest('.case-slide');
-    const link = slide.querySelector('.case-story');
-    picker.addEventListener('click', event => {
-      const choice = event.target.closest('button[data-variant]');
-      if (!choice) return;
-      stop();
-      const url = new URL(link.href);
-      url.searchParams.set('colorway', choice.dataset.variant);
-      link.href = url.href;
-      slide.querySelector('.scene-art').setAttribute('href', 'assets/home/case-edit/' + choice.dataset.art);
-      slide.querySelector('.scene-name').textContent = choice.textContent;
-      for (const button of picker.querySelectorAll('button')) {
-        button.setAttribute('aria-pressed', String(button === choice));
-      }
-    });
-    picker.hidden = false;
-  }
-  controls.hidden = false;
-  controls.addEventListener('click', e => {
-    const key=e.target.closest('button')?.dataset.edit;
-    if (key==='play') { playing=!playing; schedule(); } else if(key) show(key==='prev'?-1:1,true);
+  hero.addEventListener('keydown', event => {
+    const step = {ArrowRight: 1, ArrowLeft: -1}[event.key];
+    if (step) {
+      event.preventDefault();
+      advance(step, true);
+      slides[current].querySelector('a').focus({preventScroll:true});
+    }
+    if (event.key === ' ') {
+      event.preventDefault();
+      stopped = !stopped;
+      schedule();
+    }
   });
-  // Stop when a shopper tabs in; do not take focus away from the product link.
-  edit.addEventListener('focusin', e => { if(e.target.matches(':focus-visible')) stop(); });
-  edit.addEventListener('pointerenter', e=>{ if(e.pointerType==='mouse'){hovering=true;schedule();} });
-  edit.addEventListener('pointerleave', ()=>{hovering=false;schedule();});
-  const win = edit.querySelector('.edit-window');
-  let suppressClick=false;
-  win.addEventListener('touchstart', e=>{suppressClick=false;const t=e.touches[0];start=e.touches.length===1?{x:t.clientX,y:t.clientY}:null;},{passive:true});
-  win.addEventListener('pointerdown',e=>{if(e.pointerType!=='touch')suppressClick=false;});
-  win.addEventListener('touchcancel',()=>{start=null;});
-  win.addEventListener('touchend', e=>{
-    if(!start)return;
-    const dx=e.changedTouches[0].clientX-start.x,dy=e.changedTouches[0].clientY-start.y;start=null;
-    if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)*1.5){suppressClick=true;show(dx<0?1:-1,true);}
-  },{passive:true});
-  win.addEventListener('click',e=>{if(suppressClick&&e.detail){e.preventDefault();suppressClick=false;}},true);
-  reduce.addEventListener('change',()=>{if(reduce.matches)stop();});
+  hero.addEventListener('focusin', () => { stopped = true; schedule(); });
+  hero.addEventListener('touchstart', event => {
+    suppressClick = false;
+    start = event.touches.length === 1 ? event.touches[0] : null;
+  }, {passive:true});
+  hero.addEventListener('touchcancel', () => { start = null; });
+  hero.addEventListener('touchend', event => {
+    if (!start) return;
+    const dx = event.changedTouches[0].clientX - start.clientX;
+    const dy = event.changedTouches[0].clientY - start.clientY;
+    start = null;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      suppressClick = true;
+      advance(dx < 0 ? 1 : -1, true);
+    }
+  }, {passive:true});
+  hero.addEventListener('click', event => {
+    if (suppressClick && event.detail) { event.preventDefault(); suppressClick = false; }
+  }, true);
+  hero.addEventListener('pointerdown', () => { suppressClick = false; });
   document.addEventListener('visibilitychange', schedule);
-  if ('IntersectionObserver' in window) new IntersectionObserver(entries=>{onscreen=entries[0].isIntersecting;schedule();},{threshold:.25}).observe(edit);
-  else onscreen=true;
+  motion.addEventListener('change', schedule);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      schedule();
+    }).observe(hero);
+  }
   schedule();
 })();
