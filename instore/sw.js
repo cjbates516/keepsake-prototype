@@ -4,7 +4,7 @@
    short timeout, so updates still arrive but a dead connection falls back to the last good copy.
    CacheStorage is shared by the whole origin, so this worker only ever touches caches named kp-instore-*. */
 var NS = 'kp-instore-';
-var VERSION = NS + 'v9';
+var VERSION = NS + 'v10';
 var SHELL = VERSION + '-shell';
 /* pictures are keyed by ?v=<design hash>, so this cache can outlive worker versions and stay warm across updates */
 var PICS = NS + 'pics-1';

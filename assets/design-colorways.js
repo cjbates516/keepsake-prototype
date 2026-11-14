@@ -18,22 +18,27 @@
     bold:[['Graphite','#282c33'],['Cobalt','#325aa2'],['Racing Red','#bb3645'],['Stone','#c8c4b9'],['Forest','#2d5543']]
   };
   function profile(src){return src&&(window.KP_COLORWAY_CATALOG||{})[src.__kpDesignFile]||null;}
-  function validAssets(p){return Array.isArray(p.variants)&&p.variants.length===5&&Array.isArray(p.variantHashes)&&p.variantHashes.length===5&&p.variantHashes.every(function(h){return typeof h==='string'&&/^[a-f0-9]{12,64}$/.test(h);});}
+  // Some collections count the named original as their first colorway.
+  function variantCount(p){return p.originalColor ? 4 : 5;}
+  function validAssets(p){return Array.isArray(p.variants)&&p.variants.length===variantCount(p)&&Array.isArray(p.variantHashes)&&p.variantHashes.length===variantCount(p)&&p.variantHashes.every(function(h){return typeof h==='string'&&/^[a-f0-9]{12,64}$/.test(h);});}
   function choicesFor(src){
-    var p=profile(src);if(!p)return [choices[0]];if(p.method==='yosemite')return choices;if(!p.colors||p.colors.length!==5||(p.method==='assets'&&!validAssets(p))||(p.hash&&p.preparedHash!==p.hash))return [choices[0]];
-    return [choices[0]].concat((p.colors||palettes[p.group]||palettes.bright).map(function(pair,i){return {id:'c'+(i+1),code:i+1,name:pair[0],bg:pair[1]};}).filter(function(c){return p.method!=='assets'||(!src.naturalWidth&&!src.width)||!!(src.__kpVariantImages&&src.__kpVariantImages[c.code-1]);}));
+    var p=profile(src);if(!p)return [choices[0]];if(p.method==='yosemite')return choices;if(!p.colors||p.colors.length!==variantCount(p)||(p.method==='assets'&&!validAssets(p))||(p.hash&&p.preparedHash!==p.hash))return [choices[0]];
+    var original=p.originalColor?{id:"original",code:0,name:p.originalColor[0],bg:p.originalColor[1]}:choices[0];
+    return [original].concat((p.colors||palettes[p.group]||palettes.bright).map(function(pair,i){return {id:'c'+(i+1),code:i+1,name:pair[0],bg:pair[1]};}).filter(function(c){return p.method!=='assets'||(!src.naturalWidth&&!src.width)||!!(src.__kpVariantImages&&src.__kpVariantImages[c.code-1]);}));
   }
   // Load authored variants together with their source so preview and print use identical art.
   function prepare(src){
     var pf=profile(src);if(!pf||pf.method!=='assets'||!validAssets(pf))return Promise.resolve(src);
-    if(src.__kpVariantImages)return Promise.resolve(src);
+    if(src.__kpVariantImages&&src.__kpVariantImages.every(Boolean))return Promise.resolve(src);
     if(src.__kpVariantPromise)return src.__kpVariantPromise;
     var small=/\/thumbs\//.test(src.src),base=new URL(src.src.replace('/thumbs/','/'),location.href);
-    src.__kpVariantPromise=Promise.all(pf.variants.map(function(file,i){return new Promise(function(resolve){
+    src.__kpVariantPromise=Promise.all(pf.variants.map(function(file,i){
+      if(src.__kpVariantImages&&src.__kpVariantImages[i])return src.__kpVariantImages[i];
+      return new Promise(function(resolve){
       var im=new Image(),timer=setTimeout(function(){im.onload=im.onerror=null;im.src='';resolve(null);},12000);
       im.onload=function(){clearTimeout(timer);resolve(im);};im.onerror=function(){clearTimeout(timer);resolve(null);};
       var url=new URL('colorways/'+(small?'thumbs/':'')+file,base);url.searchParams.set('v',pf.variantHashes[i]);im.src=url.href;
-    });})).then(function(images){src.__kpVariantImages=images;return src;},function(error){delete src.__kpVariantPromise;throw error;});
+    });})).then(function(images){src.__kpVariantImages=images;delete src.__kpVariantPromise;return src;},function(error){delete src.__kpVariantPromise;throw error;});
     return src.__kpVariantPromise;
   }
   function valid(id){return id==='original'||/^c[1-5]$/.test(id)||choices.some(function(c){return c.id===id;});}

@@ -2,7 +2,7 @@
 "_readme": "Pick code numbers for In Store mode. Made by tools/instore_codes.py. Do not edit by hand; numbers never change once given out. top is the highest number ever used in each collection.",
 "top": {
 "ABS": 118,
-"ANI": 28,
+"ANI": 29,
 "APR": 97,
 "BTH": 24,
 "CAR": 6,
@@ -12,7 +12,7 @@
 "CST": 28,
 "DOT": 12,
 "FLR": 108,
-"FRU": 69,
+"FRU": 70,
 "GRD": 28,
 "HAL": 51,
 "HIM": 36,
@@ -1984,6 +1984,10 @@
 "c": "FRU",
 "n": 6
 },
+"kp-cherry-dot.png": {
+"c": "FRU",
+"n": 70
+},
 "kp-clementines-clear.png": {
 "c": "CLR",
 "n": 5
@@ -2219,6 +2223,10 @@
 "kp-watermelon-picnic.jpg": {
 "c": "FRU",
 "n": 69
+},
+"kp-wrong-way-duck.png": {
+"c": "ANI",
+"n": 29
 },
 "labrador-retrievers-in-santa-hats.jpg": {
 "c": "XMS",

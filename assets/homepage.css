@@ -204,3 +204,34 @@ h1,h2,h3{font-family:var(--display)}
 .collection-feature{padding-top:0}.collection-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.collection-tiles>a{display:flex;flex-direction:column;border:1px solid var(--line);background:#eee5d4;border-radius:4px;overflow:hidden}.collection-tiles>a:nth-child(2){background:#e5e1ee}.collection-tiles>a:nth-child(3){background:#e4e9d9}.collection-tiles img{width:100%;height:230px;object-fit:cover}.collection-tiles a>span{padding:24px;display:flex;flex-direction:column;gap:12px}.collection-tiles small{font-size:10px;font-weight:900;letter-spacing:.1em}.collection-tiles strong{font:800 32px/1.05 var(--display);letter-spacing:-.04em}.collection-tiles b{font-size:12px;margin-top:6px}.collection-tiles a:hover b{text-decoration:underline;text-underline-offset:4px}
 @media(max-width:1440px){.phone-finder{margin-inline:4vw}}
 @media(max-width:760px){.phone-finder{margin:24px 20px 0;padding:24px;gap:20px;display:block}.phone-finder h2{font-size:26px;max-width:none}.phone-finder form{display:flex;flex-direction:column;align-items:stretch;margin-top:22px}.phone-finder label{margin-bottom:-5px}.phone-finder select{min-width:0;width:100%;box-sizing:border-box}.phone-finder .text-link{margin-top:10px}.collection-tiles{grid-template-columns:1fr;gap:20px}.collection-tiles img{height:200px}.collection-tiles a>span{padding:22px}.collection-feature{padding-top:0}}
+
+/* On phones, introduce the product before the description and keep both actions in reach. */
+@media (max-width: 600px) {
+  .home-hero {
+    padding: 14px 16px 24px;
+    gap: 18px;
+  }
+  .hero-stage {
+    grid-row: 1;
+    height: clamp(210px, 60vw, 284px);
+    max-width: none;
+  }
+  .hero-cases { padding: 16px 38px 27px; }
+  .hero-case { width: 28%; max-height: 78%; }
+  .hero-case.center { width: 34%; max-height: 100%; }
+  .hero-case.left { transform: translateY(5px) rotate(-13deg); }
+  .hero-case.right { transform: translateY(8px) rotate(15deg); }
+  .hero-stage .stage-word { display: none; }
+  .hero-sticker { right: 12px; bottom: 24px; padding: 8px 10px; font-size: 10px; }
+  .stage-caption { left: 12px; bottom: 7px; }
+  .hero-copy .eyebrow { display: none; }
+  .home-hero h1 { font-size: clamp(45px, 11vw, 64px); margin: 0 0 12px; line-height: .98; }
+  .hero-description { margin-bottom: 12px; font-size: 15px; line-height: 1.5; }
+  .hero-actions { gap: 8px 14px; }
+  .hero-actions .text-link { min-height: 44px; }
+  .hero-note { margin-top: 10px; font-size: 12px; }
+  .collection-strip { gap: 18px; padding: 5px 16px; }
+  .collection-strip a { min-height: 44px; display: inline-flex; align-items: center; }
+  .phone-finder { margin: 18px 16px 0; padding: 18px; }
+  .phone-finder form { margin-top: 14px; }
+}
