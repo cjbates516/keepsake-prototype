@@ -4,7 +4,7 @@
    short timeout, so updates still arrive but a dead connection falls back to the last good copy.
    CacheStorage is shared by the whole origin, so this worker only ever touches caches named kp-instore-*. */
 var NS = 'kp-instore-';
-var VERSION = NS + 'v16';
+var VERSION = NS + 'v17';
 var SHELL = VERSION + '-shell';
 /* pictures are keyed by ?v=<design hash>, so this cache can outlive worker versions and stay warm across updates */
 var PICS = NS + 'pics-1';
@@ -18,7 +18,11 @@ var REQUIRED = ['./', 'find.html', 'slate.html', 'slate.js', '../assets/slate-pr
   '../assets/photos/slates/teton-landscape-print.jpg',
   '../assets/photos/slates/canyon-landscape-print.jpg',
   '../assets/photos/slates/rocky-landscape-print.jpg',
-  '../assets/photos/slates/smokies-landscape-print.jpg'];
+  '../assets/photos/slates/smokies-landscape-print.jpg',
+  '../assets/photos/slates/acadia-landscape-print.jpg',
+  '../assets/photos/slates/joshua-landscape-print.jpg',
+  '../assets/photos/slates/olympic-landscape-print.jpg',
+  '../assets/photos/slates/olympic-photo-credit.pdf'];
 var OPTIONAL = ['../assets/favicon.svg'];
 var PIC_TIMEOUT_MS = 9000, NET_LIMIT_MS = 15000;
 
@@ -97,7 +101,7 @@ self.addEventListener('fetch', function (e) {
   var url = new URL(req.url);
   if (url.origin === self.location.origin && isDesignList(url)) { e.respondWith(networkFirst(req, 3500)); return; }
   if (url.origin === self.location.origin && /\/assets\/(kp-config|slate-products|print-png|colorway-catalog|design-colorways|print-layouts)\.js$/.test(url.pathname)) { e.respondWith(networkFirst(req, 3500)); return; }
-  if (url.origin === self.location.origin && /\/assets\/photos\/slates\/[a-z-]+-print\.jpg$/.test(url.pathname)) {
+  if (url.origin === self.location.origin && /\/assets\/photos\/slates\/(?:[a-z-]+-print\.jpg|olympic-photo-credit\.pdf)$/.test(url.pathname)) {
     e.respondWith(networkFirst(req, 3500)); return;
   }
   if (isPicture(url)) { e.respondWith(cacheFirst(req)); return; }
