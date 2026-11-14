@@ -29,14 +29,16 @@
   // Load authored variants together with their source so preview and print use identical art.
   function prepare(src){
     var pf=profile(src);if(!pf||pf.method!=='assets'||!validAssets(pf))return Promise.resolve(src);
-    if(src.__kpVariantImages)return Promise.resolve(src);
+    if(src.__kpVariantImages&&src.__kpVariantImages.every(Boolean))return Promise.resolve(src);
     if(src.__kpVariantPromise)return src.__kpVariantPromise;
     var small=/\/thumbs\//.test(src.src),base=new URL(src.src.replace('/thumbs/','/'),location.href);
-    src.__kpVariantPromise=Promise.all(pf.variants.map(function(file,i){return new Promise(function(resolve){
+    src.__kpVariantPromise=Promise.all(pf.variants.map(function(file,i){
+      if(src.__kpVariantImages&&src.__kpVariantImages[i])return src.__kpVariantImages[i];
+      return new Promise(function(resolve){
       var im=new Image(),timer=setTimeout(function(){im.onload=im.onerror=null;im.src='';resolve(null);},12000);
       im.onload=function(){clearTimeout(timer);resolve(im);};im.onerror=function(){clearTimeout(timer);resolve(null);};
       var url=new URL('colorways/'+(small?'thumbs/':'')+file,base);url.searchParams.set('v',pf.variantHashes[i]);im.src=url.href;
-    });})).then(function(images){src.__kpVariantImages=images;return src;},function(error){delete src.__kpVariantPromise;throw error;});
+    });})).then(function(images){src.__kpVariantImages=images;delete src.__kpVariantPromise;return src;},function(error){delete src.__kpVariantPromise;throw error;});
     return src.__kpVariantPromise;
   }
   function valid(id){return id==='original'||/^c[1-5]$/.test(id)||choices.some(function(c){return c.id===id;});}
