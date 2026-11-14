@@ -152,11 +152,20 @@
       cx.save();cx.beginPath();cx.moveTo(bx+bw/2,by);cx.lineTo(bx+bw,by+bh*.25);cx.lineTo(bx+bw,by+bh*.75);cx.lineTo(bx+bw/2,by+bh);cx.lineTo(bx,by+bh*.75);cx.lineTo(bx,by+bh*.25);cx.closePath();
       cx.strokeStyle='#fff';cx.lineWidth=w*.009;cx.stroke();cx.clip();cx.drawImage(src,iw*.2715,ih*.1455,iw*.456,ih*.524,bx,by,bw,bh);cx.restore();
       // Preserve the navy lettering on every background; a cream backing keeps the title legible.
-      var text=document.createElement('canvas');text.width=Math.round(w*.92);text.height=Math.round(text.width*(ih*.14)/(iw*.64));
+      var text=document.createElement('canvas');text.width=Math.round(w*((id==='original'||id===artworkOnly.id)?.92:.80));text.height=Math.round(text.width*(ih*.14)/(iw*.64));
       var tx=text.getContext('2d',{willReadFrequently:true});tx.drawImage(src,iw*.18,ih*.713,iw*.64,ih*.14,0,0,text.width,text.height);
       var data=tx.getImageData(0,0,text.width,text.height),p=data.data;
       for(var j=0;j<p.length;j+=4){var alpha=Math.max(0,Math.min(1,(205-Math.max(p[j],p[j+1],p[j+2]))/125));p[j]=6;p[j+1]=36;p[j+2]=68;p[j+3]=Math.round(alpha*255);}
-      tx.putImageData(data,0,0);cx.save();cx.shadowColor='#fffcf2';cx.shadowBlur=w*.006;cx.drawImage(text,w*.04,by+bh+h*.025);cx.restore();text.width=text.height=0;
+      tx.putImageData(data,0,0);
+      var titleY = by + bh + h * .025;
+      var titleX = (w - text.width) / 2;
+      if (id !== 'original' && id !== artworkOnly.id) {
+        var padding = w * .015;
+        cx.fillStyle = '#fff5db';
+        cx.fillRect(titleX-padding, titleY-padding, text.width+2*padding, text.height+2*padding);
+      }
+      cx.drawImage(text, titleX, titleY);
+      text.width=text.height=0;
     }
     cv.naturalWidth=cv.width;cv.naturalHeight=cv.height;return cv;
   }
