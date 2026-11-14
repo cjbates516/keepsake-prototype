@@ -244,7 +244,7 @@
       if (imgs[1]) {
         /* rasterize the mask once: WebKit mis-composites an <img> used as a destination-in source */
         prep.maskC = canvas(W, H);
-        prep.maskC.getContext('2d').drawImage(window.KPPreviewEdge?KPPreviewEdge.mask(imgs[1],layout):imgs[1], full[0], full[1], full[2], full[3]);
+        prep.maskC.getContext('2d').drawImage(imgs[1], full[0], full[1], full[2], full[3]);
       }
       return prep;
     });
