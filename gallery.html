@@ -289,13 +289,69 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     mc.putImageData(d,0,0);
     shadeCache[key]=m; return m;
   }
+  var artworkPicks = Object.create(null);
+  function colorwayPicker(file){
+    var options=KPDesignColorways.choicesFor({__kpDesignFile:file});
+    if(options.length<2)return '';
+    var select=document.createElement('select');
+    select.className='artwork-picker';
+    options.forEach(function(o){var item=new Option(o.name,o.id);if(o.id===(artworkPicks[file]||'original'))item.defaultSelected=true;select.add(item);});
+    return '<label class="artwork-label">Design color'+select.outerHTML+'</label><small class="artwork-error" role="status"></small>';
+  }
+  function updateCaseLinks(card){
+    var file=card.dataset.file;
+    var chosen=KP_DEVICES[device].colors[+(card.dataset.selectedColor||0)];
+    card.querySelectorAll('a[href*="customizer.html"]').forEach(function(a){
+      var url=new URL(a.href);
+      url.searchParams.set('finish',chosen.n);
+      url.searchParams.set('colorway',artworkPicks[file]||'original');
+      a.href=url.href;
+    });
+  }
+  function showPickedColor(cv){
+    var file=cv.dataset.file;
+    var pick=artworkPicks[file]||'original';
+    var img=designImgs[file];
+    if(!cv.isConnected||!img||!img.naturalWidth)return;
+    var card=cv.closest('.kpCard'),profile=KPDesignColorways.profile(img);
+    if(pick!=='original'&&profile&&profile.method==='assets'&&!KPDesignColorways.choicesFor(img).some(function(o){return o.id===pick;})){
+      KPDesignColorways.prepare(img).then(function(){
+        if(!card.isConnected||pick!==artworkPicks[file])return;
+        if(!KPDesignColorways.choicesFor(img).some(function(o){return o.id===pick;})){
+          artworkPicks[file]='original';card.querySelector('select').value='original';
+          card.querySelector('.artwork-error').textContent='Color unavailable. Showing original.';
+        }
+        updateCaseLinks(card);renderCase(cv,file,+cv.dataset.color);
+      });
+      return;
+    }
+    renderCase(cv,file,+cv.dataset.color);
+  }
+  document.addEventListener('change',function(e){
+    if(!e.target.matches('.artwork-picker'))return;
+    var card=e.target.closest('.kpCard'),file=card.dataset.file;
+    artworkPicks[file]=e.target.value;
+    card.querySelector('.artwork-error').textContent='';
+    updateCaseLinks(card);
+    loadDesign(file,function(){showPickedColor(card.querySelector('canvas'));});
+  });
   function renderCase(cv, file, colorIdx){
+    if(!device||!cv.isConnected||colorIdx!==+cv.dataset.color)return;
     var dev = KP_DEVICES[device];
     var layer = caseLayers[device + '|' + colorIdx];
     var dImg = designImgs[file];
     if (!layer || !dImg || !dImg.complete) return;
-    dImg.__kpDesignFile=file;var composed=null;
-    if(KPDesignColorways.profile(dImg)){composed=KPDesignColorways.make(dImg,'original',700);dImg=composed;}
+    dImg.__kpDesignFile=file;
+    var composed=null, profile=KPDesignColorways.profile(dImg);
+    if(profile){
+      var pick=artworkPicks[file]||'original';
+      if(pick!=='original'&&profile.method==='assets'&&!KPDesignColorways.choicesFor(dImg).some(function(o){return o.id===pick;})){
+        showPickedColor(cv);
+        return;
+      }
+      composed=KPDesignColorways.make(dImg,pick,700);
+      dImg=composed;
+    }
     var ctx = cv.getContext('2d');
     ctx.clearRect(0, 0, CW, CH);
     ctx.drawImage(layer, 0, 0);
@@ -614,12 +670,14 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         + '<div style="padding:12px 16px 6px;display:flex;align-items:center;justify-content:space-between;gap:8px">'
         + '<div style="min-width:0"><div style="font-weight:900;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
         + '<div style="font-size:11px;color:#6C6C72;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">' + (device.indexOf('Galaxy')===0?'Tough Magnetic · $44.99':'MagSafe Clear · $44.99') + '</div></div>'
-        + '<div style="display:flex;gap:5px;flex-shrink:0">' + dots + '</div></div>'
+        + '<div class="phone-finishes" aria-label="Phone finish"><small>Phone finish</small>' + dots + '</div></div>'
+        + colorwayPicker(d.file)
         + '<div style="padding:8px 16px 14px;display:flex;gap:8px">'
         + (canBuy() ? '<button class="kpAdd" data-file="' + d.file + '" style="flex:1;background:#2D2D3B;color:#FFFFFF;border:0;padding:11px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:background .2s">Add to cart</button>' : '')
         + '<a href="customizer.html?design=' + encodeURIComponent(d.file) + '&model=' + slugify(device) + '" class="h-makeone" style="flex:1;text-align:center;background:#FFFFFF;border:1px solid #E4E3E3;color:#DC282E;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:10px;border-radius:999px;transition:all .2s;text-decoration:none">Customize</a>'
         + '</div></div>';
     }).join('');
+    grid.querySelectorAll('.kpCard').forEach(updateCaseLinks);
     var cvsAll = Array.prototype.slice.call(document.querySelectorAll('#grid canvas'));
     // first cards render eagerly so above-the-fold never waits on observer timing
     cvsAll.slice(0, 8).forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, +(cv.dataset.color||0)); }); });
@@ -716,7 +774,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if (dot){
       e.preventDefault();
       var card = dot.closest('.kpCard'); var cv = card.querySelector('canvas');
-      var ci = +dot.dataset.ci; card.dataset.selectedColor=ci;
+      var ci = +dot.dataset.ci; card.dataset.selectedColor=ci;updateCaseLinks(card);
       cv.dataset.color = ci;
       loadCase(device, ci, function(){ renderCase(cv, cv.dataset.file, ci); });
       card.querySelectorAll('.cdot').forEach(function(dt, di){ dt.style.borderColor = di===ci ? '#DC282E' : '#E4E3E3'; dt.setAttribute('aria-pressed',String(di===ci)); });
@@ -728,12 +786,12 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       add.dataset.busy='1';
       var vid = window.KP_VARIANTS['MagSafe Clear'][device];
       var card = add.closest('.kpCard');
-      var ci = card ? +(card.querySelector('canvas').dataset.color||0) : 0;
+      var ci = card ? +(card.dataset.selectedColor||0) : 0;
       var colName = (KP_DEVICES[device].colors[ci]||{}).n || '';
       add.textContent = 'Adding\u2026';
       fetch('/cart/add.js', { method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ items:[{ id: vid, quantity: 1, properties: {
-          'Model': device, 'Case type': device.indexOf('Galaxy')===0?'Tough Magnetic':'MagSafe Clear', 'Device color': colName, 'Design': add.dataset.file, 'Note': 'Pre-made design' } }] }) })
+          'Model': device, 'Case type': device.indexOf('Galaxy')===0?'Tough Magnetic':'MagSafe Clear', 'Device color': colName, 'Design': add.dataset.file, 'Colorway': artworkPicks[add.dataset.file]||'original', 'Note': 'Pre-made design' } }] }) })
         .then(function(r){ if(!r.ok) throw 0; return r.json(); })
         .then(function(){ add.dataset.busy='0'; add.dataset.done='1'; add.textContent = 'Added \u2713 View cart'; })
         .catch(function(){ add.dataset.busy='0'; add.textContent = 'Try again'; });
