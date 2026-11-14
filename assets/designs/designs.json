@@ -1,5 +1,74 @@
 [
 {
+"file": "kp-olympic-rialto-photograph.jpg",
+"title": "Olympic · Split Rock at Rialto Beach Photograph",
+"category": "National Parks",
+"hash": "01cced2716b7",
+"color": [
+"Blue",
+"Gray"
+],
+"active": true
+},
+{
+"file": "kp-joshua-tree-hidden-valley-photograph.jpg",
+"title": "Joshua Tree · Hidden Valley Camp Photograph",
+"category": "National Parks",
+"hash": "22c439d78ef3",
+"color": [
+"Yellow",
+"Brown"
+],
+"active": true
+},
+{
+"file": "kp-acadia-bass-harbor-photograph.jpg",
+"title": "Acadia · Bass Harbor Light Photograph",
+"category": "National Parks",
+"hash": "ba28bc1ebb9f",
+"color": [
+"Blue",
+"Green"
+],
+"active": true
+},
+{
+"file": "kp-olympic-rialto.png",
+"title": "Olympic · Rialto Sea Stacks",
+"category": "National Parks",
+"hash": "9d8ad3ada68b",
+"color": [
+"Blue",
+"Green",
+"Purple"
+],
+"active": true
+},
+{
+"file": "kp-joshua-tree-hidden-valley.png",
+"title": "Joshua Tree · Hidden Valley",
+"category": "National Parks",
+"hash": "2eafcafdd204",
+"color": [
+"Yellow",
+"Green",
+"Pink"
+],
+"active": true
+},
+{
+"file": "kp-acadia-bass-harbor.png",
+"title": "Acadia · Bass Harbor Head Light",
+"category": "National Parks",
+"hash": "ac7adbdf8905",
+"color": [
+"Blue",
+"Red",
+"Purple"
+],
+"active": true
+},
+{
 "file": "kp-great-smoky-mountains-newfound-gap.png",
 "title": "Great Smoky Mountains · Newfound Gap",
 "category": "National Parks",

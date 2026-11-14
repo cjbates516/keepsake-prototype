@@ -28,3 +28,12 @@
   .look img {max-height: 198px;}
   .look:last-child:nth-child(odd) {grid-column: 1 / -1; width: calc((100% - clamp(7px, 1.6vw, 20px)) / 2); justify-self: center;}
 }
+.park h3 {margin: 24px 0 10px; font-size: clamp(19px, 2vw, 25px); scroll-margin-top: 24px;}
+.edition-nav a, .photo-credit a {text-decoration: underline; text-underline-offset: 3px;}
+.edition-nav a {display: inline-flex; align-items: center; min-height: 44px; font-weight: 700;}
+.park .photo-credit {margin: 0 0 14px; font-size: 14px;}
+#acadia .look {background: #e2eaf1;}
+#joshua .look {background: #f2e5d0;}
+#olympic .look {background: #dce9e1;}
+.photo-jumps {display: flex; flex-wrap: wrap; align-items: center; gap: 0 18px;}
+.photo-jumps a {display: inline-flex; min-height: 44px; align-items: center; text-decoration: underline;}

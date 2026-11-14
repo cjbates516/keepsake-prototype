@@ -23,7 +23,7 @@
 "MAP": 108,
 "NE1": 1,
 "NEO": 6,
-"NPK": 11,
+"NPK": 17,
 "OUT": 6,
 "PAI": 1,
 "POP": 12,
@@ -1924,6 +1924,14 @@
 "c": "KID",
 "n": 19
 },
+"kp-acadia-bass-harbor-photograph.jpg": {
+"c": "NPK",
+"n": 15
+},
+"kp-acadia-bass-harbor.png": {
+"c": "NPK",
+"n": 12
+},
 "kp-arches-sandstone.png": {
 "c": "NPK",
 "n": 1
@@ -2036,6 +2044,14 @@
 "c": "NE1",
 "n": 1
 },
+"kp-joshua-tree-hidden-valley-photograph.jpg": {
+"c": "NPK",
+"n": 16
+},
+"kp-joshua-tree-hidden-valley.png": {
+"c": "NPK",
+"n": 13
+},
 "kp-lemons-bubblegum.jpg": {
 "c": "FRU",
 "n": 27
@@ -2107,6 +2123,14 @@
 "kp-olives-grove.jpg": {
 "c": "FRU",
 "n": 24
+},
+"kp-olympic-rialto-photograph.jpg": {
+"c": "NPK",
+"n": 17
+},
+"kp-olympic-rialto.png": {
+"c": "NPK",
+"n": 14
 },
 "kp-paint-party.png": {
 "c": "PAI",
