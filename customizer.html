@@ -517,7 +517,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* Shared blank geometry already confirmed for 17/18; device colors are separate. */
   ['Pro Max','Pro'].forEach(function(size){
     var kit=JSON.parse(JSON.stringify(KITS['iPhone 17 '+size])),suffix=size==='Pro Max'?'pm':'p';
-    kit.colors=[{"n": "Silver", "h": "#e4e4e2", "f": "silver"}, {"n": "Black", "h": "#27282a", "f": "black"}, {"n": "Glacier", "h": "#adcadf", "f": "glacier"}, {"n": "Burgundy", "h": "#744653", "f": "burgundy"}].map(function(c){return {n:c.n,h:c.h,f:'i18'+suffix+'-'+c.f+'.svg'};});
+    kit.colors=[{"n": "Silver", "h": "#e4e4e2", "f": "silver"}, {"n": "Black", "h": "#27282a", "f": "black"}, {"n": "Glacier", "h": "#adcadf", "f": "glacier"}, {"n": "Burgundy", "h": "#744653", "f": "burgundy"}].map(function(c){return {n:c.n,h:c.h,f:'i18'+suffix+'-'+c.f+'.svg?v=12'};});
     kit.view='view-i17'+suffix+'.png';kit.light=kit.colors[0].f;
     delete kit.hybrid;
     KITS['iPhone 18 '+size]=kit;
@@ -606,7 +606,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           /* rasterize once: WebKit erases the layer when an <img> previously drawn source-over is reused as a destination-in source — canvas sources are immune */
           viewMaskCanvas=document.createElement('canvas'); viewMaskCanvas.width=DIM.w; viewMaskCanvas.height=DIM.h;
           var geometry=(window.KP_MASK_GEOMETRY||{})[vm];
-          if(!geometry||geometry.w!==DIM.w||geometry.h!==DIM.h||loadingMask.naturalWidth!==DIM.w||loadingMask.naturalHeight!==DIM.h){viewFailed=true;viewMaskCanvas=null;return;}
+          if(!geometry||geometry.w!==DIM.w||geometry.h!==DIM.h||loadingMask.naturalWidth!==DIM.w||loadingMask.naturalHeight!==DIM.h){viewFailed=true;viewMaskCanvas=null;updateStage();return;}
           var vmx=viewMaskCanvas.getContext('2d');vmx.fillStyle='#000';
           geometry.rows.forEach(function(row){for(var i=2;i<row.length;i+=2)vmx.fillRect(row[i],row[0],row[i+1]-row[i],row[1]-row[0]);});
           viewReady=true; viewFailed=false; computeMaskBox(); render();
@@ -614,7 +614,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         viewImg.onerror=function(){
           if(viewImg!==loadingMask)return;
           if(!viewImg.__kpRetried){ viewImg.__kpRetried=true; var im=viewImg; setTimeout(function(){ im.src='assets/masks/'+vm+'?v=12&r=1'; },800); }
-          else viewFailed=true;
+          else { viewFailed=true; updateStage(); }
         };
         viewImg.src='assets/masks/'+vm+'?v=12';
       } else if(viewReady){computeMaskBox();}
@@ -829,6 +829,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ctx.globalAlpha=1;
     ctx.clearRect(0,0,DIM.w,DIM.h);
     ctx.drawImage(caseImg,0,0,DIM.w,DIM.h);
+    if(viewImg && !viewReady) return; // Keep the bare phone visible until its stencil is ready.
     var useMask = viewImg && viewReady;
     if(state.photoImg || state.layout){
       var dl=getDesignLayer(), d2=dl.getContext('2d');
@@ -856,7 +857,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         d2.drawImage(viewMaskCanvas,0,0,DIM.w,DIM.h);
         d2.globalCompositeOperation='source-over';
       } else { d2.restore(); }
+      if(state.model==='iPhone 18 Pro Max'||state.model==='iPhone 18 Pro') ctx.globalCompositeOperation='source-atop';
       ctx.drawImage(dl,0,0,DIM.w,DIM.h);
+      ctx.globalCompositeOperation='source-over';
       if(!useMask){
         ctx.save();
         ctx.clip(inversePath,'evenodd');
@@ -876,7 +879,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         t2.drawImage(viewMaskCanvas,0,0,DIM.w,DIM.h);
         t2.globalCompositeOperation='source-over';
       } else { t2.restore(); }
+      if(state.model==='iPhone 18 Pro Max'||state.model==='iPhone 18 Pro') ctx.globalCompositeOperation='source-atop';
       ctx.drawImage(dl2,0,0,DIM.w,DIM.h);
+      ctx.globalCompositeOperation='source-over';
       if(!useMask){
         ctx.save();
         ctx.clip(inversePath,'evenodd');
@@ -1044,6 +1049,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       $('kitNote').textContent = state.model + ' case photo coming soon — your design still saves correctly.';
       $('kitNote').style.display='block';
     }
+    if(viewFailed) $('stageHint').textContent='Case preview unavailable. Reload to try again.';
     if(state.fullFailed)$('stageHint').textContent='Could not load the full-quality design. Reload to try again.';
     render();
   }
