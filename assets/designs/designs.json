@@ -1,5 +1,30 @@
 [
 {
+"file": "kp-scoop-shop.png",
+"title": "Scoop Shop · Ice Cream",
+"category": "Bright Pop",
+"hash": "19791a4fa9d5",
+"color": [
+"Pink",
+"Green",
+"Purple",
+"Brown"
+],
+"active": true
+},
+{
+"file": "kp-yosemite-half-dome-sunset.jpg",
+"title": "Yosemite · Half Dome at Sunset",
+"category": "National Parks",
+"hash": "0c5348434819",
+"color": [
+"Orange",
+"Blue",
+"Gray"
+],
+"active": true
+},
+{
 "file": "kp-olympic-rialto-photograph.jpg",
 "title": "Olympic · Split Rock at Rialto Beach Photograph",
 "category": "National Parks",

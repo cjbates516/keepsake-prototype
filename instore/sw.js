@@ -4,7 +4,7 @@
    short timeout, so updates still arrive but a dead connection falls back to the last good copy.
    CacheStorage is shared by the whole origin, so this worker only ever touches caches named kp-instore-*. */
 var NS = 'kp-instore-';
-var VERSION = NS + 'v13';
+var VERSION = NS + 'v14';
 var SHELL = VERSION + '-shell';
 /* pictures are keyed by ?v=<design hash>, so this cache can outlive worker versions and stay warm across updates */
 var PICS = NS + 'pics-1';
@@ -12,7 +12,7 @@ var OURS = [SHELL, PICS];
 /* REQUIRED: if any of these fails to download, the update is rejected and the old worker (with its complete
    offline copy) stays in charge; the browser tries the update again on a later visit. */
 var REQUIRED = ['./', 'find.html', 'slate.html', 'slate.js', '../assets/slate-products.js', '../assets/print-png.js', '../assets/kp-config.js', '../assets/print-layouts.js', '../assets/design-colorways.js', '../assets/colorway-catalog.js', 'instore-lib.js', 'config.json', 'models.json', 'codes.json', '../assets/designs/designs.json'];
-var OPTIONAL = ['../assets/favicon.svg'];
+var OPTIONAL = ['../assets/favicon.svg', '../assets/photos/slates/yosemite-valley-print.jpg'];
 var PIC_TIMEOUT_MS = 9000, NET_LIMIT_MS = 15000;
 
 self.addEventListener('install', function (e) {
@@ -90,6 +90,9 @@ self.addEventListener('fetch', function (e) {
   var url = new URL(req.url);
   if (url.origin === self.location.origin && isDesignList(url)) { e.respondWith(networkFirst(req, 3500)); return; }
   if (url.origin === self.location.origin && /\/assets\/(kp-config|slate-products|print-png|colorway-catalog|design-colorways|print-layouts)\.js$/.test(url.pathname)) { e.respondWith(networkFirst(req, 3500)); return; }
+  if (url.origin === self.location.origin && url.pathname.endsWith('/assets/photos/slates/yosemite-valley-print.jpg')) {
+    e.respondWith(networkFirst(req, 3500)); return;
+  }
   if (isPicture(url)) { e.respondWith(cacheFirst(req)); return; }
   if (url.hostname === 'fonts.googleapis.com') { e.respondWith(networkFirst(req, 2500)); return; }
   if (url.origin === self.location.origin &&

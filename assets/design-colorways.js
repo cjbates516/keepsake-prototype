@@ -21,9 +21,17 @@
   // Some collections count the named original as their first colorway.
   function variantCount(p){return p.originalColor ? 4 : 5;}
   function validAssets(p){return Array.isArray(p.variants)&&p.variants.length===variantCount(p)&&Array.isArray(p.variantHashes)&&p.variantHashes.length===variantCount(p)&&p.variantHashes.every(function(h){return typeof h==='string'&&/^[a-f0-9]{12,64}$/.test(h);});}
+  const artworkOnly = {id:'artwork-only', code:6, name:'Artwork only', bg:'transparent'};
+  function isArtworkOnly(src, id) {
+    const p = profile(src);
+    if (!p) return false;
+    return (p.method === 'yosemite' && id === artworkOnly.id) ||
+      (p.clearVariant && id === p.clearVariant) ||
+      (id === 'original' && !!p.background?.transparent);
+  }
   function choicesFor(src){
-    var p=profile(src);if(!p)return [choices[0]];if(p.method==='yosemite')return choices;if(!p.colors||p.colors.length!==variantCount(p)||(p.method==='assets'&&!validAssets(p))||(p.hash&&p.preparedHash!==p.hash))return [choices[0]];
-    var original=p.originalColor?{id:"original",code:0,name:p.originalColor[0],bg:p.originalColor[1]}:choices[0];
+    var p=profile(src);if(!p)return [choices[0]];if(p.method==='yosemite')return choices.concat(artworkOnly);if(!p.colors||p.colors.length!==variantCount(p)||(p.method==='assets'&&!validAssets(p))||(p.hash&&p.preparedHash!==p.hash))return [choices[0]];
+    var original=p.originalColor?{id:"original",code:0,name:p.originalColor[0],bg:p.originalColor[1]}:isArtworkOnly(src,'original') ? {id:'original', code:0, name:'Artwork only', bg:'transparent'} : choices[0];
     return [original].concat((p.colors||palettes[p.group]||palettes.bright).map(function(pair,i){return {id:'c'+(i+1),code:i+1,name:pair[0],bg:pair[1]};}).filter(function(c){return p.method!=='assets'||(!src.naturalWidth&&!src.width)||!!(src.__kpVariantImages&&src.__kpVariantImages[c.code-1]);}));
   }
   // Load authored variants together with their source so preview and print use identical art.
@@ -41,7 +49,7 @@
     });})).then(function(images){src.__kpVariantImages=images;delete src.__kpVariantPromise;return src;},function(error){delete src.__kpVariantPromise;throw error;});
     return src.__kpVariantPromise;
   }
-  function valid(id){return id==='original'||/^c[1-5]$/.test(id)||choices.some(function(c){return c.id===id;});}
+  function valid(id){return id===artworkOnly.id||id==='original'||/^c[1-5]$/.test(id)||choices.some(function(c){return c.id===id;});}
   function rgb(hex){return [parseInt(hex.slice(1,3),16),parseInt(hex.slice(3,5),16),parseInt(hex.slice(5,7),16)];}
   function dominant(src){
     if(src.__kpDominant)return src.__kpDominant;
@@ -136,7 +144,7 @@
     if(!isVariant){var k=Math.min(1,edge/Math.max(iw,ih));cv.width=Math.round(iw*k);cv.height=Math.round(ih*k);cv.getContext('2d').drawImage(src,0,0,cv.width,cv.height);}
     else{
       cv.height=edge;cv.width=Math.round(edge/2);var cx=cv.getContext('2d'),w=cv.width,h=cv.height;
-      var look=choices.find(function(c){return c.id===id;})||choices[0];background(cx,w,h,look);
+      var look=choices.find(function(c){return c.id===id;})||choices[0];if(id!==artworkOnly.id)background(cx,w,h,look);
       // Yosemite badge: preserve the original sunset, mountains and border pixels.
       var bx=.12*w,by=.34*h,bw=.76*w,bh=bw*(ih*.524)/(iw*.456);
       cx.save();cx.beginPath();cx.moveTo(bx+bw/2,by);cx.lineTo(bx+bw,by+bh*.25);cx.lineTo(bx+bw,by+bh*.75);cx.lineTo(bx+bw/2,by+bh);cx.lineTo(bx,by+bh*.75);cx.lineTo(bx,by+bh*.25);cx.closePath();
@@ -145,7 +153,7 @@
       var text=document.createElement('canvas');text.width=Math.round(w*.92);text.height=Math.round(text.width*(ih*.14)/(iw*.64));
       var tx=text.getContext('2d',{willReadFrequently:true});tx.drawImage(src,iw*.18,ih*.713,iw*.64,ih*.14,0,0,text.width,text.height);
       var data=tx.getImageData(0,0,text.width,text.height),p=data.data;
-      for(var j=0;j<p.length;j+=4){var alpha=Math.max(0,Math.min(1,(205-Math.max(p[j],p[j+1],p[j+2]))/125));p[j]=id==='original'?6:255;p[j+1]=id==='original'?36:255;p[j+2]=id==='original'?68:255;p[j+3]=Math.round(alpha*255);}
+      for(var j=0;j<p.length;j+=4){var alpha=Math.max(0,Math.min(1,(205-Math.max(p[j],p[j+1],p[j+2]))/125));var darkInk=id==='original'||id===artworkOnly.id;p[j]=darkInk?6:255;p[j+1]=darkInk?36:255;p[j+2]=darkInk?68:255;p[j+3]=Math.round(alpha*255);}
       tx.putImageData(data,0,0);cx.drawImage(text,w*.04,by+bh+h*.025);text.width=text.height=0;
     }
     cv.naturalWidth=cv.width;cv.naturalHeight=cv.height;return cv;
@@ -158,5 +166,5 @@
     if(cacheSource!==src||cacheId!==id||cacheSize!==size){clear();cacheCanvas=make(src,id);cacheSource=src;cacheId=id;cacheSize=size;}
     return cacheCanvas;
   }
-  window.KPDesignColorways={choices:choices,choicesFor:choicesFor,profile:profile,prepare:prepare,valid:valid,make:make,source:source,clear:clear};
+  window.KPDesignColorways={isArtworkOnly:isArtworkOnly,choices:choices,choicesFor:choicesFor,profile:profile,prepare:prepare,valid:valid,make:make,source:source,clear:clear};
 })();
