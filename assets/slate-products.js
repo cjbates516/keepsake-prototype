@@ -6,6 +6,12 @@
     large: {code:'SL-810', label:'8 × 10 inch photo slate', price:49.99, width:8, height:10},
     yosemite: {code:'SL-810-YOS', label:'Yosemite Valley · 8 × 10 inch landscape slate', price:49.99, width:8, height:10,
       artwork:'../assets/photos/slates/yosemite-valley-print.jpg'},
+    yellowstone: {code:'SL-810-YEL', label:'Yellowstone · Grand Prismatic Spring · 8 × 10 inch landscape slate',
+      price:49.99, width:8, height:10, artwork:'../assets/photos/slates/yellowstone-landscape-print.jpg'},
+    zion: {code:'SL-810-ZIO', label:'Zion · Towers of the Virgin · 8 × 10 inch landscape slate',
+      price:49.99, width:8, height:10, artwork:'../assets/photos/slates/zion-landscape-print.jpg'},
+    teton: {code:'SL-810-TET', label:'Grand Teton · Snake River Overlook · 8 × 10 inch landscape slate',
+      price:49.99, width:8, height:10, artwork:'../assets/photos/slates/teton-landscape-print.jpg'},
     bundle: {code:'SL-PAIR', label:'Holiday pair · two 4 × 6 inch photo slates', price:49.99, width:4, height:6}
   };
   window.KPSlates = {products:products, byCode:function (value) {

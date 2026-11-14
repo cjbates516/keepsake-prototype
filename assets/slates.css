@@ -17,3 +17,13 @@
 .slate-product{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.slate-product p{line-height:1.7;max-width:480px}.slate-product figure{margin:0}.slate-product img{display:block;width:100%;height:auto;background:white}.slate-product figcaption{font-size:12px;line-height:1.6;margin-top:12px}.slate-product a{color:#92202a}@media(max-width:700px){.slate-product{grid-template-columns:1fr;gap:20px}}
 
 .slate-sample{display:block;width:100%}.slate-sample-portrait{max-width:360px}
+
+.park-slate-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:clamp(20px,3vw,40px);margin:24px 0}
+.park-slate-card {scroll-margin-top:20px}
+.park-slate-card figure {margin:0}
+.park-slate-card img {display:block;width:100%;height:auto}
+.park-slate-card figcaption {font-size:.82rem;color:#49444b;margin:6px 0 20px}
+.park-slate-card p,.park-slate-card h3 {margin:4px 0}
+.park-slate-card a {color:#48323c}
+.park-slate-card > a {display:block;margin:12px 0}
+.park-slate-card .slate-button {margin-top:12px}

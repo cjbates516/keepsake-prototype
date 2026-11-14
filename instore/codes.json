@@ -23,7 +23,7 @@
 "MAP": 108,
 "NE1": 1,
 "NEO": 6,
-"NPK": 18,
+"NPK": 21,
 "OUT": 6,
 "PAI": 1,
 "POP": 13,
@@ -2216,6 +2216,10 @@
 "c": "HIM",
 "n": 22
 },
+"kp-teton-jenny-lake-photo.jpg": {
+"c": "NPK",
+"n": 19
+},
 "kp-ticking-forest.jpg": {
 "c": "HIM",
 "n": 23
@@ -2288,6 +2292,10 @@
 "c": "NPK",
 "n": 7
 },
+"kp-yellowstone-old-faithful-photo.jpg": {
+"c": "NPK",
+"n": 20
+},
 "kp-yosemite-half-dome-sunset.jpg": {
 "c": "NPK",
 "n": 18
@@ -2295,6 +2303,10 @@
 "kp-yosemite-trail-patches.png": {
 "c": "NPK",
 "n": 4
+},
+"kp-zion-the-narrows-photo.jpg": {
+"c": "NPK",
+"n": 21
 },
 "kp-zion-watchman-bend.png": {
 "c": "NPK",

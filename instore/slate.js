@@ -29,20 +29,29 @@
     el('orientation').value = item?.artwork ? 'landscape' : 'portrait';
     el('width').value = el('height').value = '';
     el('price').textContent = item ? item.code + ' · $' + item.price.toFixed(2) + ' before applicable tax' : '';
-    if (item?.artwork) {
-      const version = loadVersion;
-      const image = new Image();
-      image.src = item.artwork;
-      image.decode().then(() => {
-        if (version !== loadVersion) return;
-        photo = image;
-        refresh();
-      }).catch(() => {
-        if (version === loadVersion) message('The Yosemite photograph could not load. Reopen the selection to retry.');
-      });
-    }
+    el('reloadPark').hidden = !item?.artwork;
     message(item === KPSlates.products.bundle ? 'Prepare each of the two 4 × 6 prints. Clear the photo between different images.' : '');
+    if (item?.artwork) loadParkPhoto(item);
   }
+  function loadParkPhoto(item) {
+    const version = loadVersion;
+    const image = new Image();
+    image.src = item.artwork;
+    image.decode().then(() => {
+      if (version !== loadVersion) return;
+      photo = image;
+      refresh();
+    }).catch(() => {
+      if (version === loadVersion) message('The selected photograph could not load. Use Reload park photo to try again.');
+    });
+  }
+  el('reloadPark').addEventListener('click', () => {
+    const item = selected();
+    if (item?.artwork) {
+      clearPhoto();
+      loadParkPhoto(item);
+    }
+  });
   function dimensions() {
     const item = selected(), landscape = el('orientation').value === 'landscape';
     const width = el('width').valueAsNumber, height = el('height').valueAsNumber;
