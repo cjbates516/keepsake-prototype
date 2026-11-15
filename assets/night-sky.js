@@ -5,21 +5,7 @@ window.KPNightSky = (function () {
   'use strict';
   const rad = Math.PI / 180;
   const signs = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
-  const emblems = [
-    'M0 16 Q0 -20 -12 -15 Q-22 -12 -13 -3 M0 16 Q0 -20 12 -15 Q22 -12 13 -3',
-    'M-14 -17 Q-12 -3 0 -3 Q12 -3 14 -17 M0 -3 A10 10 0 1 1 -.1 -3',
-    'M-14 -15 Q0 -10 14 -15 M-14 15 Q0 10 14 15 M-8 -12 V12 M8 -12 V12',
-    'M-16 -5 Q-5 -21 15 -10 M16 5 Q5 21 -15 10 M-8 -6 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M8 6 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0',
-    'M-12 4 a5 5 0 1 1 -.1 0 M-8 3 Q-15 -14 -4 -17 Q11 -21 8 -5 L4 7 Q1 20 14 14',
-    'M-17 -9 Q-13 -19 -10 -10 V10 M-10 -9 Q-5 -20 -2 -10 V10 M-2 -9 Q4 -20 6 -10 V3 Q7 14 16 17 M6 -3 Q20 -15 14 2 Q11 11 -1 15',
-    'M-17 13 H17 M-17 5 H-5 C-22 -12 -1 -22 8 -12 Q14 -4 5 5 H17',
-    'M-17 -9 Q-13 -19 -10 -10 V12 M-10 -9 Q-5 -20 -2 -10 V12 M-2 -9 Q4 -20 6 -10 V5 Q6 17 18 9 M12 8 L18 9 L17 15',
-    'M-15 15 L15 -15 M2 -15 H15 V-2 M-12 -3 L3 12',
-    'M-18 -13 Q-12 -21 -9 -6 L-6 9 Q-2 -26 4 -13 L8 5 Q14 18 19 5 Q19 -5 10 -1 Q3 3 2 15',
-    'M-17 -2 L-10 -10 L-7 -4 L1 -12 L4 -6 L13 -14 M-17 10 L-10 2 L-7 8 L1 0 L4 6 L13 -2',
-    'M-12 -16 Q2 0 -12 16 M12 -16 Q-2 0 12 16 M-13 0 H13'
-  ];
-  function project(stars, instant, lat, lon) {
+  function project(stars, instant, lat, lon, includeBelow=false) {
     const days = instant / 86400000 - 10957.5;
     const t = days / 36525;
     const local = (280.46061837 + 360.98564736629 * days + .000387933*t*t - t*t*t/38710000 + lon) * rad;
@@ -35,10 +21,12 @@ window.KPNightSky = (function () {
       const sinDec = Math.sin(theta)*Math.cos(d)*Math.cos(a) + Math.cos(theta)*Math.sin(d);
       const cosDec = Math.sqrt(Math.max(0, 1 - sinDec*sinDec));
       const up = Math.sin(phi)*sinDec + Math.cos(phi)*cosDec*Math.cos(hour);
-      if (up <= 0) continue;
+      if (up <= 0 && !includeBelow) continue;
       const east = -cosDec*Math.sin(hour), north = sinDec*Math.cos(phi) - cosDec*Math.cos(hour)*Math.sin(phi);
-      const scale = Math.acos(Math.min(1,up)) / (Math.PI/2) / (Math.hypot(east,north) || 1);
-      visible.push([-east*scale,-north*scale,magnitude]);
+      const scale = Math.acos(Math.max(-1,Math.min(1,up))) / (Math.PI/2) / (Math.hypot(east,north) || 1);
+      const point=[-east*scale,-north*scale,magnitude];
+      if(includeBelow)point.push(up);
+      visible.push(point);
     }
     return visible;
   }
@@ -56,46 +44,130 @@ window.KPNightSky = (function () {
     });
     return [...new Set(candidates)].filter(ms=>wallAt(ms)===wall).sort((a,b)=>a-b);
   }
-  function draw(stars, info) {
-    const c = document.createElement('canvas');
-    c.width=1200; c.height=2400;
-    const ctx=c.getContext('2d'), cx=600,cy=1290,r=440;
-    const wash=ctx.createLinearGradient(0,0,800,2400);
-    wash.addColorStop(0,'#081223');wash.addColorStop(.53,'#172941');wash.addColorStop(1,'#0b1525');
-    ctx.fillStyle=wash;ctx.fillRect(0,0,c.width,c.height);
-    function ring(x,y,radius,color,width) {
-      ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();ctx.arc(x,y,radius,0,Math.PI*2);ctx.stroke();
-    }
-    function label(str,x,y,size,color,font,max=1010) {
-      ctx.textAlign='center';ctx.fillStyle=color;ctx.font=size+'px '+font;ctx.fillText(str,x,y,max);
-    }
-    // Reserve an inset for models with wide camera cutouts and tall print masks.
-    ctx.translate(0,-265);
-    ring(cx,cy,r,'#d8b786',3);ring(cx,cy,r+12,'#867963',1.5);
-    for (const [x,y,mag] of project(stars,info.instant,info.lat,info.lon)) {
-      const size=1.55+Math.pow((6-mag)/5,2)*3.7;
-      ctx.fillStyle=mag<2?'#ffe5b1':'#e0e9f5';ctx.beginPath();ctx.arc(cx+x*r,cy+y*r,size,0,Math.PI*2);ctx.fill();
-    }
-    label('N',cx,cy-r-25,26,'#efd7ad','sans-serif');
-    label('E',cx-r-37,cy+10,25,'#efd7ad','sans-serif');
-    label('W',cx+r+37,cy+10,25,'#efd7ad','sans-serif');
-    const pair=info.signs.filter(Boolean);
-    if(pair.length===2){ctx.strokeStyle='#d8b786';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(558,1800);ctx.lineTo(642,1800);ctx.stroke();}
-    pair.forEach((sign,i)=>{
-      const x=pair.length===1?600:510+i*180;
-      ctx.fillStyle='#122139';ctx.beginPath();ctx.arc(x,1800,48,0,2*Math.PI);ctx.fill();ring(x,1800,48,'#d8b786',3);
-      ctx.save();ctx.translate(x,1800);ctx.scale(1.35,1.35);ctx.strokeStyle='#fae3b7';ctx.lineWidth=2.6;
-      ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke(new Path2D(emblems[signs.indexOf(sign)]));ctx.restore();
+  const figureIds = ['Ari','Tau','Gem','Cnc','Leo','Vir','Lib','Sco','Sgr','Cap','Aqr','Psc'];
+
+  // A north-up tangent-plane portrait keeps each sign recognizable across the RA seam.
+  function portraitPoints(stars) {
+    const vectors = stars.map(([ra,dec]) => [
+      Math.cos(dec*rad)*Math.cos(ra*rad), Math.cos(dec*rad)*Math.sin(ra*rad), Math.sin(dec*rad)
+    ]);
+    const center = vectors.reduce((sum,v)=>sum.map((n,i)=>n+v[i]), [0,0,0]);
+    const ra = Math.atan2(center[1],center[0]);
+    const dec = Math.atan2(center[2],Math.hypot(center[0],center[1]));
+    const points = vectors.map(([x,y,z]) => {
+      const along = x*Math.cos(ra)+y*Math.sin(ra);
+      const depth = along*Math.cos(dec)+z*Math.sin(dec);
+      return [(x*Math.sin(ra)-y*Math.cos(ra))/depth, (along*Math.sin(dec)-z*Math.cos(dec))/depth];
     });
-    if(pair.length)label(pair.join('  ·  '),600,1890,33,'#f9e4c7','sans-serif');
-    label(info.title,600,1981,69,'#fff3dc','Georgia, serif');
-    if(info.initials)label(info.initials,600,2054,54,'#e6c488','Georgia, serif');
-    label(info.date,600,2125,41,'#fff3dc','sans-serif');
-    label(info.place,600,2198,36,'#c7d2df','sans-serif',965);
+    const mid = axis => {
+      const values = points.map(p=>p[axis]);
+      return (Math.min(...values)+Math.max(...values))/2;
+    };
+    const mx=mid(0), my=mid(1);
+    const radius=Math.max(...points.map(([x,y])=>Math.hypot(x-mx,y-my)));
+    return points.map(([x,y])=>[(x-mx)/radius,(y-my)/radius]);
+  }
+
+  function draw(stars, figures, info) {
+    const c=document.createElement('canvas');
+    c.width=1200; c.height=2400;
+    const ctx=c.getContext('2d');
+    const gold='#ecc18a', ivory='#fff0d9', pale='#cbdedc', brass='#827c65';
+    const pairs=info.signs.filter(sign=>signs.includes(sign));
+    const active=new Set(pairs.map(sign=>figureIds[signs.indexOf(sign)]));
+    const background=ctx.createLinearGradient(80,250,1050,2200);
+    background.addColorStop(0,'#081724');background.addColorStop(.50,'#133542');background.addColorStop(1,'#0a1727');
+    ctx.fillStyle=background;ctx.fillRect(0,0,c.width,c.height);
+    function line(x,y,xx,yy,color,width) {
+      ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(xx,yy);ctx.stroke();
+    }
+    function circle(x,y,r,color,width) {
+      ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+      if(width){ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();}
+      else{ctx.fillStyle=color;ctx.fill();}
+    }
+    function lettering(str,x,y,size,color,face,maxWidth=960) {
+      ctx.textAlign='center';ctx.fillStyle=color;ctx.font=size+'px '+face;ctx.fillText(str,x,y,maxWidth);
+    }
+    function spark(x,y,r,color) {
+      ctx.fillStyle=color;ctx.beginPath();ctx.moveTo(x,y-r);ctx.quadraticCurveTo(x+r*.14,y-r*.14,x+r*.75,y);
+      ctx.quadraticCurveTo(x+r*.14,y+r*.14,x,y+r);ctx.quadraticCurveTo(x-r*.14,y+r*.14,x-r*.75,y);
+      ctx.quadraticCurveTo(x-r*.14,y-r*.14,x,y-r);ctx.fill();
+    }
+    function ticks(x,y,r,count,color) {
+      for(let i=0;i<count;i++){
+        const angle=2*Math.PI*i/count, dx=Math.sin(angle),dy=-Math.cos(angle);
+        const length=i%5===0?12:5;
+        line(x+dx*r,y+dy*r,x+dx*(r+length),y+dy*(r+length),color,i%5===0?2:1.4);
+      }
+    }
+    function paths(figure,points,color,width,onSky=false) {
+      for(const path of figure.paths){
+        for(let i=1;i<path.length;i++){
+          const a=points[path[i-1]],b=points[path[i]];
+          if(onSky&&a[3]<=0&&b[3]<=0)continue;
+          line(a[0],a[1],b[0],b[1],color,width);
+        }
+      }
+    }
+    const cx=600,cy=900,r=380;
+    circle(cx,cy,r+21,'#091d28');circle(cx,cy,r+22,brass,2);circle(cx,cy,r+4,gold,2);
+    ticks(cx,cy,r+6,180,gold);
+    ctx.save();ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.clip();
+    const field=ctx.createRadialGradient(510,795,10,cx,cy,560);
+    field.addColorStop(0,'#214652');field.addColorStop(.7,'#102c3a');field.addColorStop(1,'#0a192a');
+    ctx.fillStyle=field;ctx.fillRect(cx-r,cy-r,r*2,r*2);
+    for(const radius of [r/3,2*r/3])circle(cx,cy,radius,'#486366',1.5);
+    for(let i=0;i<12;i++){
+      const a=i*Math.PI/6;line(cx,cy,cx+r*Math.cos(a),cy+r*Math.sin(a),'#36535a',1);
+    }
+    for(const [id,figure] of Object.entries(figures)){
+      const projected=project(figure.stars,info.instant,info.lat,info.lon,true)
+        .map(([x,y,mag,up])=>[cx+x*r,cy+y*r,mag,up]);
+      paths(figure,projected,active.has(id)?gold:'#76939c',active.has(id)?3.4:1.8,true);
+    }
+    for(const [x,y,mag] of project(stars,info.instant,info.lat,info.lon)){
+      const size=1.35+Math.pow((6-mag)/5,2)*3.6;
+      circle(cx+x*r,cy+y*r,size,mag<2?ivory:'#d1e0df');
+      if(mag<1.1)spark(cx+x*r,cy+y*r,size*2,ivory);
+    }
+    ctx.restore();
+    [['N',cx,cy-r-35],['S',cx,cy+r+57],['E',cx-r-48,cy+10],['W',cx+r+48,cy+10]].forEach(([s,x,y])=>lettering(s,x,y,27,gold,'Georgia, serif'));
+
+    const portraitY=1460, pr=130;
+    function portrait(sign,x) {
+      const f=figures[figureIds[signs.indexOf(sign)]];
+      const pts=portraitPoints(f.stars).map(([a,b])=>[x+a*pr*.79,portraitY+b*pr*.79]);
+      circle(x,portraitY,pr+11,'#102a37');circle(x,portraitY,pr+11,brass,2);
+      ticks(x,portraitY,pr-2,60,'#aa956f');circle(x,portraitY,pr,'#647a77',1.6);
+      circle(x,portraitY,pr*.69,'#34515a',1.3);
+      line(x-pr+4,portraitY,x+pr-4,portraitY,'#34515a',1.2);
+      line(x,portraitY-pr+4,x,portraitY+pr-4,'#34515a',1.2);
+      paths(f,pts,gold,3);
+      pts.forEach(([a,b],i)=>circle(a,b,Math.max(2.8,6.1-f.stars[i][2]*.48),ivory));
+      const [name,index]=f.anchor, [ax,ay]=pts[index];
+      circle(ax,ay,11,'#d4af79',1.6);spark(ax,ay,13,ivory);
+      lettering(sign,x,portraitY+187,49,ivory,'Georgia, serif',405);
+      lettering(name,x,portraitY+224,27,gold,'sans-serif',390);
+    }
+    if(pairs.length===2){
+      line(519,portraitY,681,portraitY,brass,2);spark(600,portraitY,17,gold);
+    }
+    pairs.forEach((s,i)=>portrait(s,pairs.length===1?cx:388+424*i));
+    const titleY=pairs.length?1760:1550;
+    lettering(info.title,cx,titleY,75,ivory,'Georgia, serif',930);
+    const offset=info.initials?54:0;
+    if(info.initials)lettering(info.initials,cx,titleY+54,46,gold,'Georgia, serif');
+    const dateY=titleY+65+offset;
+    lettering(info.date,cx,dateY,37,ivory,'sans-serif');
+    lettering(info.place,cx,dateY+43,35,pale,'sans-serif',900);
+    const coords=[Math.abs(info.lat).toFixed(2)+'° '+(info.lat<0?'S':'N'),Math.abs(info.lon).toFixed(2)+'° '+(info.lon<0?'W':'E')];
+    lettering([info.clock,...coords].join('   ·   '),cx,dateY+79,28,gold,'sans-serif',900);
     return c;
   }
   function mount(host, hooks) {
     host.innerHTML = `<h2>Map a special night</h2><p>Choose the date and place to map the bright stars above that horizon. Use 9:00 PM for an evening estimate.</p>
+    <details class="sky-example"><summary>See a finished example</summary><img src="assets/home/personal/sky-case.webp" alt="Gemini and Libra on a case with the night sky above West Chester on June 14, 2019" width="394" height="800"></details>
     <form id="skyForm"><label>Occasion<select name="occasion"><option>The night we met</option><option>Our wedding night</option><option>Under the same sky</option><option>The night you were born</option></select></label>
     <div class="studio-pair"><label>Date<input name="date" type="date" min="1900-01-01" max="2100-12-31" required></label><label>Local time<input type="time" name="time" value="21:00" required></label></div>
     <label>Town or city<input name="query" type="search" placeholder="Search for a city" autocomplete="off"></label>
@@ -104,12 +176,12 @@ window.KPNightSky = (function () {
     <label>Place name<input name="placeName" maxlength="48"></label><div class="studio-pair"><label>Latitude (south is negative)<input name="lat" type="number" min="-90" max="90" step="any"></label><label>Longitude (west is negative)<input name="lon" type="number" min="-180" max="180" step="any"></label></div><label>Time zone<input name="zone" placeholder="America/New_York"></label></details>
     <label>Couple’s initials (optional)<input name="initials" maxlength="12" placeholder="J &amp; M"></label>
     <div class="studio-pair"><label>First zodiac sign<select name="sign1"></select></label><label>Second zodiac sign<select name="sign2"></select></label></div>
-    <p>Optional zodiac emblems sit together on the chart’s rim. The star positions come from your date, time and location.</p>
+    <p>Each sign gets a constellation portrait with a named star. Look for the gold lines on the sky map to see which parts of your signs were above the horizon.</p>
     <button type="submit">Update my case preview</button></form>
-    <p role="status" id="skyStatus"></p><div id="skyActions" hidden><a href="#stageWrap">See my case</a> · <button type="button" id="skySave">Save my sky artwork</button></div>
-    <details><summary>About this sky map</summary><p>A map of bright stars above the geometric horizon. Moon, planets, clouds and daylight are outside this star chart. Star positions from the <a href="https://heasarc.gsfc.nasa.gov/W3Browse/all/bsc5p.html">Yale Bright Star Catalogue</a>. City coordinates and time zones adapted from <a href="https://www.geonames.org/">GeoNames</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p></details>`;
+    <p role="status" id="skyStatus"></p><div id="skyActions" hidden><a href="#stageWrap">See my case</a> · <button type="button" id="skySave">Save my sky artwork</button><details id="skyDetail"><summary>See the star map up close</summary><div id="skyArtwork"></div></details></div>
+    <details><summary>About this sky map</summary><p>A map of bright stars above the geometric horizon. Moon, planets, clouds and daylight are outside this star chart. Star positions from the <a href="https://heasarc.gsfc.nasa.gov/W3Browse/all/bsc5p.html">Yale Bright Star Catalogue</a>. Constellation figures adapted from <a href="https://github.com/ofrohn/d3-celestial">D3-Celestial</a> (<a href="assets/sky-figures-license.txt">credits and license</a>). City coordinates and time zones adapted from <a href="https://www.geonames.org/">GeoNames</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p></details>`;
     const form=host.querySelector('form'), f=form.elements, status=host.querySelector('#skyStatus'), actions=host.querySelector('#skyActions');
-    let chart, stars, places, indices=[];
+    let chart, stars, figures, places, indices=[];
     for(const select of [f.sign1,f.sign2])for(const sign of ['',...signs])select.add(new Option(sign||'None',sign));
     const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/ł/g,'l').replace(/ø/g,'o').replace(/ß/g,'ss').replace(/đ/g,'d');
     const cityLabel=row=>row.slice(0,3).filter(Boolean).join(', ');
@@ -130,8 +202,10 @@ window.KPNightSky = (function () {
       f.place.replaceChildren(new Option('Choose a location',''),...indices.map(i=>new Option(cityLabel(places[i]),i)));
       if(indices.length===1)f.place.selectedIndex=1;
     }
-    function invalidate(){chart=null;actions.hidden=true;hooks.changed();status.textContent='Update the preview to apply your details.';}
+    function invalidate(){chart=null;detail.open=false;artwork.replaceChildren();actions.hidden=true;hooks.changed();status.textContent='Update the preview to apply your details.';}
     form.addEventListener('input',invalidate);
+    const detail=host.querySelector('#skyDetail'), artwork=host.querySelector('#skyArtwork');
+    detail.addEventListener('toggle',()=>{if(detail.open&&chart)artwork.replaceChildren(chart);});
     f.query.addEventListener('input',()=>{if(places)populate();});
     function manualMode(){
       f.place.required=!f.manual.checked;
@@ -149,9 +223,10 @@ window.KPNightSky = (function () {
         const matches=instants(f.date.value,f.time.value,zone);
         if(!matches.length)throw Error('That local time falls in a clock change. Choose a different time.');
         const date=new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:zone}).format(matches[0]);
-        chart=draw(stars,{instant:matches[0],lat,lon,place,date,title:f.occasion.value,initials:f.initials.value.trim(),signs:[f.sign1.value,f.sign2.value]});
-        hooks.apply(chart);actions.hidden=false;
-        status.textContent='Preview ready for '+place+' · '+date+' · '+f.time.value+' ('+zone+').'+(matches.length>1?' The clock repeated this time. Using the first occurrence.':'');
+        chart=draw(stars,figures,{clock:new Intl.DateTimeFormat('en-US',{timeZone:zone,hour:'numeric',minute:'2-digit'}).format(matches[0]),instant:matches[0],lat,lon,place,date,title:f.occasion.value,initials:f.initials.value.trim(),signs:[f.sign1.value,f.sign2.value]});
+        chart.setAttribute('role','img');chart.setAttribute('aria-label',[f.occasion.value,place,date,...[f.sign1.value,f.sign2.value].filter(Boolean)].join(', '));
+        if(detail.open)artwork.replaceChildren(chart);hooks.apply(chart);actions.hidden=false;
+        status.textContent='Preview ready for '+place+' · '+date+' · '+f.time.value+' ('+zone+', '+new Intl.DateTimeFormat('en',{timeZone:zone,timeZoneName:'longOffset'}).formatToParts(matches[0]).find(p=>p.type==='timeZoneName').value+').'+(matches.length>1?' The clock repeated this time. Using the first occurrence.':'');
       }catch(err){invalidate();status.textContent=err instanceof RangeError?'Enter a time zone such as America/New_York.':err.message;}
     });
     host.querySelector('#skySave').onclick=()=>{
@@ -159,9 +234,9 @@ window.KPNightSky = (function () {
       chart.toBlob(blob=>{if(!blob)return;const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='keepsake-night-sky.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),60000);},'image/png');
     };
     host.addEventListener('skyreset',()=>{form.reset();manualMode();if(places)populate();invalidate();status.textContent='Choose a date and place to start again.';});
-    Promise.all(['bright-stars','sky-places'].map(async name=>{
+    Promise.all(['bright-stars','sky-places','sky-figures'].map(async name=>{
       const res=await fetch('assets/'+name+'.json');if(!res.ok)throw Error();return res.json();
-    })).then(values=>{[stars,places]=values;populate();}).catch(()=>{status.textContent='The local sky catalogue could not load. Reload this page to try again.';});
+    })).then(values=>{[stars,places,figures]=values;populate();}).catch(()=>{status.textContent='The local sky catalogue could not load. Reload this page to try again.';});
   }
   return {mount,project,instants};
 })();

@@ -14,3 +14,6 @@
 #personalStudio summary,#skyActions a {text-decoration:underline;cursor:pointer;}
 #personalStudio button {background:#162a40;color:white;border:0;padding:12px 16px;border-radius:7px;font:inherit;font-weight:750;cursor:pointer;}
 .sky-studio #photoSection > :is(#uploadBtn,#browseLink,#photoPrivacy,#editTools,#photoLooksWrap),.sky-studio #photoSection > p,.sky-studio #photoSection > div:has(+ #photoLooksWrap) {display:none!important;}
+
+#personalStudio .sky-example img {display:block;width:min(100%,300px);height:auto;margin:14px auto;}
+#skyArtwork canvas {display:block;width:100%;height:auto;margin-top:12px;}
