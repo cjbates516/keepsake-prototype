@@ -111,7 +111,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#6C6C72;margin-bottom:14px">Design library</div>
           <h1 id="shopTitle" style="font-weight:900;font-size:clamp(26px,3.8vw,52px);letter-spacing:-.01em;color:#191921;margin:0;line-height:1.02">Your case.<br>Your kind of statement.</h1>
           <p style="font-size:14px;font-weight:700;color:#6E6E70;margin:10px 0 0">Every case design $44.99 · Choose a print. Make it yours in store.</p>
-          <a href="cherry-duck.html" style="display:inline-flex;align-items:center;min-height:44px;font-weight:800">Compare Cherry Dot &amp; Wrong Way Duck ↗</a>
+          <a id="galleryFeature" href="cherry-duck.html" style="display:inline-flex;align-items:center;min-height:44px;font-weight:800">Compare Cherry Dot &amp; Wrong Way Duck ↗</a>
         </div>
         <div style="font-size:13px;font-weight:800;color:#6C6C72"><span id="countLabel" aria-live="polite"></span></div>
       </div>
@@ -648,6 +648,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     $('countLabel').textContent = kpCurated
       ? ('Our favorites · ' + items.length + ' of ' + kpTotal + ' designs')
       : (items.length + ' design' + (items.length===1?'':'s') + (device ? ' · ' + device : ''));
+    const zodiac = filter === 'Zodiac';
+    const feature = $('galleryFeature');
+    feature.textContent = zodiac ? 'Pair your signs on a custom star map →' : 'Compare Cherry Dot & Wrong Way Duck ↗';
+    feature.href = zodiac ? 'customizer.html?studio=sky' + (device ? '&model=' + encodeURIComponent(slugify(device)) : '') + '#personalStudio' : 'cherry-duck.html';
     $('shopTitle').innerHTML = device ? (device + ' cases.') : 'Your case.<br>Your kind of statement.';
     if (!items.length){
       $('grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px">'
