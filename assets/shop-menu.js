@@ -5,7 +5,7 @@
   ['iPhone cases','Pick your iPhone model','gallery.html?brand=Apple','assets/home/cherry-duck/cherry-dot-original.webp'],
   ['Samsung cases','Pick your Galaxy model','gallery.html?brand=Samsung','assets/home/signature-golf/sunday-scramble-original.webp'],
   ['All phone cases','Browse prints before picking a phone','gallery.html','assets/home/cherry-duck/wrong-way-duck-original.webp'],
-  ['City Scenes','Find your city','gallery.html?cat=City%20Scenes','assets/designs/thumbs/city-scene-philadelphia.png'],
+  ['City Scenes','Find your city','gallery.html?cat=City%20Scenes','assets/designs/thumbs/city-night-philadelphia.jpg'],
   ['Signature Golf','Course maps and Sunday Scramble','signature-golf.html','assets/home/signature-golf/pebble-original.webp'],
   ['National Parks','Illustrations and real park photos','parks-rugged.html','assets/home/parks-rugged/acadia-original.webp'],
   ['Design your own','Use a photo from your phone','customizer.html','assets/photos/i17PM-hero.jpg'],

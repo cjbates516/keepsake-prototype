@@ -28,14 +28,14 @@
 "OUT": 6,
 "PAI": 1,
 "POP": 13,
-"SCN": 96,
+"SCN": 154,
 "SPT": 5,
 "STR": 27,
 "WES": 63,
 "WTH": 4,
 "XMS": 59,
 "Y2K": 43,
-"ZOD": 48
+"ZOD": 60
 },
 "retired": {
 "ABS-050": "modern-yosemite-national-park-logo-for-mug.jpg",
@@ -753,6 +753,238 @@
 "christmas-wreaths-and-bows.jpg": {
 "c": "XMS",
 "n": 59
+},
+"city-night-albuquerque.jpg": {
+"c": "SCN",
+"n": 97
+},
+"city-night-atlanta.jpg": {
+"c": "SCN",
+"n": 98
+},
+"city-night-aurora.jpg": {
+"c": "SCN",
+"n": 99
+},
+"city-night-austin.jpg": {
+"c": "SCN",
+"n": 100
+},
+"city-night-bakersfield.jpg": {
+"c": "SCN",
+"n": 101
+},
+"city-night-baltimore.jpg": {
+"c": "SCN",
+"n": 102
+},
+"city-night-boston.jpg": {
+"c": "SCN",
+"n": 103
+},
+"city-night-charleston.jpg": {
+"c": "SCN",
+"n": 104
+},
+"city-night-charlotte.jpg": {
+"c": "SCN",
+"n": 105
+},
+"city-night-chicago.jpg": {
+"c": "SCN",
+"n": 106
+},
+"city-night-colorado-springs.jpg": {
+"c": "SCN",
+"n": 107
+},
+"city-night-columbus.jpg": {
+"c": "SCN",
+"n": 108
+},
+"city-night-dallas.jpg": {
+"c": "SCN",
+"n": 109
+},
+"city-night-denver.jpg": {
+"c": "SCN",
+"n": 110
+},
+"city-night-detroit.jpg": {
+"c": "SCN",
+"n": 111
+},
+"city-night-el-paso.jpg": {
+"c": "SCN",
+"n": 112
+},
+"city-night-fort-worth.jpg": {
+"c": "SCN",
+"n": 113
+},
+"city-night-fresno.jpg": {
+"c": "SCN",
+"n": 114
+},
+"city-night-honolulu.jpg": {
+"c": "SCN",
+"n": 115
+},
+"city-night-houston.jpg": {
+"c": "SCN",
+"n": 116
+},
+"city-night-indianapolis.jpg": {
+"c": "SCN",
+"n": 117
+},
+"city-night-jacksonville.jpg": {
+"c": "SCN",
+"n": 118
+},
+"city-night-kansas-city.jpg": {
+"c": "SCN",
+"n": 119
+},
+"city-night-las-vegas.jpg": {
+"c": "SCN",
+"n": 120
+},
+"city-night-long-beach.jpg": {
+"c": "SCN",
+"n": 121
+},
+"city-night-los-angeles.jpg": {
+"c": "SCN",
+"n": 122
+},
+"city-night-louisville.jpg": {
+"c": "SCN",
+"n": 123
+},
+"city-night-memphis.jpg": {
+"c": "SCN",
+"n": 124
+},
+"city-night-mesa.jpg": {
+"c": "SCN",
+"n": 125
+},
+"city-night-miami.jpg": {
+"c": "SCN",
+"n": 126
+},
+"city-night-milwaukee.jpg": {
+"c": "SCN",
+"n": 127
+},
+"city-night-minneapolis.jpg": {
+"c": "SCN",
+"n": 128
+},
+"city-night-nashville.jpg": {
+"c": "SCN",
+"n": 129
+},
+"city-night-new-orleans.jpg": {
+"c": "SCN",
+"n": 130
+},
+"city-night-new-york.jpg": {
+"c": "SCN",
+"n": 131
+},
+"city-night-oakland.jpg": {
+"c": "SCN",
+"n": 132
+},
+"city-night-oklahoma-city.jpg": {
+"c": "SCN",
+"n": 133
+},
+"city-night-omaha.jpg": {
+"c": "SCN",
+"n": 134
+},
+"city-night-orlando.jpg": {
+"c": "SCN",
+"n": 135
+},
+"city-night-philadelphia.jpg": {
+"c": "SCN",
+"n": 136
+},
+"city-night-phoenix.jpg": {
+"c": "SCN",
+"n": 137
+},
+"city-night-pittsburgh.jpg": {
+"c": "SCN",
+"n": 138
+},
+"city-night-portland.jpg": {
+"c": "SCN",
+"n": 139
+},
+"city-night-raleigh.jpg": {
+"c": "SCN",
+"n": 140
+},
+"city-night-sacramento.jpg": {
+"c": "SCN",
+"n": 141
+},
+"city-night-san-antonio.jpg": {
+"c": "SCN",
+"n": 142
+},
+"city-night-san-diego.jpg": {
+"c": "SCN",
+"n": 143
+},
+"city-night-san-francisco.jpg": {
+"c": "SCN",
+"n": 144
+},
+"city-night-san-jose.jpg": {
+"c": "SCN",
+"n": 145
+},
+"city-night-santa-fe.jpg": {
+"c": "SCN",
+"n": 146
+},
+"city-night-savannah.jpg": {
+"c": "SCN",
+"n": 147
+},
+"city-night-seattle.jpg": {
+"c": "SCN",
+"n": 148
+},
+"city-night-st-louis.jpg": {
+"c": "SCN",
+"n": 149
+},
+"city-night-tampa.jpg": {
+"c": "SCN",
+"n": 150
+},
+"city-night-tucson.jpg": {
+"c": "SCN",
+"n": 151
+},
+"city-night-tulsa.jpg": {
+"c": "SCN",
+"n": 152
+},
+"city-night-virginia-beach.jpg": {
+"c": "SCN",
+"n": 153
+},
+"city-night-washington.jpg": {
+"c": "SCN",
+"n": 154
 },
 "city-scene-albuquerque.png": {
 "c": "SCN",
@@ -5229,6 +5461,54 @@
 "zodiac-aries-night-sky.jpg": {
 "c": "ZOD",
 "n": 8
+},
+"zodiac-atlas-aquarius.png": {
+"c": "ZOD",
+"n": 49
+},
+"zodiac-atlas-aries.png": {
+"c": "ZOD",
+"n": 50
+},
+"zodiac-atlas-cancer.png": {
+"c": "ZOD",
+"n": 51
+},
+"zodiac-atlas-capricorn.png": {
+"c": "ZOD",
+"n": 52
+},
+"zodiac-atlas-gemini.png": {
+"c": "ZOD",
+"n": 53
+},
+"zodiac-atlas-leo.png": {
+"c": "ZOD",
+"n": 54
+},
+"zodiac-atlas-libra.png": {
+"c": "ZOD",
+"n": 55
+},
+"zodiac-atlas-pisces.png": {
+"c": "ZOD",
+"n": 56
+},
+"zodiac-atlas-sagittarius.png": {
+"c": "ZOD",
+"n": 57
+},
+"zodiac-atlas-scorpio.png": {
+"c": "ZOD",
+"n": 58
+},
+"zodiac-atlas-taurus.png": {
+"c": "ZOD",
+"n": 59
+},
+"zodiac-atlas-virgo.png": {
+"c": "ZOD",
+"n": 60
 },
 "zodiac-cancer-blush.jpg": {
 "c": "ZOD",

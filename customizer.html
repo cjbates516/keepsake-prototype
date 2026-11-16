@@ -240,6 +240,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           <div id="personalStudio" hidden></div>
           <div id="photoSection" style="display:none">
           <div style="font-size:12px;font-weight:600;color:#6C6C72;margin:-18px 0 24px;padding-left:2px"><span id="fitNote" style="display:none"></span>
+            <a id="cityPhotoCredit" hidden>Photograph and license</a>
             <span id="dpiLabel" style="display:block;margin-top:6px;font-weight:800"></span>
           </div>
           <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:12px">Your photo</div>
@@ -1034,6 +1035,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* ── stage state ── */
   function hasKit(){ return !!KITS[state.model]; }
   function updateStage(){
+    const cityPhoto = state.isLibraryDesign && state.photoImg && /^city-night-([a-z-]+)\.jpg$/.exec(state.photoImg.__kpDesignFile || '');
+    const creditLink = $('cityPhotoCredit');
+    creditLink.hidden = !cityPhoto;
+    if (cityPhoto) creditLink.href = 'city-photo-credits.html#' + cityPhoto[1];
     var live = hasKit();
     canvas.style.display = live ? 'block' : 'none';
     canvas.style.touchAction = state.photoImg ? 'none' : 'pan-y';
