@@ -17,8 +17,9 @@ let checks=0;function check(ok,label){if(!ok)throw Error(label);checks++;}
    if(width===390){
      const active=p.locator('.case-slide:visible');
      check(await p.locator('.case-edit button').count()===0,'no slideshow control bar');
+     check(await active.locator('.campaign-title').innerText()==='Times Square Rain','rainy Times Square opens the slideshow');
      await active.locator('a').focus();
-     for(const name of ['Cherry Dot','Neon Hearts','Wrong Way Duck','Liquid Prism','Yosemite']){
+     for(const name of ['City Hall in Silver','Freeway Lights','Yosemite','Cherry Dot','Neon Hearts','Wrong Way Duck','Liquid Prism','Times Square Rain']){
        await p.keyboard.press('ArrowRight');
        check((await active.innerText()).includes(name),'next case: '+name);
      }
@@ -40,11 +41,11 @@ let checks=0;function check(ok,label){if(!ok)throw Error(label);checks++;}
     if(u.searchParams.has('cat'))check(catalog.some(d=>d.category===u.searchParams.get('cat')),'category '+href);
    }
    if(width<=760){
-    await p.locator('#mobileMenu summary').click();check(await p.locator('#mobileMenu').evaluate(e=>e.open),'menu opens');
-    await p.keyboard.press('Escape');check(await p.locator('#mobileMenu').evaluate(e=>!e.open&&document.activeElement===e.querySelector('summary')),'escape focus');
-    await p.locator('#mobileMenu summary').click();await p.locator('#mobileMenu a[href="#stores"]').click();
-    check(await p.locator('#mobileMenu').evaluate(e=>!e.open),'anchor closes menu');
-    check(await p.locator('#stores').evaluate(e=>document.activeElement===e),'anchor focus');
+    const toggle=p.getByRole('button',{name:'Open navigation menu'});
+    await toggle.click();check(await p.locator('#ks-menu-panel').isVisible(),'menu opens');
+    await p.keyboard.press('Escape');check(await toggle.evaluate(e=>document.activeElement===e),'escape restores focus');
+    await toggle.click();await p.locator('#ks-menu-panel a[href="index.html#stores"]').click();
+    check(new URL(p.url()).hash==='#stores'&&!await p.locator('#ks-menu-panel').isVisible(),'store link closes menu');
    }
    check(!errors.length&&!posts.length,'no errors or submissions');
    await p.close();

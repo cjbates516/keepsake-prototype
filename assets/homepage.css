@@ -257,6 +257,14 @@ h1,h2,h3{font-family:var(--display)}
   background: linear-gradient(90deg, #091e1cdf, transparent 82%),
     url('home/case-edit/yosemite-valley.webp') center 52% / cover, #203a32;
 }
+.scene-new-york {--city-photo: url('home/case-edit/new-york-night.webp'); --scene-position: 50% 48%;}
+.scene-philadelphia {--city-photo: url('home/case-edit/philadelphia-night.webp'); --scene-position: 50% 34%;}
+.scene-los-angeles {--city-photo: url('home/case-edit/los-angeles-night.webp'); --scene-position: 50% 58%;}
+.scene-city .case-story {
+  color: #fff;
+  background: linear-gradient(90deg, #090d16e8, #090d164d 70%), var(--city-photo) var(--scene-position) / cover, #10141d;
+}
+.scene-city .edit-phone {object-fit: contain;}
 .scene-hearts .case-story {background: radial-gradient(ellipse at 74% 40%, #835d9f, transparent 62%), #231c36;}
 .edit-phone {
   position: absolute; right: 13%; top: 10%; width: 34%; height: 78%;
@@ -269,6 +277,7 @@ h1,h2,h3{font-family:var(--display)}
 .case-story:hover .campaign-shop,.case-story:focus-visible .campaign-shop {text-decoration: underline;}
 @media (max-width: 650px) and (orientation: portrait) {
   .case-story {min-height: 414px;}
+  .scene-city .case-story {background-image: linear-gradient(0deg, #090d16f5, #090d16bc 41%, #090d1633 80%), var(--city-photo);}
   .scene-yosemite .case-story {background-image: linear-gradient(0deg, #081c18ed, transparent 73%), url('home/case-edit/yosemite-valley.webp');}
   .edit-phone {width: 72%; height: 57%; top: 4%; right: 11%;}
   .campaign-copy {left: 7%; bottom: 6%; width: 86%; gap: 9px;}
