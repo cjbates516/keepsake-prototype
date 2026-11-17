@@ -154,7 +154,7 @@ window.KPNightSky = (function () {
   }
   function mount(host, hooks) {
     host.innerHTML = `<h2>Map a special night</h2><p>Choose the date and place to map the bright stars above that horizon. Use 9:00 PM for an evening estimate.</p>
-    <details class="sky-example"><summary>See a finished example</summary><button type="button" id="skyExampleZoom" aria-label="Enlarge the finished example"><img src="assets/home/personal/sky-case-detail.webp" loading="lazy" alt="Gemini and Libra on a case with the night sky above West Chester on June 14, 2019" width="402" height="800"><span>Enlarge example</span></button></details>
+    <details class="sky-example"><summary>See a finished example</summary><button type="button" id="skyExampleZoom" aria-label="Enlarge the finished example"><img src="assets/home/personal/sky-shell.webp" loading="lazy" alt="Gemini and Libra on a case with the night sky above West Chester on June 14, 2019" width="912" height="1731"><span>Enlarge example</span></button></details>
     <form id="skyForm"><label>Occasion<select name="occasion"><option>The night we met</option><option>Our wedding night</option><option>Under the same sky</option><option>The night you were born</option></select></label>
     <div class="studio-pair"><label>Date<input name="date" type="date" min="1900-01-01" max="2100-12-31" required></label><label>Local time<input type="time" name="time" value="21:00" required></label></div>
     <label>Town, city or island<input name="query" type="search" aria-describedby="skyPlaceHint" placeholder="Search for a place" autocomplete="off"></label>

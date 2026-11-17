@@ -17,9 +17,11 @@ let checks=0;function check(ok,label){if(!ok)throw Error(label);checks++;}
    if(width===390){
      const active=p.locator('.case-slide:visible');
      check(await p.locator('.case-edit button:not(.hero-case-zoom)').count()===0,'no slideshow control bar');
-     check(await active.locator('.campaign-title').innerText()==='Times Square Rain','rainy Times Square opens the slideshow');
-     await active.getByRole('link',{name:'Customize this case, Times Square Rain'}).focus();
-     for(const name of ['City Hall in Silver','Freeway Lights','Yosemite','Cherry Dot','Neon Hearts','Wrong Way Duck','Liquid Prism','Times Square Rain']){
+     check(await active.locator('.campaign-title').innerText()==='“I love you Dad”','child artwork opens the slideshow');
+     const drawingLink=active.locator('.drawing-product');
+     check(await drawingLink.getAttribute('href')===await active.locator('.campaign-shop').getAttribute('href'),'case and call to action start the same drawing studio');
+     await drawingLink.focus();
+     for(const name of ['Times Square Rain','City Hall in Silver','Freeway Lights','Yosemite','Cherry Dot','Neon Hearts','Wrong Way Duck','Liquid Prism','“I love you Dad”']){
        await p.keyboard.press('ArrowRight');
        check((await active.innerText()).includes(name),'next case: '+name);
      }

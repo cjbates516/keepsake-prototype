@@ -11,8 +11,8 @@
   ['Signature Golf','Course maps and Sunday Scramble','signature-golf.html','assets/home/signature-golf/pebble-original.webp'],
   ['National Parks','Illustrations and real park photos','parks-rugged.html','assets/home/parks-rugged/acadia-original.webp'],
   ['Design your own','Use a photo from your phone','customizer.html','assets/photos/i17PM-hero.jpg'],
-  ['Children’s artwork','Turn their drawing into a case','customizer.html?studio=drawing#personalStudio','assets/home/personal/drawing-case.webp'],
-  ['Night sky','Map a special date and place','customizer.html?studio=sky#personalStudio','assets/home/personal/sky-case.webp'],
+  ['Children’s artwork','Turn their drawing into a case','customizer.html?studio=drawing#personalStudio','assets/home/personal/drawing-shell.webp'],
+  ['Night sky','Map a special date and place','customizer.html?studio=sky#personalStudio','assets/home/personal/sky-shell.webp'],
   ['Seasonal Weather','Rain, frost, autumn and summer prints','seasonal-weather.html','assets/home/seasonal-weather/rain-original.webp'],
   ['Photo slates','Personalized stone prints','slates.html','assets/photos/slates/yosemite-valley-print.jpg']
  ];
