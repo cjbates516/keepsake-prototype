@@ -19,6 +19,7 @@ data=json.loads((ROOT/'assets/designs/designs.json').read_text());catalog={}
 for d in data:
  if d.get('hidden') or d.get('active') is False:continue
  name=d['file'];old=previous.get(name,{})
+ if name.startswith(('city-night-', 'field-photo-')) and not old:continue
  catalog[name]={**old,'group':old.get('group',groups.get(d['category'],'bright')),'method':old.get('method','map' if d['category']=='City maps' else 'palette'),'hash':d.get('hash','')}
  if name=='modern-yosemite-national-park-logo-for-mug.jpg':catalog[name].update(method='yosemite',group='outdoors')
 # Keep retired entries so an existing pick code retains its colorway mapping.

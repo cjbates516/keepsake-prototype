@@ -1040,7 +1040,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function updateStage(){
     const cityPhoto = state.isLibraryDesign && state.photoImg && /^city-night-([a-z-]+)\.jpg$/.exec(state.photoImg.__kpDesignFile || '');
     const creditLink = $('cityPhotoCredit');
-    creditLink.hidden = !cityPhoto;
+    const fieldPhoto = state.isLibraryDesign && state.photoImg && /^field-photo-([a-z0-9-]+)\.jpg$/.exec(state.photoImg.__kpDesignFile || '');
+    creditLink.hidden = !(cityPhoto || fieldPhoto);
+    if (fieldPhoto) creditLink.href = 'field-photo-credits.html#' + fieldPhoto[1];
     if (cityPhoto) creditLink.href = 'city-photo-credits.html#' + cityPhoto[1];
     var live = hasKit();
     canvas.style.display = live ? 'block' : 'none';
@@ -1327,8 +1329,13 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   /* print quality light: the photo's real pixels per inch at the size it will print, after cropping */
   function kpEffectiveDpi(){
-    if(state.layout || !state.photoImg || state.isLibraryDesign || !TPL || !FIT || !window.KPPrintGeometry) return null;
-    var src=state.photoImg, iw=src.naturalWidth||src.width, ih=src.naturalHeight||src.height;
+    if(state.layout || !state.photoImg || state.photoImg.__kpIsThumb || !TPL || !FIT || !window.KPPrintGeometry) return null;
+    var src=state.photoImg;
+    if(state.isLibraryDesign){
+      var profile=KPDesignColorways.profile(src);
+      if(state.variant!=='original' || (profile && profile.caseLayout)) return null;
+    }
+    var iw=src.naturalWidth||src.width, ih=src.naturalHeight||src.height;
     var B=photoBox();
     var cs = (state.fitMode==='fit') ? Math.min(B.w/iw, B.h/ih)*0.93 : Math.max(B.w/iw, B.h/ih);
     var printPxPerStage = KPPrintGeometry.metrics(TPL,FIT).y;           /* 300 DPI print pixels per stage pixel */
@@ -1340,6 +1347,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     el.textContent=''; state.quality=null;
     var dpi=kpEffectiveDpi(); if(dpi==null) return;
     state.quality = dpi>=280 ? 'green' : (dpi>=200 ? 'yellow' : 'red');
+    if(state.isLibraryDesign){
+      el.textContent=dpi+' PPI at this size'+(dpi<300?' · Check fine detail in the enlarged preview.':'');
+      el.style.color=dpi<300?'#794612':'#216b46';
+      return;
+    }
     if(state.quality==='green'){ el.textContent='Looks great. This will print sharp.'; el.style.color='#1E8E3E'; }
     else if(state.quality==='yellow'){ el.textContent='Acceptable. This will print, but fine details may soften. Zooming out or a larger photo will look better.'; el.style.color='#C77700'; }
     else { el.textContent='Too low for a sharp print at this size. Zoom out, or use the original photo from your camera roll instead of a screenshot or saved image.'; el.style.color='#DC282E'; }

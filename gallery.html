@@ -201,6 +201,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* Shop-by-style strip under the title; seasonal slot is month-driven */
   var KP_STRIP_BASE = [
     ['City Scenes','city-night-philadelphia.jpg'],
+    ['Earth From Orbit','field-photo-yukon-delta-0.jpg'],
+    ['Botanical Blueprints','field-photo-291506.jpg'],
     ['National Parks','kp-half-dome-river.png'],
     ['Signature Golf','kp-golf-pebble-beach.jpg'],
     ['Seasonal Weather','kp-weather-window-seat.jpg'],
@@ -440,7 +442,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     const card=trigger.closest('.h-card'), next=card.querySelector('a[data-pick-model],a.h-makeone');
     const model=device || (design.casePreview ? 'iPhone 18 Pro Max' : '');
     KPCaseZoom.open({title:design.title,trigger,source:()=>model ?
-      detailedCase(model,Number(card.dataset.selectedColor||0),design,device ? artworkPicks[design.file]||'original' : 'original') :
+      detailedCase(model,Number(card.dataset.selectedColor||0),design,artworkPicks[design.file]||'original') :
       KPCaseZoom.image('assets/designs/'+design.file+'?v='+design.hash),
       label:device?'Customize this case':'Choose your phone',proceed:()=>next.click()});
   });
@@ -508,7 +510,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var file = pendingDesign;
     kpCloseDrawer();
     if (file && selected) {
-      location.assign('customizer.html?' + new URLSearchParams({design:file,model:slugify(selected)}));
+      location.assign('customizer.html?' + new URLSearchParams({design:file,model:slugify(selected),colorway:artworkPicks[file]||'original'}));
       return;
     }
     device = selected;
@@ -693,6 +695,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       feature.href = 'city-photo-credits.html';
     }
     $('shopTitle').innerHTML = device ? (device + ' cases.') : filter === 'City Scenes' ? 'City After Dark' : 'Your case.<br>Your kind of statement.';
+    if (filter === 'Earth From Orbit' || filter === 'Botanical Blueprints') {
+      $('shopTitle').textContent = filter;
+      feature.textContent = 'Meet the photographs →';
+      feature.href = 'field-photo-credits.html#' + (filter === 'Earth From Orbit' ? 'parallel-dunes' : '291506');
+    }
     if (!items.length){
       $('grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px">'
         + '<div style="font-weight:900;font-size:18px;color:#2D2D3B;margin-bottom:8px">No designs match</div>'
@@ -713,7 +720,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           : (KP_FEATURED.indexOf(d.file)>-1 && KP_FEATURED.indexOf(d.file)<12 ? '<span class="kpBadge kpB-pick">Staff pick</span>' : '');
         return '<div class="h-card" style="display:block;text-decoration:none;animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:16px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
           + '<button type="button" class="case-zoom-button '+(d.casePreview?'case-portrait':'')+'" data-enlarge="'+d.file+'" aria-label="Enlarge '+escapeHtml(d.title)+'" style="position:relative;aspect-ratio:1/1;background:#F7F7F7"><img src="' + cardImage + '" onerror="this.closest(\'.h-card\').style.display=\'none\'" alt="' + escapeHtml(d.title) + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">' + badge + '<span class="zoom-hint">Zoom</span></button>'
-          + '<a data-pick-model="'+d.file+'" href="customizer.html?design='+encodeURIComponent(d.file)+'" style="display:block;text-decoration:none;padding:10px 12px 12px">'
+          + '<a data-pick-model="'+d.file+'" href="customizer.html?design='+encodeURIComponent(d.file)+(d.displayColorway?'&amp;colorway='+d.displayColorway:'')+'" style="display:block;text-decoration:none;padding:10px 12px 12px">'
           + '<div style="font-weight:700;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
           + '<div style="font-size:11px;color:#6C6C72;font-weight:700;margin-top:2px">' + d.category + ' · choose your phone</div>'
           + '<div style="font-size:13px;font-weight:800;color:#17171F;margin-top:6px">$44.99</div>'
@@ -878,6 +885,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   fetch('assets/designs/designs.json', {cache:'no-cache'}).then(function(r){ return r.json(); }).then(function(d){
     var staffMode = /[?&]staff=1/.test(location.search);
     designs = staffMode ? d : d.filter(function(x){ return !x.hidden && x.active!==false && KPSeason.visible(x); });
+    designs.forEach(function(design){ if (design.displayColorway) artworkPicks[design.file]=design.displayColorway; });
     if (filter !== 'All' && !designs.some(function(x){ return x.category === filter; })) filter = 'All';
     renderDeviceBar(); renderFilters(); renderStates(); renderColors(); renderGrid();
     if (device) preloadDevice(device);
