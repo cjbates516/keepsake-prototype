@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="assets/staff-print.css">
 <script src="assets/print-png.js"></script>
 <script src="assets/print-geometry.js"></script>
+<script src="assets/case-shell.js"></script>
 <script src="assets/mask-geometry.js"></script>
 <script src="assets/print-layouts.js"></script>
 <title>Design your keepsake — Keepsake Printing Co</title>
@@ -172,7 +173,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <div id="colorSwatches" style="display:flex;gap:8px"></div>
           </div>
           <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#DC282E;margin:26px 0 12px;padding-top:22px;border-top:1px solid #EFEDED">Step 2 <span style="color:#17171F">· Your case</span></div>
-          <div id="ctRow" style="display:none;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:30px"><!-- KP_TOUGH_OFF: set display:grid to re-enable case-type choice -->
+          <div id="ctRow" style="display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:30px"><!-- KP_TOUGH_OFF: set display:grid to re-enable case-type choice -->
             <div id="ctClear" class="ctCard" data-ct="MagSafe Clear" style="cursor:pointer;text-align:center">
               <div style="position:relative;border:2px solid #DC282E;border-radius:12px;overflow:hidden;background:#F7F7F7">
                 <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:2;background:#C6A052;color:#FFFFFF;font-size:7.5px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px;border-radius:3px;pointer-events:none;white-space:nowrap;max-width:94%">Most popular</div>
@@ -554,6 +555,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   canvas.width=DIM.w*PS; canvas.height=DIM.h*PS;
   var caseImg=new Image(), lightMap=null, caseReady=false;
   var viewImg=null, viewReady=false, viewSrc=null, viewMaskCanvas=null, viewFailed=false;
+  KPCaseShell.ready.then(render);
   caseImg.onload=function(){ caseReady=true; render(); };
   var lightImg=new Image(), lightReady=false;
   lightImg.onload=function(){
@@ -600,6 +602,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ['colorName','colorName2','colorName3','colorName4'].forEach(function(id){ var el=$(id); if(el) el.textContent=state.colorName; });
     var mp=$('miniPhone'); if(mp) mp.style.background=state.colorHex;
     caseReady=false;
+    for(const thumb of [$('ctThumbClear'),$('ctThumbHyb')]){
+      thumb.getContext('2d').clearRect(0,0,thumb.width,thumb.height);
+    }
     var srcFile = (state.caseType==='Tough Magnetic' && k.tough) ? k.tough.file : col.f;  /* hybrid col.f already per-bumper-color */
     caseImg.src='assets/cases/'+srcFile;
     var tt=$('toughThumb'); if(tt){ if(k.tough) tt.src='assets/cases/'+k.tough.file; else if(k.toughOnly) tt.src='assets/cases/'+k.colors[0].f; }
@@ -852,7 +857,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ctx.globalAlpha=1;
     ctx.clearRect(0,0,DIM.w,DIM.h);
     ctx.drawImage(caseImg,0,0,DIM.w,DIM.h);
-    if(viewImg && !viewReady) return; // Keep the bare phone visible until its stencil is ready.
+    if(viewImg && !viewReady) {
+      KPCaseShell.draw(ctx,state.model,DIM.w,DIM.h,state.caseType);
+      return;
+    }
     var useMask = viewImg && viewReady;
     if(state.photoImg || state.layout){
       var dl=getDesignLayer(), d2=dl.getContext('2d');
@@ -912,6 +920,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         ctx.restore();
       }
     }
+    KPCaseShell.draw(ctx,state.model,DIM.w,DIM.h,state.caseType);
+    updateStylePreviews();
     drawCalOverlay();
   }
   function drawCalOverlay(){
@@ -1050,7 +1060,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     $('stageEmpty').style.display = live ? 'none' : 'block';
     updateStep3();
     renderFilterChips();
-    renderCtThumbs();
     $('exportLink').style.display = (hasArt()||state.text) ? 'inline' : 'none';
     $('editTools').style.display = (state.photoImg && !state.layout && !state.isLibraryDesign) ? 'block' : 'none';
     if(state.photoImg && typeof syncFitChips==='function') syncFitChips();
@@ -1430,26 +1439,42 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* ── addons / promo / totals ── */
   var _pr=$('promoReveal');
   if(_pr) _pr.addEventListener('click',function(e){ e.preventDefault(); _pr.style.display='none'; var r=$('promoRow'); r.style.display='flex'; $('promoInput').focus(); });
-  function kpPaintCtThumb(id, style){
-    var cv=document.getElementById(id); if(!cv) return;
-    var x=cv.getContext('2d'); var W=cv.width,H=cv.height;
-    x.clearRect(0,0,W,H);
-    function rr(x0,y0,w,h,r){ x.beginPath(); x.moveTo(x0+r,y0); x.arcTo(x0+w,y0,x0+w,y0+h,r); x.arcTo(x0+w,y0+h,x0,y0+h,r); x.arcTo(x0,y0+h,x0,y0,r); x.arcTo(x0,y0,x0+w,y0,r); x.closePath(); }
-    rr(3,3,W-6,H-6,18);
-    x.fillStyle = style==='hyb' ? '#2D2D3B' : 'rgba(185,189,203,.45)'; x.fill();
-    rr(8,8,W-16,H-16,13); x.save(); x.clip();
-    var art = KPDesignColorways.source(state.photoImg,state.variant) || (state.layout && curTpl() ? tplImage(curTpl()) : null);
-    if(art && art.complete!==false && (art.naturalWidth||art.width)){
-      var iw=art.naturalWidth||art.width, ih=art.naturalHeight||art.height;
-      var k2=Math.max((W-16)/iw,(H-16)/ih);
-      x.drawImage(art, 8+(W-16-iw*k2)/2, 8+(H-16-ih*k2)/2, iw*k2, ih*k2);
-    } else { x.fillStyle='#FAFAFA'; x.fillRect(8,8,W-16,H-16); }
-    x.restore();
-    x.fillStyle='rgba(0,0,0,.35)'; rr(14,14,26,26,8); x.fill();
-    x.strokeStyle = style==='hyb' ? 'rgba(255,255,255,.5)' : 'rgba(120,124,140,.5)'; x.lineWidth=2.5;
-    rr(4.5,4.5,W-9,H-9,17); x.stroke();
+  // Reuse the fitted ink and device photos for the two actual case options.
+  const stylePhotos = new Map();
+  function updateStylePreviews(){
+    const kit=KITS[state.model];
+    if(!kit?.hybrid || !$('ctRow').getClientRects().length)return;
+    const b=KPCaseShell.box(state.model);
+    if(!b)return;
+    for(const [id,style,colors] of [
+      ['ctThumbClear','MagSafe Clear',kit.colors],
+      ['ctThumbHyb','Slim Hybrid MagSafe',kit.hybrid.colors]
+    ]){
+      const cv=$(id), c=cv.getContext('2d');
+      c.clearRect(0,0,cv.width,cv.height);
+      const w=(b[2]-b[0])*1.13,h=(b[3]-b[1])*1.07;
+      const scale=Math.min(cv.width/w,cv.height/h);
+      c.save();
+      c.translate(cv.width/2,cv.height/2);
+      c.scale(scale,scale);
+      c.translate(-(b[0]+b[2])/2,-(b[1]+b[3])/2);
+      if(style===state.caseType)c.drawImage(canvas,0,0,DIM.w,DIM.h);
+      else {
+        const color=colors.find(item=>item.n===state.colorName)||colors[0];
+        let photo=stylePhotos.get(color.f);
+        if(!photo){
+          photo=new Image();stylePhotos.set(color.f,photo);
+          photo.onload=render;photo.src='assets/cases/'+color.f;
+        }
+        if(photo.complete&&photo.naturalWidth){
+          c.drawImage(photo,0,0,DIM.w,DIM.h);
+          if(_designLayer&&(state.photoImg||state.layout||state.text))c.drawImage(_designLayer,0,0,DIM.w,DIM.h);
+          KPCaseShell.draw(c,state.model,DIM.w,DIM.h,style);
+        }
+      }
+      c.restore();
+    }
   }
-  function renderCtThumbs(){ kpPaintCtThumb('ctThumbClear','clear'); kpPaintCtThumb('ctThumbHyb','hyb'); }
   function renderAddons(){
     $('addons').innerHTML = addonDefs.map(function(a){
       var on = state.addons[a.key];
