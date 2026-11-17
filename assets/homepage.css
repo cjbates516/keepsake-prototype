@@ -266,6 +266,10 @@ h1,h2,h3{font-family:var(--display)}
   color: #fff;
   background: linear-gradient(90deg, #090d16e8, #090d164d 70%), var(--city-photo) var(--scene-position) / cover, #10141d;
 }
+.scene-city .case-story::before {
+  content:"";position:absolute;inset:-5px;z-index:-1;pointer-events:none;
+  background:inherit;filter:blur(3px) brightness(.76) saturate(.78);
+}
 .scene-city .edit-phone {object-fit: contain;}
 .scene-city .campaign-copy {position: static; grid-area: 2 / 2; width: auto;}
 .campaign-actions {display: flex; flex-wrap: wrap; align-items: center; gap: 0 16px;}
@@ -302,3 +306,15 @@ a.case-story:hover .campaign-shop,a.case-story:focus-visible .campaign-shop,.cam
 .hero-case-zoom :is(img,svg) {display:block;width:100%;height:100%;object-fit:contain;}
 
 .field-collections .collection-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.field-collections .collection-tiles>a{background:#f2eee9}.field-collections .collection-tiles img{object-position:50% 56%}@media(max-width:600px){.field-collections .collection-tiles{grid-template-columns:1fr}}
+
+.scene-drawing {--wash:#f4d7c7;--accent:#3e211e}
+.drawing-product {z-index:1;display:block}
+.drawing-product img {display:block;width:100%;height:100%;object-fit:contain}
+.drawing-actions {display:flex;align-items:center;gap:20px}
+.scene-drawing .campaign-shop {background:#3e211e;color:#fff}
+.drawing-actions .drawing-zoom {color:inherit;font:700 15px var(--body);min-height:44px;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:650px) and (orientation:portrait){
+  .scene-drawing .case-story {display:grid;grid-template-rows:minmax(0,1fr) auto;gap:8px;padding:14px 7% 5svh}
+  .scene-drawing .drawing-product {position:static;place-self:center;width:78%;height:92%;min-height:0}
+  .scene-drawing .campaign-copy {position:static;width:100%}
+}
