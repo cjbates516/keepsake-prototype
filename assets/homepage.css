@@ -297,3 +297,6 @@ a.case-story:hover .campaign-shop,a.case-story:focus-visible .campaign-shop,.cam
   .case-slide:not([hidden]) .case-story {animation: feature-in .32s ease-out;}
   @keyframes feature-in {from {opacity: .78;} to {opacity: 1;}}
 }
+
+.hero-case-zoom {z-index:1;background:transparent;border:0;padding:0;cursor:zoom-in;}
+.hero-case-zoom :is(img,svg) {display:block;width:100%;height:100%;object-fit:contain;}
