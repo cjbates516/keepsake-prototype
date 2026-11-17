@@ -18,7 +18,7 @@ let checks=0;function check(ok,label){if(!ok)throw Error(label);checks++;}
      const active=p.locator('.case-slide:visible');
      check(await p.locator('.case-edit button').count()===0,'no slideshow control bar');
      check(await active.locator('.campaign-title').innerText()==='Times Square Rain','rainy Times Square opens the slideshow');
-     await active.locator('a').focus();
+     await active.getByRole('link',{name:'Customize this case, Times Square Rain'}).focus();
      for(const name of ['City Hall in Silver','Freeway Lights','Yosemite','Cherry Dot','Neon Hearts','Wrong Way Duck','Liquid Prism','Times Square Rain']){
        await p.keyboard.press('ArrowRight');
        check((await active.innerText()).includes(name),'next case: '+name);
