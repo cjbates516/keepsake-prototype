@@ -657,7 +657,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       feature.textContent = 'City photo credits';
       feature.href = 'city-photo-credits.html';
     }
-    $('shopTitle').innerHTML = device ? (device + ' cases.') : 'Your case.<br>Your kind of statement.';
+    $('shopTitle').innerHTML = device ? (device + ' cases.') : filter === 'City Scenes' ? 'City After Dark' : 'Your case.<br>Your kind of statement.';
     if (!items.length){
       $('grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px">'
         + '<div style="font-weight:900;font-size:18px;color:#2D2D3B;margin-bottom:8px">No designs match</div>'
