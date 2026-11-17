@@ -84,9 +84,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 .kpCatCard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,25,33,.5),rgba(25,25,33,.06) 58%,rgba(25,25,33,0))}
 .kpCatCard span{position:absolute;top:11px;left:14px;z-index:1;color:#FFF;font-weight:900;font-size:14.5px;letter-spacing:.01em;background:#292632;padding:3px 8px;border-radius:4px}
   #grid :is(a,button,select){scroll-margin-block:90px;}
-  .h-card .case-portrait{aspect-ratio:4/5!important}.h-card .case-portrait img{object-fit:contain!important;padding:8px;box-sizing:border-box}
+  #grid .case-zoom-button:has(canvas){aspect-ratio:3/4;overflow:hidden}
+  #grid .case-zoom-button canvas{display:block;width:100%;height:100%!important;object-fit:cover}
 </style>
 <link rel="stylesheet" href="assets/storefront.css">
+<script src="assets/case-shell.js"></script>
 <script src="assets/print-layouts.js"></script>
 <script src="assets/colorway-catalog.js"></script>
 <script src="assets/design-colorways.js"></script>
@@ -235,6 +237,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   renderCatStrip();
 
+  const sampleModel = "iPhone 15 Pro Max";
+  let sampleLoaded = false;
   var CW = 440, CH = 528, S = CW/2500;
   var KP_VIEW = {"iPhone 17 Pro Max": {"f": "view-i17pm.png", "b": [718, 959, 1778, 2678]}, "iPhone 17 Pro": {"f": "view-i17p.png", "b": [738, 1025, 1759, 2570]}, "iPhone 17": {"f": "view-i17.png", "b": [747, 425, 1750, 2575]}, "iPhone Air": {"f": "view-i17a.png", "b": [723, 786, 1774, 2624]}, "iPhone 16 Pro Max": {"f": "view-i16pm.png", "b": [684, 283, 1811, 2670]}, "iPhone 16 Pro": {"f": "view-i16p.png", "b": [731, 388, 1765, 2565]}, "iPhone 16": {"f": "view-i16n.png", "b": [728, 397, 1768, 2556]}, "iPhone 15 Pro Max": {"f": "view-i15pm.png", "b": [692, 348, 1813, 2667]}, "iPhone 15 Pro": {"f": "view-i15p.png", "b": [735, 473, 1759, 2591]}, "iPhone 15": {"f": "view-i15.png", "b": [745, 461, 1778, 2575]}, "iPhone 14 Pro Max": {"f": "view-i14pm.png", "b": [774, 485, 1725, 2520]}, "iPhone 14 Pro": {"f": "view-i14p.png", "b": [808, 567, 1690, 2430]}, "iPhone 14 Plus": {"f": "view-i14m.png", "b": [775, 489, 1745, 2512]}, "iPhone 14": {"f": "view-i14.png", "b": [807, 571, 1691, 2428]}, "iPhone 13 Pro Max": {"f": "view-i13pm.png", "b": [775, 502, 1724, 2497]}, "iPhone 13 Pro": {"f": "view-i13p.png", "b": [816, 590, 1683, 2409]}, "iPhone 13": {"f": "view-i13.png", "b": [816, 590, 1684, 2409]}, "iPhone 13 mini": {"f": "view-i13mn.png", "b": [865, 692, 1634, 2306]}, "iPhone 12 Pro Max": {"f": "view-i12pm.png", "b": [773, 502, 1726, 2502]}, "iPhone 12 Pro": {"f": "view-i12p.png", "b": [820, 595, 1679, 2400]}, "iPhone 12": {"f": "view-i12.png", "b": [820, 595, 1679, 2400]}, "iPhone 12 mini": {"f": "view-i12mn.png", "b": [867, 691, 1631, 2308]}, "iPhone 15 Plus": {"f": "view-i15m.png", "b": [688, 349, 1812, 2683]}, "iPhone 16 Plus": {"f": "view-i16m.png", "b": [685, 304, 1811, 2649]}, "Galaxy S26": {"f": "view-s26.png", "b": [702, 311, 1795, 2676]}, "Galaxy S26 Plus": {"f": "view-s26.png", "b": [702, 311, 1795, 2676]}, "Galaxy S26 Ultra": {"f": "view-s26u.png", "b": [690, 308, 1799, 2676]}};
   KP_VIEW['iPhone 18 Pro Max'] = KP_VIEW['iPhone 17 Pro Max'];
@@ -270,13 +274,29 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     };
     img.src = 'assets/cases/' + c.f;
   }
-  function preloadDevice(dev){ loadViewMask(dev, refreshVisible); loadCase(dev, 0, refreshVisible); }
+  function preloadDevice(dev){
+    if(!dev){
+      KPCaseShell.sampleReady().then(()=>{sampleLoaded=true;refreshVisible();},()=>preloadDevice(sampleModel));
+      return;
+    }
+    loadViewMask(dev, refreshVisible); loadCase(dev, 0, refreshVisible);
+  }
 
   function loadDesign(file, cb){
     if (designImgs[file]) { if (designImgs[file].complete) cb && cb(); else designImgs[file].addEventListener('load', function(){ cb && cb(); }); return; }
     var img = new Image(); img.crossOrigin = 'anonymous';
     img.onload = function(){ cb && cb(); };
-    img.onerror = function(){ delete designImgs[file]; };
+    img.onerror = function(){
+      if(!img.dataset.retried){
+        img.dataset.retried='1';
+        img.src='assets/designs/'+file;
+        return;
+      }
+      delete designImgs[file];
+      document.querySelectorAll('#grid canvas').forEach(cv=>{
+        if(cv.dataset.file===file)cv.closest('button').querySelector('.zoom-hint').textContent='Preview unavailable';
+      });
+    };
     img.src = 'assets/designs/thumbs/' + file;
     designImgs[file] = img;
   }
@@ -328,15 +348,15 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var pick=artworkPicks[file]||'original';
     var img=designImgs[file];
     if(!cv.isConnected||!img||!img.naturalWidth)return;
-    var card=cv.closest('.kpCard'),profile=KPDesignColorways.profile(img);
+    var card=cv.closest('.h-card'),profile=KPDesignColorways.profile(img);
     if(pick!=='original'&&profile&&profile.method==='assets'&&!KPDesignColorways.choicesFor(img).some(function(o){return o.id===pick;})){
       KPDesignColorways.prepare(img).then(function(){
         if(!card.isConnected||pick!==artworkPicks[file])return;
         if(!KPDesignColorways.choicesFor(img).some(function(o){return o.id===pick;})){
-          artworkPicks[file]='original';card.querySelector('select').value='original';
-          card.querySelector('.artwork-error').textContent='Color unavailable. Showing original.';
+          artworkPicks[file]='original';const picker=card.querySelector('.artwork-picker');if(picker)picker.value='original';
+          const message=card.querySelector('.artwork-error');if(message)message.textContent='Color unavailable. Showing original.';
         }
-        updateCaseLinks(card);renderCase(cv,file,+cv.dataset.color);
+        if(device)updateCaseLinks(card);renderCase(cv,file,+cv.dataset.color);
       });
       return;
     }
@@ -350,12 +370,15 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     updateCaseLinks(card);
     loadDesign(file,function(){showPickedColor(card.querySelector('canvas'));});
   });
+  function previewKey(file,finish){
+    return JSON.stringify([device,file,finish,artworkPicks[file]||'original']);
+  }
   function renderCase(cv, file, colorIdx){
-    if(!device||!cv.isConnected||colorIdx!==+cv.dataset.color)return;
-    var dev = KP_DEVICES[device];
-    var layer = caseLayers[device + '|' + colorIdx];
+    if(!cv.width||!cv.isConnected||colorIdx!==+cv.dataset.color)return;
+    const model=device||sampleModel;
+    var layer = caseLayers[model + '|' + colorIdx];
     var dImg = designImgs[file];
-    if (!layer || !dImg || !dImg.complete) return;
+    if ((!layer && (device || !sampleLoaded)) || !dImg?.naturalWidth) return;
     dImg.__kpDesignFile=file;
     var composed=null, profile=KPDesignColorways.profile(dImg);
     if(profile){
@@ -367,7 +390,14 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       composed=KPDesignColorways.make(dImg,pick,700);
       dImg=composed;
     }
-    paintCase(cv,device,layer,viewMasks[device],dImg,composed);
+    if(!device && sampleLoaded){
+      KPCaseShell.drawSample(cv,dImg);
+      if(composed)composed.width=composed.height=0;
+    } else paintCase(cv,model,layer,viewMasks[model],dImg,composed);
+    if((!device && sampleLoaded) || viewMasks[model]){
+      cv.dataset.renderedPreview=previewKey(file,colorIdx);
+      cv.closest('button').querySelector('.zoom-hint').textContent='Zoom';
+    }
   }
   function paintCase(cv,device,layer,vmask,dImg,composed){
     var dev=KP_DEVICES[device],CW=cv.width,CH=cv.height,S=CW/2500;
@@ -377,7 +407,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
     // A known stencil is loading: show the phone until its actual panel is ready.
     if (KP_VIEW[device] && !vmask){
-      if(maskFailed[device]) cv.closest('.kpCard').querySelector('.case-zoom-button span').textContent='Case preview unavailable · reload to retry';
+      if(maskFailed[device] && cv.closest('.h-card')) cv.closest('.h-card').querySelector('.case-zoom-button .zoom-hint').textContent='Case preview unavailable';
+      KPCaseShell.draw(ctx,device,CW,CH);
       if(composed) composed.width=composed.height=0;
       return;
     }
@@ -399,6 +430,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(device==='iPhone 18 Pro Max'||device==='iPhone 18 Pro') ctx.globalCompositeOperation='source-atop';
       ctx.drawImage(t, 0, 0);
       ctx.globalCompositeOperation='source-over';
+      KPCaseShell.draw(ctx,device,CW,CH);
       if(composed)composed.width=composed.height=0;
       return;
     }
@@ -414,6 +446,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ctx.globalAlpha = .32; ctx.globalCompositeOperation = 'multiply';
     ctx.drawImage(layer, 0, 0, CW, CH);
     ctx.restore();
+    KPCaseShell.draw(ctx,device,CW,CH);
     if(composed)composed.width=composed.height=0;
   }
 
@@ -421,18 +454,26 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     return String(text).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
   async function detailedCase(model,finish,design,variant){
+    if(!model && !sampleLoaded){
+      try{await KPCaseShell.sampleReady();sampleLoaded=true;}catch{ /* Use the fitted phone preview if the scan is unavailable. */ }
+    }
+    const useSample=!model && sampleLoaded;
+    model=model||sampleModel;
     const dev=KP_DEVICES[model], mask=KP_VIEW[model];
     const [layer,stencil,art]=await Promise.all([
-      KPCaseZoom.image('assets/cases/'+dev.colors[finish].f),
-      mask ? KPCaseZoom.image('assets/masks/'+mask.f+'?v=12') : null,
-      KPCaseZoom.image('assets/designs/'+design.file+'?v='+design.hash)
+      useSample ? null : KPCaseZoom.image('assets/cases/'+dev.colors[finish].f),
+      !useSample && mask ? KPCaseZoom.image('assets/masks/'+mask.f+'?v=12') : null,
+      KPCaseZoom.image('assets/designs/'+design.file+'?v='+design.hash), KPCaseShell.ready
     ]);
     art.__kpDesignFile=design.file;
     if(variant!=='original')await KPDesignColorways.prepare(art);
     const composed=KPDesignColorways.profile(art) ? KPDesignColorways.make(art,variant,2000) : null;
     const output=document.createElement('canvas');
     output.width=1750;output.height=2100;
-    paintCase(output,model,layer,stencil,composed||art,composed);
+    if(useSample){
+      KPCaseShell.drawSample(output,composed||art);
+      if(composed)composed.width=composed.height=0;
+    } else paintCase(output,model,layer,stencil,composed||art,composed);
     return output;
   }
   $('grid').addEventListener('click',event=>{
@@ -440,10 +481,16 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(!trigger)return;
     const design=designs.find(d=>d.file===trigger.dataset.enlarge);
     const card=trigger.closest('.h-card'), next=card.querySelector('a[data-pick-model],a.h-makeone');
-    const model=device || (design.casePreview ? 'iPhone 18 Pro Max' : '');
-    KPCaseZoom.open({title:design.title,trigger,source:()=>model ?
-      detailedCase(model,Number(card.dataset.selectedColor||0),design,artworkPicks[design.file]||'original') :
-      KPCaseZoom.image('assets/designs/'+design.file+'?v='+design.hash),
+    const model=device;
+    const finish=Number(card.dataset.selectedColor||0), pick=artworkPicks[design.file]||'original';
+    KPCaseZoom.open({title:design.title,trigger,source:async()=>{
+      try{return await detailedCase(model,finish,design,pick);}
+      catch(error){
+        const thumb=trigger.querySelector('canvas');
+        if(thumb?.width && thumb.dataset.renderedPreview===JSON.stringify([model,design.file,finish,pick]))return thumb;
+        throw error;
+      }
+    },
       label:device?'Customize this case':'Choose your phone',proceed:()=>next.click()});
   });
   var KP_BRANDS = { 'Apple': DEVICE_ORDER.filter(function(m){ return m.indexOf('iPhone')===0; }), 'Samsung': DEVICE_ORDER.filter(function(m){ return m.indexOf('Galaxy')===0; }), 'Google': [] };
@@ -452,7 +499,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var bar = document.getElementById('deviceBar');
     if (device){ for (var b in KP_BRANDS){ if (KP_BRANDS[b].indexOf(device) > -1) brandSel = b; } }
     var row1 = ['<span style="font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#6C6C72;margin-right:4px">Brand</span>'];
-    row1.push('<button class="devF" data-d="" style="background:' + (!device ? '#2D2D3B' : '#FFFFFF') + ';color:' + (!device ? '#FFFFFF' : '#4E4E50') + ';border:1px solid ' + (!device ? '#2D2D3B' : '#E4E3E3') + ';font-size:12.5px;font-weight:800;padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .2s">Flat designs</button>');
+    row1.push('<button class="devF" data-d="" style="background:' + (!device ? '#2D2D3B' : '#FFFFFF') + ';color:' + (!device ? '#FFFFFF' : '#4E4E50') + ';border:1px solid ' + (!device ? '#2D2D3B' : '#E4E3E3') + ';font-size:12.5px;font-weight:800;padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .2s">All case designs</button>');
     Object.keys(KP_BRANDS).forEach(function(b){
       var models = KP_BRANDS[b];
       if (models.length){
@@ -515,7 +562,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     }
     device = selected;
     renderDeviceBar(); renderGrid();
-    if(device) preloadDevice(device);
+    preloadDevice(device);
   }
   function kpRenderDrawer(){
     var dw=document.getElementById('kpDevDrawer'); if(!dw) return;
@@ -535,7 +582,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       var cur = m===device ? '<span style="margin-left:auto;color:#DC282E;font-weight:900">\u2713</span>' : '';
       return '<button data-md="'+slugify(m)+'" style="display:flex;align-items:center;width:100%;text-align:left;background:#FFF;border:1.5px solid '+(m===device?'#17171F':'#E9E7E4')+';border-radius:16px;padding:17px 20px;font-size:16.5px;font-weight:700;color:#17171F;cursor:pointer;margin:0 0 12px">'+m+badge+cur+'</button>';
     }).join('');
-    var flat='<button data-md="" style="display:block;width:100%;background:none;border:0;padding:14px;font-size:13.5px;font-weight:800;color:#6C6C72;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Just browsing \u2014 show flat designs</button>';
+    var flat='<button data-md="" style="display:block;width:100%;background:none;border:0;padding:14px;font-size:13.5px;font-weight:800;color:#6C6C72;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Just browsing \u2014 show all cases</button>';
     dw.innerHTML=head+pills+'<div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 20px 6px">'+rows+'</div>'+flat;
     dw.querySelector('#kpDwClose').addEventListener('click',kpCloseDrawer);
     dw.querySelectorAll('[data-pill]').forEach(function(b){ b.addEventListener('click',function(){ drawerBrand=this.dataset.pill; kpRenderDrawer();dw.querySelector('[data-pill="'+drawerBrand+'"]').focus(); }); });
@@ -651,10 +698,18 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         if (cv.width === 0){ cv.width = CW; cv.height = CH; }
         loadDesign(file, function(){ renderCase(cv, file, +(cv.dataset.color||0)); });
       } else if (cv.width !== 0 && Math.abs(en.boundingClientRect.top) > 2400){
-        cv.width = 0; cv.height = 0; /* releases canvas memory on iOS; CSS aspect-ratio keeps layout */
+        cv.width = 0; cv.height = 0; delete cv.dataset.renderedPreview; /* releases canvas memory on iOS; CSS aspect-ratio keeps layout */
       }
     });
   }, { rootMargin: '900px 0px' }) : null;
+
+  function observePreviews(){
+    var cvsAll = Array.prototype.slice.call(document.querySelectorAll('#grid canvas'));
+    // first cards render eagerly so above-the-fold never waits on observer timing
+    cvsAll.slice(0, 8).forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, +(cv.dataset.color||0)); }); });
+    if (io) cvsAll.slice(8).forEach(function(cv){ io.observe(cv); });
+    else cvsAll.slice(8).forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, 0); }); });
+  }
 
   function refreshVisible(){
     document.querySelectorAll('#grid canvas').forEach(function(cv){
@@ -665,6 +720,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function canBuy(){ return !!(window.KP_VARIANTS && window.KP_VARIANTS['MagSafe Clear'] && window.KP_VARIANTS['MagSafe Clear'][device]); }
 
   function renderGrid(){
+    if(io)io.disconnect();
     saveBrowseFilters();
     kpChipsSync();
     var items = designs.filter(function(d){
@@ -714,12 +770,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       var paged = !kpCurated && items.length > kpLimit;
       var shown = paged ? items.slice(0, kpLimit) : items;
       var cards = shown.map(function(d){
-        var cardImage = d.casePreview ? 'assets/collection-cases/' + d.casePreview : 'assets/designs/thumbs/' + d.file;
         var _sm=new Date().getMonth()+1; var _scat=(_sm>=11)?'Christmas':'Halloween';
         var badge = d.category===_scat ? '<span class="kpBadge kpB-season">Seasonal</span>'
           : (KP_FEATURED.indexOf(d.file)>-1 && KP_FEATURED.indexOf(d.file)<12 ? '<span class="kpBadge kpB-pick">Staff pick</span>' : '');
         return '<div class="h-card" style="display:block;text-decoration:none;animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:16px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
-          + '<button type="button" class="case-zoom-button '+(d.casePreview?'case-portrait':'')+'" data-enlarge="'+d.file+'" aria-label="Enlarge '+escapeHtml(d.title)+'" style="position:relative;aspect-ratio:1/1;background:#F7F7F7"><img src="' + cardImage + '" onerror="this.closest(\'.h-card\').style.display=\'none\'" alt="' + escapeHtml(d.title) + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">' + badge + '<span class="zoom-hint">Zoom</span></button>'
+          + '<button type="button" class="case-zoom-button" data-enlarge="'+d.file+'" aria-label="Enlarge '+escapeHtml(d.title)+'" style="position:relative;background:#F8F7F7"><canvas width="'+CW+'" height="'+CH+'" data-color="0" data-file="'+d.file+'" role="img" aria-label="'+escapeHtml(d.title)+' on a sample case"></canvas>' + badge + '<span class="zoom-hint">Zoom</span></button>'
           + '<a data-pick-model="'+d.file+'" href="customizer.html?design='+encodeURIComponent(d.file)+(d.displayColorway?'&amp;colorway='+d.displayColorway:'')+'" style="display:block;text-decoration:none;padding:10px 12px 12px">'
           + '<div style="font-weight:700;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
           + '<div style="font-size:11px;color:#6C6C72;font-weight:700;margin-top:2px">' + d.category + ' · choose your phone</div>'
@@ -743,6 +798,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if (paged) grid.insertAdjacentHTML('beforeend',
         '<button class="kpLoadMore" style="grid-column:1/-1;display:block;width:100%;max-width:420px;margin:18px auto;background:#DC282E;color:#FFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Load more — ' + (items.length - shown.length) + ' left</button>');
       if (kpCurated) grid.insertAdjacentHTML('beforeend', kpCuratedFooter(kpTotal));
+      observePreviews();
       return;
     }
     var dev = KP_DEVICES[device];
@@ -764,7 +820,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       }).join('');
       return '<div class="h-card kpCard" data-selected-color="'+finish+'" data-file="' + d.file + '" style="' + (i<24 ? 'animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;' : '') + 'background:#FFFFFF;border-radius:12px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
         + '<button type="button" class="case-zoom-button" data-enlarge="'+d.file+'" aria-label="Enlarge '+escapeHtml(d.title)+'" style="display:block;background:#F8F7F7;position:relative">'
-        + '<span style="position:absolute;top:10px;left:10px;z-index:1;background:#FFF4CC;color:#725900;font-size:10.5px;font-weight:800;padding:4px 9px;border-radius:6px;letter-spacing:.03em;text-transform:uppercase">Zoom case</span>'
+        + '<span class="zoom-hint">Zoom</span>'
         + '<canvas width="' + CW + '" height="' + CH + '" data-file="' + d.file + '" data-color="'+finish+'" role="img" aria-label="' + d.title + ' on ' + device + '" style="width:100%;height:auto;aspect-ratio:440/528;display:block"></canvas></button>'
         + '<div style="padding:12px 16px 6px;display:flex;align-items:center;justify-content:space-between;gap:8px">'
         + '<div style="min-width:0"><div style="font-weight:900;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
@@ -777,11 +833,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         + '</div></div>';
     }).join('');
     grid.querySelectorAll('.kpCard').forEach(updateCaseLinks);
-    var cvsAll = Array.prototype.slice.call(document.querySelectorAll('#grid canvas'));
-    // first cards render eagerly so above-the-fold never waits on observer timing
-    cvsAll.slice(0, 8).forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, +(cv.dataset.color||0)); }); });
-    if (io) cvsAll.slice(8).forEach(function(cv){ io.observe(cv); });
-    else cvsAll.slice(8).forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, 0); }); });
+    observePreviews();
     if (pagedD) grid.insertAdjacentHTML('beforeend',
       '<button class="kpLoadMore" style="grid-column:1/-1;display:block;width:100%;max-width:420px;margin:18px auto;background:#DC282E;color:#FFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Load more — ' + (kpTotalD - items.length) + ' left</button>');
   }
@@ -888,7 +940,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     designs.forEach(function(design){ if (design.displayColorway) artworkPicks[design.file]=design.displayColorway; });
     if (filter !== 'All' && !designs.some(function(x){ return x.category === filter; })) filter = 'All';
     renderDeviceBar(); renderFilters(); renderStates(); renderColors(); renderGrid();
-    if (device) preloadDevice(device);
+    preloadDevice(device);
+    KPCaseShell.ready.then(refreshVisible);
     var brand=new URLSearchParams(location.search).get('brand');if(!device&&(brand==='Apple'||brand==='Samsung'))kpOpenDrawer(brand);
   }).catch(function(){
     $('grid').innerHTML = '<div style="padding:40px;font-weight:700;color:#6C6C72">Could not load designs.</div>';

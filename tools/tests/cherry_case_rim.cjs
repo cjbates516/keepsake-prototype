@@ -12,6 +12,9 @@ async function measure(canvas, url) {
   ref.width = w; ref.height = h;
   const ctx = ref.getContext('2d');
   ctx.drawImage(photo, 0, 0, w, h);
+  const model=url.includes('i18pm-')?'iPhone 18 Pro Max':'iPhone 18 Pro';
+  await KPCaseShell.ready;
+  KPCaseShell.draw(ctx,model,w,h);
   const bare = ctx.getImageData(0, 0, w, h).data;
   const seen = canvas.getContext('2d').getImageData(0, 0, w, h).data;
   let outside = 0, blue = 0, bodyEnd = -1, artEnd = -1, wrongFinish = 0;

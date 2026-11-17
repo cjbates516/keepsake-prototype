@@ -5,7 +5,17 @@ const b=await engine.launch(); try{const p=await b.newPage({viewport:{width:390,
 async function verify(sel){await sel.tap();await d.waitFor();await d.locator('output').filter({hasText:'1.5×'}).waitFor();const subject=d.locator('.zoom-scroll :is(canvas,img,svg)').last();const first=await subject.boundingBox();await d.getByRole('button',{name:'Zoom in',exact:true}).tap();assert((await subject.boundingBox()).width>first.width);}
 const close=()=>d.getByRole('button',{name:'Close',exact:true}).tap();
 for(const [cat,file] of [['Zodiac','zodiac-atlas-libra.png'],['City%20Scenes','city-night-new-york.jpg']]){
- await p.goto(base+'gallery.html?cat='+cat);await verify(p.locator('[data-enlarge="'+file+'"]'));assert(await d.locator('canvas').evaluate(c=>c.height>1100));await close();
+ await p.goto(base+'gallery.html?cat='+cat);
+ const sample=p.locator('[data-enlarge="'+file+'"]');
+ await sample.scrollIntoViewIfNeeded();
+ await p.waitForFunction(file=>{
+   const c=document.querySelector('[data-enlarge="'+file+'"] canvas');
+   if(!c?.width)return false;
+   const ctx=c.getContext('2d');
+   const alpha=(x,y)=>ctx.getImageData(x*c.width,y*c.height,1,1).data[3];
+   return alpha(.45,.185)===0 && alpha(.5,.65)>200 && alpha(.5,.06)>100;
+ },file);
+ await verify(sample);assert(await d.locator('canvas').evaluate(c=>c.height>1100));await close();
  await p.goto(base+'gallery.html?cat='+cat+'&device=iphone-18-pro-max');const card=p.locator('.kpCard[data-file="'+file+'"]');
  if(cat==='Zodiac')await card.locator('.artwork-picker').selectOption('c3');await card.locator('.cdot').nth(1).evaluate(e=>e.scrollIntoView({block:'center',behavior:'instant'}));await card.locator('.cdot').nth(1).tap();await verify(card.locator('.case-zoom-button'));
  await d.getByRole('button',{name:'Customize this case'}).tap();await p.waitForFunction(f=>window.__kp?.state.photoImg?.__kpDesignFile===f && !__kp.printIssue(),file);
