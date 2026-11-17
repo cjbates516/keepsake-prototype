@@ -1,0 +1,18 @@
+#caseZoomDialog {box-sizing:border-box;width:min(96vw,850px);height:92vh;height:92dvh;max-height:100%;max-width:100%;margin:auto;padding:0;border:0;border-radius:12px;color:#172638;background:#f1eff4;}
+#caseZoomDialog[open] {display:grid;grid-template-rows:auto minmax(0,1fr) auto;}
+#caseZoomDialog::backdrop {background:#101522c9;}
+#caseZoomDialog header,#caseZoomDialog footer {display:flex;align-items:center;gap:12px;padding:6px 14px;background:white;}
+#caseZoomDialog header {justify-content:space-between;}
+#caseZoomDialog footer {justify-content:center;}
+#caseZoomDialog button {min-width:44px;min-height:44px;background:white;color:#172638;border:1px solid #a2a6ac;border-radius:8px;font:inherit;cursor:pointer;}
+#caseZoomDialog button:disabled {opacity:.45;}
+#caseZoomDialog .zoom-scroll {overflow:auto;overscroll-behavior:contain;}
+#caseZoomDialog :is(canvas,img,svg) {display:block;max-width:none;height:auto;margin:auto;}
+#caseZoomDialog [hidden] {display:none!important;}
+#caseZoomDialog header,#caseZoomDialog footer {position:static;height:auto;width:auto;margin:0;}
+#caseZoomDialog .zoom-scroll p {padding:1rem;text-align:center;}
+#caseZoomDialog [data-action] {padding:0 12px;background:#172638;color:white;}
+[data-case-zoom],.case-zoom-button {cursor:zoom-in;}
+.case-zoom-button {border:0;padding:0;background:transparent;color:inherit;font:inherit;width:100%;display:block;}
+.case-zoom-button:focus-visible {outline:3px solid #087395;outline-offset:-3px;}
+.zoom-hint {position:absolute;bottom:7px;right:7px;padding:4px 8px;border-radius:12px;background:#fff;color:#172638;font:700 11px/1.25 system-ui;box-shadow:0 1px 5px #0002;}

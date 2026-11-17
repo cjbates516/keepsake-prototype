@@ -139,6 +139,7 @@
   }
 @media(max-width:900px){.phones,.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
+<link rel="stylesheet" href="../assets/case-zoom.css">
 </head>
 <body>
 <div class="wrap">
@@ -182,7 +183,7 @@
 
     <section id="s3" class="screen" aria-labelledby="dname">
       <div class="confirm">
-        <div class="pv"><img id="pv" alt=""></div>
+        <div class="pv"><button class="case-zoom-button" type="button" data-image-zoom="pv" aria-label="Enlarge your selected case"><img id="pv" alt=""></button></div>
         <div>
           <h1 class="dname" id="dname"></h1>
           <p class="dmeta" id="dmeta"></p>
@@ -343,9 +344,9 @@
       '</span><span class="tname">Use your own photo</span></button>';
     html += list.map(function (d) {
       var u = cache[d.file];
-      return '<button class="tile" type="button" data-file="' + esc(d.file) + '"><span class="timg"><img alt=""' +
+      return '<div class="tile" data-file="' + esc(d.file) + '"><button type="button" class="case-zoom-button timg" data-zoom-tile aria-label="Enlarge '+esc(cleanTitle(d.title))+'"><img alt=""' +
         (u ? ' src="' + u + '"' : ' class="wait"' + (blankUrl[m.id] ? ' src="' + blankUrl[m.id] + '"' : '')) +
-        '></span><span class="tname">' + esc(cleanTitle(d.title)) + '</span></button>';
+        '></button><button type="button" class="case-zoom-button tname" data-file="'+esc(d.file)+'">'+esc(cleanTitle(d.title))+'</button></div>';
     }).join('');
     $('grid').innerHTML = html;
     $('noResults').hidden=list.length>0;
@@ -528,6 +529,7 @@
   window.addEventListener('resize',connection);window.addEventListener('online',connection);window.addEventListener('offline',connection);connection();
   $('keepBrowsing').addEventListener('click',function(){touch();});
   function reset() {
+    document.getElementById('caseZoomDialog')?.close();
     $('glass').checked=false;closeSheet();bigImageFile=bigImagePromise=null;rememberedLooks={};
     previewSeq++;
     $('pv').removeAttribute('src'); revoke(bigUrl); bigUrl = null;
@@ -567,6 +569,16 @@
     if(t.hasAttribute('data-colorway'))return pickDesign(state.design.file,t.getAttribute('data-colorway'));
     if (t.hasAttribute('data-model')) return pickModel(t.getAttribute('data-model'));
     if (t.hasAttribute('data-col')) return setFilter(t.getAttribute('data-col'));
+    if(t.hasAttribute('data-zoom-tile')){
+      var tileFile=t.closest('.tile').dataset.file,design=findDesign(tileFile), model=state.model;
+      KPCaseZoom.open({title:cleanTitle(design.title),trigger:t,label:'Use this design',
+        source:async function(){
+          var pair=await Promise.all([KPI.prepModel(model,BIG_W), KPI.loadImage(KPI.fullUrl(design),{cache:false,timeout:12000})]);
+          var url=await KPI.renderToUrl(pair[0],pair[1],null,'original');
+          try{return await KPCaseZoom.image(url);}finally{revoke(url);}
+        },proceed:()=>pickDesign(tileFile)});
+      return;
+    }
     if (t.hasAttribute('data-file')) return pickDesign(t.getAttribute('data-file'));
     var act = t.getAttribute('data-act');
     if (act === 'own') return openSheet();
@@ -616,5 +628,6 @@
   }
 })();
 </script>
+<script src="../assets/case-zoom.js"></script>
 </body>
 </html>

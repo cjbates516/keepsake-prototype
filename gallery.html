@@ -83,6 +83,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 .kpCatCard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .kpCatCard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,25,33,.5),rgba(25,25,33,.06) 58%,rgba(25,25,33,0))}
 .kpCatCard span{position:absolute;top:11px;left:14px;z-index:1;color:#FFF;font-weight:900;font-size:14.5px;letter-spacing:.01em;background:#292632;padding:3px 8px;border-radius:4px}
+  #grid :is(a,button,select){scroll-margin-block:90px;}
   .h-card .case-portrait{aspect-ratio:4/5!important}.h-card .case-portrait img{object-fit:contain!important;padding:8px;box-sizing:border-box}
 </style>
 <link rel="stylesheet" href="assets/storefront.css">
@@ -92,7 +93,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/shop-refresh.css">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js" defer></script></head>
+<link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
+</head>
 <body class="kp-storefront kp-library kp-shop">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
 <div class="kp-page" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
@@ -363,13 +365,17 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       composed=KPDesignColorways.make(dImg,pick,700);
       dImg=composed;
     }
+    paintCase(cv,device,layer,viewMasks[device],dImg,composed);
+  }
+  function paintCase(cv,device,layer,vmask,dImg,composed){
+    var dev=KP_DEVICES[device],CW=cv.width,CH=cv.height,S=CW/2500;
     var ctx = cv.getContext('2d');
     ctx.clearRect(0, 0, CW, CH);
-    ctx.drawImage(layer, 0, 0);
-    var vmask = viewMasks[device];
+    ctx.drawImage(layer, 0, 0, CW, CH);
+
     // A known stencil is loading: show the phone until its actual panel is ready.
     if (KP_VIEW[device] && !vmask){
-      if(maskFailed[device]) cv.closest('.kpCard').querySelector('a span').textContent='Case preview unavailable · reload to retry';
+      if(maskFailed[device]) cv.closest('.kpCard').querySelector('.case-zoom-button span').textContent='Case preview unavailable · reload to retry';
       if(composed) composed.width=composed.height=0;
       return;
     }
@@ -384,7 +390,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       tc.drawImage(dImg, bx+(bw-w)/2, by+(bh-h)/2, w, h);
       try{ tc.filter='none'; }catch(_){}
       tc.globalAlpha = .22; tc.globalCompositeOperation = 'multiply';
-      tc.drawImage(shadeOf(device + '|' + colorIdx, layer), 0, 0, CW, CH);
+      tc.drawImage(shadeOf(layer.src || device + '|' + cv.dataset.color, layer), 0, 0, CW, CH);
       tc.globalAlpha = 1; tc.globalCompositeOperation = 'destination-in';
       tc.drawImage(vmask, 0, 0, CW, CH);
       // Preserve the photographed silhouette, including its antialiased corners.
@@ -404,11 +410,40 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ctx.drawImage(dImg, b[0]+(bw-w)/2, b[1]+(bh-h)/2, w, h);
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.globalAlpha = .32; ctx.globalCompositeOperation = 'multiply';
-    ctx.drawImage(layer, 0, 0);
+    ctx.drawImage(layer, 0, 0, CW, CH);
     ctx.restore();
     if(composed)composed.width=composed.height=0;
   }
 
+  function escapeHtml(text){
+    return String(text).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  async function detailedCase(model,finish,design,variant){
+    const dev=KP_DEVICES[model], mask=KP_VIEW[model];
+    const [layer,stencil,art]=await Promise.all([
+      KPCaseZoom.image('assets/cases/'+dev.colors[finish].f),
+      mask ? KPCaseZoom.image('assets/masks/'+mask.f+'?v=12') : null,
+      KPCaseZoom.image('assets/designs/'+design.file+'?v='+design.hash)
+    ]);
+    art.__kpDesignFile=design.file;
+    if(variant!=='original')await KPDesignColorways.prepare(art);
+    const composed=KPDesignColorways.profile(art) ? KPDesignColorways.make(art,variant,2000) : null;
+    const output=document.createElement('canvas');
+    output.width=1750;output.height=2100;
+    paintCase(output,model,layer,stencil,composed||art,composed);
+    return output;
+  }
+  $('grid').addEventListener('click',event=>{
+    const trigger=event.target.closest('[data-enlarge]');
+    if(!trigger)return;
+    const design=designs.find(d=>d.file===trigger.dataset.enlarge);
+    const card=trigger.closest('.h-card'), next=card.querySelector('a[data-pick-model],a.h-makeone');
+    const model=device || (design.casePreview ? 'iPhone 18 Pro Max' : '');
+    KPCaseZoom.open({title:design.title,trigger,source:()=>model ?
+      detailedCase(model,Number(card.dataset.selectedColor||0),design,device ? artworkPicks[design.file]||'original' : 'original') :
+      KPCaseZoom.image('assets/designs/'+design.file+'?v='+design.hash),
+      label:device?'Customize this case':'Choose your phone',proceed:()=>next.click()});
+  });
   var KP_BRANDS = { 'Apple': DEVICE_ORDER.filter(function(m){ return m.indexOf('iPhone')===0; }), 'Samsung': DEVICE_ORDER.filter(function(m){ return m.indexOf('Galaxy')===0; }), 'Google': [] };
   var brandSel = 'Apple';
   function renderDeviceBar(){
@@ -676,14 +711,14 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         var _sm=new Date().getMonth()+1; var _scat=(_sm>=11)?'Christmas':'Halloween';
         var badge = d.category===_scat ? '<span class="kpBadge kpB-season">Seasonal</span>'
           : (KP_FEATURED.indexOf(d.file)>-1 && KP_FEATURED.indexOf(d.file)<12 ? '<span class="kpBadge kpB-pick">Staff pick</span>' : '');
-        return '<a class="h-card" data-pick-model="'+d.file+'" href="customizer.html?design=' + encodeURIComponent(d.file) + '" style="display:block;text-decoration:none;animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:16px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
-          + '<div class="'+(d.casePreview?'case-portrait':'')+'" style="position:relative;aspect-ratio:1/1;background:#F7F7F7"><img src="' + cardImage + '" onerror="this.closest(\'.h-card\').style.display=\'none\'" alt="' + d.title + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">' + badge + '</div>'
-          + '<div style="padding:10px 12px 12px">'
+        return '<div class="h-card" style="display:block;text-decoration:none;animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:16px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
+          + '<button type="button" class="case-zoom-button '+(d.casePreview?'case-portrait':'')+'" data-enlarge="'+d.file+'" aria-label="Enlarge '+escapeHtml(d.title)+'" style="position:relative;aspect-ratio:1/1;background:#F7F7F7"><img src="' + cardImage + '" onerror="this.closest(\'.h-card\').style.display=\'none\'" alt="' + escapeHtml(d.title) + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">' + badge + '<span class="zoom-hint">Zoom</span></button>'
+          + '<a data-pick-model="'+d.file+'" href="customizer.html?design='+encodeURIComponent(d.file)+'" style="display:block;text-decoration:none;padding:10px 12px 12px">'
           + '<div style="font-weight:700;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
           + '<div style="font-size:11px;color:#6C6C72;font-weight:700;margin-top:2px">' + d.category + ' · choose your phone</div>'
           + '<div style="font-size:13px;font-weight:800;color:#17171F;margin-top:6px">$44.99</div>'
           + '<span style="display:block;margin-top:8px;text-align:center;border:1.5px solid #DC282E;color:#DC282E;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:10px;border-radius:999px">Customize</span>'
-          + '</div></a>';
+          + '</a></div>';
       });
       /* seeded your-photo card every 10th slot */
       var photoCard = '<a class="h-card" href="customizer.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-decoration:none;border:2px dashed #DC282E;border-radius:16px;background:#FFF7F7;padding:24px 14px;min-height:230px">'
@@ -721,9 +756,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         return '<button type="button" class="cdot" data-ci="' + ci + '" aria-label="Preview ' + c.n + ' phone color" aria-pressed="' + (ci===finish?'true':'false') + '" title="' + c.n + '" style="padding:0;width:14px;height:14px;border-radius:50%;background:' + c.h + ';border:2px solid ' + (ci===finish?'#DC282E':'#E4E3E3') + ';display:inline-block;cursor:pointer"></button>';
       }).join('');
       return '<div class="h-card kpCard" data-selected-color="'+finish+'" data-file="' + d.file + '" style="' + (i<24 ? 'animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;' : '') + 'background:#FFFFFF;border-radius:12px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
-        + '<a href="customizer.html?design=' + encodeURIComponent(d.file) + '&model=' + slugify(device) + '" style="display:block;background:#F8F7F7;text-decoration:none;position:relative">'
-        + '<span style="position:absolute;top:10px;left:10px;z-index:1;background:#FFF4CC;color:#725900;font-size:10.5px;font-weight:800;padding:4px 9px;border-radius:6px;letter-spacing:.03em;text-transform:uppercase">Digital preview</span>'
-        + '<canvas width="' + CW + '" height="' + CH + '" data-file="' + d.file + '" data-color="'+finish+'" role="img" aria-label="' + d.title + ' on ' + device + '" style="width:100%;height:auto;aspect-ratio:440/528;display:block"></canvas></a>'
+        + '<button type="button" class="case-zoom-button" data-enlarge="'+d.file+'" aria-label="Enlarge '+escapeHtml(d.title)+'" style="display:block;background:#F8F7F7;position:relative">'
+        + '<span style="position:absolute;top:10px;left:10px;z-index:1;background:#FFF4CC;color:#725900;font-size:10.5px;font-weight:800;padding:4px 9px;border-radius:6px;letter-spacing:.03em;text-transform:uppercase">Zoom case</span>'
+        + '<canvas width="' + CW + '" height="' + CH + '" data-file="' + d.file + '" data-color="'+finish+'" role="img" aria-label="' + d.title + ' on ' + device + '" style="width:100%;height:auto;aspect-ratio:440/528;display:block"></canvas></button>'
         + '<div style="padding:12px 16px 6px;display:flex;align-items:center;justify-content:space-between;gap:8px">'
         + '<div style="min-width:0"><div style="font-weight:900;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
         + '<div style="font-size:11px;color:#6C6C72;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">' + (device.indexOf('Galaxy')===0?'Tough Magnetic · $44.99':'MagSafe Clear · $44.99') + '</div></div>'
@@ -771,7 +806,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if (t){ filter = t.dataset.cat; kpBrowseAll = true; searchQ=''; $('deskSearch').value=''; renderWizard(); renderFilters(); renderStates(); renderGrid(); window.scrollTo({top:0,behavior:'smooth'}); return; }
     if (e.target.closest && e.target.closest('.kpBrowseAllBtn')){ kpBrowseAll = true; renderGrid(); return; }
     if (e.target.closest('.kpLoadMore')) {
-      var selector = device ? '#grid .kpCard>a:first-child' : '#grid a[data-pick-model]';
+      var selector = device ? '#grid .kpCard .case-zoom-button' : '#grid a[data-pick-model]';
       var firstNew = document.querySelectorAll(selector).length;
       window.__kpLimit = (window.__kpLimit||48) + 96;
       renderGrid();
@@ -867,5 +902,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var svg=t.querySelector('svg'); if(svg) svg.style.transform=open?'':'rotate(90deg)';
   });
 </script>
+<script src="assets/case-zoom.js"></script>
 </body>
 </html>

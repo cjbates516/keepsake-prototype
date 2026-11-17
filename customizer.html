@@ -112,7 +112,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/shop-refresh.css">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js" defer></script></head>
+<link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
+</head>
 <body class="kp-shop kp-customizer">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
 <div class="kp-page" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
@@ -349,7 +350,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   </main>
   <dialog id="counterReview" aria-labelledby="reviewHeading">
     <h2 id="reviewHeading">Show this at the counter</h2>
-    <canvas id="reviewPreview" width="300" height="360" aria-label="Your case preview" role="img"></canvas>
+    <button type="button" class="case-zoom-button" aria-label="Enlarge your counter case preview" onclick="document.getElementById('skyCaseZoom').click()"><canvas id="reviewPreview" width="300" height="360" aria-label="Your case preview" role="img"></canvas></button>
     <div id="reviewCode" role="status"></div>
     <dl id="reviewDetails"></dl>
     <p>Keep this screen open for the team to check the preview, any personalization, and the total before you pay.</p>
@@ -367,12 +368,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
 </div>
 
-<dialog id="skyZoomDialog" aria-labelledby="skyZoomTitle">
-  <header><strong id="skyZoomTitle">Case preview</strong><button type="button" data-close autofocus>Close</button></header>
-  <div class="zoom-scroll" tabindex="0" aria-label="Enlarged case. Scroll to see details."><canvas role="img" aria-label="Enlarged case preview"></canvas></div>
-  <footer><button type="button" data-zoom="-1" aria-label="Zoom out">−</button><output aria-live="polite"></output><button type="button" data-zoom="1" aria-label="Zoom in">+</button></footer>
-</dialog>
-<script src="assets/sky-case-zoom.js"></script>
+<script src="assets/case-zoom.js"></script>
 <script src="assets/night-sky.js?v=places-zoom-1"></script>
 <script>
 (function(){
@@ -1060,8 +1056,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     updateUploadLabel();
     canvas.style.cursor = state.isLibraryDesign ? 'default' : 'grab';
     canvas.style.touchAction = (state.photoImg && !state.isLibraryDesign) ? 'none' : 'pan-y';
-    $('skyCaseZoom').hidden = !(skyStudio && state.photoImg && live);
-    if (!$('skyCaseZoom').hidden) canvas.style.cursor='zoom-in';
+    $('skyCaseZoom').hidden = !live;
+    if (live && !CAL.on && !state.layout && (state.isLibraryDesign || skyStudio || !state.photoImg)) canvas.style.cursor='zoom-in';
     updateBrowseLink();
     if (state.layout){
       var Th=curTpl(), tot=Th?Th.slots.length:0, fh=state.photos.filter(Boolean).length;
@@ -2108,13 +2104,26 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           updateDpi();updateStage();updateSummary();
         }
       });
-      KPSkyCaseZoom.mount(canvas, $('skyCaseZoom'), $('skyExampleZoom'), function(){
-        if (!state.photoImg || !caseReady || !lightReady || (viewImg && !viewReady) || CAL.on) return false;
-        renderNow();
-        return true;
-      });
+      $('skyExampleZoom').onclick=function(){
+        KPCaseZoom.open({title:'Finished example',source:()=>$('skyExampleZoom').querySelector('img'),trigger:$('skyExampleZoom')});
+      };
     }
   }
+  $('skyCaseZoom').onclick=function(){
+    KPCaseZoom.open({title:'Your case',trigger:$('skyCaseZoom'),source:()=>{
+      if(!caseReady || !lightReady || (viewImg && !viewReady)) throw Error('Case loading');
+      renderNow();return canvas;
+    }});
+  };
+  let zoomTap;
+  canvas.addEventListener('pointerdown',e=>{
+    zoomTap=e.isPrimary && e.button===0 && !CAL.on && !state.layout ? [e.clientX,e.clientY] : null;
+  });
+  canvas.addEventListener('pointermove',e=>{
+    if(zoomTap && Math.hypot(e.clientX-zoomTap[0],e.clientY-zoomTap[1])>5)zoomTap=null;
+  });
+  canvas.addEventListener('pointercancel',()=>{zoomTap=null;});
+  canvas.addEventListener('click',()=>{if(zoomTap && !$('skyCaseZoom').hidden)$('skyCaseZoom').click();zoomTap=null;});
   /* ── init ── */
   loadKit(state.model);
   $('brandSel').value=state.brand;

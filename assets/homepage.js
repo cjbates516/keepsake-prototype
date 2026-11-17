@@ -41,12 +41,15 @@
   function schedule() {
     clearTimeout(timer);
     if (!stopped && !motion.matches && visible && !document.hidden) {
-      timer = setTimeout(() => advance(1, false), 6500);
+      timer = setTimeout(() => {
+        if (document.querySelector('#caseZoomDialog[open]')) schedule();
+        else advance(1, false);
+      }, 6500);
     }
   }
   function cycleColor(slide) {
     if (!slide.dataset.altArt) return;
-    const link = slide.querySelector('.case-story');
+    const link = slide.querySelector('.campaign-shop');
     const art = slide.querySelector('.scene-art');
     const label = slide.querySelector('.campaign-shop');
     const url = new URL(link.href);
