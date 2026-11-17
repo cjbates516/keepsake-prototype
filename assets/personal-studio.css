@@ -17,3 +17,16 @@
 
 #personalStudio .sky-example img {display:block;width:min(100%,300px);height:auto;margin:14px auto;}
 #skyArtwork canvas {display:block;width:100%;height:auto;margin-top:12px;}
+
+#personalStudio #skyExampleZoom {display:block;max-width:100%;margin:auto;padding:0 0 8px;background:transparent;color:#192f42;text-decoration:underline;cursor:zoom-in;}
+#skyCaseZoom {min-height:44px;padding:0 18px;border:1px solid #354556;border-radius:22px;background:white;color:#172638;font:inherit;cursor:zoom-in;}
+#skyZoomDialog {box-sizing:border-box;width:min(96vw,850px);height:92vh;height:92dvh;max-height:100%;max-width:100%;margin:auto;padding:0;border:0;border-radius:12px;color:#172638;background:#f1eff4;}
+#skyZoomDialog[open] {display:grid;grid-template-rows:auto minmax(0,1fr) auto;}
+#skyZoomDialog::backdrop {background:#101522c9;}
+#skyZoomDialog header,#skyZoomDialog footer {display:flex;align-items:center;gap:12px;padding:6px 14px;background:white;}
+#skyZoomDialog header {justify-content:space-between;}
+#skyZoomDialog footer {justify-content:center;}
+#skyZoomDialog button {min-width:44px;min-height:44px;background:white;color:#172638;border:1px solid #a2a6ac;border-radius:8px;font:inherit;cursor:pointer;}
+#skyZoomDialog button:disabled {opacity:.45;}
+#skyZoomDialog .zoom-scroll {overflow:auto;overscroll-behavior:contain;}
+#skyZoomDialog canvas {display:block;max-width:none;height:auto;margin:auto;}
