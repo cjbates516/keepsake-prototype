@@ -87,6 +87,13 @@ input::placeholder{color:#626269;opacity:1}
   #stageCanvas{width:100%;max-width:420px;height:auto;touch-action:pan-y;cursor:grab;display:block;
     filter:drop-shadow(0 16px 24px rgba(46,56,61,.22))}
   #stageCanvas.dragging{cursor:grabbing}
+  .ctCard{display:flex;flex-direction:column;align-items:stretch;gap:4px;min-width:0;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:center;cursor:pointer}
+  .ctPhoto{display:grid;place-items:center;height:146px;border:2px solid #dad7d7;border-radius:12px;background:#f8f7f5}
+  .ctCard[aria-pressed="true"] .ctPhoto{border-color:#c4212b}
+  .ctCard:focus-visible{outline:3px solid #126578;outline-offset:3px;border-radius:12px}
+  .ctPhoto canvas{width:72px;height:132px}
+  .ctCard strong{font-size:14px;line-height:1.3;margin-top:3px}
+  .ctCard small{font-size:13px;line-height:1.3;color:#59555b}
   .kpScene{cursor:zoom-in}
   .kpVid{cursor:pointer}
   @media(pointer:coarse){.sw{width:42px !important;height:42px !important}.txtCol{width:38px !important;height:38px !important}}
@@ -174,26 +181,14 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           </div>
           <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#DC282E;margin:26px 0 12px;padding-top:22px;border-top:1px solid #EFEDED">Step 2 <span style="color:#17171F">· Your case</span></div>
           <div id="ctRow" style="display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:30px"><!-- KP_TOUGH_OFF: set display:grid to re-enable case-type choice -->
-            <div id="ctClear" class="ctCard" data-ct="MagSafe Clear" style="cursor:pointer;text-align:center">
-              <div style="position:relative;border:2px solid #DC282E;border-radius:12px;overflow:hidden;background:#F7F7F7">
-                <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:2;background:#C6A052;color:#FFFFFF;font-size:7.5px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px;border-radius:3px;pointer-events:none;white-space:nowrap;max-width:94%">Most popular</div>
-                <div style="height:104px;display:flex;align-items:center;justify-content:center;pointer-events:none">
-                  <canvas id="ctThumbClear" width="92" height="176" style="width:46px;height:88px"></canvas>
-                </div>
-              </div>
-              <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">MagSafe Clear</div>
-              <div style="font-size:12.5px;font-weight:600;color:#6C6C72;margin-top:2px">$44.99</div>
-            </div>
-            <div id="ctTough" class="ctCard" data-ct="Slim Hybrid MagSafe" style="cursor:pointer;text-align:center">
-              <div style="position:relative;border:2px solid #E4E3E3;border-radius:12px;overflow:hidden;background:#F7F7F7">
-                <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:2;background:#2D2D3B;color:#FFFFFF;font-size:7.5px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px;border-radius:3px;pointer-events:none;white-space:nowrap;max-width:94%">Extra protection</div>
-                <div style="height:104px;display:flex;align-items:center;justify-content:center;pointer-events:none;padding:6px">
-                  <canvas id="ctThumbHyb" width="92" height="176" style="width:46px;height:88px"></canvas><img id="toughThumb" src="assets/cases/i17-hyb-black.webp" alt="" style="display:none">
-                </div>
-              </div>
-              <div style="font-weight:700;font-size:13px;color:#17171F;margin-top:8px">Slim Hybrid MagSafe</div>
-              <div style="font-size:12.5px;font-weight:600;color:#6C6C72;margin-top:2px">$44.99 · extra grip</div>
-            </div>
+            <button type="button" id="ctClear" class="ctCard" data-ct="MagSafe Clear" aria-pressed="true">
+              <span class="ctPhoto"><canvas id="ctThumbClear" width="144" height="264" aria-hidden="true"></canvas></span>
+              <strong>MagSafe Clear</strong><small>$44.99</small>
+            </button>
+            <button type="button" id="ctTough" class="ctCard" data-ct="Slim Hybrid MagSafe" aria-pressed="false">
+              <span class="ctPhoto"><canvas id="ctThumbHyb" width="144" height="264" aria-hidden="true"></canvas></span>
+              <strong>Slim Hybrid MagSafe</strong><small>$44.99 · extra grip</small>
+            </button>
           </div>
 
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:28px">
@@ -607,7 +602,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     }
     var srcFile = (state.caseType==='Tough Magnetic' && k.tough) ? k.tough.file : col.f;  /* hybrid col.f already per-bumper-color */
     caseImg.src='assets/cases/'+srcFile;
-    var tt=$('toughThumb'); if(tt){ if(k.tough) tt.src='assets/cases/'+k.tough.file; else if(k.toughOnly) tt.src='assets/cases/'+k.colors[0].f; }
     var vm=(state.caseType==='Tough Magnetic') ? ((k.tough&&k.tough.view)||(k.toughOnly&&k.view)||null) : (k.view||null);
     if(vm){
       if(viewSrc!==vm){
@@ -1503,6 +1497,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(tOnly) state.caseType='Tough Magnetic';
     else if(state.caseType==='Slim Hybrid MagSafe' && !(tkK&&tkK.hybrid)) state.caseType='MagSafe Clear';
     else if(state.caseType==='Tough Magnetic') state.caseType='MagSafe Clear';
+    document.querySelectorAll('.ctCard').forEach(button=>button.setAttribute('aria-pressed',String(state.caseType===button.dataset.ct)));
     var rowEl=$('ctRow'); if(rowEl) rowEl.style.display=(tkK&&tkK.hybrid&&!tOnly)?'grid':'none';
     var ps=$('prodSub'); if(ps) ps.textContent = tOnly ? 'Custom Photo Case · Tough Magnetic · Qi2 Magnet Compatible' : 'Custom Photo Case · MagSafe Compatible';
     var cnEl=$('caseNature'); if(cnEl){
@@ -1936,8 +1931,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(cc.dataset.ct==='MagSafe Clear' && KITS[state.model] && KITS[state.model].toughOnly) return;
       if(cc.dataset.ct==='Slim Hybrid MagSafe' && !(KITS[state.model] && KITS[state.model].hybrid)) return;
       state.caseType=cc.dataset.ct; state.reserved=false;
-      document.querySelectorAll('.ctCard > div:first-child').forEach(function(el){ el.style.borderColor='#E4E3E3'; });
-      cc.querySelector('div').style.borderColor='#DC282E';
       if (KITS[state.model]) loadKit(state.model);
       renderSwatches(); updateSummary();
     }
