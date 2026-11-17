@@ -6,7 +6,7 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/personal-studio.css">
+<link rel="stylesheet" href="assets/personal-studio.css?v=case-zoom-1">
 
 <script>if(new URLSearchParams(location.search).get('staff')==='1')document.documentElement.classList.add('staff-mode');</script>
 <link rel="stylesheet" href="assets/staff-print.css">
@@ -141,6 +141,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <!-- non-17PM placeholder note wrapper reuses stageEmpty -->
           </div>
           <section id="mobileDesignPicker" hidden aria-label="Preview options"></section>
+          <button type="button" id="skyCaseZoom" hidden>Enlarge case</button>
           <div id="stageHint" style="font-size:12px;font-weight:700;color:#6C6C72;letter-spacing:.04em">Upload or drop a photo to begin</div>
           <div id="kitNote" style="display:none;font-size:11.5px;font-weight:600;color:#B9BDCB;letter-spacing:.02em;text-align:center;max-width:300px"></div>
           <a id="exportLink" href="#" style="display:none;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B9BDCB">Download print file (staff)</a>
@@ -366,7 +367,13 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
 </div>
 
-<script src="assets/night-sky.js"></script>
+<dialog id="skyZoomDialog" aria-labelledby="skyZoomTitle">
+  <header><strong id="skyZoomTitle">Case preview</strong><button type="button" data-close autofocus>Close</button></header>
+  <div class="zoom-scroll" tabindex="0" aria-label="Enlarged case. Scroll to see details."><canvas role="img" aria-label="Enlarged case preview"></canvas></div>
+  <footer><button type="button" data-zoom="-1" aria-label="Zoom out">−</button><output aria-live="polite"></output><button type="button" data-zoom="1" aria-label="Zoom in">+</button></footer>
+</dialog>
+<script src="assets/sky-case-zoom.js"></script>
+<script src="assets/night-sky.js?v=places-zoom-1"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -1053,6 +1060,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     updateUploadLabel();
     canvas.style.cursor = state.isLibraryDesign ? 'default' : 'grab';
     canvas.style.touchAction = (state.photoImg && !state.isLibraryDesign) ? 'none' : 'pan-y';
+    $('skyCaseZoom').hidden = !(skyStudio && state.photoImg && live);
+    if (!$('skyCaseZoom').hidden) canvas.style.cursor='zoom-in';
     updateBrowseLink();
     if (state.layout){
       var Th=curTpl(), tot=Th?Th.slots.length:0, fh=state.photos.filter(Boolean).length;
@@ -1063,6 +1072,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       $('kitNote').style.display='none';
     } else if (hasKit()){
       $('stageHint').textContent = state.isLibraryDesign ? 'Pre-fitted to your case' : (matchMedia('(pointer:coarse)').matches ? 'Drag to position \u00b7 pinch to zoom' : 'Drag to position \u00b7 ctrl+scroll to zoom');
+      if(skyStudio) $('stageHint').textContent='Tap the case to enlarge it.';
       var kk=KITS[state.model];
       if(state.caseType==='Tough Magnetic' && kk && !kk.tough && !kk.toughOnly){
         $('kitNote').textContent='Tough Magnetic preview coming soon for this model \u2014 shown on the clear case. Your design still prints on the Tough case.';
@@ -2097,6 +2107,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           state.filter='none';state.variant='original';state.reserved=false;skyDirty=false;
           updateDpi();updateStage();updateSummary();
         }
+      });
+      KPSkyCaseZoom.mount(canvas, $('skyCaseZoom'), $('skyExampleZoom'), function(){
+        if (!state.photoImg || !caseReady || !lightReady || (viewImg && !viewReady) || CAL.on) return false;
+        renderNow();
+        return true;
       });
     }
   }

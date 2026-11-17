@@ -94,13 +94,6 @@ window.KPNightSky = (function () {
       ctx.quadraticCurveTo(x+r*.14,y+r*.14,x,y+r);ctx.quadraticCurveTo(x-r*.14,y+r*.14,x-r*.75,y);
       ctx.quadraticCurveTo(x-r*.14,y-r*.14,x,y-r);ctx.fill();
     }
-    function ticks(x,y,r,count,color) {
-      for(let i=0;i<count;i++){
-        const angle=2*Math.PI*i/count, dx=Math.sin(angle),dy=-Math.cos(angle);
-        const length=i%5===0?12:5;
-        line(x+dx*r,y+dy*r,x+dx*(r+length),y+dy*(r+length),color,i%5===0?2:1.4);
-      }
-    }
     function paths(figure,points,color,width,onSky=false) {
       for(const path of figure.paths){
         for(let i=1;i<path.length;i++){
@@ -110,39 +103,33 @@ window.KPNightSky = (function () {
         }
       }
     }
-    const cx=600,cy=900,r=380;
-    circle(cx,cy,r+21,'#091d28');circle(cx,cy,r+22,brass,2);circle(cx,cy,r+4,gold,2);
-    ticks(cx,cy,r+6,180,gold);
-    ctx.save();ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.clip();
-    const field=ctx.createRadialGradient(510,795,10,cx,cy,560);
-    field.addColorStop(0,'#214652');field.addColorStop(.7,'#102c3a');field.addColorStop(1,'#0a192a');
-    ctx.fillStyle=field;ctx.fillRect(cx-r,cy-r,r*2,r*2);
-    for(const radius of [r/3,2*r/3])circle(cx,cy,radius,'#486366',1.5);
-    for(let i=0;i<12;i++){
-      const a=i*Math.PI/6;line(cx,cy,cx+r*Math.cos(a),cy+r*Math.sin(a),'#36535a',1);
+    const cx=c.width/2, cy=c.height/2;
+    // Map zenith to the center and the horizon to the four edges of the print.
+    // A radial stretch preserves each point's compass bearing in chart coordinates.
+    function skyPoint(point) {
+      const [x,y,mag,up]=point;
+      const extent=Math.max(Math.abs(x),Math.abs(y));
+      const stretch=extent ? Math.hypot(x,y)/extent : 1;
+      return [cx+cx*x*stretch,cy+cy*y*stretch,mag,up];
     }
     for(const [id,figure] of Object.entries(figures)){
-      const projected=project(figure.stars,info.instant,info.lat,info.lon,true)
-        .map(([x,y,mag,up])=>[cx+x*r,cy+y*r,mag,up]);
-      paths(figure,projected,active.has(id)?gold:'#76939c',active.has(id)?3.4:1.8,true);
+      const projected=project(figure.stars,info.instant,info.lat,info.lon,true).map(skyPoint);
+      paths(figure,projected,active.has(id)?gold:'#65878f',active.has(id)?3.4:1.6,true);
     }
-    for(const [x,y,mag] of project(stars,info.instant,info.lat,info.lon)){
-      const size=1.35+Math.pow((6-mag)/5,2)*3.6;
-      circle(cx+x*r,cy+y*r,size,mag<2?ivory:'#d1e0df');
-      if(mag<1.1)spark(cx+x*r,cy+y*r,size*2,ivory);
+    for(const point of project(stars,info.instant,info.lat,info.lon)){
+      const [x,y,mag]=skyPoint(point), size=1.35+Math.pow((6-mag)/5,2)*3.6;
+      circle(x,y,size,mag<2?ivory:'#d1e0df');
+      if(mag<1.1)spark(x,y,size*2,ivory);
     }
-    ctx.restore();
-    [['N',cx,cy-r-35],['S',cx,cy+r+57],['E',cx-r-48,cy+10],['W',cx+r+48,cy+10]].forEach(([s,x,y])=>lettering(s,x,y,27,gold,'Georgia, serif'));
+    const shade=ctx.createLinearGradient(0,1000,0,2300);
+    shade.addColorStop(0,'#07182300');shade.addColorStop(.43,'#071823b8');
+    shade.addColorStop(.72,'#071823e0');shade.addColorStop(1,'#07182350');
+    ctx.fillStyle=shade;ctx.fillRect(0,1000,c.width,c.height-1000);
 
     const portraitY=1460, pr=130;
     function portrait(sign,x) {
       const f=figures[figureIds[signs.indexOf(sign)]];
       const pts=portraitPoints(f.stars).map(([a,b])=>[x+a*pr*.79,portraitY+b*pr*.79]);
-      circle(x,portraitY,pr+11,'#102a37');circle(x,portraitY,pr+11,brass,2);
-      ticks(x,portraitY,pr-2,60,'#aa956f');circle(x,portraitY,pr,'#647a77',1.6);
-      circle(x,portraitY,pr*.69,'#34515a',1.3);
-      line(x-pr+4,portraitY,x+pr-4,portraitY,'#34515a',1.2);
-      line(x,portraitY-pr+4,x,portraitY+pr-4,'#34515a',1.2);
       paths(f,pts,gold,3);
       pts.forEach(([a,b],i)=>circle(a,b,Math.max(2.8,6.1-f.stars[i][2]*.48),ivory));
       const [name,index]=f.anchor, [ax,ay]=pts[index];
@@ -167,11 +154,11 @@ window.KPNightSky = (function () {
   }
   function mount(host, hooks) {
     host.innerHTML = `<h2>Map a special night</h2><p>Choose the date and place to map the bright stars above that horizon. Use 9:00 PM for an evening estimate.</p>
-    <details class="sky-example"><summary>See a finished example</summary><img src="assets/home/personal/sky-case.webp" alt="Gemini and Libra on a case with the night sky above West Chester on June 14, 2019" width="394" height="800"></details>
+    <details class="sky-example"><summary>See a finished example</summary><button type="button" id="skyExampleZoom" aria-label="Enlarge the finished example"><img src="assets/home/personal/sky-case-detail.webp" loading="lazy" alt="Gemini and Libra on a case with the night sky above West Chester on June 14, 2019" width="402" height="800"><span>Enlarge example</span></button></details>
     <form id="skyForm"><label>Occasion<select name="occasion"><option>The night we met</option><option>Our wedding night</option><option>Under the same sky</option><option>The night you were born</option></select></label>
     <div class="studio-pair"><label>Date<input name="date" type="date" min="1900-01-01" max="2100-12-31" required></label><label>Local time<input type="time" name="time" value="21:00" required></label></div>
-    <label>Town or city<input name="query" type="search" placeholder="Search for a city" autocomplete="off"></label>
-    <label>Choose your location<select name="place" required></select></label>
+    <label>Town, city or island<input name="query" type="search" aria-describedby="skyPlaceHint" placeholder="Search for a place" autocomplete="off"></label>
+    <label>Choose your location<select name="place" required></select></label><small id="skyPlaceHint" role="status"></small>
     <details><summary>Use exact coordinates</summary><label><input type="checkbox" name="manual"> Use these coordinates for the map</label>
     <label>Place name<input name="placeName" maxlength="48"></label><div class="studio-pair"><label>Latitude (south is negative)<input name="lat" type="number" min="-90" max="90" step="any"></label><label>Longitude (west is negative)<input name="lon" type="number" min="-180" max="180" step="any"></label></div><label>Time zone<input name="zone" placeholder="America/New_York"></label></details>
     <label>Couple’s initials (optional)<input name="initials" maxlength="12" placeholder="J &amp; M"></label>
@@ -179,11 +166,11 @@ window.KPNightSky = (function () {
     <p>Each sign gets a constellation portrait with a named star. Look for the gold lines on the sky map to see which parts of your signs were above the horizon.</p>
     <button type="submit">Update my case preview</button></form>
     <p role="status" id="skyStatus"></p><div id="skyActions" hidden><a href="#stageWrap">See my case</a> · <button type="button" id="skySave">Save my sky artwork</button><details id="skyDetail"><summary>See the star map up close</summary><div id="skyArtwork"></div></details></div>
-    <details><summary>About this sky map</summary><p>A map of bright stars above the geometric horizon. Moon, planets, clouds and daylight are outside this star chart. Star positions from the <a href="https://heasarc.gsfc.nasa.gov/W3Browse/all/bsc5p.html">Yale Bright Star Catalogue</a>. Constellation figures adapted from <a href="https://github.com/ofrohn/d3-celestial">D3-Celestial</a> (<a href="assets/sky-figures-license.txt">credits and license</a>). City coordinates and time zones adapted from <a href="https://www.geonames.org/">GeoNames</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p></details>`;
+    <details><summary>About this sky map</summary><p>The sky fills the case, with the zenith at the center, north at the top and the horizon along the edges. Moon, planets, clouds and daylight are outside this star chart. Star positions from the <a href="https://heasarc.gsfc.nasa.gov/W3Browse/all/bsc5p.html">Yale Bright Star Catalogue</a>. Constellation figures adapted from <a href="https://github.com/ofrohn/d3-celestial">D3-Celestial</a> (<a href="assets/sky-figures-license.txt">credits and license</a>). City coordinates and time zones adapted from <a href="https://www.geonames.org/">GeoNames</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p></details>`;
     const form=host.querySelector('form'), f=form.elements, status=host.querySelector('#skyStatus'), actions=host.querySelector('#skyActions');
     let chart, stars, figures, places, indices=[];
     for(const select of [f.sign1,f.sign2])for(const sign of ['',...signs])select.add(new Option(sign||'None',sign));
-    const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/ł/g,'l').replace(/ø/g,'o').replace(/ß/g,'ss').replace(/đ/g,'d');
+    const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/['‘’ʻʼ`]/g,'').replace(/[^\p{L}\p{N}]+/gu,' ').trim().replace(/ł/g,'l').replace(/ø/g,'o').replace(/ß/g,'ss').replace(/đ/g,'d');
     const cityLabel=row=>row.slice(0,3).filter(Boolean).join(', ');
     function populate(){
       const term=normalize(f.query.value.trim()), tokens=term.split(/[ ,]+/).filter(Boolean);
@@ -192,7 +179,7 @@ window.KPNightSky = (function () {
       places.forEach((row,index)=>{
         const label=cityLabel(row), name=normalize(row[0]);
         if(!term){if(defaults.includes(label))hits.push({index,rank:0});return;}
-        const full=normalize(label);
+        const full=normalize([label, row[6], row[1]==='HI' && row[2]==='US' ? 'Hawaii' : ''].filter(Boolean).join(' '));
         if(tokens.every(token=>full.includes(token))){
           const rank=name===term || tokens[0]===name ? 0 : name.startsWith(tokens[0]) ? 1 : 2;
           hits.push({index,rank});
@@ -201,6 +188,9 @@ window.KPNightSky = (function () {
       indices=hits.sort((a,b)=>a.rank-b.rank).slice(0,50).map(hit=>hit.index);
       f.place.replaceChildren(new Option('Choose a location',''),...indices.map(i=>new Option(cityLabel(places[i]),i)));
       if(indices.length===1)f.place.selectedIndex=1;
+      host.querySelector('#skyPlaceHint').textContent = !term ? '' : indices.length===0
+        ? 'No matching places. Try a nearby town or use exact coordinates below.'
+        : indices.length===1 ? 'Selected: '+cityLabel(places[indices[0]]) : 'Choose your location from the matches above.';
     }
     function invalidate(){chart=null;detail.open=false;artwork.replaceChildren();actions.hidden=true;hooks.changed();status.textContent='Update the preview to apply your details.';}
     form.addEventListener('input',invalidate);
@@ -235,7 +225,7 @@ window.KPNightSky = (function () {
     };
     host.addEventListener('skyreset',()=>{form.reset();manualMode();if(places)populate();invalidate();status.textContent='Choose a date and place to start again.';});
     Promise.all(['bright-stars','sky-places','sky-figures'].map(async name=>{
-      const res=await fetch('assets/'+name+'.json');if(!res.ok)throw Error();return res.json();
+      const res=await fetch('assets/'+name+'.json'+(name==='sky-places'?'?v=islands-1':''));if(!res.ok)throw Error();return res.json();
     })).then(values=>{[stars,places,figures]=values;populate();}).catch(()=>{status.textContent='The local sky catalogue could not load. Reload this page to try again.';});
   }
   return {mount,project,instants};
