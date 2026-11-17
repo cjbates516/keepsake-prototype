@@ -3,13 +3,15 @@
 
 Repeatable + incremental: drop new images into the Desktop folder and re-run.
 - content-hash dedupe (same file twice, or "(1)" re-exports, are skipped)
-- web-sizes every image to max 1600px JPEG via sips (originals untouched)
+- keeps enough native detail for a 970 × 1966 full-bleed case crop when available
 - auto-categorizes from the filename; add manual fixes in OVERRIDES
 - regenerates assets/designs/designs.json which gallery.html renders
 """
 import hashlib, json, os, re, subprocess, sys
 
 SRC = os.path.expanduser("~/Desktop/case-photos")
+if not os.path.isdir(SRC):
+    SRC = os.path.expanduser("~/Desktop/Keep Sake Website all documents/case-photos")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEST = os.path.join(ROOT, "assets", "designs")
 MANIFEST = os.path.join(DEST, "designs.json")
@@ -124,7 +126,7 @@ def main():
     manifest = []
     if os.path.exists(MANIFEST):
         manifest = json.load(open(MANIFEST))
-    seen_hashes = {m["hash"] for m in manifest}
+    seen_hashes = {key for m in manifest for key in (m["hash"], m.get("sourceHash")) if key}
     seen_slugs = {m["file"][:-4] for m in manifest}
 
     added, skipped = 0, 0
@@ -145,23 +147,23 @@ def main():
         while s2 in seen_slugs:
             s2 = f"{slug}-{n}"; n += 1
         slug = s2
-        keep_png = False
-        if fname.lower().endswith(".png"):
-            try:
-                from PIL import Image as _PILImage
-                with _PILImage.open(path) as _im:
-                    keep_png = (_im.mode in ("RGBA", "LA")) and _im.getextrema()[-1][0] < 250
-            except Exception:
-                keep_png = False
+        properties = subprocess.run(
+            ["sips", "-g", "pixelWidth", "-g", "pixelHeight", "-g", "hasAlpha", path],
+            capture_output=True, text=True, check=True
+        ).stdout
+        keep_png = bool(re.search(r"hasAlpha: yes", properties, re.I))
         ext = ".png" if keep_png else ".jpg"
         out = os.path.join(DEST, slug + ext)
-        if keep_png:
-            r = subprocess.run(["sips", "-s", "format", "png", "-Z", "1600", path, "--out", out],
-                               capture_output=True, text=True)
-        else:
-            r = subprocess.run(["sips", "-s", "format", "jpeg", "-s", "formatOptions", "82",
-                                "-Z", "1600", path, "--out", out],
-                               capture_output=True, text=True)
+        lengths = re.findall(r"pixel(?:Width|Height): (\d+)", properties)
+        if len(lengths) != 2:
+            print("  ! could not read dimensions:", fname)
+            continue
+        width, height = map(int, lengths)
+        # Preserve portrait-crop detail even when a source is very wide.
+        scale = min(1, max(2400 / max(width, height), 970 / width, 1966 / height))
+        cap = ["-Z", str(round(max(width, height) * scale))] if scale < 1 else []
+        options = ["-s", "format", "png"] if keep_png else ["-s", "format", "jpeg", "-s", "formatOptions", "92"]
+        r = subprocess.run(["sips", *options, *cap, path, "--out", out], capture_output=True, text=True)
         if r.returncode != 0:
             print("  ! failed:", fname, r.stderr.strip()[:120]); continue
         tdir = os.path.join(DEST, "thumbs")
@@ -169,7 +171,7 @@ def main():
         subprocess.run(["sips", "-Z", "640", out, "--out", os.path.join(tdir, slug + ext)],
                        capture_output=True)
         manifest.append({"file": slug + ext, "title": title, "category": cat, "hash": h,
-                         "color": classify_colors(out)})
+                         "sourcePixels": [width, height], "color": classify_colors(out)})
         seen_hashes.add(h); seen_slugs.add(slug)
         added += 1
 
@@ -203,12 +205,7 @@ def main():
         cats[m["category"]] = cats.get(m["category"], 0) + 1
     print(f"added {added} · skipped {skipped} duplicates · total {len(manifest)}")
     # In Store pick codes: give new designs their permanent numbers (instore/codes.json)
-    try:
-        import importlib.util
-        spec = importlib.util.spec_from_file_location("instore_codes", os.path.join(os.path.dirname(os.path.abspath(__file__)), "instore_codes.py"))
-        mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); mod.main()
-    except Exception as e:
-        print("  ! In Store pick codes not updated, run tools/instore_codes.py:", e)
+    subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instore_codes.py')], check=True)
     subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'build_colorway_catalog.py')], check=True)
     print('Prepare new per-design palettes with: node tools/prepare_colorways.cjs; review and save artwork batches to Drive before release.')
     for c, n in sorted(cats.items()):

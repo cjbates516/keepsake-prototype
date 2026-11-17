@@ -5,6 +5,8 @@
  "code_hold_seconds": 300,
  "assets_version": "12",
  "collections": [
+  {"category":"Earth From Orbit","label":"Earth From Orbit","code":"ORB"},
+  {"category":"Botanical Blueprints","label":"Botanical Blueprints","code":"BLU"},
   {"category":"City Scenes","label":"City Scenes","code":"SCN"},
   {
    "category": "Signature Golf",

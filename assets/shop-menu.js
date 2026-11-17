@@ -6,6 +6,8 @@
   ['Samsung cases','Pick your Galaxy model','gallery.html?brand=Samsung','assets/home/signature-golf/sunday-scramble-original.webp'],
   ['All phone cases','Browse prints before picking a phone','gallery.html','assets/home/cherry-duck/wrong-way-duck-original.webp'],
   ['City Scenes','Find your city','gallery.html?cat=City%20Scenes','assets/designs/thumbs/city-night-philadelphia.jpg'],
+  ['Earth From Orbit','Deserts and river deltas photographed by satellite','gallery.html?cat=Earth%20From%20Orbit','assets/designs/thumbs/field-photo-yukon-delta-0.jpg'],
+  ['Botanical Blueprints','Original seaweed cyanotypes by Anna Atkins','gallery.html?cat=Botanical%20Blueprints','assets/designs/thumbs/field-photo-291506.jpg'],
   ['Signature Golf','Course maps and Sunday Scramble','signature-golf.html','assets/home/signature-golf/pebble-original.webp'],
   ['National Parks','Illustrations and real park photos','parks-rugged.html','assets/home/parks-rugged/acadia-original.webp'],
   ['Design your own','Use a photo from your phone','customizer.html','assets/photos/i17PM-hero.jpg'],

@@ -11,8 +11,6 @@ License checked: https://www.pexels.com/license/ permits website/product promoti
 
 `assets/photos/slates/supplier-8x10-details.jpg`: unchanged WANZELONYO detail image from the exact user-specified 8×10 listing https://www.amazon.com/dp/B0CW8597S7, retrieved 2026-11-13. Original image: https://m.media-amazon.com/images/I/81sJZzVEayL._AC_SL1500_.jpg. Labeled supplier image, specific to the 8×10 product; not Keepsake production photography. This is supplier material, not Pexels-licensed. Listing measurements are not used to derive a printable mask or printer settings.
 
-## Composited family previews — 2026-11-13
+## Family previews · 2026-11-17
 
-- `assets/photos/slates/family-slate-preview.jpg` and `grandparents-slate-preview.jpg` replace the former CSS-framed stock photos on the storefront. Built-in image editing composed the above stock family photos with the supplier slate reference, showing rough edges and two support feet. These are AI-assisted digital mockups, not pixel-exact supplier photographs, production proofs or photographs of finished Keepsake prints. Captions explicitly label the digital mockups.
-- Main supplier reference: https://m.media-amazon.com/images/I/71hsp57EEhL._AC_SL1500_.jpg from the same B0CW8597S7 listing. The portrait also used the unchanged product-details image above.
-- Original generated PNGs saved in the local collaboration/slate-mockups folder; web JPEGs encoded at quality85 without cropping/resizing. Prompts and input roles: `SLATE-MOCKUP-PROMPTS.md`. Source photos and original supplier detail view remain available. No customer files, print masks, or printable catalog assets changed.
+Both storefront previews combine the credited, unaltered family photographs with the edge of the photographed 8×10 supplier blank. They are digital marketing samples. The readable supplier detail sheet is still linked on the slate page.
