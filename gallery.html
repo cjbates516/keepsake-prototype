@@ -95,7 +95,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/shop-refresh.css">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
+<link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=case-view-3" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 </head>
 <body class="kp-storefront kp-library kp-shop">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
@@ -407,7 +407,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var dev=KP_DEVICES[device],CW=cv.width,CH=cv.height,S=CW/2500;
     var ctx = cv.getContext('2d');
     ctx.clearRect(0, 0, CW, CH);
-    var emptyCase=previewMode==='case'&&KPCaseShell.drawEmpty(ctx,device,CW,CH,vmask,'MagSafe Clear',layer,dev.camD);
+    var emptyCase=previewMode==='case'&&KPCaseShell.drawEmpty(ctx,device,CW,CH,vmask,caseStyle(device),layer,dev.camD);
     if(!emptyCase)ctx.drawImage(layer, 0, 0, CW, CH);
 
     // A known stencil is loading: show the phone until its actual panel is ready.
@@ -721,6 +721,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
 
   function refreshVisible(){
+    syncCaseView();
     document.querySelectorAll('#grid canvas').forEach(function(cv){
       if (designImgs[cv.dataset.file] && designImgs[cv.dataset.file].complete) renderCase(cv, cv.dataset.file, +(cv.dataset.color||0));
     });
@@ -728,8 +729,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   function canBuy(){ return !!(window.KP_VARIANTS && window.KP_VARIANTS['MagSafe Clear'] && window.KP_VARIANTS['MagSafe Clear'][device]); }
 
+  function caseStyle(model){return /Galaxy/.test(model)?'Tough Magnetic':'MagSafe Clear';}
   function syncCaseView(){
-    var panel=$('galleryCaseView');panel.hidden=!device||!KPCaseShell.canShowEmpty(device);
+    var panel=$('galleryCaseView');panel.hidden=!device||!viewMasks[device]||!KPCaseShell.canShowEmpty(device,caseStyle(device),caseLayers[device+'|0'],KP_DEVICES[device].camD);
     panel.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.view===previewMode));});
   }
   function setCaseView(mode){

@@ -120,7 +120,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/shop-refresh.css">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
+<link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=case-view-3" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 </head>
 <body class="kp-shop kp-customizer">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
@@ -852,9 +852,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ctx.globalCompositeOperation='source-over';
     ctx.globalAlpha=1;
     ctx.clearRect(0,0,DIM.w,DIM.h);
-    var emptyCase=state.previewMode==='case' && KPCaseShell.drawEmpty(ctx,state.model,DIM.w,DIM.h,viewReady&&viewMaskCanvas,state.caseType,caseImg,KITS[state.model]&&KITS[state.model].camD);
+    var emptyCase=state.previewMode==='case' && KPCaseShell.drawEmpty(ctx,state.model,DIM.w,DIM.h,viewReady&&viewMaskCanvas,state.caseType,caseImg,CAM_D);
     if(!emptyCase)ctx.drawImage(caseImg,0,0,DIM.w,DIM.h);
-    var canShowEmpty=!!(viewReady&&viewMaskCanvas&&KPCaseShell.canShowEmpty(state.model,state.caseType));
+    var canShowEmpty=!!(viewReady&&viewMaskCanvas&&KPCaseShell.canShowEmpty(state.model,state.caseType,caseImg,CAM_D));
     $('caseViewSwitch').hidden=!canShowEmpty;
     $('caseViewSwitch').querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.view===state.previewMode));});
     if(viewImg && !viewReady) {

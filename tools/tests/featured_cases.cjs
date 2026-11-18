@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const {chromium, webkit} = require('../../../playwright/node_modules/playwright-core');
 const base = process.env.KP_BASE || 'http://127.0.0.1:19038/';
 const renderMeta=require('../featured-case-renders.json');
+const manifest=require('../featured-case-manifest.json');
 const pages = ['parks-rugged.html','signature-golf.html','seasonal-weather.html','cherry-duck.html','gifts.html'];
 const mobile = {viewport:{width:390,height:844},hasTouch:true,isMobile:true,reducedMotion:'reduce'};
 
@@ -21,6 +22,8 @@ async function checkDestination(page, href) {
   }));
   assert.equal(state.model.toLowerCase().replace(/^samsung /,'').replaceAll(' ','-'),expected.model);
   if(expected.finish)assert.equal(state.finish,expected.finish);
+  const entry=manifest.find(r=>r.design===expected.design&&r.model===expected.model&&r.variant===(expected.colorway||'original'));
+  assert(entry,'missing preview manifest entry');assert.equal(state.caseType,entry.caseType);
   await page.locator('#skyCaseZoom').click();
   await page.locator('#caseZoomDialog canvas').waitFor();
   await page.locator('#caseZoomDialog').getByRole('button',{name:'Close',exact:true}).click();

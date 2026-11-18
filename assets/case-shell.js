@@ -67,8 +67,12 @@ window.KPCaseShell = (() => {
   function box(model) {
     return bounds[(model || '').replace(/^Samsung /, '')];
   }
-  function canShowEmpty(model, style = 'MagSafe Clear') {
-    if (/^(Samsung )?Galaxy S26(?: Plus| Ultra)?$/.test(model)) return ['MagSafe Clear','Tough Magnetic'].includes(style);
+  function canShowEmpty(model, style = 'MagSafe Clear', photo, cameraPath) {
+    if (/^(Samsung )?Galaxy S26(?: Plus| Ultra)?$/.test(model)) {
+      return style === 'Tough Magnetic' && !!cameraPath &&
+        !!(photo?.naturalWidth || photo?.width) &&
+        (!(photo instanceof HTMLImageElement) || photo.complete);
+    }
     return !!box(model) && /^iPhone /.test(model) && style === 'MagSafe Clear' && !!bumper.naturalWidth;
   }
   // A translucent case back using the same fitted panel as the artwork. The
@@ -76,11 +80,12 @@ window.KPCaseShell = (() => {
   const films = new WeakMap();
   const nativeFrames = new WeakMap();
   function drawEmpty(ctx, model, width, height, mask, style = 'MagSafe Clear', photo, cameraPath) {
-    if (!mask || !canShowEmpty(model, style)) return false;
+    const maskWidth = mask && (mask.naturalWidth || mask.width);
+    const maskHeight = mask && (mask.naturalHeight || mask.height);
+    if (!maskWidth || !maskHeight || !canShowEmpty(model, style, photo, cameraPath)) return false;
     // Keep the Galaxy case's own photographed bumper. Remove the phone and
     // camera plateau using its existing model geometry, never the print file.
     if (/Galaxy/.test(model)) {
-      if (!(photo?.naturalWidth || photo?.width) || !cameraPath) return false;
       const source = photo.currentSrc || photo.src || '';
       let frame = nativeFrames.get(photo);
       if (!frame || frame.mask !== mask || frame.cameraPath !== cameraPath || frame.source !== source) {

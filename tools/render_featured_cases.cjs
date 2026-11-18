@@ -31,7 +31,7 @@ const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
     });
     assert.equal(res.view,'case');assert.equal(res.cameraAlpha,0,row.output+' camera must be empty');
     assert.equal(res.model.toLowerCase().replace(/^samsung /,'').replaceAll(' ','-'),row.model);
-    assert.equal(res.variant,row.variant);
+    assert.equal(res.variant,row.variant);assert.equal(res.caseType,row.caseType,'Case style drift: '+row.output);
     fs.mkdirSync(path.dirname(row.output),{recursive:true});fs.writeFileSync(row.output,Buffer.from(res.webp,'base64'));
     const {webp,...meta}=res;results.push({output:row.output,...meta});
     console.log('OK',results.length+'/'+rows.length,row.output);
