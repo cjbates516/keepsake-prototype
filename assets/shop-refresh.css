@@ -143,6 +143,10 @@ html:not(.staff-mode) .kp-customizer #exportLink,html:not(.staff-mode) .kp-custo
 #reviewDetails{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:5px 14px;font-size:14px}
 #reviewDetails dt{color:#595459}#reviewDetails dd{font-weight:750;margin:0;text-align:right;overflow-wrap:anywhere;white-space:pre-wrap}
 #counterReview p{font-size:13px;line-height:1.45}#counterReview button{min-height:44px;width:100%;background:#222027;color:white;border:0;border-radius:5px;font:inherit;font-weight:800}
+#counterReview .review-actions{position:sticky;bottom:-20px;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 -20px -20px;padding:12px 20px 20px;background:#fcfaf6;border-top:1px solid #e7e1dc}
+#counterReview .review-actions button{font-size:13px;padding:10px 8px}
+#counterReview #saveCounterCard{background:#dc282e}
+#counterReview #saveCounterCard:disabled{opacity:.55;cursor:wait}
 
 /* Short landscape touch screens, including a foldable opened mid-design. */
 @media (pointer:coarse) and (orientation:landscape) and (min-width:650px) and (max-width:1050px) and (max-height:740px) {

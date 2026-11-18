@@ -15,6 +15,7 @@
 <script src="assets/case-shell.js?v=case-view-3"></script>
 <script src="assets/mask-geometry.js"></script>
 <script src="assets/print-layouts.js"></script>
+<script src="assets/counter-card.js?v=counter-card-1"></script>
 <title>Design your keepsake — Keepsake Printing Co</title>
 <meta name="description" content="Design your custom phone case: upload a photo or pick a ready-made design, see it on your exact phone, and review your design with our team in store.">
 <link rel="canonical" href="https://cjbates516.github.io/keepsake-prototype/customizer.html">
@@ -117,7 +118,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 .photo-look canvas{display:block;width:90px;height:128px;object-fit:cover;border-radius:7px;background:#f0eeeb;margin:0 auto 9px}
 .photo-look span{display:block;min-height:28px;line-height:1.2}
 </style>
-<link rel="stylesheet" href="assets/shop-refresh.css">
+<link rel="stylesheet" href="assets/shop-refresh.css?v=counter-card-1">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
 <link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=case-view-3" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
@@ -350,8 +351,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     <button type="button" class="case-zoom-button" aria-label="Enlarge your counter case preview" onclick="document.getElementById('skyCaseZoom').click()"><canvas id="reviewPreview" width="300" height="360" aria-label="Your case preview" role="img"></canvas></button>
     <div id="reviewCode" role="status"></div>
     <dl id="reviewDetails"></dl>
-    <p>Keep this screen open for the team to check the preview, any personalization, and the total before you pay.</p>
-    <form method="dialog"><button autofocus>Back to my design</button></form>
+    <p>Save a counter card or keep this screen open for the team to check your design and total before you pay. This is a preview, not a submitted order.</p>
+    <form method="dialog" class="review-actions"><button type="button" id="saveCounterCard" disabled>Save counter card</button><button autofocus>Back to my design</button></form>
   </dialog>
 
   <div id="kpSheetScrim"></div>
@@ -1506,6 +1507,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(url.href!==location.href)history.replaceState(history.state,'',url);
   }
   function updateSummary(){
+    $('barStore').textContent=state.store?state.store.replace(/, (PA|DE)$/,''):'Choose a store';
     var tkK=KITS[state.model], tOnly=!!(tkK&&tkK.toughOnly);
     /* KP_TOUGH_OFF: tough hidden — case types are Clear + Slim Hybrid (where available) */
     if(tOnly) state.caseType='Tough Magnetic';
@@ -1558,7 +1560,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   document.addEventListener('click',function(e){
     var sc=e.target.closest ? e.target.closest('.storeChip') : null;
     if(sc){ state.store=sc.dataset.s; state.reserved=false; renderStoreChips(); updateSummary(); }
-    var bs=$('barStore'); if(bs&&state.store) bs.textContent=state.store.replace(/, (PA|DE)$/,'');
   });
   renderStoreChips();
   /* ── ordering ── */
@@ -1575,13 +1576,16 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   try{localStorage.removeItem('kpCust');}catch(_){}
   var orderInFlight=false;
   function orderSignature(){var s=state;return JSON.stringify([s.model,s.caseType,s.store,s.variant,s.text,s.textFont,s.textColor,s.textSize,s.textPos,s.textVertical,s.px,s.py,s.scale,s.rot,s.fitMode,s.filter,s.addons,s.promo]);}
-  var counterCatalog, reviewVersion=0, reviewDownloadUrl;
+  var counterCatalog, reviewVersion=0, reviewDownloadUrl, reviewSource, reviewCard;
   $('counterReview').addEventListener('close',function(){
-    ++reviewVersion;
+    ++reviewVersion;reviewCard=null;
+    $('saveCounterCard').disabled=true;
+    $('saveCounterCard').textContent='Save counter card';
     $('reviewDetails').replaceChildren();
     $('reviewCode').textContent='';
     if (reviewDownloadUrl) URL.revokeObjectURL(reviewDownloadUrl);
     reviewDownloadUrl=null;
+    if(reviewSource){reviewSource.width=reviewSource.height=0;reviewSource=null;}
     var preview=$('reviewPreview');
     preview.getContext('2d').clearRect(0,0,preview.width,preview.height);
   });
@@ -1596,8 +1600,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       term.textContent=label;description.textContent=value;details.append(term,description);
       return description;
     }
-    details.replaceChildren();code.textContent='';
+    details.replaceChildren();code.textContent='';reviewCard=null;$('saveCounterCard').disabled=true;$('saveCounterCard').textContent='Preparing card…';
     renderNow();
+    reviewSource=document.createElement('canvas');reviewSource.width=canvas.width;reviewSource.height=canvas.height;
+    reviewSource.getContext('2d').drawImage(canvas,0,0);
     var preview=$('reviewPreview'),px=preview.getContext('2d');
     px.clearRect(0,0,preview.width,preview.height);px.drawImage(canvas,0,0,preview.width,preview.height);
     var title=detail('Design',file?file.replace(/^kp-|\.(jpg|png)$/g,'').replace(/-/g,' '):state.layout?'Photo collage':state.photoImg?(skyStudio?'Personalized night sky':drawingStudio?'Your child’s artwork':'Your photo'):'Text design');
@@ -1616,6 +1622,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     detail(newark?'Total':'Total before tax','$'+orderPricing().total.toFixed(2));
     dialog.showModal();dialog.scrollTop=0;
     if(!file){
+      prepareCounterCard(version,skyStudio?'Bring your saved sky artwork and this preview to the counter.':drawingStudio?'Bring the original drawing photo with this preview.':state.photoImg||state.layout?'Bring the original photos on your phone with this preview.':'Show the team this text design.');
       if (skyStudio && state.photoImg && typeof state.photoImg.toBlob === 'function') {
         code.textContent='Preparing your sky artwork…';
         state.photoImg.toBlob(function(blob) {
@@ -1645,8 +1652,40 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       var key=d&&KPI.pickCode(m,d,variant,state.addons.screen);
       if(d)title.textContent=KPI.cleanTitle(d.title);
       code.textContent=key?'Pick code · '+key:'Ask the team to match this preview.';
-    }).catch(function(){if(version===reviewVersion&&dialog.open)code.textContent='Design code unavailable. Show the team this preview.';});
+      prepareCounterCard(version,code.textContent);
+    }).catch(function(){if(version===reviewVersion&&dialog.open){code.textContent='Design code unavailable. Show the team this preview.';prepareCounterCard(version,'Pick code unavailable — ask the team to match this preview.');}});
   }
+  async function prepareCounterCard(version,instruction){
+    var button=$('saveCounterCard'),dialog=$('counterReview');
+    if(version!==reviewVersion||!dialog.open)return;
+    try{
+      var rows=Array.from($('reviewDetails').querySelectorAll('dt')).map(function(term){return [term.textContent,term.nextElementSibling.textContent];});
+      var blob=await KPCounterCard.create({preview:reviewSource,code:instruction,rows:rows});
+      if(version!==reviewVersion||!dialog.open)return;
+      reviewCard=new File([blob],'keepsake-counter-card.png',{type:'image/png'});
+      button.disabled=false;button.textContent='Save counter card';
+    }catch(error){
+      if(version!==reviewVersion||!dialog.open)return;
+      button.textContent='Card unavailable';
+      kpToast('Could not prepare a card. Take a screenshot or keep this screen open for the team.');
+    }
+  }
+  $('saveCounterCard').addEventListener('click',async function(){
+    var button=this,version=reviewVersion,dialog=$('counterReview'),file=reviewCard;
+    if(button.disabled||!dialog.open||!file)return;
+    button.disabled=true;button.textContent='Opening…';
+    try{
+      if(navigator.canShare&&navigator.share&&navigator.canShare({files:[file]})){
+        await navigator.share({files:[file],title:'My Keepsake counter card'});
+      }else{
+        var url=URL.createObjectURL(file),link=document.createElement('a');
+        link.href=url;link.download=file.name;document.body.append(link);link.click();link.remove();
+        setTimeout(function(){URL.revokeObjectURL(url);},60000);
+        kpToast('Check your downloads for the card. If nothing saved, take a screenshot or keep this screen open.');
+      }
+    }catch(error){if(error.name!=='AbortError'&&version===reviewVersion&&dialog.open)kpToast('Could not save the card. Take a screenshot or keep this screen open for the team.');}
+    finally{if(version===reviewVersion&&dialog.open){button.disabled=false;button.textContent='Save counter card';}}
+  });
   function kpOrderPanel(){
     if(orderInFlight||state.reserved)return;
     if(document.documentElement.classList.contains('staff-mode'))return;
