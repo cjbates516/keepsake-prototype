@@ -67,14 +67,40 @@ window.KPCaseShell = (() => {
   function box(model) {
     return bounds[(model || '').replace(/^Samsung /, '')];
   }
-  function canShowEmpty(model, style = 'MagSafe Clear') {
+  function canShowEmpty(model, style = 'MagSafe Clear', photo, cameraPath) {
+    if (/^(Samsung )?Galaxy S26(?: Plus| Ultra)?$/.test(model)) {
+      return style === 'Tough Magnetic' && !!cameraPath &&
+        !!(photo?.naturalWidth || photo?.width) &&
+        (!(photo instanceof HTMLImageElement) || photo.complete);
+    }
     return !!box(model) && /^iPhone /.test(model) && style === 'MagSafe Clear' && !!bumper.naturalWidth;
   }
   // A translucent case back using the same fitted panel as the artwork. The
   // camera opening stays empty; phone cameras/colors belong only in mounted view.
   const films = new WeakMap();
-  function drawEmpty(ctx, model, width, height, mask, style = 'MagSafe Clear') {
-    if (!mask || !canShowEmpty(model, style)) return false;
+  const nativeFrames = new WeakMap();
+  function drawEmpty(ctx, model, width, height, mask, style = 'MagSafe Clear', photo, cameraPath) {
+    const maskWidth = mask && (mask.naturalWidth || mask.width);
+    const maskHeight = mask && (mask.naturalHeight || mask.height);
+    if (!maskWidth || !maskHeight || !canShowEmpty(model, style, photo, cameraPath)) return false;
+    // Keep the Galaxy case's own photographed bumper. Remove the phone and
+    // camera plateau using its existing model geometry, never the print file.
+    if (/Galaxy/.test(model)) {
+      const source = photo.currentSrc || photo.src || '';
+      let frame = nativeFrames.get(photo);
+      if (!frame || frame.mask !== mask || frame.cameraPath !== cameraPath || frame.source !== source) {
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.min(photo.naturalWidth || photo.width, 1250);
+        canvas.height = Math.round(canvas.width * 3000 / 2500);
+        const c = canvas.getContext('2d');
+        c.drawImage(photo, 0, 0, canvas.width, canvas.height);
+        c.globalCompositeOperation = 'destination-out';
+        c.drawImage(mask, 0, 0, canvas.width, canvas.height);
+        c.scale(canvas.width / 2500, canvas.height / 3000); c.fill(new Path2D(cameraPath));
+        frame = {canvas, mask, cameraPath, source}; nativeFrames.set(photo, frame);
+      }
+      ctx.drawImage(frame.canvas, 0, 0, width, height);
+    }
     let film = films.get(mask);
     if (!film) {
       film = document.createElement('canvas');
