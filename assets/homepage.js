@@ -30,17 +30,19 @@
   let visible = true, stopped = false, suppressClick = false;
 
   function measureHeader() {
-    hero.style.setProperty('--hero-header', (header.offsetHeight + announcement.offsetHeight) + 'px');
+    hero.style.setProperty('--hero-header', ((header?.offsetHeight || 0) + (announcement?.offsetHeight || 0)) + 'px');
   }
   measureHeader();
   if ('ResizeObserver' in window) {
     const observer = new ResizeObserver(measureHeader);
-    observer.observe(header);
-    observer.observe(announcement);
+    if (header) observer.observe(header);
+    if (announcement) observer.observe(announcement);
   }
   function schedule() {
     clearTimeout(timer);
-    if (!stopped && !motion.matches && visible && !document.hidden) {
+    // Start fetching the next case before its slide becomes visible.
+    slides[(current + 1) % slides.length].querySelectorAll('img').forEach(img => { img.loading = 'eager'; });
+    if (!hero.contains(document.activeElement) && !stopped && !motion.matches && visible && !document.hidden) {
       timer = setTimeout(() => {
         if (document.querySelector('#caseZoomDialog[open]')) schedule();
         else advance(1, false);
@@ -48,17 +50,25 @@
     }
   }
   function cycleColor(slide) {
-    if (!slide.dataset.altArt) return;
+    const nextSource = slide.dataset.altArt;
+    if (!nextSource) return;
     const link = slide.querySelector('.campaign-shop');
     const art = slide.querySelector('.scene-art');
-    const label = slide.querySelector('.campaign-shop');
-    const url = new URL(link.href);
-    const previous = [art.getAttribute('href').split('/').pop(), url.searchParams.get('colorway'), label.textContent];
-    art.setAttribute('href', 'assets/home/case-edit/' + slide.dataset.altArt);
-    url.searchParams.set('colorway', slide.dataset.altVariant);
-    link.href = url.href;
-    label.textContent = slide.dataset.altLabel;
-    [slide.dataset.altArt, slide.dataset.altVariant, slide.dataset.altLabel] = previous;
+    const nextVariant = slide.dataset.altVariant;
+    const nextLabel = slide.dataset.altLabel;
+    const preload = new Image();
+    preload.src = nextSource;
+    preload.decode().then(() => {
+      // Image, label and destination are committed together after the image loads.
+      if (slide.dataset.altArt !== nextSource) return;
+      const url = new URL(link.href);
+      const previous = [art.getAttribute('src'), url.searchParams.get('colorway'), link.textContent];
+      art.src = nextSource;
+      url.searchParams.set('colorway', nextVariant);
+      link.href = url.href;
+      link.textContent = nextLabel;
+      [slide.dataset.altArt, slide.dataset.altVariant, slide.dataset.altLabel] = previous;
+    }).catch(() => { /* Keep the current image and matching link when a download fails. */ });
   }
   function advance(step, manual) {
     const previous = slides[current];
@@ -75,17 +85,16 @@
     schedule();
   }
   hero.addEventListener('keydown', event => {
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     const step = {ArrowRight: 1, ArrowLeft: -1}[event.key];
     if (step) {
       event.preventDefault();
       advance(step, true);
       slides[current].querySelector('a').focus({preventScroll:true});
     }
-    if (event.key === ' ') {
-      event.preventDefault();
-      stopped = !stopped;
-      schedule();
-    }
+  });
+  hero.addEventListener('pointerenter', event => {
+    if (event.pointerType === 'mouse') { stopped = true; schedule(); }
   });
   hero.addEventListener('focusin', () => { stopped = true; schedule(); });
   hero.addEventListener('touchstart', event => {
