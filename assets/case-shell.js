@@ -67,6 +67,30 @@ window.KPCaseShell = (() => {
   function box(model) {
     return bounds[(model || '').replace(/^Samsung /, '')];
   }
+  function canShowEmpty(model, style = 'MagSafe Clear') {
+    return !!box(model) && /^iPhone /.test(model) && style === 'MagSafe Clear' && !!bumper.naturalWidth;
+  }
+  // A translucent case back using the same fitted panel as the artwork. The
+  // camera opening stays empty; phone cameras/colors belong only in mounted view.
+  const films = new WeakMap();
+  function drawEmpty(ctx, model, width, height, mask, style = 'MagSafe Clear') {
+    if (!mask || !canShowEmpty(model, style)) return false;
+    let film = films.get(mask);
+    if (!film) {
+      film = document.createElement('canvas');
+      const w=mask.naturalWidth||mask.width,h=mask.naturalHeight||mask.height;
+      if(!w||!h)return false;
+      const scale=Math.min(1,1000/h);
+      film.width=Math.round(w*scale);film.height=Math.round(h*scale);
+      const x = film.getContext('2d'); x.drawImage(mask, 0, 0, film.width, film.height);
+      x.globalCompositeOperation = 'source-in';
+      const sheen = x.createLinearGradient(0, 0, film.width, film.height);
+      sheen.addColorStop(0, 'rgba(236,241,241,.22)'); sheen.addColorStop(.5, 'rgba(215,225,227,.10)'); sheen.addColorStop(1, 'rgba(245,248,248,.28)');
+      x.fillStyle = sheen; x.fillRect(0, 0, film.width, film.height); films.set(mask, film);
+    }
+    ctx.drawImage(film, 0, 0, width, height);
+    return true;
+  }
   function draw(ctx, model, width, height, style = 'MagSafe Clear') {
     const b = box(model);
     // Galaxy and hybrid kit photos already include their fitted case hardware.
@@ -93,5 +117,5 @@ window.KPCaseShell = (() => {
     }
     ctx.restore();
   }
-  return {ready, box, draw, sampleReady, drawSample};
+  return {ready, box, draw, canShowEmpty, drawEmpty, sampleReady, drawSample};
 })();

@@ -128,7 +128,7 @@ html:not(.staff-mode) .kp-customizer #exportLink,html:not(.staff-mode) .kp-custo
  #mobileDesignPicker .photo-look canvas{width:100%;height:33px;margin:0 0 3px}
  #mobileDesignPicker .photo-look span{min-height:24px;font-size:11px}
  .preview-picker-open #stageStick{gap:8px!important;min-width:0}
- .preview-picker-open #stageCanvas{width:min(70vw,210px,29vh);height:auto}
+ .preview-picker-open #stageCanvas{width:min(100%,340px,46vh);height:auto}
  .preview-picker-open .design-rail>div:has(+ #kpSelRow){display:none}
 }
 
@@ -163,3 +163,12 @@ html:not(.staff-mode) .kp-customizer #exportLink,html:not(.staff-mode) .kp-custo
 @media (pointer:coarse) and (orientation:landscape) and (max-height:410px) {
   html:not(.staff-mode) .kp-customizer #stageStick {position:static!important;}
 }
+
+.case-view-switch:not([hidden]){display:flex;justify-content:center;gap:4px;padding:4px;border:1px solid #c9c4cd;border-radius:999px;background:#fff;max-width:100%;box-sizing:border-box}
+.case-view-switch button{min-height:44px;border:0;border-radius:999px;padding:8px 18px;background:transparent;color:#29252d;font:800 13px var(--body,system-ui);cursor:pointer}
+.case-view-switch button[aria-pressed="true"]{background:#29252d;color:#fff}
+/* Personalization controls must not widen the viewport or push the counter CTA away. */
+.kp-customizer #textOpts>div:first-child{flex-wrap:wrap}
+.kp-customizer #textColors{flex-wrap:wrap;min-width:0;max-width:100%}
+.kp-customizer #textColors button{box-sizing:border-box;flex-shrink:0}
+.kp-customizer #textOpts input[type="range"]{min-width:0}

@@ -88,7 +88,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   #grid .case-zoom-button canvas{display:block;width:100%;height:100%!important;object-fit:cover}
 </style>
 <link rel="stylesheet" href="assets/storefront.css">
-<script src="assets/case-shell.js"></script>
+<script src="assets/case-shell.js?v=case-view-2"></script>
 <script src="assets/print-layouts.js"></script>
 <script src="assets/colorway-catalog.js"></script>
 <script src="assets/design-colorways.js"></script>
@@ -129,6 +129,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       <div id="colorBar" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:30px"></div>
       <div class="kpStep" id="step3Lab"><span class="kpStepN">3</span><span style="font-weight:900;font-size:15px;color:#2D2D3B">Tap a case you love</span></div>
       <div id="kpChips" style="position:sticky;top:0;z-index:45;display:none;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);margin:0 -20px 10px;padding:10px 20px;border-bottom:1px solid #EFEDED;overflow-x:auto;white-space:nowrap;scrollbar-width:none"></div>
+      <div id="galleryCaseView" class="case-view-switch" role="group" aria-label="Case preview view" hidden style="width:max-content;margin:0 0 16px"><button type="button" data-view="case" aria-pressed="true">Case only</button><button type="button" data-view="phone" aria-pressed="false">On your phone</button></div>
       <div id="grid" style="min-height:70vh;display:grid;align-content:start;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px"></div>
     </div>
   </main>
@@ -195,6 +196,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       + '<button class="kpBrowseAllBtn" style="display:block;width:100%;max-width:420px;margin:24px auto 8px;background:#DC282E;color:#FFFFFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Browse all '+total+' designs</button></div>';
   }
   var entryParams = new URLSearchParams(location.search);
+  var previewMode=entryParams.get('view')==='phone'?'phone':'case';
+  window.__kpLimit=Math.min(1008,Math.max(48,Number(entryParams.get('n'))||48));
   if (entryParams.has('device')){
     var dp = entryParams.get('device').toLowerCase();
     var dp2 = dp.replace(/^(samsung|google)-/, '');
@@ -339,6 +342,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     card.querySelectorAll('a[href*="customizer.html"]').forEach(function(a){
       var url=new URL(a.href);
       url.searchParams.set('finish',chosen.n);
+      url.searchParams.set('view',previewMode);
       url.searchParams.set('colorway',artworkPicks[file]||'original');
       a.href=url.href;
     });
@@ -371,7 +375,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     loadDesign(file,function(){showPickedColor(card.querySelector('canvas'));});
   });
   function previewKey(file,finish){
-    return JSON.stringify([device,file,finish,artworkPicks[file]||'original']);
+    return JSON.stringify([device,file,finish,artworkPicks[file]||'original',previewMode]);
   }
   function renderCase(cv, file, colorIdx){
     if(!cv.width||!cv.isConnected||colorIdx!==+cv.dataset.color)return;
@@ -403,7 +407,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var dev=KP_DEVICES[device],CW=cv.width,CH=cv.height,S=CW/2500;
     var ctx = cv.getContext('2d');
     ctx.clearRect(0, 0, CW, CH);
-    ctx.drawImage(layer, 0, 0, CW, CH);
+    var emptyCase=previewMode==='case'&&KPCaseShell.drawEmpty(ctx,device,CW,CH,vmask);
+    if(!emptyCase)ctx.drawImage(layer, 0, 0, CW, CH);
 
     // A known stencil is loading: show the phone until its actual panel is ready.
     if (KP_VIEW[device] && !vmask){
@@ -427,7 +432,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       tc.globalAlpha = 1; tc.globalCompositeOperation = 'destination-in';
       tc.drawImage(vmask, 0, 0, CW, CH);
       // Preserve the photographed silhouette, including its antialiased corners.
-      if(device==='iPhone 18 Pro Max'||device==='iPhone 18 Pro') ctx.globalCompositeOperation='source-atop';
+      if(!emptyCase&&(device==='iPhone 18 Pro Max'||device==='iPhone 18 Pro')) ctx.globalCompositeOperation='source-atop';
       ctx.drawImage(t, 0, 0);
       ctx.globalCompositeOperation='source-over';
       KPCaseShell.draw(ctx,device,CW,CH);
@@ -487,7 +492,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       try{return await detailedCase(model,finish,design,pick);}
       catch(error){
         const thumb=trigger.querySelector('canvas');
-        if(thumb?.width && thumb.dataset.renderedPreview===JSON.stringify([model,design.file,finish,pick]))return thumb;
+        if(thumb?.width && thumb.dataset.renderedPreview===JSON.stringify([model,design.file,finish,pick,previewMode]))return thumb;
         throw error;
       }
     },
@@ -543,6 +548,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     document.body.style.overflow='hidden';
   }
   function kpCloseDrawer(){
+    var opened=document.getElementById('kpDevScrim');
+    if(!opened || opened.style.pointerEvents!=='auto')return;
     pendingDesign=null;
     var sc=document.getElementById('kpDevScrim'), dw=document.getElementById('kpDevDrawer');
     if(!sc) return;
@@ -557,9 +564,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var file = pendingDesign;
     kpCloseDrawer();
     if (file && selected) {
+      device=selected;saveBrowseFilters();
       location.assign('customizer.html?' + new URLSearchParams({design:file,model:slugify(selected),colorway:artworkPicks[file]||'original'}));
       return;
     }
+    if(!slug)return;
     device = selected;
     renderDeviceBar(); renderGrid();
     preloadDevice(device);
@@ -582,7 +591,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       var cur = m===device ? '<span style="margin-left:auto;color:#DC282E;font-weight:900">\u2713</span>' : '';
       return '<button data-md="'+slugify(m)+'" style="display:flex;align-items:center;width:100%;text-align:left;background:#FFF;border:1.5px solid '+(m===device?'#17171F':'#E9E7E4')+';border-radius:16px;padding:17px 20px;font-size:16.5px;font-weight:700;color:#17171F;cursor:pointer;margin:0 0 12px">'+m+badge+cur+'</button>';
     }).join('');
-    var flat='<button data-md="" style="display:block;width:100%;background:none;border:0;padding:14px;font-size:13.5px;font-weight:800;color:#6C6C72;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Just browsing \u2014 show all cases</button>';
+    var flat='<button data-md="" style="display:block;width:100%;background:none;border:0;padding:14px;font-size:13.5px;font-weight:800;color:#6C6C72;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Back to browsing</button>';
     dw.innerHTML=head+pills+'<div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 20px 6px">'+rows+'</div>'+flat;
     dw.querySelector('#kpDwClose').addEventListener('click',kpCloseDrawer);
     dw.querySelectorAll('[data-pill]').forEach(function(b){ b.addEventListener('click',function(){ drawerBrand=this.dataset.pill; kpRenderDrawer();dw.querySelector('[data-pill="'+drawerBrand+'"]').focus(); }); });
@@ -625,7 +634,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var sel=document.getElementById('wizCat');
     sel.addEventListener('change',function(){
       filter=this.value; searchQ='';
-      var si2=document.getElementById('wizSearch'); if(si2) si2.value='';
+      var si2=document.getElementById('wizSearch'); if(si2) si2.value=''; $('deskSearch').value='';
       renderFilters(); renderStates(); renderGrid();
     });
     var si=document.getElementById('wizSearch');
@@ -644,7 +653,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var filters = {
       device: device && slugify(device), cat: filter === 'All' ? null : filter,
       q: searchQ, color: colorSel, state: filter === 'City maps' && stateSel,
-      all: kpBrowseAll && '1'
+      all: kpBrowseAll && '1', n:window.__kpLimit>48?window.__kpLimit:null, view:device&&previewMode==='phone'?'phone':null
     };
     Object.entries(filters).forEach(function(pair) {
       if (pair[1]) url.searchParams.set(pair[0], pair[1]);
@@ -719,7 +728,17 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   function canBuy(){ return !!(window.KP_VARIANTS && window.KP_VARIANTS['MagSafe Clear'] && window.KP_VARIANTS['MagSafe Clear'][device]); }
 
+  function syncCaseView(){
+    var panel=$('galleryCaseView');panel.hidden=!device||!KPCaseShell.canShowEmpty(device);
+    panel.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.view===previewMode));});
+  }
+  function setCaseView(mode){
+    previewMode=mode;syncCaseView();saveBrowseFilters();
+    document.querySelectorAll('.kpCard').forEach(updateCaseLinks);refreshVisible();
+  }
+  $('galleryCaseView').addEventListener('click',function(e){var b=e.target.closest('[data-view]');if(b)setCaseView(b.dataset.view);});
   function renderGrid(){
+    syncCaseView();
     if(io)io.disconnect();
     saveBrowseFilters();
     kpChipsSync();
@@ -904,6 +923,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if (dot){
       e.preventDefault();
       var card = dot.closest('.kpCard'); var cv = card.querySelector('canvas');
+      setCaseView('phone');
       var ci = +dot.dataset.ci; finishPicks.set(device+'|'+card.dataset.file, ci); card.dataset.selectedColor=ci;updateCaseLinks(card);
       cv.dataset.color = ci;
       loadCase(device, ci, function(){ renderCase(cv, cv.dataset.file, ci); });
@@ -941,7 +961,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if (filter !== 'All' && !designs.some(function(x){ return x.category === filter; })) filter = 'All';
     renderDeviceBar(); renderFilters(); renderStates(); renderColors(); renderGrid();
     preloadDevice(device);
-    KPCaseShell.ready.then(refreshVisible);
+    KPCaseShell.ready.then(function(){syncCaseView();refreshVisible();});
     var brand=new URLSearchParams(location.search).get('brand');if(!device&&(brand==='Apple'||brand==='Samsung'))kpOpenDrawer(brand);
   }).catch(function(){
     $('grid').innerHTML = '<div style="padding:40px;font-weight:700;color:#6C6C72">Could not load designs.</div>';
