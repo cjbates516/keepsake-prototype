@@ -38,6 +38,7 @@ const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
  await p.reload({waitUntil:'domcontentloaded'});
  await p.waitForFunction(()=>window.__kp?.state.photoImg&&!__kp.state.libraryLoading&&!__kp.printIssue());
  assert.deepEqual(await p.evaluate(()=>[__kp.state.variant,__kp.state.store,__kp.state.addons.screen,__kp.state.previewMode]),['c4','Newark, DE',true,'case']);
+ assert.equal(await p.locator('#barStore').innerText(),'Newark','saved store label must be correct before any click');
  assert.equal(await p.locator('#kpPhone').count(),0);
  for(const width of [320,390,820]){await p.setViewportSize({width,height:844});assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow '+width);}
  await p.goBack({waitUntil:'domcontentloaded'});await p.locator('.kpCard[data-file="zodiac-atlas-leo.png"]').waitFor();
