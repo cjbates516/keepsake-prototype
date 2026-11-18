@@ -1,0 +1,1812 @@
+[
+  {
+    "href": "customizer.html?design=abstract-leopard-pink.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "abstract-leopard-pink.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--abstract-leopard-pink--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--abstract-leopard-pink--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=philadelphia-city-map-cream.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "philadelphia-city-map-cream.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--philadelphia-city-map-cream--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--philadelphia-city-map-cream--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=stylish-white-daisy-floral-pattern.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "stylish-white-daisy-floral-pattern.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--stylish-white-daisy-floral-pattern--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--stylish-white-daisy-floral-pattern--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=kp-wrong-way-duck.png&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "kp-wrong-way-duck.png",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--kp-wrong-way-duck--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--kp-wrong-way-duck--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-yosemite-half-dome-sunset.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-yosemite-half-dome-sunset.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-yosemite-half-dome-sunset.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-yosemite-half-dome-sunset.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-yosemite-half-dome-sunset.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=modern-yosemite-national-park-logo-for-mug.jpg&colorway=artwork-only&finish=Black&view=case",
+    "design": "modern-yosemite-national-park-logo-for-mug.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "artwork-only",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--modern-yosemite-national-park-logo-for-mug--artwork-only.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--modern-yosemite-national-park-logo-for-mug--artwork-only.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=original&finish=Black&view=case",
+    "design": "kp-acadia-bass-harbor.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-acadia-bass-harbor--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=c1&finish=Black&view=case",
+    "design": "kp-acadia-bass-harbor.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-acadia-bass-harbor--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=c2&finish=Black&view=case",
+    "design": "kp-acadia-bass-harbor.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-acadia-bass-harbor--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=c3&finish=Black&view=case",
+    "design": "kp-acadia-bass-harbor.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-acadia-bass-harbor--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=c4&finish=Black&view=case",
+    "design": "kp-acadia-bass-harbor.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-acadia-bass-harbor--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-acadia-bass-harbor-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-acadia-bass-harbor-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-acadia-bass-harbor-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-acadia-bass-harbor-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-acadia-bass-harbor-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=original&finish=Black&view=case",
+    "design": "kp-joshua-tree-hidden-valley.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=c1&finish=Black&view=case",
+    "design": "kp-joshua-tree-hidden-valley.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=c2&finish=Black&view=case",
+    "design": "kp-joshua-tree-hidden-valley.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=c3&finish=Black&view=case",
+    "design": "kp-joshua-tree-hidden-valley.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=c4&finish=Black&view=case",
+    "design": "kp-joshua-tree-hidden-valley.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-joshua-tree-hidden-valley-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-joshua-tree-hidden-valley-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-joshua-tree-hidden-valley-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-joshua-tree-hidden-valley-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-joshua-tree-hidden-valley-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=original&finish=Black&view=case",
+    "design": "kp-olympic-rialto.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-olympic-rialto--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=c1&finish=Black&view=case",
+    "design": "kp-olympic-rialto.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-olympic-rialto--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=c2&finish=Black&view=case",
+    "design": "kp-olympic-rialto.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-olympic-rialto--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=c3&finish=Black&view=case",
+    "design": "kp-olympic-rialto.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-olympic-rialto--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=c4&finish=Black&view=case",
+    "design": "kp-olympic-rialto.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-olympic-rialto--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-olympic-rialto-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto-photograph--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-olympic-rialto-photograph--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-olympic-rialto-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto-photograph--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-olympic-rialto-photograph--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-olympic-rialto-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto-photograph--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-olympic-rialto-photograph--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-olympic-rialto-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto-photograph--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-olympic-rialto-photograph--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-olympic-rialto-photograph.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto-photograph--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-olympic-rialto-photograph--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=original&finish=Black&view=case",
+    "design": "kp-grand-canyon-mather-point.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-canyon-mather-point--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-grand-canyon-mather-point--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=c1&finish=Black&view=case",
+    "design": "kp-grand-canyon-mather-point.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-canyon-mather-point--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-grand-canyon-mather-point--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=c2&finish=Black&view=case",
+    "design": "kp-grand-canyon-mather-point.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-canyon-mather-point--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-grand-canyon-mather-point--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=c3&finish=Black&view=case",
+    "design": "kp-grand-canyon-mather-point.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-canyon-mather-point--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-grand-canyon-mather-point--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=c4&finish=Black&view=case",
+    "design": "kp-grand-canyon-mather-point.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-canyon-mather-point--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-grand-canyon-mather-point--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-canyon-duck-on-a-rock-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-canyon-duck-on-a-rock-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-canyon-duck-on-a-rock-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-canyon-duck-on-a-rock-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-canyon-duck-on-a-rock-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=original&finish=Black&view=case",
+    "design": "kp-rocky-mountain-moraine-elk.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=c1&finish=Black&view=case",
+    "design": "kp-rocky-mountain-moraine-elk.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=c2&finish=Black&view=case",
+    "design": "kp-rocky-mountain-moraine-elk.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=c3&finish=Black&view=case",
+    "design": "kp-rocky-mountain-moraine-elk.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=c4&finish=Black&view=case",
+    "design": "kp-rocky-mountain-moraine-elk.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-rocky-dream-lake-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-dream-lake-photo--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-rocky-dream-lake-photo--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-rocky-dream-lake-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-dream-lake-photo--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-rocky-dream-lake-photo--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-rocky-dream-lake-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-dream-lake-photo--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-rocky-dream-lake-photo--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-rocky-dream-lake-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-dream-lake-photo--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-rocky-dream-lake-photo--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-rocky-dream-lake-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-dream-lake-photo--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-rocky-dream-lake-photo--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=original&finish=Black&view=case",
+    "design": "kp-great-smoky-mountains-newfound-gap.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=c1&finish=Black&view=case",
+    "design": "kp-great-smoky-mountains-newfound-gap.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=c2&finish=Black&view=case",
+    "design": "kp-great-smoky-mountains-newfound-gap.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=c3&finish=Black&view=case",
+    "design": "kp-great-smoky-mountains-newfound-gap.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=c4&finish=Black&view=case",
+    "design": "kp-great-smoky-mountains-newfound-gap.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-smokies-grotto-falls-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-smokies-grotto-falls-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-smokies-grotto-falls-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-smokies-grotto-falls-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-smokies-grotto-falls-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=original&finish=Black&view=case",
+    "design": "kp-yellowstone-grand-prismatic.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=c1&finish=Black&view=case",
+    "design": "kp-yellowstone-grand-prismatic.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=c2&finish=Black&view=case",
+    "design": "kp-yellowstone-grand-prismatic.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=c3&finish=Black&view=case",
+    "design": "kp-yellowstone-grand-prismatic.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=c4&finish=Black&view=case",
+    "design": "kp-yellowstone-grand-prismatic.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-yellowstone-old-faithful-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-yellowstone-old-faithful-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-yellowstone-old-faithful-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-yellowstone-old-faithful-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-yellowstone-old-faithful-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=original&finish=Black&view=case",
+    "design": "kp-zion-watchman-bend.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-watchman-bend--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-zion-watchman-bend--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=c1&finish=Black&view=case",
+    "design": "kp-zion-watchman-bend.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-watchman-bend--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-zion-watchman-bend--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=c2&finish=Black&view=case",
+    "design": "kp-zion-watchman-bend.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-watchman-bend--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-zion-watchman-bend--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=c3&finish=Black&view=case",
+    "design": "kp-zion-watchman-bend.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-watchman-bend--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-zion-watchman-bend--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=c4&finish=Black&view=case",
+    "design": "kp-zion-watchman-bend.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-watchman-bend--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-zion-watchman-bend--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-zion-the-narrows-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-the-narrows-photo--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-zion-the-narrows-photo--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-zion-the-narrows-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-the-narrows-photo--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-zion-the-narrows-photo--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-zion-the-narrows-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-the-narrows-photo--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-zion-the-narrows-photo--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-zion-the-narrows-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-the-narrows-photo--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-zion-the-narrows-photo--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-zion-the-narrows-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-the-narrows-photo--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-zion-the-narrows-photo--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=original&finish=Black&view=case",
+    "design": "kp-grand-teton-reflection.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-teton-reflection--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-grand-teton-reflection--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=c1&finish=Black&view=case",
+    "design": "kp-grand-teton-reflection.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-teton-reflection--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-grand-teton-reflection--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=c2&finish=Black&view=case",
+    "design": "kp-grand-teton-reflection.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-teton-reflection--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-grand-teton-reflection--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=c3&finish=Black&view=case",
+    "design": "kp-grand-teton-reflection.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-teton-reflection--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-grand-teton-reflection--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=c4&finish=Black&view=case",
+    "design": "kp-grand-teton-reflection.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-teton-reflection--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-grand-teton-reflection--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-teton-jenny-lake-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-teton-jenny-lake-photo--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-teton-jenny-lake-photo--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-teton-jenny-lake-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-teton-jenny-lake-photo--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-teton-jenny-lake-photo--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-teton-jenny-lake-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-teton-jenny-lake-photo--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-teton-jenny-lake-photo--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-teton-jenny-lake-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-teton-jenny-lake-photo--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-teton-jenny-lake-photo--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-teton-jenny-lake-photo.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-teton-jenny-lake-photo--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-teton-jenny-lake-photo--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=original&finish=Black&view=case",
+    "design": "kp-sunday-scramble.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-sunday-scramble--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=c1&finish=Black&view=case",
+    "design": "kp-sunday-scramble.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-sunday-scramble--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=c2&finish=Black&view=case",
+    "design": "kp-sunday-scramble.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-sunday-scramble--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=c3&finish=Black&view=case",
+    "design": "kp-sunday-scramble.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-sunday-scramble--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=c4&finish=Black&view=case",
+    "design": "kp-sunday-scramble.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-sunday-scramble--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-golf-pebble-beach.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-pebble-beach--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-golf-pebble-beach--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-golf-pebble-beach.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-pebble-beach--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-golf-pebble-beach--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-golf-pebble-beach.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-pebble-beach--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-golf-pebble-beach--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-golf-pebble-beach.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-pebble-beach--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-golf-pebble-beach--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-golf-pebble-beach.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-pebble-beach--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-golf-pebble-beach--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-golf-st-andrews.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-st-andrews--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-golf-st-andrews--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-golf-st-andrews.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-st-andrews--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-golf-st-andrews--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-golf-st-andrews.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-st-andrews--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-golf-st-andrews--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-golf-st-andrews.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-st-andrews--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-golf-st-andrews--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-golf-st-andrews.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-st-andrews--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-golf-st-andrews--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-weather-window-seat.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-window-seat--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-window-seat--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-weather-window-seat.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-window-seat--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-window-seat--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-weather-window-seat.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-window-seat--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-window-seat--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-weather-window-seat.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-window-seat--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-window-seat--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-weather-window-seat.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-window-seat--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-window-seat--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-weather-frost-fern.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-frost-fern--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-frost-fern--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-weather-frost-fern.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-frost-fern--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-frost-fern--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-weather-frost-fern.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-frost-fern--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-frost-fern--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-weather-frost-fern.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-frost-fern--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-frost-fern--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-weather-frost-fern.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-frost-fern--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-frost-fern--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-weather-october-drift.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-october-drift--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-october-drift--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-weather-october-drift.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-october-drift--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-october-drift--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-weather-october-drift.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-october-drift--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-october-drift--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-weather-october-drift.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-october-drift--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-october-drift--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-weather-october-drift.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-october-drift--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-october-drift--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=original&finish=Black&view=case",
+    "design": "kp-weather-ripple-prism.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-ripple-prism--original.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-ripple-prism--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=c1&finish=Black&view=case",
+    "design": "kp-weather-ripple-prism.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c1",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-ripple-prism--c1.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-ripple-prism--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=c2&finish=Black&view=case",
+    "design": "kp-weather-ripple-prism.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c2",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-ripple-prism--c2.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-ripple-prism--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=c3&finish=Black&view=case",
+    "design": "kp-weather-ripple-prism.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c3",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-ripple-prism--c3.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-ripple-prism--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=c4&finish=Black&view=case",
+    "design": "kp-weather-ripple-prism.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "c4",
+    "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-ripple-prism--c4.webp",
+    "replaces": [
+      "assets/featured-cases/galaxy-s26-ultra--kp-weather-ripple-prism--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=original&finish=Silver&view=case",
+    "design": "kp-cherry-dot.png",
+    "model": "iphone-17-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--original.webp",
+    "replaces": [
+      "assets/featured-cases/iphone-17-pro-max--kp-cherry-dot--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=original&finish=Silver&view=case",
+    "design": "kp-wrong-way-duck.png",
+    "model": "iphone-17-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--original.webp",
+    "replaces": [
+      "assets/featured-cases/iphone-17-pro-max--kp-wrong-way-duck--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=c1&finish=Silver&view=case",
+    "design": "kp-cherry-dot.png",
+    "model": "iphone-17-pro-max",
+    "variant": "c1",
+    "output": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--c1.webp",
+    "replaces": [
+      "assets/featured-cases/iphone-17-pro-max--kp-cherry-dot--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=c1&finish=Silver&view=case",
+    "design": "kp-wrong-way-duck.png",
+    "model": "iphone-17-pro-max",
+    "variant": "c1",
+    "output": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--c1.webp",
+    "replaces": [
+      "assets/featured-cases/iphone-17-pro-max--kp-wrong-way-duck--c1.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=c2&finish=Silver&view=case",
+    "design": "kp-cherry-dot.png",
+    "model": "iphone-17-pro-max",
+    "variant": "c2",
+    "output": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--c2.webp",
+    "replaces": [
+      "assets/featured-cases/iphone-17-pro-max--kp-cherry-dot--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=c2&finish=Silver&view=case",
+    "design": "kp-wrong-way-duck.png",
+    "model": "iphone-17-pro-max",
+    "variant": "c2",
+    "output": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--c2.webp",
+    "replaces": [
+      "assets/featured-cases/iphone-17-pro-max--kp-wrong-way-duck--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=c3&finish=Silver&view=case",
+    "design": "kp-cherry-dot.png",
+    "model": "iphone-17-pro-max",
+    "variant": "c3",
+    "output": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--c3.webp",
+    "replaces": [
+      "assets/featured-cases/iphone-17-pro-max--kp-cherry-dot--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=c3&finish=Silver&view=case",
+    "design": "kp-wrong-way-duck.png",
+    "model": "iphone-17-pro-max",
+    "variant": "c3",
+    "output": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--c3.webp",
+    "replaces": [
+      "assets/featured-cases/iphone-17-pro-max--kp-wrong-way-duck--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=c4&finish=Silver&view=case",
+    "design": "kp-cherry-dot.png",
+    "model": "iphone-17-pro-max",
+    "variant": "c4",
+    "output": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--c4.webp",
+    "replaces": [
+      "assets/featured-cases/iphone-17-pro-max--kp-cherry-dot--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=c4&finish=Silver&view=case",
+    "design": "kp-wrong-way-duck.png",
+    "model": "iphone-17-pro-max",
+    "variant": "c4",
+    "output": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--c4.webp",
+    "replaces": [
+      "assets/featured-cases/iphone-17-pro-max--kp-wrong-way-duck--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=pastel-pink-floral-minimalist-pattern.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "pastel-pink-floral-minimalist-pattern.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--pastel-pink-floral-minimalist-pattern--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--pastel-pink-floral-minimalist-pattern--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=cow-print-pink-on-cream.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "cow-print-pink-on-cream.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--cow-print-pink-on-cream--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--cow-print-pink-on-cream--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=where-it-all-began-heart-map-cream.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "where-it-all-began-heart-map-cream.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--where-it-all-began-heart-map-cream--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--where-it-all-began-heart-map-cream--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=high-detail-botanical-of-winter-flora-on-white.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "high-detail-botanical-of-winter-flora-on-white.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--high-detail-botanical-of-winter-flora-on-white--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--high-detail-botanical-of-winter-flora-on-white--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=lake-george-navy.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "lake-george-navy.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--lake-george-navy--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--lake-george-navy--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=kp-half-dome-river.png&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "kp-half-dome-river.png",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--kp-half-dome-river--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--kp-half-dome-river--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=philadelphia-city-map-navy.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "philadelphia-city-map-navy.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--philadelphia-city-map-navy--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--philadelphia-city-map-navy--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=mid-century-modern-abstract-shapes.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "mid-century-modern-abstract-shapes.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--mid-century-modern-abstract-shapes--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--mid-century-modern-abstract-shapes--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=west-chester-city-map-cream.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "west-chester-city-map-cream.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--west-chester-city-map-cream--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--west-chester-city-map-cream--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=y2k-retro-04.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "y2k-retro-04.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--y2k-retro-04--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--y2k-retro-04--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=smiley-flower-power.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "smiley-flower-power.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--smiley-flower-power--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--smiley-flower-power--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=colorful-minimalist-wavy-stripes.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "colorful-minimalist-wavy-stripes.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--colorful-minimalist-wavy-stripes--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--colorful-minimalist-wavy-stripes--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=dog-paw-prints-and-pet-toys.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "dog-paw-prints-and-pet-toys.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--dog-paw-prints-and-pet-toys--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--dog-paw-prints-and-pet-toys--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=christmas-santa-hats-white.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "christmas-santa-hats-white.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--christmas-santa-hats-white--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--christmas-santa-hats-white--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=dog-small-dog-breeds.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "dog-small-dog-breeds.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--dog-small-dog-breeds--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--dog-small-dog-breeds--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=dog-28-christmas-dog-pattern.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "dog-28-christmas-dog-pattern.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--dog-28-christmas-dog-pattern--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--dog-28-christmas-dog-pattern--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=dog-adorable-love-paw-dog-bone.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "dog-adorable-love-paw-dog-bone.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--dog-adorable-love-paw-dog-bone--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--dog-adorable-love-paw-dog-bone--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=nyc-map-navy.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "nyc-map-navy.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--nyc-map-navy--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--nyc-map-navy--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=boston-map-cream.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "boston-map-cream.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--boston-map-cream--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--boston-map-cream--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=bethany-beach-city-map-navy.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "bethany-beach-city-map-navy.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--bethany-beach-city-map-navy--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--bethany-beach-city-map-navy--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=los-angeles-map-blush.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "design": "los-angeles-map-blush.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--los-angeles-map-blush--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--los-angeles-map-blush--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=zodiac-atlas-leo.png&model=iphone-15-pro-max&colorway=c3&view=case",
+    "design": "zodiac-atlas-leo.png",
+    "model": "iphone-15-pro-max",
+    "variant": "c3",
+    "output": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-leo--c3.webp",
+    "replaces": [
+      "assets/featured-cases/sample--zodiac-atlas-leo--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=zodiac-atlas-aquarius.png&model=iphone-15-pro-max&colorway=c3&view=case",
+    "design": "zodiac-atlas-aquarius.png",
+    "model": "iphone-15-pro-max",
+    "variant": "c3",
+    "output": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-aquarius--c3.webp",
+    "replaces": [
+      "assets/featured-cases/sample--zodiac-atlas-aquarius--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=zodiac-atlas-gemini.png&model=iphone-15-pro-max&colorway=c3&view=case",
+    "design": "zodiac-atlas-gemini.png",
+    "model": "iphone-15-pro-max",
+    "variant": "c3",
+    "output": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-gemini--c3.webp",
+    "replaces": [
+      "assets/featured-cases/sample--zodiac-atlas-gemini--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=zodiac-atlas-scorpio.png&model=iphone-15-pro-max&colorway=c3&view=case",
+    "design": "zodiac-atlas-scorpio.png",
+    "model": "iphone-15-pro-max",
+    "variant": "c3",
+    "output": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-scorpio--c3.webp",
+    "replaces": [
+      "assets/featured-cases/sample--zodiac-atlas-scorpio--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?design=zodiac-atlas-virgo.png&model=iphone-15-pro-max&colorway=c3&view=case",
+    "design": "zodiac-atlas-virgo.png",
+    "model": "iphone-15-pro-max",
+    "variant": "c3",
+    "output": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-virgo--c3.webp",
+    "replaces": [
+      "assets/featured-cases/sample--zodiac-atlas-virgo--c3.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-15-pro-max&design=modern-yosemite-national-park-logo-for-mug.jpg&colorway=forest-topo&view=case",
+    "design": "modern-yosemite-national-park-logo-for-mug.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "forest-topo",
+    "output": "assets/case-only-previews/iphone-15-pro-max--modern-yosemite-national-park-logo-for-mug--forest-topo.webp",
+    "replaces": [
+      "assets/featured-cases/sample--modern-yosemite-national-park-logo-for-mug--forest-topo.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-15-pro-max&design=modern-yosemite-national-park-logo-for-mug.jpg&colorway=blaze-topo&view=case",
+    "design": "modern-yosemite-national-park-logo-for-mug.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "blaze-topo",
+    "output": "assets/case-only-previews/iphone-15-pro-max--modern-yosemite-national-park-logo-for-mug--blaze-topo.webp",
+    "replaces": [
+      "assets/featured-cases/sample--modern-yosemite-national-park-logo-for-mug--blaze-topo.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-15-pro-max&design=kp-cherry-dot.png&colorway=original&view=case",
+    "design": "kp-cherry-dot.png",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--kp-cherry-dot--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--kp-cherry-dot--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-15-pro-max&design=kp-heart-riot.png&colorway=c4&view=case",
+    "design": "kp-heart-riot.png",
+    "model": "iphone-15-pro-max",
+    "variant": "c4",
+    "output": "assets/case-only-previews/iphone-15-pro-max--kp-heart-riot--c4.webp",
+    "replaces": [
+      "assets/featured-cases/sample--kp-heart-riot--c4.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-15-pro-max&design=kp-heart-riot.png&colorway=c2&view=case",
+    "design": "kp-heart-riot.png",
+    "model": "iphone-15-pro-max",
+    "variant": "c2",
+    "output": "assets/case-only-previews/iphone-15-pro-max--kp-heart-riot--c2.webp",
+    "replaces": [
+      "assets/featured-cases/sample--kp-heart-riot--c2.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-15-pro-max&design=kp-liquid-prism.png&colorway=original&view=case",
+    "design": "kp-liquid-prism.png",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--kp-liquid-prism--original.webp",
+    "replaces": [
+      "assets/featured-cases/sample--kp-liquid-prism--original.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-15-pro-max&design=city-night-new-york.jpg&colorway=original&view=case",
+    "design": "city-night-new-york.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--city-night-new-york--original.webp",
+    "replaces": [
+      "assets/home/case-edit/new-york-shell.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-15-pro-max&design=city-night-philadelphia.jpg&colorway=original&view=case",
+    "design": "city-night-philadelphia.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--city-night-philadelphia--original.webp",
+    "replaces": [
+      "assets/home/case-edit/philadelphia-shell.webp"
+    ]
+  },
+  {
+    "href": "customizer.html?model=iphone-15-pro-max&design=city-night-los-angeles.jpg&colorway=original&view=case",
+    "design": "city-night-los-angeles.jpg",
+    "model": "iphone-15-pro-max",
+    "variant": "original",
+    "output": "assets/case-only-previews/iphone-15-pro-max--city-night-los-angeles--original.webp",
+    "replaces": [
+      "assets/home/case-edit/los-angeles-shell.webp"
+    ]
+  }
+]

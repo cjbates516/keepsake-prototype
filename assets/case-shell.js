@@ -68,13 +68,34 @@ window.KPCaseShell = (() => {
     return bounds[(model || '').replace(/^Samsung /, '')];
   }
   function canShowEmpty(model, style = 'MagSafe Clear') {
+    if (/^(Samsung )?Galaxy S26(?: Plus| Ultra)?$/.test(model)) return ['MagSafe Clear','Tough Magnetic'].includes(style);
     return !!box(model) && /^iPhone /.test(model) && style === 'MagSafe Clear' && !!bumper.naturalWidth;
   }
   // A translucent case back using the same fitted panel as the artwork. The
   // camera opening stays empty; phone cameras/colors belong only in mounted view.
   const films = new WeakMap();
-  function drawEmpty(ctx, model, width, height, mask, style = 'MagSafe Clear') {
+  const nativeFrames = new WeakMap();
+  function drawEmpty(ctx, model, width, height, mask, style = 'MagSafe Clear', photo, cameraPath) {
     if (!mask || !canShowEmpty(model, style)) return false;
+    // Keep the Galaxy case's own photographed bumper. Remove the phone and
+    // camera plateau using its existing model geometry, never the print file.
+    if (/Galaxy/.test(model)) {
+      if (!(photo?.naturalWidth || photo?.width) || !cameraPath) return false;
+      const source = photo.currentSrc || photo.src || '';
+      let frame = nativeFrames.get(photo);
+      if (!frame || frame.mask !== mask || frame.cameraPath !== cameraPath || frame.source !== source) {
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.min(photo.naturalWidth || photo.width, 1250);
+        canvas.height = Math.round(canvas.width * 3000 / 2500);
+        const c = canvas.getContext('2d');
+        c.drawImage(photo, 0, 0, canvas.width, canvas.height);
+        c.globalCompositeOperation = 'destination-out';
+        c.drawImage(mask, 0, 0, canvas.width, canvas.height);
+        c.scale(canvas.width / 2500, canvas.height / 3000); c.fill(new Path2D(cameraPath));
+        frame = {canvas, mask, cameraPath, source}; nativeFrames.set(photo, frame);
+      }
+      ctx.drawImage(frame.canvas, 0, 0, width, height);
+    }
     let film = films.get(mask);
     if (!film) {
       film = document.createElement('canvas');

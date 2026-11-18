@@ -88,7 +88,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   #grid .case-zoom-button canvas{display:block;width:100%;height:100%!important;object-fit:cover}
 </style>
 <link rel="stylesheet" href="assets/storefront.css">
-<script src="assets/case-shell.js?v=case-view-2"></script>
+<script src="assets/case-shell.js?v=case-view-3"></script>
 <script src="assets/print-layouts.js"></script>
 <script src="assets/colorway-catalog.js"></script>
 <script src="assets/design-colorways.js"></script>
@@ -407,7 +407,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var dev=KP_DEVICES[device],CW=cv.width,CH=cv.height,S=CW/2500;
     var ctx = cv.getContext('2d');
     ctx.clearRect(0, 0, CW, CH);
-    var emptyCase=previewMode==='case'&&KPCaseShell.drawEmpty(ctx,device,CW,CH,vmask);
+    var emptyCase=previewMode==='case'&&KPCaseShell.drawEmpty(ctx,device,CW,CH,vmask,'MagSafe Clear',layer,dev.camD);
     if(!emptyCase)ctx.drawImage(layer, 0, 0, CW, CH);
 
     // A known stencil is loading: show the phone until its actual panel is ready.

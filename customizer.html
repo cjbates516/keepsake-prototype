@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="assets/staff-print.css">
 <script src="assets/print-png.js"></script>
 <script src="assets/print-geometry.js"></script>
-<script src="assets/case-shell.js?v=case-view-2"></script>
+<script src="assets/case-shell.js?v=case-view-3"></script>
 <script src="assets/mask-geometry.js"></script>
 <script src="assets/print-layouts.js"></script>
 <title>Design your keepsake — Keepsake Printing Co</title>
@@ -852,7 +852,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ctx.globalCompositeOperation='source-over';
     ctx.globalAlpha=1;
     ctx.clearRect(0,0,DIM.w,DIM.h);
-    var emptyCase=state.previewMode==='case' && KPCaseShell.drawEmpty(ctx,state.model,DIM.w,DIM.h,viewReady&&viewMaskCanvas,state.caseType);
+    var emptyCase=state.previewMode==='case' && KPCaseShell.drawEmpty(ctx,state.model,DIM.w,DIM.h,viewReady&&viewMaskCanvas,state.caseType,caseImg,KITS[state.model]&&KITS[state.model].camD);
     if(!emptyCase)ctx.drawImage(caseImg,0,0,DIM.w,DIM.h);
     var canShowEmpty=!!(viewReady&&viewMaskCanvas&&KPCaseShell.canShowEmpty(state.model,state.caseType));
     $('caseViewSwitch').hidden=!canShowEmpty;
