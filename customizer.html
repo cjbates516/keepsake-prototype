@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="assets/staff-print.css">
 <script src="assets/print-png.js"></script>
 <script src="assets/print-geometry.js"></script>
-<script src="assets/case-shell.js"></script>
+<script src="assets/case-shell.js?v=case-view-2"></script>
 <script src="assets/mask-geometry.js"></script>
 <script src="assets/print-layouts.js"></script>
 <title>Design your keepsake — Keepsake Printing Co</title>
@@ -105,7 +105,7 @@ body{background:#FFFBF7}
 h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;letter-spacing:-.01em}
 </style>
 <script src="assets/kp-config.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.4/heic2any.min.js" defer></script>
+<script src="assets/heic-loader.js"></script>
 <script src="assets/colorway-catalog.js"></script>
 <script src="assets/design-colorways.js"></script>
 <script src="instore/instore-lib.js"></script>
@@ -149,6 +149,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <canvas id="stageCanvas" width="2500" height="3000" style="display:none"></canvas>
             <!-- non-17PM placeholder note wrapper reuses stageEmpty -->
           </div>
+          <div id="caseViewSwitch" class="case-view-switch" role="group" aria-label="Case preview view" hidden><button type="button" data-view="case" aria-pressed="true">Case only</button><button type="button" data-view="phone" aria-pressed="false">On your phone</button></div>
           <section id="mobileDesignPicker" hidden aria-label="Preview options"></section>
           <button type="button" id="skyCaseZoom" hidden>Enlarge case</button>
           <div id="stageHint" style="font-size:12px;font-weight:700;color:#6C6C72;letter-spacing:.04em">Upload or drop a photo to begin</div>
@@ -436,11 +437,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   var state = {
     brand:'Apple', model:'iPhone 18 Pro Max', colorName:'Silver', colorHex:'#F5F5F5',
     photo:null, photoImg:null, photoUrl:null, filter:'none', variant:'original',
-    caseType:'MagSafe Clear',
+    caseType:new URLSearchParams(location.search).get('style')==='hybrid'?'Slim Hybrid MagSafe':'MagSafe Clear', previewMode:new URLSearchParams(location.search).get('view')==='phone'?'phone':'case',
     isLibraryDesign:false,
     text:'', textFont:0, textColor:'#FFFFFF', textSize:220, textPos:62, textVertical:false,
     px:0, py:0, scale:1, rot:0,
-    addons:{screen:new URLSearchParams(location.search).get('staff')==='1' && new URLSearchParams(location.search).get('glass')==='1',lens:false}, promo:null, reserved:false, fitMode:'fill',
+    addons:{screen:new URLSearchParams(location.search).get('glass')==='1',lens:new URLSearchParams(location.search).get('lens')==='1'}, promo:null, reserved:false, fitMode:'fill',
     layout:null, photos:[], slotTarget:null, builder:false, designPath:null
   };
   (function(){ var mm = /[?&]model=([^&]+)/.exec(location.search);var staffMode=new URLSearchParams(location.search).get('staff')==='1';if(staffMode){state.handoffErrorType='model';state.handoffError='Choose a valid phone from the print counter before printing.';}if (!mm) return;
@@ -544,7 +545,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   var requestedFinish=new URLSearchParams(location.search).get('finish');
   var selectedKit=KITS[state.model];
-  if(selectedKit&&selectedKit.colors.some(function(c){return c.n===requestedFinish;}))state.colorName=requestedFinish;
+  var requestedColors=selectedKit&&(state.caseType==='Slim Hybrid MagSafe'&&selectedKit.hybrid?selectedKit.hybrid.colors:selectedKit.colors);
+  if(requestedColors&&requestedColors.some(function(c){return c.n===requestedFinish;}))state.colorName=requestedFinish;
 
   var canvas=$('stageCanvas'), ctx=canvas.getContext('2d');
   canvas.width=DIM.w*PS; canvas.height=DIM.h*PS;
@@ -850,7 +852,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ctx.globalCompositeOperation='source-over';
     ctx.globalAlpha=1;
     ctx.clearRect(0,0,DIM.w,DIM.h);
-    ctx.drawImage(caseImg,0,0,DIM.w,DIM.h);
+    var emptyCase=state.previewMode==='case' && KPCaseShell.drawEmpty(ctx,state.model,DIM.w,DIM.h,viewReady&&viewMaskCanvas,state.caseType);
+    if(!emptyCase)ctx.drawImage(caseImg,0,0,DIM.w,DIM.h);
+    var canShowEmpty=!!(viewReady&&viewMaskCanvas&&KPCaseShell.canShowEmpty(state.model,state.caseType));
+    $('caseViewSwitch').hidden=!canShowEmpty;
+    $('caseViewSwitch').querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.view===state.previewMode));});
     if(viewImg && !viewReady) {
       KPCaseShell.draw(ctx,state.model,DIM.w,DIM.h,state.caseType);
       return;
@@ -882,7 +888,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         d2.drawImage(viewMaskCanvas,0,0,DIM.w,DIM.h);
         d2.globalCompositeOperation='source-over';
       } else { d2.restore(); }
-      if(state.model==='iPhone 18 Pro Max'||state.model==='iPhone 18 Pro') ctx.globalCompositeOperation='source-atop';
+      if(!emptyCase&&(state.model==='iPhone 18 Pro Max'||state.model==='iPhone 18 Pro')) ctx.globalCompositeOperation='source-atop';
       ctx.drawImage(dl,0,0,DIM.w,DIM.h);
       ctx.globalCompositeOperation='source-over';
       if(!useMask){
@@ -904,7 +910,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         t2.drawImage(viewMaskCanvas,0,0,DIM.w,DIM.h);
         t2.globalCompositeOperation='source-over';
       } else { t2.restore(); }
-      if(state.model==='iPhone 18 Pro Max'||state.model==='iPhone 18 Pro') ctx.globalCompositeOperation='source-atop';
+      if(!emptyCase&&(state.model==='iPhone 18 Pro Max'||state.model==='iPhone 18 Pro')) ctx.globalCompositeOperation='source-atop';
       ctx.drawImage(dl2,0,0,DIM.w,DIM.h);
       ctx.globalCompositeOperation='source-over';
       if(!useMask){
@@ -1153,8 +1159,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(f.size>40*1024*1024){kpToast('That photo is over 40MB — please use a smaller copy.');return;}
     if(/heic|heif/i.test(f.type||'')||/\.hei[cf]$/i.test(f.name||'')){
       if(typeof heic2any!=='function'){
-        if(!f.__kpWaited){f.__kpWaited=true;setTimeout(function(){if(current())loadPhoto(f,forceSlot);},1200);kpToast('One moment — getting that photo ready…');}
-        else kpToast('We could not load HEIC support. Try a JPG, PNG, or screenshot.');
+        kpToast('One moment — getting that photo ready…');
+        KPHeic.load().then(function(){if(current())loadPhoto(f,forceSlot);}).catch(function(){if(current())kpToast('We could not load HEIC support. Try again, or choose a JPG, PNG, or screenshot.');});
         return;
       }
       kpToast('Converting your photo…',4000);
@@ -1316,7 +1322,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   document.addEventListener('click',function(e){
     var s=e.target.closest('.sw');
-    if(s){ state.colorName=s.dataset.n; state.colorHex=s.dataset.h; state.reserved=false;
+    if(s){ state.previewMode='phone'; state.colorName=s.dataset.n; state.colorHex=s.dataset.h; state.reserved=false;
       ['colorName','colorName2','colorName3','colorName4'].forEach(function(id){ var el=$(id); if(el) el.textContent=state.colorName; });
       $('miniPhone').style.background=state.colorHex;
       if (KITS[state.model]) loadKit(state.model);
@@ -1491,6 +1497,14 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     else { state.promo=null; m.textContent=code?'Hmm, we don’t recognize that code.':''; m.style.color='#DC282E'; }
     state.reserved=false; updateSummary();
   });
+  function saveLibraryOptions(){
+    var file=state.photoImg&&state.photoImg.__kpDesignFile;
+    if(!state.isLibraryDesign||!file||state.libraryLoading||state.photoImg.__kpIsThumb||new URLSearchParams(location.search).get('staff')==='1')return;
+    var url=new URL(location.href);
+    var options={design:file,model:state.model.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'),finish:state.colorName,colorway:state.variant,view:state.previewMode,glass:state.addons.screen?'1':null,lens:state.addons.lens?'1':null,store:state.store,style:state.caseType==='Slim Hybrid MagSafe'?'hybrid':null};
+    Object.entries(options).forEach(function(pair){if(pair[1])url.searchParams.set(pair[0],pair[1]);else url.searchParams.delete(pair[0]);});
+    if(url.href!==location.href)history.replaceState(history.state,'',url);
+  }
   function updateSummary(){
     var tkK=KITS[state.model], tOnly=!!(tkK&&tkK.toughOnly);
     /* KP_TOUGH_OFF: tough hidden — case types are Clear + Slim Hybrid (where available) */
@@ -1525,13 +1539,15 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       $('discountTop').textContent=p.name+' −$'+disc.toFixed(2); }
     $('reserveBtn').style.display=state.reserved?'none':'block';
     $('reservedBox').style.display=state.reserved?'block':'none';
+    saveLibraryOptions();
   }
   var KP_STORES=[
     {n:'West Chester, PA', a:'CPR Cell Phone Repair · West Chester'},
     {n:'Pottstown, PA', a:'CPR Cell Phone Repair · Pottstown'},
     {n:'Newark, DE', a:'CPR Cell Phone Repair · Newark'}
   ];
-  state.store=state.store||KP_STORES[0].n;
+  var requestedStore=new URLSearchParams(location.search).get('store');
+  state.store=KP_STORES.some(function(s){return s.n===requestedStore;})?requestedStore:KP_STORES[0].n;
   function renderStoreChips(){
     var el=$('storeChips'); if(!el) return;
     el.innerHTML=KP_STORES.map(function(st){
@@ -2139,6 +2155,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       };
     }
   }
+  $('caseViewSwitch').addEventListener('click',function(e){
+    var button=e.target.closest('[data-view]');if(!button)return;
+    state.previewMode=button.dataset.view;render();saveLibraryOptions();
+  });
   $('skyCaseZoom').onclick=function(){
     KPCaseZoom.open({title:'Your case',trigger:$('skyCaseZoom'),source:()=>{
       if(!caseReady || !lightReady || (viewImg && !viewReady)) throw Error('Case loading');
