@@ -2,18 +2,18 @@
  const header=document.querySelector('.home-header,.slate-header,.site-header .bar');
  if(!header || typeof document.createElement('dialog').showModal!=='function')return;
  const rows=[
-  ['iPhone cases','Pick your iPhone model','gallery.html?brand=Apple','assets/home/cherry-duck/cherry-dot-original.webp'],
-  ['Samsung cases','Pick your Galaxy model','gallery.html?brand=Samsung','assets/home/signature-golf/sunday-scramble-original.webp'],
-  ['All phone cases','Browse prints before picking a phone','gallery.html','assets/home/cherry-duck/wrong-way-duck-original.webp'],
+  ['iPhone cases','Pick your iPhone model','gallery.html?brand=Apple','assets/featured-cases/iphone-17-pro-max--kp-cherry-dot--original.webp'],
+  ['Samsung cases','Pick your Galaxy model','gallery.html?brand=Samsung','assets/featured-cases/galaxy-s26-ultra--kp-sunday-scramble--original.webp'],
+  ['All phone cases','Browse prints before picking a phone','gallery.html','assets/featured-cases/iphone-17-pro-max--kp-wrong-way-duck--original.webp'],
   ['City Scenes','Find your city','gallery.html?cat=City%20Scenes','assets/designs/thumbs/city-night-philadelphia.jpg'],
   ['Earth From Orbit','Deserts and river deltas photographed by satellite','gallery.html?cat=Earth%20From%20Orbit','assets/designs/thumbs/field-photo-yukon-delta-0.jpg'],
   ['Botanical Blueprints','Original seaweed cyanotypes by Anna Atkins','gallery.html?cat=Botanical%20Blueprints','assets/designs/thumbs/field-photo-291506.jpg'],
-  ['Signature Golf','Course maps and Sunday Scramble','signature-golf.html','assets/home/signature-golf/pebble-original.webp'],
-  ['National Parks','Illustrations and real park photos','parks-rugged.html','assets/home/parks-rugged/acadia-original.webp'],
+  ['Signature Golf','Course maps and Sunday Scramble','signature-golf.html','assets/featured-cases/galaxy-s26-ultra--kp-golf-pebble-beach--original.webp'],
+  ['National Parks','Illustrations and real park photos','parks-rugged.html','assets/featured-cases/galaxy-s26-ultra--kp-acadia-bass-harbor--original.webp'],
   ['Design your own','Use a photo from your phone','customizer.html','assets/photos/i17PM-hero.jpg'],
   ['Children’s artwork','Turn their drawing into a case','customizer.html?studio=drawing#personalStudio','assets/home/personal/drawing-shell.webp'],
   ['Night sky','Map a special date and place','customizer.html?studio=sky#personalStudio','assets/home/personal/sky-shell.webp'],
-  ['Seasonal Weather','Rain, frost, autumn and summer prints','seasonal-weather.html','assets/home/seasonal-weather/rain-original.webp'],
+  ['Seasonal Weather','Rain, frost, autumn and summer prints','seasonal-weather.html','assets/featured-cases/galaxy-s26-ultra--kp-weather-window-seat--original.webp'],
   ['Photo slates','Personalized stone prints','slates.html','assets/photos/slates/yosemite-valley-print.jpg']
  ];
  const trigger=document.createElement('button');trigger.className='ks-menu-toggle';trigger.type='button';trigger.setAttribute('aria-label','Open navigation menu');trigger.setAttribute('aria-haspopup','dialog');trigger.setAttribute('aria-controls','ks-menu-panel');trigger.setAttribute('aria-expanded','false');trigger.innerHTML='<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20M2 12h20M2 19h20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';

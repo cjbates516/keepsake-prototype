@@ -1624,7 +1624,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(!counterCatalog)counterCatalog=KPI.load('instore/').catch(function(err){counterCatalog=null;throw err;});
     counterCatalog.then(function(data){
       if(version!==reviewVersion||!dialog.open)return;
-      var m=data.activeModels.find(function(item){return item.name===model;});
+      var m=data.activeModels.find(function(item){return item.name.replace(/^Samsung /,'')===model.replace(/^Samsung /,'');});
       var d=m&&data.designsFor(m).find(function(item){return item.file===file;});
       var key=d&&KPI.pickCode(m,d,variant,state.addons.screen);
       if(d)title.textContent=KPI.cleanTitle(d.title);
