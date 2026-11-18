@@ -87,7 +87,8 @@ async function checkDestination(page, href) {
         const link=page.locator('a[data-preview-link][href*="studio='+studio+'"]').first();
         assert.equal(new URL(await link.getAttribute('href'),base).searchParams.get('view'),'case');
         await link.scrollIntoViewIfNeeded();
-        const image=link.locator('img');await image.evaluate(im=>im.decode());
+        const image=link.locator('img');
+        await page.waitForFunction(studio=>{const im=document.querySelector('a[data-preview-link][href*="studio='+studio+'"] img');return im.complete&&im.naturalWidth;},studio);
         const alpha=await image.evaluate(im=>{const c=document.createElement('canvas');c.width=im.naturalWidth;c.height=im.naturalHeight;c.getContext('2d').drawImage(im,0,0);return c.getContext('2d').getImageData(300,300,1,1).data[3];});
         assert.equal(alpha,0,studio+' sample has no phone in the camera opening');
         await link.tap();await page.locator('#caseZoomDialog').getByRole('button',{name:'Customize this case',exact:true}).tap();
