@@ -15,7 +15,7 @@ This is a stock and retail-price snapshot from RepairQ on November 20, 2026, not
 
 Never reuse an X ID for a different SKU. Existing codes must continue to resolve to the same product. IDs currently use two digits (X01–X99); expand the parser and tests before exceeding that range. Retired items should remain resolvable with an unavailable notice when a future retirement system is added.
 
-Store code order is permanent: S1 = West Chester, PA; S2 = Pottstown, PA; S3 = Newark, DE. Accessory codes require a store suffix. Staff lookup rejects unknown accessory IDs rather than silently excluding their prices. Codes without accessories preserve the existing format.
+Store code order is permanent: S1 = West Chester, PA; S2 = Pottstown, PA; S3 = Newark, DE. Accessory codes require a store suffix. Staff lookup rejects unknown accessory IDs rather than silently excluding their prices. Codes include the chosen store even without accessories, so Newark tax wording survives staff lookup. Older codes without a store still parse.
 
 A physical kiosk can be locked to its store with `instore/?store=Newark%2C%20DE` (or the corresponding exact store name). Start-over resets customer choices while retaining that configured store. An unconfigured kiosk asks the customer to select a store and clears that choice on reset.
 

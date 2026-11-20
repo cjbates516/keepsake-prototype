@@ -107,6 +107,7 @@
   .codecard{display:none;margin-top:4px;padding:24px;border-radius:22px;background:var(--card);border:2px solid var(--red)}
   .codecard.on{display:block;animation:in .2s ease-out both}
   .codecard .codelabel{margin:0;font-size:18px;font-weight:700;color:var(--red);letter-spacing:.04em}
+  .counter-thumb{display:none}.counter-thumb[hidden]{display:none}#counterStore{font-size:16px;color:var(--muted);margin-top:4px}
   .codecard .code{overflow-wrap:anywhere;margin:4px 0 10px;font-size:clamp(44px,5.6vw,60px);font-weight:800;color:var(--ink-strong);letter-spacing:.04em;font-variant-numeric:tabular-nums;line-height:1.05}
   .codecard p{margin:2px 0;font-size:20px}
   .codecard .hint{margin-top:12px;color:var(--muted);font-size:18px}
@@ -139,6 +140,28 @@
     .steps{flex-wrap:wrap}
   }
 @media(max-width:900px){.phones,.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+  .kiosk-location{margin:0 0 20px;font-size:15px;font-weight:700;color:var(--muted)}
+  .store-label{display:block;margin-top:20px;font-weight:700}
+  #accessoryStore{font:inherit;font-size:18px;min-height:48px;max-width:100%;margin:8px 0;padding:10px;color:#242328;background:white;border:1px solid #999;border-radius:8px}
+  #accessoryStore:disabled{opacity:1;color:#242328;-webkit-text-fill-color:#242328}
+  .bundle-note{margin:12px 0 18px;color:var(--ink-strong)}
+  .bundle-note input{width:24px;height:24px;flex:none;accent-color:var(--red)}
+  .setup-dock{position:fixed;z-index:12;inset:auto 0 0;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px max(24px,calc((100vw - 1192px)/2)) max(14px,env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 28px #24232812}
+  .setup-dock[hidden],#setupOptions[hidden],#kioskLocation[hidden]{display:none}
+  .setup-dock>div{min-width:0;display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:0 12px}
+  .setup-dock strong{font-size:28px;color:#242328;white-space:nowrap}.setup-dock span{font-size:17px;font-weight:700}.setup-dock small{grid-column:1/-1;font-size:13px;color:var(--muted)}
+  .setup-dock .cta{width:auto;min-width:260px;min-height:60px;padding:10px 24px;font-size:21px;box-shadow:none}
+  body.setup-open{padding-bottom:calc(var(--setup-dock-height,140px) + 32px)}
+  body.setup-open #idleNotice{bottom:calc(var(--setup-dock-height,140px) + 16px)}
+  #storeChoice[hidden]{display:none}#previewStatus:empty,#setupNotice:empty{display:none}#previewStatus,#setupNotice{font-size:16px;color:#86232b}
+  .codecard .code{font-size:clamp(28px,3.6vw,44px);letter-spacing:.02em}
+  .codecard .counter-total{border-top:1px solid var(--line);padding-top:14px;margin-top:14px;font-size:22px;font-weight:700}
+  .codecard #editSetup{margin-top:18px}
+  @media(min-width:901px) and (orientation:landscape){.confirm>.pv{position:sticky;top:20px}}
+  @media(max-width:600px){.setup-dock{gap:14px;padding:12px 16px max(12px,env(safe-area-inset-bottom))}.setup-dock>div{display:block}.setup-dock strong,.setup-dock span,.setup-dock small{display:block}.setup-dock strong{font-size:23px}.setup-dock span{font-size:13px}.setup-dock small{font-size:11px}.setup-dock .cta{min-width:0;max-width:48%;font-size:17px;padding:12px 18px;line-height:1.15}.codecard{padding:18px}.codecard p{font-size:18px}}
+  @media(max-width:600px){.handoff-open .confirm>.pv{display:none}.counter-heading{display:grid;grid-template-columns:minmax(0,1fr) 82px;gap:10px;align-items:start}.counter-thumb{display:block;width:82px;margin:0;padding:0}.counter-thumb img{width:100%;height:156px;object-fit:contain}.counter-heading .code{font-size:26px}}
+  @media(prefers-reduced-motion:reduce){.screen.on,.codecard.on{animation:none}}
 </style>
 <link rel="stylesheet" href="../assets/case-zoom.css">
 <link rel="stylesheet" href="../assets/accessories.css">
@@ -153,15 +176,16 @@
     <ol class="steps" aria-label="Steps">
       <li id="st1" aria-current="step"><b>1</b><span>Your phone</span></li>
       <li id="st2"><b>2</b><span>Your design</span></li>
-      <li id="st3"><b>3</b><span>Show us</span></li>
+      <li id="st3"><b>3</b><span>Your setup</span></li>
     </ol>
   </header>
+  <p id="kioskLocation" class="kiosk-location" hidden></p>
 
   <main>
     <section id="s1" class="screen on" aria-labelledby="s1h">
       <h1 id="s1h">Which phone do you have?</h1>
       <p class="lede">Your phone. Your style. Made right here.</p>
-      <div class="store-promise"><strong>Every design · $44.99</strong><span>Pick a design, make it yours, and let us print it.</span></div>
+      <div class="store-promise"><strong id="casePricePromise">Every design · $44.99</strong><span>Pick a design, make it yours, and let us print it.</span></div>
       <details class="phone-help"><summary>Not sure which iPhone you have?</summary><p>On your phone, open Settings → General → About and look for Model Name. If your model is not listed, ask a team member to check the available blanks.</p></details>
       <div id="phones"></div>
     </section>
@@ -190,22 +214,30 @@
         <div class="pv"><button class="case-zoom-button" type="button" data-image-zoom="pv" aria-label="Enlarge your selected case"><img id="pv" alt=""></button></div>
         <div>
           <h1 class="dname" id="dname"></h1>
-          <p class="dmeta" id="dmeta"></p>
-          <label for="accessoryStore" style="display:block;margin-top:20px;font-weight:700">Your store</label><select id="accessoryStore" style="font:inherit;font-size:18px;min-height:48px;max-width:100%;margin:8px 0;padding:10px;color:#242328;background:white;border:1px solid #999;border-radius:8px"><option value="">Choose your store</option><option>West Chester, PA</option><option>Pottstown, PA</option><option>Newark, DE</option></select><p class="price" id="price"></p><label class="bundle-note"><input id="glass" type="checkbox"> <span id="glassLabel">Add tempered glass</span></label>
-          <label class="bundle-note"><input id="charger" type="checkbox"> <span>Help me choose a charger<br><small>Staff will confirm compatibility and price. Not included in total.</small></span></label>
-          <div id="colorwayPicker" hidden style="margin:16px 0"><p style="font-size:18px;font-weight:800">Choose your background</p><div id="colorwayButtons" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"></div></div>
-          <button class="cta" type="button" id="showBtn">Show a team member</button>
+          <p class="dmeta" id="dmeta"></p><p id="previewStatus" role="status"></p><p id="setupNotice" role="status"></p>
+          <div id="setupOptions">
+            <div id="colorwayPicker" hidden style="margin:16px 0"><p style="font-size:18px;font-weight:800">Choose your background</p><div id="colorwayButtons" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"></div></div>
+            <div id="storeChoice"><label for="accessoryStore" class="store-label">Your store</label>
+            <select id="accessoryStore"><option value="">Choose your store</option><option>West Chester, PA</option><option>Pottstown, PA</option><option>Newark, DE</option></select></div>
+            <p class="price" id="price"></p>
+            <label class="bundle-note"><input id="glass" type="checkbox"> <span id="glassLabel">Add tempered glass</span></label>
+            <label class="bundle-note"><input id="charger" type="checkbox"> <span>Help me choose a charger<br><small>Prefer advice? Our team will help. Not included in total.</small></span></label>
+            <div id="accessoryPicker"></div>
+          </div>
           <div class="codecard" id="codecard" aria-live="polite">
-            <p class="codelabel" id="codelabel">YOUR PICK CODE</p>
-            <p class="code" id="code"></p>
+            <div class="counter-heading"><div><p class="codelabel" id="codelabel">YOUR PICK CODE</p><p class="code" id="code"></p></div><button class="case-zoom-button counter-thumb" type="button" data-image-zoom="pv" aria-label="Enlarge your counter case"><img id="counterPreview" alt="Your selected clear case"></button></div>
             <p id="cname"></p>
-            <p id="cmodel"></p><p id="cprice"></p><p id="chargerRequest" hidden></p><div id="counterAccessories"></div>
-            <p class="hint" id="hint">A team member will take it from here.</p>
+            <p id="cmodel"></p>
+            <p id="counterCase"></p><p id="counterGlass" hidden></p>
+            <div id="counterAccessories"></div><p id="chargerRequest" hidden></p>
+            <p id="cprice" class="counter-total"></p><p id="counterStore"></p>
+            <p class="hint" id="hint">Our team will confirm stock and take payment at the counter.</p>
+            <button class="ghost" type="button" id="editSetup">Edit this setup</button>
           </div>
           <div class="after">
             <button class="ghost" type="button" data-act="designs">Pick a different design</button>
             <button class="linkbtn" type="button" data-act="reset">Start over</button>
-          </div><div id="accessoryPicker"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -218,11 +250,15 @@
   </main>
 </div>
 
+<div id="setupDock" class="setup-dock" hidden>
+  <div><strong id="dockTotal">$44.99</strong><span id="dockSummary">Your case</span><small id="dockStore"></small></div>
+  <button class="cta" type="button" id="showBtn">Review my setup</button>
+</div>
 <div class="scrim" id="ownSheet" role="dialog" aria-modal="true" aria-labelledby="ownH">
   <div class="sheet">
     <div class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
     <h2 id="ownH">Use your own photo</h2>
-    <p>Bring your phone to the counter. A team member will help transfer your original photo, fit it to your case and check the crop with you.</p><p class="own-model" id="ownModel"></p><p>Your photo is not uploaded or stored on this browsing iPad.</p>
+    <p>Bring your phone to the counter. A team member will help transfer your original photo, fit it to your case and check the crop with you.</p><p class="own-model" id="ownModel"></p><p>Your photo is not uploaded or stored on this browsing screen.</p>
     <button class="cta" type="button" data-act="closeSheet">Got it</button>
   </div>
 </div>
@@ -241,7 +277,10 @@
   var $ = function (id) { return document.getElementById(id); };
   var data = null;
   var kioskStore=new URLSearchParams(location.search).get('store');
-  if(!KPAccessories.stores.includes(kioskStore))kioskStore='';
+  var requestedKioskStore=kioskStore;
+  kioskStore=KPAccessories.stores.find(function(name){return name.toLowerCase()===String(kioskStore||'').trim().toLowerCase();})||'';
+  $('storeChoice').hidden=!!kioskStore;
+  $('kioskLocation').hidden=!kioskStore&&!requestedKioskStore;$('kioskLocation').textContent=kioskStore?kioskStore+' · Pay with our team in store':'Choose your store when you build your setup.';
   var state = { screen: 1, model: null, design: null, colorway:'original', accessories:[], store:kioskStore, filter: 'all', query:'' };
   var urls = {};           /* model id -> { file: objectURL } */
   var blankUrl = {};       /* model id -> phone only render */
@@ -266,6 +305,8 @@
   function show(n, push) {
     if (state.screen !== n) { changedAt = Date.now(); changeTap = { x: lastTap.x, y: lastTap.y }; }
     state.screen = n;
+    if(n!==3){$('codecard').classList.remove('on');$('setupOptions').hidden=false;}
+    syncSetupView();
     if (n === 2) setTimeout(retryFailed, 0);
     ['s1', 's2', 's3', 'sErr'].forEach(function (id) { $(id).classList.toggle('on', id === (n === 0 ? 'sErr' : 's' + n)); });
     [1, 2, 3].forEach(function (i) { $('st' + i).toggleAttribute('aria-current', i === n); if (i === n) $('st' + i).setAttribute('aria-current', 'step'); });
@@ -280,7 +321,9 @@
   }
   window.addEventListener('popstate', function () {
     try { history.pushState({ kp: 'app' }, ''); } catch (e) {}
+    var zoom=document.getElementById('caseZoomDialog');if(zoom&&zoom.open){zoom.close();return;}
     if ($('ownSheet').classList.contains('on')) return closeSheet();
+    if (state.screen === 3 && $('codecard').classList.contains('on')) return editSetup();
     if (state.screen === 3) { state.design = null; show(2); }
     else if (state.screen === 2) show(1);
   });
@@ -486,10 +529,10 @@
     $('cname').textContent = title+(options.length>1?' · '+selected.name:'');
     $('cmodel').textContent = m.name;
     $('codecard').classList.remove('on');
-    $('showBtn').style.display = ''; $('showBtn').disabled=true;
+    $('setupOptions').hidden=false;syncSetupView(); $('showBtn').disabled=true;$('showBtn').textContent='Loading preview…';$('previewStatus').textContent='Preparing your case preview…';
     var pv = $('pv'), tileUrl = (urls[m.id] || {})[file];
     if(!sameDesign){var old = bigUrl; bigUrl = null;pv.src = tileUrl || blankUrl[m.id] || '';revoke(old);}
-    show(3);
+    if(state.screen!==3)show(3);
     var mine = d, look=state.colorway, seq = ++previewSeq;
     KPI.prepModel(m, BIG_W).then(function (prep) {
       if(bigImageFile!==file||!bigImagePromise){bigImageFile=file;bigImagePromise=KPI.loadImage(KPI.fullUrl(d), { cache: false, timeout: 15000 }).catch(function () {return KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 });});bigImagePromise.catch(function(){if(bigImageFile===file)bigImagePromise=null;});}
@@ -498,40 +541,57 @@
       });
     }).then(function (u) {
       /* only the newest request for the phone and design on screen may replace the preview */
-      if (seq === previewSeq && state.model === m && state.design === mine && state.screen === 3) { revoke(bigUrl); bigUrl = u; pv.src = u; $('showBtn').disabled=false; }
+      if (seq === previewSeq && state.model === m && state.design === mine && state.screen === 3) { revoke(bigUrl); bigUrl = u; pv.src = u; $('showBtn').disabled=false;$('showBtn').textContent='Review my setup';$('previewStatus').textContent=''; }
       else revoke(u);
-    }).catch(function () {if(seq===previewSeq){bigImagePromise=null;revoke(bigUrl);bigUrl=null;if(blankUrl[m.id])pv.src=blankUrl[m.id];else pv.removeAttribute('src');$('dmeta').textContent=look==='original'?'This design could not load. Reconnect and try again, or ask a team member.':'This colorway could not load. Choose Original, or reconnect and try again.';$('showBtn').disabled=true;}});
+    }).catch(function () {if(seq===previewSeq&&state.screen===3&&state.model===m&&state.design===mine){bigImagePromise=null;revoke(bigUrl);bigUrl=null;if(tileUrl)pv.src=tileUrl;else if(blankUrl[m.id])pv.src=blankUrl[m.id];else pv.removeAttribute('src');$('previewStatus').textContent=look==='original'?'Preview could not load. Our team will check this design before printing.':'The selected background preview could not load; this picture may show Original. Our team will check it before printing.';$('showBtn').disabled=false;$('showBtn').textContent='Review with our team';}});
   }
   $('accessoryStore').value=state.store;$('accessoryStore').disabled=!!kioskStore;
   $('accessoryStore').addEventListener('change',function(){state.store=this.value;updatePurchase();});
-  $('accessoryPicker').addEventListener('click',function(e){if(Date.now()-changedAt<450&&Math.abs(e.clientX-changeTap.x)<40&&Math.abs(e.clientY-changeTap.y)<40){e.preventDefault();e.stopImmediatePropagation();}},true);
-  var accessoryPicker=KPAccessories.mount($('accessoryPicker'),{store:state.store,onChange:function(ids){state.accessories=ids;if(data&&state.model&&state.design)updatePurchase();}});
+  $('setupOptions').addEventListener('click',function(e){if(Date.now()-changedAt<450&&Math.abs(e.clientX-changeTap.x)<40&&Math.abs(e.clientY-changeTap.y)<40){e.preventDefault();e.stopImmediatePropagation();}},true);
+  var accessoryPicker=KPAccessories.mount($('accessoryPicker'),{store:state.store,kiosk:true,onNotice:function(message){$('setupNotice').textContent=message;},onChange:function(ids){state.accessories=ids;if(data&&state.model&&state.design)updatePurchase();}});
   function updatePurchase() {
     accessoryPicker.setModel(state.model&&state.model.name);accessoryPicker.setStore(state.store);
     $('counterAccessories').replaceChildren();
     state.accessories.forEach(function(id){var x=KPAccessories.get(id),p=document.createElement('p');p.textContent=KPAccessories.label(x)+' · $'+KPAccessories.price(x,state.store).toFixed(2)+' · SKU '+x.sku+(KPAccessories.available(x,state.store)?'':' · confirm availability here');$('counterAccessories').append(p);});
     var glass=$('glass').checked;
     $('chargerRequest').hidden=!$('charger').checked;
-    $('chargerRequest').textContent='charger requested · team to confirm compatibility and price; not included in total';
+    $('chargerRequest').textContent='Charger help requested · team to confirm compatibility and price; not included in total';
     $('glassLabel').textContent='Add tempered glass for '+KPI.formatPrice(KP_CONFIG.bundledGlass)+' · save '+KPI.formatPrice(KP_CONFIG.GLASS_BUNDLE_DISCOUNT);
     $('price').textContent = KPI.formatPrice(data.price+(glass?KP_CONFIG.bundledGlass:0)+KPAccessories.total(state.accessories,state.store));
-    $('cprice').textContent = (state.accessories.length?'Estimated setup total · ':glass?'Case + tempered glass · ':'Case only · ')+$('price').textContent+(state.store==='Newark, DE'?' · no sales tax':' before tax')+(state.store?' · '+state.store:'')+(state.accessories.length?' · staff will confirm accessory price and stock':'');
+    $('counterCase').textContent='Clear case · '+KPI.formatPrice(data.price);
+    $('counterGlass').hidden=!glass;$('counterGlass').textContent='Tempered glass · '+KPI.formatPrice(KP_CONFIG.bundledGlass)+' (bundle price)';
+    $('dockTotal').textContent=$('price').textContent;
+    $('dockSummary').textContent='Case'+(glass?' + glass':'')+(state.accessories.length?' + '+state.accessories.length+' extra'+(state.accessories.length===1?'':'s'):'');
+    $('dockStore').textContent=(state.store||'Choose a store for extras')+(state.store==='Newark, DE'?' · no sales tax':' · before tax');
+    $('cprice').textContent = (state.accessories.length?'Estimated total · ':'Total · ')+$('price').textContent;
+    $('counterStore').textContent=(state.store||'Confirm your store with our team')+(state.store==='Newark, DE'?' · no sales tax':' · before tax');
     var code = KPI.pickCode(state.model, state.design, state.colorway, glass, $('charger').checked, state.accessories,state.store);
     /* no registered code (new design or code list missing): show no code rather than a guessed one */
     $('code').textContent = code || '';
     $('code').hidden = !code;
     $('codelabel').textContent = code ? 'YOUR PICK CODE' : 'SHOW THIS TO A TEAM MEMBER';
-    $('hint').textContent = code ? 'A team member will take it from here.' : 'A team member will find it by its name.';
+    $('hint').textContent = code ? 'Show this code to our team to confirm stock and pay.' : 'Show our team this preview. They’ll find the design by its name.';
   }
   $('glass').addEventListener('change',updatePurchase);
   $('charger').addEventListener('change',updatePurchase);
+  if(window.ResizeObserver)new ResizeObserver(function(entries){var h=entries[0].target.getBoundingClientRect().height;if(h)document.documentElement.style.setProperty('--setup-dock-height',h+'px');}).observe($('setupDock'));
+  function syncSetupView(){
+    var editing=state.screen===3&&!$('codecard').classList.contains('on');
+    $('setupDock').hidden=!editing;document.body.classList.toggle('setup-open',editing);document.body.classList.toggle('handoff-open',state.screen===3&&!editing);
+  }
+  function editSetup(){
+    changedAt=Date.now();changeTap={x:lastTap.x,y:lastTap.y};
+    $('codecard').classList.remove('on');$('setupOptions').hidden=false;syncSetupView();
+    $('showBtn').focus({preventScroll:true});$('dname').scrollIntoView({block:'start'});
+  }
+
   function revealCode() {
     if($('showBtn').disabled)return;
-    $('codecard').classList.add('on');
-    $('showBtn').style.display = 'none';
-    $('codecard').tabIndex=-1;$('codecard').focus();
-    var after = document.querySelector('#s3 .after');
-    if(after)after.scrollIntoView({block:'nearest'});
+    changedAt=Date.now();changeTap={x:lastTap.x,y:lastTap.y};
+    var previewSource=$('pv').getAttribute('src');$('counterPreview').parentNode.hidden=!previewSource;if(previewSource)$('counterPreview').src=previewSource;else $('counterPreview').removeAttribute('src');
+    $('codecard').classList.add('on');$('setupOptions').hidden=true;syncSetupView();
+    $('codecard').tabIndex=-1;$('codecard').focus({preventScroll:true});
+    $('codecard').scrollIntoView({block:'start'});
   }
 
   /* ---------- sheet, reset, idle ---------- */
@@ -549,12 +609,14 @@
     document.getElementById('caseZoomDialog')?.close();
     $('glass').checked=false;$('charger').checked=false;closeSheet();bigImageFile=bigImagePromise=null;rememberedLooks={};
     previewSeq++;
-    $('pv').removeAttribute('src'); revoke(bigUrl); bigUrl = null;
+    $('pv').removeAttribute('src');$('counterPreview').removeAttribute('src'); revoke(bigUrl); bigUrl = null;
     state.model = null; state.design = null;state.store=kioskStore;$('accessoryStore').value=kioskStore;accessoryPicker.setStore(kioskStore);accessoryPicker.reset();state.colorway='original'; state.filter = 'all';state.query='';$('designSearch').value='';clearTimeout(searchTimer);$('idleNotice').hidden=true;
     gen++; queue.length = 0;
     $('codecard').classList.remove('on');
-    $('showBtn').style.display = ''; $('showBtn').disabled=true;
+    $('setupOptions').hidden=false;syncSetupView(); $('showBtn').disabled=true;
     $('grid').innerHTML = ''; $('chips').innerHTML = '';
+    ['dname','dmeta','cname','cmodel','cprice','counterCase','counterGlass','counterAccessories','counterStore','colorwayButtons','previewStatus','setupNotice','code','price','chargerRequest','dockSummary','dockStore'].forEach(function(id){$(id).textContent='';});
+    $('chargerRequest').hidden=true;$('counterGlass').hidden=true;$('dockTotal').textContent='';$('glassLabel').textContent='Add tempered glass';
     show(1);
   }
   var last = Date.now();
@@ -604,12 +666,13 @@
     if (act === 'designs') { state.design = null; return show(2); }
     if (act === 'reset') return reset();
     if (t.id === 'showBtn') return revealCode();
+    if (t.id === 'editSetup') return editSetup();
   });
 
   /* ---------- offline cache ---------- */
   function warmCache() {
     if (!navigator.serviceWorker || !navigator.serviceWorker.controller) return;
-    var list = data.designs.map(KPI.thumbUrl);
+    var list = KPAccessories.items.filter(function(x){return !kioskStore||KPAccessories.available(x,kioskStore);}).map(function(x){return '../'+x.image;}).concat(data.designs.map(KPI.thumbUrl));
     data.activeModels.forEach(function (m) { list.push(KPI.maskUrl(m), KPI.caseUrl(m)); });
     /* the DM Sans stylesheet and its font files, so the brand font also works offline */
     var css = $('dmsans') && $('dmsans').href;
@@ -634,7 +697,7 @@
   var loadWatch = setTimeout(function () { if (!data) { last = Date.now(); show(0); } }, 25000);
   KPI.load().then(function (d) {
     clearTimeout(loadWatch);
-    data = d;
+    data = d;$('casePricePromise').textContent='Every design · '+KPI.formatPrice(data.price);
     if (state.screen === 0) show(1);
     buildPhones();
     setTimeout(warmCache, 6000);

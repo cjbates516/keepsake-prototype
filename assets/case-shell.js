@@ -1,5 +1,5 @@
 // Device silhouette bounds in the existing 2500 × 3000 mockup coordinate system.
-// The clear material comes from the store scan. The model photo supplies its controls.
+// Mounted case photographs supply the clear rim, camera lip and phone controls.
 window.KPCaseShell = (() => {
   const bounds = {
     "iPhone 17 Pro Max": [640, 278, 1856, 2722],
@@ -36,7 +36,7 @@ window.KPCaseShell = (() => {
     return bounds[(model || '').replace(/^Samsung /, '')];
   }
   // The device mockups already include the photographed clear-case edges and
-  // camera lip. Keep those visible; the old scanned overlay looked black and
+  // camera lip (18 reuses the owner-approved 17 photos). Keep those visible; the old scanned overlay looked black and
   // empty-case mode removed the phone cameras entirely. These no-op adapters
   // keep older callers compatible without changing any print geometry.
   const ready = Promise.resolve();

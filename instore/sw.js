@@ -4,7 +4,7 @@
    short timeout, so updates still arrive but a dead connection falls back to the last good copy.
    CacheStorage is shared by the whole origin, so this worker only ever touches caches named kp-instore-*. */
 var NS = 'kp-instore-';
-var VERSION = NS + 'v23';
+var VERSION = NS + 'v24';
 var SHELL = VERSION + '-shell';
 /* pictures are keyed by ?v=<design hash>, so this cache can outlive worker versions and stay warm across updates */
 var PICS = NS + 'pics-1';
@@ -29,18 +29,23 @@ var REQUIRED = ['../assets/accessory-catalog.js','../assets/accessories.js','../
   '../assets/photos/seasonal-credits/summer.pdf',
   '../assets/photos/golf-credits/pebble.pdf',
   '../assets/photos/golf-credits/andrews.pdf'];
+/* Every required shell resource must also be served when offline. */
+var REQUIRED_PATHS = {};
+REQUIRED.forEach(function (file) { REQUIRED_PATHS[new URL(file, self.location.href).pathname] = true; });
 var OPTIONAL = ['../assets/favicon.svg'];
 var PIC_TIMEOUT_MS = 9000, NET_LIMIT_MS = 15000;
 
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(SHELL).then(function (c) {
     return Promise.all(REQUIRED.map(function(file){
-      var req=new Request(new URL(file,self.location.href).href);
+      var req=new Request(new URL(file,self.location.href).href, { cache: 'no-cache' });
       return fetch(req).then(function(res){
         if(!res.ok||wrongType(req,res))throw new Error('Incomplete in-store shell: '+file);
-        return {req:req,res:res};
+        /* Consume each response immediately: waiting for every header before draining
+           bodies can exhaust the browser connection pool on a local kiosk server. */
+        return c.put(req,res);
       });
-    })).then(function(entries){return Promise.all(entries.map(function(item){return c.put(item.req,item.res);}));}).then(function () {
+    })).then(function () {
       return Promise.all(OPTIONAL.map(function (f) { return c.add(f).catch(function () {}); }));
     });
   }).then(function () { return self.skipWaiting(); }));
@@ -57,7 +62,6 @@ self.addEventListener('activate', function (e) {
 function isPicture(url) {
   return /\/assets\/(designs|cases|masks|accessories)\/.+\.(jpe?g|png|webp|gif|svg)$/i.test(url.pathname) || url.hostname === 'fonts.gstatic.com';
 }
-function isDesignList(url) { return /\/assets\/designs\/designs\.json$/.test(url.pathname); }
 function later(ms, value) { return new Promise(function (resolve) { setTimeout(function () { resolve(value); }, ms); }); }
 /* a captive portal answers everything with a 200 HTML page: never store HTML where data or a picture is expected */
 function wrongType(req, res) {
@@ -105,11 +109,7 @@ self.addEventListener('fetch', function (e) {
   var req = e.request;
   if (req.method !== 'GET') return;
   var url = new URL(req.url);
-  if (url.origin === self.location.origin && isDesignList(url)) { e.respondWith(networkFirst(req, 3500)); return; }
-  if (url.origin === self.location.origin && /\/assets\/(kp-config|slate-products|print-png|colorway-catalog|design-colorways|print-layouts)\.js$/.test(url.pathname)) { e.respondWith(networkFirst(req, 3500)); return; }
-  if (url.origin === self.location.origin && /\/assets\/photos\/slates\/(?:[a-z-]+-print\.jpg|olympic-photo-credit\.pdf)$/.test(url.pathname)) {
-    e.respondWith(networkFirst(req, 3500)); return;
-  }
+  if (url.origin === self.location.origin && REQUIRED_PATHS[url.pathname]) { e.respondWith(networkFirst(req, 3500)); return; }
   if (isPicture(url)) { e.respondWith(cacheFirst(req)); return; }
   if (url.hostname === 'fonts.googleapis.com') { e.respondWith(networkFirst(req, 2500)); return; }
   if (url.origin === self.location.origin &&

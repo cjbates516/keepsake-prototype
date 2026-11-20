@@ -8,6 +8,7 @@
     "Burgundy"
   ],
   "geometry": "Existing Corey-confirmed shared 17/18 case kits and print dimensions; device body dimensions are not substituted for blank print templates.",
-  "preview": "Official device rear view cropped using an SVG view component, with illustrative clear rim.",
-  "physicalValidation": "Store printer alignment remains unverified."
+  "preview": "Mounted clear-case photographs i17pm-silver.webp and i17p-silver.webp reused per owner-approved shared 17/18 fit. Silver is the unchanged photo; Black, Glacier and Burgundy simulate the inner phone panels only. Clear bumper, camera lip, buttons and lenses remain photographed. Built by tools/build_iphone18_case_views.cjs.",
+  "physicalValidation": "Store printer alignment remains unverified.",
+  "previewVersion": 13
 }
