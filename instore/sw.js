@@ -4,14 +4,14 @@
    short timeout, so updates still arrive but a dead connection falls back to the last good copy.
    CacheStorage is shared by the whole origin, so this worker only ever touches caches named kp-instore-*. */
 var NS = 'kp-instore-';
-var VERSION = NS + 'v22';
+var VERSION = NS + 'v23';
 var SHELL = VERSION + '-shell';
 /* pictures are keyed by ?v=<design hash>, so this cache can outlive worker versions and stay warm across updates */
 var PICS = NS + 'pics-1';
 var OURS = [SHELL, PICS];
 /* REQUIRED: if any of these fails to download, the update is rejected and the old worker (with its complete
    offline copy) stays in charge; the browser tries the update again on a later visit. */
-var REQUIRED = ['../assets/case-zoom.js','../assets/case-zoom.css','./', 'find.html', 'slate.html', 'slate.js', '../assets/slate-products.js', '../assets/seasonal-visibility.js', '../assets/print-png.js', '../assets/kp-config.js', '../assets/print-layouts.js', '../assets/design-colorways.js', '../assets/colorway-catalog.js', 'instore-lib.js', 'config.json', 'models.json', 'codes.json', '../assets/designs/designs.json',
+var REQUIRED = ['../assets/accessory-catalog.js','../assets/accessories.js','../assets/accessories.css','../assets/case-zoom.js','../assets/case-zoom.css','./', 'find.html', 'slate.html', 'slate.js', '../assets/slate-products.js', '../assets/seasonal-visibility.js', '../assets/print-png.js', '../assets/kp-config.js', '../assets/print-layouts.js', '../assets/design-colorways.js', '../assets/colorway-catalog.js', 'instore-lib.js', 'config.json', 'models.json', 'codes.json', '../assets/designs/designs.json',
   '../assets/photos/slates/yosemite-valley-print.jpg',
   '../assets/photos/slates/yellowstone-landscape-print.jpg',
   '../assets/photos/slates/zion-landscape-print.jpg',
@@ -55,7 +55,7 @@ self.addEventListener('activate', function (e) {
 
 /* image FILES only: assets/designs/designs.json lives in the same folder and must stay network first */
 function isPicture(url) {
-  return /\/assets\/(designs|cases|masks)\/.+\.(jpe?g|png|webp|gif|svg)$/i.test(url.pathname) || url.hostname === 'fonts.gstatic.com';
+  return /\/assets\/(designs|cases|masks|accessories)\/.+\.(jpe?g|png|webp|gif|svg)$/i.test(url.pathname) || url.hostname === 'fonts.gstatic.com';
 }
 function isDesignList(url) { return /\/assets\/designs\/designs\.json$/.test(url.pathname); }
 function later(ms, value) { return new Promise(function (resolve) { setTimeout(function () { resolve(value); }, ms); }); }

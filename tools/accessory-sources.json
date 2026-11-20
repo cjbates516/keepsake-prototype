@@ -1,0 +1,231 @@
+{
+  "checked": "2026-11-20",
+  "retailSource": "RepairQ catalog location override prices for all three stores, 2026-11-20",
+  "availability": "Per-store in-stock snapshot checked 2026-11-20; no live stock connection. Staff confirms availability.",
+  "supplierWarrantySource": "https://www.cellhelmet.com/pages/warranty",
+  "storeWarranty": "1-year limited warranty confirmed by owner. Supplier lifetime duration and fees not offered on this site.",
+  "items": [
+    {
+      "sku": "CABLE-C-A-3-R-G",
+      "supplierUrl": "https://www.cellhelmet.com/products/cable-type-c-to-type-a",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-C-A-1-R-G_Main-01.png?v=1773687199",
+      "localImage": "assets/accessories/4041667.png"
+    },
+    {
+      "sku": "CABLE-R-LIGHT-TYPE-C-3",
+      "supplierUrl": "https://www.cellhelmet.com/products/lightning-to-usb-c-charge-sync-cable",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-R-LIGHT-TYPE-C-1_Main-01.png?v=1773687293",
+      "localImage": "assets/accessories/4051874.png"
+    },
+    {
+      "sku": "CABLE-R-LIGHT-TYPE-C-6",
+      "supplierUrl": "https://www.cellhelmet.com/products/lightning-to-usb-c-charge-sync-cable",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-R-LIGHT-TYPE-C-6_Main-07.png?v=1773687288",
+      "localImage": "assets/accessories/4051875.png"
+    },
+    {
+      "sku": "CABLE-R-LIGHT-TYPE-C-10",
+      "supplierUrl": "https://www.cellhelmet.com/products/lightning-to-usb-c-charge-sync-cable",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-R-LIGHT-TYPE-C-10_Main-08.png?v=1773687288",
+      "localImage": "assets/accessories/4052087.png"
+    },
+    {
+      "sku": "CABLE-C-C-10-R-G",
+      "supplierUrl": "https://www.cellhelmet.com/products/cable-type-c-to-type-c",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-C-C-10-R-G_Main-08.png?v=1773687092",
+      "localImage": "assets/accessories/4054259.png"
+    },
+    {
+      "sku": "CABLE-C-C-3-R-G",
+      "supplierUrl": "https://www.cellhelmet.com/products/cable-type-c-to-type-c",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-C-C-1-R-G_Main-01.png?v=1773687092",
+      "localImage": "assets/accessories/4054260.png"
+    },
+    {
+      "sku": "CABLE-C-C-6-R-G",
+      "supplierUrl": "https://www.cellhelmet.com/products/cable-type-c-to-type-c",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-C-C-6-R-G_Main-07.png?v=1773687092",
+      "localImage": "assets/accessories/4054261.png"
+    },
+    {
+      "sku": "CABLE-LIGHT-A-3-R-W",
+      "supplierUrl": "https://www.cellhelmet.com/products/cable-lightning-to-usb-a",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-LIGHT-A-1-R-W_Main-01.png?v=1773686979",
+      "localImage": "assets/accessories/4055484.png"
+    },
+    {
+      "sku": "CABLE-C-A-6-R-G",
+      "supplierUrl": "https://www.cellhelmet.com/products/cable-type-c-to-type-a",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-C-A-6-R-G_Main-07.png?v=1773687179",
+      "localImage": "assets/accessories/4058558.png"
+    },
+    {
+      "sku": "CABLE-C-A-1-R-G",
+      "supplierUrl": "https://www.cellhelmet.com/products/cable-type-c-to-type-a",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-C-A-1-R-G_Main-02.png?v=1773687146",
+      "localImage": "assets/accessories/4061127.png"
+    },
+    {
+      "sku": "CABLE-C-C-1-R-G",
+      "supplierUrl": "https://www.cellhelmet.com/products/cable-type-c-to-type-c",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-C-C-1-R-G_Main-02.png?v=1773687092",
+      "localImage": "assets/accessories/4061128.png"
+    },
+    {
+      "sku": "WALL-PD-20W-A-C",
+      "supplierUrl": "https://www.cellhelmet.com/products/20w-wall-pd-dual-c-a",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/20W-PD-Dual-Wall-Block-Type-A---Type-C-cellhelmet-1686346755.png?v=1686346756",
+      "localImage": "assets/accessories/4061135.png"
+    },
+    {
+      "sku": "CABLE-LIGHT-A-6-R-W",
+      "supplierUrl": "https://www.cellhelmet.com/products/cable-lightning-to-usb-a",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-LIGHT-A-6-R-W_Main-07.png?v=1773686979",
+      "localImage": "assets/accessories/4062798.png"
+    },
+    {
+      "sku": "CABLE-LIGHT-A-10-R-W",
+      "supplierUrl": "https://www.cellhelmet.com/products/cable-lightning-to-usb-a",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-LIGHT-A-10-R-W_Main-08.png?v=1773686979",
+      "localImage": "assets/accessories/4062799.png"
+    },
+    {
+      "sku": "CAR-PD-20W+R-LIGHT",
+      "supplierUrl": "https://www.cellhelmet.com/products/20w-pd-car-charger-3ft-round-lightning-to-usb-c-cable",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/20W-PD-Car-Charger-_-3ft-Round-Lightning-to-USB-C-Cable-cellhelmet-1686345497.png?v=1747688197",
+      "localImage": "assets/accessories/4099888.png"
+    },
+    {
+      "sku": "CHDESK-STAND",
+      "supplierUrl": "https://www.cellhelmet.com/products/desk-stand-for-cellhelmet-or-oem-wireless-charging-pad",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/Desk-Stand-for-cellhelmet-or-OEM-Wireless-Charging-Pad-cellhelmet-1686349530.png?v=1686349532",
+      "localImage": "assets/accessories/4100071.png"
+    },
+    {
+      "sku": "CHMAG-15W-C",
+      "supplierUrl": "https://www.cellhelmet.com/products/chmag-15w-c",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CHMAG-15W-C-Main_a80be7f5-d7eb-483d-b768-9b0af9488d42.png?v=1781011547",
+      "localImage": "assets/accessories/4100072.png"
+    },
+    {
+      "sku": "WALL-PD-20W+R-LIGHT",
+      "supplierUrl": "https://www.cellhelmet.com/products/20w-pd-wall-plug-3-round-lightning-cable-type-c-white",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/20W-PD-Wall-Plug-_-3--Round-Lightning-Cable---Type-C---White-cellhelmet-1686345508.png?v=1686345509",
+      "localImage": "assets/accessories/4100092.png"
+    },
+    {
+      "sku": "WALL-PD-30W-W",
+      "supplierUrl": "https://www.cellhelmet.com/products/30w-pd-wall-plug-white",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/30W-PD-Wall-Plug---White-cellhelmet-1689033183219.png?v=1689033184",
+      "localImage": "assets/accessories/4100097.png"
+    },
+    {
+      "sku": "PB-5K-WRLSS-15W",
+      "supplierUrl": "https://www.cellhelmet.com/products/5k-mah-power-bank-15w-wireless-charging-with-magnetic-alignment-technology",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/5K-mAh-Power-Bank-15W-Wireless-Charging-With-Magnetic-Alignment-Technology-_Copy_-cellhelmet-92853123.png?v=1746627687",
+      "localImage": "assets/accessories/4100105.png"
+    },
+    {
+      "sku": "CABLE-R-LIGHT-TYPE-C-1",
+      "supplierUrl": "https://www.cellhelmet.com/products/lightning-to-usb-c-charge-sync-cable",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/CABLE-R-LIGHT-TYPE-C-1_Main-02.png?v=1773687260",
+      "localImage": "assets/accessories/4100604.png"
+    },
+    {
+      "sku": "3in1-CHARGE-STAND",
+      "supplierUrl": "https://www.cellhelmet.com/products/3-in-1-charging-stand",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/3in1_05.png?v=1752088179",
+      "localImage": "assets/accessories/4110803.png"
+    },
+    {
+      "sku": "BAR-IN-EAR-TYPE-C",
+      "supplierUrl": "https://www.cellhelmet.com/products/bar-audio-by-cellhelmet-usb-c-in-ear-wired-headphones-white",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/In-Ear-Wired-Earbuds-with-USB-C-Connector-_White_-Bar-Audio-by-cellhelmet-cellhelmet-54698992.png?v=1712719624",
+      "localImage": "assets/accessories/4114993.png"
+    },
+    {
+      "sku": "BAR-SM-BT-SPKR",
+      "supplierUrl": "https://www.cellhelmet.com/products/bar-audio-by-cellhelmet-small-bluetooth-speaker-gun-metal",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/Mini-Portable-Bluetooth-Speaker-_Gun-Metal_-Bar-Audio-by-cellhelmet-cellhelmet-54699131.png?v=1755634267",
+      "localImage": "assets/accessories/4114994.png"
+    },
+    {
+      "sku": "PL-202",
+      "supplierUrl": "https://www.cellhelmet.com/products/65-watt-universal-laptop-charger-with-9-adapters",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/65-Watt-Universal-Laptop-Charger-With-9-Adapters-cellhelmet-72331043.png?v=1711051002",
+      "localImage": "assets/accessories/4120886.png"
+    },
+    {
+      "sku": "PL-205",
+      "supplierUrl": "https://www.cellhelmet.com/products/100w-usb-c-universal-laptop-charger",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/100W-USB-C-Universal-Laptop-Charger-cellhelmet-72330924.png?v=1711050864",
+      "localImage": "assets/accessories/4123278.png"
+    },
+    {
+      "sku": "PL-204",
+      "supplierUrl": "https://www.cellhelmet.com/products/65w-usb-c-universal-laptop-charger",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/65W-USB-C-Universal-Laptop-Charger-cellhelmet-72330881.png?v=1711050858",
+      "localImage": "assets/accessories/4123279.png"
+    },
+    {
+      "sku": "PL-203",
+      "supplierUrl": "https://www.cellhelmet.com/products/90-watt-universal-laptop-charger-with-6-adapters",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/90-Watt-Universal-Laptop-Charger-With-6-Adapters-cellhelmet-72332121.png?v=1711051036",
+      "localImage": "assets/accessories/4123280.png"
+    },
+    {
+      "sku": "PB-221",
+      "supplierUrl": "https://www.cellhelmet.com/products/65w-gan-wall-charger",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/PB-221_1.png?v=1722346537",
+      "localImage": "assets/accessories/4143017.png"
+    },
+    {
+      "sku": "BAS-214",
+      "supplierUrl": "https://www.cellhelmet.com/products/water-resistant-bluetooth-speaker-bar-audio-by-cellhelmet",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/BAS-214_7.png?v=1761587016",
+      "localImage": "assets/accessories/4144352.png"
+    },
+    {
+      "sku": "BAS-226",
+      "supplierUrl": "https://www.cellhelmet.com/products/mini-portable-magsafe-compatible-bluetooth-speaker-bar-audio-by-cellhelmet",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/BAS-226_1.png?v=1761241785",
+      "localImage": "assets/accessories/4144353.png"
+    },
+    {
+      "sku": "PC-303",
+      "supplierUrl": "https://www.cellhelmet.com/products/braided-usb-type-c-to-usb-type-c-charge-sync-cable",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/Braided-USB-Type-C-to-USB-Type-C-Charge-Sync-Cable-2-Pack-cellhelmet-110061356.png?v=1792510987",
+      "localImage": "assets/accessories/4150936.png"
+    },
+    {
+      "sku": "PK-201",
+      "supplierUrl": "https://www.cellhelmet.com/products/30w-pd-car-charger-3ft-round-usb-c-to-usb-c-cable",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/30W-PD-Car-Plug-_-3_-Round-Type-C-to-C-Cable-cellhelmet-74651095.png?v=1747688088",
+      "localImage": "assets/accessories/4150944.png"
+    },
+    {
+      "sku": "PP-213",
+      "supplierUrl": "https://www.cellhelmet.com/products/20k-mah-power-bank-130w-3-ports-2-c-1-a-charging-cable",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/20K-mAh-Power-Bank_-130W_-3-Ports-_2-C_-1-A_-_-Charging-Cable-cellhelmet-69702362.png?v=1706636424",
+      "localImage": "assets/accessories/4150949.png"
+    },
+    {
+      "sku": "PB-222",
+      "supplierUrl": "https://www.cellhelmet.com/products/45w-dual-port-gan-wall-charger-type-c-type-c",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/PB-222_1.png?v=1783629677",
+      "localImage": "assets/accessories/4150953.png"
+    },
+    {
+      "sku": "PK-200",
+      "supplierUrl": "https://www.cellhelmet.com/products/30w-pd-wall-charger-3ft-round-usb-c-to-usb-c-cable",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/30W-PD-Wall-Plug-_-3_-Round-Type-C-to-C-Cable-cellhelmet-74650792.png?v=1747688090",
+      "localImage": "assets/accessories/4150954.png"
+    },
+    {
+      "sku": "PP-226",
+      "supplierUrl": "https://www.cellhelmet.com/products/qi2-magnetic-powerbank-snap-on-alignment-tech-with-kickstand-15w-5k-mah",
+      "imageSource": "https://cdn.shopify.com/s/files/1/0181/5849/files/PP-226_Main-04.png?v=1775223365",
+      "localImage": "assets/accessories/4150958.png"
+    }
+  ]
+}
