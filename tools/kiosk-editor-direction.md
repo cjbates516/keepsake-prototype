@@ -65,3 +65,7 @@ Confirmed extra fix: invalid case prices now reject loading instead of showing $
 ## Implementation review — 2026-11-20
 
 Claude source review prompted wall-clock kiosk expiry on wake/focus, privacy listeners installed before UI construction, duplicate sheet-dismissal protection, focus restoration, invalid browser-Forward guards, and moving the live canvas inside the mobile Adjust dialog. Footer/status height and visualViewport changes drive toolbar and keyboard layout. Purge and restore are synchronous; no private draft storage was added. Chrome/WebKit tests exercise these paths; physical iPhone keyboard and sleep behavior still require device verification.
+
+## Counter rehearsal follow-up
+
+See editor-counter-audit-2026-11-20.md. The receipt now leads with total and selected extras, supports direct editing and next-customer clearing, and allows five minutes of inactivity at the counter (three minutes in the editor). QR deployment is still held.

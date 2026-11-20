@@ -98,3 +98,26 @@ body.design-editor #stageCanvas{max-height:max(260px,calc(100dvh - 450px));width
 @media(max-width:760px){.design-editor #studioSheet[data-active-tool=adjust] #stageStick{margin:12px}.design-editor #studioSheet[data-active-tool=adjust] .studio-panel{padding-top:4px}}
 
 @media(max-width:760px){body.design-editor #studioSheet[data-active-tool=adjust] #stageCanvas{max-height:40dvh}}
+
+/* Keep the amount and selected items in view when handing the screen to staff. */
+.design-editor #studioSetupEdit{background:transparent;border:1px solid var(--studio-line);border-radius:8px;padding:10px 18px;margin:0 0 20px;font-weight:800;color:var(--studio-ink)}
+.design-editor #counterReview{width:min(94vw,620px)}
+.design-editor #reviewAtGlance{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:16px;align-items:start;margin:18px 0}
+.design-editor #counterReview .case-zoom-button{background:transparent;padding:0;align-self:start}
+.design-editor #reviewPreview{height:220px;background:#f0eee9}
+.design-editor #reviewOverview p{margin:0 0 7px;line-height:1.35}
+.design-editor .review-store{font-weight:800}.design-editor .review-total-label{font-size:12px!important;color:#57544f}
+.design-editor .review-total{display:block;font-size:32px;line-height:1.2;margin:0 0 10px;letter-spacing:-.04em}
+.design-editor .review-phone{font-size:13px!important;font-weight:800}
+.design-editor .review-items{padding-left:16px;margin:10px 0 0;font-size:13px;line-height:1.5}.design-editor .review-items li{margin:6px 0}
+.design-editor #reviewSpecification{border-block:1px solid var(--studio-line);padding:12px 0;margin:14px 0}
+.design-editor #reviewSpecification summary{cursor:pointer;font-size:14px;font-weight:800;min-height:30px;display:flex;align-items:center;gap:8px}
+.design-editor #reviewSpecification summary::before{content:'+'}.design-editor #reviewSpecification[open] summary::before{content:'−'}
+.design-editor #counterReview #saveCounterCard,.design-editor #reviewNextCustomer{grid-column:1/-1}
+.design-editor #reviewNextCustomer{background:var(--studio-red)}
+.design-editor #reviewCode{overflow-wrap:anywhere;font-size:15px}
+@media(max-width:760px){.design-editor #reviewAtGlance{grid-template-columns:minmax(0,1fr) 105px;gap:10px}.design-editor #reviewPreview{height:175px}.design-editor #counterReview h2{font-size:23px}.design-editor .review-total{font-size:30px}}
+.design-editor #reviewOverview .review-personalization{font-size:13px;font-weight:800;overflow-wrap:anywhere}.design-editor #storeChips button{min-height:48px}
+.design-editor #counterReview .review-expiry{font-size:12px;color:#57544f}
+
+.design-editor #counterReview .case-zoom-button span{display:block;font-size:12px;color:#34312d;font-weight:700;padding:6px 0}

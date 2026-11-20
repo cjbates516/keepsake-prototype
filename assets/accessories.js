@@ -23,7 +23,7 @@
   };
   function el(tag,text,cls){var n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;}
   API.mount=function(host,options){
-    var ids=API.parse(options.selected),model=options.model||'',store=options.store==null?'':options.store,category='Recommended',choices={},expanded=false,checkedModel=false;
+    var ids=API.parse(options.selected),model=options.model||'',store=options.store==null?'':options.store,category='Recommended',choices={},expanded=false,checkedModel=false,modelNotice='',lastNotice='';
     var heading=el('h3','Make it a complete setup'),intro=el('p','Pick your extras now. Pay with our team in store.','ka-intro');
     var notice=el('p','','ka-status');notice.setAttribute('role','status');
     var tabs=el('div',null,'ka-tabs');tabs.setAttribute('aria-label','Accessory categories');tabs.setAttribute('role','group');
@@ -32,11 +32,13 @@
     var checked=new Date(catalog[0].stockChecked+'T12:00:00Z').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'});
     var foot=el('p','1-year limited warranty. Keep your receipt and ask our team about coverage and exclusions. Prices and availability checked '+checked+'. Our team confirms stock before purchase.','ka-foot');
     var warranty=el('a','Accessory warranty help');warranty.href=new URL('help.html#accessory-warranty',root).href;if(!options.kiosk)foot.append(document.createTextNode(' '),warranty);
-    host.classList.add('ka');host.append(heading,intro,selected,tabs,grid,more,notice,foot);
+    host.classList.add('ka');host.append(heading,intro,notice,selected,tabs,grid,more,foot);
     var cats=['Recommended','Cables','Wall chargers','Car chargers','Wireless','Audio','More'];
     function change(){options.onChange(ids.slice());}
-    function toggle(id){var x=API.get(id);if(ids.indexOf(id)>=0)ids=ids.filter(function(i){return i!==id;});else{ids=ids.filter(function(i){return API.get(i).group!==x.group;});ids.push(id);ids.sort();}draw();change();}
+    function toggle(id){modelNotice='';var x=API.get(id);if(ids.indexOf(id)>=0)ids=ids.filter(function(i){return i!==id;});else{ids=ids.filter(function(i){return API.get(i).group!==x.group;});ids.push(id);ids.sort();}draw();change();}
     function draw(){
+      var stockNotice=store&&ids.some(function(id){return !API.available(API.get(id),store);})?'Some selected extras need a stock check at this store. Your total is an estimate.':'';
+      var message=[modelNotice,stockNotice].filter(Boolean).join(' ');if(message!==lastNotice){lastNotice=message;notice.textContent=message;if(options.onNotice)options.onNotice(message);}
       if(!store){intro.textContent='Choose your store above to see accessories and local pricing.';grid.replaceChildren();tabs.replaceChildren();selected.replaceChildren();more.hidden=true;return;}
       intro.textContent='Extras for '+store+'. Pay with our team in store.';
       var focused=document.activeElement, focusKey=host.contains(focused)?(focused.dataset.accessory?'[data-accessory="'+focused.dataset.accessory+'"]':focused.dataset.group?'[data-group="'+focused.dataset.group+'"]':focused.dataset.category?'[data-category="'+focused.dataset.category+'"]':focused.dataset.remove?'[data-accessory="'+focused.dataset.remove+'"]':null):null;
@@ -61,6 +63,6 @@
       if(focusKey){var next=host.querySelector(focusKey);if(next)next.focus({preventScroll:true});else if(focused.dataset.remove)selected.focus({preventScroll:true});}
     }
     more.onclick=function(){var oldCount=grid.children.length;expanded=true;draw();var next=grid.children[oldCount]||grid.children[0];if(next){var button=next.querySelector('button');if(button)button.focus();}};draw();
-    return {setStore:function(value){if((value!==''&&API.stores.indexOf(value)<0)||store===value)return;store=value;if(!store){ids=[];draw();change();}else draw();},setModel:function(value){if(checkedModel&&model===value)return;checkedModel=true;model=value;var old=ids.length;ids=ids.filter(function(id){return options.keepIncompatible||API.compatible(API.get(id),model);});notice.textContent=old!==ids.length?'We removed accessories that do not match this phone.':'';if(options.onNotice)options.onNotice(notice.textContent);draw();if(old!==ids.length)change();},reset:function(){ids=[];choices={};category='Recommended';expanded=false;notice.textContent='';draw();change();},selected:function(){return ids.slice();}};
+    return {setStore:function(value){if((value!==''&&API.stores.indexOf(value)<0)||store===value)return;store=value;modelNotice='';if(!store){ids=[];draw();change();}else draw();},setModel:function(value){if(checkedModel&&model===value)return;checkedModel=true;model=value;var old=ids.length;ids=ids.filter(function(id){return options.keepIncompatible||API.compatible(API.get(id),model);});modelNotice=old!==ids.length?'We removed accessories that do not match this phone.':'';draw();if(old!==ids.length)change();},reset:function(){ids=[];choices={};category='Recommended';expanded=false;modelNotice='';draw();change();},selected:function(){return ids.slice();}};
   };
 })();
