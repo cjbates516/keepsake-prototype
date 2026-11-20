@@ -10,7 +10,7 @@
   ['Botanical Blueprints','Original seaweed cyanotypes by Anna Atkins','gallery.html?cat=Botanical%20Blueprints','assets/designs/thumbs/field-photo-291506.jpg'],
   ['Signature Golf','Course maps and Sunday Scramble','signature-golf.html','assets/case-only-previews/galaxy-s26-ultra--kp-golf-pebble-beach--original.webp?v=clear-mounted-1'],
   ['National Parks','Illustrations and real park photos','parks-rugged.html','assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor--original.webp?v=clear-mounted-1'],
-  ['Design your own','Use a photo from your phone','customizer.html','assets/cases/sample-clear-15pm.webp'],
+  ['Design your own','Use a photo from your phone','customizer.html','assets/home/personal/drawing-case.webp'],
   ['Children’s artwork','Turn their drawing into a case','customizer.html?studio=drawing#personalStudio','assets/home/personal/drawing-case.webp'],
   ['Night sky','Map a special date and place','customizer.html?studio=sky#personalStudio','assets/home/personal/sky-case.webp'],
   ['Seasonal Weather','Rain, frost, autumn and summer prints','seasonal-weather.html','assets/case-only-previews/galaxy-s26-ultra--kp-weather-window-seat--original.webp?v=clear-mounted-1'],
