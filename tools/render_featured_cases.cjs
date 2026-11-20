@@ -16,7 +16,7 @@ const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
     await page.goto(new URL(row.href,base).href,{waitUntil:'domcontentloaded'});
     await page.waitForFunction(row=>{
      const s=window.__kp?.state;
-     return s?.photoImg?.__kpDesignFile===row.design&&!s.photoImg.__kpIsThumb&&!s.libraryLoading&&s.variant===row.variant&&!__kp.printIssue()&&!document.getElementById('caseViewSwitch').hidden;
+     return s?.photoImg?.__kpDesignFile===row.design&&!s.photoImg.__kpIsThumb&&!s.libraryLoading&&s.variant===row.variant&&!__kp.printIssue();
     },row);
     const res=await page.evaluate(async()=>{
      await KPCaseShell.ready;__kp.render();await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
@@ -29,7 +29,7 @@ const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
      const out=document.createElement('canvas');out.width=right-left;out.height=bottom-top;out.getContext('2d').drawImage(c,-left,-top);
      return {webp:out.toDataURL('image/webp',.94).split(',')[1],model:s.model,variant:s.variant,view:s.previewMode,caseType:s.caseType,width:out.width,height:out.height,crop:[left,top,right,bottom],cameraPoint:[point[0]*c.width/2500-left,point[1]*c.height/3000-top],cameraAlpha};
     });
-    assert.equal(res.view,'case');assert.equal(res.cameraAlpha,0,row.output+' camera must be empty');
+    assert.equal(res.view,'phone');assert(res.cameraAlpha>240,row.output+' must show the phone through the camera opening');
     assert.equal(res.model.toLowerCase().replace(/^samsung /,'').replaceAll(' ','-'),row.model);
     assert.equal(res.variant,row.variant);assert.equal(res.caseType,row.caseType,'Case style drift: '+row.output);
     fs.mkdirSync(path.dirname(row.output),{recursive:true});fs.writeFileSync(row.output,Buffer.from(res.webp,'base64'));
@@ -41,5 +41,5 @@ const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
   await Promise.all([worker(),worker()]);
   fs.writeFileSync('tools/featured-case-renders.json',JSON.stringify(results.sort((a,b)=>a.output.localeCompare(b.output)),null,2)+'\n');
  }finally{await browser.close();}
- assert.equal(results.length,rows.length);console.log(results.length+' case-only previews rebuilt');
+ assert.equal(results.length,rows.length);console.log(results.length+' mounted clear-case previews rebuilt');
 })().catch(e=>{console.error(e);process.exitCode=1;});

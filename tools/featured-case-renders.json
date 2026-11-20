@@ -3,7 +3,7 @@
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -17,13 +17,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -37,13 +37,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -57,13 +57,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -77,13 +77,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -97,13 +97,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -117,13 +117,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -137,13 +137,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -157,13 +157,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -177,13 +177,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -197,13 +197,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -217,13 +217,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -237,13 +237,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -257,13 +257,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -277,13 +277,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -297,13 +297,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-pebble-beach--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -317,13 +317,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-pebble-beach--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -337,13 +337,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-pebble-beach--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -357,13 +357,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-pebble-beach--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -377,13 +377,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-pebble-beach--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -397,13 +397,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-st-andrews--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -417,13 +417,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-st-andrews--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -437,13 +437,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-st-andrews--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -457,13 +457,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-st-andrews--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -477,13 +477,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-st-andrews--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -497,13 +497,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-canyon-mather-point--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -517,13 +517,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-canyon-mather-point--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -537,13 +537,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-canyon-mather-point--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -557,13 +557,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-canyon-mather-point--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -577,13 +577,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-canyon-mather-point--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -597,13 +597,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-teton-reflection--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -617,13 +617,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-teton-reflection--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -637,13 +637,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-teton-reflection--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -657,13 +657,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-teton-reflection--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -677,13 +677,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-teton-reflection--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -697,13 +697,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -717,13 +717,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -737,13 +737,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -757,13 +757,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -777,13 +777,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -797,13 +797,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -817,13 +817,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -837,13 +837,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -857,13 +857,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -877,13 +877,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -897,13 +897,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -917,13 +917,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -937,13 +937,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -957,13 +957,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -977,13 +977,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -997,13 +997,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1017,13 +1017,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1037,13 +1037,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1057,13 +1057,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1077,13 +1077,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1097,13 +1097,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto-photograph--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1117,13 +1117,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto-photograph--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1137,13 +1137,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto-photograph--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1157,13 +1157,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto-photograph--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1177,13 +1177,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto-photograph--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1197,13 +1197,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-dream-lake-photo--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1217,13 +1217,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-dream-lake-photo--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1237,13 +1237,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-dream-lake-photo--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1257,13 +1257,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-dream-lake-photo--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1277,13 +1277,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-dream-lake-photo--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1297,13 +1297,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1317,13 +1317,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1337,13 +1337,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1357,13 +1357,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1377,13 +1377,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1397,13 +1397,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1417,13 +1417,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1437,13 +1437,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1457,13 +1457,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1477,13 +1477,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1497,13 +1497,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1517,13 +1517,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1537,13 +1537,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1557,13 +1557,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1577,13 +1577,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1597,13 +1597,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-teton-jenny-lake-photo--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1617,13 +1617,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-teton-jenny-lake-photo--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1637,13 +1637,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-teton-jenny-lake-photo--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1657,13 +1657,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-teton-jenny-lake-photo--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1677,13 +1677,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-teton-jenny-lake-photo--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1697,13 +1697,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-frost-fern--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1717,13 +1717,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-frost-fern--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1737,13 +1737,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-frost-fern--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1757,13 +1757,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-frost-fern--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1777,13 +1777,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-frost-fern--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1797,13 +1797,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-october-drift--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1817,13 +1817,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-october-drift--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1837,13 +1837,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-october-drift--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1857,13 +1857,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-october-drift--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1877,13 +1877,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-october-drift--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1897,13 +1897,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-ripple-prism--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1917,13 +1917,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-ripple-prism--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1937,13 +1937,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-ripple-prism--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1957,13 +1957,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-ripple-prism--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1977,13 +1977,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-ripple-prism--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -1997,13 +1997,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-window-seat--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2017,13 +2017,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-window-seat--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2037,13 +2037,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-window-seat--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2057,13 +2057,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-window-seat--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2077,13 +2077,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-window-seat--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2097,13 +2097,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2117,13 +2117,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2137,13 +2137,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2157,13 +2157,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2177,13 +2177,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2197,13 +2197,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2217,13 +2217,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2237,13 +2237,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2257,13 +2257,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2277,13 +2277,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2297,13 +2297,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2317,13 +2317,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2337,13 +2337,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2357,13 +2357,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2377,13 +2377,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2397,13 +2397,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-the-narrows-photo--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2417,13 +2417,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-the-narrows-photo--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2437,13 +2437,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-the-narrows-photo--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2457,13 +2457,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-the-narrows-photo--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2477,13 +2477,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-the-narrows-photo--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2497,13 +2497,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-watchman-bend--c1.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2517,13 +2517,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-watchman-bend--c2.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2537,13 +2537,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-watchman-bend--c3.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2557,13 +2557,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-watchman-bend--c4.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2577,13 +2577,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-watchman-bend--original.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2597,13 +2597,13 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/galaxy-s26-ultra--modern-yosemite-national-park-logo-for-mug--artwork-only.webp",
     "model": "Samsung Galaxy S26 Ultra",
     "variant": "artwork-only",
-    "view": "case",
+    "view": "phone",
     "caseType": "Tough Magnetic",
     "width": 641,
     "height": 1268,
@@ -2617,1006 +2617,1006 @@
       146,
       209
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--abstract-leopard-pink--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--bethany-beach-city-map-navy--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--boston-map-cream--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--christmas-santa-hats-white--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--city-night-los-angeles--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--city-night-new-york--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--city-night-philadelphia--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--colorful-minimalist-wavy-stripes--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--cow-print-pink-on-cream--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--dog-28-christmas-dog-pattern--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--dog-adorable-love-paw-dog-bone--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--dog-paw-prints-and-pet-toys--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--dog-small-dog-breeds--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--high-detail-botanical-of-winter-flora-on-white--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--kp-cherry-dot--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--kp-half-dome-river--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--kp-heart-riot--c2.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--kp-heart-riot--c4.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--kp-liquid-prism--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--kp-wrong-way-duck--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--lake-george-navy--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--los-angeles-map-blush--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--mid-century-modern-abstract-shapes--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--modern-yosemite-national-park-logo-for-mug--blaze-topo.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "blaze-topo",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--modern-yosemite-national-park-logo-for-mug--forest-topo.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "forest-topo",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--nyc-map-navy--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--pastel-pink-floral-minimalist-pattern--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--philadelphia-city-map-cream--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--philadelphia-city-map-navy--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--smiley-flower-power--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--stylish-white-daisy-floral-pattern--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--west-chester-city-map-cream--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--where-it-all-began-heart-map-cream--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--y2k-retro-04--original.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-aquarius--c3.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-gemini--c3.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-leo--c3.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-scorpio--c3.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-virgo--c3.webp",
     "model": "iPhone 15 Pro Max",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 630,
-    "height": 1230,
+    "width": 612,
+    "height": 1210,
     "crop": [
-      315,
-      139,
-      945,
-      1369
+      321,
+      152,
+      933,
+      1362
     ],
     "cameraPoint": [
-      185,
-      186
+      179,
+      173
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--c1.webp",
     "model": "iPhone 17 Pro Max",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 669,
-    "height": 1280,
+    "width": 638,
+    "height": 1252,
     "crop": [
-      289,
-      107,
-      958,
-      1387
+      305,
+      124,
+      943,
+      1376
     ],
     "cameraPoint": [
-      336,
-      193
+      320,
+      176
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--c2.webp",
     "model": "iPhone 17 Pro Max",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 669,
-    "height": 1280,
+    "width": 638,
+    "height": 1252,
     "crop": [
-      289,
-      107,
-      958,
-      1387
+      305,
+      124,
+      943,
+      1376
     ],
     "cameraPoint": [
-      336,
-      193
+      320,
+      176
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--c3.webp",
     "model": "iPhone 17 Pro Max",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 669,
-    "height": 1280,
+    "width": 638,
+    "height": 1252,
     "crop": [
-      289,
-      107,
-      958,
-      1387
+      305,
+      124,
+      943,
+      1376
     ],
     "cameraPoint": [
-      336,
-      193
+      320,
+      176
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--c4.webp",
     "model": "iPhone 17 Pro Max",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 669,
-    "height": 1280,
+    "width": 638,
+    "height": 1252,
     "crop": [
-      289,
-      107,
-      958,
-      1387
+      305,
+      124,
+      943,
+      1376
     ],
     "cameraPoint": [
-      336,
-      193
+      320,
+      176
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--original.webp",
     "model": "iPhone 17 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 669,
-    "height": 1280,
+    "width": 638,
+    "height": 1252,
     "crop": [
-      289,
-      107,
-      958,
-      1387
+      305,
+      124,
+      943,
+      1376
     ],
     "cameraPoint": [
-      336,
-      193
+      320,
+      176
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--c1.webp",
     "model": "iPhone 17 Pro Max",
     "variant": "c1",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 669,
-    "height": 1280,
+    "width": 638,
+    "height": 1252,
     "crop": [
-      289,
-      107,
-      958,
-      1387
+      305,
+      124,
+      943,
+      1376
     ],
     "cameraPoint": [
-      336,
-      193
+      320,
+      176
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--c2.webp",
     "model": "iPhone 17 Pro Max",
     "variant": "c2",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 669,
-    "height": 1280,
+    "width": 638,
+    "height": 1252,
     "crop": [
-      289,
-      107,
-      958,
-      1387
+      305,
+      124,
+      943,
+      1376
     ],
     "cameraPoint": [
-      336,
-      193
+      320,
+      176
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--c3.webp",
     "model": "iPhone 17 Pro Max",
     "variant": "c3",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 669,
-    "height": 1280,
+    "width": 638,
+    "height": 1252,
     "crop": [
-      289,
-      107,
-      958,
-      1387
+      305,
+      124,
+      943,
+      1376
     ],
     "cameraPoint": [
-      336,
-      193
+      320,
+      176
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--c4.webp",
     "model": "iPhone 17 Pro Max",
     "variant": "c4",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 669,
-    "height": 1280,
+    "width": 638,
+    "height": 1252,
     "crop": [
-      289,
-      107,
-      958,
-      1387
+      305,
+      124,
+      943,
+      1376
     ],
     "cameraPoint": [
-      336,
-      193
+      320,
+      176
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   },
   {
     "output": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--original.webp",
     "model": "iPhone 17 Pro Max",
     "variant": "original",
-    "view": "case",
+    "view": "phone",
     "caseType": "MagSafe Clear",
-    "width": 669,
-    "height": 1280,
+    "width": 638,
+    "height": 1252,
     "crop": [
-      289,
-      107,
-      958,
-      1387
+      305,
+      124,
+      943,
+      1376
     ],
     "cameraPoint": [
-      336,
-      193
+      320,
+      176
     ],
-    "cameraAlpha": 0
+    "cameraAlpha": 255
   }
 ]
