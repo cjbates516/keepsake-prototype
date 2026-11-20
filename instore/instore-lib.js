@@ -110,14 +110,17 @@
 
   /* null when the design has no registered number yet: callers must then show no code */
   KPI.colorways = function(d){return window.KPDesignColorways?KPDesignColorways.choicesFor({__kpDesignFile:d.file}):[{id:'original',name:'Original'}];};
-  KPI.pickCode = function (model, design, colorway, glass) {
+  KPI.pickCode = function (model, design, colorway, glass, charger, accessories, store) {
     if (!model || !design || design._n == null) return null;
     var code=model.id+'-'+design._col.code+'-'+pad3(design._n);
     if(colorway&&colorway!=='original'){
       var selected=KPI.colorways(design).find(function(c){return c.id===colorway;});
-      if(!selected||!selected.code)return null;code+='-C'+selected.code;
+      if(!selected||! /^[1-6]$/.test(String(selected.code)))return null;code+='-C'+selected.code;
     }
-    return code + (glass ? '-G' : '');
+    if(accessories&&accessories.length&&(!window.KPAccessories||!KPAccessories.valid(accessories)))return null;
+    var extras=window.KPAccessories?KPAccessories.parse(accessories):[];
+    if(extras.length&&KPAccessories.stores.indexOf(store)<0)return null;
+    return code + (glass ? '-G' : '') + (charger ? '-A' : '')+(extras.length?'-'+extras.join('-'):'')+(extras.length&&window.KPAccessories&&KPAccessories.stores.indexOf(store)>=0?'-S'+(KPAccessories.stores.indexOf(store)+1):'');
   };
   KPI.pad3 = pad3;
   KPI.fallbackCode = function (cat, used) {
@@ -134,11 +137,18 @@
      matched against the known ids (longest first), because ids and collection codes both use letters. */
   KPI.parseCode = function (text, modelIds) {
     var t = String(text || '').toUpperCase().trim().replace(/[\s_.\u2010-\u2015\u2212]+/g, '-').replace(/-+/g, '-');
+    var storeSuffix=t.match(/-S([1-3])$/),store=storeSuffix&&window.KPAccessories?KPAccessories.stores[Number(storeSuffix[1])-1]:null;
+    if(storeSuffix)t=t.slice(0,storeSuffix.index);
+    var extraSuffix=t.match(/(-X\d{2})+$/),accessories=[];
+    if(extraSuffix){accessories=extraSuffix[0].slice(1).split('-');if(!window.KPAccessories||!KPAccessories.valid(accessories))return null;accessories=KPAccessories.parse(accessories);t=t.slice(0,extraSuffix.index);}
+    if(accessories.length&&!store)return null;
+    var charger=/[0-9G]-?A$/.test(t);
+    if(charger)t=t.replace(/-?A$/, '');
     var glass=/[0-9]-?G$/.test(t);
     if(glass)t=t.replace(/-?G$/, '');
     var suffix=t.match(/(\d)-?C([1-6])$/),colorway=suffix?Number(suffix[2]):0;
     if(suffix)t=t.slice(0,suffix.index)+suffix[1];
-    function result(model,col,n){var p={model:model,col:col,n:n};if(colorway)p.colorway=colorway;if(glass)p.glass=true;return p;}
+    function result(model,col,n){var p={model:model,col:col,n:n};if(colorway)p.colorway=colorway;if(glass)p.glass=true;if(charger)p.charger=true;if(accessories.length)p.accessories=accessories;if(store)p.store=store;return p;}
     var m = t.match(/^([A-Z0-9]+)-([A-Z0-9]{3})-(\d{1,4})$/);
     if (m) return result(m[1],m[2],parseInt(m[3],10));
     var flat = t.replace(/-/g, ''), ids = (modelIds || []).slice().sort(function (a, b) { return b.length - a.length; });
@@ -167,8 +177,8 @@
   KPI.formatPrice = function (p) { return '$' + Number(p).toFixed(2); };
   KPI.thumbUrl = function (d) { return ROOT + 'assets/designs/thumbs/' + encodeURIComponent(d.file) + '?v=' + (d.hash || '1'); };
   KPI.fullUrl = function (d) { return ROOT + 'assets/designs/' + encodeURIComponent(d.file) + '?v=' + (d.hash || '1'); };
-  KPI.customizerUrl = function (model, d, colorway, glass) {
-    return ROOT + 'customizer.html?staff=1&design=' + encodeURIComponent(d.file) + '&model=' + encodeURIComponent(model.name.replace(/ /g, '-'))+(colorway&&colorway!=='original'?'&colorway='+encodeURIComponent(colorway):'')+(glass?'&glass=1':'');
+  KPI.customizerUrl = function (model, d, colorway, glass, charger, accessories, store) {
+    return ROOT + 'customizer.html?staff=1&design=' + encodeURIComponent(d.file) + '&model=' + encodeURIComponent(model.name.replace(/ /g, '-'))+(colorway&&colorway!=='original'?'&colorway='+encodeURIComponent(colorway):'')+(glass?'&glass=1':'')+(charger?'&charger=1':'')+(accessories&&accessories.length?'&extras='+encodeURIComponent(accessories.join(',')):'')+(store?'&store='+encodeURIComponent(store):'');
   };
 
   /* ---------- images ---------- */
@@ -258,6 +268,7 @@
       if (key.indexOf(id + '@') !== 0 || (keep && keep.some(function (k) { return key === id + '@' + k; }))) return;
       var p = prepCache[key]; delete prepCache[key];
       p.then(function (prep) {
+        prep.released=true;
         ['caseC', 'maskC', '_work', '_out'].forEach(function (k) { if (prep[k]) { prep[k].width = 0; prep[k].height = 0; prep[k] = null; } });
       }).catch(function () {});
     });
@@ -267,6 +278,7 @@
 
   /* Draw a design on the case. design may be null (phone only). bg fills behind for JPEG output. */
   KPI.render = function (prep, designImg, bg, into) {
+    if(prep.released)throw new Error('Phone preview was released');
     var c = into || canvas(prep.W, prep.H);
     if (c.width !== prep.W || c.height !== prep.H) { c.width = prep.W; c.height = prep.H; }
     var x = c.getContext('2d');
@@ -283,8 +295,7 @@
       try { tc.filter = 'none'; } catch (e) {}
       tc.drawImage(designImg, b[0] + (b[2] - w) / 2, b[1] + (b[3] - h) / 2, w, h);
       try { tc.filter = 'none'; } catch (e) {}
-      tc.globalAlpha = 0.22; tc.globalCompositeOperation = 'multiply';
-      tc.drawImage(prep.shade, prep.full[0], prep.full[1], prep.full[2], prep.full[3]);
+      /* Preserve artwork alpha: an all-over shade would tint the clear portions. */
       tc.globalAlpha = 1; tc.globalCompositeOperation = 'destination-in';
       tc.drawImage(prep.maskC, 0, 0);
       tc.globalCompositeOperation = 'source-over';
@@ -298,14 +309,16 @@
   KPI.renderToUrl = function (prep, designImg, bg, colorway) {
     var ready=window.KPDesignColorways&&colorway&&colorway!=='original'?KPDesignColorways.prepare(designImg):Promise.resolve();
     return ready.then(function(){
+    if(prep.released)throw new Error('Phone preview was released');
+    if(colorway&&colorway!=='original'&&(!window.KPDesignColorways||!KPDesignColorways.profile(designImg)))throw new Error('Background preview unavailable');
     var composed=null;
     if(window.KPDesignColorways&&KPDesignColorways.profile(designImg)){composed=KPDesignColorways.make(designImg,colorway||'original',1200);designImg=composed;}
     var c = KPI.render(prep, designImg, bg, prep._out || (prep._out = canvas(prep.W, prep.H)));
     if(composed)composed.width=composed.height=0;
     var type = bg ? 'image/jpeg' : 'image/png', q = bg ? 0.86 : undefined;
-    return new Promise(function (resolve) {
+    return new Promise(function (resolve,reject) {
       if (c.toBlob) {
-        c.toBlob(function (blob) { resolve(blob ? URL.createObjectURL(blob) : c.toDataURL(type, q)); }, type, q);
+        c.toBlob(function (blob) { try{resolve(blob ? URL.createObjectURL(blob) : c.toDataURL(type, q));}catch(e){reject(e);} }, type, q);
       } else {
         resolve(c.toDataURL(type, q));
       }
