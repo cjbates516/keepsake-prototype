@@ -216,6 +216,7 @@
           <h1 class="dname" id="dname"></h1>
           <p class="dmeta" id="dmeta"></p><p id="previewStatus" role="status"></p><p id="setupNotice" role="status"></p>
           <div id="setupOptions">
+            <button type="button" class="cta" id="personalizeCase" style="width:100%;margin:8px 0 18px">Make it yours · add a name &amp; more →</button>
             <div id="colorwayPicker" hidden style="margin:16px 0"><p style="font-size:18px;font-weight:800">Choose your background</p><div id="colorwayButtons" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"></div></div>
             <div id="storeChoice"><label for="accessoryStore" class="store-label">Your store</label>
             <select id="accessoryStore"><option value="">Choose your store</option><option>West Chester, PA</option><option>Pottstown, PA</option><option>Newark, DE</option></select></div>
@@ -645,6 +646,13 @@
     lastTap = { x: e.clientX, y: e.clientY };
     var t = e.target.closest('button');
     if (!t) { if (e.target === $('ownSheet')) closeSheet(); return; }
+    if(t.id==='personalizeCase'){
+      if(!navigator.onLine){$('setupNotice').textContent='Reconnect to open the design editor. You can still show this case and your extras at the counter.';return;}
+      if(!state.model||!state.design)return;
+      var url=new URL('../customizer.html',location.href);
+      var opt={kiosk:'1',model:state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'),design:state.design.file,colorway:state.colorway,store:state.store,glass:$('glass').checked?'1':'',charger:$('charger').checked?'1':'',extras:state.accessories.join(',')};
+      Object.keys(opt).forEach(function(k){if(opt[k])url.searchParams.set(k,opt[k]);});location.href=url.href;return;
+    }
     if(t.hasAttribute('data-colorway'))return pickDesign(state.design.file,t.getAttribute('data-colorway'));
     if (t.hasAttribute('data-model')) return pickModel(t.getAttribute('data-model'));
     if (t.hasAttribute('data-col')) return setFilter(t.getAttribute('data-col'));

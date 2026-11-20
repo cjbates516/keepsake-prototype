@@ -1,0 +1,28 @@
+const assert=require('node:assert/strict');const {chromium,webkit}=require('../../../playwright/node_modules/playwright-core');
+const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
+async function open(p,tool){await p.locator('[data-tool="'+tool+'"]').click();}
+async function close(p){if(await p.locator('#studioSheet').evaluate(e=>e.open)){await p.locator('#studioDone').click();await p.waitForFunction(()=>!document.getElementById('studioSheet').open);}}
+async function ready(p){await p.waitForFunction(()=>window.KPEditor&&!KPStudioCore.info().issue);}
+(async()=>{for(const engine of [chromium,webkit]){const b=await engine.launch();try{
+ const ctx=await b.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true,reducedMotion:'reduce',serviceWorkers:'block'}),p=await ctx.newPage(),errors=[],posts=[];p.on('pageerror',e=>errors.push(e.message));p.on('request',r=>{if(r.method()==='POST')posts.push(r.url());});
+ // Local-only media, edits, replacement, clear and undo cannot revive an old photo.
+ await p.route('**/assets/nsfw/**',r=>r.abort());await p.goto(base+'customizer.html?studio=drawing');await p.waitForFunction(()=>window.KPEditor);
+ const png=await p.evaluate(()=>{const c=document.createElement('canvas');c.width=1200;c.height=1600;const x=c.getContext('2d');x.fillStyle='#ffbdab';x.fillRect(0,0,1200,1600);x.fillStyle='#12536b';x.fillRect(300,500,600,600);return c.toDataURL().split(',')[1];});
+ await open(p,'photo');await p.locator('#fileInput').setInputFiles({name:'test-drawing.png',mimeType:'image/png',buffer:Buffer.from(png,'base64')});await close(p);await ready(p);assert.equal(await p.evaluate(()=>__kp.state.fitMode),'fit');
+ await open(p,'name');await p.locator('#nameInput').fill('PRIVATE NOTE');await close(p);await p.waitForTimeout(400);assert(!p.url().includes('PRIVATE'));assert(await p.locator('#studioUndo').isEnabled());
+ await open(p,'photo');await p.locator('#fileInput').setInputFiles({name:'replacement.png',mimeType:'image/png',buffer:Buffer.from(png,'base64')});await close(p);await ready(p);await p.waitForTimeout(400);assert(await p.locator('#studioUndo').isDisabled());
+ await open(p,'photo');await p.locator('#clearBtn').click();await close(p);await p.waitForTimeout(400);assert.equal(await p.evaluate(()=>__kp.state.photoImg),null);assert.equal(await p.locator('#nameInput').inputValue(),'');assert(await p.locator('#studioUndo').isDisabled());assert(await p.locator('#studioNext').isDisabled());
+ // Each configured store enters the actual editor and retains store-specific extras.
+ for(const [store,total,suffix] of [['West Chester, PA','94.97','S1'],['Pottstown, PA','94.97','S2'],['Newark, DE','99.97','S3']]){
+  await p.goto(base+'instore/?store='+encodeURIComponent(store));await p.locator('[data-model="18PM"]').click();await p.locator('#designSearch').fill('Times Square Rain');await p.waitForTimeout(500);await p.locator('.tile[data-file="city-night-new-york.jpg"] img:not(.wait)').waitFor();await p.locator('.tile[data-file="city-night-new-york.jpg"] .tname').click();await p.waitForFunction(()=>!document.getElementById('showBtn').disabled);await p.waitForTimeout(500);await p.locator('#personalizeCase').click();await ready(p);assert.equal(await p.evaluate(()=>__kp.state.store),store);assert(await p.locator('#fileInput').isDisabled());
+  await open(p,'name');await p.locator('#nameInput').fill('TEST INITIALS');await close(p);await p.locator('#studioNext').click();await p.locator('#studioNext').click();assert.equal(await p.locator('#storeChips button:not([hidden])').count(),1);assert(await p.locator('#storeChips button:not([hidden])').isDisabled());
+  await p.locator('#addons [data-k="screen"]').click();await p.locator('[data-category="Wall chargers"]').click();await p.locator('[data-accessory="X26"]').click();assert((await p.locator('#studioTotal').innerText()).includes(total));await p.locator('#studioNext').click();await p.waitForFunction(s=>document.getElementById('reviewCode').textContent.endsWith('-G-X26-'+s),suffix);assert(await p.locator('#saveCounterCard').isHidden());
+  await p.getByRole('button',{name:'Back to my setup',exact:true}).click();await p.goBack();await p.waitForFunction(()=>KPEditor.step==='preview');await p.goBack();await p.waitForFunction(()=>KPEditor.step==='edit');await p.locator('#studioReset').click();await p.locator('#studioConfirmReset').click();await p.locator('[data-model="18PM"]').waitFor();assert.equal(new URL(p.url()).searchParams.get('store'),store);
+  // Back/forward must not resurrect initials from the previous kiosk session.
+  await p.goBack();await p.waitForTimeout(600);if(await p.locator('#nameInput').count())assert.equal(await p.locator('#nameInput').inputValue(),'');
+ }
+ // Real idle timer with a virtual clock: warning, stay, then reset and retain store.
+ await p.goto(base+'customizer.html?kiosk=1&store=Newark%2C%20DE&model=iphone-18-pro-max&design=city-night-new-york.jpg');await ready(p);await p.clock.install();await open(p,'name');await p.locator('#nameInput').fill('IDLE TEST');await close(p);await p.clock.fastForward(151000);assert(await p.locator('#studioIdle').evaluate(e=>e.open));await p.locator('#studioIdle button').click();assert(!(await p.locator('#studioIdle').evaluate(e=>e.open)));await p.clock.fastForward(181000);await p.locator('[data-model="18PM"]').waitFor();assert(new URL(p.url()).searchParams.get('store')==='Newark, DE');
+ assert.deepEqual(errors,[]);assert.deepEqual(posts,[]);console.log(engine.name()+': local photo replace/clear history, all stores kiosk editor→glass+charger→counter, reset/back privacy and idle expiry passed');
+ await ctx.close();
+ }finally{await b.close();}}})().catch(e=>{console.error(e);process.exitCode=1;});

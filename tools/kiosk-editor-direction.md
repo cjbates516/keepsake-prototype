@@ -21,7 +21,7 @@ Use a dedicated, case-first editor with a separate accessories and counter-revie
 - **Adjust:** center, fit whole image, fill printable area, size and position. Preserve existing camera/edge constraints.
 - **Photo:** local file selection on the customer’s own device; staff-assisted transfer while QR is held.
 - **Night sky** and **Child’s drawing:** context-specific tools when those modes are selected, rather than unrelated controls shown for every design.
-- **Undo/Redo:** bounded edit-state history, sharing image references rather than duplicating full-resolution bitmaps. Clear on session reset.
+- **Undo/Redo:** bounded history of background, text and placement values, without retaining image references or full-resolution bitmaps. Clear on session reset.
 
 Desktop/touch monitor: preview left, focused tool panel right, persistent next action. Mobile: large preview above a compact tool tray; the active tool opens a sheet with Done, then returns to the case. Keep numerical precision controls under Adjust. Do not leave a keyboard covering the next action.
 
@@ -35,9 +35,9 @@ Avoid importing its case offerings, commercial pricing, assets, AI features or p
 
 ## Implementation boundary
 
-The current kiosk release is a smaller completed step: phone → design → setup → read-only counter review, with edit/back, sticky totals, fixed configured store, glass/accessories and idle reset. It is still a library-selection kiosk; it does not yet include the dedicated editor or Undo/Redo. Personal photos remain staff-assisted there.
+The dedicated editor is implemented in customizer.html with assets/design-editor.js and assets/design-editor.css. The kiosk design setup offers “Make it yours” and retains the selected model, design, background, store and extras. The editor provides Design → Preview → Extras → counter review, bounded Undo/Redo, mobile sheets, and the original mounted clear-case renderer. Personal photos remain staff-assisted on shared kiosks. The existing quick counter route remains available offline; opening the editor requires connectivity.
 
-Build the editor as a presentation/state refactor of customizer.html, not a new image engine. First move existing controls into panels; then add bounded undo and the mobile sheets. Maintain a single design state through the editor, accessories and review. Changing a phone must revalidate both fit and accessory compatibility. No global service-worker cache of customer photos.
+The editor moves the existing live controls into panels and uses a small synchronous core adapter; it does not introduce a second image engine. Undo snapshots contain primitive values only and reset when the model or image source changes. Maintain a single design state through the editor, accessories and review. Changing a phone must revalidate both fit and accessory compatibility. No global service-worker cache of customer photos.
 
 ## Handoff and privacy requirements
 
@@ -61,3 +61,7 @@ Build the editor as a presentation/state refactor of customizer.html, not a new 
 Claude reviewed supplied source/observations, not the browser directly. Some concerns from the markup excerpt were already handled in runtime: Order buttons become counter-review actions; the staff customizer URL is only used by the staff lookup; the shared kiosk offers staff help instead of uploads; fixed-store kiosk behavior and personal-text counter-card display are already tested. Glass $29.99 standalone/$19.99 bundled is explicitly owner-confirmed. Do not treat these as new unresolved owner questions.
 
 Confirmed extra fix: invalid case prices now reject loading instead of showing $NaN. Static button fallback text and name/promo autocomplete were also corrected. The service-worker install now drains each response into its versioned cache immediately; the new worker still activates only when every required resource succeeds. Cached accessory, zoom and seasonal scripts/styles are served offline.
+
+## Implementation review — 2026-11-20
+
+Claude source review prompted wall-clock kiosk expiry on wake/focus, privacy listeners installed before UI construction, duplicate sheet-dismissal protection, focus restoration, invalid browser-Forward guards, and moving the live canvas inside the mobile Adjust dialog. Footer/status height and visualViewport changes drive toolbar and keyboard layout. Purge and restore are synchronous; no private draft storage was added. Chrome/WebKit tests exercise these paths; physical iPhone keyboard and sleep behavior still require device verification.

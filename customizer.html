@@ -123,6 +123,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/shop-dialogs.js" defer></script>
 <link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=clear-mounted-2" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 <link rel="stylesheet" href="assets/accessories.css">
+<link rel="stylesheet" href="assets/design-editor.css?v=1">
+<script>window.KP_EDITOR=!new URLSearchParams(location.search).has('cal')&&new URLSearchParams(location.search).get('staff')!=='1';</script>
 <script src="assets/accessory-catalog.js"></script>
 <script src="assets/accessories.js"></script>
 </head>
@@ -544,11 +546,13 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   var canvas=$('stageCanvas'), ctx=canvas.getContext('2d');
   canvas.width=DIM.w*PS; canvas.height=DIM.h*PS;
-  var caseImg=new Image(), lightMap=null, caseReady=false;
+  var caseImg=new Image(), lightMap=null, caseReady=false,caseFailed=false;
   var viewImg=null, viewReady=false, viewSrc=null, viewMaskCanvas=null, viewFailed=false;
   KPCaseShell.ready.then(render);
-  caseImg.onload=function(){ caseReady=true; render(); };
-  var lightImg=new Image(), lightReady=false;
+  caseImg.onload=function(){ caseReady=true;caseFailed=false;render(); };
+  caseImg.onerror=function(){caseFailed=true;render();};
+  var lightImg=new Image(), lightReady=false,lightFailed=false;
+  lightImg.onerror=function(){lightFailed=true;render();};
   lightImg.onload=function(){
     var t=document.createElement('canvas'); t.width=20; t.height=24;
     var tc=t.getContext('2d');
@@ -573,7 +577,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var lc=lightMap.getContext('2d');
     lc.imageSmoothingEnabled=true; lc.imageSmoothingQuality='high';
     lc.drawImage(t,0,0,DIM.w*PS,DIM.h*PS);
-    lightReady=true; render();
+    lightReady=true;lightFailed=false;render();
   };
   function loadKit(model){
     var k=KITS[model]; if(!k) return false;
@@ -592,7 +596,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     state.colorName=col.n; state.colorHex=col.h;
     ['colorName','colorName2','colorName3','colorName4'].forEach(function(id){ var el=$(id); if(el) el.textContent=state.colorName; });
     var mp=$('miniPhone'); if(mp) mp.style.background=state.colorHex;
-    caseReady=false;
+    caseReady=false;caseFailed=false;
     for(const thumb of [$('ctThumbClear'),$('ctThumbHyb')]){
       thumb.getContext('2d').clearRect(0,0,thumb.width,thumb.height);
     }
@@ -623,8 +627,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       } else if(viewReady){computeMaskBox();}
     } else { viewImg=null; viewReady=false; viewSrc=null; viewMaskCanvas=null; }
     var ls='assets/cases/'+((state.caseType==='Tough Magnetic' && k.tough) ? k.tough.file : (k.light||col.f));
-    if (!lightImg.src.endsWith(ls)) { lightReady=false; lightImg.src=ls; }
-    else if (!lightReady && lightImg.complete) lightImg.onload();
+    if (!lightImg.src.endsWith(ls)) { lightReady=false;lightFailed=false;lightImg.src=ls; }
+    else if (!lightReady && lightImg.complete && lightImg.naturalWidth) lightImg.onload();
     return true;
   }
 
@@ -833,14 +837,16 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   var _rafPend=false;
   function render(){
+    if(editorPurged)return;
     if(window.__kpDpiTick) clearTimeout(window.__kpDpiTick); window.__kpDpiTick=setTimeout(updateDpi,120);
     if(_rafPend) return; _rafPend=true;
     var done=false;
-    function go(){ if(done) return; done=true; _rafPend=false; renderNow(); }
+    function go(){ if(done) return; done=true; _rafPend=false; renderNow(); document.dispatchEvent(new Event('kp:editor-change')); }
     requestAnimationFrame(go);
     setTimeout(go, 80);   // backstop: rAF is paused/throttled in some contexts
   }
   function renderNow(){
+    if(editorPurged)return;
     if(!caseReady || !lightReady) return;
     ctx.setTransform(PS,0,0,PS,0,0);
     ctx.globalCompositeOperation='source-over';
@@ -980,10 +986,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   });
   var kpPtr=null, kpPtrs={}, pinch=null;
   function ptrCount(){ return Object.keys(kpPtrs).length; }
-  function canGesture(){ return state.photoImg && !state.isLibraryDesign; }
+  function canGesture(){ return state.photoImg && (window.KP_EDITOR ? window.KPEditor?.step==='edit'&&window.KPEditor?.tool==='adjust' : !state.isLibraryDesign); }
   canvas.addEventListener('pointerdown',function(e){
     if(state.layout && !CAL.on) return; /* collage taps handled on click for iOS user-activation */
-    if(state.isLibraryDesign && !CAL.on) return;
+    if(!canGesture() && !CAL.on) return;
     if(CAL.on && VIEW.z>1){ if(kpPtr!==null && e.pointerId!==kpPtr) return; kpPtr=e.pointerId;
       panning=true; panLast={x:e.clientX,y:e.clientY};
       try{canvas.setPointerCapture(e.pointerId);}catch(_){} return; }
@@ -1147,6 +1153,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     KPDesignColorways.clear();
   }
   function loadPhoto(f, forceSlot){
+    if(new URLSearchParams(location.search).get('kiosk')==='1'){kpToast('Ask our team to help transfer your photo.');return;}
     if(!f || skyStudio)return;
     var request=++kpUploadRequest;kpLibraryRequest++;
     function current(){return request===kpUploadRequest;}
@@ -1259,6 +1266,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var marker=document.createComment('Picker position');el.before(marker);return marker;
   });
   function positionPicker(){
+    if(window.KP_EDITOR)return;
     var compact=mobilePickerQuery.matches&&state.isLibraryDesign&&!document.documentElement.classList.contains('staff-mode');
     var panel=$('mobileDesignPicker');
     if(panel.hidden===!compact)return;
@@ -1544,6 +1552,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     $('reserveBtn').style.display=state.reserved?'none':'block';
     $('reservedBox').style.display=state.reserved?'block':'none';
     saveLibraryOptions();
+    document.dispatchEvent(new Event('kp:editor-change'));
   }
   var KP_STORES=[
     {n:'West Chester, PA', a:'CPR Cell Phone Repair · West Chester'},
@@ -1561,7 +1570,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   document.addEventListener('click',function(e){
     var sc=e.target.closest ? e.target.closest('.storeChip') : null;
-    if(sc){ state.store=sc.dataset.s; state.reserved=false; renderStoreChips(); updateSummary(); }
+    if(sc){ if(new URLSearchParams(location.search).get('kiosk')==='1'&&KP_STORES.some(s=>s.n===requestedStore))return;state.store=sc.dataset.s; state.reserved=false; renderStoreChips(); updateSummary(); }
   });
   renderStoreChips();
   /* ── ordering ── */
@@ -1620,6 +1629,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       detail('Name style',(FONTS[state.textFont] ? FONTS[state.textFont].n : 'Selected font')+' · '+state.textColor+' · '+(state.textVertical?'vertical':'horizontal'));
       detail('Personalization handoff',(file?'The pick code identifies the base design only. ':'')+'Show this preview so our team can match your name, size and placement before printing.');
     }
+    if(state.photoImg&&(state.px||state.py||state.rot||state.scale!==1||state.fitMode==='fit')){
+      detail('Artwork placement','Custom placement'+(file?' — the pick code identifies the base design only.':'.')+' Show this preview so our team can match the crop, size and position before printing.');
+    }
     var extras=addonDefs.filter(function(a){return state.addons[a.key];});
     extras.forEach(function(a){detail(a.name,'+$'+a.price.toFixed(2));});
     state.accessories.forEach(function(id){var a=KPAccessories.get(id);detail(KPAccessories.label(a),'$'+KPAccessories.price(a,state.store).toFixed(2)+' · SKU '+a.sku+(KPAccessories.available(a,state.store)?'':' · confirm availability here')+(KPAccessories.compatible(a,state.model)?'':' · CHECK PHONE FIT'));});
@@ -1633,7 +1645,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     dialog.showModal();dialog.scrollTop=0;
     if(!file){
       prepareCounterCard(version,skyStudio?'Bring your saved sky artwork and this preview to the counter.':drawingStudio?'Bring the original drawing photo with this preview.':state.photoImg||state.layout?'Bring the original photos on your phone with this preview.':'Show the team this text design.');
-      if (skyStudio && state.photoImg && typeof state.photoImg.toBlob === 'function') {
+      if (skyStudio && new URLSearchParams(location.search).get('kiosk')!=='1' && state.photoImg && typeof state.photoImg.toBlob === 'function') {
         code.textContent='Preparing your sky artwork…';
         state.photoImg.toBlob(function(blob) {
           if (version!==reviewVersion || !dialog.open) return;
@@ -1649,6 +1661,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           code.replaceChildren(download);
         }, 'image/png');
       }
+      if(skyStudio&&new URLSearchParams(location.search).get('kiosk')==='1')code.textContent='Keep this screen open so our team can prepare your sky artwork.';
       if (drawingStudio) code.textContent='Bring the original drawing photo with this preview so the team can prepare your case.';
       else if (!skyStudio && (state.photoImg || state.layout)) code.textContent='Bring the original photos on your phone and show this preview at the counter.';
       return;
@@ -2137,7 +2150,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   /* ── embed mode (?embed=1): strip site chrome for iframe embedding ── */
   /* ── KP-KIOSK: floor-iPad mode (?kiosk=1) — chrome hidden, idle auto-reset for privacy ── */
-  if (/[?&]kiosk=1/.test(location.search)) {
+  if (!window.KP_EDITOR && /[?&]kiosk=1/.test(location.search)) {
     document.body.classList.add('kp-kiosk');
     var kst=document.createElement('style');
     kst.textContent='.kp-kiosk #announceBar,.kp-kiosk header,.kp-kiosk #mega,.kp-kiosk footer,.kp-kiosk #kpChatWrap,.kp-kiosk #chatToggle,.kp-kiosk #cartBtn,.kp-kiosk #browseLink,.kp-kiosk #calLink,.kp-kiosk #chooseReady{display:none !important}'+
@@ -2190,7 +2203,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       $('photoPrivacy').textContent = 'Your drawing stays on this device while you preview it.';
     } else {
       KPNightSky.mount(host, {
-        changed:function(){skyDirty=true;state.reserved=false;},
+        changed:function(){skyDirty=true;state.reserved=false;document.dispatchEvent(new Event("kp:editor-change"));},
         apply:function(chart) {
           kpUploadRequest++;kpLibraryRequest++;releaseWorkingPhoto();
           state.photoImg=chart; state.photoUrl=null;state.isLibraryDesign=false;
@@ -2229,8 +2242,42 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   fillModels(); renderSwatches(); renderAddons(); updateFitNote(); updateStage(); updateSummary();
   /* staff and QA hook (Fit Lab, print checks): read-only access to the live state */
   window.__kp={orderPricing:orderPricing, get state(){ return state; }, printSpec:function(){return TPL?{w:(TPL.pxW||Math.round(TPL.w*300/72))+36,h:(TPL.pxH||Math.round(TPL.h*300/72))+36}:null;}, printIssue:kpPrintIssue, dpi:kpEffectiveDpi, preset:kpPreset, buildPrint:kpBuildPrint, render:render };
+  // Presentation adapter: existing compositor/print engine remains the single source.
+  var editorKeys=['variant','text','textFont','textColor','textSize','textPos','textVertical','px','py','scale','rot','fitMode'];
+  var editorSources=new WeakMap(),editorSourceID=0,editorPurged=false;
+  function editorSnapshot(){return Object.fromEntries(editorKeys.map(k=>[k,state[k]]));}
+  function editorSync(){
+    $('nameInput').value=state.text;$('textSize').value=state.textSize;$('textPos').value=state.textPos;
+    $('orientBtn').textContent=state.textVertical?'Horizontal':'Vertical';
+    renderFontChips();renderFilterChips();syncFitChips();updateStage();updateSummary();
+  }
+  window.KPStudioCore={
+    snapshot:editorSnapshot,
+    context:function(){var src=state.photoImg;if(src&&!editorSources.has(src))editorSources.set(src,++editorSourceID);return state.model+':'+(src?editorSources.get(src):0);},
+    info:function(){return {model:state.model,finish:state.colorName,store:state.store,sky:skyStudio,drawing:drawingStudio,hasPhoto:!!state.photoImg,loading:!!state.libraryLoading,library:state.isLibraryDesign,issue:(caseFailed||lightFailed?'The case photo could not load. Reload or choose another phone.':null)||kpPrintIssue()||(viewFailed?'The case mask could not load. Reload or ask our team for help.':!caseReady||!lightReady?'Your case preview is loading. Please wait.':null),total:orderPricing().total};},
+    restore:function(s){editorKeys.forEach(k=>{if(Object.hasOwn(s,k))state[k]=s[k];});state.reserved=false;editorSync();},
+    adjust:function(key,value){
+      if(!state.photoImg||skyStudio)return;
+      if(key==='center'){state.px=state.py=state.rot=0;state.scale=1;}
+      else if(['px','py','scale','rot'].includes(key)){var limits={px:[-900,900],py:[-1200,1200],scale:[.35,4],rot:[-180,180]},n=Number(value);if(Number.isFinite(n))state[key]=Math.max(limits[key][0],Math.min(limits[key][1],n));}
+      state.reserved=false;render();
+    },
+    review:showCounterReview,
+    purge:function(){
+      editorPurged=true;clearTimeout(window.__kpDpiTick);
+      if(skyStudio)$('personalStudio').dispatchEvent(new Event('skyreset'));
+      kpLibraryRequest++;kpUploadRequest++;releaseWorkingPhoto();state.photoImg=null;state.photoUrl=null;state.text='';state.photos=[];state.layout=null;
+      state.accessories=[];state.addons={screen:false,lens:false};state.promo=null;state.chargerHelp=false;
+      document.querySelectorAll('dialog[open]').forEach(d=>d.close());
+      document.querySelectorAll('input,textarea').forEach(el=>{el.value='';if(el.type==='checkbox')el.checked=false;});
+      document.querySelectorAll('canvas').forEach(c=>{c.width=c.height=0;});
+      $('reviewDetails').replaceChildren();$('reviewCode').textContent='';
+      editorSources=new WeakMap();document.dispatchEvent(new Event('kp:editor-purge'));
+    }
+  };
 })();
 </script>
+<script src="assets/design-editor.js?v=1"></script>
 <script>
   document.addEventListener('click',function(e){
     var t=e.target.closest ? e.target.closest('.kpAllTgl') : null;
