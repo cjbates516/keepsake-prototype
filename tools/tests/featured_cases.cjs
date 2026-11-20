@@ -16,7 +16,7 @@ async function checkDestination(page, href) {
     return s?.photoImg?.__kpDesignFile===expected.design && !s.photoImg.__kpIsThumb &&
       s.variant===(expected.colorway||'original') && !s.libraryLoading && !__kp.printIssue();
   },expected);
-  assert.equal(await page.evaluate(()=>__kp.state.previewMode),'case');
+  assert.equal(await page.evaluate(()=>__kp.state.previewMode),'phone');
   const state = await page.evaluate(()=>({
     model:__kp.state.model,finish:__kp.state.colorName,variant:__kp.state.variant,caseType:__kp.state.caseType
   }));
@@ -55,7 +55,7 @@ async function checkDestination(page, href) {
           for(const a of anchors){const im=a.querySelector('img');im.loading='eager';}
           return Promise.all(anchors.map(async a=>{
             const im=a.querySelector('img');await im.decode();
-            return {href:a.href,src:im.getAttribute('src'),w:im.naturalWidth,h:im.naturalHeight};
+            return {href:a.href,src:im.getAttribute('src').split('?')[0],w:im.naturalWidth,h:im.naturalHeight};
           }));
         });
         assert(items.length>0,file);
@@ -65,10 +65,10 @@ async function checkDestination(page, href) {
           assert(item.w>=500 && item.h>=1000,item.src);
           const meta=renderMeta.find(r=>r.output===item.src);assert(meta,item.src);
           const alpha=await page.evaluate(async ({src,point})=>{const im=new Image();im.src=src;await im.decode();const c=document.createElement('canvas');c.width=im.width;c.height=im.height;c.getContext('2d').drawImage(im,0,0);return c.getContext('2d').getImageData(point[0],point[1],1,1).data[3];},{src:item.src,point:meta.cameraPoint});
-          assert.equal(alpha,0,item.src+' contains phone camera');
+          assert(alpha>240,item.src+' must show the mounted phone camera');
           const model=u.searchParams.get('model');
           assert(item.src.includes('/'+model+'--'),item.href);
-          assert.equal(u.searchParams.get('view'),'case');
+          assert.equal(u.searchParams.get('view'),'phone');
         }
         assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),file+' horizontal overflow');
         // The first and last options exercise opposite ends of each mobile collection.
@@ -83,19 +83,19 @@ async function checkDestination(page, href) {
         }
         console.log(engine.name(),file,items.length,'images; first/last backgrounds through counter review');
       }
-      // Existing personal examples are photographed empty cases; their routes
-      // must also open the same default view for new customer artwork.
+      // Personal examples show the artwork on mounted clear cases; their routes
+      // must open the same mounted view for new customer artwork.
       for(const studio of ['drawing','sky']){
         await page.goto(base);
         const link=page.locator('a[data-preview-link][href*="studio='+studio+'"]').first();
-        assert.equal(new URL(await link.getAttribute('href'),base).searchParams.get('view'),'case');
+        assert.equal(new URL(await link.getAttribute('href'),base).searchParams.get('view'),'phone');
         await link.scrollIntoViewIfNeeded();
         const image=link.locator('img');
         await page.waitForFunction(studio=>{const im=document.querySelector('a[data-preview-link][href*="studio='+studio+'"] img');return im.complete&&im.naturalWidth;},studio);
         const alpha=await image.evaluate(im=>{const c=document.createElement('canvas');c.width=im.naturalWidth;c.height=im.naturalHeight;c.getContext('2d').drawImage(im,0,0);return c.getContext('2d').getImageData(300,300,1,1).data[3];});
-        assert.equal(alpha,0,studio+' sample has no phone in the camera opening');
+        assert(alpha>240,studio+' sample must show phone hardware');
         await link.tap();await page.locator('#caseZoomDialog').getByRole('button',{name:'Customize this case',exact:true}).tap();
-        await page.waitForFunction(()=>window.__kp);assert.equal(await page.evaluate(()=>__kp.state.previewMode),'case');
+        await page.waitForFunction(()=>window.__kp);assert.equal(await page.evaluate(()=>__kp.state.previewMode),'phone');
         assert.equal(new URL(page.url()).searchParams.get('studio'),studio);
         if(studio==='drawing'){
           const png=await page.evaluate(()=>{const c=document.createElement('canvas');c.width=600;c.height=450;const x=c.getContext('2d');x.fillStyle='#ffcab8';x.fillRect(0,0,600,450);x.fillStyle='#111';x.fillText('Test artwork',200,220);return c.toDataURL().split(',')[1];});
@@ -112,7 +112,7 @@ async function checkDestination(page, href) {
         await page.waitForFunction(()=>__kp.state.photoImg&&!__kp.printIssue());
         await page.locator('#skyCaseZoom').tap();await page.locator('#caseZoomDialog canvas').waitFor();
         await page.locator('#caseZoomDialog').getByRole('button',{name:'Close',exact:true}).tap();
-        console.log(engine.name(),studio,'empty case example → personal studio → case zoom');
+        console.log(engine.name(),studio,'clear case example → personal studio → case zoom');
       }
       // Advance using the real carousel controls, then tap each newly rebuilt hero.
       for(const slideNumber of [1,2,3,4,5,6,7,8]){

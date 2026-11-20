@@ -1,6 +1,6 @@
 [
   {
-    "href": "customizer.html?design=abstract-leopard-pink.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=abstract-leopard-pink.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "abstract-leopard-pink.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -11,7 +11,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=philadelphia-city-map-cream.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=philadelphia-city-map-cream.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "philadelphia-city-map-cream.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -22,7 +22,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=stylish-white-daisy-floral-pattern.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=stylish-white-daisy-floral-pattern.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "stylish-white-daisy-floral-pattern.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -33,7 +33,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=kp-wrong-way-duck.png&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=kp-wrong-way-duck.png&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "kp-wrong-way-duck.png",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -44,7 +44,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-yosemite-half-dome-sunset.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -55,7 +55,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-yosemite-half-dome-sunset.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -66,7 +66,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-yosemite-half-dome-sunset.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -77,7 +77,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-yosemite-half-dome-sunset.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -88,7 +88,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yosemite-half-dome-sunset.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-yosemite-half-dome-sunset.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -99,7 +99,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=modern-yosemite-national-park-logo-for-mug.jpg&colorway=artwork-only&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=modern-yosemite-national-park-logo-for-mug.jpg&colorway=artwork-only&finish=Black&view=phone",
     "design": "modern-yosemite-national-park-logo-for-mug.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "artwork-only",
@@ -110,7 +110,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=original&finish=Black&view=phone",
     "design": "kp-acadia-bass-harbor.png",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -121,7 +121,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=c1&finish=Black&view=phone",
     "design": "kp-acadia-bass-harbor.png",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -132,7 +132,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=c2&finish=Black&view=phone",
     "design": "kp-acadia-bass-harbor.png",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -143,7 +143,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=c3&finish=Black&view=phone",
     "design": "kp-acadia-bass-harbor.png",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -154,7 +154,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor.png&colorway=c4&finish=Black&view=phone",
     "design": "kp-acadia-bass-harbor.png",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -165,7 +165,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-acadia-bass-harbor-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -176,7 +176,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-acadia-bass-harbor-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -187,7 +187,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-acadia-bass-harbor-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -198,7 +198,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-acadia-bass-harbor-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -209,7 +209,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-acadia-bass-harbor-photograph.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-acadia-bass-harbor-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -220,7 +220,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=original&finish=Black&view=phone",
     "design": "kp-joshua-tree-hidden-valley.png",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -231,7 +231,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=c1&finish=Black&view=phone",
     "design": "kp-joshua-tree-hidden-valley.png",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -242,7 +242,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=c2&finish=Black&view=phone",
     "design": "kp-joshua-tree-hidden-valley.png",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -253,7 +253,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=c3&finish=Black&view=phone",
     "design": "kp-joshua-tree-hidden-valley.png",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -264,7 +264,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley.png&colorway=c4&finish=Black&view=phone",
     "design": "kp-joshua-tree-hidden-valley.png",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -275,7 +275,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-joshua-tree-hidden-valley-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -286,7 +286,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-joshua-tree-hidden-valley-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -297,7 +297,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-joshua-tree-hidden-valley-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -308,7 +308,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-joshua-tree-hidden-valley-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -319,7 +319,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-joshua-tree-hidden-valley-photograph.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-joshua-tree-hidden-valley-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -330,7 +330,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=original&finish=Black&view=phone",
     "design": "kp-olympic-rialto.png",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -341,7 +341,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=c1&finish=Black&view=phone",
     "design": "kp-olympic-rialto.png",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -352,7 +352,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=c2&finish=Black&view=phone",
     "design": "kp-olympic-rialto.png",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -363,7 +363,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=c3&finish=Black&view=phone",
     "design": "kp-olympic-rialto.png",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -374,7 +374,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto.png&colorway=c4&finish=Black&view=phone",
     "design": "kp-olympic-rialto.png",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -385,7 +385,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-olympic-rialto-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -396,7 +396,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-olympic-rialto-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -407,7 +407,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-olympic-rialto-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -418,7 +418,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-olympic-rialto-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -429,7 +429,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-olympic-rialto-photograph.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-olympic-rialto-photograph.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -440,7 +440,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=original&finish=Black&view=phone",
     "design": "kp-grand-canyon-mather-point.png",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -451,7 +451,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=c1&finish=Black&view=phone",
     "design": "kp-grand-canyon-mather-point.png",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -462,7 +462,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=c2&finish=Black&view=phone",
     "design": "kp-grand-canyon-mather-point.png",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -473,7 +473,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=c3&finish=Black&view=phone",
     "design": "kp-grand-canyon-mather-point.png",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -484,7 +484,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-canyon-mather-point.png&colorway=c4&finish=Black&view=phone",
     "design": "kp-grand-canyon-mather-point.png",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -495,7 +495,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-canyon-duck-on-a-rock-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -506,7 +506,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-canyon-duck-on-a-rock-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -517,7 +517,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-canyon-duck-on-a-rock-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -528,7 +528,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-canyon-duck-on-a-rock-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -539,7 +539,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-canyon-duck-on-a-rock-photo.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-canyon-duck-on-a-rock-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -550,7 +550,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=original&finish=Black&view=phone",
     "design": "kp-rocky-mountain-moraine-elk.png",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -561,7 +561,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=c1&finish=Black&view=phone",
     "design": "kp-rocky-mountain-moraine-elk.png",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -572,7 +572,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=c2&finish=Black&view=phone",
     "design": "kp-rocky-mountain-moraine-elk.png",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -583,7 +583,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=c3&finish=Black&view=phone",
     "design": "kp-rocky-mountain-moraine-elk.png",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -594,7 +594,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-mountain-moraine-elk.png&colorway=c4&finish=Black&view=phone",
     "design": "kp-rocky-mountain-moraine-elk.png",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -605,7 +605,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-rocky-dream-lake-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -616,7 +616,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-rocky-dream-lake-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -627,7 +627,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-rocky-dream-lake-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -638,7 +638,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-rocky-dream-lake-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -649,7 +649,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-rocky-dream-lake-photo.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-rocky-dream-lake-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -660,7 +660,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=original&finish=Black&view=phone",
     "design": "kp-great-smoky-mountains-newfound-gap.png",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -671,7 +671,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=c1&finish=Black&view=phone",
     "design": "kp-great-smoky-mountains-newfound-gap.png",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -682,7 +682,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=c2&finish=Black&view=phone",
     "design": "kp-great-smoky-mountains-newfound-gap.png",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -693,7 +693,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=c3&finish=Black&view=phone",
     "design": "kp-great-smoky-mountains-newfound-gap.png",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -704,7 +704,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-great-smoky-mountains-newfound-gap.png&colorway=c4&finish=Black&view=phone",
     "design": "kp-great-smoky-mountains-newfound-gap.png",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -715,7 +715,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-smokies-grotto-falls-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -726,7 +726,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-smokies-grotto-falls-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -737,7 +737,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-smokies-grotto-falls-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -748,7 +748,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-smokies-grotto-falls-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -759,7 +759,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-smokies-grotto-falls-photo.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-smokies-grotto-falls-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -770,7 +770,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=original&finish=Black&view=phone",
     "design": "kp-yellowstone-grand-prismatic.png",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -781,7 +781,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=c1&finish=Black&view=phone",
     "design": "kp-yellowstone-grand-prismatic.png",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -792,7 +792,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=c2&finish=Black&view=phone",
     "design": "kp-yellowstone-grand-prismatic.png",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -803,7 +803,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=c3&finish=Black&view=phone",
     "design": "kp-yellowstone-grand-prismatic.png",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -814,7 +814,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-grand-prismatic.png&colorway=c4&finish=Black&view=phone",
     "design": "kp-yellowstone-grand-prismatic.png",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -825,7 +825,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-yellowstone-old-faithful-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -836,7 +836,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-yellowstone-old-faithful-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -847,7 +847,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-yellowstone-old-faithful-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -858,7 +858,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-yellowstone-old-faithful-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -869,7 +869,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-yellowstone-old-faithful-photo.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-yellowstone-old-faithful-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -880,7 +880,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=original&finish=Black&view=phone",
     "design": "kp-zion-watchman-bend.png",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -891,7 +891,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=c1&finish=Black&view=phone",
     "design": "kp-zion-watchman-bend.png",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -902,7 +902,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=c2&finish=Black&view=phone",
     "design": "kp-zion-watchman-bend.png",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -913,7 +913,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=c3&finish=Black&view=phone",
     "design": "kp-zion-watchman-bend.png",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -924,7 +924,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-watchman-bend.png&colorway=c4&finish=Black&view=phone",
     "design": "kp-zion-watchman-bend.png",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -935,7 +935,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-zion-the-narrows-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -946,7 +946,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-zion-the-narrows-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -957,7 +957,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-zion-the-narrows-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -968,7 +968,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-zion-the-narrows-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -979,7 +979,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-zion-the-narrows-photo.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-zion-the-narrows-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -990,7 +990,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=original&finish=Black&view=phone",
     "design": "kp-grand-teton-reflection.png",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -1001,7 +1001,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=c1&finish=Black&view=phone",
     "design": "kp-grand-teton-reflection.png",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -1012,7 +1012,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=c2&finish=Black&view=phone",
     "design": "kp-grand-teton-reflection.png",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -1023,7 +1023,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=c3&finish=Black&view=phone",
     "design": "kp-grand-teton-reflection.png",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -1034,7 +1034,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-grand-teton-reflection.png&colorway=c4&finish=Black&view=phone",
     "design": "kp-grand-teton-reflection.png",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -1045,7 +1045,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-teton-jenny-lake-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -1056,7 +1056,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-teton-jenny-lake-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -1067,7 +1067,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-teton-jenny-lake-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -1078,7 +1078,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-teton-jenny-lake-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -1089,7 +1089,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-teton-jenny-lake-photo.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-teton-jenny-lake-photo.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -1100,7 +1100,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=original&finish=Black&view=phone",
     "design": "kp-sunday-scramble.png",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -1111,7 +1111,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=c1&finish=Black&view=phone",
     "design": "kp-sunday-scramble.png",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -1122,7 +1122,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=c2&finish=Black&view=phone",
     "design": "kp-sunday-scramble.png",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -1133,7 +1133,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=c3&finish=Black&view=phone",
     "design": "kp-sunday-scramble.png",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -1144,7 +1144,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-sunday-scramble.png&colorway=c4&finish=Black&view=phone",
     "design": "kp-sunday-scramble.png",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -1155,7 +1155,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-golf-pebble-beach.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -1166,7 +1166,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-golf-pebble-beach.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -1177,7 +1177,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-golf-pebble-beach.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -1188,7 +1188,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-golf-pebble-beach.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -1199,7 +1199,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-pebble-beach.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-golf-pebble-beach.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -1210,7 +1210,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-golf-st-andrews.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -1221,7 +1221,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-golf-st-andrews.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -1232,7 +1232,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-golf-st-andrews.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -1243,7 +1243,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-golf-st-andrews.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -1254,7 +1254,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-golf-st-andrews.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-golf-st-andrews.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -1265,7 +1265,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-weather-window-seat.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -1276,7 +1276,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-weather-window-seat.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -1287,7 +1287,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-weather-window-seat.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -1298,7 +1298,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-weather-window-seat.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -1309,7 +1309,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-window-seat.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-weather-window-seat.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -1320,7 +1320,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-weather-frost-fern.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -1331,7 +1331,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-weather-frost-fern.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -1342,7 +1342,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-weather-frost-fern.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -1353,7 +1353,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-weather-frost-fern.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -1364,7 +1364,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-frost-fern.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-weather-frost-fern.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -1375,7 +1375,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-weather-october-drift.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -1386,7 +1386,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-weather-october-drift.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -1397,7 +1397,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-weather-october-drift.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -1408,7 +1408,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-weather-october-drift.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -1419,7 +1419,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-october-drift.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-weather-october-drift.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -1430,7 +1430,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=original&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=original&finish=Black&view=phone",
     "design": "kp-weather-ripple-prism.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "original",
@@ -1441,7 +1441,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=c1&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=c1&finish=Black&view=phone",
     "design": "kp-weather-ripple-prism.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c1",
@@ -1452,7 +1452,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=c2&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=c2&finish=Black&view=phone",
     "design": "kp-weather-ripple-prism.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c2",
@@ -1463,7 +1463,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=c3&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=c3&finish=Black&view=phone",
     "design": "kp-weather-ripple-prism.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c3",
@@ -1474,7 +1474,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=c4&finish=Black&view=case",
+    "href": "customizer.html?model=galaxy-s26-ultra&design=kp-weather-ripple-prism.jpg&colorway=c4&finish=Black&view=phone",
     "design": "kp-weather-ripple-prism.jpg",
     "model": "galaxy-s26-ultra",
     "variant": "c4",
@@ -1485,7 +1485,7 @@
     "caseType": "Tough Magnetic"
   },
   {
-    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=original&finish=Silver&view=case",
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=original&finish=Silver&view=phone",
     "design": "kp-cherry-dot.png",
     "model": "iphone-17-pro-max",
     "variant": "original",
@@ -1496,7 +1496,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=original&finish=Silver&view=case",
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=original&finish=Silver&view=phone",
     "design": "kp-wrong-way-duck.png",
     "model": "iphone-17-pro-max",
     "variant": "original",
@@ -1507,7 +1507,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=c1&finish=Silver&view=case",
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=c1&finish=Silver&view=phone",
     "design": "kp-cherry-dot.png",
     "model": "iphone-17-pro-max",
     "variant": "c1",
@@ -1518,7 +1518,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=c1&finish=Silver&view=case",
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=c1&finish=Silver&view=phone",
     "design": "kp-wrong-way-duck.png",
     "model": "iphone-17-pro-max",
     "variant": "c1",
@@ -1529,7 +1529,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=c2&finish=Silver&view=case",
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=c2&finish=Silver&view=phone",
     "design": "kp-cherry-dot.png",
     "model": "iphone-17-pro-max",
     "variant": "c2",
@@ -1540,7 +1540,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=c2&finish=Silver&view=case",
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=c2&finish=Silver&view=phone",
     "design": "kp-wrong-way-duck.png",
     "model": "iphone-17-pro-max",
     "variant": "c2",
@@ -1551,7 +1551,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=c3&finish=Silver&view=case",
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=c3&finish=Silver&view=phone",
     "design": "kp-cherry-dot.png",
     "model": "iphone-17-pro-max",
     "variant": "c3",
@@ -1562,7 +1562,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=c3&finish=Silver&view=case",
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=c3&finish=Silver&view=phone",
     "design": "kp-wrong-way-duck.png",
     "model": "iphone-17-pro-max",
     "variant": "c3",
@@ -1573,7 +1573,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=c4&finish=Silver&view=case",
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-cherry-dot.png&colorway=c4&finish=Silver&view=phone",
     "design": "kp-cherry-dot.png",
     "model": "iphone-17-pro-max",
     "variant": "c4",
@@ -1584,7 +1584,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=c4&finish=Silver&view=case",
+    "href": "customizer.html?model=iphone-17-pro-max&design=kp-wrong-way-duck.png&colorway=c4&finish=Silver&view=phone",
     "design": "kp-wrong-way-duck.png",
     "model": "iphone-17-pro-max",
     "variant": "c4",
@@ -1595,7 +1595,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=pastel-pink-floral-minimalist-pattern.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=pastel-pink-floral-minimalist-pattern.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "pastel-pink-floral-minimalist-pattern.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1606,7 +1606,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=cow-print-pink-on-cream.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=cow-print-pink-on-cream.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "cow-print-pink-on-cream.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1617,7 +1617,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=where-it-all-began-heart-map-cream.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=where-it-all-began-heart-map-cream.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "where-it-all-began-heart-map-cream.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1628,7 +1628,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=high-detail-botanical-of-winter-flora-on-white.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=high-detail-botanical-of-winter-flora-on-white.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "high-detail-botanical-of-winter-flora-on-white.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1639,7 +1639,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=lake-george-navy.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=lake-george-navy.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "lake-george-navy.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1650,7 +1650,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=kp-half-dome-river.png&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=kp-half-dome-river.png&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "kp-half-dome-river.png",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1661,7 +1661,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=philadelphia-city-map-navy.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=philadelphia-city-map-navy.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "philadelphia-city-map-navy.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1672,7 +1672,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=mid-century-modern-abstract-shapes.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=mid-century-modern-abstract-shapes.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "mid-century-modern-abstract-shapes.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1683,7 +1683,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=west-chester-city-map-cream.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=west-chester-city-map-cream.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "west-chester-city-map-cream.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1694,7 +1694,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=y2k-retro-04.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=y2k-retro-04.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "y2k-retro-04.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1705,7 +1705,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=smiley-flower-power.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=smiley-flower-power.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "smiley-flower-power.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1716,7 +1716,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1727,7 +1727,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=colorful-minimalist-wavy-stripes.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=colorful-minimalist-wavy-stripes.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "colorful-minimalist-wavy-stripes.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1738,7 +1738,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=dog-paw-prints-and-pet-toys.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=dog-paw-prints-and-pet-toys.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "dog-paw-prints-and-pet-toys.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1749,7 +1749,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=christmas-santa-hats-white.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=christmas-santa-hats-white.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "christmas-santa-hats-white.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1760,7 +1760,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=dog-small-dog-breeds.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=dog-small-dog-breeds.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "dog-small-dog-breeds.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1771,7 +1771,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=dog-28-christmas-dog-pattern.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=dog-28-christmas-dog-pattern.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "dog-28-christmas-dog-pattern.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1782,7 +1782,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=dog-adorable-love-paw-dog-bone.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=dog-adorable-love-paw-dog-bone.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "dog-adorable-love-paw-dog-bone.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1793,7 +1793,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=nyc-map-navy.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=nyc-map-navy.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "nyc-map-navy.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1804,7 +1804,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=boston-map-cream.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=boston-map-cream.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "boston-map-cream.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1815,7 +1815,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=bethany-beach-city-map-navy.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=bethany-beach-city-map-navy.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "bethany-beach-city-map-navy.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1826,7 +1826,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=los-angeles-map-blush.jpg&model=iphone-15-pro-max&colorway=original&view=case",
+    "href": "customizer.html?design=los-angeles-map-blush.jpg&model=iphone-15-pro-max&colorway=original&view=phone",
     "design": "los-angeles-map-blush.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1837,7 +1837,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=zodiac-atlas-leo.png&model=iphone-15-pro-max&colorway=c3&view=case",
+    "href": "customizer.html?design=zodiac-atlas-leo.png&model=iphone-15-pro-max&colorway=c3&view=phone",
     "design": "zodiac-atlas-leo.png",
     "model": "iphone-15-pro-max",
     "variant": "c3",
@@ -1848,7 +1848,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=zodiac-atlas-aquarius.png&model=iphone-15-pro-max&colorway=c3&view=case",
+    "href": "customizer.html?design=zodiac-atlas-aquarius.png&model=iphone-15-pro-max&colorway=c3&view=phone",
     "design": "zodiac-atlas-aquarius.png",
     "model": "iphone-15-pro-max",
     "variant": "c3",
@@ -1859,7 +1859,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=zodiac-atlas-gemini.png&model=iphone-15-pro-max&colorway=c3&view=case",
+    "href": "customizer.html?design=zodiac-atlas-gemini.png&model=iphone-15-pro-max&colorway=c3&view=phone",
     "design": "zodiac-atlas-gemini.png",
     "model": "iphone-15-pro-max",
     "variant": "c3",
@@ -1870,7 +1870,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=zodiac-atlas-scorpio.png&model=iphone-15-pro-max&colorway=c3&view=case",
+    "href": "customizer.html?design=zodiac-atlas-scorpio.png&model=iphone-15-pro-max&colorway=c3&view=phone",
     "design": "zodiac-atlas-scorpio.png",
     "model": "iphone-15-pro-max",
     "variant": "c3",
@@ -1881,7 +1881,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?design=zodiac-atlas-virgo.png&model=iphone-15-pro-max&colorway=c3&view=case",
+    "href": "customizer.html?design=zodiac-atlas-virgo.png&model=iphone-15-pro-max&colorway=c3&view=phone",
     "design": "zodiac-atlas-virgo.png",
     "model": "iphone-15-pro-max",
     "variant": "c3",
@@ -1892,7 +1892,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-15-pro-max&design=modern-yosemite-national-park-logo-for-mug.jpg&colorway=forest-topo&view=case",
+    "href": "customizer.html?model=iphone-15-pro-max&design=modern-yosemite-national-park-logo-for-mug.jpg&colorway=forest-topo&view=phone",
     "design": "modern-yosemite-national-park-logo-for-mug.jpg",
     "model": "iphone-15-pro-max",
     "variant": "forest-topo",
@@ -1903,7 +1903,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-15-pro-max&design=modern-yosemite-national-park-logo-for-mug.jpg&colorway=blaze-topo&view=case",
+    "href": "customizer.html?model=iphone-15-pro-max&design=modern-yosemite-national-park-logo-for-mug.jpg&colorway=blaze-topo&view=phone",
     "design": "modern-yosemite-national-park-logo-for-mug.jpg",
     "model": "iphone-15-pro-max",
     "variant": "blaze-topo",
@@ -1914,7 +1914,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-15-pro-max&design=kp-cherry-dot.png&colorway=original&view=case",
+    "href": "customizer.html?model=iphone-15-pro-max&design=kp-cherry-dot.png&colorway=original&view=phone",
     "design": "kp-cherry-dot.png",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1925,7 +1925,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-15-pro-max&design=kp-heart-riot.png&colorway=c4&view=case",
+    "href": "customizer.html?model=iphone-15-pro-max&design=kp-heart-riot.png&colorway=c4&view=phone",
     "design": "kp-heart-riot.png",
     "model": "iphone-15-pro-max",
     "variant": "c4",
@@ -1936,7 +1936,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-15-pro-max&design=kp-heart-riot.png&colorway=c2&view=case",
+    "href": "customizer.html?model=iphone-15-pro-max&design=kp-heart-riot.png&colorway=c2&view=phone",
     "design": "kp-heart-riot.png",
     "model": "iphone-15-pro-max",
     "variant": "c2",
@@ -1947,7 +1947,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-15-pro-max&design=kp-liquid-prism.png&colorway=original&view=case",
+    "href": "customizer.html?model=iphone-15-pro-max&design=kp-liquid-prism.png&colorway=original&view=phone",
     "design": "kp-liquid-prism.png",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1958,7 +1958,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-15-pro-max&design=city-night-new-york.jpg&colorway=original&view=case",
+    "href": "customizer.html?model=iphone-15-pro-max&design=city-night-new-york.jpg&colorway=original&view=phone",
     "design": "city-night-new-york.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1969,7 +1969,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-15-pro-max&design=city-night-philadelphia.jpg&colorway=original&view=case",
+    "href": "customizer.html?model=iphone-15-pro-max&design=city-night-philadelphia.jpg&colorway=original&view=phone",
     "design": "city-night-philadelphia.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",
@@ -1980,7 +1980,7 @@
     "caseType": "MagSafe Clear"
   },
   {
-    "href": "customizer.html?model=iphone-15-pro-max&design=city-night-los-angeles.jpg&colorway=original&view=case",
+    "href": "customizer.html?model=iphone-15-pro-max&design=city-night-los-angeles.jpg&colorway=original&view=phone",
     "design": "city-night-los-angeles.jpg",
     "model": "iphone-15-pro-max",
     "variant": "original",

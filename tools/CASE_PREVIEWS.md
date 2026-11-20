@@ -1,10 +1,10 @@
 # Case preview consistency
 
-Homepage library slides and the parks, golf, weather, Cherry/Duck and gift collections use `assets/case-only-previews/`. They are generated through the **actual customizer** in `view=case`, using the design, model and background in `featured-case-manifest.json`. Do not paste artwork onto an unrelated phone photograph.
+Keepsake sells clear cases. Show the phone mounted inside the clear case, including its camera hardware. Do not replace the transparent case edge with the dark scanned bumper or show empty camera openings. The device mockups already include clear-case edges and camera lips; `case-shell.js` retains compatibility adapters without adding another rim.
 
-The existing drawing and personalized sky examples use photographed empty clear cases. Keep their camera openings transparent and their links in case-only mode. Gallery categories, including Zodiac and City After Dark, render dynamically with `assets/case-shell.js`.
+Homepage slides and the parks, golf, weather, Cherry/Duck and gift collections use `assets/case-only-previews/` (legacy directory name). These are now mounted clear-case previews generated through the actual customizer in `view=phone`, using `featured-case-manifest.json`. Personal drawing and sky examples also use mounted clear-case views. Old `view=case` links resolve to the mounted view. Display changes must not alter print geometry.
 
-To regenerate after changing preview geometry, run from this repository with its local server on port 19038:
+With the local server on port 19038, run:
 
 ```sh
 ../node-v22.12.0-darwin-arm64/bin/node tools/render_featured_cases.cjs
@@ -13,6 +13,6 @@ To regenerate after changing preview geometry, run from this repository with its
 ../node-v22.12.0-darwin-arm64/bin/node tools/tests/featured_autoplay.cjs
 ```
 
-The generator checks design, model, background and camera-opening transparency for every output and records dimensions in `featured-case-renders.json`. Update each image's HTML width/height if those dimensions change. The tests verify collection images, mobile zoom and counter routes, personal studios, slideshow background swaps, and unchanged print PNGs between case-only and mounted views. Visually inspect representative cases on light and dark backgrounds as well.
+The generator checks design, model, background, case style and visible camera hardware for every output. Dimensions are recorded in `featured-case-renders.json`; update HTML dimensions and asset cache versions after rebuilding. Tests verify mobile images, zoom, counter routes, personal studios, slideshow background swaps, legacy links and identical print PNGs for both link modes. Visually inspect representative clear edges on light and dark backgrounds.
 
-`KP_BASE` can point the tests at the published site. Do not run the generator against an untrusted host or with customer uploads. These previews are display assets; physical print masks and calibration remain separate. QR upload deployment stays on hold for myrepairops.
+`KP_BASE` can target the published site. These are display assets; physical calibration remains separate. QR uploads stay on hold for myrepairops.
