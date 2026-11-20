@@ -123,10 +123,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/shop-dialogs.js" defer></script>
 <link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=clear-mounted-2" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 <link rel="stylesheet" href="assets/accessories.css">
-<link rel="stylesheet" href="assets/design-editor.css?v=1">
+<link rel="stylesheet" href="assets/design-editor.css?v=2">
 <script>window.KP_EDITOR=!new URLSearchParams(location.search).has('cal')&&new URLSearchParams(location.search).get('staff')!=='1';</script>
 <script src="assets/accessory-catalog.js"></script>
-<script src="assets/accessories.js"></script>
+<script src="assets/accessories.js?v=2"></script>
 </head>
 <body class="kp-shop kp-customizer">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
@@ -354,10 +354,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   </main>
   <dialog id="counterReview" aria-labelledby="reviewHeading">
     <h2 id="reviewHeading">Show this at the counter</h2>
-    <button type="button" class="case-zoom-button" aria-label="Enlarge your counter case preview" onclick="document.getElementById('skyCaseZoom').click()"><canvas id="reviewPreview" width="300" height="360" aria-label="Your case preview" role="img"></canvas></button>
     <div id="reviewCode" role="status"></div>
-    <dl id="reviewDetails"></dl>
-    <p>Save a counter card or keep this screen open for the team to check your design and total before you pay. This is a preview, not a submitted order.</p>
+    <div id="reviewAtGlance"><section id="reviewOverview" aria-label="Your setup and total"></section>
+    <button type="button" class="case-zoom-button" aria-label="Enlarge your counter case preview" onclick="document.getElementById('skyCaseZoom').click()"><canvas id="reviewPreview" width="300" height="360" aria-label="Your case preview" role="img"></canvas><span>Enlarge case</span></button></div>
+    <details id="reviewSpecification"><summary>Design &amp; staff details</summary><dl id="reviewDetails"></dl></details>
+    <p id="reviewInstruction">Save a counter card or keep this screen open for the team to check your design and total before you pay. This is a preview, not a submitted order.</p>
     <form method="dialog" class="review-actions"><button type="button" id="saveCounterCard" disabled>Save counter card</button><button autofocus>Back to my design</button></form>
   </dialog>
 
@@ -1510,7 +1511,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   $('chargerHelp').checked=state.chargerHelp;
   $('chargerHelp').addEventListener('change',function(){state.chargerHelp=this.checked;state.reserved=false;updateSummary();saveLibraryOptions();});
-  var accessoryPicker=KPAccessories.mount($('accessoryPicker'),{model:state.model,selected:state.accessories,keepIncompatible:new URLSearchParams(location.search).get('staff')==='1',onChange:function(ids){state.accessories=ids;state.reserved=false;updateSummary();}});
+  var accessoryPicker=KPAccessories.mount($('accessoryPicker'),{model:state.model,selected:state.accessories,keepIncompatible:new URLSearchParams(location.search).get('staff')==='1',kiosk:new URLSearchParams(location.search).get('kiosk')==='1',onNotice:function(message){if(message)kpToast(message,6000);},onChange:function(ids){state.accessories=ids;state.reserved=false;updateSummary();}});
   function updateSummary(){
     if(accessoryPicker){accessoryPicker.setModel(state.model);accessoryPicker.setStore(state.store);}
     $('barStore').textContent=state.store?state.store.replace(/, (PA|DE)$/,''):'Choose a store';
@@ -1565,7 +1566,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var el=$('storeChips'); if(!el) return;
     el.innerHTML=KP_STORES.map(function(st){
       var on=st.n===state.store;
-      return '<button class="storeChip" data-s="'+st.n+'" style="font-size:12px;font-weight:800;padding:9px 14px;border-radius:999px;cursor:pointer;background:'+(on?'#2D2D3B':'#FFFFFF')+';color:'+(on?'#FFFFFF':'#4E4E50')+';border:1px solid '+(on?'#2D2D3B':'#E4E3E3')+';transition:all .2s">'+st.n+'</button>';
+      return '<button type="button" class="storeChip" aria-pressed="'+on+'" data-s="'+st.n+'" style="font-size:12px;font-weight:800;padding:9px 14px;border-radius:999px;cursor:pointer;background:'+(on?'#2D2D3B':'#FFFFFF')+';color:'+(on?'#FFFFFF':'#4E4E50')+';border:1px solid '+(on?'#2D2D3B':'#E4E3E3')+';transition:all .2s">'+st.n+'</button>';
     }).join('');
   }
   document.addEventListener('click',function(e){
@@ -1592,7 +1593,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ++reviewVersion;reviewCard=null;
     $('saveCounterCard').disabled=true;
     $('saveCounterCard').textContent='Save counter card';
-    $('reviewDetails').replaceChildren();
+    $('reviewDetails').replaceChildren();$('reviewOverview').replaceChildren();
     $('reviewCode').textContent='';
     if (reviewDownloadUrl) URL.revokeObjectURL(reviewDownloadUrl);
     reviewDownloadUrl=null;
@@ -1641,8 +1642,24 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     detail('Store',state.store);
     var newark=state.store==='Newark, DE';
     if(newark)detail('Sales tax','$0.00');
-    detail(state.accessories.length?(newark?'Estimated total':'Estimated total before tax'):(newark?'Total':'Total before tax'),'$'+orderPricing().total.toFixed(2));
-    dialog.showModal();dialog.scrollTop=0;
+    var totalLabel=newark?'Estimated total':'Estimated total before tax';detail(totalLabel,'$'+orderPricing().total.toFixed(2));
+    var overview=$('reviewOverview');overview.replaceChildren();
+    function overviewText(tag,text,cls){var el=document.createElement(tag);el.textContent=text;if(cls)el.className=cls;overview.append(el);return el;}
+    overviewText('p',state.store,'review-store');
+    overviewText('p',totalLabel+(newark?' · no sales tax':''),'review-total-label');
+    overviewText('strong','$'+orderPricing().total.toFixed(2),'review-total');
+    overviewText('p',model+' · '+state.colorName,'review-phone');
+    if(state.text)overviewText('p','Name: '+state.text,'review-personalization');
+    var items=overviewText('ul','','review-items');
+    function overviewItem(text){var li=document.createElement('li');li.textContent=text;items.append(li);}
+    overviewItem('Case · $'+basePrice().toFixed(2));
+    extras.forEach(function(a){overviewItem(a.name+' · $'+a.price.toFixed(2));});
+    state.accessories.forEach(function(id){var a=KPAccessories.get(id);overviewItem(KPAccessories.label(a)+' · $'+KPAccessories.price(a,state.store).toFixed(2)+(KPAccessories.available(a,state.store)?'':' · confirm stock'));});
+    if(state.chargerHelp)overviewItem('Charger help requested · price to confirm');
+    if(state.promo&&promoTable[state.promo])overviewItem(promoTable[state.promo].name+' applied');
+    $('reviewSpecification').open=false;
+    $('reviewInstruction').textContent=new URLSearchParams(location.search).get('kiosk')==='1'?'Keep this screen open for our team. We confirm stock, fit and your design before you pay in store.':'Save this card or keep the screen open for our team. We confirm stock, fit and your design before you pay in store.';
+    dialog.showModal();dialog.scrollTop=0;$('reviewHeading').tabIndex=-1;$('reviewHeading').focus({preventScroll:true});
     if(!file){
       prepareCounterCard(version,skyStudio?'Bring your saved sky artwork and this preview to the counter.':drawingStudio?'Bring the original drawing photo with this preview.':state.photoImg||state.layout?'Bring the original photos on your phone with this preview.':'Show the team this text design.');
       if (skyStudio && new URLSearchParams(location.search).get('kiosk')!=='1' && state.photoImg && typeof state.photoImg.toBlob === 'function') {
@@ -1679,6 +1696,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     }).catch(function(){if(version===reviewVersion&&dialog.open){code.textContent='Design code unavailable. Show the team this preview.';prepareCounterCard(version,'Pick code unavailable — ask the team to match this preview.');}});
   }
   async function prepareCounterCard(version,instruction){
+    if(new URLSearchParams(location.search).get('kiosk')==='1')return;
     var button=$('saveCounterCard'),dialog=$('counterReview');
     if(version!==reviewVersion||!dialog.open)return;
     try{
@@ -2254,7 +2272,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   window.KPStudioCore={
     snapshot:editorSnapshot,
     context:function(){var src=state.photoImg;if(src&&!editorSources.has(src))editorSources.set(src,++editorSourceID);return state.model+':'+(src?editorSources.get(src):0);},
-    info:function(){return {model:state.model,finish:state.colorName,store:state.store,sky:skyStudio,drawing:drawingStudio,hasPhoto:!!state.photoImg,loading:!!state.libraryLoading,library:state.isLibraryDesign,issue:(caseFailed||lightFailed?'The case photo could not load. Reload or choose another phone.':null)||kpPrintIssue()||(viewFailed?'The case mask could not load. Reload or ask our team for help.':!caseReady||!lightReady?'Your case preview is loading. Please wait.':null),total:orderPricing().total};},
+    info:function(){return {model:state.model,caseType:state.caseType,finish:state.colorName,store:state.store,sky:skyStudio,drawing:drawingStudio,hasPhoto:!!state.photoImg,loading:!!state.libraryLoading,library:state.isLibraryDesign,accessoryError:!!(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')),issue:(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')?'Saved accessories could not load. Reload before reviewing this setup.':null)||(caseFailed||lightFailed?'The case photo could not load. Reload or choose another phone.':null)||kpPrintIssue()||(viewFailed?'The case mask could not load. Reload or ask our team for help.':!caseReady||!lightReady?'Your case preview is loading. Please wait.':null),total:orderPricing().total};},
     restore:function(s){editorKeys.forEach(k=>{if(Object.hasOwn(s,k))state[k]=s[k];});state.reserved=false;editorSync();},
     adjust:function(key,value){
       if(!state.photoImg||skyStudio)return;
@@ -2271,13 +2289,13 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       document.querySelectorAll('dialog[open]').forEach(d=>d.close());
       document.querySelectorAll('input,textarea').forEach(el=>{el.value='';if(el.type==='checkbox')el.checked=false;});
       document.querySelectorAll('canvas').forEach(c=>{c.width=c.height=0;});
-      $('reviewDetails').replaceChildren();$('reviewCode').textContent='';
+      $('reviewDetails').replaceChildren();$('reviewOverview').replaceChildren();$('reviewCode').textContent='';
       editorSources=new WeakMap();document.dispatchEvent(new Event('kp:editor-purge'));
     }
   };
 })();
 </script>
-<script src="assets/design-editor.js?v=1"></script>
+<script src="assets/design-editor.js?v=2"></script>
 <script>
   document.addEventListener('click',function(e){
     var t=e.target.closest ? e.target.closest('.kpAllTgl') : null;

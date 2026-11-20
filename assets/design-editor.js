@@ -6,13 +6,14 @@
   const kiosk=params.get('kiosk')==='1', mobile=matchMedia('(max-width:760px)');
   const fixedStore=kiosk&&window.KPAccessories?.stores.includes(params.get('store'));
   // Arm privacy protection before constructing any editor UI. Deadlines survive device sleep.
-  let idleTimer,warningTimer,warning=null,expiresAt=0,exiting=false;
-  function arm(){if(exiting)return;clearTimeout(idleTimer);clearTimeout(warningTimer);expiresAt=Date.now()+180000;if(warning?.open)warning.close();warningTimer=setTimeout(()=>warning?.showModal(),150000);idleTimer=setTimeout(checkExpiry,180000);}
+  let idleTimer,warningTimer,warning=null,expiresAt=0,exiting=false,leaving=false;
+  function arm(){if(exiting||leaving)return;const duration=$('counterReview')?.open?300000:180000;clearTimeout(idleTimer);clearTimeout(warningTimer);expiresAt=Date.now()+duration;if(warning?.open)warning.close();warningTimer=setTimeout(()=>warning?.showModal(),duration-30000);idleTimer=setTimeout(checkExpiry,duration);}
   function checkExpiry(){if(expiresAt&&Date.now()>=expiresAt)exit();}
   if(kiosk){
-    arm();['pointerdown','keydown','input'].forEach(ev=>document.addEventListener(ev,()=>{checkExpiry();if(!exiting)arm();},{passive:true}));
+    document.addEventListener('click',e=>{if(exiting||leaving){e.preventDefault();e.stopImmediatePropagation();}},true);
+    arm();['pointerdown','keydown','input','wheel'].forEach(ev=>document.addEventListener(ev,()=>{checkExpiry();if(!exiting)arm();},{passive:true}));
     document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkExpiry();});window.addEventListener('focus',checkExpiry);document.addEventListener('resume',checkExpiry);
-    window.addEventListener('pagehide',()=>{document.documentElement.style.visibility='hidden';clearTimeout(idleTimer);clearTimeout(warningTimer);core.purge();});
+    window.addEventListener('pagehide',()=>{leaving=true;document.documentElement.style.visibility='hidden';clearTimeout(idleTimer);clearTimeout(warningTimer);core.purge();});
     window.addEventListener('pageshow',e=>{if(e.persisted){exiting=false;exit();}else checkExpiry();});
   }
   const rail=document.querySelector('.design-rail'), frame=$('main').firstElementChild, grid=rail.parentElement;
@@ -61,6 +62,8 @@
   preview.innerHTML='<p class="studio-kicker">ONE LAST LOOK</p><h2>Your design, on your case.</h2><p>Check the spelling, placement and camera area. Tap the case to see every detail.</p><dl id="studioReviewDetails"></dl><button type="button" id="studioEditAgain">Keep editing</button><p class="studio-help">Digital preview. Our team checks your case and artwork before printing.</p>';rail.append(preview);
   const setup=document.createElement('section');setup.id='studioSetup';setup.hidden=true;setup.innerHTML='<p class="studio-kicker">THE FINISHING TOUCHES</p><h2>Complete your setup.</h2><p>Optional extras. Everything is confirmed and paid for in store.</p>';rail.append(setup);
   move(setup,'retailAddons','promoReveal','promoRow','promoMsg','retailPickup');
+  const storeChoice=$('storeChips').parentElement;setup.insertBefore(storeChoice,$('retailAddons'));
+  const editSetup=document.createElement('button');editSetup.id='studioSetupEdit';editSetup.type='button';editSetup.textContent='Edit your case';setup.insertBefore(editSetup,storeChoice);editSetup.onclick=returnToDesign;
   if(fixedStore){$('storeChips').querySelectorAll('button').forEach(b=>{b.disabled=true;b.hidden=b.dataset.s!==params.get('store');});}
   const quality=document.createElement('div');quality.className='studio-quality';move(quality,'dpiLabel');$('stageStick').append(quality);
   const footer=document.createElement('div');footer.id='studioFooter';footer.innerHTML='<button type="button" id="studioBack">← Back</button><div><strong id="studioTotal"></strong><small id="studioStore"></small></div><button type="button" id="studioNext">Preview design →</button><p id="studioStatus" role="status"></p>';$('main').append(footer);
@@ -99,7 +102,7 @@
     if(mobile.matches&&tool){if(tool==='adjust')sheetBody.append(stage);else stageHome.after(stage);sheetBody.append(panels[tool]);$('studioSheetTitle').textContent=buttons[tool].querySelector('strong').textContent;if(!sheet.open)sheet.showModal();}
     sizeChrome();const canMove=step==='edit'&&tool==='adjust';$('stageCanvas').style.touchAction=canMove?'none':'pan-y';
   }
-  function openTool(id,push=true){if(step!=='edit'||!panels[id])return;remember();tool=id;if(mobile.matches&&push)history.pushState({...history.state,kpStudioSession:sessionId,kpStudioStep:step,kpStudioTool:id},'');paintTool();}
+  function openTool(id,push=true){if(step!=='edit'||!panels[id])return;remember();tool=id;if(mobile.matches&&push)pushStep(step,id);paintTool();}
   function closeTool(){if(closing)return;if(document.activeElement instanceof HTMLElement)document.activeElement.blur();if(mobile.matches&&history.state?.kpStudioTool){closing=true;hideSheet();history.back();return;}tool=null;hideSheet();paintTool();}
   sheet.addEventListener('close',()=>{if(internalCloses){internalCloses--;return;}if(!purged&&tool)closeTool();});
   sheet.addEventListener('cancel',e=>{e.preventDefault();closeTool();});$('studioDone').onclick=closeTool;
@@ -107,20 +110,22 @@
   sheet.addEventListener('click',e=>{if(backdropPress&&e.target===sheet){const r=sheet.getBoundingClientRect();if(e.clientY<r.top||e.clientX<r.left||e.clientX>r.right)closeTool();}});
   tray.onclick=e=>{const b=e.target.closest('[data-tool]');if(b)openTool(b.dataset.tool);};
   mobile.addEventListener('change',()=>{hideSheet();if(!mobile.matches){tool=tool||(info.sky?'sky':'background');paintTool();}else {tool=null;paintTool();}history.replaceState({...history.state,kpStudioTool:null},'');});
+  function pushStep(next,id){const depth=(history.state?.kpStudioDepth||0)+1;history.pushState({...history.state,kpStudioSession:sessionId,kpStudioDepth:depth,kpStudioEditDepth:next==='edit'&&!id?depth:(history.state?.kpStudioEditDepth||0),kpStudioStep:next,kpStudioTool:id},'');}
+  function returnToDesign(){const distance=(history.state?.kpStudioDepth||0)-(history.state?.kpStudioEditDepth||0);if(distance>0)history.go(-distance);else setStep('edit',false);}
   function setStep(next,push=true){
     remember();tool=null;hideSheet();step=next;document.body.dataset.studioStep=step;
     tray.hidden=host.hidden=step!=='edit';preview.hidden=step!=='preview';setup.hidden=step!=='setup';
-    top.querySelector('.studio-history').hidden=step!=='edit';
+    $('studioUndo').hidden=$('studioRedo').hidden=step!=='edit';
     top.querySelectorAll('[data-step]').forEach(li=>{if(li.dataset.step===step)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});
     if(step==='edit'&&!mobile.matches)tool=info.sky?'sky':'background';paintTool();
-    if(push)history.pushState({...history.state,kpStudioSession:sessionId,kpStudioStep:step,kpStudioTool:null},'');
+    if(push)pushStep(step,null);
     sync();window.scrollTo({top:0,behavior:'instant'});$('studioNext').focus({preventScroll:true});
   }
-  history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioStep:'edit',kpStudioTool:null},'');
+  history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioDepth:0,kpStudioEditDepth:0,kpStudioStep:'edit',kpStudioTool:null},'');
   window.addEventListener('popstate',()=>{
-    closing=false;if(!history.state?.kpStudioStep)return;const previous=tool;let target=history.state.kpStudioStep;
-    if(history.state.kpStudioSession!==sessionId){target='edit';history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioStep:'edit',kpStudioTool:null},'');}
-    if(target!=='edit'&&core.info().issue){target='edit';history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioStep:'edit',kpStudioTool:null},'');}
+    closing=false;for(const id of ['counterReview','studioResetDialog'])if($(id)?.open)$(id).close();if(!history.state?.kpStudioStep)return;const previous=tool;let target=history.state.kpStudioStep;
+    if(history.state.kpStudioSession!==sessionId){target='edit';history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioDepth:0,kpStudioEditDepth:0,kpStudioStep:'edit',kpStudioTool:null},'');}
+    if(target!=='edit'&&core.info().issue){target='edit';history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioEditDepth:history.state.kpStudioDepth||0,kpStudioStep:'edit',kpStudioTool:null},'');}
     if(target!==step)setStep(target,false);else{tool=step==='edit'&&!mobile.matches?(info.sky?'sky':'background'):null;hideSheet();paintTool();if(previous)buttons[previous]?.focus({preventScroll:true});}
     if(history.state.kpStudioTool)openTool(history.state.kpStudioTool,false);
   });
@@ -128,14 +133,17 @@
     const i=core.info();if(i.issue){$('studioStatus').textContent=i.issue;return;}
     if(step==='edit')setStep('preview');else if(step==='preview')setStep('setup');else core.review();
   };
-  $('studioBack').onclick=()=>{if(step!=='edit')history.back();else location.href=$('studioBrowse').href;};
+  $('studioBack').onclick=()=>{if(step!=='edit')history.back();else $('studioBrowse').click();};
   $('studioEditAgain').onclick=()=>history.back();
-  const counterBack=$('counterReview')?.querySelector('form button:not([type])');if(counterBack)counterBack.textContent='Back to my setup';
+  const counterBack=$('counterReview')?.querySelector('form button:not([type])');if(counterBack)counterBack.textContent='Edit extras';
+  const counterActions=$('counterReview').querySelector('.review-actions');
+  const editDesign=document.createElement('button');editDesign.type='button';editDesign.id='reviewEditDesign';editDesign.textContent='Edit design';counterActions.insertBefore(editDesign,counterBack);editDesign.onclick=()=>{$('counterReview').close();returnToDesign();};
+  if(kiosk){const nextCustomer=document.createElement('button');nextCustomer.id='reviewNextCustomer';nextCustomer.type='button';nextCustomer.textContent='Start next customer';counterActions.append(nextCustomer);nextCustomer.onclick=()=>confirmExit(false);}
   $('studioCenter').onclick=()=>core.adjust('center');
   adjustments.addEventListener('input',e=>{if(e.target.dataset.adjust)core.adjust(e.target.dataset.adjust,e.target.value);});
   function sync(){
     if(purged)return;const i=core.info(),s=core.snapshot();
-    $('studioPhone').textContent=i.model+' · Clear case';$('studioTotal').textContent='$'+i.total.toFixed(2);
+    $('studioPhone').textContent=i.model+' · '+(i.caseType==='MagSafe Clear'?'Clear case':i.caseType);$('studioTotal').textContent=i.accessoryError?'—':'$'+i.total.toFixed(2);
     $('studioStore').textContent=(i.store||'Choose your store')+(i.store==='Newark, DE'?' · No sales tax':' · Before tax');
     const url=new URL(kiosk?'instore/':'gallery.html',location.href);if(kiosk){if(i.store)url.searchParams.set('store',i.store);}else url.searchParams.set('device',i.model.toLowerCase().replace(/^samsung /,'').replaceAll(' ','-'));$('studioBrowse').href=url.href;
     $('studioNext').textContent=step==='edit'?'Preview design →':step==='preview'?'Choose extras →':'Show at counter →';
@@ -148,11 +156,14 @@
     for(const [label,value] of [['Phone',i.model+' · '+i.finish],['Background',$('photoLookStatus').textContent],['Name',s.text||'No added name']]){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;details.append(dt,dd);}
     if(step==='edit'&&tool!=='adjust')$('stageCanvas').style.touchAction='pan-y';
   }
-  function exit(){if(exiting)return;exiting=true;const fallback=new URL(kiosk?'instore/':'gallery.html',location.href);if(kiosk&&core.info().store)fallback.searchParams.set('store',core.info().store);const dest=$('studioBrowse')?.href||fallback.href;try{core.purge();}finally{location.replace(dest);}}
-  $('studioReset').onclick=()=>resetDialog.showModal();$('studioCancelReset').onclick=()=>resetDialog.close();$('studioConfirmReset').onclick=exit;
+  function exit(){if(exiting)return;exiting=true;if(kiosk)document.documentElement.style.visibility='hidden';const fallback=new URL(kiosk?'instore/':'gallery.html',location.href);if(kiosk&&core.info().store)fallback.searchParams.set('store',core.info().store);const dest=$('studioBrowse')?.href||fallback.href;try{core.purge();}finally{location.replace(dest);}}
+  function confirmExit(leavingDesign){resetDialog.querySelector('h2').textContent=leavingDesign?'Leave this design?':'Start a new design?';resetDialog.querySelector('p').textContent=leavingDesign?'Your name, photo and placement changes will be cleared.':'Your current changes will be cleared.';$('studioConfirmReset').textContent=leavingDesign?'Leave design':'Start over';resetDialog.showModal();}
+  $('studioBrowse').onclick=e=>{const s=core.snapshot(),i=core.info();if(s.text||s.px||s.py||s.rot||s.scale!==1||i.hasPhoto&&!i.library){e.preventDefault();confirmExit(true);}};
+  $('studioReset').onclick=()=>confirmExit(false);$('studioCancelReset').onclick=()=>resetDialog.close();$('studioConfirmReset').onclick=exit;
   if(kiosk){
     warning=document.createElement('dialog');warning.id='studioIdle';warning.innerHTML='<h2>Still designing?</h2><p>This screen will reset in 30 seconds to clear your details.</p><button type="button">Keep designing</button>';document.body.append(warning);
     warning.querySelector('button').onclick=arm;warning.addEventListener('cancel',e=>{e.preventDefault();arm();});
+    const counterExpiry=document.createElement('p');counterExpiry.className='review-expiry';counterExpiry.textContent='Clears after 5 minutes without a touch.';$('reviewCode').after(counterExpiry);new MutationObserver(arm).observe($('counterReview'),{attributes:true,attributeFilter:['open']});
     $('saveCounterCard').hidden=true;if($('skySave'))$('skySave').hidden=true;
     // Shared screens never open a customer's file picker, even from empty-canvas taps.
     $('fileInput').disabled=true;
