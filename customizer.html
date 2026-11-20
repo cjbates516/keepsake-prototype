@@ -218,7 +218,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
               <span style="font-size:13px;font-weight:800;color:#17171F">Your phone · <span id="colorName2" style="color:#6E6E70">Silver</span></span>
               <span style="font-size:13px;font-weight:800;color:#17171F">Your case · <span id="caseNature" style="color:#6E6E70">clear, so the <span id="colorName3">Silver</span> shows through</span></span>
-              <span style="font-size:12px;font-weight:600;color:#6C6C72">The preview shows both together — case on phone</span>
+              <span style="font-size:12px;font-weight:600;color:#6C6C72">Clear case on your phone · Device colors are approximate</span>
             </div>
           </div>
           <div id="retailPrice" style="display:flex;align-items:center;gap:12px;margin:20px 0 28px">
@@ -281,7 +281,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           </div>
           <div style="margin:0 0 28px">
             <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:6px">Add a name <span style="font-weight:600;color:#6C6C72;font-size:13px">· optional, printed on the case</span></div>
-            <input id="nameInput" aria-label="Name or monogram" type="text" maxlength="18" placeholder="Sarah, DAD, Class of 2026…" style="width:100%;box-sizing:border-box;padding:14px 18px;border-radius:999px;border:1px solid #E4E3E3;font-size:16px;color:#17171F;outline-color:#2D2D3B">
+            <input id="nameInput" autocomplete="off" aria-label="Name or monogram" type="text" maxlength="18" placeholder="Sarah, DAD, Class of 2026…" style="width:100%;box-sizing:border-box;padding:14px 18px;border-radius:999px;border:1px solid #E4E3E3;font-size:16px;color:#17171F;outline-color:#2D2D3B">
             <div id="fontChips" style="display:none;gap:8px;overflow-x:auto;padding:12px 0 4px"></div>
             <div id="textOpts" style="display:none;animation:fadeUp .3s cubic-bezier(.2,.7,.2,1) both">
               <div style="display:flex;align-items:center;gap:10px;margin:8px 0 12px">
@@ -319,7 +319,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
           <a href="#" id="promoReveal" style="display:inline-block;font-size:13px;font-weight:700;color:#6C6C72;text-decoration:underline;text-underline-offset:3px;margin-bottom:10px">Have a promo code?</a>
           <div id="promoRow" style="display:none;gap:8px;margin-bottom:8px">
-            <input id="promoInput" aria-label="Promo code" type="text" placeholder="Promo code" style="flex:1;min-width:0;padding:13px 18px;border-radius:999px;border:1px solid #E4E3E3;font-size:16px;text-transform:uppercase;color:#17171F;outline-color:#2D2D3B">
+            <input id="promoInput" autocomplete="off" aria-label="Promo code" type="text" placeholder="Promo code" style="flex:1;min-width:0;padding:13px 18px;border-radius:999px;border:1px solid #E4E3E3;font-size:16px;text-transform:uppercase;color:#17171F;outline-color:#2D2D3B">
             <button id="promoBtn" class="h-outline" style="background:#FFFFFF;color:#17171F;border:1px solid #17171F;padding:13px 24px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer;transition:background .2s,color .2s">Apply</button>
           </div>
           <div id="promoMsg" style="font-size:13px;font-weight:700;margin-bottom:20px;min-height:18px"></div>
@@ -330,7 +330,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#6C6C72;margin-bottom:6px"><span>Printed in store · <span id="colorName4">Silver</span></span><span>Included</span></div>
             <div id="lineAddons" style="display:none;justify-content:space-between;font-size:13px;font-weight:600;color:#6E6E70;margin-bottom:6px"><span id="addonSummary"></span><span id="addonTotal"></span></div>
             <div id="lineDiscount" style="display:none;justify-content:space-between;font-size:14px;font-weight:800;color:#196c34;margin-bottom:6px"><span id="discountName"></span><span id="discountAmt"></span></div>
-            <button id="reserveBtn" class="h-outline" style="width:100%;margin-top:14px;background:#DC282E;color:#FFFFFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background .2s">Order — print in store</button>
+            <button id="reserveBtn" class="h-outline" style="width:100%;margin-top:14px;background:#DC282E;color:#FFFFFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background .2s">Show this design at the counter</button>
             <div id="reservedBox" style="display:none;animation:fadeUp .35s cubic-bezier(.2,.7,.2,1) both;background:#FBE0E1;border-radius:10px;padding:18px;text-align:center;font-weight:800;font-size:14px;line-height:1.5;color:#2D2D3B;margin-top:14px"></div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:14px;font-size:12.5px;font-weight:700;color:#2D2D3B">
               <span>Personalized in store</span><span>Review with our team</span>
@@ -347,7 +347,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         <div style="font-size:15px;font-weight:900;color:#17171F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Design your keepsake</div>
         <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#196c34">Print in store · <span id="barStore">West Chester</span><span style="display:none">$<span id="totalBar">44.99</span></span></div>
       </div>
-      <button id="cartBtn" class="h-upload" style="flex:1;max-width:680px;margin-left:auto;background:#DC282E;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer;transition:background .2s">Order — $44.99</button>
+      <button id="cartBtn" class="h-upload" style="flex:1;max-width:680px;margin-left:auto;background:#DC282E;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:15px;font-weight:800;cursor:pointer;transition:background .2s">Counter review · $44.99</button>
     </div>
   </main>
   <dialog id="counterReview" aria-labelledby="reviewHeading">
@@ -516,7 +516,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* Shared blank geometry already confirmed for 17/18; device colors are separate. */
   ['Pro Max','Pro'].forEach(function(size){
     var kit=JSON.parse(JSON.stringify(KITS['iPhone 17 '+size])),suffix=size==='Pro Max'?'pm':'p';
-    kit.colors=[{"n": "Silver", "h": "#e4e4e2", "f": "silver"}, {"n": "Black", "h": "#27282a", "f": "black"}, {"n": "Glacier", "h": "#adcadf", "f": "glacier"}, {"n": "Burgundy", "h": "#744653", "f": "burgundy"}].map(function(c){return {n:c.n,h:c.h,f:'i18'+suffix+'-'+c.f+'.svg?v=12'};});
+    kit.colors=[{"n": "Silver", "h": "#e4e4e2", "f": "silver"}, {"n": "Black", "h": "#27282a", "f": "black"}, {"n": "Glacier", "h": "#adcadf", "f": "glacier"}, {"n": "Burgundy", "h": "#744653", "f": "burgundy"}].map(function(c){return {n:c.n,h:c.h,f:'i18'+suffix+'-'+c.f+'.svg?v=13'};});
     kit.view='view-i17'+suffix+'.png';kit.light=kit.colors[0].f;
     delete kit.hybrid;
     KITS['iPhone 18 '+size]=kit;
@@ -1615,7 +1615,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(look)detail('Background',look.name);
     }
     detail('Phone',model+' · '+state.colorName);detail('Case',state.caseType);
-    if(state.text)detail('Personalization',state.text);
+    if(state.text){
+      detail('Personalization',state.text);
+      detail('Name style',(FONTS[state.textFont] ? FONTS[state.textFont].n : 'Selected font')+' · '+state.textColor+' · '+(state.textVertical?'vertical':'horizontal'));
+      detail('Personalization handoff',(file?'The pick code identifies the base design only. ':'')+'Show this preview so our team can match your name, size and placement before printing.');
+    }
     var extras=addonDefs.filter(function(a){return state.addons[a.key];});
     extras.forEach(function(a){detail(a.name,'+$'+a.price.toFixed(2));});
     state.accessories.forEach(function(id){var a=KPAccessories.get(id);detail(KPAccessories.label(a),'$'+KPAccessories.price(a,state.store).toFixed(2)+' · SKU '+a.sku+(KPAccessories.available(a,state.store)?'':' · confirm availability here')+(KPAccessories.compatible(a,state.model)?'':' · CHECK PHONE FIT'));});

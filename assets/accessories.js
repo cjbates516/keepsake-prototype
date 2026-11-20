@@ -31,7 +31,7 @@
     var more=el('button','Explore all accessories','ka-more');more.type='button';
     var checked=new Date(catalog[0].stockChecked+'T12:00:00Z').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'});
     var foot=el('p','1-year limited warranty. Keep your receipt and ask our team about coverage and exclusions. Prices and availability checked '+checked+'. Our team confirms stock before purchase.','ka-foot');
-    var warranty=el('a','Accessory warranty help');warranty.href=new URL('help.html#accessory-warranty',root).href;foot.append(document.createTextNode(' '),warranty);
+    var warranty=el('a','Accessory warranty help');warranty.href=new URL('help.html#accessory-warranty',root).href;if(!options.kiosk)foot.append(document.createTextNode(' '),warranty);
     host.classList.add('ka');host.append(heading,intro,selected,tabs,grid,more,notice,foot);
     var cats=['Recommended','Cables','Wall chargers','Car chargers','Wireless','Audio','More'];
     function change(){options.onChange(ids.slice());}
@@ -53,12 +53,14 @@
         var title=el('h4',x.name),desc=el('p',x.description,'ka-desc'),price=el('strong','$'+API.price(x,store).toFixed(2),'ka-price');
         card.append(photo,title,desc);
         if(variants.length>1){var select=el('select');select.dataset.group=g;select.setAttribute('aria-label',x.name+' option');variants.forEach(function(v){var o=el('option',v.option+' · $'+API.price(v,store).toFixed(2));o.value=v.id;o.selected=v.id===x.id;select.append(o);});select.onchange=function(){choices[g]=select.value;draw();};card.append(select);}else if(x.option)card.append(el('p',x.option,'ka-option'));
-        var b=el('button',ids.indexOf(x.id)>=0?'Added ✓':'Add to my setup','ka-add');b.type='button';b.dataset.accessory=x.id;b.setAttribute('aria-pressed',String(ids.indexOf(x.id)>=0));b.onclick=function(){toggle(x.id);};card.append(price,b);grid.append(card);
+        var groupSelected=ids.find(function(id){return API.get(id).group===x.group;});
+        if(groupSelected&&groupSelected!==x.id)card.append(el('p',(API.get(groupSelected).option||API.get(groupSelected).name)+' is in your setup.','ka-option'));
+        var b=el('button',ids.indexOf(x.id)>=0?'Added ✓':groupSelected?'Switch to this option':'Add to my setup','ka-add');b.type='button';b.dataset.accessory=x.id;b.setAttribute('aria-pressed',String(ids.indexOf(x.id)>=0));b.onclick=function(){toggle(x.id);};card.append(price,b);grid.append(card);
       });
       if(!groups.length)grid.append(el('p','Ask our team for accessories for this device.'));
       if(focusKey){var next=host.querySelector(focusKey);if(next)next.focus({preventScroll:true});else if(focused.dataset.remove)selected.focus({preventScroll:true});}
     }
     more.onclick=function(){var oldCount=grid.children.length;expanded=true;draw();var next=grid.children[oldCount]||grid.children[0];if(next){var button=next.querySelector('button');if(button)button.focus();}};draw();
-    return {setStore:function(value){if((value!==''&&API.stores.indexOf(value)<0)||store===value)return;store=value;if(!store){ids=[];draw();change();}else draw();},setModel:function(value){if(checkedModel&&model===value)return;checkedModel=true;model=value;var old=ids.length;ids=ids.filter(function(id){return options.keepIncompatible||API.compatible(API.get(id),model);});notice.textContent=old!==ids.length?'We removed accessories that do not match this phone.':'';draw();if(old!==ids.length)change();},reset:function(){ids=[];choices={};category='Recommended';expanded=false;notice.textContent='';draw();change();},selected:function(){return ids.slice();}};
+    return {setStore:function(value){if((value!==''&&API.stores.indexOf(value)<0)||store===value)return;store=value;if(!store){ids=[];draw();change();}else draw();},setModel:function(value){if(checkedModel&&model===value)return;checkedModel=true;model=value;var old=ids.length;ids=ids.filter(function(id){return options.keepIncompatible||API.compatible(API.get(id),model);});notice.textContent=old!==ids.length?'We removed accessories that do not match this phone.':'';if(options.onNotice)options.onNotice(notice.textContent);draw();if(old!==ids.length)change();},reset:function(){ids=[];choices={};category='Recommended';expanded=false;notice.textContent='';draw();change();},selected:function(){return ids.slice();}};
   };
 })();

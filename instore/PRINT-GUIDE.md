@@ -1,13 +1,25 @@
 # Keepsake in-store browsing and printing
 
-Customer iPad: [Open browsing](./). Print computer: [Open the print counter](find.html).
+Customer touch screen: [Open browsing](./). Print computer: [Open the print counter](find.html).
+
+## Set each kiosk to its store
+
+Bookmark the correct link on the customer touch monitor. The store stays fixed through start-over and idle reset:
+
+- [West Chester](https://cjbates516.github.io/keepsake-prototype/instore/?store=West%20Chester%2C%20PA)
+- [Pottstown](https://cjbates516.github.io/keepsake-prototype/instore/?store=Pottstown%2C%20PA)
+- [Newark](https://cjbates516.github.io/keepsake-prototype/instore/?store=Newark%2C%20DE)
+
+Check the store label at the top before handing the screen to a customer. An unconfigured kiosk asks for a store during setup. Stock and accessory prices are a dated snapshot, so staff must confirm current availability and device fit. Case and glass prices are the same across the three stores; some accessory prices differ. Newark has no sales tax; Pennsylvania prices are shown before tax.
+
+After a site update, open or reload the kiosk while online and allow its offline files to update. Previously viewed cases and cached accessories can work offline; an unseen photo may still need a connection. If a preview cannot load, the handoff explicitly tells staff to verify the design and background before printing.
 
 ## Library design
 
-1. On the iPad, choose the phone. Search by name or browse a collection.
+1. On the customer screen, choose the phone. Search by name or browse a collection.
 2. Choose the design and colorway. Every case design is $44.99. Tempered glass is $29.99 separately or $19.99 with a case, for $64.98 before tax.
-3. Tap **Show a team member**. The code includes the selected colorway. A displayed code remains for five minutes without interaction. Ordinary browsing resets after 75 seconds. A reminder appears during the final 15 seconds.
-4. On the print computer, enter the code at **Find a pick code**. Check the phone, title and colorway with the customer. If no code is available, select the phone and search by design name.
+3. Add glass and an optional charger or other accessory. The bottom bar keeps the current total and **Review my setup** button visible. Review shows the case, glass, accessories and store together. Use **Edit this setup** to change the selection. The code includes the selected background, extras and store; choosing a charger-help request does not add an unknown charger price. A displayed code remains for five minutes without interaction. Ordinary browsing resets after 75 seconds. A reminder appears during the final 15 seconds.
+4. On the print computer, enter the code at **Find a pick code**. Check the phone, title, background, glass, accessory SKUs and store with the customer. If no code is available, select the phone and search by design name.
 5. Open **Prepare print**. Add a name if requested. Confirm spelling, crop, camera opening and the physical blank before downloading.
 6. Choose **Download print PNG**. The file is transparent and has 300 DPI metadata. The workspace shows its exact pixel and millimetre dimensions, including the existing 18-pixel mask bleed (about 1.5 mm). Physical edge coverage still needs a blank check. The filename identifies the phone, artwork and colorway.
 7. Import the PNG into xTool Studio. Confirm both dimensions against the workspace, even if the software reads the resolution automatically. Choose **Keep size** if xTool asks to scale the image to fit. Do not use fit-to-page or add a background. Use the matching blank, jig and the store’s validated print preset.
@@ -18,7 +30,7 @@ Customer iPad: [Open browsing](./). Print computer: [Open the print counter](fin
 
 Choose the phone explicitly under **No pick code? Start here**, then **Use a customer photo or name**. Ask the customer to transfer their original file using the store’s transfer method. Upload on the print computer, adjust the crop and check image quality together. For a name-only case, enter the name without uploading a photo.
 
-This staff workspace does not submit photos, names or phone numbers to the order server. Preparing a print creates local browser data; downloading creates a file on the print computer. Remove transferred photos and downloaded print files after the job according to store policy. The browsing iPad never accepts personal photo uploads.
+This staff workspace does not submit photos, names or phone numbers to the order server. Preparing a print creates local browser data; downloading creates a file on the print computer. Remove transferred photos and downloaded print files after the job according to store policy. The browsing screen never accepts personal photo uploads. QR uploads remain on hold for myrepairops.
 
 ## Recovery
 

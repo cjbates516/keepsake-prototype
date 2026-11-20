@@ -16,7 +16,7 @@ const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
  const details=await page.locator('#reviewDetails').innerText();
  for(const text of ['Newark, DE','$0.00','$64.98','Tempered glass'])assert(details.includes(text));
  const pickCode=(await page.locator('#reviewCode').innerText()).replace('Pick code · ','');
- assert(pickCode.endsWith('-G'));
+ assert(/-G-S[1-3]$/.test(pickCode));
  const downloadPromise=page.waitForEvent('download');await page.locator('#saveCounterCard').tap();
  const download=await downloadPromise;assert.equal(download.suggestedFilename(),'keepsake-counter-card.png');
  const out='/tmp/keepsake-counter-card-'+engine.name()+'.png';await download.saveAs(out);

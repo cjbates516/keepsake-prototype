@@ -41,6 +41,8 @@
       })
     ]).then(function (res) {
       var config = res[0], models = res[1].models || res[1], all = res[2], codes = res[3];
+      var rawPrice = config && config.price, price = Number(rawPrice);
+      if ((typeof rawPrice !== 'number' && !(typeof rawPrice === 'string' && /^\d+(\.\d{1,2})?$/.test(rawPrice))) || !Number.isFinite(price) || price < 0.01 || Math.abs(price * 100 - Math.round(price * 100)) > 0.000001) throw new Error('Case price is unavailable. Ask a team member.');
       var cols = {}, colList = [], used = {};
       (config.collections || []).forEach(function (c, i) {
         var col = { category: c.category, label: c.label || c.category, code: c.code, order: i };
@@ -73,7 +75,7 @@
       designs.sort(function (a, b) { return (a._col.order - b._col.order) || cmp(a.title, b.title) || cmp(a.file, b.file); });
       var data = {
         config: config,
-        price: Number(config.price),
+        price: price,
         idleMs: Math.max(15, Number(config.idle_seconds) || 75) * 1000,
         assetsVersion: String(config.assets_version || '11'),
         models: models,
@@ -120,7 +122,7 @@
     if(accessories&&accessories.length&&(!window.KPAccessories||!KPAccessories.valid(accessories)))return null;
     var extras=window.KPAccessories?KPAccessories.parse(accessories):[];
     if(extras.length&&KPAccessories.stores.indexOf(store)<0)return null;
-    return code + (glass ? '-G' : '') + (charger ? '-A' : '')+(extras.length?'-'+extras.join('-'):'')+(extras.length&&window.KPAccessories&&KPAccessories.stores.indexOf(store)>=0?'-S'+(KPAccessories.stores.indexOf(store)+1):'');
+    return code + (glass ? '-G' : '') + (charger ? '-A' : '')+(extras.length?'-'+extras.join('-'):'')+(window.KPAccessories&&KPAccessories.stores.indexOf(store)>=0?'-S'+(KPAccessories.stores.indexOf(store)+1):'');
   };
   KPI.pad3 = pad3;
   KPI.fallbackCode = function (cat, used) {
