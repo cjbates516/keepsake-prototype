@@ -531,7 +531,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     document.addEventListener('keydown',function(e){ if(e.key==='Escape') kpCloseDrawer(); });
   }
   function kpOpenDrawer(brand){
-    drawerOpener=document.activeElement;
+    drawerOpener=document.activeElement===document.body?document.getElementById('wizDevBtn'):document.activeElement;
     kpEnsureDrawer();
     drawerBrand = brand==='Samsung'||(!brand&&device&&device.indexOf('Galaxy')===0) ? 'Samsung' : 'Apple';
     kpRenderDrawer();
