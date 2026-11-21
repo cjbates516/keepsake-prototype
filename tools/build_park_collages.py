@@ -1,0 +1,22 @@
+"""Publish original adventure collages without altering existing park artwork."""
+from pathlib import Path
+from PIL import Image
+import json,hashlib,argparse,html
+R=Path(__file__).resolve().parent.parent
+p=argparse.ArgumentParser();p.add_argument('--masters',type=Path,required=True);a=p.parse_args()
+rows=[]
+for key,title in [('smokies','Great Smoky Mountains'),('everest','Mount Everest'),('grand-canyon','Grand Canyon')]:
+ src=a.masters/('park-collage-'+key+'.png');im=Image.open(src).convert('RGB');file='kp-park-collage-'+key+'.jpg';dest=R/'assets/designs'/file;im.save(dest,quality=96,subsampling=0);thumb=im.copy();thumb.thumbnail((320,640));thumb.save(dest.parent/'thumbs'/file,quality=90)
+ rows.append({'file':file,'title':title+' · Adventure Collage','category':'National Parks','active':True,'hash':hashlib.sha256(dest.read_bytes()).hexdigest()[:12],'color':['Green','Orange','Blue'],'sourceSize':list(im.size),'preview':'assets/celestial-patterns/'+file.replace('.jpg','--original.webp'),'master':src.name})
+p=R/'assets/designs/designs.json';old=json.loads(p.read_text());names={r['file'] for r in rows};p.write_text(json.dumps([{k:r[k] for k in ['file','title','category','active','hash','color']} for r in rows]+[r for r in old if r['file'] not in names],indent=0,ensure_ascii=False)+'\n')
+# No synthetic color filters: preserve every printed color in these full-scene illustrations.
+p=R/'assets/colorway-catalog.js';s=p.read_text();d=json.loads(s[s.index('{'):s.rindex('}')+1]);d.update({r['file']:{'method':'assets','hash':r['hash'],'preparedHash':r['hash'],'colors':[],'variants':[],'variantHashes':[],'backgroundOnly':True} for r in rows});p.write_text('/* Design-specific backgrounds; existing artwork profiles preserved. */\nwindow.KP_COLORWAY_CATALOG='+json.dumps(d,separators=(',',':'),ensure_ascii=False)+';\n')
+(R/'assets/park-collages.json').write_text(json.dumps(rows,indent=2)+'\n')
+(R/'tools/park-collage-renders.json').write_text(json.dumps([{'href':'customizer.html?design='+r['file']+'&model='+model+'&view=phone','design':r['file'],'model':model,'variant':'original','output':r['preview'] if model=='iphone-17-pro-max' else r['preview'].replace('--original','--'+model),'caseType':'MagSafe Clear'} for r in rows for model in ['iphone-17-pro-max','iphone-15-pro','galaxy-s26-ultra']],indent=2)+'\n')
+# Share the lookbook shell, but offer the artwork itself, not color changes to the illustration.
+s=(R/'tarot.html').read_text();start=s.index('<header class="fresh-intro">');end=s.index('<footer class="fresh-footer">');body='<header class="fresh-intro"><p class="eyebrow">THE ADVENTURE COLLAGE COLLECTION</p><h1>Take the trail<br>with you.</h1><p>Big landscapes, little details. Original outdoor collages inspired by the Smokies, Everest and Grand Canyon.</p><p class="fresh-note">Digital previews on clear cases. Tap to zoom; choose your phone in the studio.</p></header><nav class="fresh-nav"><a href="parks-rugged.html">Explore all parks</a><a href="gallery.html?cat=National%20Parks">Browse park designs</a></nav><section class="fresh-section"><div class="fresh-grid">'
+for r in rows:
+ href='customizer.html?design='+r['file']+'&view=phone';t=html.escape(r['title'].replace(' · Adventure Collage',''));body+=f'<article class="fresh-card"><a data-preview-link class="fresh-image" href="{html.escape(href)}" aria-label="Enlarge {t}"><img loading="lazy" width="600" height="1200" src="{r["preview"]}" alt="{t} adventure illustration on a clear case"></a><div class="fresh-card-title"><h3>{t}</h3><span>$44.99</span></div><a class="fresh-customize" href="{html.escape(href)}">Make it yours ↗</a></article>'
+body+='</div></section>'
+s=s[:start]+body+'<footer class="fresh-footer"><p>Original AI-assisted illustrations. These are illustrated interpretations, not photographs or official park merchandise. Everest is part of the Himalayan landscape around Sagarmatha National Park in Nepal.</p><p><a href="parks-rugged.html">More national park designs →</a></p></footer></main><script src="assets/case-zoom.js"></script></body></html>';s=s.replace('The Sun, Moon, Star and Lovers. Four original illustrations with a background for every mood.','Original outdoor sticker collages inspired by Great Smoky Mountains, Everest and Grand Canyon.');s=s.replace('<title>Tarot | Keepsake Printing Co.</title>','<title>Adventure Collages | Keepsake Printing Co.</title>');(R/'park-collages.html').write_text(s+'\n')
+print('Prepared 3 park collages and 9 multi-model previews')

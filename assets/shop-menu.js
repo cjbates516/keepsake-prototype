@@ -1,8 +1,17 @@
 (() => {
  const header=document.querySelector('.home-header,.slate-header,.site-header .bar');
- if(!header || typeof document.createElement('dialog').showModal!=='function')return;
+ if(!header)return;
+ const start=header.querySelector('.header-cta')||document.createElement('a');
+ start.href='customizer.html';start.textContent='Design your case';start.classList.add('ks-start-case');start.setAttribute('aria-label','Design your case — use your photo or choose a print');
+ if(!start.isConnected)header.append(start);
+ if(typeof document.createElement('dialog').showModal!=='function')return;
  const rows=[
+  ['Design your case','Use your own photo or choose a print','customizer.html','assets/home/personal/drawing-case.webp'],
   ['Fresh prints','New nature, golf, liquid and space designs','new-prints.html','assets/new-prints/kp-blueprint-ginkgo.webp'],
+  ['Zodiac Creatures','Full animals and figures · five backgrounds','celestial-creatures.html','assets/celestial-patterns/kp-zodiac-creature-leo--original.webp'],
+  ['Tarot','The Sun, Moon, Star and Lovers','tarot.html','assets/celestial-patterns/kp-tarot-sun--original.webp'],
+  ['Polka dots & lines','Clean patterns, your choice of background','pattern-studio.html','assets/celestial-patterns/kp-dots-cafe-dot--original.webp'],
+  ['Original Zodiac','The star-sign collection you know','gallery.html?cat=Zodiac','assets/home/personal/sky-case.webp'],
   ['iPhone cases','Pick your iPhone model','gallery.html?brand=Apple','assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--original.webp?v=clear-mounted-1'],
   ['Samsung cases','Pick your Galaxy model','gallery.html?brand=Samsung','assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--original.webp?v=clear-mounted-1'],
   ['All phone cases','Browse prints before picking a phone','gallery.html','assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--original.webp?v=clear-mounted-1'],
@@ -12,8 +21,8 @@
   ['Space Photography','Real telescope and spacecraft observations','gallery.html?cat=Space%20Photography','assets/new-prints/kp-space-bubble.webp'],
   ['Liquid Prism','Sculptural waves and prismatic color','gallery.html?cat=Liquid%20Color','assets/new-prints/kp-liquid-copper-wave.webp'],
   ['Signature Golf','Course maps and Sunday Scramble','signature-golf.html','assets/case-only-previews/galaxy-s26-ultra--kp-golf-pebble-beach--original.webp?v=clear-mounted-1'],
+  ['Adventure Collages','Smokies, Everest and Grand Canyon','park-collages.html','assets/celestial-patterns/kp-park-collage-grand-canyon--original.webp'],
   ['National Parks','Illustrations and real park photos','parks-rugged.html','assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor--original.webp?v=clear-mounted-1'],
-  ['Design your own','Use a photo from your phone','customizer.html','assets/home/personal/drawing-case.webp'],
   ['Children’s artwork','Turn their drawing into a case','customizer.html?studio=drawing#personalStudio','assets/home/personal/drawing-case.webp'],
   ['Night sky','Map a special date and place','customizer.html?studio=sky#personalStudio','assets/home/personal/sky-case.webp'],
   ['Seasonal Weather','Rain, frost, autumn and summer prints','seasonal-weather.html','assets/case-only-previews/galaxy-s26-ultra--kp-weather-window-seat--original.webp?v=clear-mounted-1'],

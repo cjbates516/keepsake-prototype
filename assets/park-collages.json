@@ -1,0 +1,56 @@
+[
+  {
+    "file": "kp-park-collage-smokies.jpg",
+    "title": "Great Smoky Mountains \u00b7 Adventure Collage",
+    "category": "National Parks",
+    "active": true,
+    "hash": "47a9435c7324",
+    "color": [
+      "Green",
+      "Orange",
+      "Blue"
+    ],
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "preview": "assets/celestial-patterns/kp-park-collage-smokies--original.webp",
+    "master": "park-collage-smokies.png"
+  },
+  {
+    "file": "kp-park-collage-everest.jpg",
+    "title": "Mount Everest \u00b7 Adventure Collage",
+    "category": "National Parks",
+    "active": true,
+    "hash": "8cba53f76c9c",
+    "color": [
+      "Green",
+      "Orange",
+      "Blue"
+    ],
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "preview": "assets/celestial-patterns/kp-park-collage-everest--original.webp",
+    "master": "park-collage-everest.png"
+  },
+  {
+    "file": "kp-park-collage-grand-canyon.jpg",
+    "title": "Grand Canyon \u00b7 Adventure Collage",
+    "category": "National Parks",
+    "active": true,
+    "hash": "c07b92c57cfb",
+    "color": [
+      "Green",
+      "Orange",
+      "Blue"
+    ],
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "preview": "assets/celestial-patterns/kp-park-collage-grand-canyon--original.webp",
+    "master": "park-collage-grand-canyon.png"
+  }
+]

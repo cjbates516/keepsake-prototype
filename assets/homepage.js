@@ -21,13 +21,14 @@
   const hero = document.querySelector('.case-edit');
   if (!hero) return;
   const slides = Array.from(hero.querySelectorAll('.case-slide'));
+  if(slides.length<2)return;
   const status = hero.querySelector('[aria-live]');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const header = document.querySelector('.home-header');
   const announcement = document.querySelector('.announcement');
   let current = 0;
   let timer, start;
-  let visible = true, stopped = false, suppressClick = false;
+  let visible = true, stopped = false, hovered = false, suppressClick = false;
 
   function measureHeader() {
     hero.style.setProperty('--hero-header', ((header?.offsetHeight || 0) + (announcement?.offsetHeight || 0)) + 'px');
@@ -42,33 +43,12 @@
     clearTimeout(timer);
     // Start fetching the next case before its slide becomes visible.
     slides[(current + 1) % slides.length].querySelectorAll('img').forEach(img => { img.loading = 'eager'; });
-    if (!hero.contains(document.activeElement) && !stopped && !motion.matches && visible && !document.hidden) {
+    if (!hero.contains(document.activeElement) && !stopped && !hovered && !motion.matches && !matchMedia('(pointer: coarse)').matches && visible && !document.hidden) {
       timer = setTimeout(() => {
         if (document.querySelector('#caseZoomDialog[open]')) schedule();
         else advance(1, false);
       }, 6500);
     }
-  }
-  function cycleColor(slide) {
-    const nextSource = slide.dataset.altArt;
-    if (!nextSource) return;
-    const link = slide.querySelector('.campaign-shop');
-    const art = slide.querySelector('.scene-art');
-    const nextVariant = slide.dataset.altVariant;
-    const nextLabel = slide.dataset.altLabel;
-    const preload = new Image();
-    preload.src = nextSource;
-    preload.decode().then(() => {
-      // Image, label and destination are committed together after the image loads.
-      if (slide.dataset.altArt !== nextSource) return;
-      const url = new URL(link.href);
-      const previous = [art.getAttribute('src'), url.searchParams.get('colorway'), link.textContent];
-      art.src = nextSource;
-      url.searchParams.set('colorway', nextVariant);
-      link.href = url.href;
-      link.textContent = nextLabel;
-      [slide.dataset.altArt, slide.dataset.altVariant, slide.dataset.altLabel] = previous;
-    }).catch(() => { /* Keep the current image and matching link when a download fails. */ });
   }
   function advance(step, manual) {
     const previous = slides[current];
@@ -79,8 +59,7 @@
     if (manual) {
       stopped = true;
       status.textContent = next.getAttribute('aria-label');
-    } else {
-      cycleColor(previous);
+
     }
     schedule();
   }
@@ -94,9 +73,11 @@
     }
   });
   hero.addEventListener('pointerenter', event => {
-    if (event.pointerType === 'mouse') { stopped = true; schedule(); }
+    if (event.pointerType === 'mouse') { hovered = true; schedule(); }
   });
-  hero.addEventListener('focusin', () => { stopped = true; schedule(); });
+  hero.addEventListener('pointerleave', () => { hovered=false; schedule(); });
+  hero.addEventListener('focusin', schedule);
+  hero.addEventListener('focusout', () => setTimeout(schedule,0));
   hero.addEventListener('touchstart', event => {
     suppressClick = false;
     start = event.touches.length === 1 ? event.touches[0] : null;

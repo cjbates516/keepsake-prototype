@@ -1,0 +1,2050 @@
+[
+  {
+    "file": "kp-dots-micro-ink.png",
+    "title": "Micro Ink Dots",
+    "category": "Polka dots",
+    "active": true,
+    "hash": "341abbd34f53",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-dots-micro-ink.png",
+        "preview": "assets/celestial-patterns/kp-dots-micro-ink--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-dots-micro-ink-c1.webp",
+        "preview": "assets/celestial-patterns/kp-dots-micro-ink--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-dots-micro-ink-c2.webp",
+        "preview": "assets/celestial-patterns/kp-dots-micro-ink--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-dots-micro-ink-c3.webp",
+        "preview": "assets/celestial-patterns/kp-dots-micro-ink--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-dots-micro-ink-c4.webp",
+        "preview": "assets/celestial-patterns/kp-dots-micro-ink--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-dots-micro-ink-c5.webp",
+        "preview": "assets/celestial-patterns/kp-dots-micro-ink--c5.webp"
+      }
+    ],
+    "master": "dots-micro-ink.svg"
+  },
+  {
+    "file": "kp-dots-cafe-dot.png",
+    "title": "Café Dots",
+    "category": "Polka dots",
+    "active": true,
+    "hash": "15150cbeaf1f",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-dots-cafe-dot.png",
+        "preview": "assets/celestial-patterns/kp-dots-cafe-dot--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-dots-cafe-dot-c1.webp",
+        "preview": "assets/celestial-patterns/kp-dots-cafe-dot--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-dots-cafe-dot-c2.webp",
+        "preview": "assets/celestial-patterns/kp-dots-cafe-dot--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-dots-cafe-dot-c3.webp",
+        "preview": "assets/celestial-patterns/kp-dots-cafe-dot--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-dots-cafe-dot-c4.webp",
+        "preview": "assets/celestial-patterns/kp-dots-cafe-dot--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-dots-cafe-dot-c5.webp",
+        "preview": "assets/celestial-patterns/kp-dots-cafe-dot--c5.webp"
+      }
+    ],
+    "master": "dots-cafe-dot.svg"
+  },
+  {
+    "file": "kp-dots-cherry-pinpoint.png",
+    "title": "Cherry Pinpoint",
+    "category": "Polka dots",
+    "active": true,
+    "hash": "a38b3232fa82",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-dots-cherry-pinpoint.png",
+        "preview": "assets/celestial-patterns/kp-dots-cherry-pinpoint--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-dots-cherry-pinpoint-c1.webp",
+        "preview": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-dots-cherry-pinpoint-c2.webp",
+        "preview": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-dots-cherry-pinpoint-c3.webp",
+        "preview": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-dots-cherry-pinpoint-c4.webp",
+        "preview": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-dots-cherry-pinpoint-c5.webp",
+        "preview": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c5.webp"
+      }
+    ],
+    "master": "dots-cherry-pinpoint.svg"
+  },
+  {
+    "file": "kp-dots-oversize-pop.png",
+    "title": "Oversize Pop Dots",
+    "category": "Polka dots",
+    "active": true,
+    "hash": "6cc083ce5db8",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-dots-oversize-pop.png",
+        "preview": "assets/celestial-patterns/kp-dots-oversize-pop--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-dots-oversize-pop-c1.webp",
+        "preview": "assets/celestial-patterns/kp-dots-oversize-pop--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-dots-oversize-pop-c2.webp",
+        "preview": "assets/celestial-patterns/kp-dots-oversize-pop--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-dots-oversize-pop-c3.webp",
+        "preview": "assets/celestial-patterns/kp-dots-oversize-pop--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-dots-oversize-pop-c4.webp",
+        "preview": "assets/celestial-patterns/kp-dots-oversize-pop--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-dots-oversize-pop-c5.webp",
+        "preview": "assets/celestial-patterns/kp-dots-oversize-pop--c5.webp"
+      }
+    ],
+    "master": "dots-oversize-pop.svg"
+  },
+  {
+    "file": "kp-dots-halo-dot.png",
+    "title": "Halo Dots",
+    "category": "Polka dots",
+    "active": true,
+    "hash": "a9ef020c52ee",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-dots-halo-dot.png",
+        "preview": "assets/celestial-patterns/kp-dots-halo-dot--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-dots-halo-dot-c1.webp",
+        "preview": "assets/celestial-patterns/kp-dots-halo-dot--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-dots-halo-dot-c2.webp",
+        "preview": "assets/celestial-patterns/kp-dots-halo-dot--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-dots-halo-dot-c3.webp",
+        "preview": "assets/celestial-patterns/kp-dots-halo-dot--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-dots-halo-dot-c4.webp",
+        "preview": "assets/celestial-patterns/kp-dots-halo-dot--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-dots-halo-dot-c5.webp",
+        "preview": "assets/celestial-patterns/kp-dots-halo-dot--c5.webp"
+      }
+    ],
+    "master": "dots-halo-dot.svg"
+  },
+  {
+    "file": "kp-dots-pearl-grid.png",
+    "title": "Pearl Grid Dots",
+    "category": "Polka dots",
+    "active": true,
+    "hash": "e935d727371a",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-dots-pearl-grid.png",
+        "preview": "assets/celestial-patterns/kp-dots-pearl-grid--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-dots-pearl-grid-c1.webp",
+        "preview": "assets/celestial-patterns/kp-dots-pearl-grid--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-dots-pearl-grid-c2.webp",
+        "preview": "assets/celestial-patterns/kp-dots-pearl-grid--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-dots-pearl-grid-c3.webp",
+        "preview": "assets/celestial-patterns/kp-dots-pearl-grid--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-dots-pearl-grid-c4.webp",
+        "preview": "assets/celestial-patterns/kp-dots-pearl-grid--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-dots-pearl-grid-c5.webp",
+        "preview": "assets/celestial-patterns/kp-dots-pearl-grid--c5.webp"
+      }
+    ],
+    "master": "dots-pearl-grid.svg"
+  },
+  {
+    "file": "kp-dots-offset-duo.png",
+    "title": "Offset Duo Dots",
+    "category": "Polka dots",
+    "active": true,
+    "hash": "65a8b430562e",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-dots-offset-duo.png",
+        "preview": "assets/celestial-patterns/kp-dots-offset-duo--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-dots-offset-duo-c1.webp",
+        "preview": "assets/celestial-patterns/kp-dots-offset-duo--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-dots-offset-duo-c2.webp",
+        "preview": "assets/celestial-patterns/kp-dots-offset-duo--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-dots-offset-duo-c3.webp",
+        "preview": "assets/celestial-patterns/kp-dots-offset-duo--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-dots-offset-duo-c4.webp",
+        "preview": "assets/celestial-patterns/kp-dots-offset-duo--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-dots-offset-duo-c5.webp",
+        "preview": "assets/celestial-patterns/kp-dots-offset-duo--c5.webp"
+      }
+    ],
+    "master": "dots-offset-duo.svg"
+  },
+  {
+    "file": "kp-dots-orbit-scatter.png",
+    "title": "Orbit Scatter Dots",
+    "category": "Polka dots",
+    "active": true,
+    "hash": "6e1cd21a6ea7",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-dots-orbit-scatter.png",
+        "preview": "assets/celestial-patterns/kp-dots-orbit-scatter--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-dots-orbit-scatter-c1.webp",
+        "preview": "assets/celestial-patterns/kp-dots-orbit-scatter--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-dots-orbit-scatter-c2.webp",
+        "preview": "assets/celestial-patterns/kp-dots-orbit-scatter--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-dots-orbit-scatter-c3.webp",
+        "preview": "assets/celestial-patterns/kp-dots-orbit-scatter--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-dots-orbit-scatter-c4.webp",
+        "preview": "assets/celestial-patterns/kp-dots-orbit-scatter--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-dots-orbit-scatter-c5.webp",
+        "preview": "assets/celestial-patterns/kp-dots-orbit-scatter--c5.webp"
+      }
+    ],
+    "master": "dots-orbit-scatter.svg"
+  },
+  {
+    "file": "kp-lines-fine-ticking.png",
+    "title": "Fine Ticking",
+    "category": "Stripes & waves",
+    "active": true,
+    "hash": "098b27b06bf0",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-lines-fine-ticking.png",
+        "preview": "assets/celestial-patterns/kp-lines-fine-ticking--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-lines-fine-ticking-c1.webp",
+        "preview": "assets/celestial-patterns/kp-lines-fine-ticking--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-lines-fine-ticking-c2.webp",
+        "preview": "assets/celestial-patterns/kp-lines-fine-ticking--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-lines-fine-ticking-c3.webp",
+        "preview": "assets/celestial-patterns/kp-lines-fine-ticking--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-lines-fine-ticking-c4.webp",
+        "preview": "assets/celestial-patterns/kp-lines-fine-ticking--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-lines-fine-ticking-c5.webp",
+        "preview": "assets/celestial-patterns/kp-lines-fine-ticking--c5.webp"
+      }
+    ],
+    "master": "lines-fine-ticking.svg"
+  },
+  {
+    "file": "kp-lines-cabana-bold.png",
+    "title": "Cabana Bold",
+    "category": "Stripes & waves",
+    "active": true,
+    "hash": "7210e28e55c5",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-lines-cabana-bold.png",
+        "preview": "assets/celestial-patterns/kp-lines-cabana-bold--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-lines-cabana-bold-c1.webp",
+        "preview": "assets/celestial-patterns/kp-lines-cabana-bold--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-lines-cabana-bold-c2.webp",
+        "preview": "assets/celestial-patterns/kp-lines-cabana-bold--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-lines-cabana-bold-c3.webp",
+        "preview": "assets/celestial-patterns/kp-lines-cabana-bold--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-lines-cabana-bold-c4.webp",
+        "preview": "assets/celestial-patterns/kp-lines-cabana-bold--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-lines-cabana-bold-c5.webp",
+        "preview": "assets/celestial-patterns/kp-lines-cabana-bold--c5.webp"
+      }
+    ],
+    "master": "lines-cabana-bold.svg"
+  },
+  {
+    "file": "kp-lines-double-rail.png",
+    "title": "Double Rail",
+    "category": "Stripes & waves",
+    "active": true,
+    "hash": "c6cd5bda5391",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-lines-double-rail.png",
+        "preview": "assets/celestial-patterns/kp-lines-double-rail--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-lines-double-rail-c1.webp",
+        "preview": "assets/celestial-patterns/kp-lines-double-rail--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-lines-double-rail-c2.webp",
+        "preview": "assets/celestial-patterns/kp-lines-double-rail--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-lines-double-rail-c3.webp",
+        "preview": "assets/celestial-patterns/kp-lines-double-rail--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-lines-double-rail-c4.webp",
+        "preview": "assets/celestial-patterns/kp-lines-double-rail--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-lines-double-rail-c5.webp",
+        "preview": "assets/celestial-patterns/kp-lines-double-rail--c5.webp"
+      }
+    ],
+    "master": "lines-double-rail.svg"
+  },
+  {
+    "file": "kp-lines-wave-ribbon.png",
+    "title": "Wave Ribbon",
+    "category": "Stripes & waves",
+    "active": true,
+    "hash": "aa23df59ac9c",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-lines-wave-ribbon.png",
+        "preview": "assets/celestial-patterns/kp-lines-wave-ribbon--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-lines-wave-ribbon-c1.webp",
+        "preview": "assets/celestial-patterns/kp-lines-wave-ribbon--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-lines-wave-ribbon-c2.webp",
+        "preview": "assets/celestial-patterns/kp-lines-wave-ribbon--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-lines-wave-ribbon-c3.webp",
+        "preview": "assets/celestial-patterns/kp-lines-wave-ribbon--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-lines-wave-ribbon-c4.webp",
+        "preview": "assets/celestial-patterns/kp-lines-wave-ribbon--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-lines-wave-ribbon-c5.webp",
+        "preview": "assets/celestial-patterns/kp-lines-wave-ribbon--c5.webp"
+      }
+    ],
+    "master": "lines-wave-ribbon.svg"
+  },
+  {
+    "file": "kp-lines-contour-flow.png",
+    "title": "Contour Flow",
+    "category": "Stripes & waves",
+    "active": true,
+    "hash": "0610b0249ba1",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-lines-contour-flow.png",
+        "preview": "assets/celestial-patterns/kp-lines-contour-flow--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-lines-contour-flow-c1.webp",
+        "preview": "assets/celestial-patterns/kp-lines-contour-flow--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-lines-contour-flow-c2.webp",
+        "preview": "assets/celestial-patterns/kp-lines-contour-flow--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-lines-contour-flow-c3.webp",
+        "preview": "assets/celestial-patterns/kp-lines-contour-flow--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-lines-contour-flow-c4.webp",
+        "preview": "assets/celestial-patterns/kp-lines-contour-flow--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-lines-contour-flow-c5.webp",
+        "preview": "assets/celestial-patterns/kp-lines-contour-flow--c5.webp"
+      }
+    ],
+    "master": "lines-contour-flow.svg"
+  },
+  {
+    "file": "kp-lines-scallop-stripe.png",
+    "title": "Scallop Stripe",
+    "category": "Stripes & waves",
+    "active": true,
+    "hash": "0e92c7f7b1ff",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-lines-scallop-stripe.png",
+        "preview": "assets/celestial-patterns/kp-lines-scallop-stripe--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-lines-scallop-stripe-c1.webp",
+        "preview": "assets/celestial-patterns/kp-lines-scallop-stripe--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-lines-scallop-stripe-c2.webp",
+        "preview": "assets/celestial-patterns/kp-lines-scallop-stripe--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-lines-scallop-stripe-c3.webp",
+        "preview": "assets/celestial-patterns/kp-lines-scallop-stripe--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-lines-scallop-stripe-c4.webp",
+        "preview": "assets/celestial-patterns/kp-lines-scallop-stripe--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-lines-scallop-stripe-c5.webp",
+        "preview": "assets/celestial-patterns/kp-lines-scallop-stripe--c5.webp"
+      }
+    ],
+    "master": "lines-scallop-stripe.svg"
+  },
+  {
+    "file": "kp-lines-diagonal-dash.png",
+    "title": "Diagonal Dash",
+    "category": "Stripes & waves",
+    "active": true,
+    "hash": "3fb2495e226a",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-lines-diagonal-dash.png",
+        "preview": "assets/celestial-patterns/kp-lines-diagonal-dash--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-lines-diagonal-dash-c1.webp",
+        "preview": "assets/celestial-patterns/kp-lines-diagonal-dash--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-lines-diagonal-dash-c2.webp",
+        "preview": "assets/celestial-patterns/kp-lines-diagonal-dash--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-lines-diagonal-dash-c3.webp",
+        "preview": "assets/celestial-patterns/kp-lines-diagonal-dash--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-lines-diagonal-dash-c4.webp",
+        "preview": "assets/celestial-patterns/kp-lines-diagonal-dash--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-lines-diagonal-dash-c5.webp",
+        "preview": "assets/celestial-patterns/kp-lines-diagonal-dash--c5.webp"
+      }
+    ],
+    "master": "lines-diagonal-dash.svg"
+  },
+  {
+    "file": "kp-lines-windowpane.png",
+    "title": "Windowpane",
+    "category": "Stripes & waves",
+    "active": true,
+    "hash": "16b1a30d262b",
+    "color": [
+      "White",
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Green"
+    ],
+    "kind": "original vector pattern",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Porcelain",
+        "background": "#f7f0e5",
+        "artwork": "assets/designs/kp-lines-windowpane.png",
+        "preview": "assets/celestial-patterns/kp-lines-windowpane--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Butter",
+        "background": "#f4e4a8",
+        "artwork": "assets/designs/colorways/kp-lines-windowpane-c1.webp",
+        "preview": "assets/celestial-patterns/kp-lines-windowpane--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Powder",
+        "background": "#c4dce9",
+        "artwork": "assets/designs/colorways/kp-lines-windowpane-c2.webp",
+        "preview": "assets/celestial-patterns/kp-lines-windowpane--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Blush",
+        "background": "#eecbd4",
+        "artwork": "assets/designs/colorways/kp-lines-windowpane-c3.webp",
+        "preview": "assets/celestial-patterns/kp-lines-windowpane--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Sage",
+        "background": "#c6d5bd",
+        "artwork": "assets/designs/colorways/kp-lines-windowpane-c4.webp",
+        "preview": "assets/celestial-patterns/kp-lines-windowpane--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-lines-windowpane-c5.webp",
+        "preview": "assets/celestial-patterns/kp-lines-windowpane--c5.webp"
+      }
+    ],
+    "master": "lines-windowpane.svg"
+  },
+  {
+    "file": "kp-zodiac-creature-aries.png",
+    "title": "Aries · Celestial Creature",
+    "category": "Zodiac Creatures",
+    "active": true,
+    "hash": "fb1e0f7fda2b",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-zodiac-creature-aries.png",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-aries--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-aries-c1.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-aries--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-aries-c2.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-aries--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-aries-c3.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-aries--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-aries-c4.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-aries--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-aries-c5.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-aries--c5.webp"
+      }
+    ],
+    "master": "zodiac-aries.png"
+  },
+  {
+    "file": "kp-zodiac-creature-taurus.png",
+    "title": "Taurus · Celestial Creature",
+    "category": "Zodiac Creatures",
+    "active": true,
+    "hash": "dba07304d418",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-zodiac-creature-taurus.png",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-taurus--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-taurus-c1.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-taurus--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-taurus-c2.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-taurus--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-taurus-c3.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-taurus--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-taurus-c4.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-taurus--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-taurus-c5.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-taurus--c5.webp"
+      }
+    ],
+    "master": "zodiac-taurus.png"
+  },
+  {
+    "file": "kp-zodiac-creature-gemini.png",
+    "title": "Gemini · Celestial Creature",
+    "category": "Zodiac Creatures",
+    "active": true,
+    "hash": "959a8a858086",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-zodiac-creature-gemini.png",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-gemini--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-gemini-c1.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-gemini--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-gemini-c2.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-gemini--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-gemini-c3.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-gemini--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-gemini-c4.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-gemini--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-gemini-c5.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-gemini--c5.webp"
+      }
+    ],
+    "master": "zodiac-gemini.png"
+  },
+  {
+    "file": "kp-zodiac-creature-cancer.png",
+    "title": "Cancer · Celestial Creature",
+    "category": "Zodiac Creatures",
+    "active": true,
+    "hash": "2ce281ad64b4",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-zodiac-creature-cancer.png",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-cancer--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-cancer-c1.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-cancer--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-cancer-c2.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-cancer--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-cancer-c3.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-cancer--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-cancer-c4.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-cancer--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-cancer-c5.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-cancer--c5.webp"
+      }
+    ],
+    "master": "zodiac-cancer.png"
+  },
+  {
+    "file": "kp-zodiac-creature-leo.png",
+    "title": "Leo · Celestial Creature",
+    "category": "Zodiac Creatures",
+    "active": true,
+    "hash": "b10d3a6bb5d1",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-zodiac-creature-leo.png",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-leo--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-leo-c1.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-leo--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-leo-c2.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-leo--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-leo-c3.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-leo--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-leo-c4.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-leo--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-leo-c5.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-leo--c5.webp"
+      }
+    ],
+    "master": "zodiac-leo.png"
+  },
+  {
+    "file": "kp-zodiac-creature-virgo.png",
+    "title": "Virgo · Celestial Creature",
+    "category": "Zodiac Creatures",
+    "active": true,
+    "hash": "3488e2a83b72",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-zodiac-creature-virgo.png",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-virgo--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-virgo-c1.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-virgo--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-virgo-c2.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-virgo--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-virgo-c3.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-virgo--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-virgo-c4.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-virgo--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-virgo-c5.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-virgo--c5.webp"
+      }
+    ],
+    "master": "zodiac-virgo.png"
+  },
+  {
+    "file": "kp-zodiac-creature-libra.png",
+    "title": "Libra · Celestial Creature",
+    "category": "Zodiac Creatures",
+    "active": true,
+    "hash": "05950663d99c",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-zodiac-creature-libra.png",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-libra--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-libra-c1.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-libra--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-libra-c2.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-libra--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-libra-c3.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-libra--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-libra-c4.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-libra--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-libra-c5.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-libra--c5.webp"
+      }
+    ],
+    "master": "zodiac-libra.png"
+  },
+  {
+    "file": "kp-zodiac-creature-scorpio.png",
+    "title": "Scorpio · Celestial Creature",
+    "category": "Zodiac Creatures",
+    "active": true,
+    "hash": "b82e14edbf62",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-zodiac-creature-scorpio.png",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-scorpio--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-scorpio-c1.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-scorpio-c2.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-scorpio-c3.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-scorpio-c4.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-scorpio-c5.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c5.webp"
+      }
+    ],
+    "master": "zodiac-scorpio.png"
+  },
+  {
+    "file": "kp-zodiac-creature-sagittarius.png",
+    "title": "Sagittarius · Celestial Creature",
+    "category": "Zodiac Creatures",
+    "active": true,
+    "hash": "5daa6b6411b1",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-zodiac-creature-sagittarius.png",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-sagittarius-c1.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-sagittarius-c2.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-sagittarius-c3.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-sagittarius-c4.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-sagittarius-c5.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c5.webp"
+      }
+    ],
+    "master": "zodiac-sagittarius.png"
+  },
+  {
+    "file": "kp-zodiac-creature-capricorn.png",
+    "title": "Capricorn · Celestial Creature",
+    "category": "Zodiac Creatures",
+    "active": true,
+    "hash": "9664c90d333f",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-zodiac-creature-capricorn.png",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-capricorn--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-capricorn-c1.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-capricorn-c2.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-capricorn-c3.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-capricorn-c4.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-capricorn-c5.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c5.webp"
+      }
+    ],
+    "master": "zodiac-capricorn.png"
+  },
+  {
+    "file": "kp-zodiac-creature-aquarius.png",
+    "title": "Aquarius · Celestial Creature",
+    "category": "Zodiac Creatures",
+    "active": true,
+    "hash": "638e8e69f5a9",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-zodiac-creature-aquarius.png",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-aquarius--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-aquarius-c1.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-aquarius-c2.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-aquarius-c3.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-aquarius-c4.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-aquarius-c5.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c5.webp"
+      }
+    ],
+    "master": "zodiac-aquarius.png"
+  },
+  {
+    "file": "kp-zodiac-creature-pisces.png",
+    "title": "Pisces · Celestial Creature",
+    "category": "Zodiac Creatures",
+    "active": true,
+    "hash": "369890dd9fd7",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-zodiac-creature-pisces.png",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-pisces--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-pisces-c1.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-pisces--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-pisces-c2.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-pisces--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-pisces-c3.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-pisces--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-pisces-c4.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-pisces--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-zodiac-creature-pisces-c5.webp",
+        "preview": "assets/celestial-patterns/kp-zodiac-creature-pisces--c5.webp"
+      }
+    ],
+    "master": "zodiac-pisces.png"
+  },
+  {
+    "file": "kp-tarot-sun.png",
+    "title": "The Sun",
+    "category": "Tarot",
+    "active": true,
+    "hash": "6696bf109c7d",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-tarot-sun.png",
+        "preview": "assets/celestial-patterns/kp-tarot-sun--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-tarot-sun-c1.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-sun--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-tarot-sun-c2.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-sun--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-tarot-sun-c3.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-sun--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-tarot-sun-c4.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-sun--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-tarot-sun-c5.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-sun--c5.webp"
+      }
+    ],
+    "master": "tarot-sun.png"
+  },
+  {
+    "file": "kp-tarot-moon.png",
+    "title": "The Moon",
+    "category": "Tarot",
+    "active": true,
+    "hash": "7a422bddbbfd",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-tarot-moon.png",
+        "preview": "assets/celestial-patterns/kp-tarot-moon--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-tarot-moon-c1.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-moon--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-tarot-moon-c2.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-moon--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-tarot-moon-c3.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-moon--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-tarot-moon-c4.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-moon--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-tarot-moon-c5.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-moon--c5.webp"
+      }
+    ],
+    "master": "tarot-moon.png"
+  },
+  {
+    "file": "kp-tarot-star.png",
+    "title": "The Star",
+    "category": "Tarot",
+    "active": true,
+    "hash": "4ad6b636fd1b",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-tarot-star.png",
+        "preview": "assets/celestial-patterns/kp-tarot-star--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-tarot-star-c1.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-star--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-tarot-star-c2.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-star--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-tarot-star-c3.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-star--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-tarot-star-c4.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-star--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-tarot-star-c5.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-star--c5.webp"
+      }
+    ],
+    "master": "tarot-star.png"
+  },
+  {
+    "file": "kp-tarot-lovers.png",
+    "title": "The Lovers",
+    "category": "Tarot",
+    "active": true,
+    "hash": "126f7283e80c",
+    "color": [
+      "Blue",
+      "Green",
+      "Purple",
+      "Red",
+      "Black"
+    ],
+    "kind": "original AI-assisted illustration",
+    "sourceSize": [
+      1200,
+      2400
+    ],
+    "looks": [
+      {
+        "id": "original",
+        "name": "Midnight",
+        "background": "#142336",
+        "artwork": "assets/designs/kp-tarot-lovers.png",
+        "preview": "assets/celestial-patterns/kp-tarot-lovers--original.webp"
+      },
+      {
+        "id": "c1",
+        "name": "Forest",
+        "background": "#173e36",
+        "artwork": "assets/designs/colorways/kp-tarot-lovers-c1.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-lovers--c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Aubergine",
+        "background": "#39283f",
+        "artwork": "assets/designs/colorways/kp-tarot-lovers-c2.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-lovers--c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Bordeaux",
+        "background": "#512e3d",
+        "artwork": "assets/designs/colorways/kp-tarot-lovers-c3.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-lovers--c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Graphite",
+        "background": "#292c32",
+        "artwork": "assets/designs/colorways/kp-tarot-lovers-c4.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-lovers--c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Artwork only",
+        "background": "transparent",
+        "artwork": "assets/designs/colorways/kp-tarot-lovers-c5.webp",
+        "preview": "assets/celestial-patterns/kp-tarot-lovers--c5.webp"
+      }
+    ],
+    "master": "tarot-lovers-final.png"
+  }
+]

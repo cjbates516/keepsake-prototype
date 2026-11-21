@@ -1,0 +1,3842 @@
+[
+  {
+    "output": "assets/celestial-patterns/kp-dots-cafe-dot--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-cafe-dot--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-cafe-dot--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-cafe-dot--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-cafe-dot--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-cafe-dot--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-cherry-pinpoint--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-halo-dot--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-halo-dot--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-halo-dot--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-halo-dot--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-halo-dot--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-halo-dot--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-micro-ink--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-micro-ink--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-micro-ink--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-micro-ink--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-micro-ink--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-micro-ink--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-offset-duo--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-offset-duo--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-offset-duo--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-offset-duo--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-offset-duo--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-offset-duo--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-orbit-scatter--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-orbit-scatter--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-orbit-scatter--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-orbit-scatter--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-orbit-scatter--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-orbit-scatter--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-oversize-pop--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-oversize-pop--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-oversize-pop--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-oversize-pop--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-oversize-pop--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-oversize-pop--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-pearl-grid--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-pearl-grid--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-pearl-grid--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-pearl-grid--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-pearl-grid--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-dots-pearl-grid--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-cabana-bold--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-cabana-bold--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-cabana-bold--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-cabana-bold--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-cabana-bold--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-cabana-bold--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-contour-flow--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-contour-flow--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-contour-flow--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-contour-flow--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-contour-flow--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-contour-flow--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-diagonal-dash--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-diagonal-dash--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-diagonal-dash--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-diagonal-dash--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-diagonal-dash--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-diagonal-dash--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-double-rail--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-double-rail--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-double-rail--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-double-rail--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-double-rail--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-double-rail--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-fine-ticking--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-fine-ticking--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-fine-ticking--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-fine-ticking--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-fine-ticking--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-fine-ticking--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-scallop-stripe--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-scallop-stripe--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-scallop-stripe--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-scallop-stripe--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-scallop-stripe--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-scallop-stripe--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-wave-ribbon--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-wave-ribbon--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-wave-ribbon--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-wave-ribbon--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-wave-ribbon--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-wave-ribbon--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-windowpane--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-windowpane--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-windowpane--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-windowpane--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-windowpane--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-lines-windowpane--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-lovers--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-lovers--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-lovers--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-lovers--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-lovers--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-lovers--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-moon--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-moon--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-moon--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-moon--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-moon--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-moon--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-star--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-star--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-star--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-star--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-star--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-star--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-sun--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-sun--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-sun--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-sun--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-sun--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-tarot-sun--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-aquarius--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-aries--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-aries--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-aries--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-aries--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-aries--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-aries--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-cancer--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-cancer--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-cancer--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-cancer--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-cancer--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-cancer--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-capricorn--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-gemini--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-gemini--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-gemini--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-gemini--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-gemini--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-gemini--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-leo--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-leo--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-leo--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-leo--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-leo--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-leo--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-libra--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-libra--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-libra--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-libra--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-libra--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-libra--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-pisces--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-pisces--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-pisces--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-pisces--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-pisces--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-pisces--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-scorpio--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-taurus--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-taurus--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-taurus--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-taurus--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-taurus--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-taurus--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-virgo--c1.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-virgo--c2.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-virgo--c3.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-virgo--c4.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-virgo--c5.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-zodiac-creature-virgo--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  }
+]
