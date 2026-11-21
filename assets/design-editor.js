@@ -43,7 +43,7 @@
   }
   function move(p,...ids){ids.forEach(id=>{const el=typeof id==='string'?$(id):id;if(el)p.append(el);});}
   // Phone copy follows the phone (sync): with a Rated kit it names both cases, otherwise it keeps the clear case copy.
-  const phoneCopy={clear:'Choose your model and phone finish. Your case stays clear; screen colors are approximate.',rated:'Choose your phone. A clear case shows your phone’s finish, and a Rated Case shows its rim color. Colors on screen are approximate.'};
+  const phoneCopy={clear:'Choose your model and phone finish. Your case stays clear; screen colors are approximate.',rated:'Choose your model and phone finish, then your case. Your phone shows through the clear back; rim colors are separate.'};
   move(panel('phone','Phone',phoneCopy.clear),'kpSelRow',finish);
   move(panel('background','Background','Keep the artwork you love. Change only its background.'),'photoLooksWrap');
   const noBackground=document.createElement('p');noBackground.id='studioNoBackground';noBackground.textContent='Background choices appear once your design is ready.';panels.background.append(noBackground);
@@ -70,19 +70,19 @@
   // while a words template is active. Visibility follows the live layout state in sync(); layouts never enter history.
   let layoutAdd=null,layoutsWait=null,layoutsRetry=null,layoutSpare=null;
   if(!kiosk&&!info.sky&&!info.drawing){
-    const layouts=panel('layouts','Layouts','One photo, a collage, or add your words.');move(layouts,'layoutChipsWrap');
+    const layouts=panels.photo;move(layouts,'layoutChipsWrap');
     layoutsWait=document.createElement('p');layoutsWait.className='studio-help';layoutsWait.id='studioLayoutsWait';layoutsWait.textContent='Loading layouts…';layouts.append(layoutsWait);
     // A failed templates request says so and offers Try again; the add button works without templates (single photo).
     layoutsRetry=document.createElement('button');layoutsRetry.type='button';layoutsRetry.id='studioLayoutsRetry';layoutsRetry.textContent='Try again';layoutsRetry.hidden=true;layoutsRetry.onclick=()=>{core.loadLayouts?.();sync();};layouts.append(layoutsRetry);
     layoutSpare=document.createElement('p');layoutSpare.className='studio-help';layoutSpare.id='studioLayoutSpare';layoutSpare.hidden=true;layouts.append(layoutSpare);
     layoutAdd=document.createElement('button');layoutAdd.type='button';layoutAdd.id='studioLayoutAdd';layoutAdd.onclick=()=>$('uploadBtn').click();layouts.append(layoutAdd);
-    tray.insertBefore(buttons.layouts,buttons.photo);buttons.layouts.hidden=!info.layouts;
+    layoutAdd.hidden=true;
     move(panel('words','Words','Printed in this layout’s lettering. Clear a box to leave those words off.'),'captionFields');
     buttons.name.after(buttons.words);buttons.words.hidden=true;
   }
   // The desktop tool on entering (or returning to) Design: the last tool the customer opened while it is still offered
   // (lastTool, set in openTool), else the first tool for this path: Night sky, Drawing, Layouts (photo path) or Background.
-  const home=()=>lastTool&&panels[lastTool]&&!buttons[lastTool].hidden?lastTool:info.sky?'sky':info.drawing?'photo':buttons.layouts&&!buttons.layouts.hidden&&!core.info().library?'layouts':'background';
+  const home=()=>lastTool&&panels[lastTool]&&!buttons[lastTool].hidden?lastTool:info.sky?'sky':info.drawing?'photo':panels.photo&&!core.info().library?'photo':'background';
   const preview=document.createElement('section');preview.id='studioPreview';preview.hidden=true;
   preview.innerHTML='<p class="studio-kicker">ONE LAST LOOK</p><h2>Your design, on your case.</h2><p>Check the spelling, placement and camera area. Tap the case to see every detail.</p><p id="studioPartial" class="studio-partial" role="status" hidden></p><dl id="studioReviewDetails"></dl><button type="button" id="studioEditAgain">Keep editing</button><p class="studio-help">Digital preview. Our team checks your case and artwork before printing.</p>';rail.append(preview);
   const setup=document.createElement('section');setup.id='studioSetup';setup.hidden=true;setup.innerHTML='<p class="studio-kicker">THE FINISHING TOUCHES</p><h2>Complete your setup.</h2><p>Optional extras. Everything is confirmed and paid for in store.</p>';rail.append(setup);
@@ -107,7 +107,7 @@
   // The rim chips carry a visible "Rim color" label (the Phone tool's words), which also names the radio group.
   const caseTitle=(id,name)=>'<strong id="'+id+'"><span>'+name+'</span><span class="studio-case-price"><span class="studio-case-sep"> · </span><span class="studio-case-amt"></span></span></strong>';
   caseBox.innerHTML='<legend>Choose your case</legend><div class="studio-case-row"><div class="studio-case-options"><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="MagSafe Clear"><span>'+caseTitle('studioCaseClear','Clear case')+'<small>Your phone shows through</small></span></label><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="Rated Case"><span>'+caseTitle('studioCaseRated','Rated Case')+'<small>20 ft drop protection</small></span></label></div><div class="studio-rim" id="studioRim" role="radiogroup" aria-labelledby="studioRimLabel" hidden><span class="studio-rim-label" id="studioRimLabel">Rim color</span><span class="studio-rim-chips" id="studioRimChips"></span></div></div>';
-  $('printBadge').after(caseBox);let rimKey='',revealRim=false;
+  panels.phone.append(caseBox);let rimKey='',revealRim=false;
   // On phones, rim chips that appear below the fold (short screens) are scrolled into view once, above the tool tray.
   caseBox.addEventListener('change',e=>{if(e.target.name==='studioCaseType'){core.setCase(e.target.value);revealRim=mobile.matches&&e.target.value==='Rated Case';}else if(e.target.name==='studioRim')core.setRim(e.target.value);sync();});
   // Photo credits (city photographs, space and field photos) stay visible under the case on the web editor instead of
@@ -116,6 +116,39 @@
   // own box after the quality note, so short phone screens can show it above the case (CSS).
   const creditBox=document.createElement('div');creditBox.className='studio-credit';$('stageStick').append(creditBox);
   move(kiosk&&panels.photo?panels.photo:creditBox,'cityPhotoCredit');
+  const product=document.createElement('header');product.id='studioProduct';
+  const kicker=document.createElement('p');kicker.className='studio-kicker';kicker.textContent='YOUR CASE. YOUR WAY.';
+  product.append(kicker,top.querySelector('h1'),$('studioPhone'));
+  const productPrice=document.createElement('p');productPrice.id='studioProductPrice';product.append(productPrice);
+  const promise=document.createElement('p');promise.className='studio-product-note';promise.textContent='Made yours in store. Choose a background, add your name, then show our team.';product.append(promise);
+  rail.insertBefore(product,tray);
+  const media=document.createElement('div');media.className='studio-media';
+  const thumbs=document.createElement('div');thumbs.id='studioVariations';thumbs.setAttribute('role','group');thumbs.setAttribute('aria-label','See backgrounds on your case');thumbs.hidden=true;
+  const wrap=$('stageWrap');wrap.before(media);media.append(thumbs,wrap);
+  let thumbKey='',thumbSource=null,thumbTimer=null,thumbPending='',libraryTitle='Make it yours.';
+  function syncVariations(i,flush=false){
+    const originals=[...$('photoLooks').querySelectorAll('.photo-look')];
+    thumbs.hidden=step!=='edit'||!i.previewReady||originals.length<2||i.sky||!!i.layout;
+    media.classList.toggle('has-variations',!thumbs.hidden);if(thumbs.hidden)return;
+    const source=originals[0],s=core.snapshot(),key=[core.context(),i.finish,i.caseType,i.rim,s.scale,s.px,s.py,s.rot,s.fitMode,originals.map(b=>b.dataset.look).join(',')].join('|');
+    if(key!==thumbKey||source!==thumbSource){
+      if(!flush&&thumbKey){if(thumbPending!==key){clearTimeout(thumbTimer);thumbPending=key;thumbTimer=setTimeout(()=>{thumbPending='';if(!purged)syncVariations(core.info(),true);},250);}return;}
+      const focused=thumbs.contains(document.activeElement)?document.activeElement.dataset.variation:null;
+      thumbs.querySelectorAll('canvas').forEach(c=>{c.width=c.height=0;});
+      thumbKey=key;thumbSource=source;thumbs.replaceChildren();
+      for(const original of originals){
+        const b=document.createElement('button');b.type='button';b.dataset.variation=original.dataset.look;
+        b.setAttribute('aria-label',original.getAttribute('aria-label'));b.title=original.textContent;
+        let c=null;try{c=core.lookPreview?.(original.dataset.look);}catch(e){/* Keep other editor controls available if a thumbnail fails. */}
+        if(c){c.setAttribute('aria-hidden','true');b.append(c);}
+        const label=document.createElement('span');label.textContent=original.textContent;b.append(label);thumbs.append(b);
+      }
+      if(focused)[...thumbs.children].find(b=>b.dataset.variation===focused)?.focus({preventScroll:true});
+    }
+    thumbs.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.variation===(s.variant||'original'))));
+  }
+  thumbs.addEventListener('click',e=>{const b=e.target.closest('[data-variation]');if(!b)return;const original=[...$('photoLooks').children].find(o=>o.dataset.look===b.dataset.variation);if(original){remember();original.click();remember();sync();}});
+  if(params.get('design')&&window.KPI)KPI.load('instore/').then(data=>{const m=data.activeModels.find(m=>m.name===core.info().model),d=m&&data.designsFor(m).find(d=>d.file===params.get('design'));if(d){libraryTitle=KPI.cleanTitle(d.title);if(core.info().library)product.querySelector('h1').textContent=libraryTitle;}}).catch(()=>{});
   const footer=document.createElement('div');footer.id='studioFooter';footer.innerHTML='<button type="button" id="studioBack">← Back</button><div><strong id="studioTotal"></strong><small id="studioStore"></small></div><button type="button" id="studioNext">Preview design →</button><p id="studioStatus" role="status"></p>';$('main').append(footer);
   // Size around iPhone safe areas, wrapped totals and the on-screen keyboard.
   function sizeChrome(){
@@ -134,7 +167,7 @@
   function fitSoon(){if(!fitFrame)fitFrame=requestAnimationFrame(fitStage);}
   function fitStage(){
     fitFrame=0;const credit=$('cityPhotoCredit'),canvasEl=$('stageCanvas');
-    const on=!purged&&step!=='setup'&&!sheet.open&&stage.parentElement===grid&&(!caseBox.hidden||!!credit&&creditBox.contains(credit)&&!credit.hidden);
+    const on=!purged&&step!=='setup'&&!sheet.open&&stage.parentElement===grid&&(!thumbs.hidden||stage.contains(caseBox)&&!caseBox.hidden||!!credit&&creditBox.contains(credit)&&!credit.hidden);
     stage.classList.toggle('studio-fit',on);
     if(!on){stage.style.removeProperty('--studio-case-fit');return;}
     const ch=canvasEl.getBoundingClientRect().height;if(!ch)return;
@@ -150,7 +183,7 @@
     if(revealRim)requestAnimationFrame(showRim);
   }
   function showRim(){
-    revealRim=false;const row=$('studioRim');if(row.hidden||!mobile.matches||sheet.open)return;
+    revealRim=false;const row=$('studioRim');if(row.hidden||!mobile.matches)return;if(sheet.open){row.scrollIntoView({block:'nearest'});return;}
     const lim=tray.hidden?footer.getBoundingClientRect().top:tray.getBoundingClientRect().top;
     if(row.getBoundingClientRect().bottom>lim-4)row.scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
   }
@@ -171,20 +204,20 @@
   }
   function historyButtons(){$('studioUndo').disabled=undo.length<2;$('studioRedo').disabled=!redo.length;}
   function travel(back){remember();if(back?undo.length<2:!redo.length)return;if(back)redo.push(undo.pop());else undo.push(redo.pop());applying=true;core.restore(undo.at(-1));applying=false;historyButtons();sync();}
-  function rememberSoon(){if(purged)return;sync();clearTimeout(pending);pending=setTimeout(remember,350);}
+  function rememberSoon(){if(purged)return;if(core.context()!==context)remember();sync();clearTimeout(pending);pending=setTimeout(remember,350);}
   document.addEventListener('kp:editor-change',rememberSoon);
-  document.addEventListener('kp:editor-purge',()=>{purged=true;clearTimeout(pending);undo=[];redo=[];$('studioReviewDetails').replaceChildren();$('studioStatus').textContent='';});
+  document.addEventListener('kp:editor-purge',()=>{purged=true;clearTimeout(thumbTimer);clearTimeout(pending);undo=[];redo=[];$('studioReviewDetails').replaceChildren();$('studioStatus').textContent='';});
   $('studioUndo').onclick=()=>travel(true);$('studioRedo').onclick=()=>travel(false);
   document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!e.target.closest('input,textarea,select')&&step==='edit'&&!document.querySelector('dialog[open]')){e.preventDefault();travel(!e.shiftKey);}});
   function hideSheet(){stageHome.after(stage);if(sheet.open){internalCloses++;sheet.close();}Object.values(panels).forEach(p=>host.append(p));}
   function paintTool(){
-    Object.entries(panels).forEach(([id,p])=>p.hidden=id!==tool);
+    Object.entries(panels).forEach(([id,p])=>p.hidden=id!==tool&&!(id==='phone'&&!mobile.matches&&step==='edit'));
     Object.entries(buttons).forEach(([id,b])=>b.setAttribute('aria-expanded',String(id===tool)));
     sheet.dataset.activeTool=tool||'';
     if(mobile.matches&&tool){if(tool==='adjust')sheetBody.append(stage);else stageHome.after(stage);sheetBody.append(panels[tool]);$('studioSheetTitle').textContent=buttons[tool].querySelector('strong').textContent;if(!sheet.open)sheet.showModal();}
     sizeChrome();const canMove=step==='edit'&&tool==='adjust';$('stageCanvas').style.touchAction=canMove?'none':'pan-y';
   }
-  function openTool(id,push=true){if(step!=='edit'||!panels[id]||buttons[id].hidden)return;remember();tool=id;lastTool=id;if(mobile.matches&&push)pushStep(step,id);paintTool();if(id==='layouts'){core.loadLayouts?.();showChosenLayout();}}
+  function openTool(id,push=true){if(step!=='edit'||!panels[id]||buttons[id].hidden)return;remember();tool=id;lastTool=id;if(mobile.matches&&push)pushStep(step,id);paintTool();if(id==='photo'&&layoutAdd){core.loadLayouts?.();showChosenLayout();}}
   // The phone sheet re-parents the panel, which resets the chip strip's scroll: bring the chosen layout back into view.
   function showChosenLayout(){const row=$('layoutChips'),chip=row?.querySelector('.layChip[aria-pressed="true"]');if(!chip||!mobile.matches)return;const r=row.getBoundingClientRect(),c=chip.getBoundingClientRect();row.scrollLeft+=(c.left+c.width/2)-(r.left+r.width/2);}
   function closeTool(){if(closing)return;if(document.activeElement instanceof HTMLElement)document.activeElement.blur();if(mobile.matches&&history.state?.kpStudioTool){closing=true;hideSheet();history.back();return;}tool=null;hideSheet();paintTool();}
@@ -205,7 +238,7 @@
     top.querySelectorAll('[data-step]').forEach(li=>{if(li.dataset.step===step)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});
     if(step==='edit'&&!mobile.matches)tool=home();paintTool();
     if(push)pushStep(step,null);core.redraw?.();
-    sync();window.scrollTo({top:0,behavior:'instant'});if(entered){const heading=step==='edit'?top.querySelector('h1'):(step==='preview'?preview:setup).querySelector('h2');heading.tabIndex=-1;heading.focus({preventScroll:true});}entered=true;
+    sync();window.scrollTo({top:0,behavior:'instant'});if(entered){const heading=step==='edit'?product.querySelector('h1'):(step==='preview'?preview:setup).querySelector('h2');heading.tabIndex=-1;heading.focus({preventScroll:true});}entered=true;
   }
   history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioDepth:0,kpStudioEditDepth:0,kpStudioStep:'edit',kpStudioTool:null},'');
   window.addEventListener('popstate',()=>{
@@ -229,9 +262,13 @@
   adjustments.addEventListener('input',e=>{if(e.target.dataset.adjust)core.adjust(e.target.dataset.adjust,e.target.value);});
   function sync(){
     if(purged)return;const i=core.info(),s=core.snapshot();
+    promise.textContent=i.sky?'Create a sky for your date and place, then review it with our team.':i.drawing?'Turn their drawing into a keepsake. Our team checks the artwork before printing.':i.library?'Made yours in store. Choose a background, add your name, then show our team.':'Add your photo, make it yours, then show our team in store.';
+    product.querySelector('h1').textContent=i.library?libraryTitle:i.sky?'Your special night.':i.drawing?'Their drawing, your case.':i.layout?'Your photo collage.':'Make it yours.';
+    syncVariations(i);productPrice.textContent='$'+(i.caseType==='Rated Case'?i.prices.rated:i.prices.clear).toFixed(2);product.hidden=step!=='edit';
     preview.querySelector('h2').textContent=i.drawingPending?'Your case setup.':'Your design, on your case.';
     preview.querySelector('h2 + p').textContent=i.drawingPending?'Your drawing will be added at the counter. Check your phone and any name, then choose your extras.':'Check the spelling, placement and camera area. Tap the case to see every detail.';
     if(i.drawing){buttons.background.hidden=buttons.adjust.hidden=!i.hasPhoto;if(i.drawingPending)$('stageHint').textContent=(i.caseType==='Rated Case'?'Rated Case':'Clear case')+' · drawing to be added at the counter';}
+    if(i.library&&!lastTool&&tool==='photo'&&!mobile.matches){tool='background';paintTool();}
     if(initialSetup===null&&!i.loading&&!i.issue)initialSetup=i.selectionKey;
     if(storeLabel)storeLabel.textContent='Store: '+(i.store||'Choose your store');
     $('studioPhone').textContent=i.model+' · '+(i.caseType==='MagSafe Clear'?'Clear case':i.caseType);
@@ -255,8 +292,8 @@
     if(layoutAdd){
       // Photo path: personal photos have no alternate backgrounds, so Background steps aside (as it does for the sky).
       // Words replaces Name for words templates; collage spots fill themselves, so Adjust steps aside too.
-      const words=!!i.layout?.words;buttons.layouts.hidden=!i.layouts;buttons.background.hidden=!!i.layouts;buttons.words.hidden=!words;buttons.name.hidden=words;buttons.adjust.hidden=!!i.layout;
-      layoutsWait.hidden=i.layoutsReady;layoutsWait.textContent=i.layoutsFailed?'Layouts could not load. Check your connection and try again. You can still add one photo.':'Loading layouts…';layoutsRetry.hidden=!i.layoutsFailed;
+      const words=!!i.layout?.words;buttons.background.hidden=!!i.layouts;buttons.words.hidden=!words;buttons.name.hidden=words;buttons.adjust.hidden=!!i.layout;
+      layoutsWait.hidden=!i.layouts||i.layoutsReady;layoutsWait.textContent=i.layoutsFailed?'Layouts could not load. Check your connection and try again. You can still add one photo.':'Loading layouts…';layoutsRetry.hidden=!i.layouts||!i.layoutsFailed;
       layoutSpare.hidden=!i.spare;layoutSpare.textContent=i.spare===1?'1 more photo is saved for a layout with more spots.':i.spare+' more photos are saved for a layout with more spots.';
       layoutAdd.textContent=$('uploadBtn').textContent;layoutAdd.disabled=$('uploadBtn').disabled;
       if(step==='edit'&&tool&&buttons[tool].hidden){if(mobile.matches)closeTool();else{tool=home();paintTool();}}
@@ -265,7 +302,7 @@
     $('editTools').style.display=i.hasPhoto&&!i.sky?'block':'none';
     adjustments.querySelectorAll('input').forEach(el=>{if(el!==document.activeElement)el.value=s[el.dataset.adjust];});
     const details=$('studioReviewDetails');details.replaceChildren();
-    const rows=[['Phone',i.caseType==='Rated Case'?i.model:i.model+' · '+i.finish],['Case',i.caseType==='Rated Case'?i.caseLabel:'Clear case']];
+    const rows=[['Phone',i.model+' · '+i.finish],['Case',i.caseType==='Rated Case'?i.caseLabel:'Clear case']];
     $('studioPartial').hidden=!i.partial;$('studioPartial').textContent=i.partial||'';
     if(i.sky)rows.push(...(i.skyDetails||[]).filter(([label])=>!['Printed place','Coordinates','UTC instant','Sky version'].includes(label)));
     else if(i.layout){rows.push(['Layout',i.layout.name+' · '+i.layout.filled+' of '+i.layout.total+(i.layout.total===1?' photo':' photos')]);i.layout.captions.forEach(c=>rows.push([c.label,c.shown===false?'Not shown on this phone':c.waiting?'Prints when photo '+c.waiting+' is added':c.text.replace(/\n/g,' / ')||'Not added']));}
