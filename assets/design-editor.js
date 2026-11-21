@@ -43,7 +43,7 @@
   }
   function move(p,...ids){ids.forEach(id=>{const el=typeof id==='string'?$(id):id;if(el)p.append(el);});}
   // Phone copy follows the phone (sync): with a Rated kit it names both cases, otherwise it keeps the clear case copy.
-  const phoneCopy={clear:'Choose your model and phone finish. Your case stays clear; screen colors are approximate.',rated:'Choose your model and phone finish, then your case. Your phone shows through the clear back; rim colors are separate.'};
+  const phoneCopy={clear:'Choose your model and phone finish. Your case stays clear; screen colors are approximate.',rated:'Choose your phone model, finish and case. The preview updates to show your choices.'};
   move(panel('phone','Phone',phoneCopy.clear),'kpSelRow',finish);
   move(panel('background','Background','Keep the artwork you love. Change only its background.'),'photoLooksWrap');
   const noBackground=document.createElement('p');noBackground.id='studioNoBackground';noBackground.textContent='Background choices appear once your design is ready.';panels.background.append(noBackground);
@@ -57,7 +57,7 @@
   if(info.sky)top.querySelector('h1').textContent='Your special night.';
   if(info.sky){move(panel('sky','Night sky','Create a sky for your date and place.'),'personalStudio');buttons.background.hidden=true;buttons.adjust.hidden=true;buttons.name.hidden=true;tray.prepend(buttons.sky);}
   else {
-    const photoPanel=panel('photo',info.drawing?'Drawing':kiosk?'Photo help':'Photo',info.drawing&&kiosk?'':kiosk?'Want to use your own photo or drawing? Ask our team at the counter.':'Your photo stays on this device. Choose an original, full-size image.');
+    const photoPanel=panel('photo',info.drawing?'Drawing':kiosk?'Photo help':'Photo',info.drawing&&kiosk?'':kiosk?'Want to use your own photo or drawing? Ask our team at the counter.':'Choose an original, full-size image.');
     if(info.drawing){move(photoPanel,'personalStudio');tray.prepend(buttons.photo);}
     // slotButtons: one button per layout spot (add or swap any spot without tapping the case)
     if(!kiosk)move(photoPanel,'uploadBtn','fileInput','slotButtons','photoPrivacy','clearBtn');
@@ -106,7 +106,7 @@
   // Each title is the name, then the price in its own span: on a narrow stage (iPad portrait) the price takes its own line.
   // The rim chips carry a visible "Rim color" label (the Phone tool's words), which also names the radio group.
   const caseTitle=(id,name)=>'<strong id="'+id+'"><span>'+name+'</span><span class="studio-case-price"><span class="studio-case-sep"> · </span><span class="studio-case-amt"></span></span></strong>';
-  caseBox.innerHTML='<legend>Choose your case</legend><div class="studio-case-row"><div class="studio-case-options"><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="MagSafe Clear"><span>'+caseTitle('studioCaseClear','Clear case')+'<small>Your phone shows through</small></span></label><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="Rated Case"><span>'+caseTitle('studioCaseRated','Rated Case')+'<small>20 ft drop protection</small></span></label></div><div class="studio-rim" id="studioRim" role="radiogroup" aria-labelledby="studioRimLabel" hidden><span class="studio-rim-label" id="studioRimLabel">Rim color</span><span class="studio-rim-chips" id="studioRimChips"></span></div></div>';
+  caseBox.innerHTML='<legend>Choose your case</legend><div class="studio-case-row"><div class="studio-case-options"><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="MagSafe Clear"><span>'+caseTitle('studioCaseClear','Clear case')+'<small>Your phone shows through</small></span></label><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="Rated Case"><span>'+caseTitle('studioCaseRated','Rated Case')+'<small>Confirm availability in store</small></span></label></div><div class="studio-rim" id="studioRim" role="radiogroup" aria-labelledby="studioRimLabel" hidden><span class="studio-rim-label" id="studioRimLabel">Rim color</span><span class="studio-rim-chips" id="studioRimChips"></span></div></div>';
   panels.phone.append(caseBox);let rimKey='',revealRim=false;
   // On phones, rim chips that appear below the fold (short screens) are scrolled into view once, above the tool tray.
   caseBox.addEventListener('change',e=>{if(e.target.name==='studioCaseType'){core.setCase(e.target.value);revealRim=mobile.matches&&e.target.value==='Rated Case';}else if(e.target.name==='studioRim')core.setRim(e.target.value);sync();});
