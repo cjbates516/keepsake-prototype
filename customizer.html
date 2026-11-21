@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script src="assets/kiosk-session.js?v=1"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -123,7 +124,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/shop-dialogs.js" defer></script>
 <link rel="stylesheet" href="assets/shop-menu.css?v=start-case-1"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=celestial-2" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 <link rel="stylesheet" href="assets/accessories.css">
-<link rel="stylesheet" href="assets/design-editor.css?v=2">
+<link rel="stylesheet" href="assets/design-editor.css?v=walkthrough-3">
 <script>window.KP_EDITOR=!new URLSearchParams(location.search).has('cal')&&new URLSearchParams(location.search).get('staff')!=='1';</script>
 <script src="assets/accessory-catalog.js"></script>
 <script src="assets/accessories.js?v=2"></script>
@@ -2274,7 +2275,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   window.KPStudioCore={
     snapshot:editorSnapshot,
     context:function(){var src=state.photoImg;if(src&&!editorSources.has(src))editorSources.set(src,++editorSourceID);return state.model+':'+(src?editorSources.get(src):0);},
-    info:function(){return {model:state.model,caseType:state.caseType,finish:state.colorName,store:state.store,sky:skyStudio,drawing:drawingStudio,hasPhoto:!!state.photoImg,loading:!!state.libraryLoading,library:state.isLibraryDesign,accessoryError:!!(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')),issue:(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')?'Saved accessories could not load. Reload before reviewing this setup.':null)||(caseFailed||lightFailed?'The case photo could not load. Reload or choose another phone.':null)||kpPrintIssue()||(viewFailed?'The case mask could not load. Reload or ask our team for help.':!caseReady||!lightReady?'Your case preview is loading. Please wait.':null),total:orderPricing().total};},
+    info:function(){return {hasExtras:!!(state.addons.screen||state.accessories.length||state.chargerHelp||state.promo),selectionKey:JSON.stringify([state.model,state.caseType,state.colorName,state.store,state.variant,state.addons,state.accessories,state.chargerHelp,state.promo]),model:state.model,caseType:state.caseType,finish:state.colorName,store:state.store,sky:skyStudio,drawing:drawingStudio,hasPhoto:!!state.photoImg,loading:!!state.libraryLoading,library:state.isLibraryDesign,accessoryError:!!(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')),issue:(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')?'Saved accessories could not load. Reload before reviewing this setup.':null)||(caseFailed||lightFailed?'The case photo could not load. Reload or choose another phone.':null)||kpPrintIssue()||(viewFailed?'The case mask could not load. Reload or ask our team for help.':!caseReady||!lightReady?'Your case preview is loading. Please wait.':null),total:orderPricing().total};},
     restore:function(s){editorKeys.forEach(k=>{if(Object.hasOwn(s,k))state[k]=s[k];});state.reserved=false;editorSync();},
     adjust:function(key,value){
       if(!state.photoImg||skyStudio)return;
@@ -2297,7 +2298,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   };
 })();
 </script>
-<script src="assets/design-editor.js?v=2"></script>
+<script src="assets/design-editor.js?v=walkthrough-3"></script>
 <script>
   document.addEventListener('click',function(e){
     var t=e.target.closest ? e.target.closest('.kpAllTgl') : null;
