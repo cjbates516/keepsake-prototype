@@ -140,3 +140,5 @@ body.design-editor #stageCanvas{max-height:max(260px,calc(100dvh - 450px));width
 .design-editor #reviewNextCustomer{color:#fff}
 .design-editor #studioBrowse{min-height:44px}
 .design-editor :is(.studio-top h1,#studioPreview h2,#studioSetup h2):focus{outline:none}
+.design-editor .studio-history{justify-content:flex-end}
+@media(max-width:760px){.design-editor .studio-history #studioReset{font-size:12px}}
