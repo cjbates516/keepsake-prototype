@@ -39,8 +39,11 @@ const editorReady=p=>p.waitForFunction(()=>window.KPEditor&&window.__kp&&window.
 const settled=async p=>{await p.waitForFunction(()=>KPStudioCore.info().previewReady&&!__kp.state.libraryLoading,null,{timeout:20000}).catch(()=>{});await p.waitForTimeout(300);};
 const photosReady=p=>p.waitForFunction(()=>KPRatedGallery.resolve(KPStudioCore.info().model)!==null||!KPStudioCore.info().ratedAvailable,null,{timeout:15000}).catch(()=>{});
 const center=l=>l.evaluate(e=>e.scrollIntoView({block:'center'}));
-async function pickCase(p,type){const l=p.locator('#studioCase label:has(input[value="'+type+'"])');await center(l);await l.click();await p.waitForFunction(t=>__kp.state.caseType===t,type);await settled(p);}
-async function pickRim(p,name){const l=p.locator('#studioRim label:has(input[value="'+name+'"])');await center(l);await l.click();await p.waitForFunction(n=>KPStudioCore.info().rim===n,name);await settled(p);}
+/* Since #69 the case cards live in the Phone tool: beside the stage on desktop, in a closed sheet on phones. When they are
+   not on screen, click the same label from the page (its change event reaches the editor exactly as a tap does). */
+const tapLabel=async l=>{if(await l.isVisible()){await center(l);await l.click();}else await l.evaluate(e=>e.click());};
+async function pickCase(p,type){const l=p.locator('#studioCase label:has(input[value="'+type+'"])');await tapLabel(l);await p.waitForFunction(t=>__kp.state.caseType===t,type);await settled(p);}
+async function pickRim(p,name){const l=p.locator('#studioRim label:has(input[value="'+name+'"])');await tapLabel(l);await p.waitForFunction(n=>KPStudioCore.info().rim===n,name);await settled(p);}
 async function setModel(p,name){await p.evaluate(n=>{const b=document.getElementById('brandSel'),want=/^Samsung /.test(n)?'Samsung':'Apple';if(b.value!==want){b.value=want;b.dispatchEvent(new Event('change'));}const s=document.getElementById('modelSel');s.value=n;s.dispatchEvent(new Event('change'));},name);await p.waitForFunction(n=>__kp.state.model===n,name);await settled(p);await photosReady(p);}
 async function openViewer(p){const b=p.locator('#ratedPhotosOpen');await center(b);await b.click();await p.waitForFunction(()=>KPRatedGallery.isOpen&&document.querySelector('#ratedGallery .rg-thumb'),null,{timeout:10000});await shown(p);}
 /* the large photo has loaded (or failed) for the current index */
@@ -126,6 +129,9 @@ const shot=async(p,name)=>{await p.evaluate(()=>{const i=document.querySelector(
    /* 3. open with the clear case: the radios stay put; this phone, the first rim, the first photo */
    await openViewer(page);
    let v=await view(page);
+   /* the full site audit (#71) removed the unsupported drop rating: the viewer must not bring it back */
+   {const facts=await page.evaluate(()=>[...document.querySelectorAll('#ratedGallery .rg-facts li')].map(l=>l.textContent));
+    check(tag+' facts make no drop rating claim and match the case card',!facts.some(t=>/drop|\bft\b|feet|protect/i.test(t))&&facts.includes('Confirm availability in store'),facts);}
    check(tag+' opening never changes the case',await page.evaluate(()=>__kp.state.caseType==='MagSafe Clear'&&document.querySelector('#studioCase input[value="MagSafe Clear"]').checked));
    check(tag+' opens on this phone and the first rim',v.open&&v.sub==='On iPhone 17 Pro Max'&&v.rims.join()==='Smoke Frost*,Clear Frost'&&v.caption==='Front and back · Smoke Frost'&&v.count==='1 of 5'&&/rp-iph17pmx-smoke-angle\.webp/.test(v.src)&&v.natural===1000,v);
    check(tag+' Choose names the Rated Case and rim',v.choose==='Choose Rated Case · Smoke Frost',v.choose);

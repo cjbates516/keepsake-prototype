@@ -142,9 +142,10 @@
       }));
     }
     chips.querySelectorAll('[data-rim]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.rim === st.rim)));
-    // what the case is, beside the photos on larger screens (the editor shows the price on phones)
+    // what the case is, beside the photos on larger screens (the editor shows the price on phones). No drop rating here:
+    // the full site audit (#71) removed that unsupported claim, and the case cards now say "Confirm availability in store".
     const rimNames = (st.r ? st.r.rims : (i.rims || [])).map(r => r.n);
-    q('.rg-facts').replaceChildren(...['Rated Case \u00b7 $' + Number(i.prices && i.prices.rated || 0).toFixed(2), '20 ft drop protection', 'Your design printed on the white back',
+    q('.rg-facts').replaceChildren(...['Rated Case \u00b7 $' + Number(i.prices && i.prices.rated || 0).toFixed(2), 'Confirm availability in store', 'Your design printed on the white back',
       rimNames.length ? 'Frosted rim in ' + rimNames.join(' or ') : ''].filter(Boolean).map(t => { const li = document.createElement('li'); li.textContent = t; return li; }));
     const done = i.caseType === RATED && i.rim === st.rim && i.model === st.model;
     choose.textContent = done ? 'Back to my design' : 'Choose Rated Case · ' + st.rim;
