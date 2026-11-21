@@ -93,7 +93,7 @@ body.design-editor #stageCanvas{max-height:max(260px,calc(100dvh - 450px));width
 @media(max-width:360px){.design-editor .studio-history{padding-top:8px}.design-editor .studio-top>div:first-child{max-width:150px}.design-editor .studio-top h1{font-size:26px!important}.design-editor #studioPhone{font-size:11px}.design-editor #studioNext{padding-inline:10px}.design-editor #studioFooter{gap:4px}}
 @media(prefers-reduced-motion:reduce){.design-editor *{scroll-behavior:auto!important}}
 
-.design-editor .studio-tools:has([data-tool="sky"]){grid-template-columns:repeat(3,minmax(0,1fr))}
+.design-editor .studio-tools:has([data-tool="sky"]){grid-template-columns:repeat(2,minmax(0,1fr))}
 
 @media(max-width:760px){.design-editor #studioSheet[data-active-tool=adjust] #stageStick{margin:12px}.design-editor #studioSheet[data-active-tool=adjust] .studio-panel{padding-top:4px}}
 
@@ -201,3 +201,25 @@ body.design-editor #stageCanvas{max-height:max(260px,calc(100dvh - 450px));width
 @media(min-width:761px){body.design-editor #stageStick.studio-fit #stageCanvas{max-height:max(200px,min(var(--studio-case-fit,560px),max(260px,calc(100dvh - 450px))))}}
 /* counter review note: empty photo spots (customizer.html showCounterReview); the Rated blank instruction is on the card */
 .design-editor #reviewOverview .review-note{font-size:13px;font-weight:800;line-height:1.4;color:#6b4600;background:#fdf7ec;border:1px solid #e8c98f;border-radius:8px;padding:8px 10px;overflow-wrap:anywhere}
+/* The editor is a focused workspace; Designs provides a guarded way back. */
+.design-editor #siteHeader{display:none!important}
+.design-editor #studioStorePicker{border:1px solid var(--studio-line);border-radius:8px;margin:0 0 18px;background:#fff}
+.design-editor #studioStorePicker summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:6px 12px;box-sizing:border-box;cursor:pointer;font-size:13px}
+.design-editor #studioStorePicker summary span{font-size:12px;color:#a21c27;text-decoration:underline;white-space:nowrap}
+.design-editor #studioStorePicker>div{padding:8px 12px;margin:0!important}
+.design-editor #studioStorePicker>div>div:first-child:not(#storeChips){display:none}
+.design-editor #studioStorePicker summary:focus-visible{outline:3px solid #126578;outline-offset:3px}
+.design-editor #studioSetupEdit{min-height:44px;padding:8px 12px;margin-bottom:12px}
+@media(max-width:760px){
+ .design-editor #studioSetup>.studio-kicker{margin-bottom:8px}
+ .design-editor #studioSetup>p{margin-bottom:12px}
+ .design-editor #studioStorePicker{margin-bottom:12px}
+}
+
+.design-editor #reviewNextCustomer{color:#fff}
+.design-editor #studioBrowse{min-height:44px}
+.design-editor :is(.studio-top h1,#studioPreview h2,#studioSetup h2):focus{outline:none}
+.design-editor .studio-history{justify-content:flex-end}
+@media(max-width:760px){.design-editor .studio-history #studioReset{font-size:12px}}
+
+.studio-kiosk #cityPhotoCredit{display:none!important}

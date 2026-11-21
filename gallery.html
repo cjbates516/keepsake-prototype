@@ -95,7 +95,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/shop-refresh.css?v=compact-gallery-1">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css?v=start-case-1"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=celestial-2" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
+<link rel="stylesheet" href="assets/shop-menu.css?v=start-case-1"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=parks-city-1" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 </head>
 <body class="kp-storefront kp-library kp-shop">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
@@ -176,6 +176,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     KP_FEATURED = KP_FEATURED.map(function(f){ return f.indexOf('halloween-')===0 ? (_hol.shift()||f) : f; });
   }
   var kpBrowseAll = new URLSearchParams(location.search).has('all');
+  function categoryLabel(c){return c==='City Scenes'?'City After Dark':c;}
   var KP_TILE_CATS = ['City Scenes','City maps','Halloween','Florals','Abstract','Animal print','Zodiac','Hearts','Hometown'];
   function kpCatThumb(cat){
     var d=designs.filter(function(x){ return x.category===cat; })[0];
@@ -187,7 +188,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(!n) return '';
       return '<button class="kpCatTile" data-cat="'+c+'" style="display:flex;align-items:center;gap:12px;background:#FFFFFF;border:1px solid #ECEAEA;border-radius:14px;padding:10px;cursor:pointer;text-align:left;transition:box-shadow .2s">'
         + '<img src="'+kpCatThumb(c)+'" alt="" loading="lazy" style="width:52px;height:68px;object-fit:cover;border-radius:9px;flex-shrink:0">'
-        + '<span style="min-width:0"><span style="display:block;font-weight:900;font-size:14px;color:#2D2D3B">'+c+'</span>'
+        + '<span style="min-width:0"><span style="display:block;font-weight:900;font-size:14px;color:#2D2D3B">'+categoryLabel(c)+'</span>'
         + '<span style="display:block;font-size:12px;font-weight:700;color:#6C6C72;margin-top:2px">'+n+' designs</span></span></button>';
     }).join('');
     return '<div style="grid-column:1/-1;margin-top:26px">'
@@ -237,7 +238,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(designs.length)list=list.filter(function(c){return designs.some(function(d){return d.category===c[0]});});
     el.innerHTML=list.map(function(c){
       return '<button class="kpCatCard kpCatTile" data-cat="'+c[0]+'" aria-label="Shop '+c[0]+'">'
-        +'<img src="assets/designs/thumbs/'+c[1]+'" alt="" loading="lazy"><span>'+c[0]+'</span></button>';
+        +'<img src="assets/designs/thumbs/'+c[1]+'" alt="" loading="lazy"><span>'+categoryLabel(c[0])+'</span></button>';
     }).join('');
   }
   renderCatStrip();
@@ -345,6 +346,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       url.searchParams.set('finish',chosen.n);
       url.searchParams.set('view',previewMode);
       url.searchParams.set('colorway',artworkPicks[file]||'original');
+      url.searchParams.set('back',browseReturn());
       a.href=url.href;
     });
   }
@@ -361,7 +363,12 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           artworkPicks[file]='original';const picker=card.querySelector('.artwork-picker');if(picker)picker.value='original';
           const message=card.querySelector('.artwork-error');if(message)message.textContent='Color unavailable. Showing original.';
         }
-        if(device)updateCaseLinks(card);renderCase(cv,file,+cv.dataset.color);
+        updateCaseLinks(card);renderCase(cv,file,+cv.dataset.color);
+      }).catch(function(){
+        if(!card.isConnected||pick!==artworkPicks[file])return;
+        artworkPicks[file]='original';const picker=card.querySelector('.artwork-picker');if(picker)picker.value='original';
+        const message=card.querySelector('.artwork-error');if(message)message.textContent='Background unavailable. Showing original.';
+        updateCaseLinks(card);renderCase(cv,file,+cv.dataset.color);
       });
       return;
     }
@@ -518,7 +525,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   var searchQ='';
   var KP_NEW=['iPhone 18 Pro Max','iPhone 18 Pro'];
-  var drawerBrand='Apple', pendingDesign=null, drawerOpener=null;
+  var drawerBrand='Apple', pendingDesign=null, pendingBack=null, drawerOpener=null;
+  function browseReturn(){var u=new URL(location.href);for(var key of ['pick','colorway','back','brand'])u.searchParams.delete(key);return 'gallery.html'+u.search+u.hash;}
   function kpEnsureDrawer(){
     if(document.getElementById('kpDevScrim')) return;
     var sc=document.createElement('div'); sc.id='kpDevScrim';
@@ -544,11 +552,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function kpCloseDrawer(){
     var opened=document.getElementById('kpDevScrim');
     if(!opened || opened.style.pointerEvents!=='auto')return;
-    pendingDesign=null;
+    pendingDesign=null;pendingBack=null;
     var sc=document.getElementById('kpDevScrim'), dw=document.getElementById('kpDevDrawer');
     if(!sc) return;
     var url=new URL(location.href);
-    if(url.searchParams.has('brand')){url.searchParams.delete('brand');history.replaceState(null,'',url);}
+    ['brand','pick','colorway','back'].forEach(function(k){url.searchParams.delete(k);});history.replaceState(null,'',url);
     sc.style.opacity='0'; sc.style.pointerEvents='none';
     dw.inert=true;dw.style.transform='translateX(-103%)';
     document.querySelector('.kp-page').inert=false;if(drawerOpener&&drawerOpener.isConnected)drawerOpener.focus({preventScroll:true});
@@ -556,11 +564,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   function kpPickDevice(slug){
     var selected = DEVICE_ORDER.find(function(model){return slugify(model)===slug;}) || null;
-    var file = pendingDesign;
+    var file = pendingDesign, back=pendingBack||browseReturn();
     kpCloseDrawer();
     if (file && selected) {
       device=selected;saveBrowseFilters();
-      location.assign('customizer.html?' + new URLSearchParams({design:file,model:slugify(selected),colorway:artworkPicks[file]||'original'}));
+      location.assign('customizer.html?' + new URLSearchParams({design:file,model:slugify(selected),colorway:artworkPicks[file]||'original',back:back}));
       return;
     }
     device = selected;
@@ -587,7 +595,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       return '<button data-md="'+slugify(m)+'" style="display:flex;align-items:center;width:100%;text-align:left;background:#FFF;border:1.5px solid '+(m===device?'#17171F':'#E9E7E4')+';border-radius:16px;padding:17px 20px;font-size:16.5px;font-weight:700;color:#17171F;cursor:pointer;margin:0 0 12px">'+m+badge+cur+'</button>';
     }).join('');
     var flat='<button data-md="" style="display:block;width:100%;background:none;border:0;padding:14px;font-size:13.5px;font-weight:800;color:#6C6C72;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Back to browsing</button>';
-    dw.innerHTML=head+pills+'<div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 20px 6px">'+rows+'</div>'+flat;
+    var selectedDesign=designs.find(function(d){return d.file===pendingDesign;});
+    var context=selectedDesign?'<p style="margin:14px 20px 0;text-align:center;font-size:14px">Your pick: <strong>'+escapeHtml(selectedDesign.title)+'</strong></p>':'';
+    dw.innerHTML=head+context+pills+'<div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 20px 6px">'+rows+'</div>'+flat;
     dw.querySelector('#kpDwClose').addEventListener('click',kpCloseDrawer);
     dw.querySelectorAll('[data-pill]').forEach(function(b){ b.addEventListener('click',function(){ drawerBrand=this.dataset.pill; kpRenderDrawer();dw.querySelector('[data-pill="'+drawerBrand+'"]').focus(); }); });
     dw.querySelectorAll('[data-md]').forEach(function(b){ b.addEventListener('click',function(){ kpPickDevice(this.dataset.md); }); });
@@ -607,7 +617,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     document.body.classList.add('kp-device-mode');
     var cats={}; designs.forEach(function(d){ if(!d.hidden) cats[d.category]=(cats[d.category]||0)+1; });
     var opts='<option value="All">All styles ('+designs.filter(function(d){return !d.hidden;}).length+')</option>'+
-      Object.keys(cats).sort().map(function(c){ return '<option value="'+c+'"'+(filter===c?' selected':'')+'>'+c+' ('+cats[c]+')</option>'; }).join('');
+      Object.keys(cats).sort().map(function(c){ return '<option value="'+c+'"'+(filter===c?' selected':'')+'>'+categoryLabel(c)+' ('+cats[c]+')</option>'; }).join('');
     var topHtml = ''; /* shop-by-style strip above replaces the Top styles panel */
     el.innerHTML = '<div class="library-filter-row">'+
       '<button id="wizDevBtn" type="button" aria-label="Choose your phone" class="library-device"><span>Your phone</span><strong>'+(device||'Choose model')+'</strong><span aria-hidden="true">⌄</span></button>'+
@@ -736,7 +746,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if (filter === 'City maps' && stateSel && d.state !== stateSel) return false;
       if (colorSel && (d.color||[]).indexOf(colorSel) === -1) return false;
       if (searchQ){
-        var hay=(d.title+' '+d.category).toLowerCase();
+        var hay=(d.title+' '+d.category+' '+categoryLabel(d.category)).toLowerCase();
         if (searchQ.split(/\s+/).some(function(t){ return hay.indexOf(t)===-1; })) return false;
       }
       return true;
@@ -866,7 +876,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function kpChipsSync(){
     var el=document.getElementById('kpChips'); if(!el) return;
     var chip=function(action,label,hot){ return '<button class="kpChip" data-action="'+action+'" style="display:inline-block;margin-right:8px;background:'+(hot?'#FBE0E1':'#FFFFFF')+';border:1px solid '+(hot?'#DC282E':'#E4E3E3')+';color:'+(hot?'#DC282E':'#4E4E50')+';font-size:12.5px;font-weight:800;padding:8px 14px;border-radius:999px;cursor:pointer">'+label+'</button>'; };
-    el.innerHTML = chip('phone',(device||'Your phone')+' \u2304', !!device) + chip('style',(filter==='All'?'Style':filter)+' \u2304', filter!=='All') + chip('search','\uD83D\uDD0D Search', false);
+    el.innerHTML = chip('phone',(device||'Your phone')+' \u2304', !!device) + chip('style',(filter==='All'?'Style':categoryLabel(filter))+' \u2304', filter!=='All') + chip('search','\uD83D\uDD0D Search', false);
   }
   window.addEventListener('scroll', function(){
     var el=document.getElementById('kpChips'), wz=document.getElementById('wizardBar');
@@ -969,7 +979,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     renderCatStrip(); renderDeviceBar(); renderFilters(); renderStates(); renderColors(); renderGrid();
     preloadDevice(device);
     KPCaseShell.ready.then(function(){syncCaseView();refreshVisible();});
-    var brand=new URLSearchParams(location.search).get('brand');if(!device&&(brand==='Apple'||brand==='Samsung'))kpOpenDrawer(brand);
+    var requested=entryParams.get('pick'), chosen=designs.find(function(item){return item.file===requested;});
+    if(chosen){var selectedLook=entryParams.get('colorway')||'original';if(KPDesignColorways.choicesFor({__kpDesignFile:requested}).some(function(look){return look.id===selectedLook;}))artworkPicks[requested]=selectedLook;pendingDesign=requested;pendingBack=entryParams.get('back');kpOpenDrawer();}
+    var brand=new URLSearchParams(location.search).get('brand');if(!chosen&&!device&&(brand==='Apple'||brand==='Samsung'))kpOpenDrawer(brand);
   }).catch(function(){
     $('grid').innerHTML = '<div style="padding:40px;font-weight:700;color:#6C6C72">Could not load designs.</div>';
   });

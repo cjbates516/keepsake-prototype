@@ -104,6 +104,6 @@ document.addEventListener('click',event=>{
   event.preventDefault();
   const href=next?.href;
   KPCaseZoom.open({title,trigger,source:()=>img||url.replace('assets/designs/thumbs/','assets/designs/'),
-    label:href?.includes('customizer.html')?'Customize this case':'View collection',
+    label:trigger.dataset.previewAction||(href?.includes('customizer.html')?'Customize this case':'View collection'),
     proceed:href && !href.endsWith('.webp') ? ()=>location.assign(href) : null});
 });

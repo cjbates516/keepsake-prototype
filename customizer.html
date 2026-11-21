@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script src="assets/kiosk-session.js?v=1"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/personal-studio.css?v=rated-2">
+<link rel="stylesheet" href="assets/personal-studio.css?v=rated-3">
 
 <script>if(new URLSearchParams(location.search).get('staff')==='1')document.documentElement.classList.add('staff-mode');</script>
 <link rel="stylesheet" href="assets/staff-print.css">
 <script src="assets/print-png.js"></script>
 <script src="assets/print-geometry.js"></script>
 <script src="assets/case-shell.js?v=clear-mounted-1"></script>
-<script src="assets/mask-geometry.js?v=rated-2"></script>
+<script src="assets/mask-geometry.js?v=rated-3"></script>
 <script src="assets/print-layouts.js"></script>
 <script src="assets/counter-card.js?v=counter-card-1"></script>
 <title>Design your keepsake — Keepsake Printing Co</title>
@@ -105,7 +106,7 @@ input::placeholder{color:#626269;opacity:1}
 body{background:#FFFBF7}
 h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;letter-spacing:-.01em}
 </style>
-<script src="assets/kp-config.js?v=rated-2"></script>
+<script src="assets/kp-config.js?v=rated-3"></script>
 <script src="assets/heic-loader.js"></script>
 <script src="assets/colorway-catalog.js"></script>
 <script src="assets/design-colorways.js"></script>
@@ -164,9 +165,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/shop-refresh.css?v=counter-card-1">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css?v=start-case-1"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=celestial-2" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
+<link rel="stylesheet" href="assets/shop-menu.css?v=start-case-1"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=parks-city-1" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 <link rel="stylesheet" href="assets/accessories.css">
-<link rel="stylesheet" href="assets/design-editor.css?v=rated-2">
+<link rel="stylesheet" href="assets/design-editor.css?v=rated-3">
 <script>window.KP_EDITOR=!new URLSearchParams(location.search).has('cal')&&new URLSearchParams(location.search).get('staff')!=='1';</script>
 <script src="assets/accessory-catalog.js"></script>
 <script src="assets/accessories.js?v=2"></script>
@@ -428,7 +429,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 </div>
 
 <script src="assets/case-zoom.js"></script>
-<script src="assets/night-sky.js?v=places-zoom-1"></script>
+<script src="assets/night-sky.js?v=counter-details-1"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -834,7 +835,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function kpNameText(){ return wordsActive()?'':state.text; }
   /* layout art and thumbnails were redrawn for this release: the query keeps browsers from mixing a cached old image
      with the new templates.json geometry */
-  var KP_COLLAGE_V='rated-2';
+  var KP_COLLAGE_V='rated-3';
   function tplImage(t){
     if(tplImgs[t.id]) return tplImgs[t.id];
     var im=new Image(); im.crossOrigin='anonymous';
@@ -1390,7 +1391,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(hit>=0){ state.slotTarget=hit; var fi=$('fileInput'); fi.multiple=!state.photos[hit]; fi.click(); }
       return;
     }
-    if(!state.photoImg && !state.text) $('fileInput').click();
+    if(!state.photoImg && !state.text){if(skyStudio){if(window.KPEditor)KPEditor.openTool('sky');else $('personalStudio').scrollIntoView({block:'start'});}else $('fileInput').click();}
   });
   var kpPtr=null, kpPtrs={}, pinch=null;
   function ptrCount(){ return Object.keys(kpPtrs).length; }
@@ -1632,7 +1633,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* Decode directly into a bounded working copy; stale uploads never restore a reset. */
   var kpUploadRequest=0;
   function releaseWorkingPhoto(){
-    if(state.photoImg instanceof HTMLCanvasElement)releaseCanvas(state.photoImg);
+    if(state.photoImg instanceof HTMLCanvasElement){delete state.photoImg.__kpSkyRows;releaseCanvas(state.photoImg);}
     KPDesignColorways.clear();
   }
   /* With a layout active the photo goes to forceSlot, the tapped spot or the first open spot, and the
@@ -2402,7 +2403,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   });
   function showCounterReview(){
     if(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')){kpToast('Your saved accessories could not load. Refresh before reviewing your setup, or ask our team for help.');return;}
-    var issue=kpPrintIssue();
+    var issue=kpPrintIssue(true);
     if(issue||!caseReady||!lightReady){kpToast(issue||'Your case preview is loading. Try again in a moment.');return;}
     var dialog=$('counterReview'), details=$('reviewDetails'), code=$('reviewCode');
     var version=++reviewVersion, model=state.model, variant=state.variant;
@@ -2418,7 +2419,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     reviewSource.getContext('2d').drawImage(canvas,0,0);
     var preview=$('reviewPreview'),px=preview.getContext('2d');
     px.clearRect(0,0,preview.width,preview.height);px.drawImage(canvas,0,0,preview.width,preview.height);
-    var title=detail('Design',file?file.replace(/^kp-|\.(jpg|png)$/g,'').replace(/-/g,' '):state.layout?'Photo collage'+(curTpl()?' \u00b7 '+curTpl().n:''):state.photoImg?(skyStudio?'Personalized night sky':drawingStudio?'Your child’s artwork':'Your photo'):'Text design');
+    var title=detail('Design',drawingAtCounter()?'Child’s drawing · add at the counter':file?file.replace(/^kp-|\.(jpg|png)$/g,'').replace(/-/g,' '):state.layout?'Photo collage'+(curTpl()?' \u00b7 '+curTpl().n:''):state.photoImg?(skyStudio?'Personalized night sky':drawingStudio?'Your child’s artwork':'Your photo'):'Text design');
     if(file){
       var look=KPDesignColorways.choicesFor(state.photoImg).find(function(item){return item.id===variant;});
       if(look)detail('Background',look.name);
@@ -2438,6 +2439,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(partialNote)reviewNotes.push(partialNote);
     if(partialNote)detail('Photo spots',partialNote);
     detail('Phone',reviewRim?model:model+' · '+state.colorName);detail('Case',kpCaseLabel());
+    if(skyStudio&&state.photoImg?.__kpSkyRows)state.photoImg.__kpSkyRows.forEach(function(row){detail(row[0],row[1]);});
     if(kpNameText()){
       detail('Personalization',kpNameText());
       detail('Name style',(FONTS[state.textFont] ? FONTS[state.textFont].n : 'Selected font')+' · '+state.textColor+' · '+(state.textVertical?'vertical':'horizontal'));
@@ -2468,6 +2470,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var items=overviewText('ul','','review-items');
     function overviewItem(text){var li=document.createElement('li');li.textContent=text;items.append(li);}
     overviewItem((reviewRim?CASE_RATED:'Case')+' · $'+basePrice().toFixed(2));
+    if(skyStudio&&state.photoImg?.__kpSkyRows){var skyRows=Object.fromEntries(state.photoImg.__kpSkyRows);overviewItem(skyRows.Occasion+' · '+skyRows.Date);}
+    if(drawingAtCounter())overviewItem('Child’s drawing · to add with our team');
     extras.forEach(function(a){overviewItem(a.name+' · $'+a.price.toFixed(2));});
     state.accessories.forEach(function(id){var a=KPAccessories.get(id);overviewItem(KPAccessories.label(a)+' · $'+KPAccessories.price(a,state.store).toFixed(2)+(KPAccessories.available(a,state.store)?'':' · confirm stock'));});
     if(state.chargerHelp)overviewItem('Charger help requested · price to confirm');
@@ -2476,7 +2480,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     $('reviewInstruction').textContent=new URLSearchParams(location.search).get('kiosk')==='1'?'Keep this screen open for our team. We confirm stock, fit and your design before you pay in store.':'Save this card or keep the screen open for our team. We confirm stock, fit and your design before you pay in store.';
     dialog.showModal();dialog.scrollTop=0;$('reviewHeading').tabIndex=-1;$('reviewHeading').focus({preventScroll:true});
     if(!file){
-      prepareCounterCard(version,skyStudio?'Bring your saved sky artwork and this preview to the counter.':drawingStudio?'Bring the original drawing photo with this preview.':state.layout?kpCollageInstruction(' with this preview.'):state.photoImg||state.layout?'Bring the original photos on your phone with this preview.':'Show the team this text design.');
+      prepareCounterCard(version,skyStudio?'Show this card at the counter. Sky details below let our team recreate your design; saved artwork is optional.':drawingStudio?'Bring the original drawing photo with this preview.':state.layout?kpCollageInstruction(' with this preview.'):state.photoImg||state.layout?'Bring the original photos on your phone with this preview.':'Show the team this text design.');
       if (skyStudio && new URLSearchParams(location.search).get('kiosk')!=='1' && state.photoImg && typeof state.photoImg.toBlob === 'function') {
         code.textContent='Preparing your sky artwork…';
         state.photoImg.toBlob(function(blob) {
@@ -2493,8 +2497,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           code.replaceChildren(download);
         }, 'image/png');
       }
-      if(skyStudio&&new URLSearchParams(location.search).get('kiosk')==='1')code.textContent='Keep this screen open so our team can prepare your sky artwork.';
-      if (drawingStudio) code.textContent='Bring the original drawing photo with this preview so the team can prepare your case.';
+      if(skyStudio&&new URLSearchParams(location.search).get('kiosk')==='1')code.textContent='Keep this screen open. Our team can recreate your sky from Design & staff details below.';
+      if (drawingStudio) code.textContent=drawingAtCounter()?'Drawing still to add. Bring the original drawing or its photo to our team. This is a case setup, not a finished print.':'Bring the original drawing photo with this preview so the team can prepare your case.';
       else if (!skyStudio && state.layout) code.textContent=kpCollageInstruction(' and show this preview at the counter.');
       else if (!skyStudio && state.photoImg) code.textContent='Bring the original photos on your phone and show this preview at the counter.';
       return;
@@ -2618,13 +2622,16 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* ── print export (staff link) ── */
   $('exportLink').addEventListener('click',function(e){ e.preventDefault(); kpBuildPrint(kpDownloadCanvas,{staff:true}); });
   /* builds the print file; done(canvas, filename). Returns false (with a toast) when it cannot. */
-  function kpPrintIssue(){
+  function drawingAtCounter(){return drawingStudio && new URLSearchParams(location.search).get('kiosk')==='1' && !state.photoImg;}
+  function kpPrintIssue(forReview){
+    if(skyStudio&&!state.photoImg?.__kpSkyRows)return 'Choose your date and place, then update your sky preview.';
     if(skyStudio && skyDirty)return 'Update your sky map to use the latest details.';
     if(!window.KPPrintGeometry||!window.KPPrintPng)return 'Print tools did not load. Reload before printing.';
     if(!KITS[state.model])return 'Print template is not available for this model.';
     if(state.handoffError)return state.handoffError;
     if(state.layout&&!(state.photos||[]).some(Boolean))return 'Add at least one photo to your layout.';
-    if(!hasArt()&&!kpNameText())return 'Add a photo, choose a design or enter a name.';
+    if(drawingStudio&&!state.photoImg&&!(forReview&&drawingAtCounter()))return 'Choose a photo of the drawing first.';
+    if(!hasArt()&&!kpNameText()&&!(forReview&&drawingAtCounter()))return 'Add a photo, choose a design or enter a name.';
     if(state.libraryLoading)return 'Full-quality artwork is still loading.';
     if(state.colorwayUnavailable)return 'Choose an available colorway before printing.';
     if(state.fullFailed)return 'Full-quality design could not load. Reload to try again.';
@@ -3070,10 +3077,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     title.textContent = drawingStudio ? 'Their drawing, your case.' : 'The night we met';
     document.title = title.textContent + ' | Keepsake Printing Co.';
     if (drawingStudio) {
-      host.innerHTML = '<h2>Start with their drawing</h2><p>Photograph the page straight on in daylight. Crop to the edges of the paper in your photo app, then choose the image below. We’ll fit it below the camera.</p>';
+      host.innerHTML = new URLSearchParams(location.search).get('kiosk')==='1' ? '<h2>Their drawing, your case.</h2><p>Choose the phone and any extras here. Bring the original drawing or a photo of it to our team. We’ll add it, fit the whole drawing below the camera and check the preview together.</p><p>No customer photos are stored on this shared screen.</p>' : '<h2>Start with their drawing</h2><p>Photograph the page straight on in daylight. Crop to the edges of the paper in your photo app, then choose the image below. We’ll fit the whole drawing below the camera.</p>';
       $('fitFit').textContent = 'Fit whole drawing';
       $('photoPrivacy').textContent = 'Your drawing stays on this device while you preview it.';
     } else {
+      state.text='';$('nameInput').value='';
       KPNightSky.mount(host, {
         changed:function(){skyDirty=true;state.reserved=false;document.dispatchEvent(new Event("kp:editor-change"));},
         apply:function(chart) {
@@ -3107,7 +3115,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(zoomTap && Math.hypot(e.clientX-zoomTap[0],e.clientY-zoomTap[1])>5)zoomTap=null;
   });
   canvas.addEventListener('pointercancel',()=>{zoomTap=null;});
-  canvas.addEventListener('click',()=>{if(zoomTap && !$('skyCaseZoom').hidden)$('skyCaseZoom').click();zoomTap=null;});
+  canvas.addEventListener('click',()=>{if(zoomTap && (state.photoImg||state.text) && !canGesture() && !$('skyCaseZoom').hidden)$('skyCaseZoom').click();zoomTap=null;});
   /* ── init ── */
   loadKit(state.model);
   $('brandSel').value=state.brand;
@@ -3134,9 +3142,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     snapshot:editorSnapshot,
     /* a layout change resets history like a new photo, so undo can never cross into another layout's words */
     context:function(){var src=state.photoImg;if(src&&!editorSources.has(src))editorSources.set(src,++editorSourceID);return state.model+':'+(src?editorSources.get(src):0)+(state.layout?':'+state.layout:'');},
-    info:function(){var kk=KITS[state.model],rim=kpRim();return {model:state.model,caseType:state.caseType,finish:state.colorName,
+    info:function(){var kk=KITS[state.model],rim=kpRim();return {hasExtras:!!(state.addons.screen||state.accessories.length||state.chargerHelp||state.promo),
+      /* the editor's leave guard compares this; the case and its rim count like the phone (neither enters undo history) */
+      selectionKey:JSON.stringify([state.model,state.caseType,rim?rim.n:null,state.colorName,state.store,state.variant,state.addons,state.accessories,state.chargerHelp,state.promo]),model:state.model,caseType:state.caseType,finish:state.colorName,
       /* case choice under the case: offered when this phone has a Rated kit; rims are that kit's rim colors */
-      ratedAvailable:!!(kk&&kk.rated&&!kk.toughOnly),previewReady:!!(caseReady&&lightReady&&(!viewImg||viewReady)),rim:rim?rim.n:null,rims:kk&&kk.rated?kk.rated.colors.map(function(c){return {n:c.n,h:c.h};}):[],caseLabel:kpCaseLabel(),prices:{clear:BASE,rated:RATED_PRICE},partial:kpPartialIssue(),store:state.store,sky:skyStudio,drawing:drawingStudio,hasPhoto:!!state.photoImg,layout:kpLayoutInfo(),layouts:photoPathActive(),layoutsReady:KP_TPLS.length>0,layoutsFailed:kpTplFailed&&!KP_TPLS.length,spare:kpSpare.length,loading:!!state.libraryLoading,library:state.isLibraryDesign,accessoryError:!!(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')),issue:(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')?'Saved accessories could not load. Reload before reviewing this setup.':null)||(caseFailed||lightFailed?'The case photo could not load. Reload or choose another phone.':null)||kpPrintIssue()||(viewFailed?'The case mask could not load. Reload or ask our team for help.':!caseReady||!lightReady?'Your case preview is loading. Please wait.':null),total:orderPricing().total};},
+      ratedAvailable:!!(kk&&kk.rated&&!kk.toughOnly),previewReady:!!(caseReady&&lightReady&&(!viewImg||viewReady)),rim:rim?rim.n:null,rims:kk&&kk.rated?kk.rated.colors.map(function(c){return {n:c.n,h:c.h};}):[],caseLabel:kpCaseLabel(),prices:{clear:BASE,rated:RATED_PRICE},partial:kpPartialIssue(),store:state.store,sky:skyStudio,skyDirty:skyStudio&&skyDirty,skyDetails:skyStudio&&!skyDirty?state.photoImg?.__kpSkyRows:null,drawing:drawingStudio,drawingPending:drawingAtCounter(),hasPhoto:!!state.photoImg,layout:kpLayoutInfo(),layouts:photoPathActive(),layoutsReady:KP_TPLS.length>0,layoutsFailed:kpTplFailed&&!KP_TPLS.length,spare:kpSpare.length,loading:!!state.libraryLoading,library:state.isLibraryDesign,accessoryError:!!(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')),issue:(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')?'Saved accessories could not load. Reload before reviewing this setup.':null)||(caseFailed||lightFailed?'The case photo could not load. Reload or choose another phone.':null)||kpPrintIssue(true)||(viewFailed?'The case mask could not load. Reload or ask our team for help.':!caseReady||!lightReady?'Your case preview is loading. Please wait.':null),total:orderPricing().total};},
     restore:function(s){editorKeys.forEach(k=>{if(Object.hasOwn(s,k))state[k]=s[k];});if(state.layout&&s.captions)state.captions=Object.assign({},s.captions);state.reserved=false;editorSync();},
     /* step changes: the soft photo note and its outline follow the step */
     redraw:function(){updateDpi();render();},
@@ -3159,6 +3169,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       /* layouts: spot photos are detached canvases, so free them here; drop the layout, its words and pending spot loads */
       kpLayoutGen++;kpSlotPending={};(state.photos||[]).forEach(releaseCanvas);state.photos=[];state.layout=null;state.captions={};state.slotTarget=null;state.designPath=null;kpCleanStage=false;
       kpClearPool();
+      looksSource=null;looksSize='';
+      for(var layer of [_designLayer,_alphaLayer])if(layer)layer.width=layer.height=0;
+      _designLayer=_alphaLayer=null;
       state.accessories=[];state.addons={screen:false,lens:false};state.promo=null;state.chargerHelp=false;
       /* the next customer starts on the clear case */
       state.caseType=CASE_CLEAR;state.rimColor=null;
@@ -3172,7 +3185,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   };
 })();
 </script>
-<script src="assets/design-editor.js?v=rated-2"></script>
+<script src="assets/design-editor.js?v=rated-3"></script>
 <script>
   document.addEventListener('click',function(e){
     var t=e.target.closest ? e.target.closest('.kpAllTgl') : null;
@@ -3187,6 +3200,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var svg=t.querySelector('svg'); if(svg) svg.style.transform=open?'':'rotate(90deg)';
   });
 </script>
-<script src="assets/staff-print.js?v=rated-2"></script>
+<script src="assets/staff-print.js?v=rated-3"></script>
 </body>
 </html>

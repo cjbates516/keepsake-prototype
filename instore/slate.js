@@ -2,7 +2,12 @@
   'use strict';
   const el = id => document.getElementById(id);
   const product = el('product'), file = el('file'), preview = el('preview'), save = el('save');
-  let photo = null, loadVersion = 0, revision = 0, busy = false;
+  if(new URLSearchParams(location.search).get('kiosk')==='1'){
+    el('job').disabled=true;product.disabled=true;file.disabled=true;
+    el('status').textContent='Photo preparation is for our team’s print computer. Please ask a team member to help with your original photo.';
+    return;
+  }
+  let photo = null, photoUrl = null, loadVersion = 0, revision = 0, busy = false;
   const requested = new URLSearchParams(location.search).get('code');
   for (const item of Object.values(KPSlates.products)) {
     product.add(new Option(item.label, item.code));
@@ -13,8 +18,9 @@
     loadVersion++;
     revision++;
     photo = null;
+    if(photoUrl){URL.revokeObjectURL(photoUrl);photoUrl=null;}
     if (!keepFile) file.value = '';
-    el('caption').value = '';
+    if(!keepFile)el('caption').value = '';
     el('x').value = el('y').value = 50;
     el('zoom').value = 100;
     el('approved').checked = false;
@@ -26,6 +32,8 @@
     clearPhoto();
     const item = selected();
     el('job').disabled = !item;
+    file.disabled = !!item?.artwork;
+    el('orientation').disabled = !!item?.artwork;
     el('orientation').value = item?.artwork ? 'landscape' : 'portrait';
     el('width').value = el('height').value = '';
     el('price').textContent = item ? item.code + ' · $' + item.price.toFixed(2) + ' before applicable tax' : '';
@@ -51,7 +59,7 @@
   el('reloadPark').addEventListener('click', () => {
     const item = selected();
     if (item?.artwork) {
-      clearPhoto();
+      clearPhoto(true);
       loadParkPhoto(item);
     }
   });
@@ -95,6 +103,7 @@
   selectSlate();
   if (requested && !selected()) message('Unrecognized slate code. Check the customer’s selection.');
   file.addEventListener('change', async () => {
+    if(selected()?.artwork)return;
     const original = file.files[0];
     clearPhoto(true);
     if (!original) { message('Choose a JPG or PNG.'); return; }
@@ -103,9 +112,9 @@
     try {
       image.src = local; await image.decode();
       if (token !== loadVersion) return;
-      photo = image; refresh();
+      photoUrl=local;photo = image; refresh();
     } catch (_) { if (token === loadVersion) message('Could not read this photo. Choose a JPG or PNG copy.'); }
-    finally { URL.revokeObjectURL(local); }
+    finally { if(photoUrl!==local)URL.revokeObjectURL(local); }
   });
   el('orientation').addEventListener('change', () => {
     const width = el('width').value;
