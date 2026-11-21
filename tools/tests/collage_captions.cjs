@@ -307,7 +307,7 @@ async function uncovered(p,sel){return p.evaluate(sel=>{const el=document.queryS
    check(tag+' Start over dialog',await page.locator('#studioResetDialog p').innerText()==='Your current changes will be cleared.');
    await page.locator('#studioCancelReset').click();
    await page.locator('#studioBrowse').click();
-   check(tag+' leaving a collage asks first',await page.evaluate(()=>document.getElementById('studioResetDialog').open&&document.querySelector('#studioResetDialog p').textContent==='Your layout, photos and words will be cleared.'));
+   check(tag+' leaving a collage asks first',await page.evaluate(()=>document.getElementById('studioResetDialog').open&&document.querySelector('#studioResetDialog p').textContent==='Your layout, photos, words and selected extras will be cleared.'));
    await page.locator('#studioConfirmReset').click();await page.waitForURL(/gallery\.html/,{timeout:10000}).catch(()=>{});
    check(tag+' confirming leaves for the designs page',/gallery\.html/.test(page.url()),page.url());
 

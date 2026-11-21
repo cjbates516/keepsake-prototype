@@ -212,8 +212,9 @@ async function fresh(browser,opts,url){const ctx=await browser.newContext(opts);
    await ctx.close();
   }
 
-  /* 7. credits: kiosks keep every credit link in the Photo tool (CC BY attribution, as on the baseline); short phones
-     show it without scrolling; staff gets the slip; no designs.json fetch for credits nobody ships (R1, R7, F6, F1) */
+  /* 7. credits: kiosks keep every credit link in the Photo tool with its attribution href, hidden there since Codex #64
+     (.studio-kiosk #cityPhotoCredit, no way out of the kiosk editor); short phones show it without scrolling; staff gets
+     the slip; no designs.json fetch for credits nobody ships (R1, R7, F6, F1) */
   {
    const tag=engine;
    const {ctx,page}=await fresh(browser,{viewport:{width:1024,height:768}});
@@ -226,7 +227,7 @@ async function fresh(browser,opts,url){const ctx=await browser.newContext(opts);
     await tool(page,'photo');
     const k=await page.evaluate(()=>{const a=document.getElementById('cityPhotoCredit'),r=a.getBoundingClientRect();return {href:a.getAttribute('href'),text:a.textContent,inPhotoTool:!!a.closest('#studio-photo'),underCase:!!a.closest('.studio-credit'),visible:r.width>0&&r.height>0};});
     const res=await page.request.get(base+href.split('#')[0]);const body=res.ok()?await res.text():'';
-    check(tag+' kiosk: '+file+' credit is a link in the Photo tool to its attribution',k.href===href&&k.inPhotoTool&&!k.underCase&&k.visible&&(credited&&file===credited.file?k.text===creditWant(credited):k.text==='Photograph and license')&&body.includes('id="'+anchor+'"'),k);
+    check(tag+' kiosk: '+file+' credit link stays in the Photo tool with its attribution, hidden on kiosks (no exit)',k.href===href&&k.inPhotoTool&&!k.underCase&&!k.visible&&(credited&&file===credited.file?k.text===creditWant(credited):k.text==='Photograph and license')&&body.includes('id="'+anchor+'"'),k);
    }
    await ctx.close();
    {
