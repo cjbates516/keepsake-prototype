@@ -12,9 +12,9 @@
     "reason": "Recover the exact already-public note pixels; no generated handwriting."
   },
   "sources": {
-    "customizer.html": "237e98f943425cf5ec1e632c568c09e81c0465c046b999241ec8b8c0d6a5855d",
+    "customizer.html": "466a1672c567796b4b84c5c81cf23f87f77ef798883e5afc2aebf4637b9d4e4b",
     "assets/night-sky.js": "83d0655a90572c2f2e466b9e35731af36e37a8a7013cc7c509cd425e919c492d",
-    "assets/case-shell.js": "7783cca7ee9ede88915f44de4eee505752d6257b6db3439e11d57323bb63eb66",
+    "assets/case-shell.js": "cb5a4c9ee41f8160bb0fed61e0dbdbad794bb4dbb27a9c3d5aa158d8c1e25b0e",
     "assets/print-geometry.js": "8f5c0160cdf1bfaef806bb495bbe1705fc5f410bbd63d260f60e97c4b5d2a144",
     "assets/cases/i17pm-silver.webp": "fd3f8e91e7b1e112a34bdf72433da1a486fcd07ee3949f0b6cfce31f7a13d9b0",
     "assets/masks/view-i17pm.png": "c1d1e1cbc62a2ef764c24e331db32a6f2215169c40040a57ae3375347815f0a4",

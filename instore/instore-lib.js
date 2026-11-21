@@ -253,6 +253,8 @@
       caseC.getContext('2d').drawImage(imgs[0], full[0], full[1], full[2], full[3]);
       var prep = { model: model, artRatio:layout?layout.rx:1, bleedX:layout?layout.bleedX*k:0, bleedY:layout?layout.bleedY*k:0, W: W, H: H, full: full, caseC: caseC, shade: shadeOf(imgs[0]),
         box: [(vb[0] - x0) * k, (vb[1] - y0) * k, (vb[2] - vb[0]) * k, (vb[3] - vb[1]) * k] };
+      var rim=window.KPCaseShell?.rimPath(model.name);
+      if(rim){prep.rim=new Path2D();prep.rim.addPath(rim,new DOMMatrix().translate(full[0],full[1]).scale(k));}
       if (imgs[1]) {
         /* rasterize the mask once: WebKit mis-composites an <img> used as a destination-in source */
         prep.maskC = canvas(W, H);
@@ -302,6 +304,11 @@
       tc.drawImage(prep.maskC, 0, 0);
       tc.globalCompositeOperation = 'source-over';
       x.drawImage(t, 0, 0);
+    }
+    if(prep.rim){
+      x.save();x.clip(prep.rim,'evenodd');x.clearRect(0,0,prep.W,prep.H);
+      if(bg){x.fillStyle=bg;x.fillRect(0,0,prep.W,prep.H);}
+      x.drawImage(prep.caseC,0,0);x.restore();
     }
     return c;
   };

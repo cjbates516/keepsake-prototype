@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="assets/staff-print.css">
 <script src="assets/print-png.js"></script>
 <script src="assets/print-geometry.js"></script>
-<script src="assets/case-shell.js?v=clear-mounted-1"></script>
+<script src="assets/case-shell.js?v=clear-mounted-2"></script>
 <script src="assets/mask-geometry.js?v=rated-3"></script>
 <script src="assets/print-layouts.js"></script>
 <script src="assets/counter-card.js?v=counter-card-1"></script>
@@ -110,7 +110,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/heic-loader.js"></script>
 <script src="assets/colorway-catalog.js"></script>
 <script src="assets/design-colorways.js"></script>
-<script src="instore/instore-lib.js"></script>
+<script src="instore/instore-lib.js?v=clear-rim-1"></script>
 <style>
 .photo-looks{display:flex;gap:10px;overflow-x:auto;padding:6px 6px 14px;scroll-snap-type:x proximity}
 .photo-look{flex:0 0 106px;padding:6px;background:#fff;border:2px solid #dedad6;border-radius:12px;cursor:pointer;scroll-snap-align:start;color:#191921;font:800 12px "Nunito Sans",sans-serif}
@@ -428,7 +428,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
 </div>
 
-<script src="assets/case-zoom.js"></script>
+<script src="assets/case-zoom.js?v=fit-first-1"></script>
 <script src="assets/night-sky.js?v=clear-personal-2"></script>
 <script>
 (function(){
@@ -1264,7 +1264,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     $('caseViewSwitch').hidden=!canShowEmpty;
     $('caseViewSwitch').querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.view===state.previewMode));});
     if(viewImg && !viewReady) {
-      KPCaseShell.draw(ctx,state.model,DIM.w,DIM.h,state.caseType);
+      KPCaseShell.draw(ctx,state.model,DIM.w,DIM.h,state.caseType,caseImg);
       return;
     }
     var useMask = viewImg && viewReady;
@@ -1326,7 +1326,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         ctx.restore();
       }
     }
-    KPCaseShell.draw(ctx,state.model,DIM.w,DIM.h,state.caseType);
+    KPCaseShell.draw(ctx,state.model,DIM.w,DIM.h,state.caseType,caseImg);
     updateStylePreviews();
     drawCalOverlay();
   }
@@ -2299,7 +2299,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             if(phone.complete&&phone.naturalWidth&&geometry){c.save();c.beginPath();geometry.rows.forEach(row=>{for(let j=2;j<row.length;j+=2)c.rect(row[j],row[0],row[j+1]-row[j],row[1]-row[0]);});c.clip();c.drawImage(phone,0,0,DIM.w,DIM.h);c.restore();}
             else c.clearRect(0,0,DIM.w,DIM.h);
           }
-          KPCaseShell.draw(c,state.model,DIM.w,DIM.h,style);
+          KPCaseShell.draw(c,state.model,DIM.w,DIM.h,style,photo);
         }
       }
       c.restore();
@@ -3187,7 +3187,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       a.scale(.1,.1);var m=designTransform();a.transform(m.a,m.b,m.c,m.d,m.e,m.f);
       drawDesignInto(a,state.photoImg,'',look);a.setTransform(.1,0,0,.1,0,0);
       a.globalCompositeOperation='destination-in';if(viewMaskCanvas)a.drawImage(viewMaskCanvas,0,0);else{a.fillStyle='#000';a.fill(printPath,'evenodd');}if(state.model==='iPhone 18 Pro Max'||state.model==='iPhone 18 Pro')g.globalCompositeOperation='source-atop';g.drawImage(art,0,0,DIM.w,DIM.h);
-      art.width=art.height=0;return out;
+      KPCaseShell.draw(g,state.model,DIM.w,DIM.h,state.caseType,caseImg);art.width=art.height=0;return out;
     },
     /* a layout change resets history like a new photo, so undo can never cross into another layout's words */
     context:function(){var src=state.photoImg;if(src&&!editorSources.has(src))editorSources.set(src,++editorSourceID);return state.model+':'+(src?editorSources.get(src):0)+(state.layout?':'+state.layout:'');},

@@ -69,7 +69,8 @@ window.KPCaseZoom = (() => {
       ratio=(bounds?.width||picture.naturalWidth||picture.width)/(bounds?.height||picture.naturalHeight||picture.height);
       picture.removeAttribute('class');picture.removeAttribute('style');
       picture.setAttribute('role','img');picture.setAttribute('aria-label',title||'Case preview');picture.removeAttribute('aria-hidden');
-      view.append(picture);status.hidden=true;level=1;resize();
+      // Open with the whole case visible. Magnification is an explicit choice.
+      view.append(picture);status.hidden=true;level=0;resize();
     } catch {
       if(ticket===generation&&dialog.open){status.hidden=false;status.textContent='The preview could not load. Close and try again.';}
     }
