@@ -365,7 +365,7 @@
     buildGrid();
     show(2);
   }
-  function collectionLabel(c){return c==='City Scenes'?'City After Dark':c;}
+  function collectionLabel(c){return c==='City Scenes'?'City After Dark':c==='Liquid Color'?'Liquid Prism':c;}
   function designsNow() {
     var list = data.designsFor(state.model).filter(function(d){return KPSeason.visible(d);});
     if(state.filter!=='all')list=list.filter(function(d){return d._col.code===state.filter;});
@@ -625,6 +625,7 @@
     $('chargerRequest').hidden=true;$('counterGlass').hidden=true;$('dockTotal').textContent='';$('glassLabel').textContent='Add tempered glass';
     show(1);
   }
+  window.addEventListener('pageshow',function(e){if(e.persisted&&data){reset();touch();}});
   var last = Date.now();
   function touch() { last = Date.now();$('idleNotice').hidden=true; }
   ['pointerdown', 'touchstart', 'keydown', 'wheel', 'scroll'].forEach(function (ev) {
@@ -655,7 +656,7 @@
       if(!navigator.onLine){$('setupNotice').textContent='Reconnect to open the design editor. You can still show this case and your extras at the counter.';return;}
       if(!state.model||!state.design)return;
       var url=new URL('../customizer.html',location.href);
-      var opt={kiosk:'1',model:state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'),design:state.design.file,colorway:state.colorway,store:state.store,glass:$('glass').checked?'1':'',charger:$('charger').checked?'1':'',extras:state.accessories.join(',')};
+      var opt={kiosk:'1',storeMode:kioskStore?'':'choose',model:state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'),design:state.design.file,colorway:state.colorway,collection:state.design._col.code,store:state.store,glass:$('glass').checked?'1':'',charger:$('charger').checked?'1':'',extras:state.accessories.join(',')};
       Object.keys(opt).forEach(function(k){if(opt[k])url.searchParams.set(k,opt[k]);});location.href=url.href;return;
     }
     if(t.hasAttribute('data-colorway'))return pickDesign(state.design.file,t.getAttribute('data-colorway'));
@@ -673,7 +674,7 @@
     }
     if (t.hasAttribute('data-file')) return pickDesign(t.getAttribute('data-file'));
     var act = t.getAttribute('data-act');
-    if ((act === 'drawing'||act === 'sky') && state.model) {var drawingUrl=new URL('../customizer.html',location.href);drawingUrl.searchParams.set('studio',act);drawingUrl.searchParams.set('kiosk','1');drawingUrl.searchParams.set('model',state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'));if(state.store)drawingUrl.searchParams.set('store',state.store);location.href=drawingUrl.href;return;}
+    if ((act === 'drawing'||act === 'sky') && state.model) {var drawingUrl=new URL('../customizer.html',location.href);drawingUrl.searchParams.set('studio',act);drawingUrl.searchParams.set('kiosk','1');if(!kioskStore)drawingUrl.searchParams.set('storeMode','choose');drawingUrl.searchParams.set('model',state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'));if(state.store)drawingUrl.searchParams.set('store',state.store);location.href=drawingUrl.href;return;}
     if (act === 'own') return openSheet();
     if (act === 'closeSheet') return closeSheet();
     if (act === 'phone') { state.design = null; return show(1); }
@@ -714,6 +715,11 @@
     data = d;$('casePricePromise').textContent='Every design · '+KPI.formatPrice(data.price);
     if (state.screen === 0) show(1);
     buildPhones();
+    // Consume only nonpersonal browsing context; resets and reloads start fresh.
+    var entry=new URL(location.href),returnModel=entry.searchParams.get('model'),returnCollection=entry.searchParams.get('collection');
+    if(returnModel||returnCollection){entry.searchParams.delete('model');entry.searchParams.delete('collection');history.replaceState(null,'',entry.href);}
+    var selected=data.models.find(function(m){return m.active&&m.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-')===returnModel;});
+    if(selected){pickModel(selected.id);if(data.collections.some(function(c){return c.code===returnCollection;}))setFilter(returnCollection);}
     setTimeout(warmCache, 6000);
   }).catch(function () { clearTimeout(loadWatch); last = Date.now(); show(0); });
 

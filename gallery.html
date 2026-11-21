@@ -176,7 +176,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     KP_FEATURED = KP_FEATURED.map(function(f){ return f.indexOf('halloween-')===0 ? (_hol.shift()||f) : f; });
   }
   var kpBrowseAll = new URLSearchParams(location.search).has('all');
-  function categoryLabel(c){return c==='City Scenes'?'City After Dark':c;}
+  function categoryLabel(c){return c==='City Scenes'?'City After Dark':c==='Liquid Color'?'Liquid Prism':c;}
   var KP_TILE_CATS = ['City Scenes','City maps','Halloween','Florals','Abstract','Animal print','Zodiac','Hearts','Hometown'];
   function kpCatThumb(cat){
     var d=designs.filter(function(x){ return x.category===cat; })[0];
@@ -339,6 +339,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     return '<label class="artwork-label">Background'+select.outerHTML+'</label><small class="artwork-error" role="status"></small>';
   }
   function updateCaseLinks(card){
+    if(!device)return;
     var file=card.dataset.file;
     var chosen=KP_DEVICES[device].colors[+(card.dataset.selectedColor||0)];
     card.querySelectorAll('a[href*="customizer.html"]').forEach(function(a){
@@ -356,18 +357,26 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var img=designImgs[file];
     if(!cv.isConnected||!img||!img.naturalWidth)return;
     var card=cv.closest('.h-card'),profile=KPDesignColorways.profile(img);
+    function unavailable(){
+      cv.dataset.unavailableColorway=pick;
+      const picker=card.querySelector('.artwork-picker');
+      // A background is still the customer's choice while they choose a phone.
+      // The editor will retry it; an unavailable sample must not change the order.
+      if(device&&picker){artworkPicks[file]='original';picker.value='original';}
+      let message=card.querySelector('.artwork-error');
+      if(!message){message=document.createElement('small');message.className='artwork-error';message.setAttribute('role','status');card.append(message);}
+      message.textContent=device&&picker?'Background unavailable. Showing original.':'Sample shows Original. Your selected background will load in the editor.';
+    }
     if(pick!=='original'&&profile&&profile.method==='assets'&&!KPDesignColorways.choicesFor(img).some(function(o){return o.id===pick;})){
       KPDesignColorways.prepare(img).then(function(){
         if(!card.isConnected||pick!==artworkPicks[file])return;
         if(!KPDesignColorways.choicesFor(img).some(function(o){return o.id===pick;})){
-          artworkPicks[file]='original';const picker=card.querySelector('.artwork-picker');if(picker)picker.value='original';
-          const message=card.querySelector('.artwork-error');if(message)message.textContent='Color unavailable. Showing original.';
+          unavailable();
         }
         updateCaseLinks(card);renderCase(cv,file,+cv.dataset.color);
       }).catch(function(){
         if(!card.isConnected||pick!==artworkPicks[file])return;
-        artworkPicks[file]='original';const picker=card.querySelector('.artwork-picker');if(picker)picker.value='original';
-        const message=card.querySelector('.artwork-error');if(message)message.textContent='Background unavailable. Showing original.';
+        unavailable();
         updateCaseLinks(card);renderCase(cv,file,+cv.dataset.color);
       });
       return;
@@ -382,8 +391,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     updateCaseLinks(card);
     loadDesign(file,function(){showPickedColor(card.querySelector('canvas'));});
   });
-  function previewKey(file,finish){
-    return JSON.stringify([device,file,finish,artworkPicks[file]||'original',previewMode]);
+  function previewKey(file,finish,look){
+    return JSON.stringify([device,file,finish,look||artworkPicks[file]||'original',previewMode]);
   }
   function renderCase(cv, file, colorIdx){
     if(!cv.width||!cv.isConnected||colorIdx!==+cv.dataset.color)return;
@@ -392,19 +401,19 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var dImg = designImgs[file];
     if (!layer || !dImg?.naturalWidth) return;
     dImg.__kpDesignFile=file;
-    var composed=null, profile=KPDesignColorways.profile(dImg);
+    var composed=null, profile=KPDesignColorways.profile(dImg), pick='original';
     if(profile){
-      var pick=artworkPicks[file]||'original';
+      pick=artworkPicks[file]||'original';
       if(pick!=='original'&&profile.method==='assets'&&!KPDesignColorways.choicesFor(dImg).some(function(o){return o.id===pick;})){
-        showPickedColor(cv);
-        return;
+        if(cv.dataset.unavailableColorway!==pick){showPickedColor(cv);return;}
+        pick='original';
       }
       composed=KPDesignColorways.make(dImg,pick,700);
       dImg=composed;
     }
     paintCase(cv,model,layer,viewMasks[model],dImg,composed);
     if(viewMasks[model]){
-      cv.dataset.renderedPreview=previewKey(file,colorIdx);
+      cv.dataset.renderedPreview=previewKey(file,colorIdx,pick);
       cv.closest('button').querySelector('.zoom-hint').textContent='Zoom';
     }
   }
@@ -563,6 +572,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     document.body.style.overflow='';
   }
   function kpPickDevice(slug){
+    if(!slug){kpCloseDrawer();return;}
     var selected = DEVICE_ORDER.find(function(model){return slugify(model)===slug;}) || null;
     var file = pendingDesign, back=pendingBack||browseReturn();
     kpCloseDrawer();
@@ -693,7 +703,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     $('filters').innerHTML = names.map(function(c){
       var on = c === filter;
       var n = c === 'All' ? designs.length : cats[c];
-      return '<button class="h-borderred galF" data-f="' + c + '" style="background:' + (on?'#DC282E':'#FFFFFF') + ';color:' + (on?'#FFFFFF':'#4E4E50') + ';border:1px solid ' + (on?'#DC282E':'#E4E3E3') + ';font-size:13px;font-weight:800;padding:9px 18px;border-radius:999px;cursor:pointer;transition:all .2s cubic-bezier(.2,.7,.2,1)">' + c + ' <span style="opacity:.6;font-weight:700">' + n + '</span></button>';
+      return '<button class="h-borderred galF" data-f="' + c + '" style="background:' + (on?'#DC282E':'#FFFFFF') + ';color:' + (on?'#FFFFFF':'#4E4E50') + ';border:1px solid ' + (on?'#DC282E':'#E4E3E3') + ';font-size:13px;font-weight:800;padding:9px 18px;border-radius:999px;cursor:pointer;transition:all .2s cubic-bezier(.2,.7,.2,1)">' + categoryLabel(c) + ' <span style="opacity:.6;font-weight:700">' + n + '</span></button>';
     }).join('');
   }
 
@@ -780,6 +790,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       feature.textContent = filter === 'Space Photography' ? 'Photograph sources & credits →' : 'See the newest prints on cases →';
       feature.href = filter === 'Space Photography' ? 'new-print-credits.html' : 'new-prints.html#' + filter.toLowerCase().replaceAll(' ','-');
     }
+    if(filter==='Signature Golf'){feature.textContent='Explore course maps & golf backgrounds →';feature.href='signature-golf.html';}
+    if(filter==='Botanical Blueprints'){feature.textContent='Explore botanical prints & sources →';feature.href='new-prints.html#botanical-blueprints';}
     if (filter === 'National Parks') { feature.textContent='New adventure collages: Smokies, Everest & Grand Canyon →'; feature.href='park-collages.html'; }
     if (filter === 'Seasonal Weather') {
       if (!device) $('shopTitle').textContent = 'Seasonal Weather';
@@ -813,7 +825,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           + '<button type="button" class="case-zoom-button" data-enlarge="'+d.file+'" aria-label="Enlarge '+escapeHtml(d.title)+'" style="position:relative;background:#F8F7F7"><canvas width="'+CW+'" height="'+CH+'" data-color="0" data-file="'+d.file+'" role="img" aria-label="'+escapeHtml(d.title)+' on a sample case"></canvas>' + badge + '<span class="zoom-hint">Zoom</span></button>'
           + '<a data-pick-model="'+d.file+'" href="customizer.html?design='+encodeURIComponent(d.file)+(d.displayColorway?'&amp;colorway='+d.displayColorway:'')+'" style="display:block;text-decoration:none;padding:10px 12px 12px">'
           + '<div style="font-weight:700;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
-          + '<div style="font-size:11px;color:#6C6C72;font-weight:700;margin-top:2px">' + d.category + ' · choose your phone</div>'
+          + '<div style="font-size:11px;color:#6C6C72;font-weight:700;margin-top:2px">' + categoryLabel(d.category) + ' · choose your phone</div>'
           + '<div style="font-size:13px;font-weight:800;color:#17171F;margin-top:6px">$44.99</div>'
           + '<span style="display:block;margin-top:8px;text-align:center;border:1.5px solid #DC282E;color:#DC282E;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:10px;border-radius:999px">Customize</span>'
           + '</a></div>';
