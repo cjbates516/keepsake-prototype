@@ -121,3 +121,22 @@ body.design-editor #stageCanvas{max-height:max(260px,calc(100dvh - 450px));width
 .design-editor #counterReview .review-expiry{font-size:12px;color:#57544f}
 
 .design-editor #counterReview .case-zoom-button span{display:block;font-size:12px;color:#34312d;font-weight:700;padding:6px 0}
+
+/* The editor is a focused workspace; Designs provides a guarded way back. */
+.design-editor #siteHeader{display:none!important}
+.design-editor #studioStorePicker{border:1px solid var(--studio-line);border-radius:8px;margin:0 0 18px;background:#fff}
+.design-editor #studioStorePicker summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:6px 12px;box-sizing:border-box;cursor:pointer;font-size:13px}
+.design-editor #studioStorePicker summary span{font-size:12px;color:#a21c27;text-decoration:underline;white-space:nowrap}
+.design-editor #studioStorePicker>div{padding:8px 12px;margin:0!important}
+.design-editor #studioStorePicker>div>div:first-child:not(#storeChips){display:none}
+.design-editor #studioStorePicker summary:focus-visible{outline:3px solid #126578;outline-offset:3px}
+.design-editor #studioSetupEdit{min-height:44px;padding:8px 12px;margin-bottom:12px}
+@media(max-width:760px){
+ .design-editor #studioSetup>.studio-kicker{margin-bottom:8px}
+ .design-editor #studioSetup>p{margin-bottom:12px}
+ .design-editor #studioStorePicker{margin-bottom:12px}
+}
+
+.design-editor #reviewNextCustomer{color:#fff}
+.design-editor #studioBrowse{min-height:44px}
+.design-editor :is(.studio-top h1,#studioPreview h2,#studioSetup h2):focus{outline:none}
