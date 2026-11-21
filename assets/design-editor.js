@@ -8,10 +8,10 @@
   // Arm privacy protection before constructing any editor UI. Deadlines survive device sleep.
   let idleTimer,warningTimer,warning=null,expiresAt=0,exiting=false,leaving=false;
   function arm(){if(exiting||leaving)return;const duration=$('counterReview')?.open?300000:180000;clearTimeout(idleTimer);clearTimeout(warningTimer);expiresAt=Date.now()+duration;if(warning?.open)warning.close();warningTimer=setTimeout(()=>warning?.showModal(),duration-30000);idleTimer=setTimeout(checkExpiry,duration);}
-  function checkExpiry(){if(expiresAt&&Date.now()>=expiresAt)exit();}
+  function checkExpiry(){if(!expiresAt||exiting||leaving)return;if(Date.now()>=expiresAt)exit();else{clearTimeout(idleTimer);idleTimer=setTimeout(checkExpiry,expiresAt-Date.now());}}
   if(kiosk){
     document.addEventListener('click',e=>{if(exiting||leaving){e.preventDefault();e.stopImmediatePropagation();}},true);
-    arm();['pointerdown','keydown','input','wheel'].forEach(ev=>document.addEventListener(ev,()=>{checkExpiry();if(!exiting)arm();},{passive:true}));
+    arm();['pointerdown','keydown','input','wheel'].forEach(ev=>document.addEventListener(ev,()=>{checkExpiry();if(!exiting&&!warning?.open)arm();},{passive:true}));
     document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkExpiry();});window.addEventListener('focus',checkExpiry);document.addEventListener('resume',checkExpiry);
     window.addEventListener('pagehide',()=>{window.KPKioskSession?.retire();leaving=true;document.documentElement.style.visibility='hidden';clearTimeout(idleTimer);clearTimeout(warningTimer);core.purge();});
     window.addEventListener('pageshow',e=>{if(e.persisted){exiting=false;exit();}else checkExpiry();});
@@ -50,13 +50,14 @@
   adjustments.innerHTML='<button type="button" id="studioCenter">Center & reset size</button>'+[['scale','Size',.35,4,.01],['px','Left / right',-900,900,10],['py','Up / down',-1200,1200,10],['rot','Rotation',-180,180,1]].map(([key,label,min,max,step])=>'<label>'+label+'<input type="range" aria-label="Artwork '+label.toLowerCase()+'" data-adjust="'+key+'" min="'+min+'" max="'+max+'" step="'+step+'"></label>').join('');panels.adjust.append(adjustments);
   const adjustNote=document.createElement('p');adjustNote.textContent=kiosk?'Choose a design to adjust its placement.':'Add a photo or choose a design to adjust its placement.';panels.adjust.append(adjustNote);
   const info=core.info(),initialSnapshot=core.snapshot();
+  if(info.drawing)top.querySelector('h1').textContent=kiosk?'Plan your drawing case.':'Their drawing, your case.';
   if(info.sky){move(panel('sky','Night sky','Create a sky for your date and place.'),'personalStudio');buttons.background.hidden=true;buttons.adjust.hidden=true;}
   else {
-    const photoPanel=panel('photo',kiosk?'Photo help':info.drawing?'Drawing':'Photo',kiosk?'Want to use your own photo or drawing? Ask our team at the counter.':'Your photo stays on this device. Choose an original, full-size image.');
-    if(info.drawing)move(photoPanel,'personalStudio');
+    const photoPanel=panel('photo',info.drawing?'Drawing':kiosk?'Photo help':'Photo',info.drawing&&kiosk?'':kiosk?'Want to use your own photo or drawing? Ask our team at the counter.':'Your photo stays on this device. Choose an original, full-size image.');
+    if(info.drawing){move(photoPanel,'personalStudio');tray.prepend(buttons.photo);}
     if(!kiosk)move(photoPanel,'uploadBtn','fileInput','photoPrivacy','clearBtn');
     move(photoPanel,'browseLink','cityPhotoCredit');
-    if(kiosk){$('fileInput').disabled=true;$('choosePhoto').disabled=true;}
+    if(kiosk){$('fileInput').disabled=true;$('choosePhoto').disabled=true;$('browseLink').hidden=true;}
   }
   const preview=document.createElement('section');preview.id='studioPreview';preview.hidden=true;
   preview.innerHTML='<p class="studio-kicker">ONE LAST LOOK</p><h2>Your design, on your case.</h2><p>Check the spelling, placement and camera area. Tap the case to see every detail.</p><dl id="studioReviewDetails"></dl><button type="button" id="studioEditAgain">Keep editing</button><p class="studio-help">Digital preview. Our team checks your case and artwork before printing.</p>';rail.append(preview);
@@ -85,7 +86,7 @@
   window.visualViewport?.addEventListener('resize',sizeChrome);window.visualViewport?.addEventListener('scroll',sizeChrome);sizeChrome();
   const reset=document.createElement('button');reset.id='studioReset';reset.type='button';reset.textContent='Start over';top.querySelector('.studio-history').append(reset);
   const resetDialog=document.createElement('dialog');resetDialog.id='studioResetDialog';resetDialog.setAttribute('aria-labelledby','studioResetTitle');resetDialog.innerHTML='<h2 id="studioResetTitle">Start a new design?</h2><p>Your current changes will be cleared.</p><button type="button" id="studioCancelReset">Keep designing</button><button type="button" id="studioConfirmReset">Start over</button>';document.body.append(resetDialog);
-  let step='edit',tool=null,lastTool=info.sky?'sky':'background',entered=false,initialSetup=null,undo=[],redo=[],context='',pending,applying=false,purged=false,closing=false,internalCloses=0;
+  let step='edit',tool=null,lastTool=info.sky?'sky':info.drawing?'photo':'background',entered=false,initialSetup=null,undo=[],redo=[],context='',pending,applying=false,purged=false,closing=false,internalCloses=0;
   const state=window.KPEditor={get step(){return step},get tool(){return tool},openTool,setStep};
   const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
   function remember(){
@@ -117,7 +118,7 @@
   let backdropPress=false;sheet.addEventListener('pointerdown',e=>{backdropPress=e.target===sheet;});
   sheet.addEventListener('click',e=>{if(backdropPress&&e.target===sheet){const r=sheet.getBoundingClientRect();if(e.clientY<r.top||e.clientX<r.left||e.clientX>r.right)closeTool();}});
   tray.onclick=e=>{const b=e.target.closest('[data-tool]');if(b)openTool(b.dataset.tool);};
-  mobile.addEventListener('change',()=>{hideSheet();if(!mobile.matches){tool=tool||(info.sky?'sky':'background');paintTool();}else {tool=null;paintTool();}history.replaceState({...history.state,kpStudioTool:null},'');});
+  mobile.addEventListener('change',()=>{hideSheet();if(!mobile.matches){tool=tool||lastTool;paintTool();}else {tool=null;paintTool();}history.replaceState({...history.state,kpStudioTool:null},'');});
   function pushStep(next,id){const depth=(history.state?.kpStudioDepth||0)+1;history.pushState({...history.state,kpStudioSession:sessionId,kpStudioDepth:depth,kpStudioEditDepth:next==='edit'&&!id?depth:(history.state?.kpStudioEditDepth||0),kpStudioStep:next,kpStudioTool:id},'');}
   function returnToDesign(){const distance=(history.state?.kpStudioDepth||0)-(history.state?.kpStudioEditDepth||0);if(distance>0)history.go(-distance);else setStep('edit',false);}
   function setStep(next,push=true){
@@ -152,19 +153,22 @@
   adjustments.addEventListener('input',e=>{if(e.target.dataset.adjust)core.adjust(e.target.dataset.adjust,e.target.value);});
   function sync(){
     if(purged)return;const i=core.info(),s=core.snapshot();
+    preview.querySelector('h2').textContent=i.drawingPending?'Your case setup.':'Your design, on your case.';
+    preview.querySelector('h2 + p').textContent=i.drawingPending?'Your drawing will be added at the counter. Check your phone and any name, then choose your extras.':'Check the spelling, placement and camera area. Tap the case to see every detail.';
+    if(i.drawing){buttons.background.hidden=buttons.adjust.hidden=!i.hasPhoto;if(i.drawingPending)$('stageHint').textContent='Clear case · drawing to be added at the counter';}
     if(initialSetup===null&&!i.loading&&!i.issue)initialSetup=i.selectionKey;
     if(storeLabel)storeLabel.textContent='Store: '+(i.store||'Choose your store');
     $('studioPhone').textContent=i.model+' · '+(i.caseType==='MagSafe Clear'?'Clear case':i.caseType);$('studioTotal').textContent=i.accessoryError?'—':'$'+i.total.toFixed(2);
     $('studioStore').textContent=(i.store||'Choose your store')+(i.store==='Newark, DE'?' · No sales tax':' · Before tax');
     const url=new URL(kiosk?'instore/':'gallery.html',location.href);if(kiosk){if(i.store)url.searchParams.set('store',i.store);}else url.searchParams.set('device',i.model.toLowerCase().replace(/^samsung /,'').replaceAll(' ','-'));$('studioBrowse').href=url.href;
-    $('studioNext').textContent=step==='edit'?'Preview design →':step==='preview'?'Choose extras →':'Show at counter →';
+    $('studioNext').textContent=step==='edit'?(i.drawingPending?'Review case setup →':'Preview design →'):step==='preview'?'Choose extras →':'Show at counter →';
     $('studioNext').disabled=!!i.issue;if($('studioStatus').textContent!==(i.issue||''))$('studioStatus').textContent=i.issue||'';
     noBackground.hidden=!$('photoLooksWrap').hidden;noBackground.textContent=i.hasPhoto?'This design uses its original background.':'Choose a design or photo to see its backgrounds.';
     adjustments.hidden=!i.hasPhoto||i.sky;adjustNote.hidden=i.hasPhoto&&!i.sky;
     $('editTools').style.display=i.hasPhoto&&!i.sky?'block':'none';
     adjustments.querySelectorAll('input').forEach(el=>{if(el!==document.activeElement)el.value=s[el.dataset.adjust];});
     const details=$('studioReviewDetails');details.replaceChildren();
-    for(const [label,value] of [['Phone',i.model+' · '+i.finish],['Background',$('photoLookStatus').textContent],['Name',s.text||'No added name']]){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;details.append(dt,dd);}
+    for(const [label,value] of [['Phone',i.model+' · '+i.finish],[i.drawing?'Artwork':'Background',i.drawingPending?'Drawing to add at the counter':i.drawing?'Your child’s drawing':$('photoLookStatus').textContent],['Name',s.text||'No added name']]){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;details.append(dt,dd);}
     if(step==='edit'&&tool!=='adjust')$('stageCanvas').style.touchAction='pan-y';
   }
   function exit(){if(exiting)return;exiting=true;window.KPKioskSession?.retire();if(kiosk)document.documentElement.style.visibility='hidden';const fallback=new URL(kiosk?'instore/':'gallery.html',location.href);if(kiosk&&core.info().store)fallback.searchParams.set('store',core.info().store);const dest=$('studioBrowse')?.href||fallback.href;try{core.purge();}finally{location.replace(dest);}}
@@ -173,7 +177,7 @@
   $('studioReset').onclick=()=>confirmExit(false);$('studioCancelReset').onclick=()=>resetDialog.close();$('studioConfirmReset').onclick=exit;
   if(kiosk){
     warning=document.createElement('dialog');warning.id='studioIdle';warning.setAttribute('aria-labelledby','studioIdleTitle');warning.innerHTML='<h2 id="studioIdleTitle">Still designing?</h2><p>This screen will reset in 30 seconds to clear your details.</p><button type="button">Keep designing</button>';document.body.append(warning);
-    warning.querySelector('button').onclick=arm;warning.addEventListener('cancel',e=>{e.preventDefault();arm();});
+    warning.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();arm();}});warning.querySelector('button').onclick=arm;warning.addEventListener('cancel',e=>{e.preventDefault();arm();});
     const counterExpiry=document.createElement('p');counterExpiry.className='review-expiry';counterExpiry.textContent='Clears after 5 minutes without a touch.';$('reviewCode').after(counterExpiry);new MutationObserver(arm).observe($('counterReview'),{attributes:true,attributeFilter:['open']});
     $('saveCounterCard').hidden=true;if($('skySave'))$('skySave').hidden=true;
     // Shared screens never open a customer's file picker, even from empty-canvas taps.
@@ -181,4 +185,5 @@
     state.expire=exit;
   }
   setStep('edit',false);remember();sync();
+  if(info.drawing&&mobile.matches)openTool('photo');
 })();

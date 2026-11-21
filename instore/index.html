@@ -187,7 +187,7 @@
       <p class="lede">Your phone. Your style. Made right here.</p>
       <div class="store-promise"><strong id="casePricePromise">Every design · $44.99</strong><span>Pick a design, make it yours, and let us print it.</span></div>
       <details class="phone-help"><summary>Not sure which iPhone you have?</summary><p>On your phone, open Settings → General → About and look for Model Name. If your model is not listed, ask a team member to check the available blanks.</p></details>
-      <div id="phones"></div>
+      <p class="kiosk-gifts"><a id="kioskSlates" class="ghost" href="../slates.html?kiosk=1">Photo slates &amp; gifts →</a></p><div id="phones"></div>
     </section>
 
     <section id="s2" class="screen" aria-labelledby="s2h">
@@ -282,6 +282,7 @@
   kioskStore=KPAccessories.stores.find(function(name){return name.toLowerCase()===String(kioskStore||'').trim().toLowerCase();})||'';
   $('storeChoice').hidden=!!kioskStore;
   $('kioskLocation').hidden=!kioskStore&&!requestedKioskStore;$('kioskLocation').textContent=kioskStore?kioskStore+' · Pay with our team in store':'Choose your store when you build your setup.';
+  $('kioskSlates').href='../slates.html?kiosk=1'+(kioskStore?'&store='+encodeURIComponent(kioskStore):'');
   var state = { screen: 1, model: null, design: null, colorway:'original', accessories:[], store:kioskStore, filter: 'all', query:'' };
   var urls = {};           /* model id -> { file: objectURL } */
   var blankUrl = {};       /* model id -> phone only render */
@@ -393,6 +394,7 @@
     var html = '<button class="tile own" type="button" data-act="own"><span class="timg">' +
       '<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>' +
       '</span><span class="tname">Use your own photo</span></button>';
+    html += '<button class="tile own" type="button" data-act="drawing"><span class="timg"><span aria-hidden="true" style="font-size:46px">✎</span></span><span class="tname">Your child’s drawing</span></button>';
     html += list.map(function (d) {
       var u = cache[d.file];
       return '<div class="tile" data-file="' + esc(d.file) + '"><button type="button" class="case-zoom-button timg" data-zoom-tile aria-label="Enlarge '+esc(cleanTitle(d.title))+'"><img alt=""' +
@@ -668,6 +670,7 @@
     }
     if (t.hasAttribute('data-file')) return pickDesign(t.getAttribute('data-file'));
     var act = t.getAttribute('data-act');
+    if (act === 'drawing' && state.model) {var drawingUrl=new URL('../customizer.html',location.href);drawingUrl.searchParams.set('studio','drawing');drawingUrl.searchParams.set('kiosk','1');drawingUrl.searchParams.set('model',state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'));if(state.store)drawingUrl.searchParams.set('store',state.store);location.href=drawingUrl.href;return;}
     if (act === 'own') return openSheet();
     if (act === 'closeSheet') return closeSheet();
     if (act === 'phone') { state.design = null; return show(1); }
