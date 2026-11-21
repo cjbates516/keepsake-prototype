@@ -239,7 +239,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             </button>
             <button type="button" id="ctRated" class="ctCard" data-ct="Rated Case" aria-pressed="false">
               <span class="ctPhoto"><canvas id="ctThumbRated" width="144" height="264" aria-hidden="true"></canvas></span>
-              <strong>Rated Case</strong><small id="ctPriceRated">$49.99 · 20 ft drop protection</small>
+              <strong>Rated Case</strong><small id="ctPriceRated">$49.99 · Confirm availability in store</small>
             </button>
           </div>
 
@@ -304,7 +304,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <h2 id="layoutChipsTitle">Choose a layout</h2>
             <div id="layoutChips" class="lay-strip" role="group" aria-labelledby="layoutChipsTitle"></div>
           </section>
-          <button id="uploadBtn" class="h-upload" style="width:100%;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s">Upload a photo</button>
+          <button id="uploadBtn" class="h-upload" style="width:100%;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s">Choose a photo</button>
           <div id="slotButtons" class="slot-buttons" role="group" aria-label="Photos in this layout" hidden></div>
           <div id="photoPrivacy" style="font-size:13px;color:#196c34;font-weight:700;margin-top:10px;text-align:center">🔒 Your photo stays on this device. Our team can help transfer it at the counter.</div>
           <a id="browseLink" href="gallery.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;background:#FBE0E1;border-radius:12px;padding:14px 16px;text-decoration:none">
@@ -1807,7 +1807,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     } else {
       b.disabled=false;
       if (drawingStudio) b.textContent = state.photoImg ? 'Choose a different drawing' : 'Choose a photo of the drawing';
-      else b.textContent = state.photoImg ? 'Upload a different photo' : 'Upload a photo';
+      else b.textContent = state.photoImg ? 'Choose a different photo' : 'Choose a photo';
     }
     renderSlotButtons(t);
   }
@@ -2350,7 +2350,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     document.querySelectorAll('.ctCard').forEach(button=>button.setAttribute('aria-pressed',String(state.caseType===button.dataset.ct)));
     var rowEl=$('ctRow'); if(rowEl) rowEl.style.display=(tkK&&tkK.rated&&!tOnly)?'grid':'none';
     var glassPrice=window.KP_CONFIG?KP_CONFIG.bundledGlass:19.99;
-    if($('ctPriceClear')){ $('ctPriceClear').textContent='$'+BASE.toFixed(2); $('ctPriceRated').textContent='$'+RATED_PRICE.toFixed(2)+' \u00b7 20 ft drop protection'; }
+    if($('ctPriceClear')){ $('ctPriceClear').textContent='$'+BASE.toFixed(2); $('ctPriceRated').textContent='$'+RATED_PRICE.toFixed(2)+' \u00b7 Confirm availability in store'; }
     if($('bundleTotal')){ $('bundleGlass').textContent='$'+glassPrice.toFixed(2); $('bundleTotal').textContent='$'+(Math.round((basePrice()+glassPrice)*100)/100).toFixed(2); }
     var ps=$('prodSub'); if(ps) ps.textContent = tOnly ? 'Custom Photo Case · Tough Magnetic · Qi2 Magnet Compatible' : 'Custom Photo Case · MagSafe Compatible';
     var cnEl=$('caseNature'); if(cnEl){
@@ -3234,7 +3234,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   };
 })();
 </script>
-<script src="assets/design-editor.js?v=product-studio-1"></script>
+<script src="assets/design-editor.js?v=site-audit-20261121"></script>
 <script>
   document.addEventListener('click',function(e){
     var t=e.target.closest ? e.target.closest('.kpAllTgl') : null;

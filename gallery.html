@@ -243,7 +243,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var list=(seasonal?[seasonal]:[]).concat(KP_STRIP_BASE);
     if(designs.length)list=list.filter(function(c){return designs.some(function(d){return d.category===c[0]});});
     el.innerHTML=list.map(function(c){
-      return '<button class="kpCatCard kpCatTile" data-cat="'+c[0]+'" aria-label="Shop '+c[0]+'">'
+      return '<button class="kpCatCard kpCatTile" data-cat="'+c[0]+'" aria-label="Shop '+categoryLabel(c[0])+'">'
         +'<img src="assets/designs/thumbs/'+c[1]+'" alt="" loading="lazy"><span>'+categoryLabel(c[0])+'</span></button>';
     }).join('');
   }
