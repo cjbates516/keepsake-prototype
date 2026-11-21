@@ -6,14 +6,14 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/personal-studio.css?v=case-zoom-1">
+<link rel="stylesheet" href="assets/personal-studio.css?v=rated-2">
 
 <script>if(new URLSearchParams(location.search).get('staff')==='1')document.documentElement.classList.add('staff-mode');</script>
 <link rel="stylesheet" href="assets/staff-print.css">
 <script src="assets/print-png.js"></script>
 <script src="assets/print-geometry.js"></script>
 <script src="assets/case-shell.js?v=clear-mounted-1"></script>
-<script src="assets/mask-geometry.js"></script>
+<script src="assets/mask-geometry.js?v=rated-2"></script>
 <script src="assets/print-layouts.js"></script>
 <script src="assets/counter-card.js?v=counter-card-1"></script>
 <title>Design your keepsake — Keepsake Printing Co</title>
@@ -30,7 +30,7 @@
 {"@context":"https://schema.org","@type":"Product","name":"Custom Photo Phone Case",
 "brand":{"@type":"Brand","name":"Keepsake Printing Co"},
 "description":"Custom UV-printed phone case — upload a photo or choose from 1,000+ designs, personalized in store.",
-"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"44.99","highPrice":"44.99"}}
+"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"44.99","highPrice":"49.99"}}
 </script>
 <link rel="icon" href="assets/favicon-16.png" sizes="16x16" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Nunito+Sans:wght@400;700;800;900&display=swap" rel="stylesheet">
@@ -105,7 +105,7 @@ input::placeholder{color:#626269;opacity:1}
 body{background:#FFFBF7}
 h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;letter-spacing:-.01em}
 </style>
-<script src="assets/kp-config.js"></script>
+<script src="assets/kp-config.js?v=rated-2"></script>
 <script src="assets/heic-loader.js"></script>
 <script src="assets/colorway-catalog.js"></script>
 <script src="assets/design-colorways.js"></script>
@@ -117,13 +117,56 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 .photo-look:focus-visible{outline:3px solid #191921;outline-offset:2px}
 .photo-look canvas{display:block;width:90px;height:128px;object-fit:cover;border-radius:7px;background:#f0eeeb;margin:0 auto 9px}
 .photo-look span{display:block;min-height:28px;line-height:1.2}
+/* print quality pill under the stage (state colors pass WCAG AA on white and on these tints) */
+.print-badge{display:inline-flex;align-items:center;gap:6px;margin:-6px 0 0;padding:4px 12px 4px 5px;border:1px solid currentColor;border-radius:999px;background:#fff;font:800 13px/1.25 "Nunito Sans",sans-serif;white-space:nowrap;max-width:100%;box-sizing:border-box}
+.print-badge[hidden]{display:none}
+.print-badge .pb-icon{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:currentColor;flex:none}
+.print-badge .pb-icon svg{display:block}
+.print-badge .pb-ppi{font-size:11.5px;font-weight:700}
+.print-badge.pb-green{color:#196c34;background:#f2f8f4}
+.print-badge.pb-yellow{color:#8a5a00;background:#fdf7ec}
+.print-badge.pb-red{color:#B81F24;background:#fdf2f2}
+/* the rail note under "Step 3" only pulls up when it is empty, so a quality note or photo credit never overlaps the heading */
+#photoMeta:has(#dpiLabel:not(:empty)),#photoMeta:has(#cityPhotoCredit:not([hidden])){margin-top:-6px!important}
+/* layout picker: single photo, words templates, collages */
+#layoutChipsWrap{margin:0 0 16px;min-width:0}
+#layoutChipsWrap h2{font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px;color:#17171F}
+.lay-strip{display:flex;gap:10px;overflow-x:auto;scrollbar-width:thin;overscroll-behavior-x:contain;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;padding:4px 4px 10px;margin:0 -4px}
+.layChip{flex:0 0 78px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:0;border:0;background:none;color:#191921;cursor:pointer;scroll-snap-align:start;font:inherit}
+.lay-thumb{position:relative;display:block;width:72px;height:128px;box-sizing:border-box;border:2px solid #dedad6;border-radius:10px;overflow:hidden;background:#f3f1ee}
+.lay-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.lay-single{display:grid;place-items:center}
+.layChip[aria-pressed="true"] .lay-thumb{border-color:#dc282e;box-shadow:0 0 0 3px #fbe0e1}
+.layChip:focus-visible{outline:none}
+.layChip:focus-visible .lay-thumb{outline:3px solid #191921;outline-offset:2px}
+.lay-aa{position:absolute;right:4px;bottom:4px;padding:3px 5px;border-radius:6px;background:#17171F;color:#fff;font:900 10px/1 "Nunito Sans",sans-serif}
+.lay-name{display:block;max-width:78px;font-size:11.5px;font-weight:800;line-height:1.2;text-align:center}
+.layChip[aria-pressed="true"] .lay-name{color:#B81F24}
+/* words for the selected template */
+.cap-field{display:grid;gap:5px;margin-top:12px}
+.cap-field label{font-size:13px;font-weight:800;color:#17171F}
+.cap-field input,.cap-field textarea{width:100%;box-sizing:border-box;padding:12px 16px;border:1px solid #8A8690;border-radius:12px;background:#fff;color:#17171F;font:inherit;font-size:16px;line-height:1.35}
+.cap-field textarea{resize:vertical}
+/* a field the case edge or camera covers on this phone: it is kept, but nothing prints */
+.cap-note{margin:0;font-size:12px;font-weight:700;line-height:1.4;color:#8a5a00}
+.cap-note[hidden]{display:none}
+/* layout spots as buttons: keyboard and screen reader users can add or swap any spot (same as tapping it on the case) */
+.slot-buttons{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.slot-buttons[hidden]{display:none}
+.slotBtn{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:56px;padding:6px 4px 5px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF;color:#2D2D3B;font:inherit;font-size:11px;font-weight:800;line-height:1.2;cursor:pointer}
+.slotBtn canvas,.slotBtn .slot-plus{display:block;width:44px;height:44px;border-radius:6px}
+.slotBtn .slot-plus{display:grid;place-items:center;background:#F3F2F2;color:#6C6C72;font-size:22px;font-weight:700}
+.slotBtn.is-soft{border-color:#8a5a00;box-shadow:0 0 0 2px #f2a51655;color:#8a5a00}
+.slotBtn:focus-visible{outline:3px solid #191921;outline-offset:2px}
+/* a full layout: the add button becomes a readable, opaque instruction */
+#uploadBtn:disabled{background:#EFEDEA!important;color:#3D3B38!important;cursor:default;opacity:1}
 </style>
 <link rel="stylesheet" href="assets/shop-refresh.css?v=counter-card-1">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
 <link rel="stylesheet" href="assets/shop-menu.css?v=start-case-1"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=celestial-2" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 <link rel="stylesheet" href="assets/accessories.css">
-<link rel="stylesheet" href="assets/design-editor.css?v=2">
+<link rel="stylesheet" href="assets/design-editor.css?v=rated-2">
 <script>window.KP_EDITOR=!new URLSearchParams(location.search).has('cal')&&new URLSearchParams(location.search).get('staff')!=='1';</script>
 <script src="assets/accessory-catalog.js"></script>
 <script src="assets/accessories.js?v=2"></script>
@@ -155,6 +198,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <canvas id="stageCanvas" width="2500" height="3000" style="display:none"></canvas>
             <!-- non-17PM placeholder note wrapper reuses stageEmpty -->
           </div>
+          <p id="printBadge" class="print-badge" role="status" aria-live="polite" hidden></p>
           <div id="caseViewSwitch" class="case-view-switch" role="group" aria-label="Case preview view" hidden><button type="button" data-view="case" aria-pressed="true">Case only</button><button type="button" data-view="phone" aria-pressed="false">On your phone</button></div>
           <section id="mobileDesignPicker" hidden aria-label="Preview options"></section>
           <button type="button" id="skyCaseZoom" hidden>Enlarge case</button>
@@ -183,18 +227,18 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <select id="modelSel" aria-label="Phone model" style="flex:1.4;min-width:0;padding:15px 20px;border:0;font-size:16px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer"></select>
           </div>
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:30px">
-            <span style="font-size:17px;font-weight:800;color:#17171F">Device color · <span id="colorName" style="font-weight:600;color:#514f55">Silver</span></span>
+            <span style="font-size:17px;font-weight:800;color:#17171F"><span id="finishLabel">Device color</span> · <span id="colorName" style="font-weight:600;color:#514f55">Silver</span></span>
             <div id="colorSwatches" style="display:flex;gap:8px"></div>
           </div>
           <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#DC282E;margin:26px 0 12px;padding-top:22px;border-top:1px solid #EFEDED">Step 2 <span style="color:#17171F">· Your case</span></div>
-          <div id="ctRow" style="display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:30px"><!-- KP_TOUGH_OFF: set display:grid to re-enable case-type choice -->
+          <div id="ctRow" style="display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:30px"><!-- case choice: updateSummary() shows it (display:grid) for phones with a Rated Case kit; the touch editor has its own control under the case (design-editor.js) -->
             <button type="button" id="ctClear" class="ctCard" data-ct="MagSafe Clear" aria-pressed="true">
               <span class="ctPhoto"><canvas id="ctThumbClear" width="144" height="264" aria-hidden="true"></canvas></span>
-              <strong>MagSafe Clear</strong><small>$44.99</small>
+              <strong>MagSafe Clear</strong><small id="ctPriceClear">$44.99</small>
             </button>
-            <button type="button" id="ctTough" class="ctCard" data-ct="Slim Hybrid MagSafe" aria-pressed="false">
-              <span class="ctPhoto"><canvas id="ctThumbHyb" width="144" height="264" aria-hidden="true"></canvas></span>
-              <strong>Slim Hybrid MagSafe</strong><small>$44.99 · extra grip</small>
+            <button type="button" id="ctRated" class="ctCard" data-ct="Rated Case" aria-pressed="false">
+              <span class="ctPhoto"><canvas id="ctThumbRated" width="144" height="264" aria-hidden="true"></canvas></span>
+              <strong>Rated Case</strong><small id="ctPriceRated">$49.99 · 20 ft drop protection</small>
             </button>
           </div>
 
@@ -220,7 +264,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
               <span style="font-size:13px;font-weight:800;color:#17171F">Your phone · <span id="colorName2" style="color:#6E6E70">Silver</span></span>
               <span style="font-size:13px;font-weight:800;color:#17171F">Your case · <span id="caseNature" style="color:#6E6E70">clear, so the <span id="colorName3">Silver</span> shows through</span></span>
-              <span style="font-size:12px;font-weight:600;color:#6C6C72">Clear case on your phone · Device colors are approximate</span>
+              <span id="caseNatureNote" style="font-size:12px;font-weight:600;color:#6C6C72">Clear case on your phone · Device colors are approximate</span>
             </div>
           </div>
           <div id="retailPrice" style="display:flex;align-items:center;gap:12px;margin:20px 0 28px">
@@ -228,13 +272,13 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <span style="color:#196c34;font-size:13px;font-weight:800">Personalized in store · Confirm pickup with our team</span>
             <span id="discountTop" style="display:none;color:#196c34;font-size:13px;font-weight:800"></span>
           </div>
-          <div id="retailBundle" style="display:flex;align-items:flex-start;gap:9px;background:#F6EFE3;border:1px solid #EFE9E2;border-radius:12px;padding:11px 14px;margin:-12px 0 8px;font-size:13px;font-weight:700;color:#191921;line-height:1.45"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#DC282E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;margin-top:1px"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg><span>Add tempered glass for <b>$19.99</b> with your case &mdash; normally $29.99. <b>Case + glass: $64.98.</b></span></div>
+          <div id="retailBundle" style="display:flex;align-items:flex-start;gap:9px;background:#F6EFE3;border:1px solid #EFE9E2;border-radius:12px;padding:11px 14px;margin:-12px 0 8px;font-size:13px;font-weight:700;color:#191921;line-height:1.45"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#DC282E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;margin-top:1px"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg><span>Add tempered glass for <b id="bundleGlass">$19.99</b> with your case &mdash; normally $29.99. <b>Case + glass: <span id="bundleTotal">$64.98</span>.</b></span></div>
 <div style="font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#DC282E;margin:26px 0 12px;padding-top:22px;border-top:1px solid #EFEDED">Step 3 <span style="color:#17171F">· Your design</span></div>
           <div id="designChooser" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px">
             <button id="choosePhoto" style="cursor:pointer;text-align:center;background:#17171F;color:#FFF;border:0;border-radius:16px;padding:22px 14px">
               <div style="font-size:22px">📷</div>
               <div style="font-weight:900;font-size:14.5px;margin-top:6px">Use my photo</div>
-              <div style="font-size:12px;font-weight:600;color:#B9BDCB;margin-top:3px">Your photo, your favorite look</div>
+              <div style="font-size:12px;font-weight:600;color:#B9BDCB;margin-top:3px">One photo, a collage, or add your words</div>
             </button>
             <a id="chooseReady" href="gallery.html" style="cursor:pointer;text-align:center;background:#FBE0E1;border:0;border-radius:16px;padding:22px 14px;text-decoration:none;display:block">
               <div style="font-size:22px">🎨</div>
@@ -244,18 +288,23 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           </div>
           <div id="personalStudio" hidden></div>
           <div id="photoSection" style="display:none">
-          <div style="font-size:12px;font-weight:600;color:#6C6C72;margin:-18px 0 24px;padding-left:2px"><span id="fitNote" style="display:none"></span>
+          <div id="photoMeta" style="font-size:12px;font-weight:600;color:#6C6C72;margin:-18px 0 24px;padding-left:2px"><span id="fitNote" style="display:none"></span>
             <a id="cityPhotoCredit" hidden>Photograph and license</a>
             <span id="dpiLabel" style="display:block;margin-top:6px;font-weight:800"></span>
           </div>
-          <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:12px">Your photo</div>
+          <div id="photoHeading" style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:12px">Your photo</div>
           <section id="photoLooksWrap" aria-labelledby="photoLooksTitle" hidden style="margin-bottom:12px">
             <h2 id="photoLooksTitle" style="font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin:0 0 6px">Choose your background.</h2>
             <p style="font-size:13px;color:#555;margin:0 0 6px">Your artwork keeps its original colors.</p>
             <div id="photoLooks" class="photo-looks" role="group" aria-label="Background options"></div>
             <p id="photoLookStatus" aria-live="polite" style="font-size:12px;color:#555;margin:0">Original selected</p>
           </section>
+          <section id="layoutChipsWrap" aria-labelledby="layoutChipsTitle" hidden>
+            <h2 id="layoutChipsTitle">Choose a layout</h2>
+            <div id="layoutChips" class="lay-strip" role="group" aria-labelledby="layoutChipsTitle"></div>
+          </section>
           <button id="uploadBtn" class="h-upload" style="width:100%;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s">Upload a photo</button>
+          <div id="slotButtons" class="slot-buttons" role="group" aria-label="Photos in this layout" hidden></div>
           <div id="photoPrivacy" style="font-size:13px;color:#196c34;font-weight:700;margin-top:10px;text-align:center">🔒 Your photo stays on this device. Our team can help transfer it at the counter.</div>
           <a id="browseLink" href="gallery.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;background:#FBE0E1;border-radius:12px;padding:14px 16px;text-decoration:none">
             <span><span style="display:block;font-size:13px;font-weight:900;color:#B81F24">Want a ready-made design instead?</span>
@@ -281,7 +330,12 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
 
           </div>
-          <div style="margin:0 0 28px">
+          <div id="captionFields" hidden style="margin:0 0 28px">
+            <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:4px">Your words</div>
+            <p style="font-size:12.5px;color:#6C6C72;margin:0;line-height:1.5">Printed in this layout’s lettering. Clear a box to leave those words off.</p>
+            <div id="captionList"></div>
+          </div>
+          <div id="nameBlock" style="margin:0 0 28px">
             <div style="font-size:17px;font-weight:800;color:#17171F;margin-bottom:6px">Add a name <span style="font-weight:600;color:#6C6C72;font-size:13px">· optional, printed on the case</span></div>
             <input id="nameInput" autocomplete="off" aria-label="Name or monogram" type="text" maxlength="18" placeholder="Sarah, DAD, Class of 2026…" style="width:100%;box-sizing:border-box;padding:14px 18px;border-radius:999px;border:1px solid #E4E3E3;font-size:16px;color:#17171F;outline-color:#2D2D3B">
             <div id="fontChips" style="display:none;gap:8px;overflow-x:auto;padding:12px 0 4px"></div>
@@ -420,8 +474,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   ];
   var BASE = (window.KP_CONFIG && KP_CONFIG.PRICE) || 44.99;
   var TOUGH_PRICE = BASE;
-  var HYBRID_PRICE = BASE;  /* All case designs use the same price. */
-  function basePrice(){ return state.caseType==='Tough Magnetic' ? TOUGH_PRICE : (state.caseType==='Slim Hybrid MagSafe' ? HYBRID_PRICE : BASE); }
+  /* Two case options: MagSafe Clear (every phone, BASE) and the Rated Case (phones whose kit has a .rated variant). */
+  var CASE_CLEAR = 'MagSafe Clear', CASE_RATED = 'Rated Case';
+  var RATED_PRICE = (window.KP_CONFIG && KP_CONFIG.RATED_PRICE) || 49.99;
+  function basePrice(){ return state.caseType===CASE_RATED ? RATED_PRICE : (state.caseType==='Tough Magnetic' ? TOUGH_PRICE : BASE); }
   function orderPricing(){
     var base=basePrice(),addons=addonDefs.reduce(function(t,a){return t+(state.addons[a.key]?a.price:0);},0);
     var promo=state.promo?promoTable[state.promo]:null;
@@ -444,20 +500,26 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   var state = {
     brand:'Apple', model:'iPhone 18 Pro Max', colorName:'Silver', colorHex:'#F5F5F5',
     photo:null, photoImg:null, photoUrl:null, filter:'none', variant:'original',
-    caseType:'MagSafe Clear', previewMode:'phone',
+    caseType:'MagSafe Clear', rimColor:null, previewMode:'phone',
     isLibraryDesign:false,
     text:'', textFont:0, textColor:'#FFFFFF', textSize:220, textPos:62, textVertical:false,
     px:0, py:0, scale:1, rot:0,
     accessories:KPAccessories.parse(new URLSearchParams(location.search).get('extras')),
     chargerHelp:new URLSearchParams(location.search).get('charger')==='1',
     addons:{screen:new URLSearchParams(location.search).get('glass')==='1',lens:false}, promo:null, reserved:false, fitMode:'fill',
-    layout:null, photos:[], slotTarget:null, builder:false, designPath:null
+    layout:null, photos:[], slotTarget:null, designPath:null, captions:{}
   };
   (function(){ var mm = /[?&]model=([^&]+)/.exec(location.search);var staffMode=new URLSearchParams(location.search).get('staff')==='1';if(staffMode){state.handoffErrorType='model';state.handoffError='Choose a valid phone from the print counter before printing.';}if (!mm) return;
     var want = decodeURIComponent(mm[1]).replace(/-/g, ' ').toLowerCase();
     for (var b in modelsByBrand){ modelsByBrand[b].forEach(function(md){
       var mdl = md.toLowerCase();
       if (mdl === want || mdl.replace(/^samsung |^google /,'') === want){ state.brand = b; state.model = md;state.handoffError=null;state.handoffErrorType=null; } }); } })();
+  /* The Rated Case and its rim ride in the page address (case=rated&rim=<name>, written by saveLibraryOptions), so a
+     reload, a restored tab or a shared link keeps the case and its price. loadKit runs kpNormalizeCaseType on the
+     first draw, so a phone without a Rated kit falls back to the clear case with the toast; kpRim() falls back to
+     the first rim when the name is not one this phone's Rated Case comes in. */
+  (function(){ var q=new URLSearchParams(location.search); if(q.get('case')!=='rated') return;
+    state.caseType=CASE_RATED; var rim=q.get('rim'); state.rimColor=rim&&/^[A-Za-z ]{1,24}$/.test(rim)?rim:null; })();
 
   if(new URLSearchParams(location.search).get('staff')==='1'){var requestedFile=new URLSearchParams(location.search).get('design');if(requestedFile&&!/^[a-z0-9-]+\.(jpg|png)$/.test(requestedFile)){state.handoffErrorType='design';state.handoffError='This design link is invalid. Return to the print counter and find it again.';}}
 
@@ -526,6 +588,48 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   });
   (function(){ var V={"iPhone 17 Pro Max": "view-i17pm.png", "iPhone 17 Pro": "view-i17p.png", "iPhone 17": "view-i17.png", "iPhone Air": "view-i17a.png", "iPhone 16 Pro Max": "view-i16pm.png", "iPhone 16 Pro": "view-i16p.png", "iPhone 16": "view-i16n.png", "iPhone 15 Pro Max": "view-i15pm.png", "iPhone 15 Pro": "view-i15p.png", "iPhone 15": "view-i15.png", "iPhone 15 Plus": "view-i15m.png", "iPhone 13 Pro Max": "view-i13pm.png", "iPhone 13 Pro": "view-i13p.png", "iPhone 13": "view-i13.png", "iPhone 13 mini": "view-i13mn.png", "iPhone 12 Pro Max": "view-i12pm.png", "iPhone 12 Pro": "view-i12p.png", "iPhone 12": "view-i12.png", "iPhone 12 mini": "view-i12mn.png", "iPhone 14 Pro Max": "view-i14pm.png", "iPhone 14 Pro": "view-i14p.png", "iPhone 14 Plus": "view-i14m.png", "iPhone 14": "view-i14.png", "iPhone 16 Plus": "view-i16m.png", "Samsung Galaxy S26": "view-s26.png", "Samsung Galaxy S26 Plus": "view-s26.png", "Samsung Galaxy S26 Ultra": "view-s26u.png"};
     Object.keys(V).forEach(function(m){ if(KITS[m]) KITS[m].view=V[m]; }); })();
+  /* KP-RATED-KITS: the Rated Case (drop rated, white printable back panel, frosted rim in Smoke Frost or Clear Frost,
+     built in MagSafe magnets). Photos share the 2500 × 3000 frame of the clear photos and the view-rated-* masks cover
+     the printable panel only. Every panel mask lies inside its base kit's clear view mask (the S26 and S26 Ultra masks
+     were intersected with it; tools/tests/rated_case.cjs checks all of them), so TPL and FIT stay the base kit's and the
+     print file is the panel clipped out of the same template. Models not listed have no Rated Case. */
+  (function(){
+    var RATED={'iPhone 13':'iphse25-i13','iPhone 14':'iphse25-i14','iPhone 15':'iphse25','iPhone 14 Pro':'iph14pro','iPhone 14 Pro Max':'iph14promax',
+      'iPhone 15 Pro':'iph15pro','iPhone 15 Pro Max':'iph15pmx','iPhone 16':'iph16','iPhone 16 Pro':'iph16pro','iPhone 16 Pro Max':'iph16pmx',
+      'iPhone 17':'iph17','iPhone Air':'iph17a','iPhone 17 Pro':'iph17pro','iPhone 18 Pro':'iph17pro','iPhone 17 Pro Max':'iph17pmx','iPhone 18 Pro Max':'iph17pmx',
+      'iPhone 14 Plus':'iph14max','iPhone 15 Plus':'iph14max-i15m','Samsung Galaxy S26':'samgs26','Samsung Galaxy S26 Ultra':'samgs26u'};
+    var CLEAR_FROST_ONLY={'iph16':1,'iph16pmx':1,'iph14max':1,'iph14max-i15m':1,'samgs26':1,'samgs26u':1};
+    Object.keys(RATED).forEach(function(m){
+      var k=KITS[m],key=RATED[m];if(!k)return;
+      var colors=(CLEAR_FROST_ONLY[key]?['clear']:['smoke','clear']).map(function(t){return t==='smoke'?{n:'Smoke Frost',h:'#404040',f:'rated-'+key+'-smoke.webp'}:{n:'Clear Frost',h:'#C4C5C6',f:'rated-'+key+'-clear.webp'};});
+      k.rated={fit:k.fit,outD:k.outD,camD:k.camD,light:'rated-light.jpg',view:'view-rated-'+key+'.png',file:colors[0].f,colors:colors};
+    });
+  })();
+  /* One rule for the case type, used by loadKit, the brand and model changes, the summary and startup: a Rated Case
+     on a phone without a Rated kit falls back to the clear case (with one toast), legacy Slim Hybrid and Tough links
+     become the clear case, and a tough only kit (none today) keeps Tough Magnetic. */
+  function kpCaseTypeFor(model,wanted){
+    var k=KITS[model];
+    if(k&&k.toughOnly)return 'Tough Magnetic';
+    if(wanted===CASE_RATED&&k&&k.rated)return CASE_RATED;
+    return CASE_CLEAR;
+  }
+  function kpNormalizeCaseType(){
+    var wanted=state.caseType;state.caseType=kpCaseTypeFor(state.model,wanted);
+    if(wanted===CASE_RATED&&state.caseType!==CASE_RATED)kpToast('The Rated Case is not available for '+state.model.replace(/^Samsung /,'')+' yet. Showing the clear case.',6000);
+    return state.caseType;
+  }
+  function kpRatedKit(){ var k=KITS[state.model]; return state.caseType===CASE_RATED&&k&&k.rated?k.rated:null; }
+  /* the rim the customer chose, or the first rim this phone's Rated Case comes in (state.rimColor keeps the choice) */
+  function kpRim(){ var r=kpRatedKit(); return r?(r.colors.find(function(c){return c.n===state.rimColor;})||r.colors[0]):null; }
+  function kpCaseLabel(){ var rim=kpRim(); return rim?CASE_RATED+' \u00b7 '+rim.n:state.caseType; }
+  /* finish labels follow the case: the phone finish for the clear case, the rim color for the Rated Case */
+  function kpFinishLabels(){
+    var rim=kpRim(),shown=rim?rim.n:state.colorName;
+    ['colorName','colorName4'].forEach(function(id){ var el=$(id); if(el) el.textContent=shown; });
+    ['colorName2','colorName3'].forEach(function(id){ var el=$(id); if(el) el.textContent=state.colorName; });
+    var fl=$('finishLabel'); if(fl) fl.textContent=rim?'Rim color':'Device color';
+  }
   var printPath=null, inversePath=null;
   var BASE_OUT=null, BASE_CAM=null;
   var CAL = { on:/[?&]cal=1/.test(location.search), dx:0,dy:0,s:1, cdx:0,cdy:0,cs:1 };
@@ -542,7 +646,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   var requestedFinish=new URLSearchParams(location.search).get('finish');
   var selectedKit=KITS[state.model];
-  var requestedColors=selectedKit&&(state.caseType==='Slim Hybrid MagSafe'&&selectedKit.hybrid?selectedKit.hybrid.colors:selectedKit.colors);
+  var requestedColors=selectedKit&&selectedKit.colors;
   if(requestedColors&&requestedColors.some(function(c){return c.n===requestedFinish;}))state.colorName=requestedFinish;
 
   var canvas=$('stageCanvas'), ctx=canvas.getContext('2d');
@@ -582,28 +686,26 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   };
   function loadKit(model){
     var k=KITS[model]; if(!k) return false;
-    if(k.toughOnly) state.caseType='Tough Magnetic';
-    var v = (state.caseType==='Tough Magnetic' && k.tough) ? k.tough : k;
     /* Normalize case type before choosing geometry, including shared links. */
-    if(!k.toughOnly&&state.caseType!=='Slim Hybrid MagSafe')state.caseType='MagSafe Clear';
-    if(state.caseType==='Slim Hybrid MagSafe'&&!k.hybrid)state.caseType='MagSafe Clear';
-    v=(state.caseType==='Tough Magnetic'&&k.tough)?k.tough:k;
+    kpNormalizeCaseType();
+    var v=(state.caseType==='Tough Magnetic'&&k.tough)?k.tough:k;
+    /* Rated Case: its photo, panel mask and flat light map; print geometry (TPL, FIT) stays the base kit's */
+    var rated=kpRatedKit(), rim=kpRim();
     TPL=k.tpl; FIT=v.fit; OUT_D=v.outD; CAM_D=v.camD; TPL_D=v.tplD;
     BASE_OUT=OUT_D; BASE_CAM=CAM_D;
     buildPaths();
-    var hyb = (state.caseType==='Slim Hybrid MagSafe' && k.hybrid) ? k.hybrid : null;
-    var colSrc = hyb ? hyb.colors : k.colors;
-    var col = colSrc.find(function(c){return c.n===state.colorName;}) || colSrc[0];
+    /* the phone finish is kept while the Rated Case shows its rim colors, so Clear brings it straight back */
+    var col = k.colors.find(function(c){return c.n===state.colorName;}) || k.colors[0];
     state.colorName=col.n; state.colorHex=col.h;
-    ['colorName','colorName2','colorName3','colorName4'].forEach(function(id){ var el=$(id); if(el) el.textContent=state.colorName; });
+    kpFinishLabels();
     var mp=$('miniPhone'); if(mp) mp.style.background=state.colorHex;
     caseReady=false;caseFailed=false;
-    for(const thumb of [$('ctThumbClear'),$('ctThumbHyb')]){
+    for(const thumb of [$('ctThumbClear'),$('ctThumbRated')]){
       thumb.getContext('2d').clearRect(0,0,thumb.width,thumb.height);
     }
-    var srcFile = (state.caseType==='Tough Magnetic' && k.tough) ? k.tough.file : col.f;  /* hybrid col.f already per-bumper-color */
+    var srcFile = rated ? rim.f : (state.caseType==='Tough Magnetic' && k.tough) ? k.tough.file : col.f;
     caseImg.src='assets/cases/'+srcFile;
-    var vm=(state.caseType==='Tough Magnetic') ? ((k.tough&&k.tough.view)||(k.toughOnly&&k.view)||null) : (k.view||null);
+    var vm=rated ? rated.view : (state.caseType==='Tough Magnetic') ? ((k.tough&&k.tough.view)||(k.toughOnly&&k.view)||null) : (k.view||null);
     if(vm){
       if(viewSrc!==vm){
         viewReady=false; viewFailed=false; viewSrc=vm; viewMaskCanvas=null;maskBox=null;printMaskCache=null;
@@ -627,7 +729,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         viewImg.src='assets/masks/'+vm+'?v=12';
       } else if(viewReady){computeMaskBox();}
     } else { viewImg=null; viewReady=false; viewSrc=null; viewMaskCanvas=null; }
-    var ls='assets/cases/'+((state.caseType==='Tough Magnetic' && k.tough) ? k.tough.file : (k.light||col.f));
+    var ls='assets/cases/'+(rated ? rated.light : (state.caseType==='Tough Magnetic' && k.tough) ? k.tough.file : (k.light||col.f));
     if (!lightImg.src.endsWith(ls)) { lightReady=false;lightFailed=false;lightImg.src=ls; }
     else if (!lightReady && lightImg.complete && lightImg.naturalWidth) lightImg.onload();
     return true;
@@ -715,26 +817,75 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     c2.drawImage(src,dx,dy,dw,dh);
     try{ c2.filter='none'; }catch(_){}
   }
-  /* ── KP-COLLAGE: multi-photo layouts (slots are fractions of the print window) ── */
-  var KP_TPLS=[]; var tplImgs={};
+  /* ── KP-COLLAGE: multi-photo layouts and words templates (slots and texts are fractions of a 1080×1920 page) ── */
+  var KP_TPLS=[]; var tplImgs={}; var kpTplLoad=null, kpTplDone=false, kpTplRetryAt=0;
+  var kpLayoutGen=0, kpSlotSeq=0, kpSlotPending={}, kpPhotoSeq=0, kpCleanStage=false, kpFaces={};
+  /* browsing layouts never loses work: photos a smaller layout cannot hold wait in kpSpare, loads still in flight
+     (kpSlotFiles, kpSingleFile) follow the customer to the next layout, and typed words are kept per layout
+     (kpWordsMemo) and carried by key (kpWordsByKey). Start over and purge clear all of it. */
+  var kpSpare=[], kpSparePending={}, kpPoolGen=0, kpSlotFiles={}, kpSingleFile=null, kpWordsMemo={}, kpWordsByKey={}, kpWordsClock=0;
+  var kpWeakSlot=-1, kpTplFailed=false, kpTplTimer=null;
+  var staffModeOn=document.documentElement.classList.contains('staff-mode');
 
   function curTpl(){ return KP_TPLS.find(function(t){return 'tpl:'+t.id===state.layout;}) || null; }
+  function tplTexts(t){ return (t&&Array.isArray(t.texts))?t.texts:[]; }
+  function wordsActive(){ return tplTexts(curTpl()).length>0; }
+  /* the separate name tool is off while a words template supplies the lettering */
+  function kpNameText(){ return wordsActive()?'':state.text; }
+  /* layout art and thumbnails were redrawn for this release: the query keeps browsers from mixing a cached old image
+     with the new templates.json geometry */
+  var KP_COLLAGE_V='rated-2';
   function tplImage(t){
     if(tplImgs[t.id]) return tplImgs[t.id];
     var im=new Image(); im.crossOrigin='anonymous';
     im.onload=function(){ render(); };
-    im.src='assets/collage/'+t.img;
+    im.src='assets/collage/'+t.img+'?v='+KP_COLLAGE_V;
     tplImgs[t.id]=im; return im;
   }
-  function tplPrevImage(t){
-    var k='p'+t.id;
-    if(tplImgs[k]) return tplImgs[k];
-    var im=new Image(); im.crossOrigin='anonymous';
-    im.onload=function(){ render(); };
-    im.src='assets/collage/'+(t.prev||t.img);
-    tplImgs[k]=im; return im;
+  function hasArt(){ return !!state.photoImg || !!kpNameText() || (state.layout && state.photos && state.photos.some(Boolean)); }
+  function releaseCanvas(c){ if(c instanceof HTMLCanvasElement){c.width=0;c.height=0;c.__kpFile=null;c.__kpPlace=null;} }
+  function filledSlots(t){ t=t||curTpl(); return t?state.photos.slice(0,t.slots.length).filter(Boolean).length:0; }
+  function openSlot(t){
+    t=t||curTpl(); if(!t) return null;
+    for(var i=0;i<t.slots.length;i++){ if(!state.photos[i] && !kpSlotPending[i]) return i; }
+    return null;
   }
-  function hasArt(){ return !!state.photoImg || !!state.text || (state.layout && state.photos && state.photos.some(Boolean)); }
+  /* customer photo path only: never for library designs or the sky and drawing studios */
+  /* a ?design= page shows a library design: no layouts (and no templates request, even before the design starts
+     loading) until a customer photo replaces it or Start over clears it */
+  var kpDesignPage=new URLSearchParams(location.search).has('design');
+  /* the touch editor has no "Use my photo" chooser: its other customer pages are the photo path.
+     Shared kiosks keep personal photos staff assisted, so no layouts there. */
+  var kpKioskPage=new URLSearchParams(location.search).get('kiosk')==='1';
+  var kpEditorPhotoPath=!!window.KP_EDITOR&&!kpKioskPage;
+  function photoPathActive(){
+    if(skyStudio||drawingStudio||state.isLibraryDesign||state.libraryLoading) return false;
+    if(!state.layout&&state.photoUrl&&/^assets\/designs\//.test(state.photoUrl)) return false;
+    if(kpDesignPage&&!state.photoImg&&!state.layout) return false;
+    return staffModeOn||kpEditorPhotoPath||state.designPath==='photo'||!!state.layout||!!state.photoImg;
+  }
+  /* staff Start over runs again on pagehide: never start the templates request while the page is leaving */
+  var kpPageLeaving=false;
+  window.addEventListener('pagehide',function(){ kpPageLeaving=true; });
+  window.addEventListener('pageshow',function(){ kpPageLeaving=false; });
+  function ensureTemplates(){
+    if(kpTplDone||kpTplLoad||kpPageLeaving||Date.now()<kpTplRetryAt) return;
+    kpTplFailed=false;
+    kpTplLoad=fetch('assets/collage/templates.json',{cache:'no-cache'}).then(function(r){
+      if(!r.ok) throw new Error('templates '+r.status); return r.json();
+    }).then(function(list){
+      var ok=(Array.isArray(list)?list:[]).filter(function(t){ return t&&t.id!=null&&t.n&&t.img&&t.thumb&&Array.isArray(t.slots)&&t.slots.length; });
+      KP_TPLS=ok.filter(function(t){return tplTexts(t).length;}).concat(ok.filter(function(t){return !tplTexts(t).length;}));
+      kpTplDone=true; kpTplFailed=false; clearTimeout(kpTplTimer); renderLayoutChips(); updateStep3(); render();
+    }).catch(function(){
+      /* one failed request must not leave "Loading layouts…" up: say so (the editor offers Try again) and retry on a timer */
+      kpTplRetryAt=Date.now()+10000; kpTplFailed=true;
+      clearTimeout(kpTplTimer); kpTplTimer=setTimeout(function(){ kpTplRetryAt=0; updateStep3(); },10000);
+      render();
+    }).then(function(){ kpTplLoad=null; });
+  }
+  /* Try again in the Layouts tool, or reopening it: retry now instead of waiting for the timer */
+  function kpRetryTemplates(){ if(kpTplDone||kpTplLoad) return; kpTplRetryAt=0; updateStep3(); }
   function tplMap(){
     var t=curTpl(); if(!t) return null;
     var B=artBox(true);
@@ -753,28 +904,29 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
               lum:(sl.lum!=null?sl.lum:200)};
     });
   }
+  function rrect(c2,x,y,w,h,r){
+    r=Math.max(0,Math.min(r||0,w/2,h/2)); c2.beginPath();
+    if(!r){ c2.rect(x,y,w,h); return; }
+    c2.moveTo(x+r,y); c2.arcTo(x+w,y,x+w,y+h,r); c2.arcTo(x+w,y+h,x,y+h,r); c2.arcTo(x,y+h,x,y,r); c2.arcTo(x,y,x+w,y,r); c2.closePath();
+  }
+  /* stage: drawn for the customer (empty slot + spots, sample words at 45%); print and the counter card: only what will be printed */
   function drawCollageInto(c2, forPrint){
     var t=curTpl(); if(!t) return;
-    var m=tplMap();
-    if(!forPrint && !state.builder){
-      var pim=tplPrevImage(t);
-      if(pim&&pim.complete&&pim.naturalWidth) c2.drawImage(pim, m.ox, m.oy, 1080*m.sc, 1920*m.sc);
-      else { c2.fillStyle='#F3F2F2'; c2.fillRect(m.B.x,m.B.y,m.B.w,m.B.h); }
-      return;
-    }
+    var m=tplMap(), examples=!forPrint&&!kpCleanStage&&!(window.KPEditor&&window.KPEditor.step!=='edit');
     var im=tplImage(t);
     if(!(im&&im.complete&&im.naturalWidth)) { c2.fillStyle='#F3F2F2'; c2.fillRect(m.B.x,m.B.y,m.B.w,m.B.h); return; }
     c2.drawImage(im, m.ox, m.oy, 1080*m.sc, 1920*m.sc);
+    var st=t.slotStyle||{}, rad=(+st.radiusPx||0)*m.sc, fr=st.frame&&+st.frame.widthPx>0?st.frame:null;
     var rects=slotRects();
     for(var i=0;i<rects.length;i++){
       var r=rects[i], ph=state.photos[i];
       c2.save();
       c2.translate(r.x+r.w/2, r.y+r.h/2);
       c2.rotate(r.rot);
-      if(ph){ coverDraw(c2, ph, -r.w/2, -r.h/2, r.w, r.h); }
-      else if(!forPrint){
+      if(ph){ coverDraw(c2, ph, -r.w/2, -r.h/2, r.w, r.h, rad); }
+      else if(examples){
         c2.fillStyle = r.lum>140 ? 'rgba(45,45,59,.055)' : 'rgba(255,255,255,.10)';
-        c2.fillRect(-r.w/2,-r.h/2,r.w,r.h);
+        rrect(c2,-r.w/2,-r.h/2,r.w,r.h,rad); c2.fill();
         var br=Math.max(34,Math.min(r.w,r.h)*0.15);
         c2.save();
         c2.shadowColor='rgba(0,0,0,.20)'; c2.shadowBlur=br*0.55; c2.shadowOffsetY=br*0.08;
@@ -787,24 +939,251 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         c2.moveTo(0,-br*0.42); c2.lineTo(0,br*0.42);
         c2.stroke();
       }
+      if(fr){
+        /* frame sits outside the window, right after this slot, so later photos overlap it as in the original art */
+        var fw=fr.widthPx*m.sc;
+        c2.strokeStyle=fr.color||'#FFFFFF'; c2.lineWidth=fw; c2.lineJoin='miter';
+        rrect(c2,-r.w/2-fw/2,-r.h/2-fw/2,r.w+fw,r.h+fw,rad?rad+fw/2:0); c2.stroke();
+      }
+      c2.restore();
+    }
+    drawCaptions(c2, m, t, forPrint, examples);
+    /* Design step only: the softest photo is outlined so "the outlined photo" in the note under the case is unambiguous */
+    if(examples && kpWeakSlot>=0 && rects[kpWeakSlot] && state.photos[kpWeakSlot]){
+      var wr=rects[kpWeakSlot], lw=Math.max(10,Math.min(wr.w,wr.h)*0.02);
+      c2.save(); c2.translate(wr.x+wr.w/2, wr.y+wr.h/2); c2.rotate(wr.rot);
+      c2.lineJoin='round';
+      c2.strokeStyle='rgba(23,23,31,.55)'; c2.lineWidth=lw+8; rrect(c2,-wr.w/2,-wr.h/2,wr.w,wr.h,rad); c2.stroke();
+      c2.strokeStyle=state.quality==='red'?'#FF6B5E':'#FFB21E'; c2.lineWidth=lw; c2.setLineDash([lw*3.2,lw*1.8]);
+      rrect(c2,-wr.w/2,-wr.h/2,wr.w,wr.h,rad); c2.stroke();
       c2.restore();
     }
   }
-  function coverDraw(c2,img,x,y,w,h){
+  function coverDraw(c2,img,x,y,w,h,radius){
     var iw=img.naturalWidth||img.width, ih=img.naturalHeight||img.height;
     var k=Math.max(w/iw,h/ih), dw=iw*k, dh=ih*k;
-    c2.save(); c2.beginPath(); c2.rect(x,y,w,h); c2.clip();
+    c2.save(); rrect(c2,x,y,w,h,radius); c2.clip();
     c2.drawImage(img, x+(w-dw)/2, y+(h-dh)/2, dw, dh);
     c2.restore();
   }
-  function emptySlot(c2,x,y,w,h,i){
-    c2.fillStyle='#EFEBE2'; c2.fillRect(x,y,w,h);
-    c2.strokeStyle='#C9C2B2'; c2.setLineDash([18,14]); c2.lineWidth=6;
-    c2.strokeRect(x+8,y+8,w-16,h-16); c2.setLineDash([]);
-    c2.fillStyle='#A79F8D';
-    c2.font='700 '+Math.round(Math.min(w,h)*0.16)+'px -apple-system,sans-serif';
-    c2.textAlign='center'; c2.textBaseline='middle';
-    c2.fillText('Tap to add photo '+(i+1), x+w/2, y+h/2);
+  /* ── words: value rules, font faces, layout ── */
+  function captionValue(x){ var v=state.captions&&state.captions[x.key]; return v==null?'':String(v).trim(); }
+  function captionLines(x,v){
+    if(x.upper) v=v.toUpperCase();
+    var lines=x.stack ? Array.from(v.replace(/\s+/g,'')) : (x.multiline ? v.split('\n').map(function(l){return l.trim();}) : [v.replace(/\s*\n\s*/g,' ')]);
+    if(x.maxLines && lines.length>x.maxLines) lines=lines.slice(0,x.maxLines);
+    return lines;
+  }
+  function captionFont(x,px){ return (x.style==='italic'?'italic':'normal')+' '+(+x.weight||400)+' '+px+'px "'+String(x.font).replace(/["\\]/g,'')+'", sans-serif'; }
+  /* force: retry an errored face now (Next or Preview tap); otherwise errored faces retry on a backoff timer with no
+     cap while their layout is open (1.5 s, 3 s, 6 s, then every 10 s). A failed face is removed before a new one is added. */
+  function ensureCaptionFonts(t,force){
+    if(typeof FontFace!=='function'||!document.fonts) return;
+    tplTexts(t).forEach(function(x){
+      if(!x.src||!/^assets\/fonts\/[a-z0-9-]+\.woff2$/.test(x.src)) return;
+      var rec=kpFaces[x.src]; if(rec&&rec.status!=='error') return;
+      if(rec&&!force&&Date.now()<rec.retryAt) return;
+      if(rec&&rec.face){ try{ document.fonts.delete(rec.face); }catch(_){} }
+      var tries=rec?rec.tries:0; rec=kpFaces[x.src]={status:'loading',tries:tries+1,retryAt:0};
+      try{
+        var face=new FontFace(String(x.font),'url('+x.src+')',{weight:String(+x.weight||400),style:x.style==='italic'?'italic':'normal'});
+        document.fonts.add(face); rec.face=face;
+        face.load().then(function(){ rec.status='loaded'; render(); },function(){
+          var wait=Math.min(10000,1500*Math.pow(2,Math.min(rec.tries,4)-1));
+          rec.status='error'; rec.retryAt=Date.now()+wait; render();
+          setTimeout(function(){ if(kpFaces[x.src]===rec&&curTpl()===t) ensureCaptionFonts(t); },wait+20);
+        });
+      }catch(e){ rec.status='error'; rec.retryAt=Date.now()+10000; }
+    });
+  }
+  /* print waits for every face it will draw; a canvas never waits for a web font on its own */
+  function kpCaptionFontIssue(){
+    var issue='', t=curTpl();
+    tplTexts(t).forEach(function(x){
+      if(!captionValue(x)) return;
+      var rec=kpFaces[x.src];
+      if(rec&&rec.status==='error') issue='error';
+      else if((!rec||rec.status!=='loaded')&&!issue) issue='loading';
+    });
+    /* asking is a reason to try again (the retry respects its backoff, so this never loops) */
+    if(issue==='error') ensureCaptionFonts(t);
+    return issue==='error'?'The lettering could not load. Check your connection and try again, or clear the words to continue.':(issue?'The lettering is still loading. Try again in a moment.':'');
+  }
+  /* ── words stay on the printed area. Every phone crops the page differently (cover-fit into its mask box) and its
+     camera opening is cut out of the print mask, so a field that fits one phone can run off another. Each field is
+     checked against this phone's mask (the same mask the print uses): ink that would leave it moves inside its own
+     box (a plate moves with its text), shrinks only as much as needed, and a field that would print below 55% of the
+     size its longest words print at is not shown on this phone at all (stage, print, review rows and staff details all
+     agree). The Rated Case panel mask is checked the same way. ── */
+  var kpMaskRowsCache={}, kpFitCache={}, kpMeasureCtx=null, KP_FIT_MARGIN=14, KP_FIT_MIN=0.55;
+  function kpMaskRows(){
+    var g=viewReady&&viewMaskCanvas&&(window.KP_MASK_GEOMETRY||{})[viewSrc]; if(!g) return null;
+    if(kpMaskRowsCache[viewSrc]) return kpMaskRowsCache[viewSrc];
+    var by=[]; g.rows.forEach(function(r){ for(var y=r[0];y<r[1];y++) by[y]=r; });
+    return kpMaskRowsCache[viewSrc]=by;
+  }
+  /* page pixels (1080 × 1920 template space) to stage pixels, through tplMap and artMatrix */
+  function kpPageVisible(rows,m,ar,u,v){
+    function inside(uu,vv){
+      var x=DIM.w/2+(m.ox+uu*m.sc-DIM.w/2)*ar, y=Math.floor(m.oy+vv*m.sc), r=rows[y];
+      if(!r) return false;
+      for(var i=2;i<r.length;i+=2){ if(x>=r[i]&&x<r[i+1]) return true; }
+      return false;
+    }
+    var g=KP_FIT_MARGIN;
+    return inside(u,v)&&inside(u-g,v)&&inside(u+g,v)&&inside(u,v-g)&&inside(u,v+g);
+  }
+  /* box: page px {cx,cy,w,h,rot(rad)}; local (lx,ly) measured from the box centre along its own axes */
+  function kpBoxPoint(b,lx,ly){ var c=Math.cos(b.rot), s=Math.sin(b.rot); return [b.cx+lx*c-ly*s, b.cy+lx*s+ly*c]; }
+  function kpRectVisible(rows,m,ar,b,x0,y0,x1,y1){
+    var nx=Math.max(2,Math.min(28,Math.ceil((x1-x0)/10))), ny=Math.max(2,Math.min(12,Math.ceil((y1-y0)/10)));
+    for(var j=0;j<=ny;j++) for(var i=0;i<=nx;i++){
+      var p=kpBoxPoint(b,x0+(x1-x0)*i/nx,y0+(y1-y0)*j/ny);
+      if(!kpPageVisible(rows,m,ar,p[0],p[1])) return false;
+    }
+    return true;
+  }
+  function kpFitKey(m,ar,b){ return [viewSrc,m.sc.toFixed(5),m.ox.toFixed(2),m.oy.toFixed(2),ar.toFixed(5),b.cx.toFixed(2),b.cy.toFixed(2),b.w.toFixed(2),b.h.toFixed(2),b.rot.toFixed(4)].join('|'); }
+  /* every maximal all-visible rectangle of a grid laid over the box (text independent, cached per phone and box) */
+  function kpBoxRects(rows,m,ar,b){
+    var key='r|'+kpFitKey(m,ar,b); if(kpFitCache[key]) return kpFitCache[key];
+    var nx=Math.max(8,Math.min(96,Math.round(Math.sqrt(1200*b.w/b.h)))), ny=Math.max(6,Math.min(96,Math.round(1200/nx)));
+    var cw=b.w/nx, ch=b.h/ny, corner=new Uint8Array((nx+1)*(ny+1)), cell=new Uint8Array(nx*ny), i, j;
+    for(j=0;j<=ny;j++) for(i=0;i<=nx;i++){ var p=kpBoxPoint(b,-b.w/2+i*cw,-b.h/2+j*ch); corner[j*(nx+1)+i]=kpPageVisible(rows,m,ar,p[0],p[1])?1:0; }
+    for(j=0;j<ny;j++) for(i=0;i<nx;i++) cell[j*nx+i]=corner[j*(nx+1)+i]&corner[j*(nx+1)+i+1]&corner[(j+1)*(nx+1)+i]&corner[(j+1)*(nx+1)+i+1];
+    var heights=new Int32Array(nx), seen={}, out=[];
+    for(j=0;j<ny;j++){
+      for(i=0;i<nx;i++) heights[i]=cell[j*nx+i]?heights[i]+1:0;
+      for(i=0;i<nx;i++){
+        var h=heights[i]; if(!h) continue;
+        var l=i, r=i; while(l>0&&heights[l-1]>=h) l--; while(r<nx-1&&heights[r+1]>=h) r++;
+        var k=l+','+r+','+(j-h+1)+','+j; if(seen[k]) continue; seen[k]=1;
+        out.push({x0:-b.w/2+l*cw, x1:-b.w/2+(r+1)*cw, y0:-b.h/2+(j-h+1)*ch, y1:-b.h/2+(j+1)*ch});
+      }
+    }
+    return kpFitCache[key]=out;
+  }
+  /* smallest move (along the plate's own axes) that puts the whole plate on the printed area, or null */
+  function kpPlateShift(rows,m,ar,pb){
+    var key='p|'+kpFitKey(m,ar,pb); if(key in kpFitCache) return kpFitCache[key];
+    var best=null, w=pb.w/2, h=pb.h/2;
+    if(kpRectVisible(rows,m,ar,pb,-w,-h,w,h)) best={dx:0,dy:0};
+    else {
+      var cands=[];
+      for(var a=-20;a<=20;a++) for(var c=-4;c<=4;c++) cands.push({dx:pb.w*0.5*a/20, dy:pb.h*0.5*c/4});
+      cands.sort(function(p,q){ return (p.dx*p.dx+p.dy*p.dy)-(q.dx*q.dx+q.dy*q.dy); });
+      for(var n=0;n<cands.length&&!best;n++){ var d=cands[n]; if(kpRectVisible(rows,m,ar,pb,d.dx-w,d.dy-h,d.dx+w,d.dy+h)) best=d; }
+    }
+    return kpFitCache[key]=best;
+  }
+  /* layout for one field with value v (all in page px, scale applied by the caller): null when there is nothing to draw */
+  function kpCaptionPlan(m,x,v){
+    /* the stage, the Words notes and the editor all ask per render: keep the last plan per field (same phone, words, font) */
+    var memoKey=[viewSrc,viewReady,m?m.sc.toFixed(5):'',m?m.ox.toFixed(2):'',m?m.oy.toFixed(2):'',artRatio().toFixed(5),v,x.font,x.weight,x.sizePx,(kpFaces[x.src]||{}).status].join('|');
+    if(x.__kpPlan&&x.__kpPlan.k===memoKey) return x.__kpPlan.p;
+    var plan=kpCaptionPlanNow(m,x,v); x.__kpPlan={k:memoKey,p:plan}; return plan;
+  }
+  /* the size (page px) this field prints its longest allowed words at: W for every letter (8 for stacked digits), cut to
+     the box width and height the same way kpCaptionPlanNow fits any words; kept per field and font state */
+  function kpCaptionFloorPx(x){
+    var key=[x.font,x.weight,x.style,x.sizePx,x.w,x.h,x.maxLen,x.maxLines,x.multiline,x.stack,x.upper,x.lineHeight,(kpFaces[x.src]||{}).status].join('|');
+    if(x.__kpFloor&&x.__kpFloor.k===key) return x.__kpFloor.px;
+    var n=Math.max(1,+x.maxLen||40), v;
+    if(x.stack) v='8'.repeat(Math.min(n,4));
+    else if(x.multiline){ var L=Math.max(1,+x.maxLines||2), per=Math.max(1,Math.floor((n-(L-1))/L)); v=Array.from({length:L},function(){ return 'W'.repeat(per); }).join('\n'); }
+    else v='W'.repeat(n);
+    var lines=captionLines(x,v), W=x.w*1080, H=x.h*1920, px=+x.sizePx||40, lh=+x.lineHeight||1;
+    if(!kpMeasureCtx) kpMeasureCtx=document.createElement('canvas').getContext('2d');
+    var g=kpMeasureCtx; g.font=captionFont(x,px);
+    var mw=0; lines.forEach(function(l){ mw=Math.max(mw,g.measureText(l).width); });
+    if(mw>W) px=px*W/mw;
+    if(lines.length>1){ var need=px*(lh*(lines.length-1)+1); if(need>H) px=px*H/need; }
+    x.__kpFloor={k:key,px:px}; return px;
+  }
+  function kpCaptionPlanNow(m,x,v){
+    var lines=captionLines(x,v); if(!lines.length) return null;
+    var rot=(+x.rot||0)*Math.PI/180, W=x.w*1080, H=x.h*1920, px=+x.sizePx||40, lh=+x.lineHeight||1;
+    if(!kpMeasureCtx) kpMeasureCtx=document.createElement('canvas').getContext('2d');
+    var g=kpMeasureCtx; g.font=captionFont(x,px);
+    var mw=0; lines.forEach(function(l){ mw=Math.max(mw,g.measureText(l).width); });
+    if(mw>W) px=px*W/mw;
+    if(lines.length>1){ var need=px*(lh*(lines.length-1)+1); if(need>H) px=px*H/need; }
+    var plan={lines:lines,W:W,H:H,px:px,lh:lh,rot:rot,cx:x.cx*1080,cy:x.cy*1920,sx:0,sy:0,s:1,hidden:false,plate:null};
+    var pl=x.plate;
+    if(pl) plan.plate={cx:pl.cx*1080,cy:pl.cy*1920,w:pl.w*1080,h:pl.h*1920,dx:0,dy:0};
+    var rows=kpMaskRows(), ar=artRatio(); if(!rows||!m) return plan;
+    if(plan.plate){
+      var sh=kpPlateShift(rows,m,ar,{cx:plan.plate.cx,cy:plan.plate.cy,w:plan.plate.w,h:plan.plate.h,rot:rot});
+      if(!sh){ plan.hidden=true; return plan; }
+      plan.plate.dx=sh.dx; plan.plate.dy=sh.dy;
+      var o=kpBoxPoint({cx:0,cy:0,rot:rot},sh.dx,sh.dy); plan.cx+=o[0]; plan.cy+=o[1];
+    }
+    /* the ink box of the text as it would be drawn, from the font's real glyph bounds */
+    g.font=captionFont(x,px); g.textBaseline='middle'; g.textAlign=x.align==='left'||x.align==='right'?x.align:'center';
+    var ax=x.align==='left'?-W/2:(x.align==='right'?W/2:0), pitch=px*lh, tot=pitch*(lines.length-1), ix0=1e9, iy0=1e9, ix1=-1e9, iy1=-1e9;
+    lines.forEach(function(l,i){
+      var mt=g.measureText(l), y=-tot/2+i*pitch;
+      var L=isFinite(mt.actualBoundingBoxLeft)?mt.actualBoundingBoxLeft:(g.textAlign==='left'?0:g.textAlign==='right'?mt.width:mt.width/2);
+      var R=isFinite(mt.actualBoundingBoxRight)?mt.actualBoundingBoxRight:(g.textAlign==='left'?mt.width:g.textAlign==='right'?0:mt.width/2);
+      var A=isFinite(mt.actualBoundingBoxAscent)?mt.actualBoundingBoxAscent:px*.5, D=isFinite(mt.actualBoundingBoxDescent)?mt.actualBoundingBoxDescent:px*.5;
+      ix0=Math.min(ix0,ax-L); ix1=Math.max(ix1,ax+R); iy0=Math.min(iy0,y-A); iy1=Math.max(iy1,y+D);
+    });
+    if(!(ix1>ix0&&iy1>iy0)) return plan;
+    var box={cx:plan.cx,cy:plan.cy,w:W,h:H,rot:rot};
+    if(kpRectVisible(rows,m,ar,box,ix0,iy0,ix1,iy1)) return plan;
+    /* move and shrink the ink into the visible rectangle of its own box that keeps it largest */
+    var iw=ix1-ix0, ih=iy1-iy0, best=null;
+    kpBoxRects(rows,m,ar,box).forEach(function(r){
+      var s=Math.min(1,(r.x1-r.x0)/iw,(r.y1-r.y0)/ih);
+      if(!best||s>best.s+1e-9) best={s:s,r:r};
+    });
+    /* the 55% floor is measured against the smaller of this text's size and the size the field's longest words print at
+       (they are already shrunk to the box width), so a short word is never hidden where a longer one in the same field
+       would still print */
+    if(!best||px*best.s<KP_FIT_MIN*Math.min(px,kpCaptionFloorPx(x))){ plan.hidden=true; return plan; }
+    plan.s=best.s;
+    plan.sx=(best.r.x0+best.r.x1)/2-best.s*(ix0+ix1)/2;
+    plan.sy=(best.r.y0+best.r.y1)/2-best.s*(iy0+iy1)/2;
+    return plan;
+  }
+  /* true when this field has words that this phone cannot show (the Words tool, review rows and staff details say so) */
+  function kpCaptionWaiting(x){ return x.slot!=null&&!!state.layout&&!state.photos[+x.slot]; }
+  function kpCaptionHidden(x){ var v=captionValue(x); if(!v) return false; var p=kpCaptionPlan(curTpl()?tplMap():null,x,v); return !!(p&&p.hidden); }
+  function drawCaptions(c2,m,t,forPrint,examples){
+    var s=m.sc;
+    tplTexts(t).forEach(function(x){
+      var v=captionValue(x), alpha=1;
+      if(!v){
+        /* empty: a required field shows its sample on the stage only; nothing (not even its plate) prints */
+        if(!x.required||!examples) return;
+        v=String(x.default||'').trim(); alpha=.45; if(!v) return;
+      }
+      /* a label for one photo ("slot") waits for that photo: a faded sample while designing, nothing in print */
+      if(kpCaptionWaiting(x)){ if(!examples) return; alpha=.45; }
+      var plan=kpCaptionPlan(m,x,v); if(!plan||plan.hidden) return;
+      var lines=plan.lines, W=plan.W*s, rot=plan.rot, px=plan.px*s, lh=plan.lh;
+      c2.save();
+      c2.globalAlpha=alpha;
+      if(plan.plate){
+        var p=x.plate, q=plan.plate, pw=q.w*s, ph=q.h*s, pr=(+p.radiusPx||0)*s;
+        c2.save(); c2.translate(m.ox+q.cx*s, m.oy+q.cy*s); c2.rotate(rot); c2.translate(q.dx*s,q.dy*s);
+        c2.fillStyle=p.color||'#FFFFFF';
+        if(p.shadow&&!forPrint){ c2.save(); c2.shadowColor='rgba(0,0,0,.18)'; c2.shadowBlur=10*s; c2.shadowOffsetY=4*s; rrect(c2,-pw/2,-ph/2,pw,ph,pr); c2.fill(); c2.restore(); }
+        rrect(c2,-pw/2,-ph/2,pw,ph,pr); c2.fill();
+        if(p.strokeColor&&+p.strokePx){ c2.strokeStyle=p.strokeColor; c2.lineWidth=p.strokePx*s; rrect(c2,-pw/2,-ph/2,pw,ph,pr); c2.stroke(); }
+        c2.restore();
+      }
+      c2.translate(m.ox+plan.cx*s, m.oy+plan.cy*s); c2.rotate(rot);
+      if(plan.s!==1||plan.sx||plan.sy){ c2.translate(plan.sx*s,plan.sy*s); c2.scale(plan.s,plan.s); }
+      c2.font=captionFont(x,px);
+      /* Flat ink: no translucent drop shadow under printed words. */
+      c2.shadowColor='transparent'; c2.shadowBlur=0; c2.shadowOffsetY=0;
+      c2.fillStyle=x.color||'#000000'; c2.textBaseline='middle';
+      c2.textAlign=x.align==='left'||x.align==='right'?x.align:'center';
+      var ax=x.align==='left'?-W/2:(x.align==='right'?W/2:0), pitch=px*lh, tot=pitch*(lines.length-1);
+      lines.forEach(function(l,i){ c2.fillText(l,ax,-tot/2+i*pitch); });
+      c2.restore();
+    });
   }
   function photoHasAlpha(){
     var im=state.photoImg; if(!im) return false;
@@ -842,7 +1221,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(window.__kpDpiTick) clearTimeout(window.__kpDpiTick); window.__kpDpiTick=setTimeout(updateDpi,120);
     if(_rafPend) return; _rafPend=true;
     var done=false;
-    function go(){ if(done) return; done=true; _rafPend=false; renderNow(); document.dispatchEvent(new Event('kp:editor-change')); }
+    function go(){ if(done) return; done=true; _rafPend=false; renderNow(); kpSyncCaptionNotes(); document.dispatchEvent(new Event('kp:editor-change')); }
     requestAnimationFrame(go);
     setTimeout(go, 80);   // backstop: rAF is paused/throttled in some contexts
   }
@@ -937,8 +1316,33 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(el) el.textContent = state.model+' · '+state.caseType+'  →  '
       +JSON.stringify({dx:CAL.dx,dy:CAL.dy,s:+CAL.s.toFixed(4),cdx:CAL.cdx,cdy:CAL.cdy,cs:+CAL.cs.toFixed(4)});
   }
+  /* Rated Case name position: textBounds were tuned for the clear case, and the Rated panel is smaller, so at the ends of
+     the Text position slider the rim would cut the letters. On the Rated Case the slider range is the part of the clear
+     range where the whole name (its real glyph box plus a margin) sits on the panel mask; the clear case is untouched. */
+  function kpRatedNameY(c2,cx,y,tb){
+    var g=kpRatedKit()&&viewReady&&(window.KP_MASK_GEOMETRY||{})[viewSrc]; if(!g||!g.rows) return y;
+    c2.textAlign='center'; c2.textBaseline='middle';
+    var mt=c2.measureText(state.text), rx=artRatio(), M=16;
+    var A=isFinite(mt.actualBoundingBoxAscent)?mt.actualBoundingBoxAscent:state.textSize*.5, D=isFinite(mt.actualBoundingBoxDescent)?mt.actualBoundingBoxDescent:state.textSize*.5;
+    var L=isFinite(mt.actualBoundingBoxLeft)?mt.actualBoundingBoxLeft:mt.width/2, R=isFinite(mt.actualBoundingBoxRight)?mt.actualBoundingBoxRight:mt.width/2;
+    /* glyph span in stage px (artMatrix scales x around the centre line) */
+    var sx0=DIM.w/2+(cx-L-DIM.w/2)*rx-M, sx1=DIM.w/2+(cx+R-DIM.w/2)*rx+M;
+    var bands=[], cur=null;
+    g.rows.forEach(function(r){
+      var fits=false; for(var i=2;i<r.length;i+=2){ if(r[i]<=sx0&&r[i+1]>=sx1){ fits=true; break; } }
+      if(fits&&cur&&cur[1]===r[0]) cur[1]=r[1];
+      else if(fits){ cur=[r[0],r[1]]; bands.push(cur); }
+      else cur=null;
+    });
+    var best=null, bestOver=-1;
+    bands.forEach(function(b){ var o=Math.min(b[1],tb.yBot)-Math.max(b[0],tb.yTop); if(o>bestOver){ bestOver=o; best=b; } });
+    if(!best) return y;
+    var lo=Math.max(tb.yTop,best[0]+A+M), hi=Math.min(tb.yBot,best[1]-D-M);
+    if(hi<lo) return y;
+    return lo+(hi-lo)*(state.textPos/100);
+  }
   function drawTextLayer(c2){
-    if(!state.text) return;
+    if(!kpNameText()) return;
     var f=FONTS[state.textFont];
     var tb=(KITS[state.model]||KITS['iPhone 17 Pro Max']).textBounds;
     var cx=artX(tb.cx);
@@ -950,6 +1354,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(state.textVertical) availW=(maskBox?maskBox.h:DIM.h*0.6)*0.7;
     var twm=c2.measureText(state.text).width;
     if(twm>availW){ c2.font=f.w+Math.max(60,Math.floor(state.textSize*availW/twm))+'px '+f.css; }
+    if(!state.textVertical) y=kpRatedNameY(c2,cx,y,tb);
     c2.fillStyle=state.textColor;
     c2.textAlign='center'; c2.textBaseline='middle';
     /* Flat ink: no translucent drop shadow on a clear blank. */
@@ -972,7 +1377,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   canvas.addEventListener('click',function(e){
     if(CAL.on) return;
     if(state.layout){
-      if(!state.builder){ state.builder=true; updateUploadLabel(); updateStage(); render(); return; }
+      /* editor Preview and Extras: a tap enlarges the case like any other design, it never opens the photo picker */
+      if(window.KPEditor&&window.KPEditor.step!=='edit'){ if(!$('skyCaseZoom').hidden) $('skyCaseZoom').click(); return; }
+      /* empty spot: pick for that spot (more files fill the next open spots); filled spot: replace that photo */
       var p=toCanvas(e), rects=slotRects(), hit=-1; p.x=artX(p.x);
       for(var i=rects.length-1;i>=0;i--){
         var r=rects[i], cx=r.x+r.w/2, cy=r.y+r.h/2;
@@ -980,7 +1387,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         var lx=dx*ca-dy*sa, ly=dx*sa+dy*ca;
         if(Math.abs(lx)<=r.w/2 && Math.abs(ly)<=r.h/2){ hit=i; break; }
       }
-      if(hit>=0){ state.slotTarget=hit; var fi=$('fileInput'); fi.multiple=true; fi.click(); }
+      if(hit>=0){ state.slotTarget=hit; var fi=$('fileInput'); fi.multiple=!state.photos[hit]; fi.click(); }
       return;
     }
     if(!state.photoImg && !state.text) $('fileInput').click();
@@ -1048,15 +1455,48 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   /* ── stage state ── */
   function hasKit(){ return !!KITS[state.model]; }
+  /* A designs.json entry may carry an exact credit and license (credit, license) shown with a field photo, and a
+     creditSlip PDF the staff workspace offers. No entry carries them today, so the 281 KB designs.json is not fetched
+     for them: set KP_DESIGN_CREDITS to true when a collection ships those fields (the credit line, its retry and the
+     staff slip below already handle them; tools/tests/collage_captions.cjs and collage_review_fixes.cjs check them). */
+  var KP_DESIGN_CREDITS=false;
+  var kpDesignIndex=null, kpDesignFailAt=0;
+  /* resolves to the designs.json entry, null when the design has none, or undefined when designs.json did not load */
+  function kpDesignEntry(file){
+    if(!KP_DESIGN_CREDITS) return Promise.resolve(null);
+    if(!kpDesignIndex&&Date.now()-kpDesignFailAt<4000) return Promise.resolve(undefined);
+    if(!kpDesignIndex) kpDesignIndex=fetch('assets/designs/designs.json',{cache:'no-cache'}).then(function(r){
+      if(!r.ok) throw new Error('designs '+r.status); return r.json();
+    }).then(function(list){
+      var map={}; (Array.isArray(list)?list:[]).forEach(function(d){ if(d&&d.file) map[d.file]=d; }); return map;
+    }).catch(function(){ kpDesignIndex=null; kpDesignFailAt=Date.now(); return null; });
+    return kpDesignIndex.then(function(map){ return map?(map[file]||null):undefined; });
+  }
+  function updatePhotoCredit(link,file){
+    if(link.__kpFile===file) return;
+    link.__kpFile=file; link.textContent='Photograph and license';
+    clearTimeout(link.__kpRetry);
+    if(!file) return;
+    kpDesignEntry(file).then(function(d){
+      if(link.__kpFile!==file) return;
+      /* designs.json did not load: forget this lookup so the next stage update, or the retry below, asks again */
+      if(d===undefined){ link.__kpFile=''; link.__kpRetry=setTimeout(function(){ if(link.__kpFile==='') updatePhotoCredit(link,file); },5000); return; }
+      if(!d||typeof d.credit!=='string'||!d.credit.trim()) return;
+      link.textContent='Image: '+d.credit.trim()+(d.license?' · '+String(d.license).trim():'');
+    });
+  }
   function updateStage(){
     const cityPhoto = state.isLibraryDesign && state.photoImg && /^city-night-([a-z-]+)\.jpg$/.exec(state.photoImg.__kpDesignFile || '');
     const creditLink = $('cityPhotoCredit');
     const fieldPhoto = state.isLibraryDesign && state.photoImg && /^field-photo-([a-z0-9-]+)\.jpg$/.exec(state.photoImg.__kpDesignFile || '');
     const spacePhoto = state.isLibraryDesign && state.photoImg && /^kp-space-([a-z0-9-]+)\.jpg$/.exec(state.photoImg.__kpDesignFile || '');
     creditLink.hidden = !(cityPhoto || fieldPhoto || spacePhoto);
+    /* every credit is a link to its credits page (CC BY attribution), on kiosks too, where it stays in the Photo tool as
+       on the baseline (design-editor.js); the web editor shows it under the case */
     if (spacePhoto) creditLink.href = 'new-print-credits.html#kp-space-' + spacePhoto[1];
     if (fieldPhoto) creditLink.href = 'field-photo-credits.html#' + fieldPhoto[1];
     if (cityPhoto) creditLink.href = 'city-photo-credits.html#' + cityPhoto[1];
+    updatePhotoCredit(creditLink, fieldPhoto ? state.photoImg.__kpDesignFile : null);
     var live = hasKit();
     canvas.style.display = live ? 'block' : 'none';
     canvas.style.touchAction = state.photoImg ? 'none' : 'pan-y';
@@ -1065,17 +1505,20 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     renderFilterChips();
     $('exportLink').style.display = (hasArt()||state.text) ? 'inline' : 'none';
     $('editTools').style.display = (state.photoImg && !state.layout && !state.isLibraryDesign) ? 'block' : 'none';
+    var wordsOn=wordsActive();
+    $('nameBlock').hidden=wordsOn;
+    renderCaptionInputs();
     if(state.photoImg && typeof syncFitChips==='function') syncFitChips();
     $('clearBtn').style.display = (hasArt()||state.layout) ? 'block' : 'none';
     updateUploadLabel();
-    canvas.style.cursor = state.isLibraryDesign ? 'default' : 'grab';
+    canvas.style.cursor = state.layout ? 'pointer' : (state.isLibraryDesign ? 'default' : 'grab');
     canvas.style.touchAction = (state.photoImg && !state.isLibraryDesign) ? 'none' : 'pan-y';
     $('skyCaseZoom').hidden = !live;
     if (live && !CAL.on && !state.layout && (state.isLibraryDesign || skyStudio || !state.photoImg)) canvas.style.cursor='zoom-in';
     updateBrowseLink();
     if (state.layout){
-      var Th=curTpl(), tot=Th?Th.slots.length:0, fh=state.photos.filter(Boolean).length;
-      $('stageHint').textContent = !state.builder ? (Th?Th.n+' — example shown. Tap the case to use your own photos':'') : (fh>=tot ? 'Collage complete — tap any photo to swap it' : (Th?Th.n+' — tap a + spot to add your photos ('+fh+' of '+tot+' added)':''));
+      var Th=curTpl(), tot=Th?Th.slots.length:0, fh=filledSlots(Th);
+      $('stageHint').textContent = !Th ? '' : (fh>=tot ? 'Collage complete · tap any photo to swap it' : Th.n+' · tap a + spot to add your photos ('+fh+' of '+tot+' added)');
       $('kitNote').style.display='none';
     } else if (!state.photoImg && !state.text){
       $('stageHint').textContent = hasKit() ? 'Your case — upload or drop a photo to begin' : 'Upload or drop a photo to begin';
@@ -1120,11 +1563,23 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   function kpScreenPhoto(img, owner){
     owner=owner||img;
+    /* the owner is the single working photo, one collage spot photo, or a photo set aside by a smaller layout */
+    function live(){ return state.photoImg===owner || (!!state.layout && state.photos.indexOf(owner)>=0) || kpSpare.indexOf(owner)>=0; }
     kpEnsureScreen(function(){
-      if(!kpScreen.model || state.photoImg!==owner) return;
+      if(!kpScreen.model){ owner.__kpScreened=true; return; }
+      if(!live()) return;
       kpScreen.model.classify(img).then(function(preds){
         var bad=0;
+        owner.__kpScreened=true;
         preds.forEach(function(p){ if(p.className==='Porn'||p.className==='Hentai') bad+=p.probability; });
+        if(bad>0.6 && state.photoImg!==owner && live()){
+          var pi=state.photos.indexOf(owner), si=kpSpare.indexOf(owner);
+          if(pi>=0) state.photos[pi]=null; if(si>=0) kpSpare.splice(si,1);
+          releaseCanvas(owner); state.reserved=false;
+          updateUploadLabel(); updateDpi(); updateStage(); updateSummary();
+          kpToast('That photo can’t be printed because explicit imagery isn’t allowed on our cases. Family-friendly photos only, please!');
+          return;
+        }
         if(bad>0.6 && state.photoImg===owner){
           state.photoImg=null; state.photoUrl=null; state.isLibraryDesign=false;state.colorwayUnavailable=false;state.libraryLoading=false;state.fullFailed=false; state.variant='original';
           state.px=0; state.py=0; state.scale=1; state.rot=0;
@@ -1139,11 +1594,36 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* toast messaging (replaces alert) + stray-drop guard */
   function kpToast(msg, ms){
     var t=document.getElementById('kpToast');
+    /* pointer-events:none: a faded toast stays in the page and must never swallow taps on the editor tool tray */
     if(!t){ t=document.createElement('div'); t.id='kpToast'; t.setAttribute('role','status'); t.setAttribute('aria-live','polite');
-      t.style.cssText='position:fixed;left:50%;bottom:118px;transform:translateX(-50%);max-width:88vw;background:#2D2D3B;color:#FFF;font-size:14px;font-weight:700;line-height:1.45;padding:14px 20px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:99;opacity:0;transition:opacity .25s';
+      t.style.cssText='position:fixed;left:50%;bottom:118px;transform:translateX(-50%);max-width:88vw;background:#2D2D3B;color:#FFF;font-size:14px;font-weight:700;line-height:1.45;padding:14px 20px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:99;opacity:0;transition:opacity .25s;pointer-events:none';
       document.body.appendChild(t); }
-    t.textContent=msg; t.style.opacity='1';
+    /* a modal dialog (the phone tool sheet, the counter review) sits in the top layer above everything in the page,
+       so the toast joins the open modal dialog; otherwise it would be painted underneath and never seen */
+    var host=null;
+    try{ host=[].slice.call(document.querySelectorAll('dialog[open]')).filter(function(d){ try{ return d.matches(':modal'); }catch(_){ return true; } }).pop()||null; }catch(_){}
+    host=host||document.body;
+    if(t.parentNode!==host){
+      host.appendChild(t);
+      /* when that dialog closes (Done), the message moves back to the page at once and stays for the rest of its time
+         (a MutationObserver runs as a microtask; the dialog's close event would only arrive a task later) */
+      if(host!==document.body&&window.MutationObserver){
+        var mo=new MutationObserver(function(){ if(host.open) return; mo.disconnect(); if(t.parentNode===host){ document.body.appendChild(t); kpToastPlace(t); } });
+        mo.observe(host,{attributes:true,attributeFilter:['open']});
+      }
+    }
+    t.textContent=msg; t.style.opacity='1'; kpToastPlace(t);
     clearTimeout(t.__h); t.__h=setTimeout(function(){ t.style.opacity='0'; }, ms||5200);
+  }
+  /* the phone tool sheet holds the brand and model selects where a toast would sit (bottom 118px), so a toast in the
+     sheet rides just above it, over the dimmed page, or under the sheet's title bar when the sheet is too tall */
+  function kpToastPlace(t){
+    var sheet=t.parentNode&&t.parentNode.id==='studioSheet'?t.parentNode:null;
+    t.style.top='auto'; t.style.bottom='118px';
+    if(!sheet) return;
+    var r=sheet.getBoundingClientRect(), h=t.offsetHeight;
+    if(r.top-h-12>=8) t.style.bottom=Math.round(innerHeight-r.top+10)+'px';
+    else { t.style.bottom='auto'; t.style.top=Math.round(r.top+64)+'px'; }
   }
   ['dragover','drop'].forEach(function(ev){
     window.addEventListener(ev,function(e){ e.preventDefault(); });
@@ -1152,49 +1632,83 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* Decode directly into a bounded working copy; stale uploads never restore a reset. */
   var kpUploadRequest=0;
   function releaseWorkingPhoto(){
-    if(state.photoImg instanceof HTMLCanvasElement){state.photoImg.width=0;state.photoImg.height=0;}
+    if(state.photoImg instanceof HTMLCanvasElement)releaseCanvas(state.photoImg);
     KPDesignColorways.clear();
   }
+  /* With a layout active the photo goes to forceSlot, the tapped spot or the first open spot, and the
+     rest of the design is kept. Each spot load has its own token so a multi-file pick fills several spots. */
   function loadPhoto(f, forceSlot){
     if(new URLSearchParams(location.search).get('kiosk')==='1'){kpToast('Ask our team to help transfer your photo.');return;}
     if(!f || skyStudio)return;
-    var request=++kpUploadRequest;kpLibraryRequest++;
-    function current(){return request===kpUploadRequest;}
     if(f.size>40*1024*1024){kpToast('That photo is over 40MB — please use a smaller copy.');return;}
+    var slot=null,request,current;
+    if(forceSlot==='spare'){
+      /* a load that followed the customer into a layout with no room left: it waits with the other set-aside photos */
+      slot='spare';var pool=kpPoolGen;request=++kpSlotSeq;kpSparePending[request]=1;
+      current=function(){return pool===kpPoolGen&&!!kpSparePending[request];};
+    } else if(state.layout){
+      slot=(forceSlot!=null)?forceSlot:openSlot();
+      if(slot==null){kpToast('Every spot is full. Tap a photo on the case to swap it.');return;}
+      var gen=kpLayoutGen;request=++kpSlotSeq;kpSlotPending[slot]=request;kpSlotFiles[slot]=f;
+      current=function(){return gen===kpLayoutGen&&kpSlotPending[slot]===request;};
+    } else {
+      request=++kpUploadRequest;kpLibraryRequest++;kpSingleFile={req:request,file:f};
+      current=function(){return request===kpUploadRequest;};
+    }
+    function settle(){
+      if(slot==='spare')delete kpSparePending[request];
+      else if(slot!=null){if(kpSlotPending[slot]===request){delete kpSlotPending[slot];delete kpSlotFiles[slot];}}
+      else if(kpSingleFile&&kpSingleFile.req===request)kpSingleFile=null;
+    }
     if(/heic|heif/i.test(f.type||'')||/\.hei[cf]$/i.test(f.name||'')){
       if(typeof heic2any!=='function'){
         kpToast('One moment — getting that photo ready…');
-        KPHeic.load().then(function(){if(current())loadPhoto(f,forceSlot);}).catch(function(){if(current())kpToast('We could not load HEIC support. Try again, or choose a JPG, PNG, or screenshot.');});
+        KPHeic.load().then(function(){if(current()){settle();loadPhoto(f,slot);}}).catch(function(){if(current()){settle();kpToast('We could not load HEIC support. Try again, or choose a JPG, PNG, or screenshot.');}});
         return;
       }
       kpToast('Converting your photo…',4000);
       heic2any({blob:f,toType:'image/jpeg',quality:.92}).then(function(out){
         if(!current())return;var blob=Array.isArray(out)?out[0]:out;
-        loadPhoto(new File([blob],'converted-photo.jpg',{type:'image/jpeg'}),forceSlot);
-      }).catch(function(){if(current())kpToast('We could not convert that photo. Try a JPG, PNG, or screenshot.');});return;
+        settle();loadPhoto(new File([blob],'converted-photo.jpg',{type:'image/jpeg'}),slot);
+      }).catch(function(){if(current()){settle();kpToast('We could not convert that photo. Try a JPG, PNG, or screenshot.');}});return;
     }
-    if(!/^image\//.test(f.type)){kpToast('Please choose a JPG, PNG, or WebP photo.');return;}
+    if(!/^image\//.test(f.type)){settle();kpToast('Please choose a JPG, PNG, or WebP photo.');return;}
     var url=URL.createObjectURL(f),img=new Image();
-    function failed(){URL.revokeObjectURL(url);if(current())kpToast('We could not read that photo. Try a smaller copy, JPG, or PNG.');}
+    function failed(){URL.revokeObjectURL(url);if(current()){settle();kpToast('We could not read that photo. Try a smaller copy, JPG, or PNG.');}}
     function accept(decoded){
       if(!current()){URL.revokeObjectURL(url);return;}
       var w=decoded.naturalWidth||decoded.width,h=decoded.naturalHeight||decoded.height;
-      if(w<150||h<150){URL.revokeObjectURL(url);kpToast('That image is too small to print well — please use one at least 150×150 pixels.');return;}
-      var k=Math.min(1,3072/Math.max(w,h)),src=document.createElement('canvas');
+      if(w<150||h<150){URL.revokeObjectURL(url);settle();kpToast('That image is too small to print well — please use one at least 150×150 pixels.');return;}
+      /* spot copies stay at 2048px: a 12 spot layout must fit in iOS canvas memory */
+      var k=Math.min(1,(slot!=null?2048:3072)/Math.max(w,h)),src=document.createElement('canvas');
       try{
         src.width=Math.max(1,Math.round(w*k));src.height=Math.max(1,Math.round(h*k));
         var cx=src.getContext('2d');if(!cx)throw new Error('Canvas unavailable');
         cx.imageSmoothingQuality='high';cx.drawImage(decoded,0,0,src.width,src.height);
         src.naturalWidth=src.width;src.naturalHeight=src.height;
       }catch(e){src.width=src.height=0;failed();return;}
-      URL.revokeObjectURL(url);releaseWorkingPhoto();
-      state.photoImg=src;state.photoUrl=null;state.isLibraryDesign=false;state.colorwayUnavailable=false;state.libraryLoading=false;state.fullFailed=false;
-      state.fitMode=drawingStudio || w/h>1.15?'fit':'fill';state.layout=null;
-      state.px=0;state.py=0;state.scale=1;state.rot=0;state.filter='none';state.variant='original';state.reserved=false;
-      updateUploadLabel();renderFilterChips();updateDpi();updateStage();updateSummary();
-      var th=document.createElement('canvas'),tk=Math.min(1,512/Math.max(src.width,src.height));
-      th.width=Math.max(1,Math.round(src.width*tk));th.height=Math.max(1,Math.round(src.height*tk));
-      th.getContext('2d').drawImage(src,0,0,th.width,th.height);kpScreenPhoto(th,src);
+      URL.revokeObjectURL(url);src.__kpId=++kpPhotoSeq;
+      /* a capped spot copy remembers its file, so it can come back at full size as the single photo (kpUpgradeSingle) */
+      if(slot!=null&&k<1){src.__kpFile=f;}
+      if(slot==='spare'){
+        settle();
+        var room=state.layout?openSlot():null;
+        if(room!=null)state.photos[room]=src;else kpSpare.push(src);
+        state.reserved=false;
+        updateUploadLabel();updateDpi();updateStage();updateSummary();
+      } else if(slot!=null){
+        settle();
+        var old=state.photos[slot];state.photos[slot]=src;if(old&&old!==src)releaseCanvas(old);
+        state.reserved=false;
+        updateUploadLabel();updateDpi();updateStage();updateSummary();
+      } else {
+        settle();releaseWorkingPhoto();
+        state.photoImg=src;state.photoUrl=null;state.isLibraryDesign=false;state.colorwayUnavailable=false;state.libraryLoading=false;state.fullFailed=false;
+        state.fitMode=drawingStudio || w/h>1.15?'fit':'fill';
+        state.px=0;state.py=0;state.scale=1;state.rot=0;state.filter='none';state.variant='original';state.reserved=false;
+        updateUploadLabel();renderFilterChips();updateDpi();updateStage();updateSummary();
+      }
+      kpScreenCanvas(src);
     }
     img.onload=function(){accept(img);};img.onerror=failed;
     function fallback(){if(current())img.src=url;else URL.revokeObjectURL(url);}
@@ -1203,15 +1717,98 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       catch(e){fallback();}
     }else fallback();
   }
+  function kpScreenCanvas(src){
+    var th=document.createElement('canvas'),tk=Math.min(1,512/Math.max(src.width,src.height));
+    th.width=Math.max(1,Math.round(src.width*tk));th.height=Math.max(1,Math.round(src.height*tk));
+    th.getContext('2d').drawImage(src,0,0,th.width,th.height);kpScreenPhoto(th,src);
+  }
+  /* spot copies are capped at 2048 px; when one becomes the single photo again it is decoded once more at the
+     single photo's 3072 px cap, so its print is as sharp as a direct upload. Same id, placement and history. */
+  function kpUpgradeSingle(small){
+    var f=small&&small.__kpFile; if(!f||!window.createImageBitmap) return;
+    var req=kpUploadRequest;
+    function still(){ return req===kpUploadRequest&&!state.layout&&state.photoImg===small; }
+    var job;
+    try{ job=createImageBitmap(f,{imageOrientation:'from-image'}); }catch(_){ return; }
+    job.then(function(bm){
+      try{
+        if(!still()) return;
+        var w=bm.width,h=bm.height,k=Math.min(1,3072/Math.max(w,h)),c=document.createElement('canvas');
+        c.width=Math.max(1,Math.round(w*k));c.height=Math.max(1,Math.round(h*k));
+        if(c.width<=small.width) return;
+        var cx=c.getContext('2d'); if(!cx) return;
+        cx.imageSmoothingQuality='high'; cx.drawImage(bm,0,0,c.width,c.height);
+        c.naturalWidth=c.width;c.naturalHeight=c.height;c.__kpId=small.__kpId;c.__kpScreened=small.__kpScreened;
+        if(editorSources.has(small)) editorSources.set(c,editorSources.get(small));
+        state.photoImg=c; releaseCanvas(small); state.reserved=false;
+        updateDpi(); render();
+        if(!c.__kpScreened) kpScreenCanvas(c);
+      }finally{ bm.close(); }
+    }).catch(function(){});
+  }
+  /* loads that were still decoding when the layout changed: open spots first, then the single photo, else set aside */
+  function kpRequeue(files){
+    files.forEach(function(f){
+      if(state.layout){ var s=openSlot(); loadPhoto(f,s!=null?s:'spare'); }
+      else if(!state.photoImg&&!kpSingleFile) loadPhoto(f);
+      else loadPhoto(f,'spare');
+    });
+  }
+  /* first file to the tapped spot (if any), the rest to open spots in order */
+  function assignSlotFiles(files){
+    var t=curTpl(); if(!t) return;
+    var n=t.slots.length, assign=[], used={};
+    if(state.slotTarget!=null&&state.slotTarget<n){ assign.push(state.slotTarget); used[state.slotTarget]=1; }
+    state.slotTarget=null;
+    for(var i=0;i<n && assign.length<files.length;i++){ if(!state.photos[i] && !kpSlotPending[i] && !used[i]){ assign.push(i); used[i]=1; } }
+    if(!assign.length){ kpToast('Every spot is full. Tap a photo on the case to swap it.'); return; }
+    for(var j=0;j<assign.length;j++) loadPhoto(files[j], assign[j]);
+    if(files.length>assign.length) kpToast('Added '+assign.length+(assign.length===1?' photo':' photos')+'. Every spot is full.');
+    updateUploadLabel();
+  }
   function updateUploadLabel(){
     var b=$('uploadBtn'); if(!b) return;
-    if(state.layout){
-      var t=curTpl(), total=t?t.slots.length:0, filled=state.photos.filter(Boolean).length;
-      if(!state.builder){ b.textContent='Make it yours \u2014 add your '+total+' photos'; return; }
-      b.textContent= filled>=total ? 'Replace a photo (tap it first)' : 'Add photo '+(filled+1)+' of '+total;
-    } else if (drawingStudio) b.textContent = state.photoImg ? 'Choose a different drawing' : 'Choose a photo of the drawing';
-    else b.textContent = state.photoImg ? 'Upload a different photo' : 'Upload a photo';
+    var t=state.layout?curTpl():null;
+    $('fileInput').multiple=!!t;
+    $('photoHeading').textContent=t?'Your photos':'Your photo';
+    $('clearBtn').textContent=t?'Remove all photos':'Start over — remove photo';
+    if(t){
+      var total=t.slots.length, filled=filledSlots(t), full=filled>=total;
+      /* full: an opaque instruction instead of a button that would do nothing */
+      b.textContent= full ? (total===1?'Tap your photo on the case to swap it':'Layout complete. Tap a photo on the case to swap it') : 'Add photo '+(filled+1)+' of '+total;
+      b.disabled=full;
+    } else {
+      b.disabled=false;
+      if (drawingStudio) b.textContent = state.photoImg ? 'Choose a different drawing' : 'Choose a photo of the drawing';
+      else b.textContent = state.photoImg ? 'Upload a different photo' : 'Upload a photo';
+    }
+    renderSlotButtons(t);
   }
+  /* one button per spot (Add photo N, Replace photo N) with a thumbnail; the softest photo is marked like its outline */
+  function renderSlotButtons(t){
+    var row=$('slotButtons'); if(!row) return;
+    if(!t){ row.hidden=true; if(row.childElementCount) row.replaceChildren(); row.__kpSig=''; return; }
+    var n=t.slots.length, sig=t.id+'|'+kpWeakSlot+'|'+t.slots.map(function(_,i){ var p=state.photos[i]; return p?(p.__kpId||1):(kpSlotPending[i]?'l':0); }).join(',');
+    row.hidden=false; if(row.__kpSig===sig) return; row.__kpSig=sig; row.replaceChildren();
+    for(var i=0;i<n;i++){
+      var ph=state.photos[i], btn=document.createElement('button'), soft=!!ph&&i===kpWeakSlot;
+      btn.type='button'; btn.className='slotBtn'+(soft?' is-soft':''); btn.dataset.slot=i;
+      btn.setAttribute('aria-label',(ph?'Replace photo ':(kpSlotPending[i]?'Loading photo ':'Add photo '))+(i+1)+' of '+n+(soft?', may look soft':''));
+      if(ph){
+        var c=document.createElement('canvas'); c.width=88; c.height=88; c.setAttribute('aria-hidden','true');
+        var g=c.getContext('2d'), iw=ph.width, ih=ph.height;
+        if(g&&iw&&ih){ var k=Math.max(88/iw,88/ih); g.drawImage(ph,(88-iw*k)/2,(88-ih*k)/2,iw*k,ih*k); }
+        btn.append(c);
+      } else { var plus=document.createElement('span'); plus.className='slot-plus'; plus.setAttribute('aria-hidden','true'); plus.textContent=kpSlotPending[i]?'…':'+'; btn.append(plus); }
+      var lab=document.createElement('span'); lab.setAttribute('aria-hidden','true'); lab.textContent='Photo '+(i+1); btn.append(lab);
+      row.append(btn);
+    }
+  }
+  $('slotButtons').addEventListener('click',function(e){
+    var b=e.target.closest('.slotBtn'); if(!b||!state.layout) return;
+    var i=+b.dataset.slot, fi=$('fileInput'); if(fi.disabled) return;
+    state.slotTarget=i; fi.multiple=!state.photos[i]; fi.click();
+  });
 
   function updateStep3(){
     var ch=$('designChooser'), ps=$('photoSection');
@@ -1219,36 +1816,186 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var active = document.documentElement.classList.contains('staff-mode') || drawingStudio || skyStudio || state.designPath==='photo' || !!state.photoImg || !!state.layout || !!state.text;
     ch.style.display = active ? 'none' : 'grid';
     ps.style.display = active ? 'block' : 'none';
+    var lw=$('layoutChipsWrap'), want=(active||kpEditorPhotoPath)&&photoPathActive();
+    if(want) ensureTemplates();
+    if(lw){ lw.hidden=!(want&&KP_TPLS.length); if(!lw.hidden) renderLayoutChips(); }
   }
+  /* ── layout picker: Single photo, then words templates, then collages (photo-free thumbnails) ── */
+  function layoutChip(id,name,count,words,thumb){
+    var b=document.createElement('button'); b.type='button'; b.className='layChip'; b.dataset.l=id;
+    b.setAttribute('aria-label',name+', '+count+(count===1?' photo':' photos')+(words?', with your words':''));
+    var box=document.createElement('span'); box.className='lay-thumb'; box.setAttribute('aria-hidden','true');
+    if(thumb){ var im=document.createElement('img'); im.src=thumb; im.alt=''; im.loading='lazy'; im.decoding='async'; im.width=300; im.height=533; box.append(im); }
+    else { box.classList.add('lay-single'); box.innerHTML='<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#6C6C72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="M21 16l-5-5-9 9"></path></svg>'; }
+    if(words){ var aa=document.createElement('span'); aa.className='lay-aa'; aa.textContent='Aa'; box.append(aa); }
+    var label=document.createElement('span'); label.className='lay-name'; label.setAttribute('aria-hidden','true'); label.textContent=name;
+    b.append(box,label); return b;
+  }
+  function renderLayoutChips(){
+    var row=$('layoutChips'); if(!row) return;
+    if(row.__kpCount!==KP_TPLS.length){
+      row.__kpCount=KP_TPLS.length; row.replaceChildren(layoutChip('','Single photo',1,false,null));
+      KP_TPLS.forEach(function(t){ row.append(layoutChip('tpl:'+t.id,t.n,t.slots.length,tplTexts(t).length>0,'assets/collage/'+t.thumb+'?v='+KP_COLLAGE_V)); });
+    }
+    row.querySelectorAll('.layChip').forEach(function(b){ b.setAttribute('aria-pressed',String((b.dataset.l||'')===(state.layout||''))); });
+  }
+  var narrowStage=matchMedia('(max-width:900px)');
+  function showStage(){
+    var st=$('stageStick'); if(!st||!narrowStage.matches||window.KP_EDITOR) return;
+    var top=st.getBoundingClientRect().top;
+    if(top>=0&&top<innerHeight*0.2) return;
+    var y=Math.max(0,top+(window.scrollY||window.pageYOffset||0)-12);
+    var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    try{ window.scrollTo({top:y,behavior:reduce?'auto':'smooth'}); }catch(_){ window.scrollTo(0,y); }
+  }
+  function resetCaptions(t){
+    state.captions={};
+    tplTexts(t).forEach(function(x){ state.captions[x.key]=x.required?'':String(x.default||''); });
+  }
+  /* words for a layout: what the customer left there last time, with anything typed since under the same key in another
+     layout (name to name, date to date); a layout seen for the first time starts from its defaults plus those words */
+  function kpFitCaption(x,v){
+    v=String(v);
+    if(x.multiline){ var max=Math.max(1,+x.maxLines||2); v=v.split('\n').slice(0,max).join('\n'); }
+    else v=v.replace(/\s*\n\s*/g,' ');
+    return v.slice(0,Math.max(1,+x.maxLen||40));
+  }
+  function kpLayoutCaptions(t){
+    var memo=t?kpWordsMemo[t.id]:null;
+    if(memo) state.captions=Object.assign({},memo.caps); else resetCaptions(t);
+    tplTexts(t).forEach(function(x){
+      var k=kpWordsByKey[x.key];
+      if(k&&String(k.v).trim()&&(!memo||k.at>memo.at)) state.captions[x.key]=kpFitCaption(x,k.v);
+    });
+  }
+  function chooseLayout(id){
+    id=id||null;
+    if(id===(state.layout||null)) return;
+    var t=id?KP_TPLS.find(function(x){return 'tpl:'+x.id===id;}):null;
+    if(id&&!t) return;
+    /* photos still decoding follow the customer (requeued below) instead of being dropped */
+    var inflight=Object.keys(kpSlotPending).map(Number).sort(function(a,b){return a-b;}).map(function(i){return kpSlotFiles[i];}).filter(Boolean);
+    if(kpSingleFile) inflight.unshift(kpSingleFile.file);
+    kpUploadRequest++;kpLibraryRequest++;kpLayoutGen++;kpSlotPending={};kpSlotFiles={};kpSingleFile=null;state.slotTarget=null;
+    var oldT=curTpl();
+    if(oldT&&tplTexts(oldT).length) kpWordsMemo[oldT.id]={caps:Object.assign({},state.captions||{}),at:++kpWordsClock};
+    /* photos travel with the customer: single photo into spot 1, spot photos in order, spot 1 back to single.
+       None are dropped: photos a smaller layout cannot hold wait in kpSpare until a layout has room. */
+    var single=!state.layout&&state.photoImg&&!state.isLibraryDesign?state.photoImg:null;
+    if(single) single.__kpPlace={px:state.px,py:state.py,scale:state.scale,rot:state.rot,fitMode:state.fitMode,filter:state.filter};
+    var keep=(state.layout?state.photos.filter(Boolean):(single?[single]:[])).concat(kpSpare), heldBefore=kpSpare.length, place=null, first=null;
+    KPDesignColorways.clear();
+    if(t){
+      var n=t.slots.length;
+      state.photos=keep.slice(0,n); kpSpare=keep.slice(n);
+      state.layout=id; state.photoImg=null;
+      tplImage(t); ensureCaptionFonts(t);
+    } else {
+      first=keep[0]||null; kpSpare=keep.slice(1);
+      state.layout=null; state.photos=[]; state.photoImg=first;
+      if(first) state.fitMode=((first.naturalWidth||first.width)/Math.max(1,first.naturalHeight||first.height))>1.15?'fit':'fill';
+      place=first&&first.__kpPlace;
+    }
+    kpLayoutCaptions(t);
+    state.photoUrl=null;state.isLibraryDesign=false;state.colorwayUnavailable=false;state.libraryLoading=false;state.fullFailed=false;
+    state.px=0;state.py=0;state.scale=1;state.rot=0;state.filter='none';state.variant='original';state.reserved=false;
+    /* back to Single photo: the placement it had before it went into a layout */
+    if(place){ state.px=place.px; state.py=place.py; state.scale=place.scale; state.rot=place.rot; state.fitMode=place.fitMode; state.filter=place.filter||'none'; }
+    renderLayoutChips();renderCaptionInputs();renderFilterChips();syncFitChips();updateUploadLabel();updateDpi();updateStage();updateSummary();render();
+    if(first) kpUpgradeSingle(first);
+    if(inflight.length) kpRequeue(inflight);
+    if(kpSpare.length>heldBefore){
+      var held=kpSpare.length;
+      kpToast((t?'This layout has '+n+(n===1?' spot':' spots')+'. ':'Single photo uses your first photo. ')+'Your other '+(held===1?'photo is':held+' photos are')+' saved for a layout with more spots.');
+    }
+    showStage();
+  }
+  $('layoutChips').addEventListener('click',function(e){ var b=e.target.closest('.layChip'); if(b) chooseLayout(b.dataset.l||null); });
+  /* ── words inputs: required fields start empty (placeholder = example), phrases start with their default ── */
+  function renderCaptionInputs(){
+    var wrap=$('captionFields'), list=$('captionList'); if(!wrap||!list) return;
+    var t=curTpl(), texts=tplTexts(t), sig=t&&texts.length?String(t.id):'';
+    wrap.hidden=!texts.length;
+    if(list.__kpTpl!==sig){
+      list.__kpTpl=sig; list.replaceChildren();
+      texts.forEach(function(x){
+        var id='cap-'+String(x.key).replace(/[^a-z0-9_-]/gi,'');
+        var row=document.createElement('div'); row.className='cap-field';
+        var label=document.createElement('label'); label.htmlFor=id; label.textContent=x.label||x.key;
+        var input=document.createElement(x.multiline?'textarea':'input');
+        if(x.multiline) input.rows=Math.max(1,+x.maxLines||2); else input.type='text';
+        input.id=id; input.dataset.key=x.key; input.maxLength=Math.max(1,+x.maxLen||40);
+        input.setAttribute('autocomplete','off'); input.setAttribute('autocapitalize',x.upper?'characters':'sentences');
+        if(x.required) input.placeholder=x.multiline?String(x.default||''):String(x.default||'').replace(/\s*\n\s*/g,' ');
+        var note=document.createElement('p'); note.className='cap-note'; note.id=id+'-note'; note.dataset.note=x.key; note.hidden=true;
+        note.textContent='Not shown on this phone. The camera or case edge covers this spot.';
+        input.setAttribute('aria-describedby',note.id);
+        row.append(label,input,note); list.append(row);
+      });
+    }
+    list.querySelectorAll('[data-key]').forEach(function(el){ var v=state.captions[el.dataset.key]; v=v==null?'':String(v); if(el.value!==v) el.value=v; });
+    kpSyncCaptionNotes();
+  }
+  /* the note under a word box when this phone cannot show those words (kpCaptionPlan) */
+  function kpSyncCaptionNotes(){
+    var list=$('captionList'); if(!list||!state.layout) return;
+    var texts=tplTexts(curTpl());
+    list.querySelectorAll('.cap-note').forEach(function(n){
+      var x=texts.find(function(q){return q.key===n.dataset.note;}), hide=!(x&&kpCaptionHidden(x));
+      if(n.hidden!==hide) n.hidden=hide;
+    });
+  }
+  $('captionList').addEventListener('input',function(e){
+    var el=e.target, key=el&&el.dataset?el.dataset.key:null; if(!key) return;
+    var x=tplTexts(curTpl()).find(function(q){return q.key===key;}); if(!x) return;
+    var v=el.value;
+    if(x.multiline){ var max=Math.max(1,+x.maxLines||2), lines=v.split('\n'); if(lines.length>max){ v=lines.slice(0,max).join('\n'); el.value=v; } }
+    else if(/\n/.test(v)){ v=v.replace(/\n/g,' '); el.value=v; }
+    state.captions[key]=v; kpWordsByKey[key]={v:v,at:++kpWordsClock}; state.reserved=false; render();
+  });
   $('choosePhoto').addEventListener('click',function(){ state.designPath='photo'; updateStep3(); });
   $('uploadBtn').addEventListener('click',function(){
-    if(state.layout && !state.builder){ state.builder=true; updateUploadLabel(); updateStage(); render(); }
-    var fi=$('fileInput'); fi.multiple=!!state.layout; fi.click();
+    var fi=$('fileInput'), t=state.layout?curTpl():null;
+    if(t){
+      state.slotTarget=null;
+      if(filledSlots(t)>=t.slots.length){ kpToast('Tap a photo on the case to swap it.'); showStage(); return; }
+    }
+    fi.multiple=!!t; fi.click();
   });
   $('fileInput').addEventListener('change',function(e){
     var files=[].slice.call(e.target.files); e.target.value='';
     if(!files.length) return;
-    if(state.layout && files.length>1){
-      var t=curTpl(), n=t?t.slots.length:1, assign=[], used={};
-      if(state.slotTarget!=null){ assign.push(state.slotTarget); used[state.slotTarget]=1; state.slotTarget=null; }
-      for(var i=0;i<n && assign.length<files.length;i++){ if(!state.photos[i] && !used[i]) assign.push(i); }
-      for(var j=0;j<files.length && j<assign.length;j++) loadPhoto(files[j], assign[j]);
-      if(files.length>assign.length) kpToast('Added '+assign.length+' photos — every spot is full.');
-    } else loadPhoto(files[0]);
+    if(state.layout) assignSlotFiles(files);
+    else loadPhoto(files[0]);
   });
+  /* a cancelled picker leaves no spot target behind (a later drop or Add would otherwise replace the tapped spot) */
+  $('fileInput').addEventListener('cancel',function(){ state.slotTarget=null; });
+  /* everything a layout session holds: set-aside photos, loads in flight, remembered words */
+  function kpClearPool(){
+    kpPoolGen++; kpSparePending={}; kpSpare.forEach(releaseCanvas); kpSpare=[];
+    kpSlotFiles={}; kpSingleFile=null; kpWordsMemo={}; kpWordsByKey={}; kpWeakSlot=-1;
+  }
   $('clearBtn').addEventListener('click',function(){
     if(skyStudio) $('personalStudio').dispatchEvent(new Event('skyreset'));
-    kpLibraryRequest++;kpUploadRequest++;releaseWorkingPhoto();$('fileInput').value='';
+    kpLibraryRequest++;kpUploadRequest++;kpLayoutGen++;kpSlotPending={};kpDesignPage=false;releaseWorkingPhoto();$('fileInput').value='';
+    kpClearPool();
+    state.photos.forEach(releaseCanvas);
     state.photoImg=null; state.photoUrl=null; state.filter='none'; state.variant='original';
-    state.photos=[]; state.slotTarget=null; state.builder=false; state.layout=null; state.designPath=null;
+    state.photos=[]; state.slotTarget=null; state.layout=null; state.designPath=null; state.captions={};
     state.px=0;state.py=0;state.scale=1;state.rot=0;
     state.text=''; state.isLibraryDesign=false;state.colorwayUnavailable=false;state.libraryLoading=false;state.fullFailed=false;
     var ni=$('nameInput'); if(ni) ni.value='';
+    renderLayoutChips(); renderCaptionInputs();
     updateUploadLabel(); updateDpi(); updateStage(); updateSummary(); render();
   });
   ['dragover','drop'].forEach(function(ev){
     document.getElementById('stageWrap').addEventListener(ev,function(e){ e.preventDefault();
-      if(ev==='drop'&&e.dataTransfer&&e.dataTransfer.files[0]) loadPhoto(e.dataTransfer.files[0]);
+      if(ev==='drop'&&e.dataTransfer&&e.dataTransfer.files[0]){
+        /* a drop fills open spots in order; it never reuses a spot tapped earlier for a cancelled picker */
+        state.slotTarget=null;
+        if(state.layout) assignSlotFiles([].slice.call(e.dataTransfer.files));
+        else loadPhoto(e.dataTransfer.files[0]);
+      }
     });
   });
   function syncFitChips(){
@@ -1313,22 +2060,25 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     }).join('');
   }
   function paletteFor(){
-    var k=KITS[state.model];
-    if (k && state.caseType==='Slim Hybrid MagSafe' && k.hybrid) return k.hybrid.colors.map(function(c){return {n:c.n,h:c.h};});
+    var k=KITS[state.model], rated=kpRatedKit();
+    /* Rated Case: the rim colors replace the phone finish swatches (the phone finish is kept for the clear case) */
+    if (rated) return rated.colors.map(function(c){return {n:c.n,h:c.h,rim:true};});
     if (k) return k.colors.map(function(c){return {n:c.n,h:c.h};});
     if (state.brand!=='Apple') return palettes.Other;
     return /iPhone 17/.test(state.model) ? palettes.Apple17 : palettes.AppleOld;
   }
   function renderSwatches(){
+    var rim=kpRim();
     $('colorSwatches').innerHTML = paletteFor().map(function(c){
-      var on = c.n===state.colorName;
-      return '<button class="h-swatch sw" aria-pressed="'+on+'" aria-label="'+c.n+' phone finish" data-n="'+c.n+'" data-h="'+c.h+'" title="'+c.n+'" style="width:34px;height:34px;border-radius:50%;cursor:pointer;background:'+c.h+';border:3px solid '+(on?'#DC282E':'#E4E3E3')+'"></button>';
+      var on = c.rim ? c.n===rim.n : c.n===state.colorName;
+      return '<button class="h-swatch sw" aria-pressed="'+on+'" aria-label="'+c.n+(c.rim?' rim':' phone finish')+'" data-n="'+c.n+'" data-h="'+c.h+'"'+(c.rim?' data-rim="1"':'')+' title="'+c.n+'" style="width:34px;height:34px;border-radius:50%;cursor:pointer;background:'+c.h+';border:3px solid '+(on?'#DC282E':'#E4E3E3')+'"></button>';
     }).join('');
   }
   document.addEventListener('click',function(e){
     var s=e.target.closest('.sw');
+    if(s&&s.dataset.rim){ kpSetRim(s.dataset.n); return; }
     if(s){ state.previewMode='phone'; state.colorName=s.dataset.n; state.colorHex=s.dataset.h; state.reserved=false;
-      ['colorName','colorName2','colorName3','colorName4'].forEach(function(id){ var el=$(id); if(el) el.textContent=state.colorName; });
+      kpFinishLabels();
       $('miniPhone').style.background=state.colorHex;
       if (KITS[state.model]) loadKit(state.model);
       renderSwatches(); updateSummary(); }
@@ -1343,7 +2093,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   /* print quality light: the photo's real pixels per inch at the size it will print, after cropping */
   function kpEffectiveDpi(){
-    if(state.layout || !state.photoImg || state.photoImg.__kpIsThumb || !TPL || !FIT || !window.KPPrintGeometry) return null;
+    if(state.layout){ var low=kpCollageDpi(); return low?low.dpi:null; }
+    if(!state.photoImg || state.photoImg.__kpIsThumb || !TPL || !FIT || !window.KPPrintGeometry) return null;
     var src=state.photoImg;
     if(state.isLibraryDesign){
       var profile=KPDesignColorways.profile(src);
@@ -1356,29 +2107,66 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var photoPxPerStage = 1/(cs*(state.scale||1));       /* source photo pixels per stage pixel */
     return Math.round(300 * photoPxPerStage / printPxPerStage);
   }
+  /* collage: each spot is cover-drawn (coverDraw) in the same art space as photoBox, so the
+     single-photo formula applies per spot; the weakest filled spot sets the quality */
+  function kpCollageDpi(){
+    var t=curTpl(); if(!t || !TPL || !FIT || !window.KPPrintGeometry) return null;
+    var y=KPPrintGeometry.metrics(TPL,FIT).y, low=null;
+    slotRects().forEach(function(r,i){
+      var ph=state.photos[i]; if(!ph) return;
+      var iw=ph.naturalWidth||ph.width, ih=ph.naturalHeight||ph.height; if(!iw||!ih) return;
+      var k=Math.max(r.w/iw, r.h/ih), dpi=Math.round(300/(k*y));
+      if(!low||dpi<low.dpi) low={dpi:dpi,slot:i};
+    });
+    return low;
+  }
+  var PQ_COLORS={green:'#196c34',yellow:'#8a5a00',red:'#B81F24'};
+  var PQ_WORDS={green:'Looks sharp',yellow:'May look soft',red:'Too low for this size'};
+  function setPrintBadge(q,dpi){
+    var b=$('printBadge'); if(!b) return;
+    var key=q?q+'|'+(staffModeOn?dpi:''):'';
+    if(b.__kpKey===key) return;
+    b.__kpKey=key;
+    if(!q){ b.hidden=true; b.replaceChildren(); return; }
+    b.className='print-badge pb-'+q;
+    var icon=document.createElement('span'); icon.className='pb-icon'; icon.setAttribute('aria-hidden','true');
+    icon.innerHTML=q==='green'?'<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.3l2.3 2.3 4.7-5"></path></svg>':'<svg width="12" height="12" viewBox="0 0 12 12" fill="#fff"><rect x="5" y="2" width="2" height="5.2" rx="1"></rect><circle cx="6" cy="9.4" r="1.15"></circle></svg>';
+    var label=document.createElement('span'); label.textContent='Print quality: '+PQ_WORDS[q];
+    b.replaceChildren(icon,label);
+    if(staffModeOn){ var ppi=document.createElement('span'); ppi.className='pb-ppi'; ppi.textContent='· '+dpi+' PPI'; b.append(ppi); }
+    b.hidden=false;
+  }
   function updateDpi(){
     var el=$('dpiLabel'); if(!el) return;
-    el.textContent=''; state.quality=null;
-    var dpi=kpEffectiveDpi(); if(dpi==null) return;
+    el.textContent=''; state.quality=null; kpWeakSlot=-1;
+    var low=state.layout?kpCollageDpi():null;
+    var dpi=state.layout?(low?low.dpi:null):kpEffectiveDpi();
+    if(dpi==null){ setPrintBadge(null); return; }
     state.quality = dpi>=280 ? 'green' : (dpi>=200 ? 'yellow' : 'red');
+    /* the softest spot is outlined on the case in the Design step and marked on its spot button */
+    if(state.layout && low && state.quality!=='green') kpWeakSlot=low.slot;
     if(state.isLibraryDesign){
+      setPrintBadge(null);
       el.textContent=dpi+' PPI at this size'+(dpi<300?' · Check fine detail in the enlarged preview.':'');
       el.style.color=dpi<300?'#794612':'#216b46';
       return;
     }
-    if(state.quality==='green'){ el.textContent='Looks great. This will print sharp.'; el.style.color='#1E8E3E'; }
-    else if(state.quality==='yellow'){ el.textContent='Acceptable. This will print, but fine details may soften. Zooming out or a larger photo will look better.'; el.style.color='#C77700'; }
-    else { el.textContent='Too low for a sharp print at this size. Zoom out, or use the original photo from your camera roll instead of a screenshot or saved image.'; el.style.color='#DC282E'; }
+    /* spots carry no numbers on the case, so the note points at the outline (Design step) instead of a number */
+    if(state.layout && state.quality!=='green') el.textContent=!window.KP_EDITOR?'Photo '+(low.slot+1)+' (outlined) is the softest. A larger original will print sharper.':(window.KPEditor&&window.KPEditor.step!=='edit'?'One photo may look soft. A larger original will print sharper.':'The outlined photo is the softest. A larger original will print sharper.');
+    else if(window.KP_EDITOR) el.textContent=state.quality==='green'?'':(state.quality==='yellow'?'Fine details may soften. Zoom out or use a larger photo for a sharper print.':'Zoom out, or use the original photo from your camera roll instead of a screenshot or saved image.');
+    else if(state.quality==='green') el.textContent='Looks great. This will print sharp.';
+    else if(state.quality==='yellow') el.textContent='Acceptable. This will print, but fine details may soften. Zooming out or a larger photo will look better.';
+    else el.textContent='Too low for a sharp print at this size. Zoom out, or use the original photo from your camera roll instead of a screenshot or saved image.';
+    el.style.color=PQ_COLORS[state.quality];
+    setPrintBadge(skyStudio?null:state.quality,dpi);
   }
   $('brandSel').addEventListener('change',function(){
     state.brand=this.value; state.model=modelsByBrand[state.brand][0]; state.reserved=false;
-    var pal=paletteFor(); state.colorName=pal[0].n; state.colorHex=pal[0].h;
-    ['colorName','colorName2','colorName3','colorName4'].forEach(function(id){ var el=$(id); if(el) el.textContent=state.colorName; });
-    $('miniPhone').style.background=state.colorHex;
     var nk=KITS[state.model];
-    if(nk&&nk.toughOnly) state.caseType='Tough Magnetic';
-    else if(state.caseType==='Tough Magnetic') state.caseType='MagSafe Clear';
-    else if(state.caseType==='Slim Hybrid MagSafe' && !(nk&&nk.hybrid)) state.caseType='MagSafe Clear';
+    kpNormalizeCaseType();
+    var pal=nk?nk.colors:paletteFor(); state.colorName=pal[0].n; state.colorHex=pal[0].h;
+    kpFinishLabels();
+    $('miniPhone').style.background=state.colorHex;
     if (nk) loadKit(state.model);
     fillModels(); renderSwatches(); updateFitNote(); updateDpi(); updateStage(); updateSummary();
   });
@@ -1400,9 +2188,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   $('modelSel').addEventListener('change',function(){
     state.model=this.value; state.reserved=false;if(state.handoffErrorType==='model'){state.handoffError=null;state.handoffErrorType=null;}
     var nk=KITS[state.model];
-    if(nk&&nk.toughOnly) state.caseType='Tough Magnetic';
-    else if(state.caseType==='Tough Magnetic') state.caseType='MagSafe Clear';
-    else if(state.caseType==='Slim Hybrid MagSafe' && !(nk&&nk.hybrid)) state.caseType='MagSafe Clear';
+    kpNormalizeCaseType();
     if (nk) loadKit(state.model);
     renderSwatches(); updateFitNote(); updateDpi(); updateStage(); updateSummary();
   });
@@ -1444,16 +2230,17 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* ── addons / promo / totals ── */
   var _pr=$('promoReveal');
   if(_pr) _pr.addEventListener('click',function(e){ e.preventDefault(); _pr.style.display='none'; var r=$('promoRow'); r.style.display='flex'; $('promoInput').focus(); });
-  // Reuse the fitted ink and device photos for the two actual case options.
+  // Case cards in the classic rail: the chosen case shows the live preview, the other one its plain case photo
+  // (the live design is clipped to the chosen case's own mask, so it would not fit the other case).
   const stylePhotos = new Map();
   function updateStylePreviews(){
     const kit=KITS[state.model];
-    if(!kit?.hybrid || !$('ctRow').getClientRects().length)return;
+    if(!kit?.rated || !$('ctRow').getClientRects().length)return;
     const b=KPCaseShell.box(state.model);
     if(!b)return;
-    for(const [id,style,colors] of [
-      ['ctThumbClear','MagSafe Clear',kit.colors],
-      ['ctThumbHyb','Slim Hybrid MagSafe',kit.hybrid.colors]
+    for(const [id,style,colors,pick] of [
+      ['ctThumbClear',CASE_CLEAR,kit.colors,state.colorName],
+      ['ctThumbRated',CASE_RATED,kit.rated.colors,state.rimColor]
     ]){
       const cv=$(id), c=cv.getContext('2d');
       c.clearRect(0,0,cv.width,cv.height);
@@ -1465,7 +2252,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       c.translate(-(b[0]+b[2])/2,-(b[1]+b[3])/2);
       if(style===state.caseType)c.drawImage(canvas,0,0,DIM.w,DIM.h);
       else {
-        const color=colors.find(item=>item.n===state.colorName)||colors[0];
+        const color=colors.find(item=>item.n===pick)||colors[0];
         let photo=stylePhotos.get(color.f);
         if(!photo){
           photo=new Image();stylePhotos.set(color.f,photo);
@@ -1473,7 +2260,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         }
         if(photo.complete&&photo.naturalWidth){
           c.drawImage(photo,0,0,DIM.w,DIM.h);
-          if(_designLayer&&(state.photoImg||state.layout||state.text))c.drawImage(_designLayer,0,0,DIM.w,DIM.h);
           KPCaseShell.draw(c,state.model,DIM.w,DIM.h,style);
         }
       }
@@ -1507,7 +2293,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var file=state.photoImg&&state.photoImg.__kpDesignFile;
     if(!state.isLibraryDesign||!file||state.libraryLoading||state.photoImg.__kpIsThumb||new URLSearchParams(location.search).get('staff')==='1')return;
     var url=new URL(location.href);
-    var options={design:file,model:state.model.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'),finish:state.colorName,colorway:state.variant,view:state.previewMode,glass:state.addons.screen?'1':null,lens:null,extras:state.accessories.join(',')||null,charger:state.chargerHelp?'1':null,store:state.store,style:state.caseType==='Slim Hybrid MagSafe'?'hybrid':null};
+    var options={design:file,model:state.model.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'),finish:state.colorName,colorway:state.variant,view:state.previewMode,glass:state.addons.screen?'1':null,lens:null,extras:state.accessories.join(',')||null,charger:state.chargerHelp?'1':null,store:state.store,
+      /* the case and its rim (read back at startup); a legacy style=hybrid link is dropped, it opens the clear case */
+      'case':kpRatedKit()?'rated':null,rim:kpRatedKit()?kpRim().n:null,style:null};
     Object.entries(options).forEach(function(pair){if(pair[1])url.searchParams.set(pair[0],pair[1]);else url.searchParams.delete(pair[0]);});
     if(url.href!==location.href)history.replaceState(history.state,'',url);
   }
@@ -1518,16 +2306,24 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(accessoryPicker){accessoryPicker.setModel(state.model);accessoryPicker.setStore(state.store);}
     $('barStore').textContent=state.store?state.store.replace(/, (PA|DE)$/,''):'Choose a store';
     var tkK=KITS[state.model], tOnly=!!(tkK&&tkK.toughOnly);
-    /* Only mounted clear cases are offered. Legacy type data is normalized below. */
-    if(tOnly) state.caseType='Tough Magnetic';
-    else if(state.caseType==='Slim Hybrid MagSafe' && !(tkK&&tkK.hybrid)) state.caseType='MagSafe Clear';
-    else if(state.caseType==='Tough Magnetic') state.caseType='MagSafe Clear';
+    /* MagSafe Clear on every phone, the Rated Case where a Rated kit exists; legacy type data is normalized here too. */
+    kpNormalizeCaseType();
     document.querySelectorAll('.ctCard').forEach(button=>button.setAttribute('aria-pressed',String(state.caseType===button.dataset.ct)));
-    var rowEl=$('ctRow'); if(rowEl) rowEl.style.display=(tkK&&tkK.hybrid&&!tOnly)?'grid':'none';
+    var rowEl=$('ctRow'); if(rowEl) rowEl.style.display=(tkK&&tkK.rated&&!tOnly)?'grid':'none';
+    var glassPrice=window.KP_CONFIG?KP_CONFIG.bundledGlass:19.99;
+    if($('ctPriceClear')){ $('ctPriceClear').textContent='$'+BASE.toFixed(2); $('ctPriceRated').textContent='$'+RATED_PRICE.toFixed(2)+' \u00b7 20 ft drop protection'; }
+    if($('bundleTotal')){ $('bundleGlass').textContent='$'+glassPrice.toFixed(2); $('bundleTotal').textContent='$'+(Math.round((basePrice()+glassPrice)*100)/100).toFixed(2); }
     var ps=$('prodSub'); if(ps) ps.textContent = tOnly ? 'Custom Photo Case · Tough Magnetic · Qi2 Magnet Compatible' : 'Custom Photo Case · MagSafe Compatible';
     var cnEl=$('caseNature'); if(cnEl){
-      if(tOnly && !cnEl.__kpTough){ cnEl.__kpTough=true; cnEl.innerHTML='Tough Magnetic — solid protective back with built-in magnets<span id="colorName3" style="display:none"></span>'; }
-      else if(!tOnly && cnEl.__kpTough){ cnEl.__kpTough=false; cnEl.innerHTML='clear, so the <span id="colorName3">'+state.colorName+'</span> shows through'; } }
+      var nature=tOnly?'tough':kpRatedKit()?'rated':'clear';
+      if(cnEl.__kpNature!==(nature==='rated'?'rated:'+kpRim().n:nature)){
+        cnEl.__kpNature=nature==='rated'?'rated:'+kpRim().n:nature;
+        if(nature==='tough') cnEl.innerHTML='Tough Magnetic — solid protective back with built-in magnets<span id="colorName3" style="display:none"></span>';
+        else if(nature==='rated'){ cnEl.textContent='Rated Case, printed white back with a '+kpRim().n+' rim'; cnEl.insertAdjacentHTML('beforeend','<span id="colorName3" style="display:none"></span>'); }
+        else cnEl.innerHTML='clear, so the <span id="colorName3"></span> shows through';
+        kpFinishLabels();
+        var cnNote=$('caseNatureNote'); if(cnNote) cnNote.textContent=nature==='rated'?'Rated Case preview \u00b7 Colors are approximate':'Clear case on your phone \u00b7 Device colors are approximate';
+      } }
     var accessoryLoadFailed=KPAccessories.missing&&new URLSearchParams(location.search).has('extras');
     $('cartBtn').disabled=accessoryLoadFailed;$('reserveBtn').disabled=accessoryLoadFailed;
     if(accessoryLoadFailed)$('accessoryPicker').textContent='Your saved accessories could not load. Refresh before reviewing this setup so none are left out.';
@@ -1541,7 +2337,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var place=$('kpPlace');if(place&&!place.disabled)place.textContent=KP_ORDERS?'Place order — pay $'+total.toFixed(2)+' at pickup':'Show this design at the counter';
     $('totalTop').textContent='$'+total.toFixed(2);
     $('totalBar').textContent=total.toFixed(2);
-    $('lineDevice').textContent=state.model+' · '+state.caseType;
+    $('lineDevice').textContent=state.model+' · '+kpCaseLabel();
     var ln2=$('linePickup'); if(!ln2){ ln2=document.createElement('div'); ln2.id='linePickup'; ln2.style.cssText='font-size:12px;font-weight:600;color:#6C6C72;margin-bottom:6px'; $('lineDevice').parentElement.insertAdjacentElement('afterend',ln2); }
     ln2.textContent='Pickup: '+state.store+(state.store==='Newark, DE'?' · No sales tax':' · Price before applicable tax');
     var names=addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return a.name.split(' ')[0]==='Tempered'?'Screen protector':'Lens protector';});
@@ -1589,10 +2385,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* Contact data is never carried between customers on this device. */
   try{localStorage.removeItem('kpCust');}catch(_){}
   var orderInFlight=false;
-  function orderSignature(){var s=state;return JSON.stringify([s.model,s.caseType,s.store,s.variant,s.text,s.textFont,s.textColor,s.textSize,s.textPos,s.textVertical,s.px,s.py,s.scale,s.rot,s.fitMode,s.filter,s.addons,s.promo,s.chargerHelp,s.accessories]);}
-  var counterCatalog, reviewVersion=0, reviewDownloadUrl, reviewSource, reviewCard;
+  function orderSignature(){var s=state;return JSON.stringify([s.model,s.caseType,s.rimColor,s.store,s.variant,s.text,s.textFont,s.textColor,s.textSize,s.textPos,s.textVertical,s.px,s.py,s.scale,s.rot,s.fitMode,s.filter,s.addons,s.promo,s.chargerHelp,s.accessories,s.layout,s.captions,(s.photos||[]).map(function(p){return p?p.__kpId||1:0;})]);}
+  var counterCatalog, reviewVersion=0, reviewDownloadUrl, reviewSource, reviewCard, reviewNotes=[];
   $('counterReview').addEventListener('close',function(){
     ++reviewVersion;reviewCard=null;
+    if(kpCleanStage){kpCleanStage=false;render();}
     $('saveCounterCard').disabled=true;
     $('saveCounterCard').textContent='Save counter card';
     $('reviewDetails').replaceChildren();$('reviewOverview').replaceChildren();
@@ -1616,19 +2413,33 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       return description;
     }
     details.replaceChildren();code.textContent='';reviewCard=null;$('saveCounterCard').disabled=true;$('saveCounterCard').textContent='Preparing card…';
-    renderNow();
+    kpCleanStage=!!state.layout;renderNow();
     reviewSource=document.createElement('canvas');reviewSource.width=canvas.width;reviewSource.height=canvas.height;
     reviewSource.getContext('2d').drawImage(canvas,0,0);
     var preview=$('reviewPreview'),px=preview.getContext('2d');
     px.clearRect(0,0,preview.width,preview.height);px.drawImage(canvas,0,0,preview.width,preview.height);
-    var title=detail('Design',file?file.replace(/^kp-|\.(jpg|png)$/g,'').replace(/-/g,' '):state.layout?'Photo collage':state.photoImg?(skyStudio?'Personalized night sky':drawingStudio?'Your child’s artwork':'Your photo'):'Text design');
+    var title=detail('Design',file?file.replace(/^kp-|\.(jpg|png)$/g,'').replace(/-/g,' '):state.layout?'Photo collage'+(curTpl()?' \u00b7 '+curTpl().n:''):state.photoImg?(skyStudio?'Personalized night sky':drawingStudio?'Your child’s artwork':'Your photo'):'Text design');
     if(file){
       var look=KPDesignColorways.choicesFor(state.photoImg).find(function(item){return item.id===variant;});
       if(look)detail('Background',look.name);
     }
-    detail('Phone',model+' · '+state.colorName);detail('Case',state.caseType);
-    if(state.text){
-      detail('Personalization',state.text);
+    var reviewTpl=state.layout?curTpl():null;
+    if(reviewTpl){
+      var reviewTotal=reviewTpl.slots.length;
+      detail('Layout',reviewTpl.n+' \u00b7 '+filledSlots(reviewTpl)+' of '+reviewTotal+(reviewTotal===1?' photo':' photos'));
+      tplTexts(reviewTpl).forEach(function(x){detail(x.label||x.key,kpCaptionHidden(x)?'Not shown on this phone':(captionValue(x)&&kpCaptionWaiting(x))?'Prints when photo '+(+x.slot+1)+' is added':(captionValue(x)||'Not added'));});
+    }
+    /* the Rated Case covers the phone, so its rim color is the finish that matters (pick codes do not encode the case) */
+    var reviewRim=kpRim(), partialNote=kpPartialIssue();
+    /* reviewNotes ride on the counter card under the code; the customer's overview shows only a real problem (empty
+       photo spots) in amber. The team instruction for the Rated blank is on the card and in the details (Case row). */
+    reviewNotes=[];
+    if(reviewRim)reviewNotes.push('Use a Rated Case blank in '+reviewRim.n+'.');
+    if(partialNote)reviewNotes.push(partialNote);
+    if(partialNote)detail('Photo spots',partialNote);
+    detail('Phone',reviewRim?model:model+' · '+state.colorName);detail('Case',kpCaseLabel());
+    if(kpNameText()){
+      detail('Personalization',kpNameText());
       detail('Name style',(FONTS[state.textFont] ? FONTS[state.textFont].n : 'Selected font')+' · '+state.textColor+' · '+(state.textVertical?'vertical':'horizontal'));
       detail('Personalization handoff',(file?'The pick code identifies the base design only. ':'')+'Show this preview so our team can match your name, size and placement before printing.');
     }
@@ -1650,11 +2461,13 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     overviewText('p',state.store,'review-store');
     overviewText('p',totalLabel+(newark?' · no sales tax':''),'review-total-label');
     overviewText('strong','$'+orderPricing().total.toFixed(2),'review-total');
-    overviewText('p',model+' · '+state.colorName,'review-phone');
-    if(state.text)overviewText('p','Name: '+state.text,'review-personalization');
+    overviewText('p',reviewRim?model+' · '+reviewRim.n+' rim':model+' · '+state.colorName,'review-phone');
+    if(partialNote)overviewText('p',partialNote,'review-note');
+    if(kpNameText())overviewText('p','Name: '+kpNameText(),'review-personalization');
+    if(reviewTpl){overviewText('p','Layout: '+reviewTpl.n+' \u00b7 '+filledSlots(reviewTpl)+' of '+reviewTpl.slots.length+(reviewTpl.slots.length===1?' photo':' photos'),'review-personalization');tplTexts(reviewTpl).forEach(function(x){var v=captionValue(x);if(v&&!kpCaptionHidden(x)&&!kpCaptionWaiting(x))overviewText('p',(x.label||x.key)+': '+v.replace(/\n/g,' / '),'review-personalization');});}
     var items=overviewText('ul','','review-items');
     function overviewItem(text){var li=document.createElement('li');li.textContent=text;items.append(li);}
-    overviewItem('Case · $'+basePrice().toFixed(2));
+    overviewItem((reviewRim?CASE_RATED:'Case')+' · $'+basePrice().toFixed(2));
     extras.forEach(function(a){overviewItem(a.name+' · $'+a.price.toFixed(2));});
     state.accessories.forEach(function(id){var a=KPAccessories.get(id);overviewItem(KPAccessories.label(a)+' · $'+KPAccessories.price(a,state.store).toFixed(2)+(KPAccessories.available(a,state.store)?'':' · confirm stock'));});
     if(state.chargerHelp)overviewItem('Charger help requested · price to confirm');
@@ -1663,7 +2476,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     $('reviewInstruction').textContent=new URLSearchParams(location.search).get('kiosk')==='1'?'Keep this screen open for our team. We confirm stock, fit and your design before you pay in store.':'Save this card or keep the screen open for our team. We confirm stock, fit and your design before you pay in store.';
     dialog.showModal();dialog.scrollTop=0;$('reviewHeading').tabIndex=-1;$('reviewHeading').focus({preventScroll:true});
     if(!file){
-      prepareCounterCard(version,skyStudio?'Bring your saved sky artwork and this preview to the counter.':drawingStudio?'Bring the original drawing photo with this preview.':state.photoImg||state.layout?'Bring the original photos on your phone with this preview.':'Show the team this text design.');
+      prepareCounterCard(version,skyStudio?'Bring your saved sky artwork and this preview to the counter.':drawingStudio?'Bring the original drawing photo with this preview.':state.layout?kpCollageInstruction(' with this preview.'):state.photoImg||state.layout?'Bring the original photos on your phone with this preview.':'Show the team this text design.');
       if (skyStudio && new URLSearchParams(location.search).get('kiosk')!=='1' && state.photoImg && typeof state.photoImg.toBlob === 'function') {
         code.textContent='Preparing your sky artwork…';
         state.photoImg.toBlob(function(blob) {
@@ -1682,7 +2495,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       }
       if(skyStudio&&new URLSearchParams(location.search).get('kiosk')==='1')code.textContent='Keep this screen open so our team can prepare your sky artwork.';
       if (drawingStudio) code.textContent='Bring the original drawing photo with this preview so the team can prepare your case.';
-      else if (!skyStudio && (state.photoImg || state.layout)) code.textContent='Bring the original photos on your phone and show this preview at the counter.';
+      else if (!skyStudio && state.layout) code.textContent=kpCollageInstruction(' and show this preview at the counter.');
+      else if (!skyStudio && state.photoImg) code.textContent='Bring the original photos on your phone and show this preview at the counter.';
       return;
     }
     code.textContent='Looking up the design code…';
@@ -1697,10 +2511,16 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       prepareCounterCard(version,code.textContent);
     }).catch(function(){if(version===reviewVersion&&dialog.open){code.textContent='Design code unavailable. Show the team this preview.';prepareCounterCard(version,'Pick code unavailable — ask the team to match this preview.');}});
   }
+  function kpCollageInstruction(ending){
+    var t=curTpl(), n=filledSlots(t), name=t?t.n:'collage';
+    return (n===1?'Bring the original photo for your '+name+' layout on your phone':'Bring the '+n+' original photos for your '+name+' layout on your phone')+ending;
+  }
   async function prepareCounterCard(version,instruction){
     if(new URLSearchParams(location.search).get('kiosk')==='1')return;
     var button=$('saveCounterCard'),dialog=$('counterReview');
     if(version!==reviewVersion||!dialog.open)return;
+    /* the Rated Case blank and any empty photo spots ride on the card under the code */
+    if(reviewNotes.length)instruction=[instruction].concat(reviewNotes).join('\n');
     try{
       var rows=Array.from($('reviewDetails').querySelectorAll('dt')).map(function(term){return [term.textContent,term.nextElementSibling.textContent];});
       var blob=await KPCounterCard.create({preview:reviewSource,code:instruction,rows:rows});
@@ -1760,10 +2580,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       var pv=document.createElement('canvas'); var pk=Math.min(1, 700/Math.max(c.width,c.height));
       pv.width=Math.round(c.width*pk); pv.height=Math.round(c.height*pk);
       var px=pv.getContext('2d'); px.fillStyle='#FFFFFF'; px.fillRect(0,0,pv.width,pv.height); px.drawImage(c,0,0,pv.width,pv.height);
-      var payload={ action:'order', model:state.model, caseType:state.caseType, store:state.store, preset:kpPreset(),
+      var payload={ action:'order', model:state.model, caseType:state.caseType, rim:kpRim()?kpRim().n:null, store:state.store, preset:kpPreset(),
         name:name, phone:phone, ownsPhoto:true, optIn:!!$('kpOpt').checked, source:(document.body.classList.contains('kp-kiosk')?'counter':'web'),
         price:orderPricing().total, addons:addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return {name:a.name,price:a.price};}),
-        notes:['Total at pickup: $'+orderPricing().total.toFixed(2),addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return a.name+' $'+a.price.toFixed(2);}).join(', '),state.photoImg&&state.variant&&state.variant!=='original'?('Design colorway already applied: '+(KPDesignColorways.choicesFor(state.photoImg).find(function(c){return c.id===state.variant;})||{}).name+' ('+state.variant+')'):'',state.text?('Name print: '+state.text+(FONTS[state.textFont]?' ('+FONTS[state.textFont].n+')':'')):'', state.isLibraryDesign&&state.photoUrl?('Library: '+state.photoUrl.split('/').pop()):'', state.filter&&state.filter!=='none'?('Filter: '+state.filter):'', state.quality?('Quality: '+state.quality):''].filter(Boolean).join(' · '),
+        notes:['Total at pickup: $'+orderPricing().total.toFixed(2),addonDefs.filter(function(a){return state.addons[a.key];}).map(function(a){return a.name+' $'+a.price.toFixed(2);}).join(', '),state.photoImg&&state.variant&&state.variant!=='original'?('Design colorway already applied: '+(KPDesignColorways.choicesFor(state.photoImg).find(function(c){return c.id===state.variant;})||{}).name+' ('+state.variant+')'):'',kpNameText()?('Name print: '+kpNameText()+(FONTS[state.textFont]?' ('+FONTS[state.textFont].n+')':'')):'', state.layout&&curTpl()?('Layout: '+curTpl().n+' ('+filledSlots()+' of '+curTpl().slots.length+' photos)'+tplTexts(curTpl()).map(function(x){return ' · '+(x.label||x.key)+': '+(kpCaptionHidden(x)?'not shown on this phone':(captionValue(x)&&kpCaptionWaiting(x))?'waits for photo '+(+x.slot+1):(captionValue(x).replace(/\n/g,' / ')||'not added'));}).join('')):'', state.isLibraryDesign&&state.photoUrl?('Library: '+state.photoUrl.split('/').pop()):'', state.filter&&state.filter!=='none'?('Filter: '+state.filter):'', state.quality?('Quality: '+state.quality):''].filter(Boolean).join(' · '),
         printPng:null, previewJpg:pv.toDataURL('image/jpeg',0.82) };
       if(!KP_ORDERS){
         orderInFlight=false;btn.disabled=false;btn.textContent='Show this design at the counter';
@@ -1792,18 +2612,19 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     $('cartBtn').textContent=unchanged?'Order placed ✓':'Order this design';$('reserveBtn').style.display=unchanged?'none':'';
     updateSummary();box.style.display='block';
   }
-  $('reserveBtn').addEventListener('click',function(){ if(!hasArt() && !state.text){ kpToast('Add a photo or pick a design first.'); return; } kpOrderPanel(); });
-  $('cartBtn').addEventListener('click',function(){ if(!hasArt() && !state.text){ kpToast('Add a photo or pick a design first.'); return; } kpOrderPanel(); });
+  $('reserveBtn').addEventListener('click',function(){ if(!hasArt() && !kpNameText()){ kpToast('Add a photo or pick a design first.'); return; } kpOrderPanel(); });
+  $('cartBtn').addEventListener('click',function(){ if(!hasArt() && !kpNameText()){ kpToast('Add a photo or pick a design first.'); return; } kpOrderPanel(); });
 
   /* ── print export (staff link) ── */
-  $('exportLink').addEventListener('click',function(e){ e.preventDefault(); kpBuildPrint(kpDownloadCanvas); });
+  $('exportLink').addEventListener('click',function(e){ e.preventDefault(); kpBuildPrint(kpDownloadCanvas,{staff:true}); });
   /* builds the print file; done(canvas, filename). Returns false (with a toast) when it cannot. */
   function kpPrintIssue(){
     if(skyStudio && skyDirty)return 'Update your sky map to use the latest details.';
     if(!window.KPPrintGeometry||!window.KPPrintPng)return 'Print tools did not load. Reload before printing.';
     if(!KITS[state.model])return 'Print template is not available for this model.';
     if(state.handoffError)return state.handoffError;
-    if(!hasArt()&&!state.text)return 'Add a photo, choose a design or enter a name.';
+    if(state.layout&&!(state.photos||[]).some(Boolean))return 'Add at least one photo to your layout.';
+    if(!hasArt()&&!kpNameText())return 'Add a photo, choose a design or enter a name.';
     if(state.libraryLoading)return 'Full-quality artwork is still loading.';
     if(state.colorwayUnavailable)return 'Choose an available colorway before printing.';
     if(state.fullFailed)return 'Full-quality design could not load. Reload to try again.';
@@ -1811,10 +2632,27 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(!TPL)return 'Print template is not available for this model.';
     if(!(viewSrc&&viewImg&&viewReady&&viewMaskCanvas))return viewFailed?'Case mask failed to load. Reload before printing.':'Case mask is still loading.';
     if(!maskBox)return 'Case mask is empty. Reload or choose another phone.';
-    if(state.layout){var t=curTpl(),im=t&&tplImage(t);if(!im||!im.complete||!im.naturalWidth)return 'Collage artwork is not ready.';}
+    if(state.layout){var t=curTpl(),im=t&&tplImage(t);if(!im||!im.complete||!im.naturalWidth)return 'Collage artwork is not ready.';if(Object.keys(kpSlotPending).length)return 'Photos are still loading.';var fontIssue=kpCaptionFontIssue();if(fontIssue)return fontIssue;}
     return '';
   }
-  function kpBuildPrint(done){
+  /* Partial collages (Corey, 2026-11): a customer may preview and review a layout with empty photo spots, but no print
+     file is handed to staff until every spot has a photo. Empty spots would print the template's own fill. */
+  function kpPartialIssue(){
+    var t=state.layout?curTpl():null; if(!t) return '';
+    var total=t.slots.length, empty=total-filledSlots(t);
+    if(empty<=0||empty>=total) return '';
+    return empty+' of '+total+' photo spots '+(empty===1?'is':'are')+' empty. Add photos before printing, or choose a layout with fewer photos.';
+  }
+  /* Staff print downloads (staff=1 workspace, the staff export link): everything kpPrintIssue checks, plus the two
+     staff only gates. The customer flow (editor Next, Preview, counter review) only ever uses kpPrintIssue. */
+  function kpStaffPrintIssue(){
+    var issue=kpPrintIssue(); if(issue) return issue;
+    if(state.caseType===CASE_RATED&&!(window.KP_CONFIG&&KP_CONFIG.RATED_PRINT_READY===true)) return 'Rated Case printing is waiting on a test print with a real blank. Print this design on a clear case or check with Corey.';
+    return kpPartialIssue();
+  }
+  /* opts.staff: a staff download, gated by kpStaffPrintIssue. Without it this only renders (QA hooks and checks). */
+  function kpBuildPrint(done,opts){
+    if(opts&&opts.staff){ var staffIssue=kpStaffPrintIssue(); if(staffIssue){ kpToast(staffIssue); return false; } }
     try{return kpBuildPrintUnsafe(done);}catch(error){kpToast('Could not prepare this print. Reload the artwork and try again.');return false;}
   }
   function kpBuildPrintUnsafe(done){
@@ -2023,15 +2861,26 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     kpLoadLibraryDesign(file, 'Library design loaded — pre-fitted to your case. Add a name below to make it yours');
   })();
 
+  /* case choice: the classic rail cards (.ctCard) and the editor's control under the case (KPStudioCore.setCase)
+     both land here; the case type never enters undo history, like the model */
+  function kpSetCase(type){
+    var k=KITS[state.model];
+    if(type!==CASE_CLEAR&&type!==CASE_RATED) return;
+    if(type===CASE_CLEAR && k && k.toughOnly) return;
+    if(type===CASE_RATED && !(k && k.rated)){ kpToast('The Rated Case is not available for '+state.model.replace(/^Samsung /,'')+' yet. Showing the clear case.',6000); return; }
+    if(state.caseType===type) return;
+    state.caseType=type; state.reserved=false;
+    if (k) loadKit(state.model);
+    renderSwatches(); updateDpi(); updateStage(); updateSummary();
+  }
+  function kpSetRim(name){
+    var rated=kpRatedKit(); if(!rated||!rated.colors.some(function(c){return c.n===name;})) return;
+    state.rimColor=name; state.reserved=false;
+    loadKit(state.model); renderSwatches(); updateSummary();
+  }
   document.addEventListener('click',function(e){
     var cc=e.target.closest('.ctCard');
-    if(cc){
-      if(cc.dataset.ct==='MagSafe Clear' && KITS[state.model] && KITS[state.model].toughOnly) return;
-      if(cc.dataset.ct==='Slim Hybrid MagSafe' && !(KITS[state.model] && KITS[state.model].hybrid)) return;
-      state.caseType=cc.dataset.ct; state.reserved=false;
-      if (KITS[state.model]) loadKit(state.model);
-      renderSwatches(); updateSummary();
-    }
+    if(cc) kpSetCase(cc.dataset.ct);
   });
 
   var VIEW={z:1,x:0,y:0};
@@ -2115,8 +2964,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         if(su.m && KITS[su.m]!==undefined){ state.model=su.m; var ms=$('modelSel'); }
         if(su.ct) state.caseType=su.ct;
         if(su.cal) Object.assign(CAL, su.cal);
-        state.brand='Apple'; fillModels();
-        var msel=$('modelSel'); if(msel) msel.value=su.m;
+        /* the brand whose list holds the shared phone, so a Galaxy link fills the Samsung model list */
+        state.brand=Object.keys(modelsByBrand).find(function(b){ return modelsByBrand[b].indexOf(state.model)>-1; })||'Apple';
+        var bsel=$('brandSel'); if(bsel) bsel.value=state.brand;
+        fillModels();
+        var msel=$('modelSel'); if(msel) msel.value=state.model;
         loadKit(state.model);
         updateFitNote(); updateStage(); updateSummary();
         var applyRest=function(){
@@ -2260,12 +3112,19 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   loadKit(state.model);
   $('brandSel').value=state.brand;
   fillModels(); renderSwatches(); renderAddons(); updateFitNote(); updateStage(); updateSummary();
+  function kpLayoutInfo(){
+    var t=state.layout?curTpl():null; if(!t) return null;
+    return {id:t.id,name:t.n,words:tplTexts(t).length>0,filled:filledSlots(t),total:t.slots.length,
+      captions:tplTexts(t).map(function(x){return {key:x.key,label:x.label||x.key,text:captionValue(x),required:!!x.required,shown:!kpCaptionHidden(x),waiting:kpCaptionWaiting(x)&&!!captionValue(x)?(+x.slot+1):0};}),
+      spare:kpSpare.length};
+  }
   /* staff and QA hook (Fit Lab, print checks): read-only access to the live state */
-  window.__kp={orderPricing:orderPricing, get state(){ return state; }, printSpec:function(){return TPL?{w:(TPL.pxW||Math.round(TPL.w*300/72))+36,h:(TPL.pxH||Math.round(TPL.h*300/72))+36}:null;}, printIssue:kpPrintIssue, dpi:kpEffectiveDpi, preset:kpPreset, buildPrint:kpBuildPrint, render:render };
+  window.__kp={orderPricing:orderPricing, get state(){ return state; }, printSpec:function(){return TPL?{w:(TPL.pxW||Math.round(TPL.w*300/72))+36,h:(TPL.pxH||Math.round(TPL.h*300/72))+36}:null;}, printIssue:kpPrintIssue, staffPrintIssue:kpStaffPrintIssue, dpi:kpEffectiveDpi, preset:kpPreset, buildPrint:kpBuildPrint, render:render, layout:kpLayoutInfo, designEntry:kpDesignEntry, caseLabel:kpCaseLabel, resetCase:function(){ kpSetCase(CASE_CLEAR); } };
   // Presentation adapter: existing compositor/print engine remains the single source.
   var editorKeys=['variant','text','textFont','textColor','textSize','textPos','textVertical','px','py','scale','rot','fitMode'];
   var editorSources=new WeakMap(),editorSourceID=0,editorPurged=false;
-  function editorSnapshot(){return Object.fromEntries(editorKeys.map(k=>[k,state[k]]));}
+  /* layout words are primitive strings, copied so a snapshot never shares the live object; photos never enter history */
+  function editorSnapshot(){var snap=Object.fromEntries(editorKeys.map(k=>[k,state[k]]));snap.captions=Object.assign({},state.layout?state.captions:{});return snap;}
   function editorSync(){
     $('nameInput').value=state.text;$('textSize').value=state.textSize;$('textPos').value=state.textPos;
     $('orientBtn').textContent=state.textVertical?'Horizontal':'Vertical';
@@ -2273,9 +3132,17 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   window.KPStudioCore={
     snapshot:editorSnapshot,
-    context:function(){var src=state.photoImg;if(src&&!editorSources.has(src))editorSources.set(src,++editorSourceID);return state.model+':'+(src?editorSources.get(src):0);},
-    info:function(){return {model:state.model,caseType:state.caseType,finish:state.colorName,store:state.store,sky:skyStudio,drawing:drawingStudio,hasPhoto:!!state.photoImg,loading:!!state.libraryLoading,library:state.isLibraryDesign,accessoryError:!!(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')),issue:(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')?'Saved accessories could not load. Reload before reviewing this setup.':null)||(caseFailed||lightFailed?'The case photo could not load. Reload or choose another phone.':null)||kpPrintIssue()||(viewFailed?'The case mask could not load. Reload or ask our team for help.':!caseReady||!lightReady?'Your case preview is loading. Please wait.':null),total:orderPricing().total};},
-    restore:function(s){editorKeys.forEach(k=>{if(Object.hasOwn(s,k))state[k]=s[k];});state.reserved=false;editorSync();},
+    /* a layout change resets history like a new photo, so undo can never cross into another layout's words */
+    context:function(){var src=state.photoImg;if(src&&!editorSources.has(src))editorSources.set(src,++editorSourceID);return state.model+':'+(src?editorSources.get(src):0)+(state.layout?':'+state.layout:'');},
+    info:function(){var kk=KITS[state.model],rim=kpRim();return {model:state.model,caseType:state.caseType,finish:state.colorName,
+      /* case choice under the case: offered when this phone has a Rated kit; rims are that kit's rim colors */
+      ratedAvailable:!!(kk&&kk.rated&&!kk.toughOnly),previewReady:!!(caseReady&&lightReady&&(!viewImg||viewReady)),rim:rim?rim.n:null,rims:kk&&kk.rated?kk.rated.colors.map(function(c){return {n:c.n,h:c.h};}):[],caseLabel:kpCaseLabel(),prices:{clear:BASE,rated:RATED_PRICE},partial:kpPartialIssue(),store:state.store,sky:skyStudio,drawing:drawingStudio,hasPhoto:!!state.photoImg,layout:kpLayoutInfo(),layouts:photoPathActive(),layoutsReady:KP_TPLS.length>0,layoutsFailed:kpTplFailed&&!KP_TPLS.length,spare:kpSpare.length,loading:!!state.libraryLoading,library:state.isLibraryDesign,accessoryError:!!(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')),issue:(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')?'Saved accessories could not load. Reload before reviewing this setup.':null)||(caseFailed||lightFailed?'The case photo could not load. Reload or choose another phone.':null)||kpPrintIssue()||(viewFailed?'The case mask could not load. Reload or ask our team for help.':!caseReady||!lightReady?'Your case preview is loading. Please wait.':null),total:orderPricing().total};},
+    restore:function(s){editorKeys.forEach(k=>{if(Object.hasOwn(s,k))state[k]=s[k];});if(state.layout&&s.captions)state.captions=Object.assign({},s.captions);state.reserved=false;editorSync();},
+    /* step changes: the soft photo note and its outline follow the step */
+    redraw:function(){updateDpi();render();},
+    loadLayouts:kpRetryTemplates,
+    /* Next or Preview tapped while something is blocking: try the lettering and the layouts again now */
+    retry:function(){var t=curTpl();if(t)ensureCaptionFonts(t,true);kpRetryTemplates();},
     adjust:function(key,value){
       if(!state.photoImg||skyStudio)return;
       if(key==='center'){state.px=state.py=state.rot=0;state.scale=1;}
@@ -2283,21 +3150,29 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       state.reserved=false;render();
     },
     review:showCounterReview,
+    setCase:kpSetCase,
+    setRim:kpSetRim,
     purge:function(){
       editorPurged=true;clearTimeout(window.__kpDpiTick);
       if(skyStudio)$('personalStudio').dispatchEvent(new Event('skyreset'));
-      kpLibraryRequest++;kpUploadRequest++;releaseWorkingPhoto();state.photoImg=null;state.photoUrl=null;state.text='';state.photos=[];state.layout=null;
+      kpLibraryRequest++;kpUploadRequest++;releaseWorkingPhoto();state.photoImg=null;state.photoUrl=null;state.text='';
+      /* layouts: spot photos are detached canvases, so free them here; drop the layout, its words and pending spot loads */
+      kpLayoutGen++;kpSlotPending={};(state.photos||[]).forEach(releaseCanvas);state.photos=[];state.layout=null;state.captions={};state.slotTarget=null;state.designPath=null;kpCleanStage=false;
+      kpClearPool();
       state.accessories=[];state.addons={screen:false,lens:false};state.promo=null;state.chargerHelp=false;
+      /* the next customer starts on the clear case */
+      state.caseType=CASE_CLEAR;state.rimColor=null;
       document.querySelectorAll('dialog[open]').forEach(d=>d.close());
       document.querySelectorAll('input,textarea').forEach(el=>{el.value='';if(el.type==='checkbox')el.checked=false;});
       document.querySelectorAll('canvas').forEach(c=>{c.width=c.height=0;});
       $('reviewDetails').replaceChildren();$('reviewOverview').replaceChildren();$('reviewCode').textContent='';
+      setPrintBadge(null);$('dpiLabel').textContent='';$('captionList').replaceChildren();$('captionList').__kpTpl='';$('captionFields').hidden=true;renderLayoutChips();renderSlotButtons(null);
       editorSources=new WeakMap();document.dispatchEvent(new Event('kp:editor-purge'));
     }
   };
 })();
 </script>
-<script src="assets/design-editor.js?v=2"></script>
+<script src="assets/design-editor.js?v=rated-2"></script>
 <script>
   document.addEventListener('click',function(e){
     var t=e.target.closest ? e.target.closest('.kpAllTgl') : null;
@@ -2312,6 +3187,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var svg=t.querySelector('svg'); if(svg) svg.style.transform=open?'':'rotate(90deg)';
   });
 </script>
-<script src="assets/staff-print.js"></script>
+<script src="assets/staff-print.js?v=rated-2"></script>
 </body>
 </html>
