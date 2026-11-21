@@ -15,7 +15,7 @@
   ['iPhone cases','Pick your iPhone model','gallery.html?brand=Apple','assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--original.webp?v=clear-mounted-1'],
   ['Samsung cases','Pick your Galaxy model','gallery.html?brand=Samsung','assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--original.webp?v=clear-mounted-1'],
   ['All phone cases','Browse prints before picking a phone','gallery.html','assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--original.webp?v=clear-mounted-1'],
-  ['City Scenes','Find your city','gallery.html?cat=City%20Scenes','assets/case-only-previews/iphone-15-pro-max--city-night-philadelphia--original.webp?v=clear-mounted-1'],
+  ['City After Dark','Find your city · real photography','gallery.html?cat=City%20Scenes','assets/case-only-previews/iphone-15-pro-max--city-night-philadelphia--original.webp?v=clear-mounted-1'],
   ['Earth From Orbit','Deserts and river deltas photographed by satellite','gallery.html?cat=Earth%20From%20Orbit','assets/designs/thumbs/field-photo-yukon-delta-0.jpg'],
   ['Botanical Blueprints','Fine botanical detail and historical cyanotypes','gallery.html?cat=Botanical%20Blueprints','assets/new-prints/kp-blueprint-ginkgo.webp'],
   ['Space Photography','Real telescope and spacecraft observations','gallery.html?cat=Space%20Photography','assets/new-prints/kp-space-bubble.webp'],
