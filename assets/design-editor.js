@@ -5,6 +5,7 @@
   const sessionId=Date.now().toString(36)+Math.random().toString(36).slice(2);
   const kiosk=params.get('kiosk')==='1', mobile=matchMedia('(max-width:760px)');
   const fixedStore=kiosk&&window.KPAccessories?.stores.includes(params.get('store'));
+  function collectionReturn(){try{const u=new URL(params.get('back')||'',location.href),folder=new URL('.',location.href);if(u.origin!==folder.origin||!['gallery.html','parks-rugged.html','park-collages.html','new-prints.html'].some(name=>u.pathname===folder.pathname+name))return null;const safe=new URL(u.pathname,location.origin);if(u.pathname.endsWith('/gallery.html'))for(const key of ['cat','q','color','state','all','n'])if(u.searchParams.has(key))safe.searchParams.set(key,u.searchParams.get(key));if(/^#[a-z0-9-]+$/.test(u.hash))safe.hash=u.hash;return safe;}catch{return null;}}
   // Arm privacy protection before constructing any editor UI. Deadlines survive device sleep.
   let idleTimer,warningTimer,warning=null,expiresAt=0,exiting=false,leaving=false;
   function arm(){if(exiting||leaving)return;const duration=$('counterReview')?.open?300000:180000;clearTimeout(idleTimer);clearTimeout(warningTimer);expiresAt=Date.now()+duration;if(warning?.open)warning.close();warningTimer=setTimeout(()=>warning?.showModal(),duration-30000);idleTimer=setTimeout(checkExpiry,duration);}
@@ -162,7 +163,7 @@
     if(storeLabel)storeLabel.textContent='Store: '+(i.store||'Choose your store');
     $('studioPhone').textContent=i.model+' · '+(i.caseType==='MagSafe Clear'?'Clear case':i.caseType);$('studioTotal').textContent=i.accessoryError?'—':'$'+i.total.toFixed(2);
     $('studioStore').textContent=(i.store||'Choose your store')+(i.store==='Newark, DE'?' · No sales tax':' · Before tax');
-    const url=new URL(kiosk?'instore/':'gallery.html',location.href);if(kiosk){if(i.store)url.searchParams.set('store',i.store);}else url.searchParams.set('device',i.model.toLowerCase().replace(/^samsung /,'').replaceAll(' ','-'));$('studioBrowse').href=url.href;
+    const url=!kiosk&&collectionReturn()||new URL(kiosk?'instore/':'gallery.html',location.href);if(kiosk){if(i.store)url.searchParams.set('store',i.store);}else if(url.pathname.endsWith('/gallery.html'))url.searchParams.set('device',i.model.toLowerCase().replace(/^samsung /,'').replaceAll(' ','-'));$('studioBrowse').href=url.href;
     $('studioNext').textContent=step==='edit'?(i.drawingPending?'Review case setup →':'Preview design →'):step==='preview'?'Choose extras →':'Show at counter →';
     $('studioNext').disabled=!!i.issue;if($('studioStatus').textContent!==(i.issue||''))$('studioStatus').textContent=i.issue||'';
     noBackground.hidden=!$('photoLooksWrap').hidden;noBackground.textContent=i.hasPhoto?'This design uses its original background.':'Choose a design or photo to see its backgrounds.';

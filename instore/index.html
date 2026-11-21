@@ -227,7 +227,7 @@
           </div>
           <div class="codecard" id="codecard" aria-live="polite">
             <div class="counter-heading"><div><p class="codelabel" id="codelabel">YOUR PICK CODE</p><p class="code" id="code"></p></div><button class="case-zoom-button counter-thumb" type="button" data-image-zoom="pv" aria-label="Enlarge your counter case"><img id="counterPreview" alt="Your selected clear case"></button></div>
-            <p id="cname"></p>
+            <p id="cname"></p><p id="counterPreviewStatus" role="status"></p>
             <p id="cmodel"></p>
             <p id="counterCase"></p><p id="counterGlass" hidden></p>
             <div id="counterAccessories"></div><p id="chargerRequest" hidden></p>
@@ -365,18 +365,19 @@
     buildGrid();
     show(2);
   }
+  function collectionLabel(c){return c==='City Scenes'?'City After Dark':c;}
   function designsNow() {
     var list = data.designsFor(state.model).filter(function(d){return KPSeason.visible(d);});
     if(state.filter!=='all')list=list.filter(function(d){return d._col.code===state.filter;});
     var words=state.query.toLowerCase().trim().split(/\s+/).filter(Boolean);
-    return list.filter(function(d){var text=(cleanTitle(d.title)+' '+d._col.label).toLowerCase();return words.every(function(w){return text.indexOf(w)!==-1;});});
+    return list.filter(function(d){var text=(cleanTitle(d.title)+' '+d._col.label+' '+collectionLabel(d._col.label)).toLowerCase();return words.every(function(w){return text.indexOf(w)!==-1;});});
   }
   function buildChips() {
     var list = data.designsFor(state.model).filter(function(d){return KPSeason.visible(d);}), has = {};
     list.forEach(function (d) { has[d._col.code] = true; });
     var html = '<button class="chip" type="button" data-col="all" aria-pressed="true">All designs</button>';
     data.collections.forEach(function (c) {
-      if (has[c.code]) html += '<button class="chip" type="button" data-col="' + esc(c.code) + '" aria-pressed="false">' + esc(c.label) + '</button>';
+      if (has[c.code]) html += '<button class="chip" type="button" data-col="' + esc(c.code) + '" aria-pressed="false">' + esc(collectionLabel(c.label)) + '</button>';
     });
     $('chips').innerHTML = html;
     $('chips').scrollLeft = 0;
@@ -536,7 +537,7 @@
     $('setupOptions').hidden=false;syncSetupView(); $('showBtn').disabled=true;$('showBtn').textContent='Loading preview…';$('previewStatus').textContent='Preparing your case preview…';
     var pv = $('pv'), tileUrl = (urls[m.id] || {})[file];
     if(!sameDesign){var old = bigUrl; bigUrl = null;pv.src = tileUrl || blankUrl[m.id] || '';revoke(old);}
-    if(state.screen!==3)show(3);
+    if(state.screen!==3){show(3);$('dname').tabIndex=-1;$('dname').focus({preventScroll:true});}
     var mine = d, look=state.colorway, seq = ++previewSeq;
     KPI.prepModel(m, BIG_W).then(function (prep) {
       if(bigImageFile!==file||!bigImagePromise){bigImageFile=file;bigImagePromise=KPI.loadImage(KPI.fullUrl(d), { cache: false, timeout: 15000 }).catch(function () {return KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 });});bigImagePromise.catch(function(){if(bigImageFile===file)bigImagePromise=null;});}
@@ -592,7 +593,8 @@
   function revealCode() {
     if($('showBtn').disabled)return;
     changedAt=Date.now();changeTap={x:lastTap.x,y:lastTap.y};
-    var previewSource=$('pv').getAttribute('src');$('counterPreview').parentNode.hidden=!previewSource;if(previewSource)$('counterPreview').src=previewSource;else $('counterPreview').removeAttribute('src');
+    $('counterPreviewStatus').textContent=$('previewStatus').textContent;
+    var previewSource=$('previewStatus').textContent?'':$('pv').getAttribute('src');$('counterPreview').parentNode.hidden=!previewSource;if(previewSource)$('counterPreview').src=previewSource;else $('counterPreview').removeAttribute('src');
     $('codecard').classList.add('on');$('setupOptions').hidden=true;syncSetupView();
     $('codecard').tabIndex=-1;$('codecard').focus({preventScroll:true});
     $('codecard').scrollIntoView({block:'start'});
@@ -619,7 +621,7 @@
     $('codecard').classList.remove('on');
     $('setupOptions').hidden=false;syncSetupView(); $('showBtn').disabled=true;
     $('grid').innerHTML = ''; $('chips').innerHTML = '';
-    ['dname','dmeta','cname','cmodel','cprice','counterCase','counterGlass','counterAccessories','counterStore','colorwayButtons','previewStatus','setupNotice','code','price','chargerRequest','dockSummary','dockStore'].forEach(function(id){$(id).textContent='';});
+    ['dname','dmeta','cname','cmodel','cprice','counterCase','counterGlass','counterAccessories','counterStore','colorwayButtons','previewStatus','counterPreviewStatus','setupNotice','code','price','chargerRequest','dockSummary','dockStore'].forEach(function(id){$(id).textContent='';});
     $('chargerRequest').hidden=true;$('counterGlass').hidden=true;$('dockTotal').textContent='';$('glassLabel').textContent='Add tempered glass';
     show(1);
   }
@@ -664,7 +666,7 @@
       KPCaseZoom.open({title:cleanTitle(design.title),trigger:t,label:'Use this design',
         source:async function(){
           var pair=await Promise.all([KPI.prepModel(model,BIG_W), KPI.loadImage(KPI.fullUrl(design),{cache:false,timeout:12000})]);
-          var url=await KPI.renderToUrl(pair[0],pair[1],null,'original');
+          var url=await KPI.renderToUrl(pair[0],pair[1],null,rememberedLooks[tileFile]||'original');
           try{return await KPCaseZoom.image(url);}finally{revoke(url);}
         },proceed:()=>pickDesign(tileFile)});
       return;
