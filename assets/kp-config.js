@@ -4,11 +4,17 @@ window.KP_CONFIG = {
   ORDERS_ENDPOINT: '',
   /* Customer selection only: staff take payment in store. */
   IN_STORE_ONLY: true,
-  /* One case option for launch. */
+  /* Clear case (every phone). */
   PRICE: 44.99,
   GLASS_PRICE: 29.99,
   GLASS_BUNDLE_DISCOUNT: 10.00,
   CASE_NAME: 'MagSafe Clear',
+  /* Second case option: the Rated Case (drop rated, white printable back panel, frosted rim, built in MagSafe magnets),
+     offered on the phones that have a Rated kit in customizer.html. Glass stays bundledGlass with either case. */
+  RATED_PRICE: 49.99,
+  /* false until a test print on a real Rated blank is approved: the staff print download refuses Rated Case designs.
+     Customers can still choose, preview and review the Rated Case at the counter. */
+  RATED_PRINT_READY: false,
   /* Optional: Cloudflare worker URL for AI designs (tools/kp-ai-worker.js). Empty = AI idea box hidden. */
   AI_ENDPOINT: ''
 };
