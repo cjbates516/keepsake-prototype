@@ -772,6 +772,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       feature.textContent = filter === 'Space Photography' ? 'Photograph sources & credits →' : 'See the newest prints on cases →';
       feature.href = filter === 'Space Photography' ? 'new-print-credits.html' : 'new-prints.html#' + filter.toLowerCase().replaceAll(' ','-');
     }
+    if (filter === 'Seasonal Weather') {
+      if (!device) $('shopTitle').textContent = 'Seasonal Weather';
+      feature.textContent = 'Explore rain, snow, surf and autumn →';
+      feature.href = 'seasonal-weather.html#new-weather';
+    }
     if (!items.length){
       $('grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px">'
         + '<div style="font-weight:900;font-size:18px;color:#2D2D3B;margin-bottom:8px">No designs match</div>'

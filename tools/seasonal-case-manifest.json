@@ -1,0 +1,34 @@
+[
+  {
+    "href": "customizer.html?design=kp-season-rain-on-glass.jpg&model=iphone-17-pro-max&colorway=original&view=phone",
+    "design": "kp-season-rain-on-glass.jpg",
+    "model": "iphone-17-pro-max",
+    "variant": "original",
+    "output": "assets/new-prints/kp-season-rain-on-glass.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-season-snowfall-pines.jpg&model=iphone-17-pro-max&colorway=original&view=phone",
+    "design": "kp-season-snowfall-pines.jpg",
+    "model": "iphone-17-pro-max",
+    "variant": "original",
+    "output": "assets/new-prints/kp-season-snowfall-pines.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-season-sunlit-shore.jpg&model=iphone-17-pro-max&colorway=original&view=phone",
+    "design": "kp-season-sunlit-shore.jpg",
+    "model": "iphone-17-pro-max",
+    "variant": "original",
+    "output": "assets/new-prints/kp-season-sunlit-shore.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-season-autumn-road.jpg&model=iphone-17-pro-max&colorway=original&view=phone",
+    "design": "kp-season-autumn-road.jpg",
+    "model": "iphone-17-pro-max",
+    "variant": "original",
+    "output": "assets/new-prints/kp-season-autumn-road.webp",
+    "caseType": "MagSafe Clear"
+  }
+]
