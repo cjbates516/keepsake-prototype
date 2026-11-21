@@ -1,0 +1,1447 @@
+[
+  {
+    "file": "kp-space-helix.jpg",
+    "title": "Helix Nebula",
+    "category": "Space Photography",
+    "hash": "e18d7e1b5686",
+    "active": true,
+    "color": [
+      "Black",
+      "Blue",
+      "Grey"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/PIA15658",
+    "credit": "NASA/JPL-Caltech",
+    "kind": "space observation",
+    "sourceSize": [
+      2920,
+      2920
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-doradus.jpg",
+    "title": "Doradus Nebula",
+    "category": "Space Photography",
+    "hash": "264e904b37cf",
+    "active": true,
+    "color": [
+      "Brown",
+      "Grey",
+      "Green",
+      "Orange"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/PIA04200",
+    "credit": "NASA, N. Walborn and J. Maíz-Apellániz (Space Telescope Science Institute), R. Barbá (La Plata Observatory, La Plata, Argentina)",
+    "kind": "space observation",
+    "sourceSize": [
+      2508,
+      1790
+    ],
+    "exportSize": [
+      895,
+      1790
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-crab.jpg",
+    "title": "Crab Nebula",
+    "category": "Space Photography",
+    "hash": "d7addafdffa0",
+    "active": true,
+    "color": [
+      "Black",
+      "Blue",
+      "Green",
+      "Brown"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/PIA03606",
+    "credit": "NASA/ESA/JPL/Arizona State Univ.",
+    "kind": "space observation",
+    "sourceSize": [
+      3864,
+      3864
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-eagle.jpg",
+    "title": "Eagle Nebula · Infrared",
+    "category": "Space Photography",
+    "hash": "4052a8644d1b",
+    "active": true,
+    "color": [
+      "Blue",
+      "Green",
+      "Yellow",
+      "Black"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/PIA25433",
+    "credit": "NASA/JPL-Caltech",
+    "kind": "space observation",
+    "sourceSize": [
+      3400,
+      3400
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-soul.jpg",
+    "title": "Soul Nebula · Infrared",
+    "category": "Space Photography",
+    "hash": "b131d62602e6",
+    "active": true,
+    "color": [
+      "Green",
+      "Brown",
+      "Black",
+      "Red"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/PIA13014",
+    "credit": "NASA/JPL-Caltech/UCLA",
+    "kind": "space observation",
+    "sourceSize": [
+      6660,
+      3482
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-tarantula.jpg",
+    "title": "Tarantula Nebula",
+    "category": "Space Photography",
+    "hash": "aca57123d00c",
+    "active": true,
+    "color": [
+      "Blue",
+      "Purple",
+      "Pink",
+      "Red"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/PIA14415",
+    "credit": "X-ray: NASA/CXC/PSU/L.Townsley et al.; Optical: NASA/STScI; Infrared: NASA/JPL/PSU/L.Townsley et al.",
+    "kind": "space observation",
+    "sourceSize": [
+      3600,
+      2880
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-blue-marble.jpg",
+    "title": "Earth · Apollo 17",
+    "category": "Space Photography",
+    "hash": "10bf48941297",
+    "active": true,
+    "color": [
+      "Black",
+      "Blue"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/as17-148-22727",
+    "credit": "NASA / Apollo 17 crew",
+    "kind": "space observation",
+    "sourceSize": [
+      4579,
+      4579
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "space",
+    "placedSourceSize": [
+      1080,
+      1080
+    ],
+    "sourceScale": 0.2358593579384145
+  },
+  {
+    "file": "kp-space-andromeda.jpg",
+    "title": "Andromeda Galaxy",
+    "category": "Space Photography",
+    "hash": "b9eece292d1b",
+    "active": true,
+    "color": [
+      "Black",
+      "Blue"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/PIA04921",
+    "credit": "NASA/JPL/California Institute of Technology",
+    "kind": "space observation",
+    "sourceSize": [
+      6200,
+      6200
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-horsehead.jpg",
+    "title": "Horsehead Nebula",
+    "category": "Space Photography",
+    "hash": "39e2cdbb1543",
+    "active": true,
+    "color": [
+      "Brown",
+      "Grey",
+      "Black",
+      "Red"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001518",
+    "credit": "NASA, ESA, and the Hubble Heritage Team (STScI/AURA)",
+    "kind": "space observation",
+    "sourceSize": [
+      2704,
+      2826
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-lagoon-heart.jpg",
+    "title": "Heart of the Lagoon",
+    "category": "Space Photography",
+    "hash": "c76a015ab116",
+    "active": true,
+    "color": [
+      "Orange",
+      "Yellow",
+      "Brown"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001955",
+    "credit": "NASA, ESA",
+    "kind": "space observation",
+    "sourceSize": [
+      3924,
+      2006
+    ],
+    "exportSize": [
+      1003,
+      2006
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-pillars.jpg",
+    "title": "Pillars of Creation · Infrared",
+    "category": "Space Photography",
+    "hash": "191a8801ef76",
+    "active": true,
+    "color": [
+      "Blue",
+      "Black",
+      "Brown",
+      "Grey"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000842",
+    "credit": "NASA, ESA, and the Hubble Heritage Team (STScI/AURA)",
+    "kind": "space observation",
+    "sourceSize": [
+      3249,
+      3045
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-mystic-mountain.jpg",
+    "title": "Carina · Mystic Mountain",
+    "category": "Space Photography",
+    "hash": "53dd4ca75029",
+    "active": true,
+    "color": [
+      "Blue",
+      "Brown",
+      "Orange",
+      "Grey"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/GSFC_20171208_Archive_e002074",
+    "credit": "NASA, ESA, and M. Livio and the Hubble 20th Anniversary Team (STScI)",
+    "kind": "space observation",
+    "sourceSize": [
+      2104,
+      1937
+    ],
+    "exportSize": [
+      968,
+      1936
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-bubble.jpg",
+    "title": "Bubble Nebula",
+    "category": "Space Photography",
+    "hash": "e58307c0c565",
+    "active": true,
+    "color": [
+      "Blue",
+      "Black",
+      "Purple"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000383",
+    "credit": "NASA, ESA, and the Hubble Heritage Team (STScI/AURA)",
+    "kind": "space observation",
+    "sourceSize": [
+      7857,
+      7462
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-ring.jpg",
+    "title": "Ring Nebula",
+    "category": "Space Photography",
+    "hash": "083e8c5ec99e",
+    "active": true,
+    "color": [
+      "Black"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001465",
+    "credit": "NASA/Hubble Heritage Team",
+    "kind": "space observation",
+    "sourceSize": [
+      1215,
+      1241
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "space",
+    "placedSourceSize": [
+      1080,
+      1103
+    ],
+    "sourceScale": 0.8887993553585818
+  },
+  {
+    "file": "kp-space-towering-infernos.jpg",
+    "title": "Starbirth · Towering Infernos",
+    "category": "Space Photography",
+    "hash": "90b4824d258e",
+    "active": true,
+    "color": [
+      "Red",
+      "Black",
+      "Pink"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/PIA03096",
+    "credit": "IRAC Image: NASA/JPL-Caltech/Harvard-Smithsonian CfA/ESA/STScI; Visible Light Image: NASA/JPL-Caltech/Harvard-Smithsonian CfA/DSS",
+    "kind": "space observation",
+    "sourceSize": [
+      3426,
+      2548
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-saturn.jpg",
+    "title": "Saturn · Rings of Ice",
+    "category": "Space Photography",
+    "hash": "b94f13ae94ec",
+    "active": true,
+    "color": [
+      "Black"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/PIA06193",
+    "credit": "NASA/JPL/Space Science Institute",
+    "kind": "space observation",
+    "sourceSize": [
+      8888,
+      4544
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "space",
+    "placedSourceSize": [
+      1080,
+      552
+    ],
+    "sourceScale": 0.12147887323943662
+  },
+  {
+    "file": "kp-space-mars-frost.jpg",
+    "title": "Mars · Frosted Dunes",
+    "category": "Space Photography",
+    "hash": "0ded75e46bb4",
+    "active": true,
+    "color": [
+      "Brown",
+      "Grey",
+      "Blue"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/PIA24420",
+    "credit": "NASA/JPL-Caltech/University of Arizona",
+    "kind": "space observation",
+    "sourceSize": [
+      2880,
+      1800
+    ],
+    "exportSize": [
+      900,
+      1800
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-mars-noachis.jpg",
+    "title": "Mars · Noachis Dunes",
+    "category": "Space Photography",
+    "hash": "d1a027b6ca4a",
+    "active": true,
+    "color": [
+      "Grey",
+      "Blue"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/PIA15283",
+    "credit": "NASA/JPL-Caltech/Univ. of Arizona",
+    "kind": "space observation",
+    "sourceSize": [
+      2023,
+      2008
+    ],
+    "exportSize": [
+      1004,
+      2008
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-mars-wind.jpg",
+    "title": "Mars · Wind Sculpted",
+    "category": "Space Photography",
+    "hash": "043c620f3306",
+    "active": true,
+    "color": [
+      "Black",
+      "Brown"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/PIA19962",
+    "credit": "NASA/JPL-Caltech/Univ. of Arizona",
+    "kind": "space observation",
+    "sourceSize": [
+      2880,
+      1800
+    ],
+    "exportSize": [
+      900,
+      1800
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-space-moon.jpg",
+    "title": "The Moon · Clementine",
+    "category": "Space Photography",
+    "hash": "5f6aaa7e5eaa",
+    "active": true,
+    "color": [
+      "Black",
+      "Grey"
+    ],
+    "sourceUrl": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001982",
+    "credit": "NASA",
+    "kind": "space observation",
+    "sourceSize": [
+      1536,
+      864
+    ],
+    "exportSize": [
+      1200,
+      2400
+    ],
+    "composition": "space",
+    "placedSourceSize": [
+      1080,
+      608
+    ],
+    "sourceScale": 0.703125
+  },
+  {
+    "file": "kp-liquid-solar-melt.jpg",
+    "title": "Liquid Prism · Solar Melt",
+    "category": "Liquid Color",
+    "hash": "c3841b4a83fb",
+    "active": true,
+    "color": [
+      "Orange",
+      "Pink",
+      "Red",
+      "Yellow"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-tidal-glass.jpg",
+    "title": "Liquid Prism · Tidal Glass",
+    "category": "Liquid Color",
+    "hash": "f367344fff2d",
+    "active": true,
+    "color": [
+      "Blue"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-lilac-chrome.jpg",
+    "title": "Liquid Prism · Lilac Chrome",
+    "category": "Liquid Color",
+    "hash": "a2b0fd4f39ed",
+    "active": true,
+    "color": [
+      "Purple",
+      "White"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-emerald-flux.jpg",
+    "title": "Liquid Prism · Emerald Flux",
+    "category": "Liquid Color",
+    "hash": "1ce2ee7c3a58",
+    "active": true,
+    "color": [
+      "Green",
+      "Black"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-pearl-current.jpg",
+    "title": "Liquid Prism · Pearl Current",
+    "category": "Liquid Color",
+    "hash": "d6384ac57292",
+    "active": true,
+    "color": [
+      "White",
+      "Purple",
+      "Blue",
+      "Pink"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-neon-rift.jpg",
+    "title": "Liquid Prism · Neon Rift",
+    "category": "Liquid Color",
+    "hash": "9a8532ba644a",
+    "active": true,
+    "color": [
+      "Black",
+      "Purple",
+      "Blue",
+      "Pink"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-honey-glass.jpg",
+    "title": "Liquid Prism · Honey Glass",
+    "category": "Liquid Color",
+    "hash": "1bfef05a9f96",
+    "active": true,
+    "color": [
+      "Orange",
+      "Brown"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-arctic-fold.jpg",
+    "title": "Liquid Prism · Arctic Fold",
+    "category": "Liquid Color",
+    "hash": "71790e33b318",
+    "active": true,
+    "color": [
+      "Blue"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-ruby-tide.jpg",
+    "title": "Liquid Prism · Ruby Tide",
+    "category": "Liquid Color",
+    "hash": "6009d2149788",
+    "active": true,
+    "color": [
+      "Red",
+      "Pink"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-blueprint-eucalyptus.jpg",
+    "title": "Eucalyptus · Botanical Blueprint",
+    "category": "Botanical Blueprints",
+    "hash": "0411c36d6142",
+    "active": true,
+    "color": [
+      "Blue"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-blueprint-ginkgo.jpg",
+    "title": "Ginkgo · Botanical Blueprint",
+    "category": "Botanical Blueprints",
+    "hash": "e2c48af9329f",
+    "active": true,
+    "color": [
+      "Blue"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-blueprint-maidenhair.jpg",
+    "title": "Maidenhair · Botanical Blueprint",
+    "category": "Botanical Blueprints",
+    "hash": "58312c6af569",
+    "active": true,
+    "color": [
+      "Blue"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-blueprint-maple.jpg",
+    "title": "Maple · Botanical Blueprint",
+    "category": "Botanical Blueprints",
+    "hash": "e2bb49c53681",
+    "active": true,
+    "color": [
+      "Blue"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-blueprint-monstera.jpg",
+    "title": "Monstera · Botanical Blueprint",
+    "category": "Botanical Blueprints",
+    "hash": "4d56aa2a8356",
+    "active": true,
+    "color": [
+      "Blue"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-blueprint-palm.jpg",
+    "title": "Palm · Botanical Blueprint",
+    "category": "Botanical Blueprints",
+    "hash": "890d4afc6dbe",
+    "active": true,
+    "color": [
+      "Blue"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-blueprint-sea-garden.jpg",
+    "title": "Sea Garden · Botanical Blueprint",
+    "category": "Botanical Blueprints",
+    "hash": "8ebec763dd8e",
+    "active": true,
+    "color": [
+      "Blue"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-blueprint-wildflower.jpg",
+    "title": "Wildflower · Botanical Blueprint",
+    "category": "Botanical Blueprints",
+    "hash": "612945f77a79",
+    "active": true,
+    "color": [
+      "Blue"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-golf-alpine-fairways.jpg",
+    "title": "Alpine Fairways",
+    "category": "Signature Golf",
+    "hash": "d47a2e49a60c",
+    "active": true,
+    "color": [
+      "Green",
+      "Yellow",
+      "Blue"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "fictional course illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-golf-autumn-round.jpg",
+    "title": "Autumn Round",
+    "category": "Signature Golf",
+    "hash": "daccbde1f2aa",
+    "active": true,
+    "color": [
+      "Brown",
+      "Green",
+      "Orange",
+      "Yellow"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "fictional course illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-golf-clubhouse-check.jpg",
+    "title": "Clubhouse Check",
+    "category": "Signature Golf",
+    "hash": "77ff6b1ace8f",
+    "active": true,
+    "color": [
+      "Green",
+      "Beige",
+      "Yellow"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "fictional course illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-golf-desert-links.jpg",
+    "title": "Desert Links",
+    "category": "Signature Golf",
+    "hash": "bf17a8860904",
+    "active": true,
+    "color": [
+      "Orange",
+      "Green",
+      "Brown",
+      "Yellow"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "fictional course illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-golf-island-green.jpg",
+    "title": "Island Green",
+    "category": "Signature Golf",
+    "hash": "ce52aed9921c",
+    "active": true,
+    "color": [
+      "Blue",
+      "Green",
+      "Yellow"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "fictional course illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-golf-links-coast.jpg",
+    "title": "Links Coast",
+    "category": "Signature Golf",
+    "hash": "b9f9d391892a",
+    "active": true,
+    "color": [
+      "Yellow",
+      "Blue",
+      "Brown",
+      "Orange"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "fictional course illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-golf-midnight-fairway.jpg",
+    "title": "Midnight Fairway",
+    "category": "Signature Golf",
+    "hash": "3c5a62d5c640",
+    "active": true,
+    "color": [
+      "Green",
+      "Blue",
+      "Black"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "fictional course illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-golf-sunday-carts.jpg",
+    "title": "Sunday Carts",
+    "category": "Signature Golf",
+    "hash": "1bd0ee6f470c",
+    "active": true,
+    "color": [
+      "White",
+      "Beige",
+      "Green",
+      "Grey"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "fictional course illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-chrome-ripple.jpg",
+    "title": "Liquid Prism · Chrome Ripple",
+    "category": "Liquid Color",
+    "hash": "cae2064a7ba4",
+    "active": true,
+    "color": [
+      "Grey",
+      "Black",
+      "White"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-citrus-coil.jpg",
+    "title": "Liquid Prism · Citrus Coil",
+    "category": "Liquid Color",
+    "hash": "f60651c9e7e3",
+    "active": true,
+    "color": [
+      "Green",
+      "Blue",
+      "Orange",
+      "Yellow"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-copper-wave.jpg",
+    "title": "Liquid Prism · Copper Wave",
+    "category": "Liquid Color",
+    "hash": "35a10f0cd0b6",
+    "active": true,
+    "color": [
+      "Brown",
+      "Orange",
+      "Blue",
+      "Black"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-cosmic-lace.jpg",
+    "title": "Liquid Prism · Cosmic Lace",
+    "category": "Liquid Color",
+    "hash": "452b61aeff5d",
+    "active": true,
+    "color": [
+      "Blue",
+      "Black",
+      "Purple"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-lagoon-ripple.jpg",
+    "title": "Liquid Prism · Lagoon Ripple",
+    "category": "Liquid Color",
+    "hash": "4bc87308e0a2",
+    "active": true,
+    "color": [
+      "Blue"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-midnight-mercury.jpg",
+    "title": "Liquid Prism · Midnight Mercury",
+    "category": "Liquid Color",
+    "hash": "70e8a25a919e",
+    "active": true,
+    "color": [
+      "Black",
+      "Blue",
+      "Grey",
+      "White"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-oil-slick.jpg",
+    "title": "Liquid Prism · Oil Slick",
+    "category": "Liquid Color",
+    "hash": "e85726e5f537",
+    "active": true,
+    "color": [
+      "Blue",
+      "Black",
+      "Purple",
+      "Green"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-pink-voltage.jpg",
+    "title": "Liquid Prism · Pink Voltage",
+    "category": "Liquid Color",
+    "hash": "6883e1f01586",
+    "active": true,
+    "color": [
+      "Pink",
+      "Blue",
+      "Black",
+      "Purple"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-rainbow-cascade.jpg",
+    "title": "Liquid Prism · Rainbow Cascade",
+    "category": "Liquid Color",
+    "hash": "06f8f2694842",
+    "active": true,
+    "color": [
+      "Blue",
+      "Purple",
+      "Green",
+      "Orange"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-rose-glass.jpg",
+    "title": "Liquid Prism · Rose Glass",
+    "category": "Liquid Color",
+    "hash": "f550f1cb2455",
+    "active": true,
+    "color": [
+      "Pink",
+      "Red"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-liquid-ultraviolet-bloom.jpg",
+    "title": "Liquid Prism · Ultraviolet Bloom",
+    "category": "Liquid Color",
+    "hash": "c784f7520048",
+    "active": true,
+    "color": [
+      "Purple",
+      "Pink"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-park-bryce-amphitheater.jpg",
+    "title": "Bryce Canyon · Hoodoo Dawn",
+    "category": "National Parks",
+    "hash": "18552ae12b21",
+    "active": true,
+    "color": [
+      "Orange",
+      "Red",
+      "Brown",
+      "Pink"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-park-crater-lake.jpg",
+    "title": "Crater Lake · Wizard Island",
+    "category": "National Parks",
+    "hash": "4b356e31159d",
+    "active": true,
+    "color": [
+      "Blue",
+      "Green",
+      "Yellow"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-park-denali-alpenglow.jpg",
+    "title": "Denali · Alpenglow",
+    "category": "National Parks",
+    "hash": "e160ecd4f1b0",
+    "active": true,
+    "color": [
+      "Blue",
+      "Pink",
+      "Brown",
+      "Purple"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-park-rainier-reflection.jpg",
+    "title": "Mount Rainier · Reflection Lakes",
+    "category": "National Parks",
+    "hash": "d406c8cdfd35",
+    "active": true,
+    "color": [
+      "Blue",
+      "Green"
+    ],
+    "sourceUrl": "",
+    "credit": "Keepsake original artwork · AI-assisted illustration",
+    "kind": "original illustration",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  }
+]

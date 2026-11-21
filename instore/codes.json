@@ -4,7 +4,7 @@
 "ABS": 118,
 "ANI": 29,
 "APR": 97,
-"BLU": 2,
+"BLU": 10,
 "BTH": 24,
 "CAR": 6,
 "CEL": 32,
@@ -14,23 +14,24 @@
 "DOT": 12,
 "FLR": 108,
 "FRU": 70,
-"GLF": 3,
+"GLF": 11,
 "GRD": 28,
 "HAL": 51,
 "HIM": 36,
 "HOM": 38,
 "HRT": 41,
 "KID": 46,
-"LIQ": 1,
+"LIQ": 22,
 "MAP": 112,
 "NE1": 1,
 "NEO": 6,
-"NPK": 24,
+"NPK": 28,
 "ORB": 3,
 "OUT": 6,
 "PAI": 1,
 "POP": 13,
 "SCN": 168,
+"SPC": 21,
 "SPT": 5,
 "STR": 27,
 "WES": 63,
@@ -2496,6 +2497,38 @@
 "c": "FRU",
 "n": 2
 },
+"kp-blueprint-eucalyptus.jpg": {
+"c": "BLU",
+"n": 3
+},
+"kp-blueprint-ginkgo.jpg": {
+"c": "BLU",
+"n": 4
+},
+"kp-blueprint-maidenhair.jpg": {
+"c": "BLU",
+"n": 5
+},
+"kp-blueprint-maple.jpg": {
+"c": "BLU",
+"n": 6
+},
+"kp-blueprint-monstera.jpg": {
+"c": "BLU",
+"n": 7
+},
+"kp-blueprint-palm.jpg": {
+"c": "BLU",
+"n": 8
+},
+"kp-blueprint-sea-garden.jpg": {
+"c": "BLU",
+"n": 9
+},
+"kp-blueprint-wildflower.jpg": {
+"c": "BLU",
+"n": 10
+},
 "kp-camo-blaze.jpg": {
 "c": "HIM",
 "n": 4
@@ -2568,9 +2601,37 @@
 "c": "FRU",
 "n": 9
 },
+"kp-golf-alpine-fairways.jpg": {
+"c": "GLF",
+"n": 4
+},
+"kp-golf-autumn-round.jpg": {
+"c": "GLF",
+"n": 5
+},
+"kp-golf-clubhouse-check.jpg": {
+"c": "GLF",
+"n": 6
+},
+"kp-golf-desert-links.jpg": {
+"c": "GLF",
+"n": 7
+},
+"kp-golf-island-green.jpg": {
+"c": "GLF",
+"n": 8
+},
 "kp-golf-kelly.jpg": {
 "c": "HIM",
 "n": 8
+},
+"kp-golf-links-coast.jpg": {
+"c": "GLF",
+"n": 9
+},
+"kp-golf-midnight-fairway.jpg": {
+"c": "GLF",
+"n": 10
 },
 "kp-golf-navy.jpg": {
 "c": "HIM",
@@ -2583,6 +2644,10 @@
 "kp-golf-st-andrews.jpg": {
 "c": "GLF",
 "n": 2
+},
+"kp-golf-sunday-carts.jpg": {
+"c": "GLF",
+"n": 11
 },
 "kp-grand-canyon-mather-point.png": {
 "c": "NPK",
@@ -2636,9 +2701,93 @@
 "c": "FRU",
 "n": 17
 },
+"kp-liquid-arctic-fold.jpg": {
+"c": "LIQ",
+"n": 2
+},
+"kp-liquid-aurora-current.jpg": {
+"c": "LIQ",
+"n": 3
+},
+"kp-liquid-chrome-ripple.jpg": {
+"c": "LIQ",
+"n": 4
+},
+"kp-liquid-citrus-coil.jpg": {
+"c": "LIQ",
+"n": 5
+},
+"kp-liquid-copper-wave.jpg": {
+"c": "LIQ",
+"n": 6
+},
+"kp-liquid-cosmic-lace.jpg": {
+"c": "LIQ",
+"n": 7
+},
+"kp-liquid-emerald-flux.jpg": {
+"c": "LIQ",
+"n": 8
+},
+"kp-liquid-honey-glass.jpg": {
+"c": "LIQ",
+"n": 9
+},
+"kp-liquid-lagoon-ripple.jpg": {
+"c": "LIQ",
+"n": 10
+},
+"kp-liquid-lilac-chrome.jpg": {
+"c": "LIQ",
+"n": 11
+},
+"kp-liquid-midnight-mercury.jpg": {
+"c": "LIQ",
+"n": 12
+},
+"kp-liquid-neon-rift.jpg": {
+"c": "LIQ",
+"n": 13
+},
+"kp-liquid-oil-slick.jpg": {
+"c": "LIQ",
+"n": 14
+},
+"kp-liquid-pearl-current.jpg": {
+"c": "LIQ",
+"n": 15
+},
+"kp-liquid-pink-voltage.jpg": {
+"c": "LIQ",
+"n": 16
+},
 "kp-liquid-prism.png": {
 "c": "LIQ",
 "n": 1
+},
+"kp-liquid-rainbow-cascade.jpg": {
+"c": "LIQ",
+"n": 17
+},
+"kp-liquid-rose-glass.jpg": {
+"c": "LIQ",
+"n": 18
+},
+"kp-liquid-ruby-tide.jpg": {
+"c": "LIQ",
+"n": 19
+},
+"kp-liquid-solar-melt.jpg": {
+"c": "LIQ",
+"n": 20
+},
+"kp-liquid-tidal-glass.jpg": {
+"c": "LIQ",
+"n": 21
+},
+"kp-liquid-ultraviolet-bloom.jpg": {
+"c": "LIQ",
+"n": 22
 },
 "kp-mallards-cream.jpg": {
 "c": "HIM",
@@ -2695,6 +2844,22 @@
 "kp-paint-party.png": {
 "c": "PAI",
 "n": 1
+},
+"kp-park-bryce-amphitheater.jpg": {
+"c": "NPK",
+"n": 25
+},
+"kp-park-crater-lake.jpg": {
+"c": "NPK",
+"n": 26
+},
+"kp-park-denali-alpenglow.jpg": {
+"c": "NPK",
+"n": 27
+},
+"kp-park-rainier-reflection.jpg": {
+"c": "NPK",
+"n": 28
 },
 "kp-peaches-clear.png": {
 "c": "CLR",
@@ -2763,6 +2928,90 @@
 "kp-solid-slate.jpg": {
 "c": "HIM",
 "n": 20
+},
+"kp-space-andromeda.jpg": {
+"c": "SPC",
+"n": 1
+},
+"kp-space-blue-marble.jpg": {
+"c": "SPC",
+"n": 8
+},
+"kp-space-bubble.jpg": {
+"c": "SPC",
+"n": 2
+},
+"kp-space-cats-eye.jpg": {
+"c": "SPC",
+"n": 4
+},
+"kp-space-crab.jpg": {
+"c": "SPC",
+"n": 5
+},
+"kp-space-doradus.jpg": {
+"c": "SPC",
+"n": 6
+},
+"kp-space-eagle.jpg": {
+"c": "SPC",
+"n": 7
+},
+"kp-space-helix.jpg": {
+"c": "SPC",
+"n": 10
+},
+"kp-space-horsehead.jpg": {
+"c": "SPC",
+"n": 11
+},
+"kp-space-lagoon-heart.jpg": {
+"c": "SPC",
+"n": 9
+},
+"kp-space-mars-frost.jpg": {
+"c": "SPC",
+"n": 12
+},
+"kp-space-mars-noachis.jpg": {
+"c": "SPC",
+"n": 13
+},
+"kp-space-mars-wind.jpg": {
+"c": "SPC",
+"n": 14
+},
+"kp-space-moon.jpg": {
+"c": "SPC",
+"n": 21
+},
+"kp-space-mystic-mountain.jpg": {
+"c": "SPC",
+"n": 3
+},
+"kp-space-pillars.jpg": {
+"c": "SPC",
+"n": 15
+},
+"kp-space-ring.jpg": {
+"c": "SPC",
+"n": 16
+},
+"kp-space-saturn.jpg": {
+"c": "SPC",
+"n": 17
+},
+"kp-space-soul.jpg": {
+"c": "SPC",
+"n": 18
+},
+"kp-space-tarantula.jpg": {
+"c": "SPC",
+"n": 20
+},
+"kp-space-towering-infernos.jpg": {
+"c": "SPC",
+"n": 19
 },
 "kp-strawberries-candy.jpg": {
 "c": "FRU",
