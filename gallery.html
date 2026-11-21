@@ -92,10 +92,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/print-layouts.js"></script>
 <script src="assets/colorway-catalog.js"></script>
 <script src="assets/design-colorways.js"></script>
-<link rel="stylesheet" href="assets/shop-refresh.css">
+<link rel="stylesheet" href="assets/shop-refresh.css?v=compact-gallery-1">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=collections-1" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
+<link rel="stylesheet" href="assets/shop-menu.css?v=start-case-1"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=celestial-2" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 </head>
 <body class="kp-storefront kp-library kp-shop">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
@@ -113,12 +113,12 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     <div style="max-width:1760px;margin:0 auto;padding:56px clamp(24px,3vw,56px) 96px">
       <div class="library-intro" style="display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:22px">
         <div>
-          <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#6C6C72;margin-bottom:14px">Design library</div>
-          <h1 id="shopTitle" style="font-weight:900;font-size:clamp(26px,3.8vw,52px);letter-spacing:-.01em;color:#191921;margin:0;line-height:1.02">Your case.<br>Your kind of statement.</h1>
-          <p style="font-size:14px;font-weight:700;color:#6E6E70;margin:10px 0 0">Every case design $44.99 · Choose a print. Make it yours in store.</p>
-          <a id="galleryFeature" href="cherry-duck.html" style="display:inline-flex;align-items:center;min-height:44px;font-weight:800">Compare Cherry Dot &amp; Wrong Way Duck ↗</a>
+          <div class="library-eyebrow">THE PRINT SHOP</div>
+          <h1 id="shopTitle" style="font-weight:900;font-size:clamp(26px,3.8vw,52px);letter-spacing:-.01em;color:#191921;margin:0;line-height:1.02">Find your next favorite.</h1>
+          <p style="font-size:14px;font-weight:700;color:#6E6E70;margin:10px 0 0">Clear cases. Your favorite print. $44.99 · Made in store.</p>
+          <a id="galleryFeature" hidden href="new-prints.html" style="display:inline-flex;align-items:center;min-height:44px;font-weight:800">Explore the latest collections →</a>
         </div>
-        <div style="font-size:13px;font-weight:800;color:#6C6C72"><span id="countLabel" aria-live="polite"></span></div>
+        <a class="library-photo-cta" href="customizer.html">Use your own photo <span aria-hidden="true">↗</span></a>
       </div>
       <div id="kpCatStrip" class="kpCatStrip" role="navigation" aria-label="Shop by style"></div>
       <div id="deviceBar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center"></div>
@@ -126,8 +126,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       <input id="deskSearch" type="search" placeholder="Search designs — try &quot;dog&quot;, &quot;philly&quot;, &quot;hearts&quot;…" aria-label="Search designs" style="width:100%;max-width:440px;font-size:16px;padding:12px 16px;border:1px solid #E4E3E3;border-radius:12px;background:#FFFFFF;margin-bottom:16px">
       <div id="filters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"></div>
       <div id="stateBar" style="display:none;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px"></div>
-      <div id="colorBar" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:30px"></div>
-      <div class="kpStep" id="step3Lab"><span class="kpStepN">3</span><span style="font-weight:900;font-size:15px;color:#2D2D3B">Tap a case you love</span></div>
+      <details class="library-extra-filters"><summary>Filter by color</summary><div id="colorBar" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:30px"></div>
+      </details><div class="library-results"><span id="countLabel" aria-live="polite"></span><span>Tap a case to make it yours</span></div><div class="kpStep" id="step3Lab"><span class="kpStepN">3</span><span style="font-weight:900;font-size:15px;color:#2D2D3B">Tap a case you love</span></div>
       <div id="kpChips" style="position:sticky;top:0;z-index:45;display:none;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);margin:0 -20px 10px;padding:10px 20px;border-bottom:1px solid #EFEDED;overflow-x:auto;white-space:nowrap;scrollbar-width:none"></div>
       <div id="galleryCaseView" class="case-view-switch" role="group" aria-label="Case preview view" hidden style="width:max-content;margin:0 0 16px"><button type="button" data-view="case" aria-pressed="true">Case only</button><button type="button" data-view="phone" aria-pressed="false">On your phone</button></div>
       <div id="grid" style="min-height:70vh;display:grid;align-content:start;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px"></div>
@@ -234,6 +234,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var seasonal = (m>=11) ? ['Christmas','festive-christmas-icon-grid-red-green.jpg']
       : (m===10 ? ['Halloween','halloween-bats-on-orange.jpg'] : null);
     var list=(seasonal?[seasonal]:[]).concat(KP_STRIP_BASE);
+    if(designs.length)list=list.filter(function(c){return designs.some(function(d){return d.category===c[0]});});
     el.innerHTML=list.map(function(c){
       return '<button class="kpCatCard kpCatTile" data-cat="'+c[0]+'" aria-label="Shop '+c[0]+'">'
         +'<img src="assets/designs/thumbs/'+c[1]+'" alt="" loading="lazy"><span>'+c[0]+'</span></button>';
@@ -517,24 +518,27 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   var searchQ='';
   var KP_NEW=['iPhone 18 Pro Max','iPhone 18 Pro'];
-  var drawerBrand='Apple', pendingDesign=null;
+  var drawerBrand='Apple', pendingDesign=null, drawerOpener=null;
   function kpEnsureDrawer(){
     if(document.getElementById('kpDevScrim')) return;
     var sc=document.createElement('div'); sc.id='kpDevScrim';
     sc.style.cssText='position:fixed;inset:0;background:rgba(23,23,31,.45);opacity:0;pointer-events:none;transition:opacity .25s;z-index:120';
-    var dw=document.createElement('div'); dw.id='kpDevDrawer';
+    var dw=document.createElement('div'); dw.id='kpDevDrawer';dw.inert=true;dw.setAttribute('role','dialog');dw.setAttribute('aria-modal','true');dw.setAttribute('aria-label','Choose your phone');
+    dw.addEventListener('keydown',function(e){if(e.key!=='Tab')return;var items=Array.from(dw.querySelectorAll('button:not([disabled]),a[href],input,select')).filter(function(x){return x.offsetWidth>0;});var first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
     dw.style.cssText='position:fixed;top:0;left:0;bottom:0;width:min(430px,94vw);background:#FFF;z-index:121;transform:translateX(-103%);transition:transform .28s cubic-bezier(.2,.7,.2,1);box-shadow:8px 0 40px rgba(0,0,0,.18);display:flex;flex-direction:column';
     document.body.appendChild(sc); document.body.appendChild(dw);
     sc.addEventListener('click', kpCloseDrawer);
     document.addEventListener('keydown',function(e){ if(e.key==='Escape') kpCloseDrawer(); });
   }
   function kpOpenDrawer(brand){
+    drawerOpener=document.activeElement===document.body?document.getElementById('wizDevBtn'):document.activeElement;
     kpEnsureDrawer();
     drawerBrand = brand==='Samsung'||(!brand&&device&&device.indexOf('Galaxy')===0) ? 'Samsung' : 'Apple';
     kpRenderDrawer();
     var sc=document.getElementById('kpDevScrim'), dw=document.getElementById('kpDevDrawer');
     sc.style.opacity='1'; sc.style.pointerEvents='auto';
-    dw.style.transform='translateX(0)';
+    dw.inert=false;dw.style.transform='translateX(0)';
+    document.querySelector('.kp-page').inert=true;dw.querySelector('#kpDwClose').focus({preventScroll:true});
     document.body.style.overflow='hidden';
   }
   function kpCloseDrawer(){
@@ -546,7 +550,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var url=new URL(location.href);
     if(url.searchParams.has('brand')){url.searchParams.delete('brand');history.replaceState(null,'',url);}
     sc.style.opacity='0'; sc.style.pointerEvents='none';
-    dw.style.transform='translateX(-103%)';
+    dw.inert=true;dw.style.transform='translateX(-103%)';
+    document.querySelector('.kp-page').inert=false;if(drawerOpener&&drawerOpener.isConnected)drawerOpener.focus({preventScroll:true});
     document.body.style.overflow='';
   }
   function kpPickDevice(slug){
@@ -558,10 +563,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       location.assign('customizer.html?' + new URLSearchParams({design:file,model:slugify(selected),colorway:artworkPicks[file]||'original'}));
       return;
     }
-    if(!slug)return;
     device = selected;
     renderDeviceBar(); renderGrid();
-    preloadDevice(device);
+    if(device)preloadDevice(device);
+    document.getElementById('wizDevBtn').focus({preventScroll:true});
   }
   function kpRenderDrawer(){
     var dw=document.getElementById('kpDevDrawer'); if(!dw) return;
@@ -604,18 +609,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var opts='<option value="All">All styles ('+designs.filter(function(d){return !d.hidden;}).length+')</option>'+
       Object.keys(cats).sort().map(function(c){ return '<option value="'+c+'"'+(filter===c?' selected':'')+'>'+c+' ('+cats[c]+')</option>'; }).join('');
     var topHtml = ''; /* shop-by-style strip above replaces the Top styles panel */
-    el.innerHTML =
-      '<div style="display:flex;gap:clamp(20px,4vw,64px);flex-wrap:wrap;align-items:flex-start">'+
-      '<div style="flex:1 1 560px;max-width:720px">'+
-      '<div class="kpStep"><span class="kpStepN'+(device?' kpStepDone':'')+'">'+(device?'\u2713':'1')+'</span>'+
-      '<span style="font-weight:900;font-size:15px;color:#2D2D3B;white-space:nowrap">Your phone</span>'+
-      '<button id="wizDevBtn" style="flex:1;min-width:170px;max-width:420px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:16px;font-weight:700;padding:12px 16px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF;color:#2D2D3B;cursor:pointer">'+
-      (device||'Select your phone')+'<span style="color:#6C6C72;font-size:18px">\u203A</span></button></div>'+
-      '<div class="kpStep" style="flex-wrap:wrap"><span class="kpStepN">2</span>'+
-      '<span style="font-weight:900;font-size:15px;color:#2D2D3B">Pick your style</span>'+
-      '<select id="wizCat" aria-label="Design style" style="flex:1;min-width:130px;font-size:16px;font-weight:700;padding:10px 12px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF;color:#2D2D3B">'+opts+'</select>'+
-      '<input id="wizSearch" type="search" placeholder="Search designs\u2026" value="'+searchQ.replace(/"/g,'&quot;')+'" aria-label="Search designs" style="flex-basis:100%;font-size:16px;padding:11px 14px;border:1px solid #E4E3E3;border-radius:10px;background:#FFF"></div>'+
-      '</div>'+topHtml+'</div>';
+    el.innerHTML = '<div class="library-filter-row">'+
+      '<button id="wizDevBtn" type="button" aria-label="Choose your phone" class="library-device"><span>Your phone</span><strong>'+(device||'Choose model')+'</strong><span aria-hidden="true">⌄</span></button>'+
+      '<label class="library-style"><span>Style</span><select id="wizCat" aria-label="Design style">'+opts+'</select></label>'+
+      '<input id="wizSearch" type="search" placeholder="Search prints, places, moods…" value="'+searchQ.replace(/"/g,'&quot;')+'" aria-label="Search designs"></div>';
     el.querySelectorAll('.kpTopStyle').forEach(function(b){ b.addEventListener('click',function(){
       filter=this.dataset.c; searchQ='';
       renderWizard(); renderFilters(); renderStates(); renderGrid();
@@ -755,27 +752,35 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       : (items.length + ' design' + (items.length===1?'':'s') + (device ? ' · ' + device : ''));
     const zodiac = filter === 'Zodiac';
     const feature = $('galleryFeature');
-    feature.textContent = zodiac ? 'Pair your signs on a custom star map →' : 'Compare Cherry Dot & Wrong Way Duck ↗';
-    feature.href = zodiac ? 'customizer.html?studio=sky' + (device ? '&model=' + encodeURIComponent(slugify(device)) : '') + '#personalStudio' : 'cherry-duck.html';
+    feature.hidden = filter === 'All';
+    feature.textContent = zodiac ? 'Pair your signs on a custom star map →' : 'Explore the latest collections →';
+    feature.href = zodiac ? 'customizer.html?studio=sky' + (device ? '&model=' + encodeURIComponent(slugify(device)) : '') + '#personalStudio' : 'new-prints.html';
     if (filter === 'City Scenes') {
       feature.textContent = 'City photo credits';
       feature.href = 'city-photo-credits.html';
     }
-    $('shopTitle').innerHTML = device ? (device + ' cases.') : filter === 'City Scenes' ? 'City After Dark' : 'Your case.<br>Your kind of statement.';
+    $('shopTitle').textContent = filter === 'All' ? 'Find your next favorite.' : filter === 'City Scenes' ? 'City After Dark' : filter;
     if (filter === 'Earth From Orbit' || filter === 'Botanical Blueprints') {
       $('shopTitle').textContent = filter;
       feature.textContent = 'Meet the photographs →';
       feature.href = 'field-photo-credits.html#' + (filter === 'Earth From Orbit' ? 'parallel-dunes' : '291506');
     }
     if (['Liquid Color','Signature Golf','National Parks','Space Photography'].includes(filter)) {
-      if (!device) $('shopTitle').textContent = filter === 'Liquid Color' ? 'Liquid Prism' : filter;
+      $('shopTitle').textContent = filter === 'Liquid Color' ? 'Liquid Prism' : filter;
       feature.textContent = filter === 'Space Photography' ? 'Photograph sources & credits →' : 'See the newest prints on cases →';
       feature.href = filter === 'Space Photography' ? 'new-print-credits.html' : 'new-prints.html#' + filter.toLowerCase().replaceAll(' ','-');
     }
+    if (filter === 'National Parks') { feature.textContent='New adventure collages: Smokies, Everest & Grand Canyon →'; feature.href='park-collages.html'; }
     if (filter === 'Seasonal Weather') {
       if (!device) $('shopTitle').textContent = 'Seasonal Weather';
       feature.textContent = 'Explore rain, snow, surf and autumn →';
       feature.href = 'seasonal-weather.html#new-weather';
+    }
+    const backgroundCollections = {'Zodiac Creatures':'celestial-creatures.html','Tarot':'tarot.html','Polka dots':'pattern-studio.html#polka-dots','Stripes & waves':'pattern-studio.html#stripes-waves'};
+    if (backgroundCollections[filter]) {
+      if (!device) $('shopTitle').textContent = filter;
+      feature.textContent = 'Compare the new backgrounds on clear cases →';
+      feature.href = backgroundCollections[filter];
     }
     if (!items.length){
       $('grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px">'
@@ -961,7 +966,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     designs = staffMode ? d : d.filter(function(x){ return !x.hidden && x.active!==false && KPSeason.visible(x); });
     designs.forEach(function(design){ if (design.displayColorway) artworkPicks[design.file]=design.displayColorway; });
     if (filter !== 'All' && !designs.some(function(x){ return x.category === filter; })) filter = 'All';
-    renderDeviceBar(); renderFilters(); renderStates(); renderColors(); renderGrid();
+    renderCatStrip(); renderDeviceBar(); renderFilters(); renderStates(); renderColors(); renderGrid();
     preloadDevice(device);
     KPCaseShell.ready.then(function(){syncCaseView();refreshVisible();});
     var brand=new URLSearchParams(location.search).get('brand');if(!device&&(brand==='Apple'||brand==='Samsung'))kpOpenDrawer(brand);

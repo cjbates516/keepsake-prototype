@@ -11,7 +11,7 @@
 "CLR": 33,
 "COQ": 34,
 "CST": 28,
-"DOT": 12,
+"DOT": 20,
 "FLR": 108,
 "FRU": 70,
 "GLF": 11,
@@ -25,7 +25,7 @@
 "MAP": 112,
 "NE1": 1,
 "NEO": 6,
-"NPK": 28,
+"NPK": 31,
 "ORB": 3,
 "OUT": 6,
 "PAI": 1,
@@ -33,11 +33,13 @@
 "SCN": 168,
 "SPC": 21,
 "SPT": 5,
-"STR": 27,
+"STR": 35,
+"TAR": 4,
 "WES": 63,
 "WTH": 8,
 "XMS": 59,
 "Y2K": 43,
+"ZCR": 12,
 "ZOD": 60
 },
 "retired": {
@@ -2601,6 +2603,38 @@
 "c": "FRU",
 "n": 9
 },
+"kp-dots-cafe-dot.png": {
+"c": "DOT",
+"n": 13
+},
+"kp-dots-cherry-pinpoint.png": {
+"c": "DOT",
+"n": 14
+},
+"kp-dots-halo-dot.png": {
+"c": "DOT",
+"n": 15
+},
+"kp-dots-micro-ink.png": {
+"c": "DOT",
+"n": 16
+},
+"kp-dots-offset-duo.png": {
+"c": "DOT",
+"n": 17
+},
+"kp-dots-orbit-scatter.png": {
+"c": "DOT",
+"n": 18
+},
+"kp-dots-oversize-pop.png": {
+"c": "DOT",
+"n": 19
+},
+"kp-dots-pearl-grid.png": {
+"c": "DOT",
+"n": 20
+},
 "kp-golf-alpine-fairways.jpg": {
 "c": "GLF",
 "n": 4
@@ -2700,6 +2734,38 @@
 "kp-limes-stripe.jpg": {
 "c": "FRU",
 "n": 17
+},
+"kp-lines-cabana-bold.png": {
+"c": "STR",
+"n": 28
+},
+"kp-lines-contour-flow.png": {
+"c": "STR",
+"n": 29
+},
+"kp-lines-diagonal-dash.png": {
+"c": "STR",
+"n": 30
+},
+"kp-lines-double-rail.png": {
+"c": "STR",
+"n": 31
+},
+"kp-lines-fine-ticking.png": {
+"c": "STR",
+"n": 32
+},
+"kp-lines-scallop-stripe.png": {
+"c": "STR",
+"n": 33
+},
+"kp-lines-wave-ribbon.png": {
+"c": "STR",
+"n": 34
+},
+"kp-lines-windowpane.png": {
+"c": "STR",
+"n": 35
 },
 "kp-liquid-arctic-fold.jpg": {
 "c": "LIQ",
@@ -2848,6 +2914,18 @@
 "kp-park-bryce-amphitheater.jpg": {
 "c": "NPK",
 "n": 25
+},
+"kp-park-collage-everest.jpg": {
+"c": "NPK",
+"n": 31
+},
+"kp-park-collage-grand-canyon.jpg": {
+"c": "NPK",
+"n": 29
+},
+"kp-park-collage-smokies.jpg": {
+"c": "NPK",
+"n": 30
 },
 "kp-park-crater-lake.jpg": {
 "c": "NPK",
@@ -3053,6 +3131,22 @@
 "c": "HIM",
 "n": 22
 },
+"kp-tarot-lovers.png": {
+"c": "TAR",
+"n": 1
+},
+"kp-tarot-moon.png": {
+"c": "TAR",
+"n": 2
+},
+"kp-tarot-star.png": {
+"c": "TAR",
+"n": 3
+},
+"kp-tarot-sun.png": {
+"c": "TAR",
+"n": 4
+},
 "kp-teton-jenny-lake-photo.jpg": {
 "c": "NPK",
 "n": 19
@@ -3164,6 +3258,54 @@
 "kp-zion-watchman-bend.png": {
 "c": "NPK",
 "n": 8
+},
+"kp-zodiac-creature-aquarius.png": {
+"c": "ZCR",
+"n": 1
+},
+"kp-zodiac-creature-aries.png": {
+"c": "ZCR",
+"n": 2
+},
+"kp-zodiac-creature-cancer.png": {
+"c": "ZCR",
+"n": 3
+},
+"kp-zodiac-creature-capricorn.png": {
+"c": "ZCR",
+"n": 4
+},
+"kp-zodiac-creature-gemini.png": {
+"c": "ZCR",
+"n": 5
+},
+"kp-zodiac-creature-leo.png": {
+"c": "ZCR",
+"n": 6
+},
+"kp-zodiac-creature-libra.png": {
+"c": "ZCR",
+"n": 7
+},
+"kp-zodiac-creature-pisces.png": {
+"c": "ZCR",
+"n": 8
+},
+"kp-zodiac-creature-sagittarius.png": {
+"c": "ZCR",
+"n": 9
+},
+"kp-zodiac-creature-scorpio.png": {
+"c": "ZCR",
+"n": 10
+},
+"kp-zodiac-creature-taurus.png": {
+"c": "ZCR",
+"n": 11
+},
+"kp-zodiac-creature-virgo.png": {
+"c": "ZCR",
+"n": 12
 },
 "labrador-retrievers-in-santa-hats.jpg": {
 "c": "XMS",

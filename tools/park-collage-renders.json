@@ -1,0 +1,74 @@
+[
+  {
+    "href": "customizer.html?design=kp-park-collage-smokies.jpg&model=iphone-17-pro-max&view=phone",
+    "design": "kp-park-collage-smokies.jpg",
+    "model": "iphone-17-pro-max",
+    "variant": "original",
+    "output": "assets/celestial-patterns/kp-park-collage-smokies--original.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-park-collage-smokies.jpg&model=iphone-15-pro&view=phone",
+    "design": "kp-park-collage-smokies.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/celestial-patterns/kp-park-collage-smokies--iphone-15-pro.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-park-collage-smokies.jpg&model=galaxy-s26-ultra&view=phone",
+    "design": "kp-park-collage-smokies.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/celestial-patterns/kp-park-collage-smokies--galaxy-s26-ultra.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-park-collage-everest.jpg&model=iphone-17-pro-max&view=phone",
+    "design": "kp-park-collage-everest.jpg",
+    "model": "iphone-17-pro-max",
+    "variant": "original",
+    "output": "assets/celestial-patterns/kp-park-collage-everest--original.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-park-collage-everest.jpg&model=iphone-15-pro&view=phone",
+    "design": "kp-park-collage-everest.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/celestial-patterns/kp-park-collage-everest--iphone-15-pro.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-park-collage-everest.jpg&model=galaxy-s26-ultra&view=phone",
+    "design": "kp-park-collage-everest.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/celestial-patterns/kp-park-collage-everest--galaxy-s26-ultra.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-park-collage-grand-canyon.jpg&model=iphone-17-pro-max&view=phone",
+    "design": "kp-park-collage-grand-canyon.jpg",
+    "model": "iphone-17-pro-max",
+    "variant": "original",
+    "output": "assets/celestial-patterns/kp-park-collage-grand-canyon--original.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-park-collage-grand-canyon.jpg&model=iphone-15-pro&view=phone",
+    "design": "kp-park-collage-grand-canyon.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/celestial-patterns/kp-park-collage-grand-canyon--iphone-15-pro.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-park-collage-grand-canyon.jpg&model=galaxy-s26-ultra&view=phone",
+    "design": "kp-park-collage-grand-canyon.jpg",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "output": "assets/celestial-patterns/kp-park-collage-grand-canyon--galaxy-s26-ultra.webp",
+    "caseType": "MagSafe Clear"
+  }
+]

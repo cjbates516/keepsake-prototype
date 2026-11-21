@@ -1,0 +1,182 @@
+[
+  {
+    "output": "assets/celestial-patterns/kp-park-collage-everest--galaxy-s26-ultra.webp",
+    "model": "Samsung Galaxy S26 Ultra",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 641,
+    "height": 1268,
+    "crop": [
+      304,
+      116,
+      945,
+      1384
+    ],
+    "cameraPoint": [
+      146,
+      209
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-park-collage-everest--iphone-15-pro.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 575,
+    "height": 1119,
+    "crop": [
+      336,
+      209,
+      911,
+      1328
+    ],
+    "cameraPoint": [
+      164,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-park-collage-everest--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-park-collage-grand-canyon--galaxy-s26-ultra.webp",
+    "model": "Samsung Galaxy S26 Ultra",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 641,
+    "height": 1268,
+    "crop": [
+      304,
+      116,
+      945,
+      1384
+    ],
+    "cameraPoint": [
+      146,
+      209
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-park-collage-grand-canyon--iphone-15-pro.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 575,
+    "height": 1119,
+    "crop": [
+      336,
+      209,
+      911,
+      1328
+    ],
+    "cameraPoint": [
+      164,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-park-collage-grand-canyon--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-park-collage-smokies--galaxy-s26-ultra.webp",
+    "model": "Samsung Galaxy S26 Ultra",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 641,
+    "height": 1268,
+    "crop": [
+      304,
+      116,
+      945,
+      1384
+    ],
+    "cameraPoint": [
+      146,
+      209
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-park-collage-smokies--iphone-15-pro.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 575,
+    "height": 1119,
+    "crop": [
+      336,
+      209,
+      911,
+      1328
+    ],
+    "cameraPoint": [
+      164,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/celestial-patterns/kp-park-collage-smokies--original.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  }
+]

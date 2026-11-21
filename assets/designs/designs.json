@@ -1,5 +1,489 @@
 [
 {
+"file": "kp-dots-micro-ink.png",
+"title": "Micro Ink Dots",
+"category": "Polka dots",
+"active": true,
+"hash": "341abbd34f53",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-dots-cafe-dot.png",
+"title": "Café Dots",
+"category": "Polka dots",
+"active": true,
+"hash": "15150cbeaf1f",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-dots-cherry-pinpoint.png",
+"title": "Cherry Pinpoint",
+"category": "Polka dots",
+"active": true,
+"hash": "a38b3232fa82",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-dots-oversize-pop.png",
+"title": "Oversize Pop Dots",
+"category": "Polka dots",
+"active": true,
+"hash": "6cc083ce5db8",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-dots-halo-dot.png",
+"title": "Halo Dots",
+"category": "Polka dots",
+"active": true,
+"hash": "a9ef020c52ee",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-dots-pearl-grid.png",
+"title": "Pearl Grid Dots",
+"category": "Polka dots",
+"active": true,
+"hash": "e935d727371a",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-dots-offset-duo.png",
+"title": "Offset Duo Dots",
+"category": "Polka dots",
+"active": true,
+"hash": "65a8b430562e",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-dots-orbit-scatter.png",
+"title": "Orbit Scatter Dots",
+"category": "Polka dots",
+"active": true,
+"hash": "6e1cd21a6ea7",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-lines-fine-ticking.png",
+"title": "Fine Ticking",
+"category": "Stripes & waves",
+"active": true,
+"hash": "098b27b06bf0",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-lines-cabana-bold.png",
+"title": "Cabana Bold",
+"category": "Stripes & waves",
+"active": true,
+"hash": "7210e28e55c5",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-lines-double-rail.png",
+"title": "Double Rail",
+"category": "Stripes & waves",
+"active": true,
+"hash": "c6cd5bda5391",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-lines-wave-ribbon.png",
+"title": "Wave Ribbon",
+"category": "Stripes & waves",
+"active": true,
+"hash": "aa23df59ac9c",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-lines-contour-flow.png",
+"title": "Contour Flow",
+"category": "Stripes & waves",
+"active": true,
+"hash": "0610b0249ba1",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-lines-scallop-stripe.png",
+"title": "Scallop Stripe",
+"category": "Stripes & waves",
+"active": true,
+"hash": "0e92c7f7b1ff",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-lines-diagonal-dash.png",
+"title": "Diagonal Dash",
+"category": "Stripes & waves",
+"active": true,
+"hash": "3fb2495e226a",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-lines-windowpane.png",
+"title": "Windowpane",
+"category": "Stripes & waves",
+"active": true,
+"hash": "16b1a30d262b",
+"color": [
+"White",
+"Yellow",
+"Blue",
+"Pink",
+"Green"
+]
+},
+{
+"file": "kp-zodiac-creature-aries.png",
+"title": "Aries · Celestial Creature",
+"category": "Zodiac Creatures",
+"active": true,
+"hash": "fb1e0f7fda2b",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-zodiac-creature-taurus.png",
+"title": "Taurus · Celestial Creature",
+"category": "Zodiac Creatures",
+"active": true,
+"hash": "dba07304d418",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-zodiac-creature-gemini.png",
+"title": "Gemini · Celestial Creature",
+"category": "Zodiac Creatures",
+"active": true,
+"hash": "959a8a858086",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-zodiac-creature-cancer.png",
+"title": "Cancer · Celestial Creature",
+"category": "Zodiac Creatures",
+"active": true,
+"hash": "2ce281ad64b4",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-zodiac-creature-leo.png",
+"title": "Leo · Celestial Creature",
+"category": "Zodiac Creatures",
+"active": true,
+"hash": "b10d3a6bb5d1",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-zodiac-creature-virgo.png",
+"title": "Virgo · Celestial Creature",
+"category": "Zodiac Creatures",
+"active": true,
+"hash": "3488e2a83b72",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-zodiac-creature-libra.png",
+"title": "Libra · Celestial Creature",
+"category": "Zodiac Creatures",
+"active": true,
+"hash": "05950663d99c",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-zodiac-creature-scorpio.png",
+"title": "Scorpio · Celestial Creature",
+"category": "Zodiac Creatures",
+"active": true,
+"hash": "b82e14edbf62",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-zodiac-creature-sagittarius.png",
+"title": "Sagittarius · Celestial Creature",
+"category": "Zodiac Creatures",
+"active": true,
+"hash": "5daa6b6411b1",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-zodiac-creature-capricorn.png",
+"title": "Capricorn · Celestial Creature",
+"category": "Zodiac Creatures",
+"active": true,
+"hash": "9664c90d333f",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-zodiac-creature-aquarius.png",
+"title": "Aquarius · Celestial Creature",
+"category": "Zodiac Creatures",
+"active": true,
+"hash": "638e8e69f5a9",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-zodiac-creature-pisces.png",
+"title": "Pisces · Celestial Creature",
+"category": "Zodiac Creatures",
+"active": true,
+"hash": "369890dd9fd7",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-tarot-sun.png",
+"title": "The Sun",
+"category": "Tarot",
+"active": true,
+"hash": "6696bf109c7d",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-tarot-moon.png",
+"title": "The Moon",
+"category": "Tarot",
+"active": true,
+"hash": "7a422bddbbfd",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-tarot-star.png",
+"title": "The Star",
+"category": "Tarot",
+"active": true,
+"hash": "4ad6b636fd1b",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-tarot-lovers.png",
+"title": "The Lovers",
+"category": "Tarot",
+"active": true,
+"hash": "126f7283e80c",
+"color": [
+"Blue",
+"Green",
+"Purple",
+"Red",
+"Black"
+]
+},
+{
+"file": "kp-park-collage-smokies.jpg",
+"title": "Great Smoky Mountains · Adventure Collage",
+"category": "National Parks",
+"active": true,
+"hash": "47a9435c7324",
+"color": [
+"Green",
+"Orange",
+"Blue"
+]
+},
+{
+"file": "kp-park-collage-everest.jpg",
+"title": "Mount Everest · Adventure Collage",
+"category": "National Parks",
+"active": true,
+"hash": "8cba53f76c9c",
+"color": [
+"Green",
+"Orange",
+"Blue"
+]
+},
+{
+"file": "kp-park-collage-grand-canyon.jpg",
+"title": "Grand Canyon · Adventure Collage",
+"category": "National Parks",
+"active": true,
+"hash": "c07b92c57cfb",
+"color": [
+"Green",
+"Orange",
+"Blue"
+]
+},
+{
 "file": "kp-season-rain-on-glass.jpg",
 "title": "Rain on Glass",
 "category": "Seasonal Weather",

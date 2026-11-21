@@ -5,10 +5,36 @@
  "code_hold_seconds": 300,
  "assets_version": "14",
  "collections": [
-  {"category":"Space Photography","label":"Space Photography","code":"SPC"},
-  {"category":"Earth From Orbit","label":"Earth From Orbit","code":"ORB"},
-  {"category":"Botanical Blueprints","label":"Botanical Blueprints","code":"BLU"},
-  {"category":"City Scenes","label":"City Scenes","code":"SCN"},
+  {
+   "category": "Zodiac Creatures",
+   "label": "Zodiac Creatures",
+   "code": "ZCR"
+  },
+  {
+   "category": "Tarot",
+   "label": "Tarot",
+   "code": "TAR"
+  },
+  {
+   "category": "Space Photography",
+   "label": "Space Photography",
+   "code": "SPC"
+  },
+  {
+   "category": "Earth From Orbit",
+   "label": "Earth From Orbit",
+   "code": "ORB"
+  },
+  {
+   "category": "Botanical Blueprints",
+   "label": "Botanical Blueprints",
+   "code": "BLU"
+  },
+  {
+   "category": "City Scenes",
+   "label": "City Scenes",
+   "code": "SCN"
+  },
   {
    "category": "Signature Golf",
    "label": "Signature Golf",
