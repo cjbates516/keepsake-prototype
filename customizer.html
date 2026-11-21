@@ -1492,8 +1492,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     const fieldPhoto = state.isLibraryDesign && state.photoImg && /^field-photo-([a-z0-9-]+)\.jpg$/.exec(state.photoImg.__kpDesignFile || '');
     const spacePhoto = state.isLibraryDesign && state.photoImg && /^kp-space-([a-z0-9-]+)\.jpg$/.exec(state.photoImg.__kpDesignFile || '');
     creditLink.hidden = !(cityPhoto || fieldPhoto || spacePhoto);
-    /* every credit is a link to its credits page (CC BY attribution), on kiosks too, where it stays in the Photo tool as
-       on the baseline (design-editor.js); the web editor shows it under the case */
+    /* every credit is a link to its credits page (CC BY attribution); the web editor shows it under the case. On kiosks
+       it stays in the Photo tool with its attribution href (design-editor.js), but design-editor.css hides it there
+       (.studio-kiosk #cityPhotoCredit) so a credits page can never become a way out of the kiosk editor */
     if (spacePhoto) creditLink.href = 'new-print-credits.html#kp-space-' + spacePhoto[1];
     if (fieldPhoto) creditLink.href = 'field-photo-credits.html#' + fieldPhoto[1];
     if (cityPhoto) creditLink.href = 'city-photo-credits.html#' + cityPhoto[1];
