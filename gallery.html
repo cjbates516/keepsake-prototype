@@ -95,7 +95,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/shop-refresh.css">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=clear-mounted-2" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
+<link rel="stylesheet" href="assets/shop-menu.css"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=collections-1" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 </head>
 <body class="kp-storefront kp-library kp-shop">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
@@ -205,6 +205,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   /* Shop-by-style strip under the title; seasonal slot is month-driven */
   var KP_STRIP_BASE = [
+    ['Space Photography','kp-space-bubble.jpg'],
     ['City Scenes','city-night-philadelphia.jpg'],
     ['Earth From Orbit','field-photo-yukon-delta-0.jpg'],
     ['Botanical Blueprints','field-photo-291506.jpg'],
@@ -765,6 +766,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       $('shopTitle').textContent = filter;
       feature.textContent = 'Meet the photographs →';
       feature.href = 'field-photo-credits.html#' + (filter === 'Earth From Orbit' ? 'parallel-dunes' : '291506');
+    }
+    if (['Liquid Color','Signature Golf','National Parks','Space Photography'].includes(filter)) {
+      if (!device) $('shopTitle').textContent = filter === 'Liquid Color' ? 'Liquid Prism' : filter;
+      feature.textContent = filter === 'Space Photography' ? 'Photograph sources & credits →' : 'See the newest prints on cases →';
+      feature.href = filter === 'Space Photography' ? 'new-print-credits.html' : 'new-prints.html#' + filter.toLowerCase().replaceAll(' ','-');
     }
     if (!items.length){
       $('grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px">'

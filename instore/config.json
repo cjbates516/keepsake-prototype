@@ -3,8 +3,9 @@
  "price": 44.99,
  "idle_seconds": 75,
  "code_hold_seconds": 300,
- "assets_version": "13",
+ "assets_version": "14",
  "collections": [
+  {"category":"Space Photography","label":"Space Photography","code":"SPC"},
   {"category":"Earth From Orbit","label":"Earth From Orbit","code":"ORB"},
   {"category":"Botanical Blueprints","label":"Botanical Blueprints","code":"BLU"},
   {"category":"City Scenes","label":"City Scenes","code":"SCN"},
