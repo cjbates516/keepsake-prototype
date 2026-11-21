@@ -124,7 +124,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/shop-dialogs.js" defer></script>
 <link rel="stylesheet" href="assets/shop-menu.css?v=start-case-1"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=celestial-2" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 <link rel="stylesheet" href="assets/accessories.css">
-<link rel="stylesheet" href="assets/design-editor.css?v=slate-drawing-1">
+<link rel="stylesheet" href="assets/design-editor.css?v=sky-counter-1">
 <script>window.KP_EDITOR=!new URLSearchParams(location.search).has('cal')&&new URLSearchParams(location.search).get('staff')!=='1';</script>
 <script src="assets/accessory-catalog.js"></script>
 <script src="assets/accessories.js?v=2"></script>
@@ -375,7 +375,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 </div>
 
 <script src="assets/case-zoom.js"></script>
-<script src="assets/night-sky.js?v=places-zoom-1"></script>
+<script src="assets/night-sky.js?v=counter-details-1"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -984,7 +984,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(hit>=0){ state.slotTarget=hit; var fi=$('fileInput'); fi.multiple=true; fi.click(); }
       return;
     }
-    if(!state.photoImg && !state.text) $('fileInput').click();
+    if(!state.photoImg && !state.text){if(skyStudio){if(window.KPEditor)KPEditor.openTool('sky');else $('personalStudio').scrollIntoView({block:'start'});}else $('fileInput').click();}
   });
   var kpPtr=null, kpPtrs={}, pinch=null;
   function ptrCount(){ return Object.keys(kpPtrs).length; }
@@ -1141,7 +1141,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function kpToast(msg, ms){
     var t=document.getElementById('kpToast');
     if(!t){ t=document.createElement('div'); t.id='kpToast'; t.setAttribute('role','status'); t.setAttribute('aria-live','polite');
-      t.style.cssText='position:fixed;left:50%;bottom:118px;transform:translateX(-50%);max-width:88vw;background:#2D2D3B;color:#FFF;font-size:14px;font-weight:700;line-height:1.45;padding:14px 20px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:99;opacity:0;transition:opacity .25s';
+      t.style.cssText='pointer-events:none;position:fixed;left:50%;bottom:118px;transform:translateX(-50%);max-width:88vw;background:#2D2D3B;color:#FFF;font-size:14px;font-weight:700;line-height:1.45;padding:14px 20px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:99;opacity:0;transition:opacity .25s';
       document.body.appendChild(t); }
     t.textContent=msg; t.style.opacity='1';
     clearTimeout(t.__h); t.__h=setTimeout(function(){ t.style.opacity='0'; }, ms||5200);
@@ -1153,7 +1153,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* Decode directly into a bounded working copy; stale uploads never restore a reset. */
   var kpUploadRequest=0;
   function releaseWorkingPhoto(){
-    if(state.photoImg instanceof HTMLCanvasElement){state.photoImg.width=0;state.photoImg.height=0;}
+    if(state.photoImg instanceof HTMLCanvasElement){delete state.photoImg.__kpSkyRows;state.photoImg.width=0;state.photoImg.height=0;}
     KPDesignColorways.clear();
   }
   function loadPhoto(f, forceSlot){
@@ -1628,6 +1628,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(look)detail('Background',look.name);
     }
     detail('Phone',model+' · '+state.colorName);detail('Case',state.caseType);
+    if(skyStudio&&state.photoImg?.__kpSkyRows)state.photoImg.__kpSkyRows.forEach(function(row){detail(row[0],row[1]);});
     if(state.text){
       detail('Personalization',state.text);
       detail('Name style',(FONTS[state.textFont] ? FONTS[state.textFont].n : 'Selected font')+' · '+state.textColor+' · '+(state.textVertical?'vertical':'horizontal'));
@@ -1656,6 +1657,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var items=overviewText('ul','','review-items');
     function overviewItem(text){var li=document.createElement('li');li.textContent=text;items.append(li);}
     overviewItem('Case · $'+basePrice().toFixed(2));
+    if(skyStudio&&state.photoImg?.__kpSkyRows){var skyRows=Object.fromEntries(state.photoImg.__kpSkyRows);overviewItem(skyRows.Occasion+' · '+skyRows.Date);}
     if(drawingAtCounter())overviewItem('Child’s drawing · to add with our team');
     extras.forEach(function(a){overviewItem(a.name+' · $'+a.price.toFixed(2));});
     state.accessories.forEach(function(id){var a=KPAccessories.get(id);overviewItem(KPAccessories.label(a)+' · $'+KPAccessories.price(a,state.store).toFixed(2)+(KPAccessories.available(a,state.store)?'':' · confirm stock'));});
@@ -1665,7 +1667,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     $('reviewInstruction').textContent=new URLSearchParams(location.search).get('kiosk')==='1'?'Keep this screen open for our team. We confirm stock, fit and your design before you pay in store.':'Save this card or keep the screen open for our team. We confirm stock, fit and your design before you pay in store.';
     dialog.showModal();dialog.scrollTop=0;$('reviewHeading').tabIndex=-1;$('reviewHeading').focus({preventScroll:true});
     if(!file){
-      prepareCounterCard(version,skyStudio?'Bring your saved sky artwork and this preview to the counter.':drawingStudio?'Bring the original drawing photo with this preview.':state.photoImg||state.layout?'Bring the original photos on your phone with this preview.':'Show the team this text design.');
+      prepareCounterCard(version,skyStudio?'Show this card at the counter. Sky details below let our team recreate your design; saved artwork is optional.':drawingStudio?'Bring the original drawing photo with this preview.':state.photoImg||state.layout?'Bring the original photos on your phone with this preview.':'Show the team this text design.');
       if (skyStudio && new URLSearchParams(location.search).get('kiosk')!=='1' && state.photoImg && typeof state.photoImg.toBlob === 'function') {
         code.textContent='Preparing your sky artwork…';
         state.photoImg.toBlob(function(blob) {
@@ -1682,7 +1684,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           code.replaceChildren(download);
         }, 'image/png');
       }
-      if(skyStudio&&new URLSearchParams(location.search).get('kiosk')==='1')code.textContent='Keep this screen open so our team can prepare your sky artwork.';
+      if(skyStudio&&new URLSearchParams(location.search).get('kiosk')==='1')code.textContent='Keep this screen open. Our team can recreate your sky from Design & staff details below.';
       if (drawingStudio) code.textContent=drawingAtCounter()?'Drawing still to add. Bring the original drawing or its photo to our team. This is a case setup, not a finished print.':'Bring the original drawing photo with this preview so the team can prepare your case.';
       else if (!skyStudio && (state.photoImg || state.layout)) code.textContent='Bring the original photos on your phone and show this preview at the counter.';
       return;
@@ -1802,6 +1804,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* builds the print file; done(canvas, filename). Returns false (with a toast) when it cannot. */
   function drawingAtCounter(){return drawingStudio && new URLSearchParams(location.search).get('kiosk')==='1' && !state.photoImg;}
   function kpPrintIssue(forReview){
+    if(skyStudio&&!state.photoImg?.__kpSkyRows)return 'Choose your date and place, then update your sky preview.';
     if(skyStudio && skyDirty)return 'Update your sky map to use the latest details.';
     if(!window.KPPrintGeometry||!window.KPPrintPng)return 'Print tools did not load. Reload before printing.';
     if(!KITS[state.model])return 'Print template is not available for this model.';
@@ -2226,6 +2229,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       $('fitFit').textContent = 'Fit whole drawing';
       $('photoPrivacy').textContent = 'Your drawing stays on this device while you preview it.';
     } else {
+      state.text='';$('nameInput').value='';
       KPNightSky.mount(host, {
         changed:function(){skyDirty=true;state.reserved=false;document.dispatchEvent(new Event("kp:editor-change"));},
         apply:function(chart) {
@@ -2259,7 +2263,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(zoomTap && Math.hypot(e.clientX-zoomTap[0],e.clientY-zoomTap[1])>5)zoomTap=null;
   });
   canvas.addEventListener('pointercancel',()=>{zoomTap=null;});
-  canvas.addEventListener('click',()=>{if(zoomTap && !$('skyCaseZoom').hidden)$('skyCaseZoom').click();zoomTap=null;});
+  canvas.addEventListener('click',()=>{if(zoomTap && (state.photoImg||state.text) && !canGesture() && !$('skyCaseZoom').hidden)$('skyCaseZoom').click();zoomTap=null;});
   /* ── init ── */
   loadKit(state.model);
   $('brandSel').value=state.brand;
@@ -2278,7 +2282,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   window.KPStudioCore={
     snapshot:editorSnapshot,
     context:function(){var src=state.photoImg;if(src&&!editorSources.has(src))editorSources.set(src,++editorSourceID);return state.model+':'+(src?editorSources.get(src):0);},
-    info:function(){return {hasExtras:!!(state.addons.screen||state.accessories.length||state.chargerHelp||state.promo),selectionKey:JSON.stringify([state.model,state.caseType,state.colorName,state.store,state.variant,state.addons,state.accessories,state.chargerHelp,state.promo]),model:state.model,caseType:state.caseType,finish:state.colorName,store:state.store,sky:skyStudio,drawing:drawingStudio,drawingPending:drawingAtCounter(),hasPhoto:!!state.photoImg,loading:!!state.libraryLoading,library:state.isLibraryDesign,accessoryError:!!(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')),issue:(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')?'Saved accessories could not load. Reload before reviewing this setup.':null)||(caseFailed||lightFailed?'The case photo could not load. Reload or choose another phone.':null)||kpPrintIssue(true)||(viewFailed?'The case mask could not load. Reload or ask our team for help.':!caseReady||!lightReady?'Your case preview is loading. Please wait.':null),total:orderPricing().total};},
+    info:function(){return {hasExtras:!!(state.addons.screen||state.accessories.length||state.chargerHelp||state.promo),selectionKey:JSON.stringify([state.model,state.caseType,state.colorName,state.store,state.variant,state.addons,state.accessories,state.chargerHelp,state.promo]),model:state.model,caseType:state.caseType,finish:state.colorName,store:state.store,sky:skyStudio,skyDirty:skyStudio&&skyDirty,skyDetails:skyStudio&&!skyDirty?state.photoImg?.__kpSkyRows:null,drawing:drawingStudio,drawingPending:drawingAtCounter(),hasPhoto:!!state.photoImg,loading:!!state.libraryLoading,library:state.isLibraryDesign,accessoryError:!!(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')),issue:(KPAccessories.missing&&new URLSearchParams(location.search).has('extras')?'Saved accessories could not load. Reload before reviewing this setup.':null)||(caseFailed||lightFailed?'The case photo could not load. Reload or choose another phone.':null)||kpPrintIssue(true)||(viewFailed?'The case mask could not load. Reload or ask our team for help.':!caseReady||!lightReady?'Your case preview is loading. Please wait.':null),total:orderPricing().total};},
     restore:function(s){editorKeys.forEach(k=>{if(Object.hasOwn(s,k))state[k]=s[k];});state.reserved=false;editorSync();},
     adjust:function(key,value){
       if(!state.photoImg||skyStudio)return;
@@ -2291,6 +2295,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       editorPurged=true;clearTimeout(window.__kpDpiTick);
       if(skyStudio)$('personalStudio').dispatchEvent(new Event('skyreset'));
       kpLibraryRequest++;kpUploadRequest++;releaseWorkingPhoto();state.photoImg=null;state.photoUrl=null;state.text='';state.photos=[];state.layout=null;
+      looksSource=null;looksSize='';
+      for(var layer of [_designLayer,_alphaLayer])if(layer)layer.width=layer.height=0;
+      _designLayer=_alphaLayer=null;
       state.accessories=[];state.addons={screen:false,lens:false};state.promo=null;state.chargerHelp=false;
       document.querySelectorAll('dialog[open]').forEach(d=>d.close());
       document.querySelectorAll('input,textarea').forEach(el=>{el.value='';if(el.type==='checkbox')el.checked=false;});
@@ -2301,7 +2308,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   };
 })();
 </script>
-<script src="assets/design-editor.js?v=slate-drawing-1"></script>
+<script src="assets/design-editor.js?v=sky-counter-1"></script>
 <script>
   document.addEventListener('click',function(e){
     var t=e.target.closest ? e.target.closest('.kpAllTgl') : null;

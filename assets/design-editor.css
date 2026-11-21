@@ -93,7 +93,7 @@ body.design-editor #stageCanvas{max-height:max(260px,calc(100dvh - 450px));width
 @media(max-width:360px){.design-editor .studio-history{padding-top:8px}.design-editor .studio-top>div:first-child{max-width:150px}.design-editor .studio-top h1{font-size:26px!important}.design-editor #studioPhone{font-size:11px}.design-editor #studioNext{padding-inline:10px}.design-editor #studioFooter{gap:4px}}
 @media(prefers-reduced-motion:reduce){.design-editor *{scroll-behavior:auto!important}}
 
-.design-editor .studio-tools:has([data-tool="sky"]){grid-template-columns:repeat(3,minmax(0,1fr))}
+.design-editor .studio-tools:has([data-tool="sky"]){grid-template-columns:repeat(2,minmax(0,1fr))}
 
 @media(max-width:760px){.design-editor #studioSheet[data-active-tool=adjust] #stageStick{margin:12px}.design-editor #studioSheet[data-active-tool=adjust] .studio-panel{padding-top:4px}}
 
@@ -142,3 +142,5 @@ body.design-editor #stageCanvas{max-height:max(260px,calc(100dvh - 450px));width
 .design-editor :is(.studio-top h1,#studioPreview h2,#studioSetup h2):focus{outline:none}
 .design-editor .studio-history{justify-content:flex-end}
 @media(max-width:760px){.design-editor .studio-history #studioReset{font-size:12px}}
+
+.studio-kiosk #cityPhotoCredit{display:none!important}

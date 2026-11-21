@@ -395,6 +395,7 @@
       '<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>' +
       '</span><span class="tname">Use your own photo</span></button>';
     html += '<button class="tile own" type="button" data-act="drawing"><span class="timg"><span aria-hidden="true" style="font-size:46px">✎</span></span><span class="tname">Your child’s drawing</span></button>';
+    html += '<button class="tile own" type="button" data-act="sky"><span class="timg"><span aria-hidden="true" style="font-size:46px">✧</span></span><span class="tname">Your special night sky</span></button>';
     html += list.map(function (d) {
       var u = cache[d.file];
       return '<div class="tile" data-file="' + esc(d.file) + '"><button type="button" class="case-zoom-button timg" data-zoom-tile aria-label="Enlarge '+esc(cleanTitle(d.title))+'"><img alt=""' +
@@ -670,7 +671,7 @@
     }
     if (t.hasAttribute('data-file')) return pickDesign(t.getAttribute('data-file'));
     var act = t.getAttribute('data-act');
-    if (act === 'drawing' && state.model) {var drawingUrl=new URL('../customizer.html',location.href);drawingUrl.searchParams.set('studio','drawing');drawingUrl.searchParams.set('kiosk','1');drawingUrl.searchParams.set('model',state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'));if(state.store)drawingUrl.searchParams.set('store',state.store);location.href=drawingUrl.href;return;}
+    if ((act === 'drawing'||act === 'sky') && state.model) {var drawingUrl=new URL('../customizer.html',location.href);drawingUrl.searchParams.set('studio',act);drawingUrl.searchParams.set('kiosk','1');drawingUrl.searchParams.set('model',state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'));if(state.store)drawingUrl.searchParams.set('store',state.store);location.href=drawingUrl.href;return;}
     if (act === 'own') return openSheet();
     if (act === 'closeSheet') return closeSheet();
     if (act === 'phone') { state.design = null; return show(1); }
