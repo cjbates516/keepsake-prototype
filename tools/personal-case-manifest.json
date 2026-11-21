@@ -1,0 +1,4 @@
+[
+  {"studio":"drawing","model":"iphone-17-pro-max","finish":"Silver","input":"assets/home/personal/drawing-note.png","output":"assets/home/personal/drawing-clear-case-v2.webp"},
+  {"studio":"sky","model":"iphone-17-pro-max","finish":"Silver","date":"2019-06-14","time":"21:00","place":"West Chester","lat":39.96,"lon":-75.61,"zone":"America/New_York","initials":"J & M","signs":["Gemini","Libra"],"output":"assets/home/personal/sky-clear-case-v2.webp"}
+]

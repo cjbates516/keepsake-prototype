@@ -1,4 +1,4 @@
-.personal-tiles > a img {object-fit:contain; height:clamp(230px,26vw,405px); padding:22px; background:#f7d9cc;}
+.personal-tiles > a img {object-fit:contain; height:clamp(300px,30vw,440px); padding:18px; background:#f7d9cc;}
 .personal-tiles > a:nth-child(2) img {background:#cbd5df;}
 .personal-tiles > a:nth-child(3) img {background:#d9e3ce;}
 #personalStudio {scroll-margin-top:80px; margin:15px 0;}
