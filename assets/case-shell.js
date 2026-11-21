@@ -37,11 +37,29 @@ window.KPCaseShell = (() => {
   }
   // The device mockups already include the photographed clear-case edges and
   // camera lip (18 reuses the owner-approved 17 photos). Keep those visible; the old scanned overlay looked black and
-  // empty-case mode removed the phone cameras entirely. These no-op adapters
-  // keep older callers compatible without changing any print geometry.
+  // empty-case mode removed the phone cameras entirely. The empty-case adapters
+  // stay disabled without changing any print geometry.
   const ready = Promise.resolve();
   function canShowEmpty() { return false; }
   function drawEmpty() { return false; }
-  function draw() {}
-  return {ready, box, draw, canShowEmpty, drawEmpty};
+  // Keep the photographed raised clear lip above the artwork on the 16 Pro
+  // family. Its broad panel mask otherwise paints over the inner rim, making
+  // the print look flush with the phone. This is display-only, not a print mask.
+  function rimPath(model) {
+    if(!/^iPhone 16 Pro(?: Max)?$/.test(model))return null;
+    const [left,top,right,bottom]=box(model),radius=model.endsWith('Max')?209:203,inset=48;
+    const rim=new Path2D();
+    rim.roundRect(left,top,right-left,bottom-top,radius);
+    rim.roundRect(left+inset,top+inset,right-left-inset*2,bottom-top-inset*2,radius-inset);
+    return rim;
+  }
+  function draw(ctx,model,width,height,type,photo) {
+    const rim=rimPath(model);
+    if(!photo || (type && type!=='MagSafe Clear') || !rim)return;
+    ctx.save();ctx.scale(width/2500,height/3000);
+    ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
+    ctx.clip(rim,'evenodd');ctx.clearRect(0,0,2500,3000);
+    ctx.drawImage(photo,0,0,2500,3000);ctx.restore();
+  }
+  return {ready, box, draw, rimPath, canShowEmpty, drawEmpty};
 })();

@@ -94,7 +94,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 .artwork-thumb span{display:block;min-height:26px;margin-top:5px;font-size:10px;line-height:1.2}.artwork-thumb[aria-pressed=true]{border-color:#ce202b;background:#fff4f1}.artwork-thumb:focus-visible{outline:3px solid #126578;outline-offset:2px}.artwork-thumb:disabled{opacity:.45;cursor:default}
 </style>
 <link rel="stylesheet" href="assets/storefront.css">
-<script src="assets/case-shell.js?v=clear-mounted-1"></script>
+<script src="assets/case-shell.js?v=clear-mounted-2"></script>
 <script src="assets/print-layouts.js"></script>
 <script src="assets/colorway-catalog.js"></script>
 <script src="assets/design-colorways.js"></script>
@@ -446,7 +446,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     // A known stencil is loading: show the phone until its actual panel is ready.
     if (KP_VIEW[device] && !vmask){
       if(maskFailed[device] && cv.closest('.h-card')) cv.closest('.h-card').querySelector('.case-zoom-button .zoom-hint').textContent='Case preview unavailable';
-      KPCaseShell.draw(ctx,device,CW,CH);
+      KPCaseShell.draw(ctx,device,CW,CH,caseStyle(device),layer);
       if(composed) composed.width=composed.height=0;
       return;
     }
@@ -468,7 +468,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(!emptyCase&&(device==='iPhone 18 Pro Max'||device==='iPhone 18 Pro')) ctx.globalCompositeOperation='source-atop';
       ctx.drawImage(t, 0, 0);
       ctx.globalCompositeOperation='source-over';
-      KPCaseShell.draw(ctx,device,CW,CH);
+      KPCaseShell.draw(ctx,device,CW,CH,caseStyle(device),layer);
       if(composed)composed.width=composed.height=0;
       return;
     }
@@ -484,7 +484,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ctx.globalAlpha = .32; ctx.globalCompositeOperation = 'multiply';
     ctx.drawImage(layer, 0, 0, CW, CH);
     ctx.restore();
-    KPCaseShell.draw(ctx,device,CW,CH);
+    KPCaseShell.draw(ctx,device,CW,CH,caseStyle(device),layer);
     if(composed)composed.width=composed.height=0;
   }
 
@@ -1033,6 +1033,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var svg=t.querySelector('svg'); if(svg) svg.style.transform=open?'':'rotate(90deg)';
   });
 </script>
-<script src="assets/case-zoom.js"></script>
+<script src="assets/case-zoom.js?v=fit-first-1"></script>
 </body>
 </html>
