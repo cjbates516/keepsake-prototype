@@ -2,10 +2,14 @@
 
 Reads the saved vendor listing photos (outside the repo, never modified) and writes
   assets/cases/rated-photos/rp-<key>-<rim>-<view>.webp      1000 x 1200, the viewer's large image
+  assets/cases/rated-photos/rp-<key>-<rim>-<view>-hd.webp   1600 x 1920, the same photo for tablets and high density
+                                                            desktops, where the viewer would draw the large image
+                                                            more than 15% bigger than its pixels (rated-gallery.js)
   assets/cases/rated-photos/rp-<key>-<rim>-<view>-t.webp    200 x 240, its thumbnail
   assets/cases/rated-photos/manifest.json                   what the viewer reads
   docs/RATED-CASE-PHOTOS.md                                 source file -> output file, exclusions
-Served names never carry the vendor or brand name. Every photo is trimmed the same way: per listing, one 5:6 frame
+Served names never carry the vendor or brand name. A photo whose WebP would pass its size cap (a grainy wallpaper)
+is encoded again a few quality steps lower, so no file is far heavier than the rest. Every photo is trimmed the same way: per listing, one 5:6 frame
 (the editor preview's 2500 x 3000 aspect) sized to the tallest view, so the case fills the frame and keeps one scale
 across that listing's views, on the photos' own pure white background.
 
@@ -16,13 +20,16 @@ usage: python3 tools/build_rated_photos.py [--src DIR]   build (default DIR: ../
        python3 tools/build_rated_photos.py --check       verify the manifest, files and phone list (no vendor photos needed)
 """
 from pathlib import Path
-import argparse, json, re, sys
+import argparse, io, json, re, sys
 
 R = Path(__file__).resolve().parent.parent
 OUT = R / 'assets/cases/rated-photos'
 DOC = R / 'docs/RATED-CASE-PHOTOS.md'
-VERSION = 'rated-photos-1'
+VERSION = 'rated-photos-2'
 W, H, TW, TH = 1000, 1200, 200, 240
+HW, HH = 1600, 1920
+# (start quality, lowest quality, size cap in bytes) per kind of output
+QUALITY = {'large': (84, 72, 90000), 'hd': (80, 68, 180000), 'thumb': (74, 74, None)}
 RIM_NAMES = {'smoke': 'Smoke Frost', 'clear': 'Clear Frost'}
 # listing shot number -> view; the back is shot 12 (back with buttons), or the plain back (2) when 12 is missing
 VIEWS = [('angle', [1], 'Front and back'), ('side', [3], 'Side view'), ('side2', [4], 'Other side'),
@@ -33,6 +40,11 @@ EXCLUDE = {
     'cckp3-samgs24-media-smoke-frost-2.jpg': 'an app icon logo is printed on the white back',
     'cckp3-iph18fld-media-smoke-frost-1.jpg': 'the lock screen shows a large clock (text); no site kit for this phone',
     'cckp3-iph18fld-media-smoke-frost-5.jpg': 'the lock screen shows a large clock (text); no site kit for this phone',
+    # found in review (Nov 21 2026): legible at full size, so never shipped; S26 and S26 Ultra keep side, back and front
+    'cckp3-samgs26-media-clear-frost-1.jpg': 'the left rim shows the vendor name embossed in the rim',
+    'cckp3-samgs26-media-clear-frost-4.jpg': 'the right rim shows the vendor name embossed in the rim',
+    'cckp3-samgs26u-media-clear-frost-1.jpg': 'the left rim shows the vendor name embossed in the rim',
+    'cckp3-samgs26u-media-clear-frost-4.jpg': 'the right rim shows the vendor name embossed in the rim',
 }
 EXCLUDE_NOTES = [
     ('cckp3-iph18fld-media-smoke-frost-{2,3,4}.jpg', 'foldable listing with no site kit; not used anywhere'),
@@ -52,7 +64,7 @@ PHOTOGRAPHED = {
 # Captions name the phones the listing fits; alt text names what the photo shows, with the color when it is obvious.
 OTHER = [
     ('iph14max', 'clear', 1, 'iPhone 14 Plus and 15 Plus', 'a yellow iPhone 15 Plus'),
-    ('iph17', 'smoke', 1, 'iPhone 17', 'an iPhone 17 with a pale lavender screen'),
+    ('iph17', 'smoke', 1, 'iPhone 17', 'a white iPhone 17'),
     ('samgs24', 'clear', 1, 'Galaxy S24 and S25', 'a pink Galaxy S24'),
     ('motgply25', 'clear', 5, 'moto g play 2025', 'a moto g play with a teal screen'),
     ('motgstl26', 'clear', 5, 'moto g stylus 2026', 'a moto g stylus with a purple screen'),
@@ -60,7 +72,7 @@ OTHER = [
     ('iph16', 'clear', 1, 'iPhone 16', 'a white iPhone 16'),
     ('iph15pmx', 'smoke', 1, 'iPhone 15 Pro Max', 'a titanium iPhone 15 Pro Max'),
     ('iph17pmx', 'smoke', 1, 'iPhone 17 Pro Max', 'a silver iPhone 17 Pro Max'),
-    ('samgs26u', 'clear', 1, 'Galaxy S26 Ultra', 'a white Galaxy S26 Ultra'),
+    ('samgs26', 'clear', 5, 'Galaxy S26', 'a Galaxy S26 with a lavender and pink screen'),
     ('iph17a', 'smoke', 1, 'iPhone Air', 'a white iPhone Air'),
     ('iph14pro', 'smoke', 1, 'iPhone 14 Pro', 'an iPhone 14 Pro with a deep blue screen'),
 ]
@@ -136,6 +148,16 @@ def build(src):
         fh = max((bottom - top) * 1.07, widest * 1.07 * H / W)
         return {'top': top, 'bottom': bottom, 'fh': fh, 'fw': fh * W / H}
 
+    def save(im, dest, kind):
+        q, low, cap = QUALITY[kind]
+        while True:
+            buf = io.BytesIO()
+            im.save(buf, 'WEBP', quality=q, method=6)
+            if cap is None or buf.tell() <= cap or q - 4 < low:
+                (OUT / dest).write_bytes(buf.getvalue())
+                return q
+            q -= 4
+
     def render(name, frame, dest):
         im, b = load(name), bbox(name)
         cx, cy = (b[0] + b[2]) / 2, (frame['top'] + frame['bottom']) / 2
@@ -144,11 +166,12 @@ def build(src):
         canvas = Image.new('RGB', (fw, fh), (255, 255, 255))
         sx0, sy0 = max(0, x0), max(0, y0)
         canvas.paste(im.crop((sx0, sy0, min(im.width, x0 + fw), min(im.height, y0 + fh))), (sx0 - x0, sy0 - y0))
+        hd = canvas.resize((HW, HH), Image.LANCZOS)
         big = canvas.resize((W, H), Image.LANCZOS)
-        big.save(OUT / dest, 'WEBP', quality=84, method=6)
-        big.resize((TW, TH), Image.LANCZOS).save(OUT / dest.replace('.webp', '-t.webp'), 'WEBP', quality=74, method=6)
+        qualities[dest] = (save(big, dest, 'large'), save(hd, dest.replace('.webp', '-hd.webp'), 'hd'))
+        save(big.resize((TW, TH), Image.LANCZOS), dest.replace('.webp', '-t.webp'), 'thumb')
 
-    rows, sets, done = [], {}, {}
+    rows, sets, done, qualities = [], {}, {}, {}
     for key in sorted(rims):
         sets[key] = {}
         for rim in rims[key]:
@@ -164,7 +187,7 @@ def build(src):
                 render(src_name(key, rim, shot), frame, dest)
                 done[(key, rim, shot)] = dest
                 rows.append((src_name(key, rim, shot), dest))
-                items.append({'file': dest, 'thumb': out_name(key, rim, view, True), 'w': W, 'h': H, 'view': view,
+                items.append({'file': dest, 'hd': dest.replace('.webp', '-hd.webp'), 'thumb': out_name(key, rim, view, True), 'w': W, 'h': H, 'view': view,
                               'caption': label + ' · ' + RIM_NAMES[rim],
                               'alt': 'Rated Case with a %s rim, %s' % (RIM_NAMES[rim], VIEW_ALT[view])})
             sets[key][RIM_NAMES[rim]] = items
@@ -180,7 +203,7 @@ def build(src):
             render(name, frame, dest)
             rows.append((name, dest))
         view = SHOT_VIEW[shot]
-        other.append({'file': dest, 'thumb': dest.replace('.webp', '-t.webp'), 'w': W, 'h': H, 'view': view,
+        other.append({'file': dest, 'hd': dest.replace('.webp', '-hd.webp'), 'thumb': dest.replace('.webp', '-t.webp'), 'w': W, 'h': H, 'view': view, 'key': key,
                       'phone': phone, 'rim': RIM_NAMES[rim], 'caption': phone + ' · ' + RIM_NAMES[rim],
                       'alt': 'Rated Case with a %s rim on %s, %s' % (RIM_NAMES[rim], desc, VIEW_ALT[view])})
     manifest = {'version': VERSION, 'models': models, 'sets': sets, 'other': other}
@@ -188,16 +211,16 @@ def build(src):
     (OUT / 'manifest.json').write_text(text)
     used = {d for _, d in rows}
     for stale in OUT.glob('rp-*.webp'):
-        if stale.name not in used and stale.name.replace('-t.webp', '.webp') not in used:
+        if re.sub(r'-(t|hd)\.webp$', '.webp', stale.name) not in used:
             stale.unlink()
-    write_doc(rows, models)
+    write_doc(rows, models, qualities)
     total = sum(p.stat().st_size for p in OUT.iterdir())
     print('Rated Case photos: %d photos (%d sets, %d on other phones), %d files, %.2f MB' % (
         len(used), sum(len(v) for v in sets.values()), len(other), len(list(OUT.iterdir())), total / 1e6))
     return check()
 
 
-def write_doc(rows, models):
+def write_doc(rows, models, qualities):
     lines = ['# Rated Case photos', '',
              'Product photos for the "See photos" viewer of the Rated Case in the editor (`assets/rated-gallery.js`).',
              'Built by `python3 tools/build_rated_photos.py` from listing images saved Nov 20 2026 from',
@@ -206,18 +229,25 @@ def write_doc(rows, models):
              'cases later. Served file names, captions and alt text never name the vendor or brand.', '',
              'Each listing (phone + rim) is trimmed to one 5:6 frame (the editor preview aspect) sized to its tallest view, so',
              'the case fills the frame at one scale across its views, on the photos\' own white background. Large images are',
-             '1000 x 1200 WebP (quality 84), thumbnails 200 x 240. Views in order: front and back (shot 1), side views (3, 4),',
+             '1000 x 1200 WebP (quality 84, stepped down to as low as 72 for a photo that would pass 90 KB), the same at',
+             '1600 x 1920 (`-hd`, quality 80, as low as 68 past 180 KB) for tablets and high density desktops, thumbnails',
+             '200 x 240. Views in order: front and back (shot 1), side views (3, 4),',
              'back (12, or 2 when 12 is missing), front (5). Rims follow the site kit (`KITS[model].rated.colors`).', '',
              '## Phones', '', '| Phone | Photos | Rims | Shown on a similar phone |', '|---|---|---|---|']
     for m, v in models.items():
         lines.append('| %s | %s | %s | %s |' % (m, v['key'], ', '.join(v['rims']), 'yes' if v['similar'] else ''))
-    lines += ['', '## Source file to output file', '', '| Source (vendor-photos/cck-phantom3) | Output (assets/cases/rated-photos) |', '|---|---|']
-    lines += ['| %s | %s |' % (s, d) for s, d in rows]
-    lines += ['', 'Each output also has a `-t.webp` thumbnail.', '', '## Exclusions', '', '| Source | Reason |', '|---|---|']
+    lines += ['', '## Source file to output file', '',
+              '| Source (vendor-photos/cck-phantom3) | Output (assets/cases/rated-photos) | WebP quality (large, hd) |', '|---|---|---|']
+    lines += ['| %s | %s | %d, %d |' % (s, d, *qualities[d]) for s, d in rows]
+    lines += ['', 'Each output also has a `-hd.webp` and a `-t.webp` thumbnail.', '', '## Exclusions', '', '| Source | Reason |', '|---|---|']
     lines += ['| %s | %s |' % (s, r) for s, r in EXCLUDE.items()]
     lines += ['| %s | %s |' % (s, r) for s, r in EXCLUDE_NOTES]
-    lines += ['', 'Checked by eye on a contact sheet of every output (logos, text, people, wrong phone, wrong rim). Phone wallpapers',
-              'are the phones\' own screens. The Galaxy wallpapers are Samsung\'s abstract default artwork, not a logo.', '']
+    lines += ['', 'Checked by eye on a contact sheet of every output (logos, text, people, wrong phone, wrong rim). The first pass',
+              'missed the vendor name embossed in the Galaxy S26 and S26 Ultra rims (light text on a light rim, legible only at',
+              'full size); a review found it with contrast stretched 1:1 crops and a template match over both rims of every used',
+              'source, which hit only those four photos (now excluded). When adding photos, check rims at 1:1 with the contrast',
+              'stretched, not only the contact sheet. Phone wallpapers are the phones\' own screens. The Galaxy wallpapers are',
+              'Samsung\'s abstract default artwork, not a logo.', '']
     DOC.write_text('\n'.join(lines))
 
 
@@ -237,10 +267,10 @@ def check():
     if len(m.get('other', [])) < 8:
         errors.append('fewer than 8 photos on other phones')
     for i in items:
-        for f, size in ((i['file'], (W, H)), (i['thumb'], (TW, TH))):
+        for f, size in ((i['file'], (W, H)), (i.get('hd', ''), (HW, HH)), (i['thumb'], (TW, TH))):
             p = OUT / f
-            if not p.exists():
-                errors.append('missing ' + f)
+            if not f or not p.exists():
+                errors.append('missing ' + (f or 'hd for ' + i['file']))
             elif Image.open(p).size != size:
                 errors.append('%s is not %dx%d' % (f, *size))
         if BRAND.search(i['file']):
