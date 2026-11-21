@@ -51,7 +51,8 @@
   const adjustNote=document.createElement('p');adjustNote.textContent=kiosk?'Choose a design to adjust its placement.':'Add a photo or choose a design to adjust its placement.';panels.adjust.append(adjustNote);
   const info=core.info(),initialSnapshot=core.snapshot();
   if(info.drawing)top.querySelector('h1').textContent=kiosk?'Plan your drawing case.':'Their drawing, your case.';
-  if(info.sky){move(panel('sky','Night sky','Create a sky for your date and place.'),'personalStudio');buttons.background.hidden=true;buttons.adjust.hidden=true;}
+  if(info.sky)top.querySelector('h1').textContent='Your special night.';
+  if(info.sky){move(panel('sky','Night sky','Create a sky for your date and place.'),'personalStudio');buttons.background.hidden=true;buttons.adjust.hidden=true;buttons.name.hidden=true;tray.prepend(buttons.sky);}
   else {
     const photoPanel=panel('photo',info.drawing?'Drawing':kiosk?'Photo help':'Photo',info.drawing&&kiosk?'':kiosk?'Want to use your own photo or drawing? Ask our team at the counter.':'Your photo stays on this device. Choose an original, full-size image.');
     if(info.drawing){move(photoPanel,'personalStudio');tray.prepend(buttons.photo);}
@@ -113,6 +114,7 @@
   }
   function openTool(id,push=true){if(step!=='edit'||!panels[id])return;remember();tool=id;lastTool=id;if(mobile.matches&&push)pushStep(step,id);paintTool();}
   function closeTool(){if(closing)return;if(document.activeElement instanceof HTMLElement)document.activeElement.blur();if(mobile.matches&&history.state?.kpStudioTool){closing=true;hideSheet();history.back();return;}tool=null;hideSheet();paintTool();}
+  document.addEventListener('kp:sky-preview',()=>{if(mobile.matches)closeTool();$('stageStick').scrollIntoView({block:'start',behavior:'smooth'});});
   sheet.addEventListener('close',()=>{if(internalCloses){internalCloses--;return;}if(!purged&&tool)closeTool();});
   sheet.addEventListener('cancel',e=>{e.preventDefault();closeTool();});$('studioDone').onclick=closeTool;
   let backdropPress=false;sheet.addEventListener('pointerdown',e=>{backdropPress=e.target===sheet;});
@@ -168,12 +170,13 @@
     $('editTools').style.display=i.hasPhoto&&!i.sky?'block':'none';
     adjustments.querySelectorAll('input').forEach(el=>{if(el!==document.activeElement)el.value=s[el.dataset.adjust];});
     const details=$('studioReviewDetails');details.replaceChildren();
-    for(const [label,value] of [['Phone',i.model+' · '+i.finish],[i.drawing?'Artwork':'Background',i.drawingPending?'Drawing to add at the counter':i.drawing?'Your child’s drawing':$('photoLookStatus').textContent],['Name',s.text||'No added name']]){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;details.append(dt,dd);}
+    const reviewRows=[['Phone',i.model+' · '+i.finish],...(i.sky?(i.skyDetails||[]).filter(([label])=>!['Printed place','Coordinates','UTC instant','Sky version'].includes(label)):[[i.drawing?'Artwork':'Background',i.drawingPending?'Drawing to add at the counter':i.drawing?'Your child’s drawing':$('photoLookStatus').textContent]]),...(!i.sky?[['Added name',s.text||'None']]:[])];
+    for(const [label,value] of reviewRows){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;details.append(dt,dd);}
     if(step==='edit'&&tool!=='adjust')$('stageCanvas').style.touchAction='pan-y';
   }
   function exit(){if(exiting)return;exiting=true;window.KPKioskSession?.retire();if(kiosk)document.documentElement.style.visibility='hidden';const fallback=new URL(kiosk?'instore/':'gallery.html',location.href);if(kiosk&&core.info().store)fallback.searchParams.set('store',core.info().store);const dest=$('studioBrowse')?.href||fallback.href;try{core.purge();}finally{location.replace(dest);}}
   function confirmExit(mode){const next=mode==='next',leave=mode===true;resetDialog.querySelector('h2').textContent=next?'Clear for the next customer?':leave?'Leave this design?':'Start a new design?';resetDialog.querySelector('p').textContent=next?'This clears the current design, name and extras from this screen.':leave?'Your design changes and selected extras will be cleared.':'Your current changes will be cleared.';$('studioConfirmReset').textContent=next?'Clear screen':leave?'Leave design':'Start over';$('studioCancelReset').textContent=next?'Cancel':'Keep designing';resetDialog.showModal();}
-  $('studioBrowse').onclick=e=>{const s=core.snapshot(),i=core.info();if(s.text||s.px||s.py||s.rot||s.scale!==1||i.hasPhoto&&!i.library||i.hasExtras||!same(s,initialSnapshot)||i.model!==info.model||i.finish!==info.finish||i.store!==info.store||initialSetup!==null&&i.selectionKey!==initialSetup){e.preventDefault();confirmExit(true);}};
+  $('studioBrowse').onclick=e=>{const s=core.snapshot(),i=core.info();if(i.skyDirty||s.text||s.px||s.py||s.rot||s.scale!==1||i.hasPhoto&&!i.library||i.hasExtras||!same(s,initialSnapshot)||i.model!==info.model||i.finish!==info.finish||i.store!==info.store||initialSetup!==null&&i.selectionKey!==initialSetup){e.preventDefault();confirmExit(true);}};
   $('studioReset').onclick=()=>confirmExit(false);$('studioCancelReset').onclick=()=>resetDialog.close();$('studioConfirmReset').onclick=exit;
   if(kiosk){
     warning=document.createElement('dialog');warning.id='studioIdle';warning.setAttribute('aria-labelledby','studioIdleTitle');warning.innerHTML='<h2 id="studioIdleTitle">Still designing?</h2><p>This screen will reset in 30 seconds to clear your details.</p><button type="button">Keep designing</button>';document.body.append(warning);
@@ -185,5 +188,5 @@
     state.expire=exit;
   }
   setStep('edit',false);remember();sync();
-  if(info.drawing&&mobile.matches)openTool('photo');
+  if(mobile.matches&&(info.drawing||info.sky))openTool(info.sky?'sky':'photo');
 })();

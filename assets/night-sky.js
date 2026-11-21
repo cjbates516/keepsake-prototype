@@ -155,18 +155,19 @@ window.KPNightSky = (function () {
   function mount(host, hooks) {
     host.innerHTML = `<h2>Map a special night</h2><p>Choose the date and place to map the bright stars above that horizon. Use 9:00 PM for an evening estimate.</p>
     <details class="sky-example"><summary>See a finished example</summary><button type="button" id="skyExampleZoom" aria-label="Enlarge the finished example"><img src="assets/home/personal/sky-case.webp" loading="lazy" alt="Gemini and Libra on a case with the night sky above West Chester on June 14, 2019" width="912" height="1731"><span>Enlarge example</span></button></details>
-    <form id="skyForm"><label>Occasion<select name="occasion"><option>The night we met</option><option>Our wedding night</option><option>Under the same sky</option><option>The night you were born</option></select></label>
+    <form id="skyForm" autocomplete="off"><label>Occasion<select name="occasion"><option>The night we met</option><option>Our wedding night</option><option>Under the same sky</option><option>The night you were born</option></select></label>
     <div class="studio-pair"><label>Date<input name="date" type="date" min="1900-01-01" max="2100-12-31" required></label><label>Local time<input type="time" name="time" value="21:00" required></label></div>
     <label>Town, city or island<input name="query" type="search" aria-describedby="skyPlaceHint" placeholder="Search for a place" autocomplete="off"></label>
     <label>Choose your location<select name="place" required></select></label><small id="skyPlaceHint" role="status"></small>
     <details><summary>Use exact coordinates</summary><label><input type="checkbox" name="manual"> Use these coordinates for the map</label>
     <label>Place name<input name="placeName" maxlength="48"></label><div class="studio-pair"><label>Latitude (south is negative)<input name="lat" type="number" min="-90" max="90" step="any"></label><label>Longitude (west is negative)<input name="lon" type="number" min="-180" max="180" step="any"></label></div><label>Time zone<input name="zone" placeholder="America/New_York"></label></details>
-    <label>Couple’s initials (optional)<input name="initials" maxlength="12" placeholder="J &amp; M"></label>
-    <div class="studio-pair"><label>First zodiac sign<select name="sign1"></select></label><label>Second zodiac sign<select name="sign2"></select></label></div>
+    <label>Initials (optional)<input name="initials" maxlength="12" placeholder="J &amp; M"></label>
+    <div class="studio-pair"><label>Zodiac sign (optional)<select name="sign1"></select></label><label>Second sign (optional)<select name="sign2"></select></label></div>
     <p>Each sign gets a constellation portrait with a named star. Look for the gold lines on the sky map to see which parts of your signs were above the horizon.</p>
     <button type="submit">Update my case preview</button></form>
-    <p role="status" id="skyStatus"></p><div id="skyActions" hidden><a href="#stageWrap">See my case</a> · <button type="button" id="skySave">Save my sky artwork</button><details id="skyDetail"><summary>See the star map up close</summary><div id="skyArtwork"></div></details></div>
+    <p role="status" id="skyStatus"></p><div id="skyActions" hidden><button type="button" id="skySeeCase">See my case</button> <button type="button" id="skySave">Save my sky artwork</button><details id="skyDetail"><summary>See the star map up close</summary><div id="skyArtwork"></div></details></div>
     <details><summary>About this sky map</summary><p>The sky fills the case, with the zenith at the center, north at the top and the horizon along the edges. Moon, planets, clouds and daylight are outside this star chart. Star positions from the <a href="https://heasarc.gsfc.nasa.gov/W3Browse/all/bsc5p.html">Yale Bright Star Catalogue</a>. Constellation figures adapted from <a href="https://github.com/ofrohn/d3-celestial">D3-Celestial</a> (<a href="assets/sky-figures-license.txt">credits and license</a>). City coordinates and time zones adapted from <a href="https://www.geonames.org/">GeoNames</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p></details>`;
+    if(new URLSearchParams(location.search).get('kiosk')==='1')host.querySelectorAll('a').forEach(link=>link.replaceWith(document.createTextNode(link.textContent)));
     const form=host.querySelector('form'), f=form.elements, status=host.querySelector('#skyStatus'), actions=host.querySelector('#skyActions');
     let chart, stars, figures, places, indices=[];
     for(const select of [f.sign1,f.sign2])for(const sign of ['',...signs])select.add(new Option(sign||'None',sign));
@@ -214,11 +215,16 @@ window.KPNightSky = (function () {
         if(!matches.length)throw Error('That local time falls in a clock change. Choose a different time.');
         const date=new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:zone}).format(matches[0]);
         chart=draw(stars,figures,{clock:new Intl.DateTimeFormat('en-US',{timeZone:zone,hour:'numeric',minute:'2-digit'}).format(matches[0]),instant:matches[0],lat,lon,place,date,title:f.occasion.value,initials:f.initials.value.trim(),signs:[f.sign1.value,f.sign2.value]});
+        let offset='';
+        try{offset=new Intl.DateTimeFormat('en',{timeZone:zone,timeZoneName:'longOffset'}).formatToParts(matches[0]).find(p=>p.type==='timeZoneName')?.value||'';}catch{}
+        // Keep the exact applied recipe with its canvas, never an unsubmitted form value.
+        chart.__kpSkyRows=[['Occasion',f.occasion.value],['Date',date],['Local time',f.time.value+' · '+zone+' · '+offset+(matches.length>1?' · first occurrence':'')],['Place',f.manual.checked?place:cityLabel(row)],['Printed place',place],['Coordinates',lat+', '+lon],['Initials',f.initials.value.trim()||'None'],['Zodiac signs',[f.sign1.value,f.sign2.value].filter(Boolean).join(' & ')||'None'],['UTC instant',new Date(matches[0]).toISOString()],['Sky version','Full-case atlas 1']];
         chart.setAttribute('role','img');chart.setAttribute('aria-label',[f.occasion.value,place,date,...[f.sign1.value,f.sign2.value].filter(Boolean)].join(', '));
         if(detail.open)artwork.replaceChildren(chart);hooks.apply(chart);actions.hidden=false;
-        status.textContent='Preview ready for '+place+' · '+date+' · '+f.time.value+' ('+zone+', '+new Intl.DateTimeFormat('en',{timeZone:zone,timeZoneName:'longOffset'}).formatToParts(matches[0]).find(p=>p.type==='timeZoneName').value+').'+(matches.length>1?' The clock repeated this time. Using the first occurrence.':'');
+        status.textContent='Preview ready for '+place+' · '+date+' · '+f.time.value+' ('+zone+', '+offset+').'+(matches.length>1?' The clock repeated this time. Using the first occurrence.':'');
       }catch(err){invalidate();status.textContent=err instanceof RangeError?'Enter a time zone such as America/New_York.':err.message;}
     });
+    host.querySelector('#skySeeCase').onclick=()=>host.dispatchEvent(new CustomEvent('kp:sky-preview',{bubbles:true}));
     host.querySelector('#skySave').onclick=()=>{
       if(!chart)return;
       chart.toBlob(blob=>{if(!blob)return;const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='keepsake-night-sky.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),60000);},'image/png');
