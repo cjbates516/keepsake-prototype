@@ -1,0 +1,82 @@
+[
+  {
+    "output": "assets/new-prints/kp-season-autumn-road.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/new-prints/kp-season-rain-on-glass.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/new-prints/kp-season-snowfall-pines.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/new-prints/kp-season-sunlit-shore.webp",
+    "model": "iPhone 17 Pro Max",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 638,
+    "height": 1252,
+    "crop": [
+      305,
+      124,
+      943,
+      1376
+    ],
+    "cameraPoint": [
+      320,
+      176
+    ],
+    "cameraAlpha": 255
+  }
+]

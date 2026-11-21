@@ -35,7 +35,7 @@
 "SPT": 5,
 "STR": 27,
 "WES": 63,
-"WTH": 4,
+"WTH": 8,
 "XMS": 59,
 "Y2K": 43,
 "ZOD": 60
@@ -2904,6 +2904,22 @@
 "kp-scoop-shop.png": {
 "c": "POP",
 "n": 13
+},
+"kp-season-autumn-road.jpg": {
+"c": "WTH",
+"n": 5
+},
+"kp-season-rain-on-glass.jpg": {
+"c": "WTH",
+"n": 6
+},
+"kp-season-snowfall-pines.jpg": {
+"c": "WTH",
+"n": 7
+},
+"kp-season-sunlit-shore.jpg": {
+"c": "WTH",
+"n": 8
 },
 "kp-smokies-grotto-falls-photo.jpg": {
 "c": "NPK",

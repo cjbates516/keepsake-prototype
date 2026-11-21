@@ -2,7 +2,7 @@
 // Run from the repository with the local server running; no customer uploads.
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require('../../playwright/node_modules/playwright-core');
-const rows=require('./expansion-case-manifest.json');
+const rows=JSON.parse(fs.readFileSync(path.resolve(__dirname,process.env.KP_RENDER_MANIFEST||'expansion-case-manifest.json'),'utf8'));
 const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
 (async()=>{
  const browser=await chromium.launch(),results=[];let next=0;
@@ -39,7 +39,7 @@ const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
    await page.close();
   }
   await Promise.all([worker(),worker()]);
-  fs.writeFileSync('tools/expansion-case-renders.json',JSON.stringify(results.sort((a,b)=>a.output.localeCompare(b.output)),null,2)+'\n');
+  fs.writeFileSync(process.env.KP_RENDER_REPORT||'tools/expansion-case-renders.json',JSON.stringify(results.sort((a,b)=>a.output.localeCompare(b.output)),null,2)+'\n');
  }finally{await browser.close();}
  assert.equal(results.length,rows.length);console.log(results.length+' mounted clear-case previews rebuilt');
 })().catch(e=>{console.error(e);process.exitCode=1;});

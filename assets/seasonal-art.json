@@ -1,0 +1,95 @@
+[
+  {
+    "file": "kp-season-rain-on-glass.jpg",
+    "title": "Rain on Glass",
+    "category": "Seasonal Weather",
+    "active": true,
+    "hash": "501d6ce7428b",
+    "color": [
+      "Blue",
+      "Black",
+      "Orange"
+    ],
+    "kind": "original photorealistic artwork",
+    "credit": "Keepsake original AI-assisted artwork",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-season-snowfall-pines.jpg",
+    "title": "Snowfall Pines",
+    "category": "Seasonal Weather",
+    "active": true,
+    "hash": "d4abfd2f15f2",
+    "color": [
+      "Blue",
+      "White",
+      "Green"
+    ],
+    "kind": "original photorealistic artwork",
+    "credit": "Keepsake original AI-assisted artwork",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-season-sunlit-shore.jpg",
+    "title": "Sunlit Shore",
+    "category": "Seasonal Weather",
+    "active": true,
+    "hash": "3ccda54bfb97",
+    "color": [
+      "Blue",
+      "Green",
+      "Beige",
+      "White"
+    ],
+    "kind": "original photorealistic artwork",
+    "credit": "Keepsake original AI-assisted artwork",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  },
+  {
+    "file": "kp-season-autumn-road.jpg",
+    "title": "Autumn Drift Road",
+    "category": "Seasonal Weather",
+    "active": true,
+    "hash": "e66f7532aaa9",
+    "color": [
+      "Orange",
+      "Brown",
+      "Green"
+    ],
+    "kind": "original photorealistic artwork",
+    "credit": "Keepsake original AI-assisted artwork",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "exportSize": [
+      887,
+      1774
+    ],
+    "composition": "cover"
+  }
+]
