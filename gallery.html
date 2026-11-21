@@ -86,9 +86,15 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   #grid :is(a,button,select){scroll-margin-block:90px;}
   #grid .case-zoom-button:has(canvas){aspect-ratio:3/4;overflow:hidden}
   #grid .case-zoom-button canvas{display:block;width:100%;height:100%!important;object-fit:cover}
+
+.artwork-options{margin-top:14px;min-width:0}.artwork-options>strong{display:block;font-size:13px;margin-bottom:8px}
+.artwork-thumbs{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;padding:3px 3px 9px;overscroll-behavior-x:contain}
+.artwork-thumb{flex:0 0 64px;min-width:44px;min-height:44px;scroll-snap-align:start;border:2px solid #dedad6;border-radius:7px;padding:3px;background:#fff;color:#27272d;cursor:pointer;font:700 10px/1.2 inherit}
+.artwork-thumb img{display:block;width:100%;height:72px;object-fit:cover;border-radius:3px;background:#f0eeeb}.artwork-thumb img:not([src]){visibility:hidden}
+.artwork-thumb span{display:block;min-height:26px;margin-top:5px;font-size:10px;line-height:1.2}.artwork-thumb[aria-pressed=true]{border-color:#ce202b;background:#fff4f1}.artwork-thumb:focus-visible{outline:3px solid #126578;outline-offset:2px}.artwork-thumb:disabled{opacity:.45;cursor:default}
 </style>
 <link rel="stylesheet" href="assets/storefront.css">
-<script src="assets/case-shell.js?v=clear-mounted-1"></script>
+<script src="assets/case-shell.js?v=clear-mounted-2"></script>
 <script src="assets/print-layouts.js"></script>
 <script src="assets/colorway-catalog.js"></script>
 <script src="assets/design-colorways.js"></script>
@@ -237,7 +243,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var list=(seasonal?[seasonal]:[]).concat(KP_STRIP_BASE);
     if(designs.length)list=list.filter(function(c){return designs.some(function(d){return d.category===c[0]});});
     el.innerHTML=list.map(function(c){
-      return '<button class="kpCatCard kpCatTile" data-cat="'+c[0]+'" aria-label="Shop '+c[0]+'">'
+      return '<button class="kpCatCard kpCatTile" data-cat="'+c[0]+'" aria-label="Shop '+categoryLabel(c[0])+'">'
         +'<img src="assets/designs/thumbs/'+c[1]+'" alt="" loading="lazy"><span>'+categoryLabel(c[0])+'</span></button>';
     }).join('');
   }
@@ -336,8 +342,21 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var select=document.createElement('select');
     select.className='artwork-picker';
     options.forEach(function(o){var item=new Option(o.name,o.id);if(o.id===(artworkPicks[file]||'original'))item.defaultSelected=true;select.add(item);});
-    return '<label class="artwork-label">Background'+select.outerHTML+'</label><small class="artwork-error" role="status"></small>';
+    return '<div class="artwork-options"><strong>Background</strong><div class="artwork-thumbs" role="group" aria-label="Background variations">'+options.map(function(o){return '<button type="button" class="artwork-thumb" data-look="'+escapeHtml(o.id)+'" aria-label="'+escapeHtml(o.name)+' background" aria-pressed="'+(o.id===(artworkPicks[file]||'original'))+'"><img alt="" width="64" height="84"><span>'+escapeHtml(o.name)+'</span></button>';}).join('')+'</div><label hidden>Background'+select.outerHTML+'</label></div><small class="artwork-error" role="status"></small>';
   }
+  function syncArtworkThumbs(card){card.querySelectorAll('.artwork-thumb').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.look===(artworkPicks[card.dataset.file]||'original')));});}
+  var artworkThumbRequest=0;
+  function loadArtworkThumbs(card,src){
+    if(!card||card.dataset.thumbsLoaded||!card.querySelector('.artwork-thumb'))return;var ticket=String(++artworkThumbRequest);card.dataset.thumbsLoaded=ticket;
+    KPDesignColorways.prepare(src).then(function(){
+      if(!card.isConnected||card.dataset.thumbsLoaded!==ticket)return;
+      card.querySelectorAll('.artwork-thumb').forEach(function(b){
+        if(!KPDesignColorways.choicesFor(src).some(function(o){return o.id===b.dataset.look;})){b.disabled=true;b.title='This background could not load';return;}
+        var c=KPDesignColorways.make(src,b.dataset.look,128);b.querySelector('img').src=c.toDataURL('image/webp',.8);c.width=c.height=0;
+      });
+    }).catch(function(){if(card.dataset.thumbsLoaded===ticket)delete card.dataset.thumbsLoaded;});
+  }
+  document.addEventListener('click',function(e){var b=e.target.closest('.artwork-thumb');if(!b)return;var select=b.closest('.kpCard').querySelector('.artwork-picker');select.value=b.dataset.look;select.dispatchEvent(new Event('change',{bubbles:true}));});
   function updateCaseLinks(card){
     if(!device)return;
     var file=card.dataset.file;
@@ -362,7 +381,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       const picker=card.querySelector('.artwork-picker');
       // A background is still the customer's choice while they choose a phone.
       // The editor will retry it; an unavailable sample must not change the order.
-      if(device&&picker){artworkPicks[file]='original';picker.value='original';}
+      if(device&&picker){artworkPicks[file]='original';picker.value='original';syncArtworkThumbs(card);}
       let message=card.querySelector('.artwork-error');
       if(!message){message=document.createElement('small');message.className='artwork-error';message.setAttribute('role','status');card.append(message);}
       message.textContent=device&&picker?'Background unavailable. Showing original.':'Sample shows Original. Your selected background will load in the editor.';
@@ -386,7 +405,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   document.addEventListener('change',function(e){
     if(!e.target.matches('.artwork-picker'))return;
     var card=e.target.closest('.kpCard'),file=card.dataset.file;
-    artworkPicks[file]=e.target.value;
+    artworkPicks[file]=e.target.value;syncArtworkThumbs(card);
     card.querySelector('.artwork-error').textContent='';
     updateCaseLinks(card);
     loadDesign(file,function(){showPickedColor(card.querySelector('canvas'));});
@@ -400,7 +419,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var layer = caseLayers[model + '|' + colorIdx];
     var dImg = designImgs[file];
     if (!layer || !dImg?.naturalWidth) return;
-    dImg.__kpDesignFile=file;
+    dImg.__kpDesignFile=file;loadArtworkThumbs(cv.closest('.kpCard'),dImg);
     var composed=null, profile=KPDesignColorways.profile(dImg), pick='original';
     if(profile){
       pick=artworkPicks[file]||'original';
@@ -427,7 +446,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     // A known stencil is loading: show the phone until its actual panel is ready.
     if (KP_VIEW[device] && !vmask){
       if(maskFailed[device] && cv.closest('.h-card')) cv.closest('.h-card').querySelector('.case-zoom-button .zoom-hint').textContent='Case preview unavailable';
-      KPCaseShell.draw(ctx,device,CW,CH);
+      KPCaseShell.draw(ctx,device,CW,CH,caseStyle(device),layer);
       if(composed) composed.width=composed.height=0;
       return;
     }
@@ -449,7 +468,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(!emptyCase&&(device==='iPhone 18 Pro Max'||device==='iPhone 18 Pro')) ctx.globalCompositeOperation='source-atop';
       ctx.drawImage(t, 0, 0);
       ctx.globalCompositeOperation='source-over';
-      KPCaseShell.draw(ctx,device,CW,CH);
+      KPCaseShell.draw(ctx,device,CW,CH,caseStyle(device),layer);
       if(composed)composed.width=composed.height=0;
       return;
     }
@@ -465,7 +484,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ctx.globalAlpha = .32; ctx.globalCompositeOperation = 'multiply';
     ctx.drawImage(layer, 0, 0, CW, CH);
     ctx.restore();
-    KPCaseShell.draw(ctx,device,CW,CH);
+    KPCaseShell.draw(ctx,device,CW,CH,caseStyle(device),layer);
     if(composed)composed.width=composed.height=0;
   }
 
@@ -714,7 +733,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         if (cv.width === 0){ cv.width = CW; cv.height = CH; }
         loadDesign(file, function(){ renderCase(cv, file, +(cv.dataset.color||0)); });
       } else if (cv.width !== 0 && Math.abs(en.boundingClientRect.top) > 2400){
-        cv.width = 0; cv.height = 0; delete cv.dataset.renderedPreview; /* releases canvas memory on iOS; CSS aspect-ratio keeps layout */
+        cv.width = 0; cv.height = 0; delete cv.dataset.renderedPreview;var card=cv.closest('.kpCard');if(card){card.querySelectorAll('.artwork-thumb img').forEach(function(im){im.removeAttribute('src');});delete card.dataset.thumbsLoaded;}if(designImgs[file])delete designImgs[file].__kpVariantImages; /* releases canvas memory on iOS; CSS aspect-ratio keeps layout */
       }
     });
   }, { rootMargin: '900px 0px' }) : null;
@@ -723,7 +742,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var cvsAll = Array.prototype.slice.call(document.querySelectorAll('#grid canvas'));
     // first cards render eagerly so above-the-fold never waits on observer timing
     cvsAll.slice(0, 8).forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, +(cv.dataset.color||0)); }); });
-    if (io) cvsAll.slice(8).forEach(function(cv){ io.observe(cv); });
+    if (io) cvsAll.forEach(function(cv){ io.observe(cv); });
     else cvsAll.slice(8).forEach(function(cv){ loadDesign(cv.dataset.file, function(){ renderCase(cv, cv.dataset.file, 0); }); });
   }
 
@@ -1014,6 +1033,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var svg=t.querySelector('svg'); if(svg) svg.style.transform=open?'':'rotate(90deg)';
   });
 </script>
-<script src="assets/case-zoom.js"></script>
+<script src="assets/case-zoom.js?v=fit-first-1"></script>
 </body>
 </html>

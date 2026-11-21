@@ -4,3 +4,10 @@ Disallow: /staff.html
 Disallow: /staff-sop.html
 Disallow: /sop-body.html
 Sitemap: https://cjbates516.github.io/keepsake-prototype/sitemap.xml
+
+Disallow: /keepsake-prototype/staff.html
+Disallow: /keepsake-prototype/staff-sop.html
+Disallow: /keepsake-prototype/sop-body.html
+Disallow: /keepsake-prototype/fit-lab.html
+Disallow: /keepsake-prototype/instore/find.html
+Disallow: /keepsake-prototype/instore/slate.html

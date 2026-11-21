@@ -12,13 +12,13 @@
     "reason": "Recover the exact already-public note pixels; no generated handwriting."
   },
   "sources": {
-    "customizer.html": "e91e42c9773103ad6b9d41eba1fcb693a24fc9394bc3de9c501ac3b75e57fa9b",
+    "customizer.html": "466a1672c567796b4b84c5c81cf23f87f77ef798883e5afc2aebf4637b9d4e4b",
     "assets/night-sky.js": "83d0655a90572c2f2e466b9e35731af36e37a8a7013cc7c509cd425e919c492d",
-    "assets/case-shell.js": "7783cca7ee9ede88915f44de4eee505752d6257b6db3439e11d57323bb63eb66",
+    "assets/case-shell.js": "cb5a4c9ee41f8160bb0fed61e0dbdbad794bb4dbb27a9c3d5aa158d8c1e25b0e",
     "assets/print-geometry.js": "8f5c0160cdf1bfaef806bb495bbe1705fc5f410bbd63d260f60e97c4b5d2a144",
     "assets/cases/i17pm-silver.webp": "fd3f8e91e7b1e112a34bdf72433da1a486fcd07ee3949f0b6cfce31f7a13d9b0",
     "assets/masks/view-i17pm.png": "c1d1e1cbc62a2ef764c24e331db32a6f2215169c40040a57ae3375347815f0a4",
-    "assets/design-editor.js": "1427f80ab817637a23c75002c820a01a96a585f49d1b1daee8fb341e88b352e1",
+    "assets/design-editor.js": "3d5d35f953a27c7eef6df5699eb9cd7f67e34a07a6081f7390495c9f0e2579a2",
     "assets/bright-stars.json": "634e7bb903ebc5d3cd62c4a3da0781f84c2412feb5e9b28395062698c359cbe0",
     "assets/sky-figures.json": "9f295a5c8e083f735940b2bf9ff292e35851457fa681acfc04167f81bf40e3be",
     "assets/sky-places.json": "d7c00c900ed85a7d860ed1424dca49576368b228494469295f251c2a3425014c"

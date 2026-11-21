@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');const {chromium,webkit}=require('../../../playwright/node_modules/playwright-core');
 const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
-async function open(p,tool){await p.locator('[data-tool="'+tool+'"]').click();}
+async function open(p,tool){if(await p.evaluate(t=>window.KPEditor?.tool===t&&document.getElementById('studioSheet').open,tool))return;await p.locator('[data-tool="'+tool+'"]').click();}
 async function close(p){if(await p.locator('#studioSheet').evaluate(e=>e.open)){await p.locator('#studioDone').click();await p.waitForFunction(()=>!document.getElementById('studioSheet').open);}}
 async function ready(p){await p.waitForFunction(()=>window.KPEditor&&!KPStudioCore.info().issue);}
 (async()=>{for(const engine of [chromium,webkit]){const b=await engine.launch();try{
