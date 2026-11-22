@@ -9,11 +9,11 @@ const audit=await p.evaluate(async()=>{
  for(const [file,pf] of Object.entries(KP_COLORWAY_CATALOG)){
  const opts=KPDesignColorways.choicesFor({__kpDesignFile:file});
  if(pf.method==='yosemite')continue;
- if(pf.method==='assets'){counts.assets++;continue;}
+ if(pf.method==='assets'&&pf.backgroundLayout!=='inset'){counts.assets++;continue;}
  if(pf.background?.transparent){counts.transparent++;continue;}
  if(opts.length!==1)throw Error(file+' still offers a matted background');counts.opaque++;
  }
- for(const file of ['kp-lemons-bubblegum.jpg','big-bloom-pop.jpg','wavy-rainbow-check.jpg']){
+ for(const file of ['kp-lemons-bubblegum.jpg','big-bloom-pop.jpg','wavy-rainbow-check.jpg','kp-acadia-bass-harbor-photograph.jpg','kp-liquid-prism.png']){
  const im=new Image();im.src='assets/designs/'+file;await im.decode();im.__kpDesignFile=file;
  const actual=KPDesignColorways.make(im,'original',600),expected=document.createElement('canvas');const scale=Math.min(1,600/Math.max(im.width,im.height));expected.width=Math.round(im.width*scale);expected.height=Math.round(im.height*scale);expected.getContext('2d').drawImage(im,0,0,expected.width,expected.height);
  if(actual.toDataURL()!==expected.toDataURL())throw Error(file+' changed original geometry or pixels');
