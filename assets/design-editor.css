@@ -276,3 +276,40 @@ body.design-editor #stageCanvas,body.design-editor #stageStick.studio-fit #stage
 @media(max-width:760px){body.design-editor:not(:has(#studioSheet[open])) #stageStick.studio-fit #stageCanvas{max-height:max(180px,min(var(--studio-case-fit,420px),49dvh))}}
 .design-editor .studio-tools{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
 .design-editor #studioProduct h1:focus{outline:none}
+
+/* Extras keep the next decision above the fold; the catalog has its own focused picker. */
+.design-editor #studioAccessoryOpen{width:100%;min-height:52px;border:1px solid #b9b4ad;border-radius:10px;background:white;padding:12px;font-weight:800;text-align:left;color:var(--studio-ink);margin-top:12px}
+.design-editor #studioAccessorySummary>div{display:flex;align-items:center;gap:10px;justify-content:space-between;padding:8px 0;font-size:13px;border-bottom:1px solid var(--studio-line)}
+.design-editor #studioAccessorySummary button{min-height:44px;background:none;border:0;text-decoration:underline;color:#96232b}
+.design-editor #studioAccessorySummary p{font-size:12px;margin:8px 0}
+.design-editor #studioAccessoryDialog{padding:0;border:0;border-radius:16px;width:min(900px,calc(100vw - 24px));max-width:none;max-height:calc(100dvh - 24px);color:var(--studio-ink);background:var(--studio-paper);overflow:hidden}
+.design-editor #studioAccessoryDialog::backdrop{background:#171a2377}
+.design-editor #studioAccessoryDialog>header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid var(--studio-line)}
+.design-editor #studioAccessoryTitle{font-size:20px;margin:0}
+.design-editor #studioAccessoryDone{min-height:44px;background:var(--studio-ink);color:white;border:0;border-radius:8px;padding:10px 22px;font-weight:800}
+.design-editor .studio-accessory-body{overflow-y:auto;max-height:calc(100dvh - 100px);padding:0 18px 18px;overscroll-behavior:contain}
+.design-editor #studioAccessoryDialog .ka{border:0;padding-top:0;margin-top:12px}
+.design-editor #studioAccessoryDialog .ka h3{display:none}
+.design-editor #studioAccessoryDialog .ka-card img{height:120px}
+.design-editor #studioAccessoryDialog .ka-card h4{font-size:16px}
+.design-editor #studioAccessoryDialog .ka-tabs{position:sticky;top:0;z-index:1;background:var(--studio-paper);padding-top:10px}
+.design-editor #studioAccessoryDialog label:has(#chargerHelp){margin-top:0!important}
+.design-editor[data-studio-step=setup] #retailPickup{display:none}
+@media(max-width:760px){
+ .design-editor #studioSetup>.studio-kicker{display:none}
+ .design-editor #studioSetup h2{font-size:23px;margin-bottom:8px}
+ .design-editor #studioSetupEdit{margin-bottom:8px;min-height:44px}
+ .design-editor #studioSetup>p{font-size:13px;margin-bottom:8px}
+ .design-editor #studioSetup #retailAddons{margin-bottom:10px!important}
+ .design-editor #studioAccessoryDialog .ka-desc{font-size:12px}
+}
+
+@media(max-width:760px){
+ body.design-editor[data-studio-step=preview] #stageCanvas{max-height:24dvh!important;min-height:0!important}
+ .design-editor[data-studio-step=preview] .studio-quality,.design-editor[data-studio-step=preview] #studioEditAgain,.design-editor[data-studio-step=preview] #studioPreview>.studio-help{display:none}
+ .design-editor[data-studio-step=preview] #studioPreview h2{font-size:21px;margin-bottom:6px}
+ .design-editor[data-studio-step=preview] #studioPreview>p{font-size:12px;line-height:1.35;margin-bottom:6px}
+ .design-editor[data-studio-step=preview] #studioReviewDetails{font-size:12px;gap:5px 8px;padding:8px 0;margin:8px 0}
+ .design-editor[data-studio-step=preview] .studio-kicker{display:none}
+}
+@media(min-width:761px) and (max-height:500px){body.design-editor #stageCanvas{max-height:calc(100dvh - 180px)!important;min-height:0!important}}

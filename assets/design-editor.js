@@ -98,6 +98,30 @@
   }else setup.insertBefore(storeChoice,$('retailAddons'));
   const editSetup=document.createElement('button');editSetup.id='studioSetupEdit';editSetup.type='button';editSetup.textContent='Edit your case';setup.insertBefore(editSetup,storePicker||storeChoice);editSetup.onclick=returnToDesign;
   if(fixedStore){$('storeChips').querySelectorAll('button').forEach(b=>{b.disabled=true;b.hidden=b.dataset.s!==params.get('store');});}
+  // Keep Extras in one screen; browse the full catalog in a focused, dismissible picker.
+  const accessoryDialog=document.createElement('dialog');accessoryDialog.id='studioAccessoryDialog';accessoryDialog.setAttribute('aria-labelledby','studioAccessoryTitle');
+  accessoryDialog.innerHTML='<header><h2 id="studioAccessoryTitle">Chargers & accessories</h2><button type="button" id="studioAccessoryDone">Done</button></header><div class="studio-accessory-body"></div>';
+  document.body.append(accessoryDialog);
+  const accessoryBody=accessoryDialog.querySelector('.studio-accessory-body'),accessoryHost=$('accessoryPicker');
+  const helpLabel=$('chargerHelp').closest('label'),helpNote=helpLabel.nextElementSibling;
+  accessoryBody.append(helpLabel,helpNote,accessoryHost);
+  const accessoryOpen=document.createElement('button');accessoryOpen.id='studioAccessoryOpen';accessoryOpen.type='button';accessoryOpen.textContent='Choose a charger or accessory →';accessoryOpen.setAttribute('aria-haspopup','dialog');accessoryOpen.setAttribute('aria-expanded','false');
+  const accessorySummary=document.createElement('div');accessorySummary.id='studioAccessorySummary';accessorySummary.setAttribute('aria-live','polite');
+  $('retailAddons').append(accessoryOpen,accessorySummary);
+  let accessoryClosing=false;
+  accessoryOpen.onclick=()=>{if(accessoryDialog.open||accessoryClosing)return;if(!core.info().store){if(storePicker){storePicker.open=true;storePicker.querySelector('summary').focus();}return;}history.pushState({...history.state,kpStudioAccessory:true},'');accessoryDialog.showModal();accessoryOpen.setAttribute('aria-expanded','true');accessoryBody.scrollTop=0;};
+  function closeAccessories(){if(accessoryDialog.open)accessoryDialog.close();}
+  $('studioAccessoryDone').onclick=closeAccessories;accessoryDialog.addEventListener('cancel',e=>{e.preventDefault();closeAccessories();});
+  accessoryDialog.addEventListener('close',()=>{if(!purged&&history.state?.kpStudioAccessory&&!accessoryClosing){accessoryClosing=true;history.back();}accessoryOpen.setAttribute('aria-expanded','false');if(!purged&&step==='setup')accessoryOpen.focus({preventScroll:true});});
+  let accessorySummaryKey='';
+  function syncAccessorySummary(i){
+    const rows=[...accessoryHost.querySelectorAll('.ka-selected>div')],key=rows.map(r=>r.textContent).join('|')+'|'+$('chargerHelp').checked;
+    accessoryOpen.disabled=!i.store;accessoryOpen.textContent=rows.length?'Change chargers & accessories →':'Choose a charger or accessory →';
+    if(key===accessorySummaryKey)return;const restoreFocus=accessorySummary.contains(document.activeElement);accessorySummaryKey=key;accessorySummary.replaceChildren();
+    rows.forEach(row=>{if(!row.querySelector('[data-remove]')||!row.querySelector('span'))return;const copy=document.createElement('div'),label=document.createElement('span'),remove=document.createElement('button'),id=row.querySelector('[data-remove]').dataset.remove;label.textContent=row.querySelector('span').textContent;remove.type='button';remove.textContent='Remove';remove.setAttribute('aria-label',row.querySelector('button').getAttribute('aria-label'));remove.onclick=()=>accessoryHost.querySelector('[data-remove="'+id+'"]').click();copy.append(label,remove);accessorySummary.append(copy);});
+    if(restoreFocus)(accessorySummary.querySelector('button')||accessoryOpen).focus({preventScroll:true});
+    if($('chargerHelp').checked){const note=document.createElement('p');note.textContent='Charger help requested · price confirmed by staff';accessorySummary.append(note);}
+  }
   const quality=document.createElement('div');quality.className='studio-quality';move(quality,'dpiLabel');$('stageStick').append(quality);
   // Case choice (Rated Case): a two option radio group right under the case preview, on phones without opening a sheet
   // and on desktop, with the rim color chips while the Rated Case is chosen. Shown only for phones with a Rated kit.
@@ -206,7 +230,7 @@
   function travel(back){remember();if(back?undo.length<2:!redo.length)return;if(back)redo.push(undo.pop());else undo.push(redo.pop());applying=true;core.restore(undo.at(-1));applying=false;historyButtons();sync();}
   function rememberSoon(){if(purged)return;if(core.context()!==context)remember();sync();clearTimeout(pending);pending=setTimeout(remember,350);}
   document.addEventListener('kp:editor-change',rememberSoon);
-  document.addEventListener('kp:editor-purge',()=>{purged=true;clearTimeout(thumbTimer);clearTimeout(pending);undo=[];redo=[];$('studioReviewDetails').replaceChildren();$('studioStatus').textContent='';});
+  document.addEventListener('kp:editor-purge',()=>{purged=true;if(accessoryDialog.open)accessoryDialog.close();accessorySummary.replaceChildren();clearTimeout(thumbTimer);clearTimeout(pending);undo=[];redo=[];$('studioReviewDetails').replaceChildren();$('studioStatus').textContent='';});
   $('studioUndo').onclick=()=>travel(true);$('studioRedo').onclick=()=>travel(false);
   document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!e.target.closest('input,textarea,select')&&step==='edit'&&!document.querySelector('dialog[open]')){e.preventDefault();travel(!e.shiftKey);}});
   function hideSheet(){stageHome.after(stage);if(sheet.open){internalCloses++;sheet.close();}Object.values(panels).forEach(p=>host.append(p));}
@@ -242,7 +266,9 @@
   }
   history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioDepth:0,kpStudioEditDepth:0,kpStudioStep:'edit',kpStudioTool:null},'');
   window.addEventListener('popstate',()=>{
-    closing=false;for(const id of ['counterReview','studioResetDialog','studioClearDialog'])if($(id)?.open)$(id).close();if(!history.state?.kpStudioStep)return;const previous=tool;let target=history.state.kpStudioStep;
+    accessoryClosing=false;
+    if(history.state?.kpStudioAccessory&&step==='setup'){accessoryDialog.showModal();accessoryOpen.setAttribute('aria-expanded','true');return;}
+    closing=false;for(const id of ['counterReview','studioResetDialog','studioClearDialog','studioAccessoryDialog'])if($(id)?.open)$(id).close();if(!history.state?.kpStudioStep)return;const previous=tool;let target=history.state.kpStudioStep;
     if(history.state.kpStudioSession!==sessionId){target='edit';history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioDepth:0,kpStudioEditDepth:0,kpStudioStep:'edit',kpStudioTool:null},'');}
     if(target!=='edit'&&core.info().issue){target='edit';history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioEditDepth:history.state.kpStudioDepth||0,kpStudioStep:'edit',kpStudioTool:null},'');}
     if(target!==step)setStep(target,false);else{tool=step==='edit'&&!mobile.matches?home():null;hideSheet();paintTool();if(previous)buttons[previous]?.focus({preventScroll:true});}
@@ -261,7 +287,7 @@
   $('studioCenter').onclick=()=>core.adjust('center');
   adjustments.addEventListener('input',e=>{if(e.target.dataset.adjust)core.adjust(e.target.dataset.adjust,e.target.value);});
   function sync(){
-    if(purged)return;const i=core.info(),s=core.snapshot();
+    if(purged)return;const i=core.info(),s=core.snapshot();syncAccessorySummary(i);
     promise.textContent=i.sky?'Create a sky for your date and place, then review it with our team.':i.drawing?'Turn their drawing into a keepsake. Our team checks the artwork before printing.':i.library?'Made yours in store. Choose a background, add your name, then show our team.':'Add your photo, make it yours, then show our team in store.';
     product.querySelector('h1').textContent=i.library?libraryTitle:i.sky?'Your special night.':i.drawing?'Their drawing, your case.':i.layout?'Your photo collage.':'Make it yours.';
     syncVariations(i);productPrice.textContent='$'+(i.caseType==='Rated Case'?i.prices.rated:i.prices.clear).toFixed(2);product.hidden=step!=='edit';

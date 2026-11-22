@@ -21,7 +21,7 @@ const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
  await p.locator('[data-tool="background"]').tap();await p.locator('[data-look="c4"]').tap();await p.locator('#studioDone').tap();await p.waitForFunction(()=>!document.getElementById('studioSheet').open);
  await p.locator('[data-tool="name"]').tap();await p.locator('#nameInput').fill('PRIVATE TEST');await p.locator('#studioDone').tap();await p.waitForFunction(()=>!document.getElementById('studioSheet').open);await p.locator('#studioNext').tap();await p.locator('#studioNext').tap();
  await p.locator('#addons [data-k="screen"]').tap();
- await p.locator('#accessoryPicker [data-category="Wall chargers"]').click();await p.locator('[data-accessory="X26"]').click();
+ if(await p.locator('#studioAccessoryOpen').isVisible())await p.locator('#studioAccessoryOpen').click();await p.locator('#accessoryPicker [data-category="Wall chargers"]').click();await p.locator('[data-accessory="X26"]').click();if(await p.locator('#studioAccessoryDialog[open]').count())await p.locator('#studioAccessoryDone').click();
  await p.locator('#storeChips [data-s="Newark, DE"]').tap();
  assert(!p.url().includes('PRIVATE'),'personal text must never enter the URL');
  await p.locator('#studioNext').tap();await p.locator('#counterReview[open]').waitFor();
