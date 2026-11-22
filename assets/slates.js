@@ -32,11 +32,11 @@ function show(n){
  $('slateSizesTitle').textContent=['Choose your size.','Choose your counter.','Make it your memory.','Ready for our team.'][step];
  document.querySelector('.builder-panels').scrollTop=0;updateActions();$('slateSizesTitle').focus({preventScroll:true});
  if(step===1)requestAnimationFrame(initMap);
- if(step===2){updatePhoto();if(parkMode&&!selected()?.artwork)openParks();}
+ if(step===2){if(kiosk&&!selected()?.artwork)bringing=true;updatePhoto();if(parkMode&&!selected()?.artwork)openParks();}
  if(step===3)review();arm();
 }
 function chooseSize(value){key=value;parkMode=false;closeParks();show(1);}
-document.querySelectorAll('[data-start]').forEach(b=>b.onclick=()=>show(key?step:0));
+document.querySelectorAll('[data-start]').forEach(b=>{b.disabled=false;b.onclick=()=>show(key?step:0);});
 document.querySelectorAll('[data-size]').forEach(b=>b.onclick=()=>chooseSize(b.dataset.size));
 $('startParks').onclick=()=>{key='large';parkMode=true;show(1);};
 $('slateForward').onclick=()=>{if(!$('slateForward').disabled)show(step+1);};
@@ -56,7 +56,7 @@ function renderStores(){
 function markerIcon(i){return L.divIcon({className:'map-pin'+(stores[i].name===$('slateStore').value?' chosen':''),html:'<span><b>'+(i+1)+'</b></span>',iconSize:[36,42],iconAnchor:[18,42]});}
 function initMap(){
  if(!window.L){$('mapNotice').hidden=false;return;}
- if(!map){map=L.map('slateMap',{scrollWheelZoom:false}).setView([39.94,-75.66],9);L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).on('tileerror',()=>{$('mapNotice').hidden=false;}).addTo(map);markers=stores.map((s,i)=>L.marker([s.lat,s.lng],{icon:markerIcon(i),title:s.name,alt:s.name}).addTo(map).on('click',()=>selectStore(s.name)));}
+ if(!map){map=L.map('slateMap',{scrollWheelZoom:false,dragging:!matchMedia('(pointer: coarse)').matches,touchZoom:false}).setView([39.94,-75.66],9);L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).on('tileerror',()=>{$('mapNotice').hidden=false;}).addTo(map);markers=stores.map((s,i)=>L.marker([s.lat,s.lng],{icon:markerIcon(i),title:s.name,alt:s.name}).addTo(map).on('click',()=>selectStore(s.name)));}
  map.invalidateSize();map.fitBounds(stores.map(s=>[s.lat,s.lng]),{padding:[25,25]});
 }
 $('allStoresMap').onclick=()=>map?.fitBounds(stores.map(s=>[s.lat,s.lng]),{padding:[25,25]});
@@ -133,5 +133,5 @@ document.addEventListener('click',e=>{const link=e.target.closest('a');if(!kiosk
 document.querySelectorAll('[data-hero]').forEach(b=>b.onclick=()=>{const mode=b.dataset.hero;document.querySelectorAll('[data-hero]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));$('heroVisual').innerHTML=mode==='front'?'<img src="assets/photos/slates/family-slate-preview.jpg?v=solid-stone-2" alt="Family photo printed on natural slate">':'<svg viewBox="'+(mode==='edge'?'780 220 680 680':'1020 1060 440 395')+'" role="img" aria-label="'+(mode==='edge'?'Natural stone edge close-up':'Included display supports')+'"><defs><clipPath id="heroDetailClip"><rect x="'+(mode==='edge'?'780':'1020')+'" y="'+(mode==='edge'?'220':'1060')+'" width="'+(mode==='edge'?'680':'440')+'" height="'+(mode==='edge'?'680':'395')+'"/></clipPath></defs><image clip-path="url(#heroDetailClip)" href="assets/photos/slates/supplier-8x10-details.jpg" width="1500" height="1500"/></svg>';$('heroImageNote').textContent=mode==='front'?'Photo shown on the actual slate surface · Digital preview':'Supplier photograph · '+(mode==='edge'?'Every stone has its own edge':'Display supports included');});
 window.addEventListener('pagehide',()=>{if(kiosk){window.KPKioskSession?.retire();document.documentElement.style.visibility='hidden';purge();}});window.addEventListener('pageshow',e=>{if(e.persisted&&kiosk)exit();});
 if(kiosk){document.body.classList.add('slate-kiosk');document.querySelectorAll('.slate-header nav a,.slate-footer>a').forEach(a=>a.hidden=true);document.querySelector('.slate-brand').href=home();document.querySelector('.slate-brand').onclick=e=>{e.preventDefault();$('slateClearDialog').showModal();};document.querySelectorAll('.slate-footer').forEach(el=>Array.from(el.childNodes).filter(n=>n.nodeType===3&&n.textContent.trim()==='·').forEach(n=>n.textContent=''));$('clearSlate').textContent='Start next customer';$('slateClearTitle').textContent='Clear for the next customer?';$('slateExpiry').hidden=false;$('slatePhoto').disabled=true;$('zipSearch').hidden=!!fixedStore;if(fixedStore)$('zipStatus').textContent='You’re creating at '+params.get('store')+'.';document.addEventListener('click',e=>{checkExpiry();if(exiting){e.preventDefault();e.stopImmediatePropagation();}},true);['pointerdown','keydown','input','wheel'].forEach(type=>document.addEventListener(type,()=>{checkExpiry();if(!exiting&&!$('slateIdle').open)arm();},{passive:true}));document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkExpiry();});window.addEventListener('focus',checkExpiry);arm();}
-renderStores();updateActions();function routeHash(){const hash=location.hash.slice(1);if(products[hash]?.artwork){key=hash;parkMode=true;show(1);}else if(hash==='sizes'||hash==='park-slates'){if(hash==='park-slates'){key='large';parkMode=true;show(1);}else show(0);}}window.addEventListener('hashchange',routeHash);routeHash();
+renderStores();updateActions();function routeHash(){const hash=location.hash.slice(1);if(products[hash]?.artwork){key=hash;parkMode=true;show(1);}else if(hash==='sizes'||hash==='park-slates'){if(hash==='park-slates'){key='large';parkMode=true;show(1);}else show(0);}}window.addEventListener('hashchange',routeHash);routeHash();document.documentElement.dataset.slateReady='true';
 })();

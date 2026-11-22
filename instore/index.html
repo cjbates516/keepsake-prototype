@@ -162,6 +162,54 @@
   @media(max-width:600px){.setup-dock{gap:14px;padding:12px 16px max(12px,env(safe-area-inset-bottom))}.setup-dock>div{display:block}.setup-dock strong,.setup-dock span,.setup-dock small{display:block}.setup-dock strong{font-size:23px}.setup-dock span{font-size:13px}.setup-dock small{font-size:11px}.setup-dock .cta{min-width:0;max-width:48%;font-size:17px;padding:12px 18px;line-height:1.15}.codecard{padding:18px}.codecard p{font-size:18px}}
   @media(max-width:600px){.handoff-open .confirm>.pv{display:none}.counter-heading{display:grid;grid-template-columns:minmax(0,1fr) 82px;gap:10px;align-items:start}.counter-thumb{display:block;width:82px;margin:0;padding:0}.counter-thumb img{width:100%;height:156px;object-fit:contain}.counter-heading .code{font-size:26px}}
   @media(prefers-reduced-motion:reduce){.screen.on,.codecard.on{animation:none}}
+
+#dockBack{min-height:48px;padding:8px 12px;flex:none}
+@media(max-width:600px){
+ .s2top{position:static}
+ .s2top .row{gap:8px;margin-bottom:8px}
+ .s2top h1{font-size:25px;margin:4px 0}
+ .s2top .row>div{flex:1 1 160px!important}
+ .s2top .sub{font-size:13px}
+ .search-row{flex-wrap:nowrap;gap:6px}
+ .search-box{min-width:0;flex:1}
+ .search-box>span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ #clearSearch{width:auto;font-size:12px;padding:8px;min-height:48px}
+ #dockBack{font-size:12px;padding:8px;min-width:0}
+ .setup-dock{gap:8px}
+ .setup-dock .cta{font-size:14px;padding:12px;min-width:0}
+}
+
+#studioAccessoryOpen{width:100%;margin:12px 0}
+#kioskExtraSummary{font-size:15px;line-height:1.5}
+#studioAccessoryDialog{width:min(900px,calc(100vw - 24px));max-width:none;max-height:calc(100dvh - 24px);padding:0;border:0;border-radius:16px;background:#fcfaf6;overflow:hidden}
+#studioAccessoryDialog::backdrop{background:#171a2377}
+#studioAccessoryDialog header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid #ddd}
+#studioAccessoryDialog h2{font-size:20px;margin:0}
+#studioAccessoryDone{min-height:44px;padding:8px 18px}
+#kioskAccessoryBody{max-height:calc(100dvh - 110px);overflow-y:auto;padding:0 18px 18px;overscroll-behavior:contain}
+#kioskAccessoryBody .ka{margin-top:12px;padding-top:0;border:0}
+#kioskAccessoryBody .ka h3{display:none}
+#kioskAccessoryBody .ka-card img{height:120px}
+#kioskAccessoryBody .ka-tabs{position:sticky;top:0;background:#fcfaf6;z-index:1}
+
+@media(max-width:600px){
+ .setup-open .confirm{display:grid;grid-template-columns:95px minmax(0,1fr);gap:8px 14px;align-items:center}
+ .setup-open .confirm>.pv{grid-column:1;grid-row:1/5;margin:0;padding:4px;height:170px;min-height:0}
+ .setup-open .pv img{height:160px!important;max-height:160px!important}
+ .setup-open .confirm>div:not(.pv){display:contents}
+ .setup-open .dname{grid-column:2;font-size:24px;margin:0}
+ .setup-open .dmeta{grid-column:2;font-size:14px;margin:0}
+ .setup-open :is(#previewStatus,#setupNotice){grid-column:2;font-size:12px;margin:0}
+ .setup-open :is(#previewStatus,#setupNotice):empty{display:none}
+ .setup-open #setupOptions{grid-column:1/-1}
+ .setup-open #price{display:none}
+ .setup-open #personalizeCase{font-size:14px;min-height:48px;margin:8px 0!important}
+ .setup-open .bundle-note{font-size:15px;margin:8px 0}
+ .setup-open #studioAccessoryOpen{font-size:14px;min-height:48px;margin:8px 0}
+ .setup-open .after{grid-column:1/-1;display:flex;justify-content:flex-end;margin:0}
+ .setup-open .after [data-act=designs]{display:none}
+ .setup-open .after .linkbtn{font-size:13px;min-height:44px}
+}
 </style>
 <link rel="stylesheet" href="../assets/case-zoom.css">
 <link rel="stylesheet" href="../assets/accessories.css">
@@ -216,14 +264,14 @@
           <h1 class="dname" id="dname"></h1>
           <p class="dmeta" id="dmeta"></p><p id="previewStatus" role="status"></p><p id="setupNotice" role="status"></p>
           <div id="setupOptions">
-            <button type="button" class="cta" id="personalizeCase" style="width:100%;margin:8px 0 18px">Make it yours · add a name &amp; more →</button>
+            <button type="button" class="ghost" id="personalizeCase" style="width:100%;margin:8px 0 18px">Make it yours · add a name &amp; more →</button>
             <div id="colorwayPicker" hidden style="margin:16px 0"><p style="font-size:18px;font-weight:800">Choose your background</p><div id="colorwayButtons" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"></div></div>
             <div id="storeChoice"><label for="accessoryStore" class="store-label">Your store</label>
             <select id="accessoryStore"><option value="">Choose your store</option><option>West Chester, PA</option><option>Pottstown, PA</option><option>Newark, DE</option></select></div>
             <p class="price" id="price"></p>
             <label class="bundle-note"><input id="glass" type="checkbox"> <span id="glassLabel">Add tempered glass</span></label>
             <label class="bundle-note"><input id="charger" type="checkbox"> <span>Help me choose a charger<br><small>Prefer advice? Our team will help. Not included in total.</small></span></label>
-            <div id="accessoryPicker"></div>
+            <button type="button" class="ghost" id="studioAccessoryOpen">Choose a charger or accessory →</button><div id="kioskExtraSummary" aria-live="polite"></div><div id="accessoryPicker"></div>
           </div>
           <div class="codecard" id="codecard" aria-live="polite">
             <div class="counter-heading"><div><p class="codelabel" id="codelabel">YOUR PICK CODE</p><p class="code" id="code"></p></div><button class="case-zoom-button counter-thumb" type="button" data-image-zoom="pv" aria-label="Enlarge your counter case"><img id="counterPreview" alt="Your selected clear case"></button></div>
@@ -252,9 +300,11 @@
 </div>
 
 <div id="setupDock" class="setup-dock" hidden>
+  <button class="ghost" type="button" data-act="designs" id="dockBack">← Designs</button>
   <div><strong id="dockTotal">$44.99</strong><span id="dockSummary">Your case</span><small id="dockStore"></small></div>
   <button class="cta" type="button" id="showBtn">Review my setup</button>
 </div>
+<dialog id="studioAccessoryDialog" aria-labelledby="kioskAccessoryTitle"><header><h2 id="kioskAccessoryTitle">Chargers &amp; accessories</h2><button type="button" class="ghost" id="studioAccessoryDone">Done</button></header><div id="kioskAccessoryBody"></div></dialog>
 <div class="scrim" id="ownSheet" role="dialog" aria-modal="true" aria-labelledby="ownH">
   <div class="sheet">
     <div class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
@@ -325,6 +375,7 @@
   window.addEventListener('popstate', function () {
     try { history.pushState({ kp: 'app' }, ''); } catch (e) {}
     var zoom=document.getElementById('caseZoomDialog');if(zoom&&zoom.open){zoom.close();return;}
+    if($('studioAccessoryDialog').open){$('studioAccessoryDialog').close();return;}
     if ($('ownSheet').classList.contains('on')) return closeSheet();
     if (state.screen === 3 && $('codecard').classList.contains('on')) return editSetup();
     if (state.screen === 3) { state.design = null; show(2); }
@@ -554,9 +605,14 @@
   $('accessoryStore').value=state.store;$('accessoryStore').disabled=!!kioskStore;
   $('accessoryStore').addEventListener('change',function(){state.store=this.value;updatePurchase();});
   $('setupOptions').addEventListener('click',function(e){if(Date.now()-changedAt<450&&Math.abs(e.clientX-changeTap.x)<40&&Math.abs(e.clientY-changeTap.y)<40){e.preventDefault();e.stopImmediatePropagation();}},true);
+  $('kioskAccessoryBody').append($('charger').closest('label'),$('accessoryPicker'));
+  $('studioAccessoryOpen').onclick=function(){if(!state.store){$('accessoryStore').focus();return;}$('studioAccessoryDialog').showModal();$('kioskAccessoryBody').scrollTop=0;};
+  $('studioAccessoryDone').onclick=function(){$('studioAccessoryDialog').close();};
+  $('studioAccessoryDialog').addEventListener('close',function(){if(state.screen===3)$('studioAccessoryOpen').focus({preventScroll:true});});
   var accessoryPicker=KPAccessories.mount($('accessoryPicker'),{store:state.store,kiosk:true,onNotice:function(message){$('setupNotice').textContent=message;},onChange:function(ids){state.accessories=ids;if(data&&state.model&&state.design)updatePurchase();}});
   function updatePurchase() {
     accessoryPicker.setModel(state.model&&state.model.name);accessoryPicker.setStore(state.store);
+    $('studioAccessoryOpen').disabled=!state.store;$('kioskExtraSummary').textContent=state.accessories.map(function(id){var x=KPAccessories.get(id);return KPAccessories.label(x)+' · $'+KPAccessories.price(x,state.store).toFixed(2);}).join(' / ');
     $('counterAccessories').replaceChildren();
     state.accessories.forEach(function(id){var x=KPAccessories.get(id),p=document.createElement('p');p.textContent=KPAccessories.label(x)+' · $'+KPAccessories.price(x,state.store).toFixed(2)+' · SKU '+x.sku+(KPAccessories.available(x,state.store)?'':' · confirm availability here');$('counterAccessories').append(p);});
     var glass=$('glass').checked;
@@ -617,6 +673,7 @@
     $('glass').checked=false;$('charger').checked=false;closeSheet();bigImageFile=bigImagePromise=null;rememberedLooks={};
     previewSeq++;
     $('pv').removeAttribute('src');$('counterPreview').removeAttribute('src'); revoke(bigUrl); bigUrl = null;
+    if($('studioAccessoryDialog').open)$('studioAccessoryDialog').close();$('kioskExtraSummary').textContent='';
     state.model = null; state.design = null;state.store=kioskStore;$('accessoryStore').value=kioskStore;accessoryPicker.setStore(kioskStore);accessoryPicker.reset();state.colorway='original'; state.filter = 'all';state.query='';$('designSearch').value='';clearTimeout(searchTimer);$('idleNotice').hidden=true;
     gen++; queue.length = 0;
     $('codecard').classList.remove('on');
