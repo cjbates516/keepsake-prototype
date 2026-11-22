@@ -165,7 +165,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/shop-refresh.css?v=counter-card-1">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css?v=start-case-1"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=clear-personal-2" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
+<link rel="stylesheet" href="assets/shop-menu.css?v=start-case-1"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=ocean-rain-1" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 <link rel="stylesheet" href="assets/accessories.css">
 <link rel="stylesheet" href="assets/design-editor.css?v=momentum-20261121-product-studio-1-rated-3">
 <!-- Rated Case photos: the See photos button and its viewer (assets/rated-gallery.js) -->
@@ -1484,10 +1484,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* ── stage state ── */
   function hasKit(){ return !!KITS[state.model]; }
   /* A designs.json entry may carry an exact credit and license (credit, license) shown with a field photo, and a
-     creditSlip PDF the staff workspace offers. No entry carries them today, so the 281 KB designs.json is not fetched
-     for them: set KP_DESIGN_CREDITS to true when a collection ships those fields (the credit line, its retry and the
+     creditSlip PDF the staff workspace offers. Ocean and rain photographs carry these fields. Fetch the registry on the first credit lookup (the credit line, its retry and the
      staff slip below already handle them; tools/tests/collage_captions.cjs and collage_review_fixes.cjs check them). */
-  var KP_DESIGN_CREDITS=false;
+  var KP_DESIGN_CREDITS=true;
   var kpDesignIndex=null, kpDesignFailAt=0;
   /* resolves to the designs.json entry, null when the design has none, or undefined when designs.json did not load */
   function kpDesignEntry(file){
@@ -1518,14 +1517,16 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     const creditLink = $('cityPhotoCredit');
     const fieldPhoto = state.isLibraryDesign && state.photoImg && /^field-photo-([a-z0-9-]+)\.jpg$/.exec(state.photoImg.__kpDesignFile || '');
     const spacePhoto = state.isLibraryDesign && state.photoImg && /^kp-space-([a-z0-9-]+)\.jpg$/.exec(state.photoImg.__kpDesignFile || '');
-    creditLink.hidden = !(cityPhoto || fieldPhoto || spacePhoto);
+    const oceanRainPhoto = state.isLibraryDesign && state.photoImg && /^(?:ocean|rain)-photo-([a-z-]+)\.jpg$/.test(state.photoImg.__kpDesignFile || '');
+    creditLink.hidden = !(cityPhoto || fieldPhoto || spacePhoto || oceanRainPhoto);
+    if (oceanRainPhoto) creditLink.href = 'ocean-rain-credits.html#' + state.photoImg.__kpDesignFile.replace(/\.jpg$/, '');
     /* every credit is a link to its credits page (CC BY attribution); the web editor shows it under the case. On kiosks
        it stays in the Photo tool with its attribution href (design-editor.js), but design-editor.css hides it there
        (.studio-kiosk #cityPhotoCredit) so a credits page can never become a way out of the kiosk editor */
     if (spacePhoto) creditLink.href = 'new-print-credits.html#kp-space-' + spacePhoto[1];
     if (fieldPhoto) creditLink.href = 'field-photo-credits.html#' + fieldPhoto[1];
     if (cityPhoto) creditLink.href = 'city-photo-credits.html#' + cityPhoto[1];
-    updatePhotoCredit(creditLink, fieldPhoto ? state.photoImg.__kpDesignFile : null);
+    updatePhotoCredit(creditLink, (fieldPhoto || oceanRainPhoto) ? state.photoImg.__kpDesignFile : null);
     var live = hasKit();
     canvas.style.display = live ? 'block' : 'none';
     canvas.style.touchAction = state.photoImg ? 'none' : 'pan-y';
