@@ -32,13 +32,13 @@
   // Only offer real variants or backgrounds behind transparent artwork. A flattened
   // photograph/pattern has no separate background; a colored mat changes its fit.
   function choicesFor(src){
-    var p=profile(src);if(!p)return [choices[0]];if(p.method==='yosemite')return choices.concat(artworkOnly);if((p.method!=='assets'&&!p.background?.transparent)||!p.colors||p.colors.length!==variantCount(p)||(p.method==='assets'&&!validAssets(p))||(p.hash&&p.preparedHash!==p.hash))return [choices[0]];
+    var p=profile(src);if(!p)return [choices[0]];if(p.method==='yosemite')return choices.concat(artworkOnly);if(p.backgroundLayout==='inset'||(p.method!=='assets'&&!p.background?.transparent)||!p.colors||p.colors.length!==variantCount(p)||(p.method==='assets'&&!validAssets(p))||(p.hash&&p.preparedHash!==p.hash))return [choices[0]];
     var original=p.originalColor?{id:"original",code:0,name:p.originalColor[0],bg:p.originalColor[1]}:isArtworkOnly(src,'original') ? {id:'original', code:0, name:'Artwork only', bg:'transparent'} : choices[0];
     return [original].concat((p.colors||palettes[p.group]||palettes.bright).map(function(pair,i){return {id:'c'+(i+1),code:i+1,name:pair[0],bg:pair[1]};}).filter(function(c){return p.method!=='assets'||(!src.naturalWidth&&!src.width)||!!(src.__kpVariantImages&&src.__kpVariantImages[c.code-1]);}));
   }
   // Load authored variants together with their source so preview and print use identical art.
   function prepare(src){
-    var pf=profile(src);if(!pf||pf.method!=='assets'||!validAssets(pf))return Promise.resolve(src);
+    var pf=profile(src);if(!pf||pf.backgroundLayout==='inset'||pf.method!=='assets'||!validAssets(pf))return Promise.resolve(src);
     if(src.__kpVariantImages&&src.__kpVariantImages.every(Boolean))return Promise.resolve(src);
     if(src.__kpVariantPromise)return src.__kpVariantPromise;
     var small=/\/thumbs\//.test(src.src),base=new URL(src.src.replace('/thumbs/','/'),location.href);
