@@ -5,7 +5,7 @@
   const sessionId=Date.now().toString(36)+Math.random().toString(36).slice(2);
   const kiosk=params.get('kiosk')==='1', mobile=matchMedia('(max-width:760px)');
   const fixedStore=kiosk&&params.get('storeMode')!=='choose'&&window.KPAccessories?.stores.includes(params.get('store'));
-  function collectionReturn(){try{const u=new URL(params.get('back')||'',location.href),folder=new URL('.',location.href);if(u.origin!==folder.origin||!['gallery.html','parks-rugged.html','park-collages.html','new-prints.html','signature-golf.html'].some(name=>u.pathname===folder.pathname+name))return null;const safe=new URL(u.pathname,location.origin);if(u.pathname.endsWith('/gallery.html'))for(const key of ['cat','q','color','state','all','n'])if(u.searchParams.has(key))safe.searchParams.set(key,u.searchParams.get(key));if(/^#[a-z0-9-]+$/.test(u.hash))safe.hash=u.hash;return safe;}catch{return null;}}
+  function collectionReturn(){try{const u=new URL(params.get('back')||'',location.href),folder=new URL('.',location.href);if(u.origin!==folder.origin||!['gallery.html','parks-rugged.html','park-collages.html','new-prints.html','signature-golf.html','ocean-and-rain.html'].some(name=>u.pathname===folder.pathname+name))return null;const safe=new URL(u.pathname,location.origin);if(u.pathname.endsWith('/gallery.html'))for(const key of ['cat','q','color','state','all','n'])if(u.searchParams.has(key))safe.searchParams.set(key,u.searchParams.get(key));if(/^#[a-z0-9-]+$/.test(u.hash))safe.hash=u.hash;return safe;}catch{return null;}}
   // Arm privacy protection before constructing any editor UI. Deadlines survive device sleep.
   let idleTimer,warningTimer,warning=null,expiresAt=0,exiting=false,leaving=false;
   function arm(){if(exiting||leaving)return;const duration=$('counterReview')?.open?300000:180000;clearTimeout(idleTimer);clearTimeout(warningTimer);expiresAt=Date.now()+duration;if(warning?.open)warning.close();warningTimer=setTimeout(()=>warning?.showModal(),duration-30000);idleTimer=setTimeout(checkExpiry,duration);}
@@ -81,8 +81,8 @@
     buttons.name.after(buttons.words);buttons.words.hidden=true;
   }
   // The desktop tool on entering (or returning to) Design: the last tool the customer opened while it is still offered
-  // (lastTool, set in openTool), else the first tool for this path: Night sky, Drawing, Layouts (photo path) or Background.
-  const home=()=>lastTool&&panels[lastTool]&&!buttons[lastTool].hidden?lastTool:info.sky?'sky':info.drawing?'photo':panels.photo&&!core.info().library?'photo':'background';
+  // (lastTool, set in openTool), else the first tool for this path: Night sky, Drawing, Layouts (photo path), Background, or Phone for original-only designs.
+  const home=()=>lastTool&&panels[lastTool]&&!buttons[lastTool].hidden?lastTool:info.sky?'sky':info.drawing?'photo':panels.photo&&!core.info().library?'photo':buttons.background.hidden?'phone':'background';
   const preview=document.createElement('section');preview.id='studioPreview';preview.hidden=true;
   preview.innerHTML='<p class="studio-kicker">ONE LAST LOOK</p><h2>Your design, on your case.</h2><p>Check the spelling, placement and camera area. Tap the case to see every detail.</p><p id="studioPartial" class="studio-partial" role="status" hidden></p><dl id="studioReviewDetails"></dl><button type="button" id="studioEditAgain">Keep editing</button><p class="studio-help">Digital preview. Our team checks your case and artwork before printing.</p>';rail.append(preview);
   const setup=document.createElement('section');setup.id='studioSetup';setup.hidden=true;setup.innerHTML='<p class="studio-kicker">THE FINISHING TOUCHES</p><h2>Complete your setup.</h2><p>Optional extras. Everything is confirmed and paid for in store.</p>';rail.append(setup);
@@ -287,8 +287,8 @@
   $('studioCenter').onclick=()=>core.adjust('center');
   adjustments.addEventListener('input',e=>{if(e.target.dataset.adjust)core.adjust(e.target.dataset.adjust,e.target.value);});
   function sync(){
-    if(purged)return;const i=core.info(),s=core.snapshot();syncAccessorySummary(i);
-    promise.textContent=i.sky?'Create a sky for your date and place, then review it with our team.':i.drawing?'Turn their drawing into a keepsake. Our team checks the artwork before printing.':i.library?'Made yours in store. Choose a background, add your name, then show our team.':'Add your photo, make it yours, then show our team in store.';
+    if(purged)return;const i=core.info(),s=core.snapshot(),originalOnly=i.library&&i.previewReady&&!i.loading&&$('photoLooksWrap').hidden;syncAccessorySummary(i);
+    promise.textContent=i.sky?'Create a sky for your date and place, then review it with our team.':i.drawing?'Turn their drawing into a keepsake. Our team checks the artwork before printing.':i.library?(originalOnly?'Choose your phone, add a name if you like, then show our team.':'Made yours in store. Choose a background, add your name, then show our team.'):'Add your photo, make it yours, then show our team in store.';
     product.querySelector('h1').textContent=i.library?libraryTitle:i.sky?'Your special night.':i.drawing?'Their drawing, your case.':i.layout?'Your photo collage.':'Make it yours.';
     syncVariations(i);productPrice.textContent='$'+(i.caseType==='Rated Case'?i.prices.rated:i.prices.clear).toFixed(2);product.hidden=step!=='edit';
     preview.querySelector('h2').textContent=i.drawingPending?'Your case setup.':'Your design, on your case.';
@@ -324,6 +324,8 @@
       layoutAdd.textContent=$('uploadBtn').textContent;layoutAdd.disabled=$('uploadBtn').disabled;
       if(step==='edit'&&tool&&buttons[tool].hidden){if(mobile.matches)closeTool();else{tool=home();paintTool();}}
     }
+    // Full-photo library designs have no alternate backgrounds. Keep the tool only when there is a choice or a recovery action.
+    if(i.library){buttons.background.hidden=originalOnly;if(step==='edit'&&tool==='background'&&originalOnly){if(mobile.matches)closeTool();else{tool=home();paintTool();}}}
     adjustments.hidden=!i.hasPhoto||i.sky;adjustNote.hidden=i.hasPhoto&&!i.sky;
     $('editTools').style.display=i.hasPhoto&&!i.sky?'block':'none';
     adjustments.querySelectorAll('input').forEach(el=>{if(el!==document.activeElement)el.value=s[el.dataset.adjust];});
