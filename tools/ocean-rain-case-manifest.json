@@ -1,0 +1,98 @@
+[
+  {
+    "href": "customizer.html?design=ocean-photo-surface-breath.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "ocean-photo-surface-breath.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/ocean-rain/ocean-photo-surface-breath.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=ocean-photo-turtle-glide.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "ocean-photo-turtle-glide.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/ocean-rain/ocean-photo-turtle-glide.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=ocean-photo-silver-current.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "ocean-photo-silver-current.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/ocean-rain/ocean-photo-silver-current.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=ocean-photo-kelp-light.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "ocean-photo-kelp-light.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/ocean-rain/ocean-photo-kelp-light.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=ocean-photo-tidal-line.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "ocean-photo-tidal-line.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/ocean-rain/ocean-photo-tidal-line.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=ocean-photo-reef-in-blue.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "ocean-photo-reef-in-blue.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/ocean-rain/ocean-photo-reef-in-blue.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=rain-photo-golden-rain.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "rain-photo-golden-rain.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/ocean-rain/rain-photo-golden-rain.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=rain-photo-silver-afterglow.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "rain-photo-silver-afterglow.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/ocean-rain/rain-photo-silver-afterglow.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=rain-photo-midnight-window.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "rain-photo-midnight-window.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/ocean-rain/rain-photo-midnight-window.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=rain-photo-neon-umbrellas.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "rain-photo-neon-umbrellas.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/ocean-rain/rain-photo-neon-umbrellas.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=rain-photo-amber-walk.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "rain-photo-amber-walk.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/ocean-rain/rain-photo-amber-walk.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=rain-photo-after-hours.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "rain-photo-after-hours.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/ocean-rain/rain-photo-after-hours.webp",
+    "caseType": "MagSafe Clear"
+  }
+]

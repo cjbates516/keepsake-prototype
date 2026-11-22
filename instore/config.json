@@ -6,6 +6,16 @@
  "assets_version": "14",
  "collections": [
   {
+   "category": "Ocean Photography",
+   "label": "Ocean Photography",
+   "code": "OCN"
+  },
+  {
+   "category": "Rain After Dark",
+   "label": "Rain After Dark",
+   "code": "RAN"
+  },
+  {
    "category": "Zodiac Creatures",
    "label": "Zodiac Creatures",
    "code": "ZCR"

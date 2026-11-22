@@ -7,6 +7,8 @@
  if(typeof document.createElement('dialog').showModal!=='function')return;
  const rows=[
   ['Design your case','Use your own photo or choose a print','customizer.html','assets/home/personal/drawing-clear-case-v2.webp'],
+  ['Ocean Photography','Sea turtles, kelp forests and surf','ocean-and-rain.html#ocean-photography','assets/ocean-rain/ocean-photo-turtle-glide.webp'],
+  ['Rain After Dark','Rain on glass and glowing streets','ocean-and-rain.html#rain-after-dark','assets/ocean-rain/rain-photo-golden-rain.webp'],
   ['Fresh prints','New nature, golf, liquid and space designs','new-prints.html','assets/new-prints/kp-blueprint-ginkgo.webp'],
   ['Zodiac Creatures','Full animals and figures · five backgrounds','celestial-creatures.html','assets/celestial-patterns/kp-zodiac-creature-leo--original.webp'],
   ['Tarot','The Sun, Moon, Star and Lovers','tarot.html','assets/celestial-patterns/kp-tarot-sun--original.webp'],

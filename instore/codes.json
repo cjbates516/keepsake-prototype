@@ -26,10 +26,12 @@
 "NE1": 1,
 "NEO": 6,
 "NPK": 31,
+"OCN": 6,
 "ORB": 3,
 "OUT": 6,
 "PAI": 1,
 "POP": 13,
+"RAN": 6,
 "SCN": 168,
 "SPC": 21,
 "SPT": 5,
@@ -3787,6 +3789,30 @@
 "c": "HOM",
 "n": 28
 },
+"ocean-photo-kelp-light.jpg": {
+"c": "OCN",
+"n": 1
+},
+"ocean-photo-reef-in-blue.jpg": {
+"c": "OCN",
+"n": 2
+},
+"ocean-photo-silver-current.jpg": {
+"c": "OCN",
+"n": 3
+},
+"ocean-photo-surface-breath.jpg": {
+"c": "OCN",
+"n": 4
+},
+"ocean-photo-tidal-line.jpg": {
+"c": "OCN",
+"n": 5
+},
+"ocean-photo-turtle-glide.jpg": {
+"c": "OCN",
+"n": 6
+},
 "papercut-clouds-navy.jpg": {
 "c": "SCN",
 "n": 16
@@ -4082,6 +4108,30 @@
 "race-track-aerial-view.jpg": {
 "c": "CAR",
 "n": 5
+},
+"rain-photo-after-hours.jpg": {
+"c": "RAN",
+"n": 1
+},
+"rain-photo-amber-walk.jpg": {
+"c": "RAN",
+"n": 2
+},
+"rain-photo-golden-rain.jpg": {
+"c": "RAN",
+"n": 3
+},
+"rain-photo-midnight-window.jpg": {
+"c": "RAN",
+"n": 4
+},
+"rain-photo-neon-umbrellas.jpg": {
+"c": "RAN",
+"n": 5
+},
+"rain-photo-silver-afterglow.jpg": {
+"c": "RAN",
+"n": 6
 },
 "rainbow-parade-blue.jpg": {
 "c": "KID",
