@@ -29,8 +29,10 @@
       (p.clearVariant && id === p.clearVariant) ||
       (id === 'original' && !!p.background?.transparent);
   }
+  // Only offer real variants or backgrounds behind transparent artwork. A flattened
+  // photograph/pattern has no separate background; a colored mat changes its fit.
   function choicesFor(src){
-    var p=profile(src);if(!p)return [choices[0]];if(p.method==='yosemite')return choices.concat(artworkOnly);if(!p.colors||p.colors.length!==variantCount(p)||(p.method==='assets'&&!validAssets(p))||(p.hash&&p.preparedHash!==p.hash))return [choices[0]];
+    var p=profile(src);if(!p)return [choices[0]];if(p.method==='yosemite')return choices.concat(artworkOnly);if((p.method!=='assets'&&!p.background?.transparent)||!p.colors||p.colors.length!==variantCount(p)||(p.method==='assets'&&!validAssets(p))||(p.hash&&p.preparedHash!==p.hash))return [choices[0]];
     var original=p.originalColor?{id:"original",code:0,name:p.originalColor[0],bg:p.originalColor[1]}:isArtworkOnly(src,'original') ? {id:'original', code:0, name:'Artwork only', bg:'transparent'} : choices[0];
     return [original].concat((p.colors||palettes[p.group]||palettes.bright).map(function(pair,i){return {id:'c'+(i+1),code:i+1,name:pair[0],bg:pair[1]};}).filter(function(c){return p.method!=='assets'||(!src.naturalWidth&&!src.width)||!!(src.__kpVariantImages&&src.__kpVariantImages[c.code-1]);}));
   }
@@ -52,17 +54,12 @@
   function valid(id){return id===artworkOnly.id||id==='original'||/^c[1-5]$/.test(id)||choices.some(function(c){return c.id===id;});}
   function paletteCanvas(src,look,maxEdge,pf){
     var iw=src.naturalWidth||src.width,ih=src.naturalHeight||src.height,k=Math.min(1,(maxEdge||2048)/Math.max(iw,ih));
-    var cv=document.createElement('canvas');cv.width=Math.max(1,Math.round(iw*k));cv.height=Math.max(1,Math.round(ih*k));var cx=cv.getContext('2d',{willReadFrequently:true});cx.drawImage(src,0,0,cv.width,cv.height);
+    var cv=document.createElement('canvas');cv.width=Math.max(1,Math.round(iw*k));cv.height=Math.max(1,Math.round(ih*k));var cx=cv.getContext('2d');
     if (pf.background && pf.background.transparent) {
-      cx.globalCompositeOperation='destination-over';cx.fillStyle=look.bg;cx.fillRect(0,0,cv.width,cv.height);cx.globalCompositeOperation='source-over';
-    } else {
-      // Flattened artwork has no trustworthy foreground mask. Mount the original on a mat;
-      // never color-key matching details inside a photograph, map or illustration.
-      cv.height=maxEdge||2048;cv.width=Math.round(cv.height/2);
       cx.fillStyle=look.bg;cx.fillRect(0,0,cv.width,cv.height);
-      var scale=Math.min(cv.width*.90/iw,cv.height*.70/ih),dw=iw*scale,dh=ih*scale;
-      cx.drawImage(src,(cv.width-dw)/2,cv.height*.60-dh/2,dw,dh);
     }
+    // Draw at the same size and position as Original, above the chosen background.
+    cx.drawImage(src,0,0,cv.width,cv.height);
     cv.naturalWidth=cv.width;cv.naturalHeight=cv.height;return cv;
   }
   function clear(){if(cacheCanvas){cacheCanvas.width=cacheCanvas.height=0;}cacheSource=cacheId=cacheCanvas=null;cacheSize='';}
@@ -121,9 +118,9 @@
   function make(src,id,maxEdge){
     var iw=src.naturalWidth||src.width,ih=src.naturalHeight||src.height;
     if(!iw||!ih||src.complete===false)throw new Error('Artwork is still loading');
-    var pf=profile(src),look=choicesFor(src).find(function(c){return c.id===id;})||choices[0];
+    var pf=profile(src),available=choicesFor(src),look=available.find(function(c){return c.id===id;})||choices[0];
+    if(pf&&id&&id!=='original'&&!available.some(function(c){return c.id===id;}))throw new Error('This background is unavailable. Choose Original to keep the artwork full size.');
     if (pf && pf.method === 'palette' && pf.caseLayout === 'centered-poster') return centeredPoster(src, look, pf, maxEdge);
-    if(pf&&pf.method==='assets'&&id&&id!=='original'&&!choicesFor(src).some(function(c){return c.id===id;}))throw new Error('This colorway is unavailable. Choose Original or reconnect.');
     if(pf&&pf.method==='assets'&&look.id!=='original'){
       var variant=src.__kpVariantImages&&src.__kpVariantImages[look.code-1];
       if(!variant)throw new Error('Colorway artwork is still loading');
@@ -131,14 +128,6 @@
       cv.width=Math.round(variant.naturalWidth*scale);cv.height=Math.round(variant.naturalHeight*scale);cv.getContext('2d').drawImage(variant,0,0,cv.width,cv.height);return cv;
     }
     if(pf&&pf.method!=='yosemite'&&look.id!=='original'){
-      if(pf.method==='framed'){
-        var framed=document.createElement('canvas');framed.height=maxEdge||2000;framed.width=Math.round(framed.height/2);
-        var fx=framed.getContext('2d'),fw=framed.width,fh=framed.height;
-        fx.fillStyle=look.bg;fx.fillRect(0,0,fw,fh);
-        var scale=Math.min(fw*.88/iw,fh*.76/ih),dw=iw*scale,dh=ih*scale;
-        fx.strokeStyle='rgba(255,255,255,.55)';fx.lineWidth=fw*.003;fx.strokeRect((fw-dw)/2-fw*.015,(fh-dh)/2-fh*.008,dw+fw*.03,dh+fh*.016);
-        fx.drawImage(src,(fw-dw)/2,(fh-dh)/2,dw,dh);return framed;
-      }
       return paletteCanvas(src,look,maxEdge,pf);
     }
     var isVariant=pf&&pf.method==='yosemite'&&choicesFor(src).some(function(c){return c.id===id;}),cv=document.createElement('canvas');
@@ -170,7 +159,7 @@
     cv.naturalWidth=cv.width;cv.naturalHeight=cv.height;return cv;
   }
   function source(src,id){
-    if(profile(src)&&profile(src).method==='assets'&&id&&id!=='original'&&!choicesFor(src).some(function(c){return c.id===id;}))throw new Error('Selected colorway is unavailable');
+    if(profile(src)&&id&&id!=='original'&&!choicesFor(src).some(function(c){return c.id===id;}))throw new Error('Selected colorway is unavailable');
     if(!src||!choicesFor(src).some(function(c){return c.id===id;})||!profile(src)||(id==='original'&&profile(src).method!=='yosemite'&&profile(src).caseLayout!=='centered-poster')){clear();return src;}
     var w=src.naturalWidth||src.width,h=src.naturalHeight||src.height;if(!w||!h||src.complete===false)return src;
     var size=w+'x'+h;

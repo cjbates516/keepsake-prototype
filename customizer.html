@@ -109,7 +109,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/kp-config.js?v=rated-3"></script>
 <script src="assets/heic-loader.js"></script>
 <script src="assets/colorway-catalog.js"></script>
-<script src="assets/design-colorways.js"></script>
+<script src="assets/design-colorways.js?v=full-art-20261121"></script>
 <script src="instore/instore-lib.js?v=clear-rim-1"></script>
 <style>
 .photo-looks{display:flex;gap:10px;overflow-x:auto;padding:6px 6px 14px;scroll-snap-type:x proximity}
@@ -2079,7 +2079,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     }
     row.querySelectorAll('.photo-look').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.look===(state.variant||'original')));});
     var selected=KPDesignColorways.choicesFor(src).find(function(v){return v.id===state.variant;})||KPDesignColorways.choices[0];
-    $('photoLookStatus').textContent=state.colorwayUnavailable?'Requested colorway could not load. Choose an available colorway, or reload to retry.':(KPDesignColorways.isArtworkOnly(src,selected.id)?'Artwork only · The case shows through around the image.':selected.name+' selected');
+    $('photoLookStatus').textContent=state.colorwayUnavailable?(KPDesignColorways.choicesFor(src).length<2?'This design fills the case with its original artwork. Choose Original to continue.':'Requested colorway could not load. Choose an available colorway, or reload to retry.'):(KPDesignColorways.isArtworkOnly(src,selected.id)?'Artwork only · The case shows through around the image.':selected.name+' selected');
   }
   $('photoLooks').addEventListener('click',function(e){
     var button=e.target.closest('.photo-look');if(!button||!state.photoImg)return;
