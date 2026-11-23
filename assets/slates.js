@@ -18,7 +18,7 @@ function credit(target){const node=document.querySelector('[data-slate-choice="'
 function parkSource(){return document.querySelector('[data-slate-choice="'+key+'"]')?.closest('article,section')?.querySelector('figure img')?.src;}
 function updateActions(){
  const item=selected();$('runningTotal').querySelector('strong').textContent=item?'$'+item.price.toFixed(2):'From $29.99';
- $('runningDetail').textContent=item?(key==='bundle'?'Two 4 × 6 slates':item.width+' × '+item.height+' inches'):'Display supports included';
+ $('runningDetail').textContent=item?(key==='bundle'?'Two '+item.sizeLabel+' inch slates':'Approx. '+item.sizeLabel+' inches'):'Display supports included';
  $('builderSelection').textContent=item?$('runningDetail').textContent:'';
  $('slateForward').hidden=step===3||step===0;$('editSlate').hidden=step!==3;$('clearSlate').hidden=step!==3;$('slateBack').hidden=step===3;
  $('slateForward').textContent=['Choose a size above','Use this store →','Show at the counter →'][step]||'';
