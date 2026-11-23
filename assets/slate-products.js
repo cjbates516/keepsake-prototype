@@ -28,6 +28,12 @@
       price:49.99, ...large, artwork:'../assets/photos/slates/joshua-landscape-print.jpg'},
     olympic: {code:'SL-810-OLY', label:'Olympic · Lake Crescent Reflections · 10 × 8 inch landscape slate',
       price:49.99, ...large, artwork:'../assets/photos/slates/olympic-landscape-print.jpg', creditSlip:'../assets/photos/slates/olympic-photo-credit.pdf'},
+    glacier: {code:'SL-810-GLA', label:'Glacier · Lake McDonald Reflections · 10 × 8 inch landscape slate',
+      price:49.99, ...large, artwork:'../assets/photos/slates/glacier-landscape-print.jpg'},
+    redwood: {code:'SL-810-RED', label:'Redwood · Coastal Redwood Grove · 10 × 8 inch landscape slate',
+      price:49.99, ...large, artwork:'../assets/photos/slates/redwood-landscape-print.jpg'},
+    shenandoah: {code:'SL-810-SHN', label:'Shenandoah · Shenandoah Valley in Fall · 10 × 8 inch landscape slate',
+      price:49.99, ...large, artwork:'../assets/photos/slates/shenandoah-landscape-print.jpg'},
     bundle: {code:'SL-PAIR', label:'Holiday pair · two 5⅝ × 3½ inch photo slates', price:49.99, ...small}
   };
   window.KPSlates = {products:products, byCode:function (value) {
