@@ -585,7 +585,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* Shared blank geometry already confirmed for 17/18; device colors are separate. */
   ['Pro Max','Pro'].forEach(function(size){
     var kit=JSON.parse(JSON.stringify(KITS['iPhone 17 '+size])),suffix=size==='Pro Max'?'pm':'p';
-    kit.colors=[{"n": "Silver", "h": "#e4e4e2", "f": "silver"}, {"n": "Black", "h": "#27282a", "f": "black"}, {"n": "Glacier", "h": "#adcadf", "f": "glacier"}, {"n": "Burgundy", "h": "#744653", "f": "burgundy"}].map(function(c){return {n:c.n,h:c.h,f:'i18'+suffix+'-'+c.f+'.svg?v=13'};});
+    kit.colors=[{"n": "Silver", "h": "#e4e4e2", "f": "silver"}, {"n": "Black", "h": "#27282a", "f": "black"}, {"n": "Glacier", "h": "#adcadf", "f": "glacier"}, {"n": "Burgundy", "h": "#744653", "f": "burgundy"}].map(function(c){return {n:c.n,h:c.h,f:'i18'+suffix+'-'+c.f+'.svg?v=14'};});
     kit.view='view-i17'+suffix+'.png';kit.light=kit.colors[0].f;
     delete kit.hybrid;
     KITS['iPhone 18 '+size]=kit;
