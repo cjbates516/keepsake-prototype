@@ -14,3 +14,11 @@ License checked: https://www.pexels.com/license/ permits website/product promoti
 ## Family previews · 2026-11-17
 
 Both storefront previews combine the credited, unaltered family photographs with the edge of the photographed 8×10 supplier blank. They are digital marketing samples. The readable supplier detail sheet is still linked on the slate page.
+
+## Glacier, Redwood and Shenandoah photographs · 2026-11-23
+
+These three photographs are U.S. public-domain National Park Service works. The photo crops are available as printable slate designs. The customer previews are digital composites on the supplier slate. The National Park Service does not endorse the product.
+
+- **Lake McDonald Reflections** (glacier): [Glacier National Park / NPS](https://commons.wikimedia.org/wiki/File:Stanton_Mountain_reflected_in_Lake_McDonald.jpg).
+- **Coastal Redwood Grove** (redwood): [NPS Digital Image Archives](https://commons.wikimedia.org/wiki/File:Redwood_National_Park_REDW9376.jpg). Shadows lifted for the print crop.
+- **Shenandoah Valley in Fall** (shenandoah): [NPS / Neal Lewis](https://commons.wikimedia.org/wiki/File:Fall_View_into_the_Shenandoah_Valley_%2850570458351%29.jpg).
