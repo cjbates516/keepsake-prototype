@@ -15,6 +15,7 @@
 <script src="assets/print-geometry.js"></script>
 <script src="assets/case-shell.js?v=clear-mounted-2"></script>
 <script src="assets/mask-geometry.js?v=rated-3"></script>
+<script src="assets/rated-camera-geometry.js?v=device-finish-1"></script>
 <script src="assets/print-layouts.js"></script>
 <script src="assets/counter-card.js?v=counter-card-1"></script>
 <title>Design your keepsake — Keepsake Printing Co</title>
@@ -605,7 +606,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     Object.keys(RATED).forEach(function(m){
       var k=KITS[m],key=RATED[m];if(!k)return;
       var colors=(CLEAR_FROST_ONLY[key]?['clear']:['smoke','clear']).map(function(t){return t==='smoke'?{n:'Smoke Frost',h:'#404040',f:'rated-'+key+'-smoke.webp'}:{n:'Clear Frost',h:'#C4C5C6',f:'rated-'+key+'-clear.webp'};});
-      k.rated={fit:k.fit,outD:k.outD,camD:k.camD,light:'rated-light.jpg',view:'view-rated-'+key+'.png',file:colors[0].f,colors:colors};
+      k.rated={cameraKey:key,fit:k.fit,outD:k.outD,camD:k.camD,light:'rated-light.jpg',view:'view-rated-'+key+'.png',file:colors[0].f,colors:colors};
     });
   })();
   /* One rule for the case type, used by loadKit, the brand and model changes, the summary and startup: a Rated Case
@@ -626,7 +627,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* the rim the customer chose, or the first rim this phone's Rated Case comes in (state.rimColor keeps the choice) */
   function kpRim(){ var r=kpRatedKit(); return r?(r.colors.find(function(c){return c.n===state.rimColor;})||r.colors[0]):null; }
   function kpCaseLabel(){ var rim=kpRim(); return rim?CASE_RATED+' \u00b7 '+rim.n:state.caseType; }
-  /* finish labels follow the case: the phone finish for the clear case, the rim color for the Rated Case */
+  /* Phone finish and Rated Case rim are independent choices. */
   function kpFinishLabels(){
     var shown=state.colorName;
     ['colorName','colorName4'].forEach(function(id){ var el=$(id); if(el) el.textContent=shown; });
@@ -657,6 +658,12 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   var caseImg=new Image(), lightMap=null, caseReady=false,caseFailed=false;
   // Display only: the uploaded white panel is a mask guide. The print renderer never uses this layer.
   var finishImg=null,finishReady=true,finishFailed=false,caseDisplay=null,caseDisplayKey='';
+  function drawRatedPhoneCamera(g,photo,rated){
+    var geometry=window.KPRatedCameraGeometry&&KPRatedCameraGeometry[rated.cameraKey];
+    if(!geometry)return;
+    g.save();g.beginPath();geometry.rows.forEach(function(row){for(var j=2;j<row.length;j+=2)g.rect(row[j],row[0],row[j+1]-row[j],row[1]-row[0]);});
+    g.clip();g.drawImage(photo,0,0,DIM.w,DIM.h);g.restore();
+  }
   function drawCaseBase(g){
     if(!kpRatedKit()){g.drawImage(caseImg,0,0,DIM.w,DIM.h);return;}
     if(!finishReady||!viewReady||!viewMaskCanvas)return;
@@ -668,7 +675,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       var panel=document.createElement('canvas');panel.width=DIM.w*PS;panel.height=DIM.h*PS;
       var x=panel.getContext('2d');x.scale(PS,PS);x.drawImage(finishImg,0,0,DIM.w,DIM.h);
       x.globalCompositeOperation='destination-in';x.drawImage(viewMaskCanvas,0,0);
-      d.drawImage(panel,0,0,DIM.w,DIM.h);panel.width=panel.height=0;caseDisplayKey=key;
+      d.drawImage(panel,0,0,DIM.w,DIM.h);panel.width=panel.height=0;drawRatedPhoneCamera(d,finishImg,kpRatedKit());caseDisplayKey=key;
     }
     g.drawImage(caseDisplay,0,0,DIM.w,DIM.h);
   }
@@ -2097,7 +2104,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   function paletteFor(){
     var k=KITS[state.model], rated=kpRatedKit();
-    /* Rated Case: the rim colors replace the phone finish swatches (the phone finish is kept for the clear case) */
+    /* Phone colors remain available for both case types; Rated rims have their own controls. */
     if (k) return k.colors.map(function(c){return {n:c.n,h:c.h};});
     if (state.brand!=='Apple') return palettes.Other;
     return /iPhone 17/.test(state.model) ? palettes.Apple17 : palettes.AppleOld;
@@ -2299,7 +2306,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             const file=(kit.colors.find(item=>item.n===state.colorName)||kit.colors[0]).f;
             let phone=stylePhotos.get(file);if(!phone){phone=new Image();stylePhotos.set(file,phone);phone.onload=render;phone.src='assets/cases/'+file;}
             const geometry=window.KP_MASK_GEOMETRY[kit.rated.view];
-            if(phone.complete&&phone.naturalWidth&&geometry){c.save();c.beginPath();geometry.rows.forEach(row=>{for(let j=2;j<row.length;j+=2)c.rect(row[j],row[0],row[j+1]-row[j],row[1]-row[0]);});c.clip();c.drawImage(phone,0,0,DIM.w,DIM.h);c.restore();}
+            if(phone.complete&&phone.naturalWidth&&geometry){c.save();c.beginPath();geometry.rows.forEach(row=>{for(let j=2;j<row.length;j+=2)c.rect(row[j],row[0],row[j+1]-row[j],row[1]-row[0]);});c.clip();c.drawImage(phone,0,0,DIM.w,DIM.h);c.restore();drawRatedPhoneCamera(c,phone,kit.rated);}
             else c.clearRect(0,0,DIM.w,DIM.h);
           }
           KPCaseShell.draw(c,state.model,DIM.w,DIM.h,style,photo);
