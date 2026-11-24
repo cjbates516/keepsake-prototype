@@ -1,7 +1,8 @@
-// The uploaded white panel is a mask guide: every supported Rated preview must reveal the same phone pixels.
-const fs=require('node:fs'),assert=require('node:assert/strict');
+// The uploaded white panel is a mask guide: every Rated preview of a phone with a clear kit must reveal the same phone pixels.
+// (Rated only phones have no clear preview to compare with: tools/tests/rated_case.cjs section 20 checks their panel.)
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium,webkit}=require(process.env.KP_PLAYWRIGHT||'../../../playwright/node_modules/playwright-core');
-const html=fs.readFileSync('customizer.html','utf8'),models=Function('return '+html.match(/var RATED=(\{[\s\S]*?\});/)[1])();
+const html=fs.readFileSync(path.resolve(__dirname,'../../customizer.html'),'utf8'),models=Function('return '+html.match(/var RATED=(\{[\s\S]*?\});/)[1])();
 const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
 (async()=>{for(const engine of [chromium,webkit]){const b=await engine.launch();try{const p=await b.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true}),errors=[];p.on('pageerror',e=>errors.push(e.message));
  for(const [model,key] of Object.entries(models)){
@@ -13,4 +14,4 @@ const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
   for(let i=0;i<clear.length;i++)for(let ch=0;ch<4;ch++)assert(Math.abs(clear[i][ch]-rated[i][ch])<=5,model+' phone finish differs inside Rated mask: '+JSON.stringify({clear,rated}));
   console.log(engine.name(),model,'phone finish matches clear preview at 3 panel points');
  }
- assert.equal(Object.keys(models).length,20);assert.deepEqual(errors,[]);await p.close();}finally{await b.close();}}})().catch(e=>{console.error(e);process.exitCode=1;});
+ assert.equal(Object.keys(models).length,26);assert.deepEqual(errors,[]);await p.close();}finally{await b.close();}}})().catch(e=>{console.error(e);process.exitCode=1;});

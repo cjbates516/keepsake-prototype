@@ -42,8 +42,9 @@
     b.innerHTML='<span aria-hidden="true">'+icons[id]+'</span><strong>'+title+'</strong>';tray.append(b);buttons[id]=b;return p;
   }
   function move(p,...ids){ids.forEach(id=>{const el=typeof id==='string'?$(id):id;if(el)p.append(el);});}
-  // Phone copy follows the phone (sync): with a Rated kit it names both cases, otherwise it keeps the clear case copy.
-  const phoneCopy={clear:'Choose your model and phone finish. Your case stays clear; screen colors are approximate.',rated:'Choose your phone model, finish and case. The preview updates to show your choices.'};
+  // Phone copy follows the phone (sync): with a Rated kit it names both cases, a Rated only phone names its one case, otherwise it keeps the clear case copy.
+  const phoneCopy={clear:'Choose your model and phone finish. Your case stays clear; screen colors are approximate.',rated:'Choose your phone model, finish and case. The preview updates to show your choices.',
+    only:'Choose your phone model and rim color. This phone comes in the Rated Case.',onlyOne:'Choose your phone model. This phone comes in the Rated Case.'};
   move(panel('phone','Phone',phoneCopy.clear),'kpSelRow',finish);
   move(panel('background','Background','Keep the artwork you love. Change only its background.'),'photoLooksWrap');
   const noBackground=document.createElement('p');noBackground.id='studioNoBackground';noBackground.textContent='Background choices appear once your design is ready.';panels.background.append(noBackground);
@@ -130,7 +131,7 @@
   // Each title is the name, then the price in its own span: on a narrow stage (iPad portrait) the price takes its own line.
   // The rim chips carry a visible "Rim color" label (the Phone tool's words), which also names the radio group.
   const caseTitle=(id,name)=>'<strong id="'+id+'"><span>'+name+'</span><span class="studio-case-price"><span class="studio-case-sep"> · </span><span class="studio-case-amt"></span></span></strong>';
-  caseBox.innerHTML='<legend>Choose your case</legend><div class="studio-case-row"><div class="studio-case-options"><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="MagSafe Clear"><span>'+caseTitle('studioCaseClear','Clear case')+'<small>Your phone shows through</small></span></label><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="Rated Case"><span>'+caseTitle('studioCaseRated','Rated Case')+'<small>Confirm availability in store</small></span></label></div><div class="studio-rim" id="studioRim" role="radiogroup" aria-labelledby="studioRimLabel" hidden><span class="studio-rim-label" id="studioRimLabel">Rim color</span><span class="studio-rim-chips" id="studioRimChips"></span></div></div>';
+  caseBox.innerHTML='<legend>Choose your case</legend><div class="studio-case-row"><div class="studio-case-options"><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="MagSafe Clear"><span>'+caseTitle('studioCaseClear','Clear case')+'<small>Your phone shows through</small></span></label><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="Rated Case"><span>'+caseTitle('studioCaseRated','Rated Case')+'<small><span id="studioCaseDrop"></span>Confirm availability in store</small></span></label></div><div class="studio-rim" id="studioRim" role="radiogroup" aria-labelledby="studioRimLabel" hidden><span class="studio-rim-label" id="studioRimLabel">Rim color</span><span class="studio-rim-chips" id="studioRimChips"></span></div></div>';
   panels.phone.append(caseBox);let rimKey='',revealRim=false;
   // On phones, rim chips that appear below the fold (short screens) are scrolled into view once, above the tool tray.
   caseBox.addEventListener('change',e=>{if(e.target.name==='studioCaseType'){core.setCase(e.target.value);revealRim=mobile.matches&&e.target.value==='Rated Case';}else if(e.target.name==='studioRim')core.setRim(e.target.value);sync();});
@@ -172,7 +173,7 @@
     thumbs.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.variation===(s.variant||'original'))));
   }
   thumbs.addEventListener('click',e=>{const b=e.target.closest('[data-variation]');if(!b)return;const original=[...$('photoLooks').children].find(o=>o.dataset.look===b.dataset.variation);if(original){remember();original.click();remember();sync();}});
-  if(params.get('design')&&window.KPI)KPI.load('instore/').then(data=>{const m=data.activeModels.find(m=>m.name===core.info().model),d=m&&data.designsFor(m).find(d=>d.file===params.get('design'));if(d){libraryTitle=KPI.cleanTitle(d.title);if(core.info().library)product.querySelector('h1').textContent=libraryTitle;}}).catch(()=>{});
+  if(params.get('design')&&window.KPI)KPI.load('instore/').then(data=>{/* phones outside the store list have no pick code, but the design still has its title */const m=data.activeModels.find(m=>m.name===core.info().model),d=(m?data.designsFor(m):data.designs).find(d=>d.file===params.get('design'));if(d){libraryTitle=KPI.cleanTitle(d.title);if(core.info().library)product.querySelector('h1').textContent=libraryTitle;}}).catch(()=>{});
   const footer=document.createElement('div');footer.id='studioFooter';footer.innerHTML='<button type="button" id="studioBack">← Back</button><div><strong id="studioTotal"></strong><small id="studioStore"></small></div><button type="button" id="studioNext">Preview design →</button><p id="studioStatus" role="status"></p>';$('main').append(footer);
   // Size around iPhone safe areas, wrapped totals and the on-screen keyboard.
   function sizeChrome(){
@@ -193,7 +194,7 @@
     fitFrame=0;const credit=$('cityPhotoCredit'),canvasEl=$('stageCanvas');
     const on=!purged&&step!=='setup'&&!sheet.open&&stage.parentElement===grid&&(!thumbs.hidden||stage.contains(caseBox)&&!caseBox.hidden||!!credit&&creditBox.contains(credit)&&!credit.hidden);
     stage.classList.toggle('studio-fit',on);
-    if(!on){stage.style.removeProperty('--studio-case-fit');return;}
+    if(!on){stage.style.removeProperty('--studio-case-fit');if(revealRim&&sheet.open)requestAnimationFrame(showRim);return;}
     const ch=canvasEl.getBoundingClientRect().height;if(!ch)return;
     let limit=footer.getBoundingClientRect().top;
     if($('studioStatus').textContent)limit=Math.min(limit,$('studioStatus').getBoundingClientRect().top);
@@ -300,8 +301,11 @@
     $('studioPhone').textContent=i.model+' · '+(i.caseType==='MagSafe Clear'?'Clear case':i.caseType);
     // case choice: prices from the customizer, checked state from the live case; rim chips only for the Rated Case
     caseBox.hidden=!i.ratedAvailable;
-    const phoneHelp=panels.phone.querySelector('.studio-help'),copy=i.ratedAvailable?phoneCopy.rated:phoneCopy.clear;if(phoneHelp.textContent!==copy)phoneHelp.textContent=copy;
+    const phoneHelp=panels.phone.querySelector('.studio-help'),copy=!i.clearAvailable?(i.rims.length>1?phoneCopy.only:phoneCopy.onlyOne):i.ratedAvailable?phoneCopy.rated:phoneCopy.clear;if(phoneHelp.textContent!==copy)phoneHelp.textContent=copy;
     if(i.ratedAvailable){
+      // Rated only phones: no clear option, so the lone Rated card keeps the price, drop rating and availability line
+      caseBox.classList.toggle('studio-case-only',!i.clearAvailable);caseBox.querySelector('[value="MagSafe Clear"]').closest('label').hidden=!i.clearAvailable;
+      const legend=i.clearAvailable?'Choose your case':'Your case',drop=i.drop?i.drop+' · ':'';if(caseBox.querySelector('legend').textContent!==legend)caseBox.querySelector('legend').textContent=legend;if($('studioCaseDrop').textContent!==drop)$('studioCaseDrop').textContent=drop;
       $('studioCaseClear').querySelector('.studio-case-amt').textContent='$'+i.prices.clear.toFixed(2);$('studioCaseRated').querySelector('.studio-case-amt').textContent='$'+i.prices.rated.toFixed(2);
       caseBox.querySelectorAll('[name=studioCaseType]').forEach(r=>{r.checked=r.value===i.caseType;});
       const rims=i.caseType==='Rated Case'?i.rims:[],key=rims.map(r=>r.n).join('|'),rimRow=$('studioRim');
@@ -309,7 +313,7 @@
       rimRow.hidden=!rims.length;rimRow.querySelectorAll('input').forEach(r=>{r.checked=r.value===i.rim;});
     }fitSoon();$('studioTotal').textContent=i.accessoryError?'—':'$'+i.total.toFixed(2);
     $('studioStore').textContent=(i.store||'Choose your store')+(i.store==='Newark, DE'?' · No sales tax':' · Before tax');
-    const url=!kiosk&&collectionReturn()||new URL(kiosk?'instore/':'gallery.html',location.href);if(kiosk){if(fixedStore)url.searchParams.set('store',params.get('store'));url.searchParams.set('model',i.model.toLowerCase().replace(/^samsung /,'').replaceAll(' ','-'));if(params.get('collection'))url.searchParams.set('collection',params.get('collection'));}else if(url.pathname.endsWith('/gallery.html'))url.searchParams.set('device',i.model.toLowerCase().replace(/^samsung /,'').replaceAll(' ','-'));$('studioBrowse').href=url.href;
+    const url=!kiosk&&collectionReturn()||new URL(kiosk?'instore/':'gallery.html',location.href);if(kiosk){if(fixedStore)url.searchParams.set('store',params.get('store'));url.searchParams.set('model',i.model.toLowerCase().replace(/^(samsung|google|motorola) /,'').replaceAll(' ','-'));if(params.get('collection'))url.searchParams.set('collection',params.get('collection'));}else if(url.pathname.endsWith('/gallery.html'))url.searchParams.set('device',i.model.toLowerCase().replace(/^(samsung|google|motorola) /,'').replaceAll(' ','-'));$('studioBrowse').href=url.href;
     $('studioNext').textContent=step==='edit'?(i.drawingPending?'Review case setup →':'Preview design →'):step==='preview'?'Choose extras →':'Show at counter →';
     // Preview and Extras also carry the empty photo spot note above the footer (partial collages never block Next)
     const status=i.issue||(step!=='edit'&&i.partial)||'';
@@ -319,7 +323,7 @@
       // Photo path: personal photos have no alternate backgrounds, so Background steps aside (as it does for the sky).
       // Words replaces Name for words templates; collage spots fill themselves, so Adjust steps aside too.
       const words=!!i.layout?.words;buttons.background.hidden=!!i.layouts;buttons.words.hidden=!words;buttons.name.hidden=words;buttons.adjust.hidden=!!i.layout;
-      layoutsWait.hidden=!i.layouts||i.layoutsReady;layoutsWait.textContent=i.layoutsFailed?'Layouts could not load. Check your connection and try again. You can still add one photo.':'Loading layouts…';layoutsRetry.hidden=!i.layouts||!i.layoutsFailed;
+      layoutsWait.hidden=!i.layouts||i.layoutsReady&&!i.layoutsOff;layoutsWait.textContent=i.layoutsOff?'Layouts do not fit this phone. Add one photo.':i.layoutsFailed?'Layouts could not load. Check your connection and try again. You can still add one photo.':'Loading layouts…';layoutsRetry.hidden=!i.layouts||!i.layoutsFailed;
       layoutSpare.hidden=!i.spare;layoutSpare.textContent=i.spare===1?'1 more photo is saved for a layout with more spots.':i.spare+' more photos are saved for a layout with more spots.';
       layoutAdd.textContent=$('uploadBtn').textContent;layoutAdd.disabled=$('uploadBtn').disabled;
       if(step==='edit'&&tool&&buttons[tool].hidden){if(mobile.matches)closeTool();else{tool=home();paintTool();}}
@@ -330,7 +334,7 @@
     $('editTools').style.display=i.hasPhoto&&!i.sky?'block':'none';
     adjustments.querySelectorAll('input').forEach(el=>{if(el!==document.activeElement)el.value=s[el.dataset.adjust];});
     const details=$('studioReviewDetails');details.replaceChildren();
-    const rows=[['Phone',i.model+' · '+i.finish],['Case',i.caseType==='Rated Case'?i.caseLabel:'Clear case']];
+    const rows=[['Phone',i.model+(i.finish?' · '+i.finish:'')],['Case',i.caseType==='Rated Case'?i.caseLabel:'Clear case']];
     $('studioPartial').hidden=!i.partial;$('studioPartial').textContent=i.partial||'';
     if(i.sky)rows.push(...(i.skyDetails||[]).filter(([label])=>!['Printed place','Coordinates','UTC instant','Sky version'].includes(label)));
     else if(i.layout){rows.push(['Layout',i.layout.name+' · '+i.layout.filled+' of '+i.layout.total+(i.layout.total===1?' photo':' photos')]);i.layout.captions.forEach(c=>rows.push([c.label,c.shown===false?'Not shown on this phone':c.waiting?'Prints when photo '+c.waiting+' is added':c.text.replace(/\n/g,' / ')||'Not added']));}

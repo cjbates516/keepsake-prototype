@@ -1,7 +1,7 @@
 // A full print must not hide the phone-finish control's only visible effect: the camera well.
-const fs=require('fs'),assert=require('node:assert/strict');
-const {chromium,webkit}=require(process.env.KP_PLAYWRIGHT||'/tmp/keepsake-browser-20261121/package');
-const html=fs.readFileSync('customizer.html','utf8'),models=Function('return '+html.match(/var RATED=(\{[\s\S]*?\});/)[1])();
+const fs=require('fs'),path=require('path'),assert=require('node:assert/strict');
+const {chromium,webkit}=require(process.env.KP_PLAYWRIGHT||'../../../playwright/node_modules/playwright-core');
+const html=fs.readFileSync(path.resolve(__dirname,'../../customizer.html'),'utf8'),models=Function('return '+html.match(/var RATED=(\{[\s\S]*?\});/)[1])();
 const base=process.env.KP_BASE||'http://127.0.0.1:19038/',out=process.env.KP_OUT||'../collaboration/rated-device-finish-2026-11-22/local';fs.mkdirSync(out,{recursive:true});
 const ready=async p=>{await p.waitForFunction(()=>window.KPEditor&&KPStudioCore.info().previewReady&&!KPStudioCore.info().loading&&!KPStudioCore.info().issue);await p.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));};
 const print=p=>p.evaluate(async()=>{const c=await new Promise(r=>__kp.buildPrint(r)),b=await new Promise(r=>c.toBlob(r));return [...new Uint8Array(await crypto.subtle.digest('SHA-256',await b.arrayBuffer()))].join(',');});
