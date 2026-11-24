@@ -174,25 +174,21 @@
   }
   thumbs.addEventListener('click',e=>{const b=e.target.closest('[data-variation]');if(!b)return;const original=[...$('photoLooks').children].find(o=>o.dataset.look===b.dataset.variation);if(original){remember();original.click();remember();sync();}});
   if(params.get('design')&&window.KPI)KPI.load('instore/').then(data=>{const m=data.activeModels.find(m=>m.name===core.info().model),d=m&&data.designsFor(m).find(d=>d.file===params.get('design'));if(d){libraryTitle=KPI.cleanTitle(d.title);if(core.info().library)product.querySelector('h1').textContent=libraryTitle;}}).catch(()=>{});
-  const footer=document.createElement('div');footer.id='studioFooter';footer.innerHTML='<button type="button" id="studioBack">← Back</button><div><strong id="studioTotal"></strong><small id="studioStore"></small></div><button type="button" id="studioNext">Preview design →</button><p id="studioStatus" role="status"></p>';$('main').append(footer);
+  const footer=document.createElement('div');footer.id='studioFooter';footer.innerHTML='<button type="button" id="studioBack" hidden>← Back</button><div><strong id="studioTotal"></strong><small id="studioSelection"></small><small id="studioStore"></small></div><button type="button" id="studioNext">Preview design →</button><p id="studioStatus" role="status"></p>';$('main').append(footer);
   // Size around iPhone safe areas, wrapped totals and the on-screen keyboard.
   function sizeChrome(){
     document.body.style.setProperty('--studio-tray-bottom',Math.ceil(footer.getBoundingClientRect().height+$('studioStatus').getBoundingClientRect().height)+'px');
     const v=window.visualViewport;
-    if(v){sheet.style.setProperty('--studio-sheet-bottom',Math.max(0,innerHeight-v.height-v.offsetTop)+'px');sheet.style.setProperty('--studio-sheet-height',Math.max(150,Math.min(innerHeight*(sheet.dataset.activeTool==='adjust'?.9:.64),v.height-16))+'px');}
+    if(v){sheet.style.setProperty('--studio-sheet-bottom',Math.max(0,innerHeight-v.height-v.offsetTop)+'px');sheet.style.setProperty('--studio-sheet-height',(sheet.dataset.activeTool==='adjust'?v.height:Math.max(150,Math.min(innerHeight*.64,v.height-16)))+'px');}
     fitSoon();
   }
-  // Case size budget. While the case choice or a photo credit shows under the case (both added there by this editor),
-  // the case preview gives up only the height that the rows under it (print quality pill, case choice, rim chips,
-  // Enlarge case, quality line, credit) need to clear the fixed tool tray (phones) or footer (desktop) before any
-  // scrolling. It is measured, so a wrapped rim row, the pill on the photo path, a two line title or the kiosk's missing
-  // site header all count. design-editor.css keeps the case between a floor and its baseline size; without either row
-  // the baseline sizing applies unchanged.
+  // Measure the case against the fixed tray/footer so previews, quality and photo buttons
+  // remain reachable in the stationary editor. Adjust uses its own full-screen size budget.
   let fitFrame=0;
   function fitSoon(){if(!fitFrame)fitFrame=requestAnimationFrame(fitStage);}
   function fitStage(){
-    fitFrame=0;const credit=$('cityPhotoCredit'),canvasEl=$('stageCanvas');
-    const on=!purged&&step!=='setup'&&!sheet.open&&stage.parentElement===grid&&(!thumbs.hidden||stage.contains(caseBox)&&!caseBox.hidden||!!credit&&creditBox.contains(credit)&&!credit.hidden);
+    fitFrame=0;const canvasEl=$('stageCanvas');
+    const on=!purged&&step!=='setup'&&!sheet.open&&stage.parentElement===grid;
     stage.classList.toggle('studio-fit',on);
     if(!on){stage.style.removeProperty('--studio-case-fit');return;}
     const ch=canvasEl.getBoundingClientRect().height;if(!ch)return;
@@ -203,7 +199,7 @@
     for(const el of stage.children){const r=el.getBoundingClientRect();if(r.height>0)bottom=Math.max(bottom,r.bottom);}
     // where the content ends with the page at the top: the stage is the grid's first item (sticky on desktop)
     const bottom0=grid.getBoundingClientRect().top+scrollY+(bottom-sr.top);
-    const fit=Math.floor(ch+limit-8-bottom0),prev=parseFloat(stage.style.getPropertyValue('--studio-case-fit'));
+    const fit=Math.floor(ch+limit-24-bottom0),prev=parseFloat(stage.style.getPropertyValue('--studio-case-fit'));
     if(!(Math.abs(fit-prev)<=1))stage.style.setProperty('--studio-case-fit',fit+'px');
     if(revealRim)requestAnimationFrame(showRim);
   }
@@ -236,10 +232,11 @@
   document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!e.target.closest('input,textarea,select')&&step==='edit'&&!document.querySelector('dialog[open]')){e.preventDefault();travel(!e.shiftKey);}});
   function hideSheet(){stageHome.after(stage);if(sheet.open){internalCloses++;sheet.close();}Object.values(panels).forEach(p=>host.append(p));}
   function paintTool(){
+    if(sheet.open&&!mobile.matches&&tool!=='adjust')hideSheet();
     Object.entries(panels).forEach(([id,p])=>p.hidden=id!==tool&&!(id==='phone'&&!mobile.matches&&step==='edit'&&!info.sky));
     Object.entries(buttons).forEach(([id,b])=>b.setAttribute('aria-expanded',String(id===tool)));
     sheet.dataset.activeTool=tool||'';
-    if(mobile.matches&&tool){if(tool==='adjust')sheetBody.append(stage);else stageHome.after(stage);sheetBody.append(panels[tool]);$('studioSheetTitle').textContent=buttons[tool].querySelector('strong').textContent;if(!sheet.open)sheet.showModal();}
+    if(tool&&(mobile.matches||tool==='adjust')){if(tool==='adjust')sheetBody.append(stage);else stageHome.after(stage);sheetBody.append(panels[tool]);$('studioSheetTitle').textContent=buttons[tool].querySelector('strong').textContent;if(!sheet.open){sheet.showModal();sheetBody.scrollTop=0;}}
     sizeChrome();const canMove=step==='edit'&&tool==='adjust';$('stageCanvas').style.touchAction=canMove?'none':'pan-y';
   }
   function openTool(id,push=true){if(step!=='edit'||!panels[id]||buttons[id].hidden)return;remember();tool=id;lastTool=id;if(mobile.matches&&push)pushStep(step,id);paintTool();if(id==='photo'&&layoutAdd){core.loadLayouts?.();showChosenLayout();}}
@@ -311,6 +308,8 @@
       if(key!==rimKey){rimKey=key;$('studioRimChips').replaceChildren(...rims.map(r=>{const l=document.createElement('label');l.className='studio-rim-chip';l.innerHTML='<input type="radio" name="studioRim"><span class="studio-rim-dot" aria-hidden="true"></span><span></span>';l.querySelector('input').value=r.n;l.querySelector('.studio-rim-dot').style.background=r.h;l.lastChild.textContent=r.n;return l;}));}
       rimRow.hidden=!rims.length;rimRow.querySelectorAll('input').forEach(r=>{r.checked=r.value===i.rim;});
     }fitSoon();$('studioTotal').textContent=i.accessoryError?'—':'$'+i.total.toFixed(2);
+    $('studioSelection').textContent=i.model+' · '+(i.rim||'Clear case');
+    $('studioBrowse').textContent=step==='edit'?'← Designs':'← Back';
     $('studioStore').textContent=storeConfirmed?(i.store||'Choose your store')+(i.store==='Newark, DE'?' · No sales tax':' · Before tax'):'Choose your store in Extras';
     const url=!kiosk&&collectionReturn()||new URL(kiosk?'instore/':'gallery.html',location.href);if(kiosk){if(fixedStore)url.searchParams.set('store',params.get('store'));url.searchParams.set('model',i.model.toLowerCase().replace(/^samsung /,'').replaceAll(' ','-'));if(params.get('collection'))url.searchParams.set('collection',params.get('collection'));}else if(url.pathname.endsWith('/gallery.html'))url.searchParams.set('device',i.model.toLowerCase().replace(/^samsung /,'').replaceAll(' ','-'));$('studioBrowse').href=url.href;
     $('studioNext').textContent=step==='edit'?(i.drawingPending?'Review case setup →':'Preview design →'):step==='preview'?'Choose extras →':'Show at counter →';
@@ -346,7 +345,7 @@
   let leaveToBrowse=false;
   function exit(preserveBrowse=false){if(exiting)return;exiting=true;window.KPKioskSession?.retire();if(kiosk)document.documentElement.style.visibility='hidden';const fallback=new URL(kiosk?'instore/':'gallery.html',location.href);if(fixedStore)fallback.searchParams.set('store',params.get('store'));const dest=(!kiosk||preserveBrowse)&&$('studioBrowse')?.href||fallback.href;try{core.purge();}finally{location.replace(dest);}}
   function confirmExit(mode){const next=mode==='next',leave=mode===true;leaveToBrowse=leave;resetDialog.querySelector('h2').textContent=next?'Clear for the next customer?':leave?'Leave this design?':'Start a new design?';resetDialog.querySelector('p').textContent=next?'This clears the current design, name and extras from this screen.':leave?(core.info().layout?'Your layout, photos, words and selected extras will be cleared.':'Your design changes and selected extras will be cleared.'):'Your current changes will be cleared.';$('studioConfirmReset').textContent=next?'Clear screen':leave?'Leave design':'Start over';$('studioCancelReset').textContent=next?'Cancel':'Keep designing';resetDialog.showModal();}
-  $('studioBrowse').onclick=e=>{const s=core.snapshot(),i=core.info();if(i.skyDirty||s.text||s.px||s.py||s.rot||s.scale!==1||i.hasPhoto&&!i.library||i.hasExtras||!same(s,initialSnapshot)||i.model!==info.model||i.finish!==info.finish||i.store!==info.store||initialSetup!==null&&i.selectionKey!==initialSetup||i.layout){e.preventDefault();confirmExit(true);}};
+  $('studioBrowse').onclick=e=>{if(step!=='edit'){e.preventDefault();history.back();return;}const s=core.snapshot(),i=core.info();if(i.skyDirty||s.text||s.px||s.py||s.rot||s.scale!==1||i.hasPhoto&&!i.library||i.hasExtras||!same(s,initialSnapshot)||i.model!==info.model||i.finish!==info.finish||i.store!==info.store||initialSetup!==null&&i.selectionKey!==initialSetup||i.layout){e.preventDefault();confirmExit(true);}};
   $('studioReset').onclick=()=>confirmExit(false);$('studioCancelReset').onclick=()=>resetDialog.close();$('studioConfirmReset').onclick=()=>exit(leaveToBrowse);
   // Remove all photos in the Photo tool clears a whole layout (up to 12 photos and every word) and cannot be undone,
   // so it asks first, like Start over. A single photo keeps the one tap clear it always had.
