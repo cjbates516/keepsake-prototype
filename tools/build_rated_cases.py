@@ -19,6 +19,7 @@ committed mask, which both stay as they are.
 usage: python3 tools/build_rated_cases.py [--src DIR] [--only KEY ...]   build what is missing
        python3 tools/build_rated_cases.py --verify                       rebuild everything in memory, compare bytes
        python3 tools/build_rated_cases.py --out DIR [--only KEY ...]     build everything into DIR/cases, DIR/masks
+       python3 tools/build_rated_cases.py --learn-smoke                  measure SMOKE_TONE again from the photo pairs
        --report FILE   write scales, offsets, boxes and panel agreement as JSON
 --src defaults to ../vendor-photos/cck-phantom3 beside the repo. After a build run tools/build_mask_geometry.py and
 tools/build_rated_camera_geometry.py. Needs numpy, scipy and Pillow with WebP.
@@ -29,10 +30,12 @@ import argparse, io, json, os, sys
 import numpy as np
 from PIL import Image
 from scipy import ndimage as ndi
+from scipy.special import ndtri
 
 R = Path(__file__).resolve().parent.parent
 CASES, MASKS = R / 'assets/cases', R / 'assets/masks'
 W, H = 2500, 3000
+LUM = np.array([0.299, 0.587, 0.114], np.float32)
 VIEW_N = 2  # straight on back view of every listing
 
 VENDOR_PX_PER_MM = 13.811
@@ -110,14 +113,8 @@ MASK_OF = {'googpl10-p10': 'googpl10', 'googpl11-p11': 'googpl11'}
 # photos whose body sides cannot be measured (the second half of the folding phone shows on the right): centre the box
 BOX_CENTRE = {'iph18fld'}
 # photos taken at another scale: their px per mm, from the published phone size (Duo 117.8 x 84.1 mm closed, S24 Ultra
-# 162.3 x 79.0 mm) plus the rim the other listings show, or from the same case height (S24)
-PHOTO_PX_PER_MM = {('iph18fld', 'smoke'): 18.25, ('samgs24u', 'smoke'): 16.8, ('samgs24', 'smoke'): 18.44}
-# a photo of another render than the listing's other color: its own place and its own mask view-rated-<key>-<color>.png
-OWN_MASK = {('samgs24', 'smoke')}
-# held back: an older render whose camera opening has another shape than the listing's other photos, so the two rims
-# would show two different print areas for one blank. Built with --held.
-HELD = {('samgs24', 'smoke')}
-WITH_HELD = [False]
+# 162.3 x 79.0 mm) plus the rim the other listings show
+PHOTO_PX_PER_MM = {('iph18fld', 'smoke'): 18.25, ('samgs24u', 'smoke'): 16.8}
 # text printed on a phone's flash ring (megapixels, a sensor brand): (centre x, y, inner and outer radius) in the photo
 LENS_TEXT = {'motgply25': (1437, 526, 38, 74), 'motgpwr25': (1429, 551, 39, 68), 'motgstl26': (1465, 603, 39, 81)}
 # pink scraps of the phone's art show through the frost beside the camera lip: made grey
@@ -125,7 +122,32 @@ GREY_LIP = {('samgs24', 'clear')}
 # the camera stands alone inside this panel, with a clear lip that would pass for panel: px kept free around its ring
 ISLAND = {('samgs24u', 'smoke'): 24}
 # an app icon printed on the white panel: painted out with the panel's own white
-PANEL_ICON = {('samgs24', 'smoke'), ('samgs24u', 'smoke')}
+PANEL_ICON = {('samgs24u', 'smoke')}
+# DISPLAY ONLY, NOT A PHOTO: the only Smoke Frost photo of the S24 and S25 case is an older render with a squared camera
+# opening (its panel overlaps the Clear Frost panel by 0.963), so it would show a second print area for one blank. Until
+# there is a real photo in the same frame as the Clear Frost one, its Smoke Frost preview is the Clear Frost photo with
+# only the frosted rim re toned (retone_smoke): same outline, panel, camera and mask. To replace it: save the real photo,
+# take the key out of here and delete the old file.
+DERIVED = {'samgs24'}
+# Smoke Frost light of a frosted pixel, by its distance from the outline (px of the photo) and its Clear Frost light. The
+# four listings below show both rims in identical geometry (panel, camera lip and buttons are the same pixels on both):
+# mean of every pixel the rims differ in, --learn-smoke. Left out one at a time, the other three predict a listing's
+# real Smoke Frost rim within 2.1 to 5.1 of 255 (mean error; the listings differ from each other by as much).
+SMOKE_PAIRS = ('samgs26', 'samgs26pl', 'samgs25u', 'samgs26u')
+SMOKE_D = [4, 6, 8, 11, 15, 20, 26, 32, 38, 46]
+SMOKE_L = [140, 160, 175, 185, 195, 205, 215, 225, 235, 245]
+SMOKE_TONE = [
+    [83.0, 83.5, 83.9, 85.6, 85.7, 88.8, 94.5, 102.8, 108.6, 111.9],
+    [71.4, 70.8, 71.6, 72.9, 74.2, 77.3, 84.5, 93.0, 97.3, 102.0],
+    [58.5, 59.9, 60.2, 60.9, 62.1, 64.9, 73.7, 82.2, 86.3, 87.8],
+    [50.0, 51.1, 51.7, 53.2, 54.2, 56.7, 66.1, 74.3, 77.8, 78.9],
+    [43.3, 46.0, 48.8, 50.9, 52.2, 53.1, 60.1, 69.8, 72.1, 72.5],
+    [42.9, 45.2, 48.7, 51.2, 53.6, 54.4, 59.4, 68.5, 71.6, 71.8],
+    [48.4, 49.8, 52.4, 53.9, 55.5, 56.9, 60.2, 66.7, 71.5, 71.8],
+    [48.2, 47.4, 51.6, 54.4, 56.5, 59.0, 62.8, 67.2, 69.6, 70.6],
+    [46.3, 49.0, 52.5, 54.7, 56.7, 59.2, 62.3, 64.7, 66.6, 69.1],
+    [45.3, 49.6, 52.9, 54.3, 56.0, 58.0, 58.5, 58.5, 58.5, 58.5]]
+SMOKE_EDGE = 3.4  # px from the 205 contour of the Clear Frost panel to the edge the Smoke Frost photos of the pairs show
 
 
 def disk(r):
@@ -371,24 +393,84 @@ def grey_lip(rgb):
     return out
 
 
+def body_of(case):
+    """The case outline without its buttons (601 px vertical opening)."""
+    return ndi.maximum_filter1d(ndi.minimum_filter1d(case.astype(np.uint8), 601, axis=0), 601, axis=0) > 0
+
+
+def learn_smoke(src):
+    S, N = np.zeros((len(SMOKE_D), len(SMOKE_L))), np.zeros((len(SMOKE_D), len(SMOKE_L)))
+    mid = lambda k: (np.array(k[1:], float) + k[:-1]) / 2
+    for key in SMOKE_PAIRS:
+        cl, sl = [erase_side_bumps(np.asarray(Image.open(source(src, key, c, VIEW_N)).convert('RGB'))) for c in ('clear', 'smoke')]
+        case = cutout(sl)[2]
+        c, s = cl.astype(np.float32) @ LUM, sl.astype(np.float32) @ LUM
+        d = ndi.distance_transform_edt(body_of(case))
+        m = (d >= 4) & (np.abs(s - c) > 4) & (c >= 100) & (s < 130)
+        m &= ~ndi.binary_dilation(panel_mask(s, case, 150), structure=disk(3))
+        i, j = np.digitize(d[m], mid(SMOKE_D)), np.digitize(c[m], mid(SMOKE_L))
+        np.add.at(S, (i, j), s[m])
+        np.add.at(N, (i, j), 1)
+    T = np.where(N >= 200, S / np.maximum(N, 1), np.nan)
+    for r in T:
+        ok = ~np.isnan(r)
+        r[:] = np.interp(SMOKE_L, np.array(SMOKE_L)[ok], r[ok])
+    return np.round(ndi.gaussian_filter(T, (0, .6), mode='nearest'), 1).tolist()
+
+
+def retone_smoke(rgb, alpha, lum, case, panel):
+    """Clear Frost cut -> Smoke Frost color and alpha: only the frost changes. The panel, the camera lip and everything
+    inside it, and the dark buttons keep their pixels, as on the real pairs."""
+    body = body_of(case)
+    d = np.maximum(ndi.distance_transform_edt(body), 4)
+    lab, n = ndi.label(ndi.binary_opening((lum > 50) & (lum < 80), structure=disk(4)))
+    lip = ndi.binary_fill_holes(lab == 1 + int(np.argmax(ndi.sum(lab > 0, lab, range(1, n + 1)))))
+    lip = ndi.distance_transform_edt(~(ndi.distance_transform_edt(lip) > 10)) <= 10  # scraps stuck to the lip drop off
+    off = ndi.distance_transform_edt(~lip)
+    f = rgb.astype(np.float32)
+    l = f @ LUM
+    tone = ndi.map_coordinates(np.array(SMOKE_TONE, np.float32),
+                               [np.interp(d, SMOKE_D, range(len(SMOKE_D))), np.interp(l, SMOKE_L, range(len(SMOKE_L)))],
+                               order=1, mode='nearest')
+    # below 62 is the lip's own dark edge and the buttons: unchanged, easing into the frost
+    w = np.clip((l - 62) / 38, 0, 1)
+    tone = l * (1 - w) + tone * w
+    # broken black and pink scraps of the phone's art show through the frost under the lip: a flat shaded frost there
+    # px inside (+) or outside (-) the panel's 205 contour, between pixels so the dark edge has no steps; evened out more
+    # away from the lip, where the panel's shadow ends in short straight pieces around the corners
+    soft = (np.clip((lum - 190) / 30, 0, 1) * ndi.binary_dilation(panel, structure=disk(3))).astype(np.float32)
+    fine, wide = [k * ndtri(np.clip(ndi.gaussian_filter(soft, k), .02, .98)) for k in (SMOOTH_PX, 10)]
+    far = np.clip((off - 60) / 40, 0, 1)
+    sd = fine * (1 - far) + wide * far
+    near = body & (off > 1) & (off <= 60) & (sd < 0)
+    seed = near & (off > 7) & (lum < 90)  # beyond the dark outer edge of the lip, which stays
+    scrap = ndi.gaussian_filter((near & (ndi.distance_transform_edt(~seed) <= 9)).astype(np.float32), 2)
+    scrap[lip] = 0
+    tone = tone * (1 - scrap) + (48 - .12 * (48 - np.clip(tone, 0, 60))) * scrap
+    # the frost is neutral where it is flat and a touch blue where it catches light, as on the real photos
+    b = np.clip((tone - 57) / 6, 0, 1)
+    new = np.dstack([tone - .2 * b, tone - .2 * b, tone + 1.6 * b])
+    # the panel reaches SMOKE_EDGE past its 205 contour, under its soft shadow; beside the lip less, where the frost or a
+    # scrap starts sooner
+    t = np.where((sd > 0) | (off > 60), 1, np.clip((lum - 160) / 24, 0, 1))
+    reach = SMOKE_EDGE - 1.2 * ndi.gaussian_filter(scrap, 8)
+    p = np.clip((sd + reach) / 2.2 + .5, 0, 1) * (t * (1 - scrap) + scrap)
+    p = np.where(lip & ((lum < 75) | (ndi.distance_transform_edt(lip) > 4)), 1, p)[..., None]
+    # outline: the same, as soft as on the real Smoke Frost files; the light fillets the Clear Frost cut leaves beside the
+    # buttons are white studio, invisible on the light rim, and go
+    a = ndi.gaussian_filter(np.where(body, alpha, alpha * np.clip((245 - lum) / 40, 0, 1)).astype(np.float32), 1.05)
+    return p * f + (1 - p) * new, a
+
+
 def source(src, key, color, shot):
     return src / ('cckp3-%s-media-%s-frost-%d.jpg' % (key, color, shot))
 
 
 def colors_of(src, key, shot):
-    return [c for c in ('smoke', 'clear') if source(src, key, c, shot).exists() and ((key, c) not in HELD or WITH_HELD[0])]
+    return [c for c in ('smoke', 'clear') if source(src, key, c, shot).exists() and (c == 'clear' or key not in DERIVED)]
 
 
-def frame_colors(src, key, fk):
-    """The colors that share one place and one mask, then each color with its own."""
-    cs = colors_of(src, key, SHOT.get(fk, VIEW_N))
-    own = [c for c in cs if (key, c) in OWN_MASK]
-    return [g for g in [[c for c in cs if c not in own]] + [[c] for c in own] if g]
-
-
-def mask_name(fk, key, group):
-    if len(group) == 1 and (key, group[0]) in OWN_MASK:
-        return 'view-rated-%s-%s.png' % (fk, group[0])
+def mask_name(fk):
     return 'view-rated-%s.png' % MASK_OF.get(fk, fk)
 
 
@@ -398,17 +480,15 @@ def expected(src, keys):
     for key in keys:
         for models, ref, suffix in LISTINGS[key]:
             fk = key + suffix
-            for group in frame_colors(src, key, fk):
-                for c in group:
-                    files['rated-%s-%s.webp' % (fk, c)] = fk
-                if fk not in MASK_OF:
-                    files[mask_name(fk, key, group)] = fk
+            for c in colors_of(src, key, SHOT.get(fk, VIEW_N)) + (['smoke'] if key in DERIVED else []):
+                files['rated-%s-%s.webp' % (fk, c)] = fk
+            if fk not in MASK_OF:
+                files[mask_name(fk)] = fk
     return files
 
 
-def build_listing(src, key, want, held=False):
+def build_listing(src, key, want):
     """Every wanted file of one listing as {name: bytes}, plus report rows."""
-    WITH_HELD[0] = held
     frames, files, report = LISTINGS[key], {}, {}
     mine = expected(src, [key])
     need = [f for f in frames if any(mine[n] == key + f[2] for n in want if n in mine)]
@@ -427,18 +507,19 @@ def build_listing(src, key, want, held=False):
             rgb = remove_lens_text(rgb, *LENS_TEXT[key])
         if key not in FIRST or (key in KEEP_CLEAR and color == 'smoke'):
             rgb = erase_side_bumps(rgb)
-        smooth = key not in FIRST and color == 'clear' and 'smoke' not in [c for g in frame_colors(src, key, key)[:1] for c in g]
+        smooth = key not in FIRST and color == 'clear' and 'smoke' not in colors_of(src, key, VIEW_N)
         out, alpha, case, lum = (smooth_cutout if smooth else cutout)(rgb)
         # smoke: rim/ring ~55 vs panel ~248 -> mid threshold 150 puts the edge on the true
         # panel boundary; clear: frosted rim ~175 -> 205 is the only safe cut
         pm = panel_mask(lum, case, 150 if color == 'smoke' else 205, ISLAND.get((key, color)))
-        cuts[(color, shot)] = dict(rgb=out, alpha=alpha, case=case, panel=pm, meas=body_measure(alpha),
+        cuts[(color, shot)] = dict(rgb=out, alpha=alpha, case=case, lum=lum, panel=pm, meas=body_measure(alpha),
                                    low=body_measure(alpha, (0.62, 0.88)), raw=rgb.astype(np.float32), icon=icon)
         return cuts[(color, shot)]
 
-    for models, refphoto, suffix, colors in [(m, r, x, g) for m, r, x in need for g in frame_colors(src, key, key + x)]:
+    for models, refphoto, suffix in need:
         fk = key + suffix
         shot = SHOT.get(fk, VIEW_N)
+        colors = colors_of(src, key, shot)
         cc = {c: dict(cut(c, shot)) for c in colors}
         base = ['clear'] if key in KEEP_CLEAR else colors
         pm = cc[base[0]]['panel'].copy()
@@ -496,7 +577,7 @@ def build_listing(src, key, want, held=False):
             clip = np.asarray(Image.open(MASKS / CLIP_TO_CLEAR[fk]).convert('LA'))[..., 1]
             clipped = int(((A >= 128) & (clip < 128)).sum())
             A = np.minimum(A, clip)
-        mn = mask_name(fk, key, colors)
+        mn = mask_name(fk)
         if mn in want and fk not in MASK_OF:
             files[mn] = png_bytes(A)
         row = dict(key=key, frame=fk, models=models, placed=refphoto, shot=shot, colors=colors, mask=mn,
@@ -504,7 +585,11 @@ def build_listing(src, key, want, held=False):
                    stage_px_per_mm=round(s * PHOTO_PX_PER_MM.get((key, colors[0]), VENDOR_PX_PER_MM), 4),
                    smoke_clear_panel_iou=None if agree is None else round(agree, 4),
                    panel_px=raw_area, clipped_to_clear_px=clipped, photos={})
-        for c in colors:
+        if key in DERIVED:
+            d = cc['clear']
+            rgb, alpha = retone_smoke(d['rgb'], d['alpha'], d['lum'], d['case'], d['panel'])
+            cc['smoke'] = dict(d, rgb=rgb, alpha=alpha)
+        for c in cc:
             fn = 'rated-%s-%s.webp' % (fk, c)
             d = cc[c]
             rgba = warp_rgba(d['rgb'], d['alpha'], s, tx, ty)
@@ -522,7 +607,7 @@ def build_listing(src, key, want, held=False):
                                     icon_removed=d['icon'])
         yy, xx = np.where(A >= 128)
         row['panel_bbox'] = [int(xx.min()), int(yy.min()), int(xx.max()) + 1, int(yy.max()) + 1]
-        report[fk if (key, colors[0]) not in OWN_MASK else fk + '-' + colors[0]] = row
+        report[fk] = row
     return key, files, report
 
 
@@ -538,11 +623,15 @@ def main():
     ap.add_argument('--verify', action='store_true')
     ap.add_argument('--out', type=Path)
     ap.add_argument('--report', type=Path)
-    ap.add_argument('--held', action='store_true', help='also build the held back photos')
+    ap.add_argument('--learn-smoke', action='store_true')
     ap.add_argument('--jobs', type=int, default=max(1, (os.cpu_count() or 2) // 2))
     a = ap.parse_args()
     keys = a.only or list(LISTINGS)
-    WITH_HELD[0] = a.held
+    if a.learn_smoke:
+        t = learn_smoke(a.src)
+        print('\n'.join('    ' + str(r) + ',' for r in t))
+        print('PASS same as SMOKE_TONE' if t == SMOKE_TONE else 'FAIL SMOKE_TONE differs')
+        return 0 if t == SMOKE_TONE else 1
     names = expected(a.src, keys)
     everything = a.verify or a.out or a.report
     want = set(names) if everything else {n for n in names if not target(n).exists()}
@@ -552,7 +641,7 @@ def main():
         for d in ('cases', 'masks'):
             (a.out / d).mkdir(parents=True, exist_ok=True)
     with ProcessPoolExecutor(max_workers=a.jobs) as ex:
-        for key, files, rep in ex.map(build_listing, [a.src] * len(todo), todo, [want] * len(todo), [a.held] * len(todo)):
+        for key, files, rep in ex.map(build_listing, [a.src] * len(todo), todo, [want] * len(todo)):
             report.update(rep)
             for n, data in sorted(files.items()):
                 dest = target(n, a.out)
