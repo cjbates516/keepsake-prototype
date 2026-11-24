@@ -16733,5 +16733,72 @@
 "credit": "Shixart1985",
 "license": "CC BY 2.0",
 "sourceUrl": "https://commons.wikimedia.org/wiki/File:Warm_street_lights_glow_along_a_narrow_city_street_filled_with_parked_cars_on_a_rainy_night.jpg"
+},
+{
+"file": "kp-season-winter-blue-hour.jpg",
+"title": "Winter Blue Hour",
+"category": "Seasonal Weather",
+"active": true,
+"hash": "c9ecc4e58e48",
+"color": [
+"Blue",
+"White"
+]
+},
+{
+"file": "kp-season-mistwood.jpg",
+"title": "Mistwood",
+"category": "Seasonal Weather",
+"active": true,
+"hash": "d3649c89a5a1",
+"color": [
+"Green",
+"Grey"
+]
+},
+{
+"file": "kp-season-desert-monsoon.jpg",
+"title": "Desert Monsoon",
+"category": "Seasonal Weather",
+"active": true,
+"hash": "678ab9b7ec85",
+"color": [
+"Orange",
+"Grey"
+]
+},
+{
+"file": "kp-season-sunlit-dunes.jpg",
+"title": "Sunlit Dunes",
+"category": "Seasonal Weather",
+"active": true,
+"hash": "a9ca4de29920",
+"color": [
+"Beige",
+"Blue"
+]
+},
+{
+"file": "kp-season-alpine-wildflowers.jpg",
+"title": "Alpine Wildflowers",
+"category": "Seasonal Weather",
+"active": true,
+"hash": "bb9345b00a9c",
+"color": [
+"Green",
+"Purple",
+"Yellow"
+]
+},
+{
+"file": "kp-season-moonlit-coast.jpg",
+"title": "Moonlit Coast",
+"category": "Seasonal Weather",
+"active": true,
+"hash": "a15ef3e199c5",
+"color": [
+"Blue",
+"Black"
+]
 }
 ]

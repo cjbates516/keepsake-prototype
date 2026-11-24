@@ -38,7 +38,7 @@
 "STR": 35,
 "TAR": 4,
 "WES": 63,
-"WTH": 8,
+"WTH": 14,
 "XMS": 59,
 "Y2K": 43,
 "ZCR": 12,
@@ -2985,9 +2985,25 @@
 "c": "POP",
 "n": 13
 },
+"kp-season-alpine-wildflowers.jpg": {
+"c": "WTH",
+"n": 9
+},
 "kp-season-autumn-road.jpg": {
 "c": "WTH",
 "n": 5
+},
+"kp-season-desert-monsoon.jpg": {
+"c": "WTH",
+"n": 10
+},
+"kp-season-mistwood.jpg": {
+"c": "WTH",
+"n": 11
+},
+"kp-season-moonlit-coast.jpg": {
+"c": "WTH",
+"n": 12
 },
 "kp-season-rain-on-glass.jpg": {
 "c": "WTH",
@@ -2997,9 +3013,17 @@
 "c": "WTH",
 "n": 7
 },
+"kp-season-sunlit-dunes.jpg": {
+"c": "WTH",
+"n": 13
+},
 "kp-season-sunlit-shore.jpg": {
 "c": "WTH",
 "n": 8
+},
+"kp-season-winter-blue-hour.jpg": {
+"c": "WTH",
+"n": 14
 },
 "kp-smokies-grotto-falls-photo.jpg": {
 "c": "NPK",
