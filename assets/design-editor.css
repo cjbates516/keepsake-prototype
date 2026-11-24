@@ -376,3 +376,16 @@ body.design-editor[data-studio-step=edit]:not(:has(#studioSheet[open])) #stageSt
  body.design-editor[data-studio-step=edit] #main #studioGrid{grid-template-rows:minmax(0,1fr) 0;gap:0!important}
  .design-editor[data-studio-step=edit] .design-rail{overflow:visible}
 }
+
+/* A clear starting point, outside the tool panels and their scrolling. */
+.design-editor #studioSources{display:flex;gap:10px;flex:none;margin:0 0 14px}
+.design-editor #studioSources[hidden]{display:none}
+.design-editor #studioSources button{min-height:48px;padding:12px 20px;border:1px solid #b8b3aa;border-radius:10px;font-size:15px;font-weight:800;line-height:1.3;background:#fff;color:var(--studio-ink)}
+.design-editor #studioSources #studioUpload{background:var(--studio-red);border-color:var(--studio-red);color:#fff}
+.design-editor #studioSources button:focus-visible{outline:3px solid #007b96;outline-offset:3px}
+@media(max-width:760px){
+ .design-editor #studioSources{gap:8px;margin-bottom:10px}
+ .design-editor #studioSources button{padding:9px 12px;font-size:13px}
+ .design-editor #studioUpload{flex:1}
+ .design-editor #studioDesigns{flex:0 0 38%}
+}
