@@ -329,3 +329,5 @@ body.design-editor #stageCanvas,body.design-editor #stageStick.studio-fit #stage
  .design-editor.studio-sky #personalStudio label{margin-bottom:8px}
  .design-editor.studio-sky #personalStudio .studio-pair{gap:10px}
 }
+
+#reviewCode[data-pick-code]{white-space:nowrap;font-size:clamp(11px,3.5vw,16px);letter-spacing:-.02em}

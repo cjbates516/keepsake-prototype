@@ -112,7 +112,7 @@
 
   /* null when the design has no registered number yet: callers must then show no code */
   KPI.colorways = function(d){return window.KPDesignColorways?KPDesignColorways.choicesFor({__kpDesignFile:d.file}):[{id:'original',name:'Original'}];};
-  KPI.pickCode = function (model, design, colorway, glass, charger, accessories, store, rim) {
+  KPI.pickCode = function (model, design, colorway, glass, charger, accessories, store, rim, finish) {
     if (!model || !design || design._n == null) return null;
     var code=model.id+'-'+design._col.code+'-'+pad3(design._n);
     if(colorway&&colorway!=='original'){
@@ -122,7 +122,9 @@
     if(accessories&&accessories.length&&(!window.KPAccessories||!KPAccessories.valid(accessories)))return null;
     var extras=window.KPAccessories?KPAccessories.parse(accessories):[];
     if(extras.length&&KPAccessories.stores.indexOf(store)<0)return null;
-    return code + (glass ? '-G' : '') + (charger ? '-A' : '')+(extras.length?'-'+extras.join('-'):'')+(window.KPAccessories&&KPAccessories.stores.indexOf(store)>=0?'-S'+(KPAccessories.stores.indexOf(store)+1):'')+(rim==='Smoke Frost'?'-FS':rim==='Clear Frost'?'-FC':'');
+    var finishIndex=finish?(model.finishes||[]).findIndex(function(f){return !f.retired&&f.n===finish;}):-1;
+    if(finish&&finishIndex<0)return null;
+    return code + (glass ? '-G' : '') + (charger ? '-A' : '')+(extras.length?'-'+extras.join('-'):'')+(window.KPAccessories&&KPAccessories.stores.indexOf(store)>=0?'-S'+(KPAccessories.stores.indexOf(store)+1):'')+(finishIndex>=0?'-P'+(finishIndex+1):'')+(rim==='Smoke Frost'?'-FS':rim==='Clear Frost'?'-FC':'');
   };
   KPI.pad3 = pad3;
   KPI.fallbackCode = function (cat, used) {
@@ -140,6 +142,7 @@
   KPI.parseCode = function (text, modelIds) {
     var t = String(text || '').toUpperCase().trim().replace(/[\s_.\u2010-\u2015\u2212]+/g, '-').replace(/-+/g, '-');
     var frost=t.match(/-F([SC])$/),rim=frost?(frost[1]==='S'?'Smoke Frost':'Clear Frost'):null;if(frost)t=t.slice(0,frost.index);
+    var phoneSuffix=t.match(/-P([1-9][0-9]?)$/),finishIndex=phoneSuffix?Number(phoneSuffix[1]):0;if(phoneSuffix)t=t.slice(0,phoneSuffix.index);
     var storeSuffix=t.match(/-S([1-3])$/),store=storeSuffix&&window.KPAccessories?KPAccessories.stores[Number(storeSuffix[1])-1]:null;
     if(storeSuffix)t=t.slice(0,storeSuffix.index);
     var extraSuffix=t.match(/(-X\d{2})+$/),accessories=[];
@@ -151,7 +154,7 @@
     if(glass)t=t.replace(/-?G$/, '');
     var suffix=t.match(/(\d)-?C([1-6])$/),colorway=suffix?Number(suffix[2]):0;
     if(suffix)t=t.slice(0,suffix.index)+suffix[1];
-    function result(model,col,n){var p={model:model,col:col,n:n};if(rim)p.rim=rim;if(colorway)p.colorway=colorway;if(glass)p.glass=true;if(charger)p.charger=true;if(accessories.length)p.accessories=accessories;if(store)p.store=store;return p;}
+    function result(model,col,n){var p={model:model,col:col,n:n};if(rim)p.rim=rim;if(finishIndex)p.finishIndex=finishIndex;if(colorway)p.colorway=colorway;if(glass)p.glass=true;if(charger)p.charger=true;if(accessories.length)p.accessories=accessories;if(store)p.store=store;return p;}
     var m = t.match(/^([A-Z0-9]+)-([A-Z0-9]{3})-(\d{1,4})$/);
     if (m) return result(m[1],m[2],parseInt(m[3],10));
     var flat = t.replace(/-/g, ''), ids = (modelIds || []).slice().sort(function (a, b) { return b.length - a.length; });
@@ -180,8 +183,8 @@
   KPI.formatPrice = function (p) { return '$' + Number(p).toFixed(2); };
   KPI.thumbUrl = function (d) { return ROOT + 'assets/designs/thumbs/' + encodeURIComponent(d.file) + '?v=' + (d.hash || '1'); };
   KPI.fullUrl = function (d) { return ROOT + 'assets/designs/' + encodeURIComponent(d.file) + '?v=' + (d.hash || '1'); };
-  KPI.customizerUrl = function (model, d, colorway, glass, charger, accessories, store, rim) {
-    return ROOT + 'customizer.html?staff=1&design=' + encodeURIComponent(d.file) + '&model=' + encodeURIComponent(model.name.replace(/ /g, '-'))+(colorway&&colorway!=='original'?'&colorway='+encodeURIComponent(colorway):'')+(glass?'&glass=1':'')+(charger?'&charger=1':'')+(accessories&&accessories.length?'&extras='+encodeURIComponent(accessories.join(',')):'')+(store?'&store='+encodeURIComponent(store):'')+(rim?'&case=rated&rim='+encodeURIComponent(rim):'');
+  KPI.customizerUrl = function (model, d, colorway, glass, charger, accessories, store, rim, finish) {
+    return ROOT + 'customizer.html?staff=1&design=' + encodeURIComponent(d.file) + '&model=' + encodeURIComponent(model.name.replace(/ /g, '-'))+(colorway&&colorway!=='original'?'&colorway='+encodeURIComponent(colorway):'')+(glass?'&glass=1':'')+(charger?'&charger=1':'')+(accessories&&accessories.length?'&extras='+encodeURIComponent(accessories.join(',')):'')+(store?'&store='+encodeURIComponent(store):'')+(rim?'&case=rated&rim='+encodeURIComponent(rim):'')+(finish?'&finish='+encodeURIComponent(finish):'');
   };
 
   /* ---------- images ---------- */
@@ -235,17 +238,20 @@
 
   /* Prepare a model at a given output width. withMask false = phone photo only (phone picker). */
   var prepCache = {};
-  KPI.prepModel = function (model, width, withMask, rim) {
-    var key = model.id + '@' + width + (withMask === false ? 'n' : 'm')+(rim||'');
+  KPI.prepModel = function (model, width, withMask, rim, finish) {
+    var key = model.id + '@' + width + (withMask === false ? 'n' : 'm')+(rim||'')+'|'+(finish||'');
     if (prepCache[key]) return prepCache[key];
     /* case photo and mask are only needed until they are drawn into canvases below, so keep no reference */
     var v = '?v=' + encodeURIComponent(KPI._assetsVersion || '11');
     var frost=rim&&window.KPFrostSamples?.config(model.name,null,rim);
     if(frost&&frost.rim!==rim)return Promise.reject(Error('Frost finish not available for this phone'));
-    var jobs = [KPI.loadImage(KPI.caseUrl(model), { timeout: 15000, cache: false })];
+    var choice=finish&&(model.finishes||[]).find(function(f){return !f.retired&&f.n===finish;});
+    if(finish&&!choice)return Promise.reject(Error('Phone finish unavailable'));
+    var phoneSrc=choice?ROOT+'assets/cases/'+choice.f+v:KPI.caseUrl(model);
+    var jobs = [KPI.loadImage(phoneSrc, { timeout: 15000, cache: false })];
     if (withMask !== false) jobs.push(KPI.loadImage(KPI.maskUrl(model), { timeout: 15000, cache: false }));
     prepCache[key] = Promise.all(jobs).then(async function (imgs) {
-      if(frost&&withMask!==false){const f=await KPFrostSamples.prepare(model.name,null,KPI.caseUrl(model),2500,3000,ROOT,rim);imgs[0]=f.base;imgs[1]=f.mask;}
+      if(frost&&withMask!==false){const f=await KPFrostSamples.prepare(model.name,null,phoneSrc,2500,3000,ROOT,rim);imgs[0]=f.base;imgs[1]=f.mask;}
       var layout=(window.KP_PRINT_LAYOUTS||{})[model.name];
       if(withMask!==false&&!layout)throw new Error('Print preview geometry unavailable. Reload to try again.');
       var ob = model.case_box, vb = layout?(frost&&layout.ratedBox?layout.ratedBox:layout.box):model.mask_box, padX = 40, padY = 40;

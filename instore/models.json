@@ -19,6 +19,24 @@
     276,
     1858,
     2724
+   ],
+   "finishes": [
+    {
+     "n": "Silver",
+     "f": "i18pm-silver.svg?v=14"
+    },
+    {
+     "n": "Black",
+     "f": "i18pm-black.svg?v=14"
+    },
+    {
+     "n": "Glacier",
+     "f": "i18pm-glacier.svg?v=14"
+    },
+    {
+     "n": "Burgundy",
+     "f": "i18pm-burgundy.svg?v=14"
+    }
    ]
   },
   {
@@ -39,6 +57,24 @@
     372,
     1816,
     2628
+   ],
+   "finishes": [
+    {
+     "n": "Silver",
+     "f": "i18p-silver.svg?v=14"
+    },
+    {
+     "n": "Black",
+     "f": "i18p-black.svg?v=14"
+    },
+    {
+     "n": "Glacier",
+     "f": "i18p-glacier.svg?v=14"
+    },
+    {
+     "n": "Burgundy",
+     "f": "i18p-burgundy.svg?v=14"
+    }
    ]
   },
   {
@@ -59,6 +95,20 @@
     276,
     1858,
     2724
+   ],
+   "finishes": [
+    {
+     "n": "Silver",
+     "f": "i17pm-silver.webp"
+    },
+    {
+     "n": "Cosmic Orange",
+     "f": "i17pm-orange.webp"
+    },
+    {
+     "n": "Deep Blue",
+     "f": "i17pm-blue.webp"
+    }
    ]
   },
   {
@@ -79,6 +129,20 @@
     372,
     1816,
     2628
+   ],
+   "finishes": [
+    {
+     "n": "Silver",
+     "f": "i17p-silver.webp"
+    },
+    {
+     "n": "Cosmic Orange",
+     "f": "i17p-orange.webp"
+    },
+    {
+     "n": "Deep Blue",
+     "f": "i17p-blue.webp"
+    }
    ]
   },
   {
@@ -99,6 +163,24 @@
     350,
     1828,
     2650
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i17-black.webp"
+    },
+    {
+     "n": "Silver",
+     "f": "i17-silver.webp"
+    },
+    {
+     "n": "Lavender",
+     "f": "i17-lavender.webp"
+    },
+    {
+     "n": "Mist Blue",
+     "f": "i17-blue.webp"
+    }
    ]
   },
   {
@@ -119,6 +201,24 @@
     350,
     1828,
     2650
+   ],
+   "finishes": [
+    {
+     "n": "Space Black",
+     "f": "i17a-black.webp"
+    },
+    {
+     "n": "Cloud White",
+     "f": "i17a-silver.webp"
+    },
+    {
+     "n": "Sky Blue",
+     "f": "i17a-blue.webp"
+    },
+    {
+     "n": "Light Gold",
+     "f": "i17a-gold.webp"
+    }
    ]
   },
   {
@@ -139,6 +239,24 @@
     250,
     1859,
     2705
+   ],
+   "finishes": [
+    {
+     "n": "Black Titanium",
+     "f": "i16pm-black.webp"
+    },
+    {
+     "n": "White Titanium",
+     "f": "i16pm-silver.webp"
+    },
+    {
+     "n": "Natural Titanium",
+     "f": "i16pm-titan.webp"
+    },
+    {
+     "n": "Desert Titanium",
+     "f": "i16pm-desert.svg"
+    }
    ]
   },
   {
@@ -159,6 +277,24 @@
     351,
     1812,
     2603
+   ],
+   "finishes": [
+    {
+     "n": "Black Titanium",
+     "f": "i16p-black.webp"
+    },
+    {
+     "n": "White Titanium",
+     "f": "i16p-silver.webp"
+    },
+    {
+     "n": "Natural Titanium",
+     "f": "i16p-titan.webp"
+    },
+    {
+     "n": "Desert Titanium",
+     "f": "i16p-desert.svg"
+    }
    ]
   },
   {
@@ -179,6 +315,28 @@
     364,
     1815,
     2590
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i16n-dark.webp"
+    },
+    {
+     "n": "White",
+     "f": "i16n-white.webp"
+    },
+    {
+     "n": "Titanium",
+     "f": "i16n-titan.webp"
+    },
+    {
+     "n": "Blue",
+     "f": "i16n-blue.webp"
+    },
+    {
+     "n": "Pink",
+     "f": "i16n-pink.webp"
+    }
    ]
   },
   {
@@ -199,6 +357,24 @@
     271,
     1856,
     2682
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i16m-dark.webp"
+    },
+    {
+     "n": "White",
+     "f": "i16m-white.webp"
+    },
+    {
+     "n": "Blue",
+     "f": "i16m-blue.webp"
+    },
+    {
+     "n": "Pink",
+     "f": "i16m-pink.webp"
+    }
    ]
   },
   {
@@ -219,6 +395,20 @@
     334,
     1837,
     2694
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i15pm-black.webp"
+    },
+    {
+     "n": "White",
+     "f": "i15pm-white.webp"
+    },
+    {
+     "n": "Titanium",
+     "f": "i15pm-titan.webp"
+    }
    ]
   },
   {
@@ -239,6 +429,20 @@
     447,
     1793,
     2627
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i15p-black.webp"
+    },
+    {
+     "n": "Silver",
+     "f": "i15p-silver.webp"
+    },
+    {
+     "n": "Titanium",
+     "f": "i15p-titan.webp"
+    }
    ]
   },
   {
@@ -259,6 +463,20 @@
     431,
     1813,
     2616
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i15-black.webp"
+    },
+    {
+     "n": "Pink",
+     "f": "i15-pink.webp"
+    },
+    {
+     "n": "Yellow",
+     "f": "i15-yellow.webp"
+    }
    ]
   },
   {
@@ -279,6 +497,20 @@
     324,
     1848,
     2713
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i15m-black.webp"
+    },
+    {
+     "n": "Pink",
+     "f": "i15m-pink.webp"
+    },
+    {
+     "n": "Yellow",
+     "f": "i15m-yellow.webp"
+    }
    ]
   },
   {
@@ -299,6 +531,24 @@
     444,
     1783,
     2556
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i14pm-black.webp"
+    },
+    {
+     "n": "Red",
+     "f": "i14pm-red.webp"
+    },
+    {
+     "n": "Silver",
+     "f": "i14pm-silver.webp"
+    },
+    {
+     "n": "Gold",
+     "f": "i14pm-gold.webp"
+    }
    ]
   },
   {
@@ -319,6 +569,24 @@
     534,
     1740,
     2466
+   ],
+   "finishes": [
+    {
+     "n": "White",
+     "f": "i14p-whte.webp"
+    },
+    {
+     "n": "Red",
+     "f": "i14p-red.webp"
+    },
+    {
+     "n": "Gold",
+     "f": "i14p-gold.webp"
+    },
+    {
+     "n": "Black",
+     "f": "i14p-black.webp"
+    }
    ]
   },
   {
@@ -339,6 +607,24 @@
     536,
     1739,
     2464
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i14-black.webp"
+    },
+    {
+     "n": "Gold",
+     "f": "i14-gold.webp"
+    },
+    {
+     "n": "Silver",
+     "f": "i14-silver.webp"
+    },
+    {
+     "n": "Red",
+     "f": "i14-red.webp"
+    }
    ]
   },
   {
@@ -359,6 +645,24 @@
     452,
     1797,
     2553
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i14m-black.webp"
+    },
+    {
+     "n": "Gold",
+     "f": "i14m-gold.webp"
+    },
+    {
+     "n": "Silver",
+     "f": "i14m-silver.webp"
+    },
+    {
+     "n": "Red",
+     "f": "i14m-red.webp"
+    }
    ]
   },
   {
@@ -379,6 +683,24 @@
     466,
     1772,
     2535
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i13pm-black.webp"
+    },
+    {
+     "n": "Red",
+     "f": "i13pm-red.webp"
+    },
+    {
+     "n": "Gold",
+     "f": "i13pm-gold.webp"
+    },
+    {
+     "n": "White",
+     "f": "i13pm-white.webp"
+    }
    ]
   },
   {
@@ -399,6 +721,24 @@
     556,
     1730,
     2445
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i13p-black.webp"
+    },
+    {
+     "n": "Gold",
+     "f": "i13p-gold.webp"
+    },
+    {
+     "n": "Red",
+     "f": "i13p-red.webp"
+    },
+    {
+     "n": "White",
+     "f": "i13p-white.webp"
+    }
    ]
   },
   {
@@ -419,6 +759,24 @@
     555,
     1730,
     2446
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i13-black.webp"
+    },
+    {
+     "n": "Gold",
+     "f": "i13-gold.webp"
+    },
+    {
+     "n": "Red",
+     "f": "i13-red.webp"
+    },
+    {
+     "n": "White",
+     "f": "i13-white.webp"
+    }
    ]
   },
   {
@@ -439,6 +797,24 @@
     652,
     1683,
     2349
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i13mn-black.webp"
+    },
+    {
+     "n": "Gold",
+     "f": "i13mn-gold.webp"
+    },
+    {
+     "n": "Red",
+     "f": "i13mn-red.webp"
+    },
+    {
+     "n": "White",
+     "f": "i13mn-white.webp"
+    }
    ]
   },
   {
@@ -459,6 +835,24 @@
     462,
     1775,
     2539
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i12pm-black.webp"
+    },
+    {
+     "n": "Gold",
+     "f": "i12pm-gold.webp"
+    },
+    {
+     "n": "Red",
+     "f": "i12pm-red.webp"
+    },
+    {
+     "n": "White",
+     "f": "i12pm-white.webp"
+    }
    ]
   },
   {
@@ -479,6 +873,24 @@
     555,
     1731,
     2447
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i12p-black.webp"
+    },
+    {
+     "n": "Red",
+     "f": "i12p-red.webp"
+    },
+    {
+     "n": "Gold",
+     "f": "i12p-gold.webp"
+    },
+    {
+     "n": "White",
+     "f": "i12p-white.webp"
+    }
    ]
   },
   {
@@ -499,6 +911,24 @@
     555,
     1731,
     2447
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i12-black.webp"
+    },
+    {
+     "n": "Gold",
+     "f": "i12-gold.webp"
+    },
+    {
+     "n": "Red",
+     "f": "i12-red.webp"
+    },
+    {
+     "n": "White",
+     "f": "i12-white.webp"
+    }
    ]
   },
   {
@@ -519,6 +949,24 @@
     652,
     1683,
     2349
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "i12mn-black.webp"
+    },
+    {
+     "n": "Red",
+     "f": "i12mn-red.webp"
+    },
+    {
+     "n": "Gold",
+     "f": "i12mn-gold.webp"
+    },
+    {
+     "n": "White",
+     "f": "i12mn-white.webp"
+    }
    ]
   },
   {
@@ -539,6 +987,28 @@
     251,
     1863,
     2749
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "s26u-clear-black.webp"
+    },
+    {
+     "n": "White",
+     "f": "s26u-clear-white.webp"
+    },
+    {
+     "n": "Sky Blue",
+     "f": "s26u-clear-skyblue.webp"
+    },
+    {
+     "n": "Cobalt Violet",
+     "f": "s26u-clear-violet.webp"
+    },
+    {
+     "n": "Pink Gold",
+     "f": "s26u-clear-pinkgold.webp"
+    }
    ]
   },
   {
@@ -559,6 +1029,32 @@
     251,
     1869,
     2749
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "s26-clear-black.webp"
+    },
+    {
+     "n": "White",
+     "f": "s26-clear-white.webp"
+    },
+    {
+     "n": "Sky Blue",
+     "f": "s26-clear-skyblue.webp"
+    },
+    {
+     "n": "Cobalt Violet",
+     "f": "s26-clear-violet.webp"
+    },
+    {
+     "n": "Silver Shadow",
+     "f": "s26-clear-silver.webp"
+    },
+    {
+     "n": "Pink Gold",
+     "f": "s26-clear-pinkgold.webp"
+    }
    ]
   },
   {
@@ -579,6 +1075,32 @@
     251,
     1869,
     2749
+   ],
+   "finishes": [
+    {
+     "n": "Black",
+     "f": "s26-clear-black.webp"
+    },
+    {
+     "n": "White",
+     "f": "s26-clear-white.webp"
+    },
+    {
+     "n": "Sky Blue",
+     "f": "s26-clear-skyblue.webp"
+    },
+    {
+     "n": "Cobalt Violet",
+     "f": "s26-clear-violet.webp"
+    },
+    {
+     "n": "Silver Shadow",
+     "f": "s26-clear-silver.webp"
+    },
+    {
+     "n": "Pink Gold",
+     "f": "s26-clear-pinkgold.webp"
+    }
    ]
   }
  ]
