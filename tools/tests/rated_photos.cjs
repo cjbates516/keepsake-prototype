@@ -331,7 +331,9 @@ const shot=async(p,name)=>{await p.evaluate(()=>{const i=document.querySelector(
     check(tag+' '+model+' back on Smoke Frost keeps the photo',v.count==='2 of 5'&&/Smoke Frost is the same case/.test(v.note),v);
     await page.keyboard.press('Escape');await settledClose(page);
    }
-   check(tag+' a phone listed as coming soon cannot be picked (Galaxy S24 Ultra)',await page.evaluate(()=>{const o=[...document.getElementById('modelSel').options].find(o=>/S24 Ultra/.test(o.textContent));return !!o&&o.disabled;}));
+   /* Galaxy S24 Ultra: not selectable while it is in COMING_SOON; once it is offered it has no photos, so no button */
+   if(/var COMING_SOON=\{[^}]*S24 Ultra/.test(fs.readFileSync(path.join(root,'customizer.html'),'utf8')))check(tag+' a phone listed as coming soon cannot be picked (Galaxy S24 Ultra)',await page.evaluate(()=>{const o=[...document.getElementById('modelSel').options].find(o=>/S24 Ultra/.test(o.textContent));return !!o&&o.disabled;}));
+   else{await setModel(page,'Samsung Galaxy S24 Ultra');check(tag+' a Rated phone without photos shows no See photos button (Galaxy S24 Ultra)',await page.evaluate(()=>{const b=document.getElementById('ratedPhotosOpen');return KPStudioCore.info().ratedAvailable&&(!b||b.hidden||!b.getClientRects().length);}));}
    await setModel(page,'iPhone 12 mini');await page.waitForTimeout(200);
    check(tag+' no button for a phone without a Rated kit (iPhone 12 mini)',await page.evaluate(()=>document.getElementById('ratedPhotosOpen').hidden&&document.getElementById('studioCase').hidden));
    /* a rim chosen here on a Rated only phone does not turn the customer's clear case into a Rated Case on the next phone */
