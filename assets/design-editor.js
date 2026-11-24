@@ -60,8 +60,8 @@
   else {
     const photoPanel=panel('photo',info.drawing?'Drawing':kiosk?'Photo help':'Photo',info.drawing&&kiosk?'':kiosk?'Want to use your own photo or drawing? Ask our team at the counter.':'Choose an original, full-size image.');
     if(info.drawing){move(photoPanel,'personalStudio');tray.prepend(buttons.photo);}
-    // slotButtons: one button per layout spot (add or swap any spot without tapping the case)
-    if(!kiosk)move(photoPanel,'uploadBtn','fileInput','slotButtons','photoPrivacy','clearBtn');
+    // slotButtons: one button per layout spot (add or swap any spot without tapping the case); slotNote: spots this phone hides
+    if(!kiosk)move(photoPanel,'uploadBtn','fileInput','slotButtons','slotNote','photoPrivacy','clearBtn');
     // the photo credit moves under the case below (web) or stays in this tool (kiosk), see creditBox
     move(photoPanel,'browseLink');
     if(kiosk){$('fileInput').disabled=true;$('choosePhoto').disabled=true;$('browseLink').hidden=true;}
@@ -274,6 +274,8 @@
     if(target!=='edit'&&core.info().issue){target='edit';history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioEditDepth:history.state.kpStudioDepth||0,kpStudioStep:'edit',kpStudioTool:null},'');}
     if(target!==step)setStep(target,false);else{tool=step==='edit'&&!mobile.matches?home():null;hideSheet();paintTool();if(previous)buttons[previous]?.focus({preventScroll:true});}
     if(history.state.kpStudioTool)openTool(history.state.kpStudioTool,false);
+    // the entry we went back to still has the phone, case and rim from before: a reload must keep what is on screen
+    core.saveOptions?.();
   });
   $('studioNext').onclick=()=>{
     const i=core.info();if(i.issue){core.retry?.();$('studioStatus').textContent=i.issue;return;}
@@ -337,7 +339,7 @@
     const rows=[['Phone',i.model+(i.finish?' · '+i.finish:'')],['Case',i.caseType==='Rated Case'?i.caseLabel:'Clear case']];
     $('studioPartial').hidden=!i.partial;$('studioPartial').textContent=i.partial||'';
     if(i.sky)rows.push(...(i.skyDetails||[]).filter(([label])=>!['Printed place','Coordinates','UTC instant','Sky version'].includes(label)));
-    else if(i.layout){rows.push(['Layout',i.layout.name+' · '+i.layout.filled+' of '+i.layout.total+(i.layout.total===1?' photo':' photos')]);i.layout.captions.forEach(c=>rows.push([c.label,c.shown===false?'Not shown on this phone':c.waiting?'Prints when photo '+c.waiting+' is added':c.text.replace(/\n/g,' / ')||'Not added']));}
+    else if(i.layout){rows.push(['Layout',i.layout.name+' · '+i.layout.filled+' of '+i.layout.total+(i.layout.total===1?' photo':' photos')]);if(i.layout.hidden)rows.push(['Photos',i.layout.hidden]);i.layout.captions.forEach(c=>rows.push([c.label,c.shown===false?'Not shown on this phone':c.waiting?'Prints when photo '+c.waiting+' is added':c.text.replace(/\n/g,' / ')||'Not added']));}
     else rows.push([i.drawing?'Artwork':'Background',i.drawingPending?'Drawing to add at the counter':i.drawing?'Your child’s drawing':$('photoLookStatus').textContent]);
     if(!i.sky&&!i.layout?.words)rows.push(['Added name',s.text||'None']);
     for(const [label,value] of rows){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;details.append(dt,dd);}

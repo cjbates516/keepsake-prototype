@@ -1,5 +1,6 @@
 /* Every phone, everywhere on the storefront: the gallery, the home phone finder, the menu and the editor must mean the same
-   phones, names and slugs, and Rated only phones must carry case=rated and their rim from the gallery to the editor.
+   phones, names and slugs, and Rated only phones must carry their rim (never case=rated: the phone, not the customer, chose
+   that case, so the next phone with a clear case goes back to it) from the gallery to the editor.
    The kits in customizer.html are the one list; everything else is compared with it, so a phone added there (or taken out of
    COMING_SOON) fails here until the storefront has it. Also: prices and wording per phone, the coming soon phone cannot be
    picked, the white print area guide never shows as the product, and the print counter asks Clear or Rated.
@@ -52,6 +53,13 @@ for(const f of ['index.html','gallery.html','checkout.html','instore/index.html'
 check('checkout: 20 ft and availability together',/20 ft drop protection on most phones\.[^<]*Confirm availability in store/.test(read('checkout.html')));
 for(const f of ['ocean-and-rain.html','parks-rugged.html','instore/index.html','index.html'])check('no "every case is '+CLEAR+'" promise: '+f,!/every (case|design|case design) ?·? ?\$44\.99|Cases \$44\.99,/i.test(read(f)));
 check('home: the bundle total names the clear case',read('index.html').includes('$64.98 together with a clear case'));
+check('home and Cherry Duck: no flat $44.99 on the slides, cards or intro',!/in store\. \$44\.99\.<\/p>/.test(home.replace(/Printed on a clear case in store\. \$44\.99\./g,''))&&!/<span>\$44\.99<\/span>/.test(home)&&!/\$44\.99 per case/.test(read('cherry-duck.html')));
+/* every page loads the same menu, so none of them shows a cached one without the Google and Motorola rows */
+const pages=fs.readdirSync(root).filter(f=>f.endsWith('.html')),menus=pages.flatMap(f=>[...read(f).matchAll(/shop-menu\.js\?v=([\w-]+)/g)].map(m=>m[1]));
+check('every page loads the same shop-menu.js version ('+menus.length+' pages)',menus.length>=20&&new Set(menus).size===1,[...new Set(menus)]);
+/* staff size tables: a print size only for phones with a clear case */
+for(const f of ['staff-sop.html','sop-body.html']){const rows=[...read(f).matchAll(/<tr><td>([^<]+)<\/td><td[^>]*>([^<]+)<\/td>/g)].filter(r=>/^[\d.]+$/.test(r[2])).map(r=>r[1]);
+ check(f+': no print size for a phone without a clear case, and the Rated Case is not printed',rows.length>20&&!rows.some(r=>only.some(m=>m===r||short(m)===r))&&/<b>Rated Case:<\/b> do not print one/.test(read(f)),rows.filter(r=>only.some(m=>m===r||short(m)===r)));}
 
 const sizes=[[320,700],[390,844],[820,1180],[1440,950]];
 (async()=>{
@@ -81,7 +89,7 @@ const sizes=[[320,700],[390,844],[820,1180],[1440,950]];
     await p.waitForFunction(()=>document.querySelector('#wizDevBtn strong')?.textContent==='Pixel 10 Pro XL');
     if(w<900){await p.locator('.ks-menu-toggle').click();for(const brand of ['Google','Motorola']){const a=p.locator('#ks-menu-panel a[href="gallery.html?brand='+brand+'"]');await a.scrollIntoViewIfNeeded();await a.locator('img').evaluate(i=>{i.loading='eager';return i.decode();});check(t+' menu row '+brand,await a.isVisible());}
      await p.locator('#ks-menu-panel a[href="gallery.html?brand=Motorola"]').click();await p.locator('#kpDevDrawer [data-pill=Motorola][aria-pressed=true]').waitFor();}
-    for(const s of ['pixel-11','iphone-duo','moto-g-5g-2026','iphone-17-pro','iphone-12-mini']){
+    for(const s of ['pixel-11','iphone-duo','moto-g-2026','iphone-17-pro','iphone-12-mini']){
      await p.goto(base+'gallery.html?device='+s);await p.locator('.kpCard').first().waitFor();
      const g=await p.evaluate(()=>({top:document.querySelector('#grid').getBoundingClientRect().top,price:document.querySelector('#shopPrice').textContent}));
      check(t+' gallery '+s+': fits, cases in view',!await overflow(p)&&g.top<(w<400?640:620),g);
@@ -107,16 +115,17 @@ const sizes=[[320,700],[390,844],[820,1180],[1440,950]];
    for(const m of models){const k=kits[m],name=short(m),t=tag+' gallery '+name;
     await p.goto(base+'gallery.html?device='+slug(name)+'&q=mini+hearts');await p.locator('.kpCard').first().waitFor();
     const g=await p.evaluate(()=>{const c=document.querySelector('.kpCard');return {phone:document.querySelector('#wizDevBtn strong').textContent,url:new URL(location.href).searchParams.get('device'),price:document.querySelector('#shopPrice').textContent,note:document.querySelector('#deviceNote').hidden,card:c.innerText.replace(/\s+/g,' '),
-     dots:[...c.querySelectorAll('.cdot')].map(d=>d.getAttribute('aria-label')),group:c.querySelector('.phone-finishes').getAttribute('aria-label'),href:c.querySelector('.h-makeone').href};});
+     dots:[...c.querySelectorAll('.cdot')].map(d=>d.getAttribute('aria-label')),group:c.querySelector('.phone-finishes').getAttribute('aria-label'),href:c.querySelector('.h-makeone').href,photo:[...document.querySelectorAll('.library-photo-cta,.ks-start-case,#ks-menu-panel a[href^="customizer.html"]:not([href*="studio="])')].map(a=>a.href)};});
     const q=new URL(g.href).searchParams;links[m]=g.href;
     check(t+': same phone, kept in the address',g.phone===name&&g.url===slug(name)&&g.note,g);
     check(t+': editor link names the phone',q.get('model')===slug(name));
+    check(t+': use your own photo keeps the phone',g.photo.length===3&&g.photo.every(h=>{const u=new URL(h);return u.pathname.endsWith('/customizer.html')&&u.searchParams.get('model')===slug(name)&&new URL(u.searchParams.get('back'),base).searchParams.get('device')===slug(name);}),g.photo);
     const drop=k.rated&&k.rated.dropFt?k.rated.dropFt+' ft drop protection · ':'',line='Rated Case '+RATED+' · '+drop+'Confirm availability in store.';
     check(t+': price line',g.price===(k.ratedOnly?line:k.rated?'Clear cases '+CLEAR+' · Made in store. '+line:'Clear cases. Your favorite print. '+CLEAR+' · Made in store.'),g.price);
     if(k.ratedOnly){const rims=k.rated.colors.map(c=>c.n);
      check(t+': Rated price and rim, nothing about clear or a finish',new RegExp('rated case · \\'+RATED,'i').test(g.card)&&!/magsafe clear|44\.99|phone finish|white/i.test(g.card)&&g.group==='Rim color',g.card);
      check(t+': rims offered',rims.length>1?g.dots.join()===rims.map(r=>'Preview '+r+' rim').join():!g.dots.length&&g.card.includes(rims[0]+' rim'),g.dots);
-     check(t+': link carries case and rim, no finish',q.get('case')==='rated'&&q.get('rim')===rims[0]&&!q.has('finish'),g.href);
+     check(t+': link carries the rim, no case and no finish',!q.has('case')&&q.get('rim')===rims[0]&&!q.has('finish'),g.href);
      /* a transparent design shows the phone's own back color through the panel, never the white guide */
      await drawn(p);const px=await p.locator('.kpCard canvas').first().evaluate(async(c,[mask,back])=>{const im=new Image();im.src='assets/masks/'+mask;await im.decode();const x=document.createElement('canvas');x.width=c.width;x.height=c.height;const g=x.getContext('2d');g.drawImage(im,0,0,c.width,c.height);const k=g.getImageData(0,0,c.width,c.height).data,d=c.getContext('2d').getImageData(0,0,c.width,c.height).data,v=[[],[],[]];
       for(let i=0;i<k.length;i+=4)if(k[i+3]===255)for(let z=0;z<3;z++)v[z].push(d[i+z]);const got=v.map(a=>a.sort((q,w)=>q-w)[a.length>>1]),lit=z=>{const n=parseInt(back.slice(1+z*2,3+z*2),16)*.9777;return n+.0463*(255-n);};return {got,want:[0,1,2].map(z=>Math.round(lit(z)))};},[k.view,k.colors[0].h]);
@@ -127,7 +136,7 @@ const sizes=[[320,700],[390,844],[820,1180],[1440,950]];
     }
    }
    /* names people, the editor and old links use */
-   for(const [text,name] of [['Samsung Galaxy S25','Galaxy S25'],['google-pixel-10','Pixel 10'],['motorola-moto-g-2025','moto g 2025'],['iPhone 17 Pro','iPhone 17 Pro'],['galaxy-s26-ultra','Galaxy S26 Ultra'],['Moto-G-5G-2026','moto g 5G 2026']]){
+   for(const [text,name] of [['Samsung Galaxy S25','Galaxy S25'],['google-pixel-10','Pixel 10'],['motorola-moto-g-2025','moto g 2025'],['iPhone 17 Pro','iPhone 17 Pro'],['galaxy-s26-ultra','Galaxy S26 Ultra'],['Moto-G-5G-2026','moto g 2026'],['moto-g-5g-2025','moto g 2025'],['motorola-moto-g-2026','moto g 2026']]){
     await p.goto(base+'gallery.html?device='+encodeURIComponent(text));await p.locator('#grid canvas').first().waitFor();check(tag+' gallery device='+text,await p.locator('#wizDevBtn strong').textContent()===name);}
    /* ---- a phone we do not sell yet ---- */
    for(const m of soon.concat('Google Pixel 9')){const t=tag+' not sold: '+m;
@@ -160,16 +169,31 @@ const sizes=[[320,700],[390,844],[820,1180],[1440,950]];
    check(tag+' editor menu holds every kit under its brand',models.every(m=>menu[brandOf(m)].includes(m)));
    await e.__ctx.close();
    /* ---- walk it: design, brand, phone, editor; and the second rim from a card ---- */
-   for(const [brand,name] of [['Google','Pixel 10'],['Motorola','moto g 5G 2026'],['Samsung','Galaxy S25'],['Apple','iPhone Duo'],['Apple','iPhone 17 Pro']]){
+   for(const [brand,name] of [['Google','Pixel 10'],['Motorola','moto g 2026'],['Samsung','Galaxy S25'],['Apple','iPhone Duo'],['Apple','iPhone 17 Pro']]){
     const m=models.find(x=>short(x)===name),k=kits[m],w=await open(390,844);
     await w.goto(base+'gallery.html?q=mini+hearts');await w.locator('[data-pick-model]').first().waitFor();
     check(tag+' no phone yet: card says From '+CLEAR,/From \$44\.99/.test(await w.locator('[data-pick-model]').first().innerText()));
     await w.locator('[data-pick-model="clear-mini-hearts-transparent.png"]').click();await w.locator('[data-pill="'+brand+'"]').click();await w.locator('[data-md="'+slug(name)+'"]').click();
     await w.waitForFunction(()=>window.KPEditor&&!KPStudioCore.info().issue&&!KPStudioCore.info().loading);
     const s=await w.evaluate(()=>({model:__kp.state.model,type:__kp.state.caseType,rim:KPStudioCore.info().rim,total:KPStudioCore.info().total,q:location.search}));
-    check(tag+' walk to '+name,s.model===m&&s.type===(k.ratedOnly?'Rated Case':'MagSafe Clear')&&s.total===(k.ratedOnly?cfg.RATED_PRICE:cfg.PRICE)&&s.rim===(k.ratedOnly?k.rated.colors[0].n:null)&&(!k.ratedOnly||/case=rated/.test(s.q)),s);
+    check(tag+' walk to '+name,s.model===m&&s.type===(k.ratedOnly?'Rated Case':'MagSafe Clear')&&s.total===(k.ratedOnly?cfg.RATED_PRICE:cfg.PRICE)&&s.rim===(k.ratedOnly?k.rated.colors[0].n:null)&&!/case=rated/.test(s.q),s);
+    /* the case came with the phone: the next phone with a clear case is clear again */
+    if(k.ratedOnly){await w.evaluate(()=>{const b=document.querySelector('#brandSel'),m=document.querySelector('#modelSel');if(b.value!=='Apple'){b.value='Apple';b.dispatchEvent(new Event('change'));}m.value='iPhone 17 Pro';m.dispatchEvent(new Event('change'));});await w.waitForFunction(()=>KPStudioCore.info().previewReady);
+     check(tag+' '+name+' then iPhone 17 Pro: the clear case at '+CLEAR+' and a message',await w.evaluate(()=>KPStudioCore.info().caseType==='MagSafe Clear'&&KPStudioCore.info().total)===cfg.PRICE&&await w.waitForFunction(t=>document.querySelector('#kpToast')?.textContent===t,'Your case is the clear case again at '+CLEAR+'.',{timeout:3000}).then(()=>true,()=>false));}
     await w.screenshot({path:path.join(out,tag+'-walk-'+slug(name)+'.png')});await w.__ctx.close();
    }
+   /* Use your own photo opens the editor on the chosen phone and comes back to it; with no phone it stays the plain link */
+   const u=await open(390,844);await u.goto(base+'gallery.html');await u.locator('[data-pick-model]').first().waitFor();
+   check(tag+' no phone: use your own photo is the plain editor',await u.locator('.library-photo-cta').getAttribute('href')==='customizer.html');
+   await u.goto(base+'gallery.html?device=moto-g-power-2025');await u.locator('.kpCard').first().waitFor();await u.locator('.library-photo-cta').click();await u.waitForFunction(()=>window.KPEditor&&window.KPStudioCore);
+   check(tag+' use your own photo from a moto: that phone, Rated Case, '+RATED,await u.evaluate(()=>__kp.state.model==='Motorola moto g power 2025'&&KPStudioCore.info().caseType==='Rated Case'&&KPStudioCore.info().total)===cfg.RATED_PRICE&&await u.evaluate(()=>document.querySelector('#studioBrowse').href.includes('device=moto-g-power-2025')),await u.url());
+   /* the nearly square Duo is centered in Zoom on a phone, off the frame */
+   await u.goto(base+'gallery.html?device=iphone-duo&q=mini+hearts');await drawn(u);await u.locator('.case-zoom-button').first().click();await u.locator('#caseZoomDialog canvas').waitFor();await u.waitForTimeout(300);
+   const zd=await u.evaluate(()=>{const c=document.querySelector('#caseZoomDialog canvas').getBoundingClientRect(),v=document.querySelector('#caseZoomDialog .zoom-scroll').getBoundingClientRect(),s=document.querySelector('#caseZoomDialog .zoom-scroll');return {above:c.top-v.top,below:v.bottom-c.bottom,left:c.left-v.left,right:v.right-c.right,scroll:s.scrollWidth-s.clientWidth};});
+   check(tag+' Duo zoom: centered, off the frame, no scrolling',Math.abs(zd.above-zd.below)<=2&&zd.left>=6&&zd.right>=6&&zd.scroll<=0,zd);
+   await u.locator('#caseZoomDialog [data-step="1"]').click();await u.locator('#caseZoomDialog [data-step="1"]').click();
+   check(tag+' Duo zoom: magnified it still scrolls to every edge',await u.evaluate(()=>{const s=document.querySelector('#caseZoomDialog .zoom-scroll'),c=document.querySelector('#caseZoomDialog canvas');s.scrollLeft=0;s.scrollTop=0;const a=c.getBoundingClientRect(),v=s.getBoundingClientRect();s.scrollLeft=1e6;s.scrollTop=1e6;const z=c.getBoundingClientRect();return a.left>=v.left-1&&a.top>=v.top-1&&z.right<=v.right+1&&z.bottom<=v.bottom+1&&s.scrollWidth>s.clientWidth;}));
+   await u.__ctx.close();
    const r=await open(390,844);await r.goto(base+'gallery.html?device=moto-g-power-2026&q=mini+hearts');await drawn(r);
    await r.locator('.cdot[aria-label="Preview Clear Frost rim"]').first().click();await r.waitForFunction(()=>JSON.parse(document.querySelector('.kpCard canvas').dataset.renderedPreview||'[]')[2]===1);
    const href=await r.locator('.h-makeone').first().getAttribute('href');check(tag+' second rim: link and pressed state',new URL(href,base).searchParams.get('rim')==='Clear Frost'&&await r.locator('.cdot').nth(1).getAttribute('aria-pressed')==='true',href);

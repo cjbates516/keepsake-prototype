@@ -84,7 +84,7 @@ window.KP_PRINT_LAYOUTS = {
     "mask": "view-rated-motgply25.png",
     "rx": 1.0005012783925142
   },
-  "Motorola moto g 5G 2026": {
+  "Motorola moto g 2026": {
     "bleedX": 22.109160532150778,
     "bleedY": 22.098083240506327,
     "box": [

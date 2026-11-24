@@ -6,7 +6,9 @@
    Release fixes: case and rim kept in the address (reload, shared link), the name stays on the Rated panel at the
    slider ends, words on the Rated panel, every Rated mask inside its clear mask, the staff status after a mid download
    case change, Galaxy setup links, the case size budget (phones, laptops, kiosk), the rim label, the toast in the phone
-   sheet, iPad portrait titles, Phone copy and cache busting. Rated only phones (section 20).
+   sheet, iPad portrait titles, Phone copy and cache busting. Rated only phones (section 20). Review fixes (section 21): the
+   clear case comes back with its own message, the message clears the sheet's title, a failed mask file is tried again, the
+   loaded mask gates the print, setup and coming soon links, the address after Done, the code sentence, hidden photo spots.
    usage: node tools/tests/rated_case.cjs [outdir]   (KP_BASE=http://127.0.0.1:PORT/ to use a running server)
    Every photo is a synthetic canvas made inside the browser. */
 const {chromium,webkit}=require(process.env.PW_CORE||'../../../playwright/node_modules/playwright-core');
@@ -456,7 +458,7 @@ async function closeReview(p){await p.locator('#reviewEditDesign').click();await
     toast:q('#kpToast')?q('#kpToast').textContent:'',staff:__kp.staffPrintIssue(),clear:q('#studioCase [value="MagSafe Clear"]').closest('label').getClientRects().length>0,small:rated.querySelector('small').textContent,legend:q('#studioCase legend').textContent,
     help:q('#studio-phone .studio-help').textContent,sw:getComputedStyle(q('#colorSwatches').parentElement).display,full:Math.round(rated.getBoundingClientRect().width)===Math.round(q('.studio-case-options').getBoundingClientRect().width)};});
    const clearToast=p=>p.evaluate(()=>{const t=document.getElementById('kpToast');if(t)t.textContent='';});
-   for(const [slug,want] of [['pixel-10','Google Pixel 10'],['google-pixel-11-pro-xl','Google Pixel 11 Pro XL'],['moto-g-5g-2026','Motorola moto g 5G 2026'],['motorola-moto-g-stylus-2026','Motorola moto g stylus 2026'],['galaxy-s25-ultra','Samsung Galaxy S25 Ultra'],['iphone-16e','iPhone 16e'],['iphone-duo','iPhone Duo']]){
+   for(const [slug,want] of [['pixel-10','Google Pixel 10'],['google-pixel-11-pro-xl','Google Pixel 11 Pro XL'],['moto-g-2026','Motorola moto g 2026'],['motorola-moto-g-stylus-2026','Motorola moto g stylus 2026'],['galaxy-s25-ultra','Samsung Galaxy S25 Ultra'],['iphone-16e','iPhone 16e'],['iphone-duo','iPhone Duo']]){
     const p=await open('model='+slug),s=await st(p);
     check(tag+' ?model='+slug+' opens '+want+' in the Rated Case with no toast',s.m===want&&s.ct===RATED&&s.total===49.99&&!s.toast&&!p.errs.length,[s,p.errs]);await p.close();
    }
@@ -493,9 +495,10 @@ async function closeReview(p){await p.locator('#reviewEditDesign').click();await
    check(tag+' iPhone Duo: no tempered glass, no layouts, and the toast says so',!du.glass&&!du.offered&&!du.layout&&du.chips&&!du.waitHidden&&du.wait==='Layouts do not fit this phone. Add one photo.'&&s.total===49.99&&s.toast==='This phone comes in the Rated Case. Your case is now $49.99. Tempered glass is not available for iPhone Duo, so it was removed. Layouts do not fit iPhone Duo. Your photos are saved for another phone.',[du,s]);
    await setModel(p,'iPhone 17 Pro Max');check(tag+' glass and layouts are offered again on the next phone',await p.evaluate(()=>!!document.querySelector('#addons [data-k=screen]')&&!document.getElementById('layoutChipsWrap').hidden));
    check(tag+' Duo no console errors',!p.errs.length,p.errs);await p.close();
-   /* Galaxy S24 Ultra: built, but listed as coming soon */
+   /* Galaxy S24 Ultra: built, but listed as coming soon (COMING_SOON, so turning it on needs no edit here) */
+   const soon=Object.keys(JSON.parse(/var COMING_SOON=(\{[^}]*\})/.exec(fs.readFileSync(path.join(root,'customizer.html'),'utf8'))[1].replace(/'/g,'"')));
    p=await open('model=galaxy-s25');
-   check(tag+' Galaxy S24 Ultra is listed as coming soon and cannot be chosen',await p.evaluate(()=>{const o=[...document.querySelectorAll('#modelSel option')].find(o=>o.value==='Samsung Galaxy S24 Ultra');return !!o&&o.disabled&&/coming soon/.test(o.textContent);}));
+   check(tag+' coming soon phones are listed and cannot be chosen: '+soon.join(),await p.evaluate(list=>list.every(m=>{const o=[...document.querySelectorAll('#modelSel option')].find(o=>o.value===m);return !!o&&o.disabled&&/coming soon/.test(o.textContent);}),soon));
    check(tag+' no option text uses a dash',await p.evaluate(()=>![...document.querySelectorAll('#brandSel option,#modelSel option')].some(o=>/[\u2010-\u2015]/.test(o.textContent))));await p.close();
    /* the Rated only masks: one failed request is retried, a second one gives the mask message, the next phone recovers */
    let fails=1;
@@ -545,6 +548,99 @@ async function closeReview(p){await p.locator('#reviewEditDesign').click();await
      check(tag+' 390 Phone sheet: the one case card is full width, no overflow',await page.evaluate(()=>{const q=x=>document.querySelector(x).getBoundingClientRect();return Math.round(q('#studioCaseRated').width)>0&&Math.round(q('.studio-case-options').width)===Math.round(document.querySelector('#studioCase [value="Rated Case"]').closest('label').getBoundingClientRect().width)&&document.scrollingElement.scrollWidth<=innerWidth;}));}
    }
    check(tag+' 390 no console errors',!errors.length,errors);await c2.close();
+  }
+  /* 21. review fixes */
+  {
+   const tag=engine+' fixes',AGAIN='Your case is the clear case again at $44.99.',MASK='Case mask failed to load. Reload before printing.';
+   const ctx=await browser.newContext({viewport:{width:1280,height:900}}),toast=p=>p.evaluate(()=>{const t=document.getElementById('kpToast');return t&&t.style.opacity==='1'?t.textContent:'';});
+   const open=async(q,setup,c)=>{const page=await (c||ctx).newPage();page.errs=[];await hooked(page,page.errs);if(setup)await setup(page);
+    await page.goto(base+'customizer.html?'+q);await editorReady(page);await page.waitForFunction(()=>!__kp.state.libraryLoading,null,{timeout:20000}).catch(()=>{});await settled(page);return page;};
+   /* the message about the Rated only phone goes when the clear case comes back */
+   let p=await open('model='+MODEL+'&design='+DESIGN);
+   await setModel(p,'Google Pixel 10');await setModel(p,'iPhone 17 Pro');
+   check(tag+' back on a clear phone the message says so',await toast(p)===AGAIN&&await p.evaluate(()=>KPStudioCore.info().total)===44.99,await toast(p));
+   await setModel(p,'Google Pixel 10');await setModel(p,'iPhone Duo');
+   check(tag+' Rated only to Rated only of another brand: one message about the case',/^This phone comes in the Rated Case\. Your case is now \$49\.99\./.test(await toast(p))&&!(await toast(p)).includes('clear case'),await toast(p));
+   await setModel(p,'iPhone 17 Pro');check(tag+' leaving the Duo replaces its messages',await toast(p)===AGAIN,await toast(p));
+   await pickCase(p,RATED);check(tag+' the customer choosing the Rated Case takes the clear case message away',await toast(p)==='',await toast(p));
+   check(tag+' no console errors (messages)',!p.errs.length,p.errs);await p.close();
+   /* a link that opens on a Rated only phone, as the gallery sends it (rim, no case): the clear case is still the customer's */
+   p=await open('design='+DESIGN+'&model=pixel-10&rim=Clear+Frost');await setModel(p,'iPhone 17');
+   check(tag+' a Rated only phone from a link: the next phone is clear at $44.99',await p.evaluate(()=>KPStudioCore.info().caseType==='MagSafe Clear'&&KPStudioCore.info().total===44.99),await p.evaluate(()=>location.search));
+   await p.close();
+   /* masks: a phone or rim with the same mask tries again after a failure, and a reply that is not the file is a failure */
+   let mode='fail',hits=0;
+   const gate=async q=>q.route('**/assets/mask-geometry-rated.js*',x=>{hits++;return mode==='fail'?x.abort():mode==='portal'?x.fulfill({status:200,contentType:'text/html',body:'<html>sign in</html>'}):x.continue();});
+   const broken=q=>q.waitForFunction(m=>__kp.printIssue()===m,MASK,{timeout:8000}).then(()=>true,()=>false),ready=q=>q.waitForFunction(()=>KPStudioCore.info().previewReady&&!__kp.printIssue(),null,{timeout:8000}).then(()=>true,()=>false);
+   for(const bad of ['fail','portal']){
+    mode=bad;hits=0;p=await open('model=pixel-10&design='+DESIGN,gate);
+    check(tag+' mask file '+bad+': tried twice, then the mask message',await broken(p)&&hits===2,hits);
+    mode='ok';await setModel(p,'Google Pixel 10 Pro');check(tag+' mask file '+bad+': the phone with the same mask tries again',await ready(p)&&hits===3,hits);await p.close();
+    mode=bad;p=await open('model=moto-g-2025&design='+DESIGN,gate);await broken(p);mode='ok';await p.evaluate(()=>KPStudioCore.setRim('Clear Frost'));
+    check(tag+' mask file '+bad+': a rim change tries again',await ready(p));await p.close();
+   }
+   /* a mask image that failed is tried again the same way */
+   mode='fail';p=await open('model=iphone-17&design='+DESIGN,q=>q.route('**/assets/masks/view-i17.png*',x=>mode==='fail'?x.abort():x.continue()));
+   check(tag+' mask image failed: the message',await broken(p));mode='ok';await p.evaluate(()=>{const s=document.getElementById('modelSel');s.dispatchEvent(new Event('change'));});
+   check(tag+' mask image failed: choosing the phone again tries again',await ready(p));await p.close();
+   /* the Rated panel mask that is still loaded counts as Rated, whatever the case type says */
+   p=await ctx.newPage();await hooked(p,[]);await p.goto(base+'customizer.html?staff=1&design='+DESIGN+'&model=iPhone-17-Pro&case=rated');
+   await p.waitForFunction(()=>window.__kp&&__kp.state.photoImg&&!__kp.state.libraryLoading&&!__kp.printIssue(),null,{timeout:20000});
+   const lm=await p.evaluate(()=>{__kp.state.caseType='MagSafe Clear';let file='';__kp.buildPrint((c,n)=>{file=n;});return {issue:__kp.staffPrintIssue(),file};});
+   check(tag+' a wrong case type cannot print the Rated panel',lm.issue===STAFF_RATED&&/-rated-/.test(lm.file),lm);
+   await p.close();
+   /* setup links: the link's case is its own, not the first phone's */
+   p=await open('model=pixel-10&setup='+encodeURIComponent(JSON.stringify({m:'iPhone 17 Pro',ct:'Rated Case',cal:{dx:0,dy:0,s:1,cdx:0,cdy:0,cs:1},ph:{px:0,py:0,sc:1,rot:0,f:'none',v:'original'},d:DESIGN})));
+   check(tag+' a setup link keeps its Rated Case after a Rated only phone',await p.waitForFunction(()=>__kp.state.model==='iPhone 17 Pro'&&KPStudioCore.info().caseType==='Rated Case'&&KPStudioCore.info().total===49.99,null,{timeout:8000}).then(()=>true,()=>false));await p.close();
+   /* a phone with no case yet has no clear case to show */
+   for(const m of Object.keys(JSON.parse(/var COMING_SOON=(\{[^}]*\})/.exec(fs.readFileSync(path.join(root,'customizer.html'),'utf8'))[1].replace(/'/g,'"')))){
+    const name=m.replace(/^(Samsung|Google|Motorola) /,'');p=await ctx.newPage();await hooked(p,[]);await p.goto(base+'customizer.html?design='+DESIGN+'&case=rated&model='+name.toLowerCase().replace(/ /g,'-'));await editorReady(p);
+    check(tag+' '+name+' link: coming soon, no clear case promised',await toast(p)==='The case for '+name+' is coming soon. Choose another phone, or ask a team member.'&&await p.evaluate(()=>document.getElementById('studioNext').disabled),await toast(p));await p.close();
+   }
+   p=await open('model=moto-g-5g-2025');check(tag+' ?model=moto-g-5g-2025 is the moto g 2025',await p.evaluate(()=>__kp.state.model)==='Motorola moto g 2025');await p.close();
+   /* the code sentence only with a code */
+   for(const [q,want] of [['model=iphone-17-pro',true],['model=pixel-10',false]]){
+    p=await open(q+'&design='+DESIGN);await p.evaluate(()=>{const n=document.getElementById('nameInput');n.value='Sam';n.dispatchEvent(new Event('input',{bubbles:true}));KPStudioCore.adjust('px',40);});await p.waitForTimeout(400);
+    const rv=await openReview(p),text=rowOf(rv.rows,'Personalization handoff')+' | '+rowOf(rv.rows,'Artwork placement'),onCard=JSON.stringify(rv.card&&rv.card.rows);
+    check(tag+' '+q+': the pick code sentence '+(want?'is there':'is not there')+', no dash',(text.match(/The pick code identifies the base design only\./g)||[]).length===(want?2:0)&&onCard.includes('pick code identifies')===want&&/Show this preview so our team can match your name/.test(text)&&/^.*\| Custom placement\. /.test(text)&&!/[\u2010-\u2015]/.test(text),text);await p.close();
+   }
+   /* a photo spot the camera hides is named (the customer is told before the counter), and only then */
+   for(const [q,id,want] of [['model=moto-g-power-2025','tpl:102',null],['model=iphone-17-pro-max','tpl:102',null]]){
+    p=await open(q);if(!(await p.evaluate(()=>KPEditor.tool==='photo')))await tool(p,'photo');await p.waitForSelector('.layChip[data-l="'+id+'"]',{state:'attached',timeout:15000});
+    const r=await p.evaluate(async()=>{const out={};for(const c of document.querySelectorAll('.layChip[data-l^="tpl:"]')){__kp.state.layout=c.dataset.l;const l=KPStudioCore.info().layout;out[l.name]=l.hidden;}__kp.state.layout=null;return out;});
+    if(/moto/.test(q))check(tag+' moto g power: Three Words says photo 1 is not shown, Mini Gallery does not',r['Three Words']==='Photo 1 is not shown on this phone.'&&r['Mini Gallery']==='',r);
+    else check(tag+' iPhone 17 Pro Max: every photo spot shows',Object.values(r).length>10&&Object.values(r).every(x=>x===''),r);
+    if(/moto/.test(q)){await p.evaluate(()=>{const c=[...document.querySelectorAll('.layChip')].find(c=>c.querySelector('.lay-name').textContent==='Three Words');const d=c.closest('details');if(d)d.open=true;c.click();});await p.waitForTimeout(500);
+     check(tag+' the note is under the photo buttons',await p.evaluate(()=>{const n=document.getElementById('slotNote');return !n.hidden&&n.getClientRects().length>0&&n.textContent==='Photo 1 is not shown on this phone.';}));
+     await setModel(p,'iPhone 17 Pro Max');check(tag+' the note goes on a phone that shows every photo',await p.waitForFunction(()=>document.getElementById('slotNote').hidden,null,{timeout:5000}).then(()=>true,()=>false));}
+    await p.close();
+   }
+   /* dark art on the Galaxy S25 in Smoke Frost: no light line between the art and the rim */
+   p=await open('model=galaxy-s25');await p.setInputFiles('#fileInput',F(await png(p,1200,2600,0,'#101418'),'dark.png'));await p.waitForFunction(()=>__kp.state.photoImg);await settled(p);
+   const line=await p.evaluate(()=>{const g=KP_MASK_GEOMETRY['view-rated-samgs24.png'],c=document.getElementById('stageCanvas'),x=c.getContext('2d');let worst=0;for(const y of [1600,1900,2200,2400]){const r=g.rows.find(r=>r[0]<=y&&y<r[1]),a=r[2],b=r[r.length-1];for(let d=4;d<=12;d+=2)for(const q of [a-d,b+d]){const v=x.getImageData(Math.round(q*c.width/2500),Math.round(y*c.height/3000),1,1).data;worst=Math.max(worst,v[0]*.299+v[1]*.587+v[2]*.114);}}return worst;});
+   check(tag+' Galaxy S25 Smoke Frost: no light line around dark art (4 px past the mask is rim)',line<90,line);await p.close();
+   await ctx.close();
+   /* phones: the address after Done is what is on screen, so a reload keeps the phone, case and rim; the message stays off the
+      sheet's title when the sheet grows under it; spacing */
+   const c2=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+   p=await open('model=iphone-17-pro&design='+DESIGN,null,c2);
+   await tool(p,'phone');await setModel(p,'Google Pixel 10');await p.waitForTimeout(400);
+   const top=await p.evaluate(()=>{const t=document.getElementById('kpToast').getBoundingClientRect(),h=document.getElementById('studioSheetTitle').getBoundingClientRect(),d=document.getElementById('studioDone').getBoundingClientRect();return [t.top,t.bottom,h.top,h.bottom,d.top,d.bottom].map(Math.round);});
+   check(tag+' 390 the message is clear of the sheet title and Done',top[1]<=Math.min(top[2],top[4])+1||top[0]>=Math.max(top[3],top[5])-1,top);
+   await done(p);await p.waitForTimeout(400);
+   check(tag+' 390 the address after Done names the Pixel',/[?&]model=pixel-10(&|$)/.test(await p.evaluate(()=>location.search)),await p.evaluate(()=>location.search));
+   await p.reload();await editorReady(p);check(tag+' 390 a reload keeps it',await p.evaluate(()=>__kp.state.model==='Google Pixel 10'&&KPStudioCore.info().total===49.99));
+   await tool(p,'phone');await setModel(p,'Samsung Galaxy S25');await p.evaluate(()=>KPStudioCore.setRim('Clear Frost'));await done(p);await p.waitForTimeout(400);await p.reload();await editorReady(p);
+   check(tag+' 390 a rim chosen in the Phone sheet survives a reload',await p.evaluate(()=>KPStudioCore.info().rim==='Clear Frost'),await p.evaluate(()=>location.search));
+   await tool(p,'phone');await setModel(p,'iPhone 17 Pro');await pickCase(p,RATED);await done(p);await p.waitForTimeout(400);await p.reload();await editorReady(p);
+   check(tag+' 390 a Rated choice made in the Phone sheet survives a reload',await p.evaluate(()=>__kp.state.model==='iPhone 17 Pro'&&KPStudioCore.info().caseType==='Rated Case'),await p.evaluate(()=>location.search));
+   await p.close();
+   p=await open('model=iphone-duo',null,c2);if(!(await p.evaluate(()=>KPEditor.tool==='photo')))await tool(p,'photo');
+   check(tag+' 390 Duo: the layouts note has room above it',await p.evaluate(()=>{const n=document.getElementById('studioLayoutsWait'),r=n.getBoundingClientRect(),above=[...document.querySelectorAll('#studio-photo *')].filter(e=>!e.contains(n)&&!n.contains(e)&&e.getClientRects().length&&e.getBoundingClientRect().bottom<=r.top+1).map(e=>e.getBoundingClientRect().bottom);return r.height>0&&r.top-Math.max(...above)>=10;}));
+   await p.close();await c2.close();
+   const c3=await browser.newContext({viewport:{width:1440,height:900}});p=await open('model=galaxy-s25',null,c3);
+   check(tag+' 1440 the rim label does not touch the case card',await p.evaluate(()=>document.getElementById('studioRim').getBoundingClientRect().top-document.querySelector('.studio-case-options').getBoundingClientRect().bottom>=6));
+   await p.close();await c3.close();
   }
   await browser.close();
  }

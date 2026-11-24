@@ -27,7 +27,7 @@ window.KP_RATED_PHONES = {
     "moto g power 2026": {"brand":"Motorola","mask":"view-rated-motgpwr25.png","back":"#BDB29F","drop":20,"rims":[{"n":"Smoke Frost","h":"#404040","f":"rated-motgpwr25-smoke.webp"},{"n":"Clear Frost","h":"#C4C5C6","f":"rated-motgpwr25-clear.webp"}]},
     "moto g power 2025": {"brand":"Motorola","mask":"view-rated-motgpwr25.png","back":"#BDB29F","drop":20,"rims":[{"n":"Smoke Frost","h":"#404040","f":"rated-motgpwr25-smoke.webp"},{"n":"Clear Frost","h":"#C4C5C6","f":"rated-motgpwr25-clear.webp"}]},
     "moto g play 2026": {"brand":"Motorola","mask":"view-rated-motgply25.png","back":"#4A6E7F","drop":20,"rims":[{"n":"Smoke Frost","h":"#404040","f":"rated-motgply25-smoke.webp"},{"n":"Clear Frost","h":"#C4C5C6","f":"rated-motgply25-clear.webp"}]},
-    "moto g 5G 2026": {"brand":"Motorola","mask":"view-rated-motgply25.png","back":"#4A6E7F","drop":20,"rims":[{"n":"Smoke Frost","h":"#404040","f":"rated-motgply25-smoke.webp"},{"n":"Clear Frost","h":"#C4C5C6","f":"rated-motgply25-clear.webp"}]},
+    "moto g 2026": {"brand":"Motorola","mask":"view-rated-motgply25.png","back":"#4A6E7F","drop":20,"rims":[{"n":"Smoke Frost","h":"#404040","f":"rated-motgply25-smoke.webp"},{"n":"Clear Frost","h":"#C4C5C6","f":"rated-motgply25-clear.webp"}]},
     "moto g 2025": {"brand":"Motorola","mask":"view-rated-motgply25.png","back":"#4A6E7F","drop":20,"rims":[{"n":"Smoke Frost","h":"#404040","f":"rated-motgply25-smoke.webp"},{"n":"Clear Frost","h":"#C4C5C6","f":"rated-motgply25-clear.webp"}]}
   },
   "both": {

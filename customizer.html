@@ -166,7 +166,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/shop-refresh.css?v=counter-card-1">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css?v=start-case-1"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=ocean-rain-1" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
+<link rel="stylesheet" href="assets/shop-menu.css?v=start-case-1"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=rated-all-1" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 <link rel="stylesheet" href="assets/accessories.css">
 <link rel="stylesheet" href="assets/design-editor.css?v=momentum-20261121-product-studio-1-rated-all-1">
 <!-- Rated Case photos: the See photos button and its viewer (assets/rated-gallery.js) -->
@@ -310,6 +310,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           </section>
           <button id="uploadBtn" class="h-upload" style="width:100%;background:#17171F;color:#FFFFFF;border:0;padding:17px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s">Choose a photo</button>
           <div id="slotButtons" class="slot-buttons" role="group" aria-label="Photos in this layout" hidden></div>
+          <p id="slotNote" class="cap-note" hidden></p>
           <div id="photoPrivacy" style="font-size:13px;color:#196c34;font-weight:700;margin-top:10px;text-align:center">🔒 Your photo stays on this device. Our team can help transfer it at the counter.</div>
           <a id="browseLink" href="gallery.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;background:#FBE0E1;border-radius:12px;padding:14px 16px;text-decoration:none">
             <span><span style="display:block;font-size:13px;font-weight:900;color:#B81F24">Want a ready-made design instead?</span>
@@ -445,7 +446,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     Samsung: ['Samsung Galaxy S26 Ultra','Samsung Galaxy S26 Plus','Samsung Galaxy S26','Samsung Galaxy S26 FE','Samsung Galaxy S25 Ultra','Samsung Galaxy S25 Plus','Samsung Galaxy S25','Samsung Galaxy S25 FE','Samsung Galaxy S24 Ultra','Samsung Galaxy S24 Plus','Samsung Galaxy S24','Samsung Galaxy S24 FE','Samsung Galaxy A56','Samsung Galaxy A37','Samsung Galaxy A36','Samsung Galaxy A17','Samsung Galaxy A16'],
     Google: ['Google Pixel 11 Pro XL','Google Pixel 11 Pro','Google Pixel 11','Google Pixel 10 Pro XL','Google Pixel 10 Pro','Google Pixel 10','Google Pixel 9 Pro XL','Google Pixel 9 Pro','Google Pixel 9','Google Pixel 8'],
     /* no hyphens or parentheses in a phone name: ?model= and the gallery's ?device= turn spaces into hyphens and back */
-    Motorola: ['Motorola moto g stylus 2026','Motorola moto g stylus 2025','Motorola moto g power 2026','Motorola moto g power 2025','Motorola moto g play 2026','Motorola moto g 5G 2026','Motorola moto g 2025'],
+    Motorola: ['Motorola moto g stylus 2026','Motorola moto g stylus 2025','Motorola moto g power 2026','Motorola moto g power 2025','Motorola moto g play 2026','Motorola moto g 2026','Motorola moto g 2025'],
     iPad: ['iPad Pro 13″','iPad Pro 11″','iPad Air 13″','iPad Air 11″','iPad 10.9″ (10th gen)','iPad 10.2″ (7th–9th gen)']
   };
   var printSpec = {
@@ -518,7 +519,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     layout:null, photos:[], slotTarget:null, designPath:null, captions:{}
   };
   (function(){ var mm = /[?&]model=([^&]+)/.exec(location.search);var staffMode=new URLSearchParams(location.search).get('staff')==='1';if(staffMode){state.handoffErrorType='model';state.handoffError='Choose a valid phone from the print counter before printing.';}if (!mm) return;
-    var want = decodeURIComponent(mm[1]).replace(/-/g, ' ').toLowerCase();
+    var want = decodeURIComponent(mm[1]).replace(/-/g, ' ').toLowerCase().replace(/moto g 5g (2025|2026)$/,'moto g $1'); /* both names are in use */
     for (var b in modelsByBrand){ modelsByBrand[b].forEach(function(md){
       var mdl = md.toLowerCase();
       if (mdl === want || mdl.replace(/^(samsung|google|motorola) /,'') === want){ state.brand = b; state.model = md;state.handoffError=null;state.handoffErrorType=null; } }); } })();
@@ -618,9 +619,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       'Samsung Galaxy A37':'samga37','Samsung Galaxy A36':'samga37','Samsung Galaxy A17':'samga17',
       'Google Pixel 11 Pro XL':'googpl11pxl','Google Pixel 11 Pro':'googpl11','Google Pixel 11':'googpl11-p11','Google Pixel 10 Pro XL':'googpl10pxl','Google Pixel 10 Pro':'googpl10','Google Pixel 10':'googpl10-p10',
       'Motorola moto g stylus 2026':'motgstl26','Motorola moto g stylus 2025':'motgstl26','Motorola moto g power 2026':'motgpwr25','Motorola moto g power 2025':'motgpwr25',
-      'Motorola moto g play 2026':'motgply25','Motorola moto g 5G 2026':'motgply25','Motorola moto g 2025':'motgply25'};
+      'Motorola moto g play 2026':'motgply25','Motorola moto g 2026':'motgply25','Motorola moto g 2025':'motgply25'};
     /* Assets are built, but the blank cannot be ordered yet: the menus list the phone as coming soon. To offer it, take its
-       name out of this list and run tools/build_print_layouts.cjs. */
+       name out of this list and run tools/build_print_layouts.cjs (it also adds the phone to the gallery list and the home
+       page finder). */
     var COMING_SOON={'Samsung Galaxy S24 Ultra':1};
     /* Rims, by key. A key in neither list comes in both, Smoke Frost first. */
     var CLEAR_FROST_ONLY={'iph14max':1,'iph14max-i15m':1,'iph16plus':1,'iph1261':1,'iph61':1,'samgs26fe':1,'samgs25fe':1,'samgs24fe':1,'samga37':1,'samga17':1,
@@ -695,17 +697,27 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   function kpNormalizeCaseType(){
     var k=KITS[state.model], wanted=state.caseType;
-    if(state.ratedForced&&!(k&&k.ratedOnly)){ wanted=CASE_CLEAR; state.ratedForced=false; }
+    if(state.ratedForced&&!(k&&k.ratedOnly)){ wanted=CASE_CLEAR; state.ratedForced=false; if(k) kpNote('Your case is the clear case again at $'+BASE.toFixed(2)+'.','case'); }
     state.caseType=kpCaseTypeFor(state.model,wanted);
-    if(state.caseType===CASE_RATED&&wanted!==CASE_RATED){ state.ratedForced=true; kpNote('This phone comes in the Rated Case. Your case is now $'+RATED_PRICE.toFixed(2)+'.'); }
-    if(wanted===CASE_RATED&&state.caseType!==CASE_RATED)kpToast('The Rated Case is not available for '+kpShort(state.model)+' yet. Showing the clear case.',6000);
+    if(state.caseType===CASE_RATED&&wanted!==CASE_RATED){ state.ratedForced=true; kpNote('This phone comes in the Rated Case. Your case is now $'+RATED_PRICE.toFixed(2)+'.','case'); }
+    if(wanted===CASE_RATED&&state.caseType!==CASE_RATED)kpRatedMissing();
     return state.caseType;
   }
   /* the phone's name without its brand, as the summary, toasts and address use it */
   function kpShort(m){ return String(m||'').replace(/^(Samsung|Google|Motorola) /,''); }
-  /* things a newly chosen phone changed (case, glass, layout) share one toast; nothing is announced while the page opens */
-  var kpStarted=false, kpNotes=[];
-  function kpNote(msg){ if(!kpStarted) return; kpNotes.push(msg); if(kpNotes.length===1) setTimeout(function(){ kpToast(kpNotes.splice(0).join(' '),6000); },0); }
+  /* things a newly chosen phone changed (case, glass, layout) share one toast; nothing is announced while the page opens.
+     A kind keeps only its last message (a brand and phone picked in one step change the case twice). */
+  var kpStarted=false, kpNotes=[], kpNoteShown='';
+  function kpNote(msg,kind){
+    if(!kpStarted) return;
+    if(!kpNotes.length) setTimeout(function(){ kpNoteShown=kpNotes.splice(0).map(function(n){ return n.msg; }).join(' '); kpToast(kpNoteShown,6000); },0);
+    kpNotes=kpNotes.filter(function(n){ return !kind||n.kind!==kind; }).concat({msg:msg,kind:kind});
+  }
+  /* a phone with no case at all yet has no clear case to show either */
+  function kpRatedMissing(){
+    var name=kpShort(state.model);
+    kpToast(KITS[state.model]?'The Rated Case is not available for '+name+' yet. Showing the clear case.':'The case for '+name+' is coming soon. Choose another phone, or ask a team member.',6000);
+  }
   function kpRatedKit(){ var k=KITS[state.model]; return state.caseType===CASE_RATED&&k&&k.rated?k.rated:null; }
   /* the rim the customer chose, or the first rim this phone's Rated Case comes in (state.rimColor keeps the choice) */
   function kpRim(){ var r=kpRatedKit(); return r?(r.colors.find(function(c){return c.n===state.rimColor;})||r.colors[0]):null; }
@@ -828,19 +840,23 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   };
   /* Masks only Rated only phones use live in their own generated file (tools/build_mask_geometry.py), loaded with the first
      such phone, so clear and iPhone customers do not download them. One retry like the mask image; after that the mask
-     error message shows, and the next phone or page load tries again. */
-  var ratedMasks=null;
-  function kpRatedMasks(){
-    function attempt(retry){return new Promise(function(done,fail){
-      var s=document.createElement('script');s.src='assets/mask-geometry-rated.js?v=rated-all-1'+(retry?'&r=1':'');
-      s.onload=done;s.onerror=function(){s.remove();fail(Error('mask geometry'));};document.head.append(s);
+     error message shows, and the next phone, case or rim choice or page load tries again. A reply without the mask (a Wi-Fi
+     sign in page answers 200) is a failure too, and each retry has its own address so that reply is never reused. */
+  var ratedMasks=null, ratedMaskTries=0;
+  function kpRatedMasks(vm){
+    function attempt(){return new Promise(function(done,fail){
+      var s=document.createElement('script'), tries=ratedMaskTries++;s.src='assets/mask-geometry-rated.js?v=rated-all-1'+(tries?'&r='+tries:'');
+      function failed(){s.remove();fail(Error('mask geometry'));}
+      s.onload=function(){if((window.KP_MASK_GEOMETRY||{})[vm])done();else failed();};s.onerror=failed;document.head.append(s);
     });}
     if(!ratedMasks){
-      ratedMasks=attempt(false).catch(function(){return new Promise(function(r){setTimeout(r,800);}).then(function(){return attempt(true);});});
+      ratedMasks=attempt().catch(function(){return new Promise(function(r){setTimeout(r,800);}).then(attempt);});
       ratedMasks.catch(function(){ratedMasks=null;});
     }
     return ratedMasks;
   }
+  /* no source, so the next loadKit (another phone or rim, or this phone again) loads this mask once more */
+  function kpMaskFailed(){viewFailed=true;viewMaskCanvas=null;viewSrc=null;updateStage();}
   function loadKit(model){
     var k=KITS[model]; if(!k) return false;
     /* Normalize case type before choosing geometry, including shared links. */
@@ -876,18 +892,18 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         viewReady=false; viewFailed=false; viewSrc=vm; viewMaskCanvas=null;maskBox=null;printMaskCache=null;
         viewImg=new Image();
         var loadingMask=viewImg;
-        if(rated&&!(window.KP_MASK_GEOMETRY||{})[vm])kpRatedMasks().catch(function(){}); /* fetch it beside the mask image */
+        if(rated&&!(window.KP_MASK_GEOMETRY||{})[vm])kpRatedMasks(vm).catch(function(){}); /* fetch it beside the mask image */
         viewImg.onload=function(){
           if(viewImg!==loadingMask)return;
           if(rated&&!(window.KP_MASK_GEOMETRY||{})[vm]&&!loadingMask.__kpGeometry){
             loadingMask.__kpGeometry=true;
-            kpRatedMasks().then(function(){loadingMask.onload();},function(){if(viewImg!==loadingMask)return;viewFailed=true;updateStage();});
+            kpRatedMasks(vm).then(function(){loadingMask.onload();},function(){if(viewImg===loadingMask)kpMaskFailed();});
             return;
           }
           /* rasterize once: WebKit erases the layer when an <img> previously drawn source-over is reused as a destination-in source — canvas sources are immune */
           viewMaskCanvas=document.createElement('canvas'); viewMaskCanvas.width=DIM.w; viewMaskCanvas.height=DIM.h;
           var geometry=(window.KP_MASK_GEOMETRY||{})[vm];
-          if(!geometry||geometry.w!==DIM.w||geometry.h!==DIM.h||loadingMask.naturalWidth!==DIM.w||loadingMask.naturalHeight!==DIM.h){viewFailed=true;viewMaskCanvas=null;updateStage();return;}
+          if(!geometry||geometry.w!==DIM.w||geometry.h!==DIM.h||loadingMask.naturalWidth!==DIM.w||loadingMask.naturalHeight!==DIM.h){kpMaskFailed();return;}
           var vmx=viewMaskCanvas.getContext('2d');vmx.fillStyle='#000';
           geometry.rows.forEach(function(row){for(var i=2;i<row.length;i+=2)vmx.fillRect(row[i],row[0],row[i+1]-row[i],row[1]-row[0]);});
           viewReady=true; viewFailed=false; computeMaskBox(); render();
@@ -895,7 +911,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         viewImg.onerror=function(){
           if(viewImg!==loadingMask)return;
           if(!viewImg.__kpRetried){ viewImg.__kpRetried=true; var im=viewImg; setTimeout(function(){ im.src='assets/masks/'+vm+'?v=12&r=1'; },800); }
-          else { viewFailed=true; updateStage(); }
+          else kpMaskFailed();
         };
         viewImg.src='assets/masks/'+vm+'?v=12';
       } else if(viewReady){computeMaskBox();}
@@ -1077,6 +1093,25 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
               w:sl.w*1080*m.sc, h:sl.h*1920*m.sc, rot:(sl.rot||0)*Math.PI/180,
               lum:(sl.lum!=null?sl.lum:200)};
     });
+  }
+  /* spots this phone's camera or edges hide (under a tenth of the spot is on the panel): the customer is told, as for words */
+  var kpHiddenMemo={key:'',spots:[]};
+  function kpHiddenSlots(){
+    var t=curTpl(), rows=t&&kpMaskRows(); if(!rows) return [];
+    var m=tplMap(), ar=artRatio(), key=[viewSrc,t.id,m.sc,m.ox,m.oy,ar].join('|'), n=14;
+    if(kpHiddenMemo.key!==key) kpHiddenMemo={key:key,spots:slotRects().map(function(r,i){
+      var seen=0, c=Math.cos(r.rot), s=Math.sin(r.rot);
+      for(var a=0;a<n;a++) for(var b=0;b<n;b++){
+        var u=((a+.5)/n-.5)*r.w, v=((b+.5)/n-.5)*r.h, x=DIM.w/2+(r.x+r.w/2+u*c-v*s-DIM.w/2)*ar, row=rows[Math.floor(r.y+r.h/2+u*s+v*c)];
+        if(row) for(var k=2;k<row.length;k+=2) if(x>=row[k]&&x<row[k+1]){ seen++; break; }
+      }
+      return seen<n*n*.1?i+1:0;
+    }).filter(Boolean)};
+    return kpHiddenMemo.spots;
+  }
+  function kpHiddenNote(){
+    var h=kpHiddenSlots(), last=h[h.length-1]; if(!h.length) return '';
+    return h.length===1?'Photo '+last+' is not shown on this phone.':'Photos '+h.slice(0,-1).join(', ')+' and '+last+' are not shown on this phone.';
   }
   function rrect(c2,x,y,w,h,r){
     r=Math.max(0,Math.min(r||0,w/2,h/2)); c2.beginPath();
@@ -1807,6 +1842,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         mo.observe(host,{attributes:true,attributeFilter:['open']});
       }
     }
+    /* a new phone can change the sheet's height (case cards, rim chips): keep the message clear of its title bar */
+    if(host.id==='studioSheet'&&!t.__sheet&&window.ResizeObserver){ t.__sheet=new ResizeObserver(function(){ if(t.parentNode===host) kpToastPlace(t); }); t.__sheet.observe(host); }
     t.textContent=msg; t.style.opacity='1'; kpToastPlace(t);
     clearTimeout(t.__h); t.__h=setTimeout(function(){ t.style.opacity='0'; }, ms||5200);
   }
@@ -2139,6 +2176,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   /* the note under a word box when this phone cannot show those words (kpCaptionPlan) */
   function kpSyncCaptionNotes(){
+    var hidden=$('slotNote'), gone=kpHiddenNote(); if(hidden.textContent!==gone){ hidden.textContent=gone; hidden.hidden=!gone; }
     var list=$('captionList'); if(!list||!state.layout) return;
     var texts=tplTexts(curTpl());
     list.querySelectorAll('.cap-note').forEach(function(n){
@@ -2629,6 +2667,12 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       term.textContent=label;description.textContent=value;details.append(term,description);
       return description;
     }
+    /* the code sentence joins these rows only when the lookup below finds a pick code for this phone and design */
+    var codeNotes=[];
+    function handoff(label,before,after){
+      var row=detail(label,before+after);
+      codeNotes.push(function(){ row.textContent=before+'The pick code identifies the base design only. '+after; });
+    }
     details.replaceChildren();code.textContent='';reviewCard=null;$('saveCounterCard').disabled=true;$('saveCounterCard').textContent='Preparing card…';
     kpCleanStage=!!state.layout;renderNow();
     reviewSource=document.createElement('canvas');reviewSource.width=canvas.width;reviewSource.height=canvas.height;
@@ -2644,6 +2688,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(reviewTpl){
       var reviewTotal=reviewTpl.slots.length;
       detail('Layout',reviewTpl.n+' \u00b7 '+filledSlots(reviewTpl)+' of '+reviewTotal+(reviewTotal===1?' photo':' photos'));
+      if(kpHiddenNote())detail('Photos',kpHiddenNote());
       tplTexts(reviewTpl).forEach(function(x){detail(x.label||x.key,kpCaptionHidden(x)?'Not shown on this phone':(captionValue(x)&&kpCaptionWaiting(x))?'Prints when photo '+(+x.slot+1)+' is added':(captionValue(x)||'Not added'));});
     }
     /* the Rated Case covers the phone, so its rim color is the finish that matters (pick codes do not encode the case) */
@@ -2660,10 +2705,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(kpNameText()){
       detail('Personalization',kpNameText());
       detail('Name style',(FONTS[state.textFont] ? FONTS[state.textFont].n : 'Selected font')+' · '+state.textColor+' · '+(state.textVertical?'vertical':'horizontal'));
-      detail('Personalization handoff',(file?'The pick code identifies the base design only. ':'')+'Show this preview so our team can match your name, size and placement before printing.');
+      handoff('Personalization handoff','','Show this preview so our team can match your name, size and placement before printing.');
     }
     if(state.photoImg&&(state.px||state.py||state.rot||state.scale!==1||state.fitMode==='fit')){
-      detail('Artwork placement','Custom placement'+(file?' — the pick code identifies the base design only.':'.')+' Show this preview so our team can match the crop, size and position before printing.');
+      handoff('Artwork placement','Custom placement. ','Show this preview so our team can match the crop, size and position before printing.');
     }
     var extras=addonDefs.filter(function(a){return state.addons[a.key];});
     extras.forEach(function(a){detail(a.name,'+$'+a.price.toFixed(2));});
@@ -2731,6 +2776,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       var d=(m?data.designsFor(m):data.designs).find(function(item){return item.file===file;});
       var key=m&&d&&KPI.pickCode(m,d,variant,state.addons.screen,state.chargerHelp,state.accessories,state.store);
       if(d)title.textContent=KPI.cleanTitle(d.title);
+      if(key)codeNotes.forEach(function(add){add();});
       code.textContent=key?'Pick code · '+key:'Ask the team to match this preview.';
       prepareCounterCard(version,code.textContent);
     }).catch(function(){if(version===reviewVersion&&dialog.open){code.textContent='Design code unavailable. Show the team this preview.';prepareCounterCard(version,'Pick code unavailable — ask the team to match this preview.');}});
@@ -2874,10 +2920,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   /* Why a Rated Case design cannot be printed ('' when it can). Every Rated print size is an estimate until a blank is
      measured, so this is an allow list: the config flag and the kit's own template must both say so. A Rated only kit
-     counts as Rated whatever the case type says. */
+     counts as Rated whatever the case type says, and so does a Rated panel mask that is still loaded. */
+  function kpPrintsRated(){ var k=KITS[state.model]; return state.caseType===CASE_RATED||!!(k&&k.ratedOnly)||/^view-rated-/.test(viewSrc||''); }
   function kpRatedPrintIssue(){
+    if(!kpPrintsRated()) return '';
     var k=KITS[state.model], only=!!(k&&k.ratedOnly);
-    if(state.caseType!==CASE_RATED&&!only) return '';
     if(!(window.KP_CONFIG&&KP_CONFIG.RATED_PRINT_READY===true)) return 'Rated Case printing is waiting on a test print with a real blank. '+(only?'This phone has no clear case, so check with Corey.':'Print this design on a clear case or check with Corey.');
     if(!(k&&k.rated&&k.rated.template==='measured')) return 'The '+kpShort(state.model)+' Rated Case print size is an estimate, not a measured blank. Check with Corey before printing.';
     return '';
@@ -2910,7 +2957,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       drawTextLayer(c2);
       c2.restore();
       applyPrintMask(c2,BLEED);
-      done(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+(kpRatedKit()||(KITS[state.model]||{}).ratedOnly?'-rated':'')+'-'+pxW+'x'+pxH+'-bleed1.5mm.png');
+      done(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+(kpPrintsRated()?'-rated':'')+'-'+pxW+'x'+pxH+'-bleed1.5mm.png');
       return;
     }
     if(state.layout){
@@ -2927,7 +2974,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     drawTextLayer(c2);
     c2.restore();
     applyPrintMask(c2,BLEED);
-    done(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+(kpRatedKit()||(KITS[state.model]||{}).ratedOnly?'-rated':'')+'-'+pxW+'x'+pxH+'-bleed1.5mm.png');
+    done(c,'print-'+state.model.replace(/[^a-z0-9]+/gi,'')+(kpPrintsRated()?'-rated':'')+'-'+pxW+'x'+pxH+'-bleed1.5mm.png');
     return true;
   }
   function applyPrintMask(c2,BLEED){
@@ -3106,9 +3153,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var k=KITS[state.model];
     if(type!==CASE_CLEAR&&type!==CASE_RATED) return;
     if(type===CASE_CLEAR && k && (k.toughOnly||k.ratedOnly)) return;
-    if(type===CASE_RATED && !(k && k.rated)){ kpToast('The Rated Case is not available for '+kpShort(state.model)+' yet. Showing the clear case.',6000); return; }
+    if(type===CASE_RATED && !(k && k.rated)){ kpRatedMissing(); return; }
     if(state.caseType===type) return;
     state.caseType=type; state.ratedForced=false; state.reserved=false;
+    /* the customer's own choice: a message about the phone's case is out of date now */
+    var note=$('kpToast'); if(note&&kpNoteShown&&note.textContent===kpNoteShown) note.style.opacity='0';
     if (k) loadKit(state.model);
     renderSwatches(); updateDpi(); updateStage(); updateSummary();
   }
@@ -3208,7 +3257,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       var su=JSON.parse(decodeURIComponent(m[1]));
       setTimeout(function(){
         if(su.m && KITS[su.m]!==undefined){ state.model=su.m; var ms=$('modelSel'); }
-        if(su.ct) state.caseType=su.ct;
+        if(su.ct){ state.caseType=su.ct; state.ratedForced=false; } /* the link's choice, not the first phone's */
         if(su.cal) Object.assign(CAL, su.cal);
         /* the brand whose list holds the shared phone, so a Galaxy link fills the Samsung model list */
         state.brand=Object.keys(modelsByBrand).find(function(b){ return modelsByBrand[b].indexOf(state.model)>-1; })||'Apple';
@@ -3362,7 +3411,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   kpStarted=true;
   function kpLayoutInfo(){
     var t=state.layout?curTpl():null; if(!t) return null;
-    return {id:t.id,name:t.n,words:tplTexts(t).length>0,filled:filledSlots(t),total:t.slots.length,
+    return {id:t.id,name:t.n,words:tplTexts(t).length>0,filled:filledSlots(t),total:t.slots.length,hidden:kpHiddenNote(),
       captions:tplTexts(t).map(function(x){return {key:x.key,label:x.label||x.key,text:captionValue(x),required:!!x.required,shown:!kpCaptionHidden(x),waiting:kpCaptionWaiting(x)&&!!captionValue(x)?(+x.slot+1):0};}),
       spare:kpSpare.length};
   }
@@ -3415,6 +3464,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     review:showCounterReview,
     setCase:kpSetCase,
     setRim:kpSetRim,
+    /* history went back (a tool closed, a step back): write the current phone, case and rim into that entry's address */
+    saveOptions:saveLibraryOptions,
     purge:function(){
       editorPurged=true;clearTimeout(window.__kpDpiTick);
       if(skyStudio)$('personalStudio').dispatchEvent(new Event('skyreset'));

@@ -31,7 +31,7 @@ for i,(collection,title,wash,href,pair) in enumerate(slides):
   assert (R/img.split('?')[0]).is_file(),img
   body+=f'<a class="paired-phone {("inverted" if j else "upright")}" href="{e(url)}" aria-label="Customize {e(label)}"><img src="{e(img)}" width="632" height="1244" alt="{e(label)} printed on a clear case" '+('fetchpriority="high"' if i==0 else 'loading="lazy"')+' decoding="async"></a>'
  label='Explore all 12 photographs' if collection=='NEW · OCEAN & RAIN AFTER DARK' else 'Make a drawing case' if collection=='YOUR CHILD’S ARTWORK' else 'Shop all City After Dark' if collection.startswith('CITY AFTER DARK') else 'Explore the collection'
- subtitle='Real photographs. Your everyday escape.<br>Printed on a clear case in store. $44.99.' if collection=='NEW · OCEAN & RAIN AFTER DARK' else 'Your photos. Your favorite prints. <br>Made personal in store. $44.99.'
+ subtitle='Real photographs. Your everyday escape.<br>Printed on a clear case in store. $44.99.' if collection=='NEW · OCEAN & RAIN AFTER DARK' else 'Your photos. Your favorite prints. <br>Made personal in store. From $44.99.'
  body+=f'<div class="campaign-pair-hint">Swipe to explore · Tap a case to make it yours</div></div><div class="campaign-copy"><span class="campaign-collection">{e(collection)}</span><strong class="campaign-title">{title}</strong><p class="campaign-subtitle">{subtitle}</p><div class="campaign-actions"><a class="campaign-shop" href="customizer.html">Design your case</a><a class="campaign-browse" href="{e(href)}">{label} →</a></div></div></div></article>'
 body+='</div><span class="edit-status" aria-live="polite"></span></section>'
 p=R/'index.html';s=p.read_text();

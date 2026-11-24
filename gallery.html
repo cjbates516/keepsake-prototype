@@ -177,9 +177,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     'Galaxy S26 Ultra','Galaxy S26 Plus','Galaxy S26','Galaxy S26 FE','Galaxy S25 Ultra','Galaxy S25 Plus','Galaxy S25','Galaxy S25 FE',
     'Galaxy S24 Ultra','Galaxy S24 Plus','Galaxy S24','Galaxy S24 FE','Galaxy A37','Galaxy A36','Galaxy A17'].filter(function(m){ return KP_DEVICES[m]; });
   Object.keys(KP_DEVICES).forEach(function(m){ if(DEVICE_ORDER.indexOf(m)<0) DEVICE_ORDER.push(m); });
-  /* the same rule as kpSlug in customizer.html; a phone's name also matches with its brand in front */
+  /* the same rule as kpSlug in customizer.html; a phone's name also matches with its brand in front, and the moto g 2025 and
+     2026 with the 5G some shops add */
   function slugify(m){ return m.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
-  function findDevice(text){ var slug=slugify(String(text||'')).replace(/^(apple|samsung|google|motorola)-/,''); return DEVICE_ORDER.find(function(m){ return slugify(m)===slug; })||null; }
+  function findDevice(text){ var slug=slugify(String(text||'')).replace(/^(apple|samsung|google|motorola)-/,'').replace(/^moto-g-5g-(2025|2026)$/,'moto-g-$1'); return DEVICE_ORDER.find(function(m){ return slugify(m)===slug; })||null; }
   function brandOf(m){ return RATED.only[m]?RATED.only[m].brand:m.indexOf('Galaxy')===0?'Samsung':'Apple'; }
 
   var designs = [], filter = 'All', device = null;
@@ -378,8 +379,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var chosen=KP_DEVICES[device].colors[+(card.dataset.selectedColor||0)];
     card.querySelectorAll('a[href*="customizer.html"]').forEach(function(a){
       var url=new URL(a.href);
-      if(ratedOnly(device)){url.searchParams.set('case','rated');url.searchParams.set('rim',chosen.n);}
-      else url.searchParams.set('finish',chosen.n);
+      /* a Rated only phone sends its rim without case=rated, as the editor's own address does: the phone chose that case,
+         not the customer, so the next phone with a clear case goes back to it */
+      url.searchParams.set(ratedOnly(device)?'rim':'finish',chosen.n);
       url.searchParams.set('view',previewMode);
       url.searchParams.set('colorway',artworkPicks[file]||'original');
       url.searchParams.set('back',browseReturn());
@@ -639,7 +641,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     kpCloseDrawer();
     if (file && selected) {
       device=selected;saveBrowseFilters();
-      location.assign('customizer.html?' + new URLSearchParams(Object.assign({design:file,model:slugify(selected),colorway:artworkPicks[file]||'original',back:back},ratedOnly(selected)?{'case':'rated',rim:KP_DEVICES[selected].colors[0].n}:{})));
+      location.assign('customizer.html?' + new URLSearchParams(Object.assign({design:file,model:slugify(selected),colorway:artworkPicks[file]||'original',back:back},ratedOnly(selected)?{rim:KP_DEVICES[selected].colors[0].n}:{})));
       return;
     }
     device = selected;
@@ -726,7 +728,16 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       else url.searchParams.delete(pair[0]);
     });
     if (url.href !== location.href) history.replaceState(null, '', url);
+    syncPhotoLinks();
   }
+  /* the "use your own photo" links open the editor on the chosen phone and come back here (the header and menu ones are
+     written by shop-menu.js, which runs before DOMContentLoaded) */
+  function syncPhotoLinks() {
+    document.querySelectorAll('a.library-photo-cta,#mobileMenu a[href^="customizer.html"],a.ks-start-case,#ks-menu-panel a[href^="customizer.html"]:not([href*="studio="])').forEach(function(a) {
+      a.href = 'customizer.html' + (device ? '?' + new URLSearchParams({model: slugify(device), back: browseReturn()}) : '');
+    });
+  }
+  document.addEventListener('DOMContentLoaded', syncPhotoLinks);
   var stateSel=null;
   var STATE_NAMES={PA:'Pennsylvania',DE:'Delaware',NY:'New York',MA:'Massachusetts',CA:'California',MD:'Maryland',IL:'Illinois',DC:'Washington DC',FL:'Florida',TN:'Tennessee'};
   function renderStates(){
