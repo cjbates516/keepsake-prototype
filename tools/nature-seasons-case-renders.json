@@ -1,0 +1,122 @@
+[
+  {
+    "output": "assets/nature-seasons/alpine-wildflowers.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 575,
+    "height": 1119,
+    "crop": [
+      336,
+      209,
+      911,
+      1328
+    ],
+    "cameraPoint": [
+      164,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/nature-seasons/desert-monsoon.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 575,
+    "height": 1119,
+    "crop": [
+      336,
+      209,
+      911,
+      1328
+    ],
+    "cameraPoint": [
+      164,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/nature-seasons/mistwood.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 575,
+    "height": 1119,
+    "crop": [
+      336,
+      209,
+      911,
+      1328
+    ],
+    "cameraPoint": [
+      164,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/nature-seasons/moonlit-coast.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 575,
+    "height": 1119,
+    "crop": [
+      336,
+      209,
+      911,
+      1328
+    ],
+    "cameraPoint": [
+      164,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/nature-seasons/sunlit-dunes.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 575,
+    "height": 1119,
+    "crop": [
+      336,
+      209,
+      911,
+      1328
+    ],
+    "cameraPoint": [
+      164,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/nature-seasons/winter-blue-hour.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "MagSafe Clear",
+    "width": 575,
+    "height": 1119,
+    "crop": [
+      336,
+      209,
+      911,
+      1328
+    ],
+    "cameraPoint": [
+      164,
+      116
+    ],
+    "cameraAlpha": 255
+  }
+]
