@@ -248,7 +248,7 @@
       if(frost&&withMask!==false){const f=await KPFrostSamples.prepare(model.name,null,KPI.caseUrl(model),2500,3000,ROOT,rim);imgs[0]=f.base;imgs[1]=f.mask;}
       var layout=(window.KP_PRINT_LAYOUTS||{})[model.name];
       if(withMask!==false&&!layout)throw new Error('Print preview geometry unavailable. Reload to try again.');
-      var ob = model.case_box, vb = layout?layout.box:model.mask_box, padX = 40, padY = 40;
+      var ob = model.case_box, vb = layout?(frost&&layout.ratedBox?layout.ratedBox:layout.box):model.mask_box, padX = 40, padY = 40;
       var x0 = Math.min(ob[0], vb[0]) - padX, y0 = Math.min(ob[1], vb[1]) - padY;
       var x1 = Math.max(ob[2], vb[2]) + padX, y1 = Math.max(ob[3], vb[3]) + padY;
       var k = width / (x1 - x0), W = Math.round((x1 - x0) * k), H = Math.round((y1 - y0) * k);
