@@ -111,7 +111,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/heic-loader.js"></script>
 <script src="assets/colorway-catalog.js?v=full-art-2-20261121"></script>
 <script src="assets/design-colorways.js?v=full-art-2-20261121"></script>
-<script src="instore/instore-lib.js?v=frost-center-20261124"></script>
+<script src="instore/instore-lib.js?v=counter-finish-20261124"></script>
 <style>
 .photo-looks{display:flex;gap:10px;overflow-x:auto;padding:6px 6px 14px;scroll-snap-type:x proximity}
 .photo-look{flex:0 0 106px;padding:6px;background:#fff;border:2px solid #dedad6;border-radius:12px;cursor:pointer;scroll-snap-align:start;color:#191921;font:800 12px "Nunito Sans",sans-serif}
@@ -168,7 +168,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/shop-dialogs.js" defer></script>
 <link rel="stylesheet" href="assets/shop-menu.css?v=frost-20261124"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=frost-20261124" defer></script><link rel="stylesheet" href="assets/case-zoom.css?v=slate-drawing-audit-20261124">
 <link rel="stylesheet" href="assets/accessories.css">
-<link rel="stylesheet" href="assets/design-editor.css?v=sky-zodiac-audit-20261124">
+<link rel="stylesheet" href="assets/design-editor.css?v=counter-finish-20261124">
 <!-- Rated Case photos: the See photos button and its viewer (assets/rated-gallery.js) -->
 <link rel="stylesheet" href="assets/rated-gallery.css?v=rated-photos-2">
 <script>window.KP_EDITOR=!new URLSearchParams(location.search).has('cal')&&new URLSearchParams(location.search).get('staff')!=='1';</script>
@@ -2457,6 +2457,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var issue=kpPrintIssue(true);
     if(issue||!caseReady||!lightReady||!finishReady){kpToast(issue||'Your case preview is loading. Try again in a moment.');return;}
     var dialog=$('counterReview'), details=$('reviewDetails'), code=$('reviewCode');
+    delete code.dataset.pickCode;
     var version=++reviewVersion, model=state.model, variant=state.variant;
     var file=state.isLibraryDesign&&state.photoImg&&state.photoImg.__kpDesignFile;
     function detail(label,value){
@@ -2560,9 +2561,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(version!==reviewVersion||!dialog.open)return;
       var m=data.activeModels.find(function(item){return item.name.replace(/^Samsung /,'')===model.replace(/^Samsung /,'');});
       var d=m&&data.designsFor(m).find(function(item){return item.file===file;});
-      var key=d&&KPI.pickCode(m,d,variant,state.addons.screen,state.chargerHelp,state.accessories,state.store,reviewRim&&reviewRim.n);
+      var key=d&&KPI.pickCode(m,d,variant,state.addons.screen,state.chargerHelp,state.accessories,state.store,reviewRim&&reviewRim.n,state.colorName);
       if(d)title.textContent=KPI.cleanTitle(d.title);
       code.textContent=key?'Pick code · '+key:'Ask the team to match this preview.';
+      if(key)code.dataset.pickCode='1';
       prepareCounterCard(version,code.textContent);
     }).catch(function(){if(version===reviewVersion&&dialog.open){code.textContent='Design code unavailable. Show the team this preview.';prepareCounterCard(version,'Pick code unavailable — ask the team to match this preview.');}});
   }
