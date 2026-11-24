@@ -102,7 +102,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
 <link rel="stylesheet" href="assets/shop-menu.css?v=frost-20261124"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=frost-20261124" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
-</head>
+<script src="assets/phone-finishes.js?v=iphone16-20261124"></script></head>
 <body class="kp-storefront kp-library kp-shop">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
 <div class="kp-page" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
@@ -158,6 +158,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     kit.colors=[{"n": "Silver", "h": "#e4e4e2", "f": "silver"}, {"n": "Black", "h": "#27282a", "f": "black"}, {"n": "Glacier", "h": "#adcadf", "f": "glacier"}, {"n": "Burgundy", "h": "#744653", "f": "burgundy"}].map(function(c){return {n:c.n,h:c.h,f:'i18'+suffix+'-'+c.f+'.svg?v=14'};});
     KP_DEVICES['iPhone 18 '+size]=kit;
   });
+  KPPhoneFinishes.apply(KP_DEVICES);
   var DEVICE_ORDER = ['iPhone 18 Pro Max','iPhone 18 Pro','iPhone 17 Pro Max','iPhone 17 Pro','iPhone 17','iPhone Air',
     'iPhone 16 Pro Max','iPhone 16 Pro','iPhone 16','iPhone 16 Plus',
     'iPhone 15 Pro Max','iPhone 15 Pro','iPhone 15','iPhone 15 Plus',

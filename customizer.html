@@ -168,13 +168,13 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/shop-dialogs.js" defer></script>
 <link rel="stylesheet" href="assets/shop-menu.css?v=frost-20261124"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=frost-20261124" defer></script><link rel="stylesheet" href="assets/case-zoom.css?v=slate-drawing-audit-20261124">
 <link rel="stylesheet" href="assets/accessories.css">
-<link rel="stylesheet" href="assets/design-editor.css?v=slate-drawing-audit-20261124">
+<link rel="stylesheet" href="assets/design-editor.css?v=sky-zodiac-audit-20261124">
 <!-- Rated Case photos: the See photos button and its viewer (assets/rated-gallery.js) -->
 <link rel="stylesheet" href="assets/rated-gallery.css?v=rated-photos-2">
 <script>window.KP_EDITOR=!new URLSearchParams(location.search).has('cal')&&new URLSearchParams(location.search).get('staff')!=='1';</script>
 <script src="assets/accessory-catalog.js"></script>
 <script src="assets/accessories.js?v=2"></script>
-</head>
+<script src="assets/phone-finishes.js?v=iphone16-20261124"></script></head>
 <body class="kp-shop kp-customizer">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
 <div class="kp-page" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
@@ -594,6 +594,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   });
   (function(){ var V={"iPhone 17 Pro Max": "view-i17pm.png", "iPhone 17 Pro": "view-i17p.png", "iPhone 17": "view-i17.png", "iPhone Air": "view-i17a.png", "iPhone 16 Pro Max": "view-i16pm.png", "iPhone 16 Pro": "view-i16p.png", "iPhone 16": "view-i16n.png", "iPhone 15 Pro Max": "view-i15pm.png", "iPhone 15 Pro": "view-i15p.png", "iPhone 15": "view-i15.png", "iPhone 15 Plus": "view-i15m.png", "iPhone 13 Pro Max": "view-i13pm.png", "iPhone 13 Pro": "view-i13p.png", "iPhone 13": "view-i13.png", "iPhone 13 mini": "view-i13mn.png", "iPhone 12 Pro Max": "view-i12pm.png", "iPhone 12 Pro": "view-i12p.png", "iPhone 12": "view-i12.png", "iPhone 12 mini": "view-i12mn.png", "iPhone 14 Pro Max": "view-i14pm.png", "iPhone 14 Pro": "view-i14p.png", "iPhone 14 Plus": "view-i14m.png", "iPhone 14": "view-i14.png", "iPhone 16 Plus": "view-i16m.png", "Samsung Galaxy S26": "view-s26.png", "Samsung Galaxy S26 Plus": "view-s26.png", "Samsung Galaxy S26 Ultra": "view-s26u.png"};
     Object.keys(V).forEach(function(m){ if(KITS[m]) KITS[m].view=V[m]; }); })();
+  KPPhoneFinishes.apply(KITS);
   /* KP-RATED-KITS: the Rated Case (drop rated, white printable back panel, frosted rim in Smoke Frost or Clear Frost,
      built in MagSafe magnets). Photos share the 2500 × 3000 frame of the clear photos and the view-rated-* masks cover
      the printable panel only. Every panel mask lies inside its base kit's clear view mask (the S26 and S26 Ultra masks
@@ -3248,7 +3249,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   };
 })();
 </script>
-<script src="assets/design-editor.js?v=slate-drawing-audit-20261124"></script>
+<script src="assets/design-editor.js?v=sky-zodiac-audit-20261124"></script>
 <!-- Rated Case photos: after the editor, so the button joins its case row (tools/build_rated_photos.py makes the photos) -->
 <script src="assets/rated-gallery.js?v=rated-photos-3"></script>
 <script>
