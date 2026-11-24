@@ -101,7 +101,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/shop-refresh.css?v=frost-20261124">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css?v=frost-20261124"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=frost-20261124" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
+<link rel="stylesheet" href="assets/shop-menu.css?v=category-menu-20261124"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=category-menu-20261124" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 <script src="assets/phone-finishes.js?v=iphone16-20261124"></script></head>
 <body class="kp-storefront kp-library kp-shop">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
@@ -918,6 +918,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if (pagedD) grid.insertAdjacentHTML('beforeend',
       '<button class="kpLoadMore" style="grid-column:1/-1;display:block;width:100%;max-width:420px;margin:18px auto;background:#DC282E;color:#FFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Load more — ' + (kpTotalD - items.length) + ' left</button>');
   }
+  window.KPBrowseStyle=function(cat){
+    if(cat!=='All'&&!designs.some(function(d){return !d.hidden&&d.category===cat;}))return;
+    filter=cat;searchQ='';$('deskSearch').value='';renderWizard();renderFilters();renderStates();renderGrid();
+    var title=$('shopTitle');title.tabIndex=-1;title.scrollIntoView({block:'start',behavior:'instant'});title.focus({preventScroll:true});
+  };
   function kpChipsSync(){
     var el=document.getElementById('kpChips'); if(!el) return;
     var chip=function(action,label,hot){ return '<button class="kpChip" data-action="'+action+'" style="display:inline-block;margin-right:8px;background:'+(hot?'#FBE0E1':'#FFFFFF')+';border:1px solid '+(hot?'#DC282E':'#E4E3E3')+';color:'+(hot?'#DC282E':'#4E4E50')+';font-size:12.5px;font-weight:800;padding:8px 14px;border-radius:999px;cursor:pointer">'+label+'</button>'; };
@@ -932,6 +937,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var chip = e.target.closest('.kpChip');
     if (chip) {
       if (chip.dataset.action === 'phone') kpOpenDrawer();
+      else if(chip.dataset.action==='style'&&window.KPShopMenu)KPShopMenu.open(chip);
       else {
         var control = $(chip.dataset.action === 'style' ? 'wizCat' : 'wizSearch');
         control.scrollIntoView({block:'center',behavior:'instant'});
