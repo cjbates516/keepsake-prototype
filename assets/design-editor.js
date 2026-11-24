@@ -147,6 +147,14 @@
   const productPrice=document.createElement('p');productPrice.id='studioProductPrice';product.append(productPrice);
   const promise=document.createElement('p');promise.className='studio-product-note';promise.textContent='Made yours in store. Choose a background, add your name, then show our team.';product.append(promise);
   rail.insertBefore(product,tray);
+  // Always-visible entry points: customers should not have to discover uploads inside a tool.
+  const sourceActions=document.createElement('div');sourceActions.id='studioSources';
+  sourceActions.setAttribute('role','group');sourceActions.setAttribute('aria-label','Add your artwork');
+  sourceActions.innerHTML='<button type="button" id="studioUpload"></button><button type="button" id="studioDesigns">Browse designs</button>';
+  grid.before(sourceActions);
+  $('studioUpload').textContent=kiosk?'Use your own photo':'Upload your photo or design';
+  $('studioUpload').onclick=()=>{if(kiosk||core.info().layout){openTool('photo');if(!mobile.matches)rail.scrollTop+=panels.photo.getBoundingClientRect().top-rail.getBoundingClientRect().top;return;}$('uploadBtn').click();};
+  $('studioDesigns').onclick=()=>$('studioBrowse').click();
   const media=document.createElement('div');media.className='studio-media';
   const thumbs=document.createElement('div');thumbs.id='studioVariations';thumbs.setAttribute('role','group');thumbs.setAttribute('aria-label','See backgrounds on your case');thumbs.hidden=true;
   const wrap=$('stageWrap');wrap.before(media);media.append(thumbs,wrap);
@@ -256,6 +264,7 @@
     remember();tool=null;hideSheet();step=next;document.body.dataset.studioStep=step;
     if(step==='setup'&&storePicker&&(!storeConfirmed||!core.info().store))storePicker.open=true;
     tray.hidden=host.hidden=step!=='edit';preview.hidden=step!=='preview';setup.hidden=step!=='setup';
+    sourceActions.hidden=step!=='edit'||info.sky;
     $('studioUndo').hidden=$('studioRedo').hidden=step!=='edit';
     top.querySelectorAll('[data-step]').forEach(li=>{if(li.dataset.step===step)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});
     if(step==='edit'&&!mobile.matches)tool=home();paintTool();
