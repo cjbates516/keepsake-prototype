@@ -305,7 +305,7 @@ body.design-editor #stageCanvas,body.design-editor #stageStick.studio-fit #stage
 }
 
 @media(max-width:760px){
- body.design-editor[data-studio-step=preview] #stageCanvas{max-height:24dvh!important;min-height:0!important}
+ body.design-editor[data-studio-step=preview] #stageCanvas{max-height:clamp(240px,36dvh,340px)!important;min-height:0!important}
  .design-editor[data-studio-step=preview] .studio-quality,.design-editor[data-studio-step=preview] #studioEditAgain,.design-editor[data-studio-step=preview] #studioPreview>.studio-help{display:none}
  .design-editor[data-studio-step=preview] #studioPreview h2{font-size:21px;margin-bottom:6px}
  .design-editor[data-studio-step=preview] #studioPreview>p{font-size:12px;line-height:1.35;margin-bottom:6px}

@@ -168,7 +168,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/shop-dialogs.js" defer></script>
 <link rel="stylesheet" href="assets/shop-menu.css?v=frost-20261124"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=frost-20261124" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 <link rel="stylesheet" href="assets/accessories.css">
-<link rel="stylesheet" href="assets/design-editor.css?v=momentum-20261121-product-studio-1-rated-3">
+<link rel="stylesheet" href="assets/design-editor.css?v=frost-walkthrough-20261124">
 <!-- Rated Case photos: the See photos button and its viewer (assets/rated-gallery.js) -->
 <link rel="stylesheet" href="assets/rated-gallery.css?v=rated-photos-2">
 <script>window.KP_EDITOR=!new URLSearchParams(location.search).has('cal')&&new URLSearchParams(location.search).get('staff')!=='1';</script>
@@ -242,7 +242,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             </button>
             <button type="button" id="ctRated" class="ctCard" data-ct="Rated Case" aria-pressed="false">
               <span class="ctPhoto"><canvas id="ctThumbRated" width="144" height="264" aria-hidden="true"></canvas></span>
-              <strong>Rated Case</strong><small id="ctPriceRated">$49.99 · Confirm availability in store</small>
+              <strong>Frost case</strong><small id="ctPriceRated">$49.99 · Confirm availability in store</small>
             </button>
           </div>
 
@@ -415,7 +415,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     <div id="reviewCode" role="status"></div>
     <div id="reviewAtGlance"><section id="reviewOverview" aria-label="Your setup and total"></section>
     <button type="button" class="case-zoom-button" aria-label="Enlarge your counter case preview" onclick="document.getElementById('skyCaseZoom').click()"><canvas id="reviewPreview" width="300" height="360" aria-label="Your case preview" role="img"></canvas><span>Enlarge case</span></button></div>
-    <details id="reviewSpecification"><summary>Design &amp; staff details</summary><dl id="reviewDetails"></dl></details>
+    <details id="reviewSpecification"><summary>Design &amp; team member details</summary><dl id="reviewDetails"></dl></details>
     <p id="reviewInstruction">Save a counter card or keep this screen open for the team to check your design and total before you pay. This is a preview, not a submitted order.</p>
     <form method="dialog" class="review-actions"><button type="button" id="saveCounterCard" disabled>Save counter card</button><button autofocus>Back to my design</button></form>
   </dialog>
@@ -522,7 +522,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
      reload, a restored tab or a shared link keeps the case and its price. loadKit runs kpNormalizeCaseType on the
      first draw, so a phone without a Rated kit falls back to the clear case with the toast; kpRim() falls back to
      the first rim when the name is not one this phone's Rated Case comes in. */
-  (function(){ var q=new URLSearchParams(location.search); if(q.get('case')!=='rated') return;
+  (function(){ var q=new URLSearchParams(location.search);
+    // New customer sessions start with frost; explicit clear choices and legacy staff codes stay clear.
+    if(q.get('case')!=='rated'&&(q.has('case')||q.get('staff')==='1'||q.has('style')))return;
     state.caseType=CASE_RATED; var rim=q.get('rim'); state.rimColor=rim&&/^[A-Za-z ]{1,24}$/.test(rim)?rim:null; })();
 
   if(new URLSearchParams(location.search).get('staff')==='1'){var requestedFile=new URLSearchParams(location.search).get('design');if(requestedFile&&!/^[a-z0-9-]+\.(jpg|png)$/.test(requestedFile)){state.handoffErrorType='design';state.handoffError='This design link is invalid. Return to the print counter and find it again.';}}
@@ -620,7 +622,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   function kpNormalizeCaseType(){
     var wanted=state.caseType;state.caseType=kpCaseTypeFor(state.model,wanted);
-    if(wanted===CASE_RATED&&state.caseType!==CASE_RATED)kpToast('The Rated Case is not available for '+state.model.replace(/^Samsung /,'')+' yet. Showing the clear case.',6000);
+    if(wanted===CASE_RATED&&state.caseType!==CASE_RATED)kpToast('A frost case is not available for '+state.model.replace(/^Samsung /,'')+' yet. Showing the clear case.',6000);
     return state.caseType;
   }
   function kpRatedKit(){ var k=KITS[state.model]; return state.caseType===CASE_RATED&&k&&k.rated?k.rated:null; }
@@ -2189,7 +2191,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(state.layout && low && state.quality!=='green') kpWeakSlot=low.slot;
     if(state.isLibraryDesign){
       setPrintBadge(null);
-      el.textContent=dpi+' PPI at this size'+(dpi<300?' · Check fine detail in the enlarged preview.':'');
+      el.textContent=staffModeOn?dpi+' PPI at this size':(dpi<300?'Check fine detail in the enlarged preview.':'Looks sharp at this size.');
       el.style.color=dpi<300?'#794612':'#216b46';
       return;
     }
@@ -2344,7 +2346,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var url=new URL(location.href);
     var options={design:file,model:state.model.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'),finish:state.colorName,colorway:state.variant,view:state.previewMode,glass:state.addons.screen?'1':null,lens:null,extras:state.accessories.join(',')||null,charger:state.chargerHelp?'1':null,store:state.store,
       /* the case and its rim (read back at startup); a legacy style=hybrid link is dropped, it opens the clear case */
-      'case':kpRatedKit()?'rated':null,rim:kpRatedKit()?kpRim().n:null,style:null};
+      'case':kpRatedKit()?'rated':'clear',rim:kpRatedKit()?kpRim().n:null,style:null};
     Object.entries(options).forEach(function(pair){if(pair[1])url.searchParams.set(pair[0],pair[1]);else url.searchParams.delete(pair[0]);});
     if(url.href!==location.href)history.replaceState(history.state,'',url);
   }
@@ -2368,10 +2370,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(cnEl.__kpNature!==(nature==='rated'?'rated:'+kpRim().n:nature)){
         cnEl.__kpNature=nature==='rated'?'rated:'+kpRim().n:nature;
         if(nature==='tough') cnEl.innerHTML='Tough Magnetic — solid protective back with built-in magnets<span id="colorName3" style="display:none"></span>';
-        else if(nature==='rated'){ cnEl.textContent='Rated Case, clear back with a '+kpRim().n+' rim'; cnEl.insertAdjacentHTML('beforeend','<span id="colorName3" style="display:none"></span>'); }
+        else if(nature==='rated'){ cnEl.textContent=kpRim().n+' case'; cnEl.insertAdjacentHTML('beforeend','<span id="colorName3" style="display:none"></span>'); }
         else cnEl.innerHTML='clear, so the <span id="colorName3"></span> shows through';
         kpFinishLabels();
-        var cnNote=$('caseNatureNote'); if(cnNote) cnNote.textContent=nature==='rated'?'Rated Case preview \u00b7 Colors are approximate':'Clear case on your phone \u00b7 Device colors are approximate';
+        var cnNote=$('caseNatureNote'); if(cnNote) cnNote.textContent=nature==='rated'?'Frost case preview \u00b7 Colors are approximate':'Clear case on your phone \u00b7 Device colors are approximate';
       } }
     var accessoryLoadFailed=KPAccessories.missing&&new URLSearchParams(location.search).has('extras');
     $('cartBtn').disabled=accessoryLoadFailed;$('reserveBtn').disabled=accessoryLoadFailed;
@@ -2499,8 +2501,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var extras=addonDefs.filter(function(a){return state.addons[a.key];});
     extras.forEach(function(a){detail(a.name,'+$'+a.price.toFixed(2));});
     state.accessories.forEach(function(id){var a=KPAccessories.get(id);detail(KPAccessories.label(a),'$'+KPAccessories.price(a,state.store).toFixed(2)+' · SKU '+a.sku+(KPAccessories.available(a,state.store)?'':' · confirm availability here')+(KPAccessories.compatible(a,state.model)?'':' · CHECK PHONE FIT'));});
-    if(state.accessories.length)detail('Accessories','Price and stock confirmed by staff · 1-year limited warranty');
-    if(state.chargerHelp)detail('Charger request','Help me choose · compatibility and price confirmed by staff; not included in total');
+    if(state.accessories.length)detail('Accessories','Price and stock confirmed by a team member · 1-year limited warranty');
+    if(state.chargerHelp)detail('Charger request','Help me choose · compatibility and price confirmed by a team member; not included in total');
     if(state.promo&&promoTable[state.promo])detail('Discount',promoTable[state.promo].name);
     detail('Store',state.store);
     var newark=state.store==='Newark, DE';
@@ -2517,7 +2519,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(reviewTpl){overviewText('p','Layout: '+reviewTpl.n+' \u00b7 '+filledSlots(reviewTpl)+' of '+reviewTpl.slots.length+(reviewTpl.slots.length===1?' photo':' photos'),'review-personalization');tplTexts(reviewTpl).forEach(function(x){var v=captionValue(x);if(v&&!kpCaptionHidden(x)&&!kpCaptionWaiting(x))overviewText('p',(x.label||x.key)+': '+v.replace(/\n/g,' / '),'review-personalization');});}
     var items=overviewText('ul','','review-items');
     function overviewItem(text){var li=document.createElement('li');li.textContent=text;items.append(li);}
-    overviewItem((reviewRim?CASE_RATED:'Case')+' · $'+basePrice().toFixed(2));
+    overviewItem((reviewRim?reviewRim.n:'Case')+' · $'+basePrice().toFixed(2));
     if(skyStudio&&state.photoImg?.__kpSkyRows){var skyRows=Object.fromEntries(state.photoImg.__kpSkyRows);overviewItem(skyRows.Occasion+' · '+skyRows.Date);}
     if(drawingAtCounter())overviewItem('Child’s drawing · to add with our team');
     extras.forEach(function(a){overviewItem(a.name+' · $'+a.price.toFixed(2));});
@@ -2545,7 +2547,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           code.replaceChildren(download);
         }, 'image/png');
       }
-      if(skyStudio&&new URLSearchParams(location.search).get('kiosk')==='1')code.textContent='Keep this screen open. Our team can recreate your sky from Design & staff details below.';
+      if(skyStudio&&new URLSearchParams(location.search).get('kiosk')==='1')code.textContent='Keep this screen open. Our team can recreate your sky from Design & team member details below.';
       if (drawingStudio) code.textContent=drawingAtCounter()?'Drawing still to add. Bring the original drawing or its photo to our team. This is a case setup, not a finished print.':'Bring the original drawing photo with this preview so the team can prepare your case.';
       else if (!skyStudio && state.layout) code.textContent=kpCollageInstruction(' and show this preview at the counter.');
       else if (!skyStudio && state.photoImg) code.textContent='Bring the original photos on your phone and show this preview at the counter.';
@@ -2922,9 +2924,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var k=KITS[state.model];
     if(type!==CASE_CLEAR&&type!==CASE_RATED) return;
     if(type===CASE_CLEAR && k && k.toughOnly) return;
-    if(type===CASE_RATED && !(k && k.rated)){ kpToast('The Rated Case is not available for '+state.model.replace(/^Samsung /,'')+' yet. Showing the clear case.',6000); return; }
+    if(type===CASE_RATED && !(k && k.rated)){ kpToast('A frost case is not available for '+state.model.replace(/^Samsung /,'')+' yet. Showing the clear case.',6000); return; }
     if(state.caseType===type) return;
     state.caseType=type; state.reserved=false;
+    if(!staffModeOn){var caseUrl=new URL(location.href);caseUrl.searchParams.set('case',type===CASE_RATED?'rated':'clear');if(type!==CASE_RATED)caseUrl.searchParams.delete('rim');history.replaceState(history.state,'',caseUrl);}
     if (k) loadKit(state.model);
     renderSwatches(); updateDpi(); updateStage(); updateSummary();
   }
@@ -3244,7 +3247,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   };
 })();
 </script>
-<script src="assets/design-editor.js?v=momentum-20261123-seasonal-return-1"></script>
+<script src="assets/design-editor.js?v=frost-walkthrough-20261124"></script>
 <!-- Rated Case photos: after the editor, so the button joins its case row (tools/build_rated_photos.py makes the photos) -->
 <script src="assets/rated-gallery.js?v=rated-photos-3"></script>
 <script>
