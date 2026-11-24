@@ -2,7 +2,7 @@
    Each field is drawn alone through the real print transform and intersected with the print mask (printMaskCache.trim),
    with its default words and with maximum length words. A field this phone cannot show must print nothing and be
    reported as hidden (kpCaptionHidden), so the review rows and staff details can say so. Phones with a Rated Case
-   run again on the Rated panel mask. A field that hides its default words while it prints its maximum length words
+   run again on the Rated panel mask. A phone without layouts (the iPhone Duo) is left out. A field that hides its default words while it prints its maximum length words
    fails (a short word must never be hidden where a longer one in the same field prints).
    usage: node tools/tests/collage_words_fit.cjs [outdir]   (KP_BASE=http://127.0.0.1:PORT/ to use a running server;
    KP_ENGINES=chromium,webkit; KP_MODELS=slug,slug to limit the kits; KP_CASES=clear,rated). Photos are synthetic canvases. */
@@ -13,7 +13,7 @@ const out=path.resolve(process.argv[2]||'/tmp/keepsake-words-fit');fs.mkdirSync(
 const types={'.html':'text/html','.js':'application/javascript','.css':'text/css','.json':'application/json','.webp':'image/webp','.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml','.woff2':'font/woff2'};
 let server=null;
 function serve(){return new Promise(r=>{server=http.createServer((req,res)=>{let f=path.join(root,decodeURIComponent(new URL(req.url,'http://local').pathname));if(f.endsWith(path.sep))f+='index.html';if(!f.startsWith(root+path.sep)){res.writeHead(403).end();return}fs.readFile(f,(e,d)=>{if(e){res.writeHead(404).end();return}res.setHeader('Content-Type',types[path.extname(f)]||'application/octet-stream');res.end(d)})});server.listen(0,'127.0.0.1',()=>r('http://127.0.0.1:'+server.address().port+'/'))})}
-const HOOK='window.__W={st:function(){return state;},choose:chooseLayout,cur:curTpl,map:tplMap,dc:drawCaptions,pm:function(){return printMaskCache;},art:artMatrix,TPL:function(){return TPL;},FIT:function(){return FIT;},kits:function(){return Object.keys(KITS);},rated:function(){return Object.keys(KITS).filter(function(m){return !!KITS[m].rated;});},tplImage:tplImage,hidden:kpCaptionHidden,ready:function(){return {c:caseReady,l:lightReady,v:viewReady,n:KP_TPLS.length,mb:!!maskBox,f:viewFailed,vs:viewSrc};},tpls:function(){return KP_TPLS;}};window.__kp={';
+const HOOK='window.__W={st:function(){return state;},choose:chooseLayout,cur:curTpl,map:tplMap,dc:drawCaptions,pm:function(){return printMaskCache;},art:artMatrix,TPL:function(){return TPL;},FIT:function(){return FIT;},kits:function(){return Object.keys(KITS).filter(function(m){return !KITS[m].noLayouts;});},rated:function(){return Object.keys(KITS).filter(function(m){return !!KITS[m].rated;});},tplImage:tplImage,hidden:kpCaptionHidden,ready:function(){return {c:caseReady,l:lightReady,v:viewReady,n:KP_TPLS.length,mb:!!maskBox,f:viewFailed,vs:viewSrc};},tpls:function(){return KP_TPLS;}};window.__kp={';
 const results=[];
 function check(name,ok,detail){results.push({name,ok:!!ok,detail});console.log((ok?'PASS ':'FAIL ')+name+(detail===undefined?'':' '+JSON.stringify(detail)));}
 const INPAGE=`window.WF={

@@ -16,7 +16,7 @@
 <script src="assets/case-shell.js?v=clear-mounted-2"></script>
 <script src="assets/mask-geometry.js?v=rated-all-1"></script>
 <script src="assets/rated-camera-geometry.js?v=rated-all-1"></script>
-<script src="assets/print-layouts.js"></script>
+<script src="assets/print-layouts.js?v=rated-all-1"></script>
 <script src="assets/counter-card.js?v=counter-card-1"></script>
 <title>Design your keepsake — Keepsake Printing Co</title>
 <meta name="description" content="Design your custom phone case: upload a photo or pick a ready-made design, see it on your exact phone, and review your design with our team in store.">
@@ -2071,7 +2071,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   function chooseLayout(id){
     id=id||null;
-    if(id===(state.layout||null)) return;
+    if(id===(state.layout||null)||(id&&kpLayoutsOff())) return;
     var t=id?KP_TPLS.find(function(x){return 'tpl:'+x.id===id;}):null;
     if(id&&!t) return;
     /* photos still decoding follow the customer (requeued below) instead of being dropped */
