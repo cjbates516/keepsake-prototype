@@ -10,18 +10,19 @@
 (() => {
   const core = window.KPStudioCore, stage = document.getElementById('stageStick');
   if (!core || !stage || window.KPRatedGallery) return;
-  const V = 'rated-photos-2', DIR = 'assets/cases/rated-photos/', RATED = 'Rated Case';
+  // V is the photos' own version (a photo never changes under its name), LIST the photo list's, which changes with the phones
+  const V = 'rated-photos-2', LIST = 'rated-photos-4', DIR = 'assets/cases/rated-photos/', RATED = 'Rated Case';
   const editor = document.body.classList.contains('design-editor');
   // the shared in-store iPad: a customer there cannot check a connection, so failures point to a team member
   const kiosk = new URLSearchParams(location.search).get('kiosk') === '1';
   const failText = what => what + ' could not load. ' + (kiosk ? 'Try again or ask a team member.' : 'Check your connection and try again.');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const src = f => DIR + f + '?v=' + V;
-  const short = m => String(m || '').replace(/^Samsung /, '');
+  const short = m => String(m || '').replace(/^(Samsung|Google|Motorola) /, '');
   let manifest = null, request = null, purged = false;
   function load() {
     if (manifest) return Promise.resolve(manifest);
-    if (!request) request = fetch(DIR + 'manifest.json?v=' + V).then(r => { if (!r.ok) throw Error('manifest ' + r.status); return r.json(); })
+    if (!request) request = fetch(DIR + 'manifest.json?v=' + LIST).then(r => { if (!r.ok) throw Error('manifest ' + r.status); return r.json(); })
       .then(m => (manifest = m)).catch(e => { request = null; throw e; });
     return request;
   }
@@ -46,14 +47,16 @@
     if (ct) { opener.classList.add('rg-open-classic'); ct.after(opener); } else stage.append(opener);
   }
 
-  /* model -> its photo set and rims (only rims this phone's kit offers and the manifest has photos for) */
+  /* model -> its photo set and the rims this phone's kit offers. A rim with no photos of its own (Galaxy S24 and S25 in
+     Smoke Frost) keeps its chip and shows the other rim's photos: photosOf says which, and the note under them too. */
   function resolve(model, info) {
     const m = manifest && manifest.models[model];
     if (!m) return null;
     const set = manifest.sets[m.key] || {};
     const kitRims = (info && info.rims && info.rims.length ? info.rims : m.rims.map(n => ({ n })));
-    const rims = kitRims.filter(r => (set[r.n] || []).length).map(r => ({ n: r.n, h: r.h || (r.n === 'Smoke Frost' ? '#404040' : '#C4C5C6') }));
-    return rims.length ? { key: m.key, similar: m.similar, set, rims } : null;
+    const rims = kitRims.map(r => ({ n: r.n, h: r.h || (r.n === 'Smoke Frost' ? '#404040' : '#C4C5C6') }));
+    const shown = Object.keys(set).filter(n => set[n].length);
+    return rims.length && shown.length ? { key: m.key, similar: m.similar, set, rims, photosOf: n => (shown.includes(n) ? n : shown[0]) } : null;
   }
   const chosenRim = (i, rims) => (i.caseType === RATED && rims.some(r => r.n === i.rim) ? i.rim : rims[0].n);
   let syncTimer = 0, openerKey = '';
@@ -63,7 +66,7 @@
     const i = core.info(), r = manifest ? resolve(i.model, i) : null;
     opener.hidden = !i.ratedAvailable || (!!manifest && !r);
     if (!r || opener.hidden) return;
-    const rim = chosenRim(i, r.rims), list = r.set[rim], pic = list.find(p => p.view === 'side') || list[0], key = pic.thumb;
+    const rim = chosenRim(i, r.rims), list = r.set[r.photosOf(rim)], pic = list.find(p => p.view === 'side') || list[0], key = pic.thumb;
     if (key !== openerKey) { openerKey = key; openerImg.src = src(pic.thumb); }
   }
   const syncSoon = () => { if (!syncTimer) syncTimer = setTimeout(syncOpener, 60); };
@@ -106,7 +109,7 @@
   const keyOf = p => p.key || (/^rp-([a-z0-9]+)-/.exec(p.file) || [])[1];
   function items() {
     if (!manifest) return [];
-    return st.set === 'other' ? manifest.other.filter(p => !st.r || keyOf(p) !== st.r.key) : (st.r ? st.r.set[st.rim] || [] : []);
+    return st.set === 'other' ? manifest.other.filter(p => !st.r || keyOf(p) !== st.r.key) : (st.r ? st.r.set[st.r.photosOf(st.rim)] : []);
   }
   /* the 1600 x 1920 file when the photo would be drawn more than 15% bigger than 1000 x 1200 device pixels */
   function file(p) {
@@ -120,9 +123,11 @@
     q('#rgSub').textContent = 'On ' + short(st.model);
     dialog.querySelectorAll('[data-set]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.set === st.set)));
     q('.rg-sets').hidden = !manifest || !manifest.other.length;
-    const note = q('.rg-note');
-    note.textContent = !mine ? 'The same case on other phones and colors. We do not make it for every phone shown yet.'
-      : st.r && st.r.similar ? 'Photos show this case on a similar ' + (/^iPhone/.test(st.model) ? 'iPhone.' : 'phone.') : '';
+    const note = q('.rg-note'), from = st.r ? st.r.photosOf(st.rim) : st.rim;
+    const like = st.r && st.r.similar ? ' on a similar ' + (/^iPhone/.test(st.model) ? 'iPhone' : 'phone') : '';
+    note.textContent = !mine ? 'The same case on other phones and colors.'
+      : from !== st.rim ? 'Photos show ' + from + like + '. ' + st.rim + ' is the same case with a ' + (st.rim === 'Smoke Frost' ? 'dark' : 'light') + ' rim.'
+      : like ? 'Photos show this case' + like + '.' : '';
     note.hidden = !note.textContent;
     // the rim chips stay on both sets: Choose below names this phone's rim, so the chips that change it stay in view
     q('.rg-rims').hidden = !st.r;
@@ -142,15 +147,17 @@
       }));
     }
     chips.querySelectorAll('[data-rim]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.rim === st.rim)));
-    // what the case is, beside the photos on larger screens (the editor shows the price on phones). No drop rating here:
-    // the full site audit (#71) removed that unsupported claim, and the case cards now say "Confirm availability in store".
+    // what the case is, beside the photos on larger screens (the editor shows the price on phones). The drop rating is the
+    // one published for this phone's blank, as on the case card (info().drop, none on the iPhone Duo).
     const rimNames = (st.r ? st.r.rims : (i.rims || [])).map(r => r.n);
-    q('.rg-facts').replaceChildren(...['Rated Case \u00b7 $' + Number(i.prices && i.prices.rated || 0).toFixed(2), 'Confirm availability in store', 'Your design printed on the white back',
+    q('.rg-facts').replaceChildren(...['Rated Case \u00b7 $' + Number(i.prices && i.prices.rated || 0).toFixed(2), i.drop, 'Confirm availability in store', 'Your design printed on the back',
       rimNames.length ? 'Frosted rim in ' + rimNames.join(' or ') : ''].filter(Boolean).map(t => { const li = document.createElement('li'); li.textContent = t; return li; }));
     const done = i.caseType === RATED && i.rim === st.rim && i.model === st.model;
-    choose.textContent = done ? 'Back to my design' : 'Choose Rated Case · ' + st.rim;
+    // a phone that comes in the Rated Case only already has it, so there Choose changes the rim alone
+    choose.textContent = done ? 'Back to my design' : 'Choose ' + (i.clearAvailable === false && i.caseType === RATED ? '' : RATED + ' · ') + st.rim;
     choose.dataset.done = done ? '1' : '';
     st.items = items();
+    thumbs.classList.toggle('rg-many', st.items.length > 8);
     thumbs.replaceChildren(...st.items.map((p, n) => {
       const b = document.createElement('button'); b.type = 'button'; b.className = 'rg-thumb'; b.dataset.index = n;
       b.setAttribute('aria-label', 'Photo ' + (n + 1) + ' of ' + st.items.length + ': ' + p.caption);
@@ -279,7 +286,7 @@
     else if (t.closest('.rg-retry')) { if (!manifest) { message('Loading photos…'); load().then(() => { st.r = resolve(st.model, core.info()); if (st.r) st.rim = chosenRim(core.info(), st.r.rims); paint(); }, () => paint()); } else { img.removeAttribute('src'); show(st.index, 0); } }
     else if (t.closest('.rg-thumb')) show(+t.closest('.rg-thumb').dataset.index, +t.closest('.rg-thumb').dataset.index - st.index);
     else if (t.closest('[data-set]')) { const s = t.closest('[data-set]').dataset.set; if (s !== st.set) { st.set = s; st.index = 0; thumbs.scrollLeft = q('.rg-side').scrollTop = 0; paint(); } }
-    else if (t.closest('[data-rim]')) { const n = t.closest('[data-rim]').dataset.rim; if (n !== st.rim) { st.rim = n; if (st.set === 'mine') st.index = Math.min(st.index, (st.r.set[n] || []).length - 1); paint(); } }
+    else if (t.closest('[data-rim]')) { const n = t.closest('[data-rim]').dataset.rim; if (n !== st.rim) { st.rim = n; if (st.set === 'mine') st.index = Math.min(st.index, st.r.set[st.r.photosOf(n)].length - 1); paint(); } }
     else if (t.closest('.rg-choose')) { if (!choose.dataset.done) choice = { model: st.model, rim: st.rim }; close(); }
   });
   dialog.addEventListener('keydown', e => {

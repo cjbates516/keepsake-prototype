@@ -1,6 +1,10 @@
 /* Rated Case photos: the See photos button beside Enlarge case and its viewer (assets/rated-gallery.js), with the photos
    from tools/build_rated_photos.py. Chromium and WebKit at 390 x 844 (touch) and 1440 x 900.
-   Covers: every site Rated phone and rim has at least 3 photos that load (HTTP 200) and decode at their stated size;
+   Covers: every site Rated phone and rim (RATED and RATED_ONLY) has at least 3 photos that load (HTTP 200) and decode at
+   their stated size, or, for a rim no photo can be shown of (Galaxy S24 and S25 in Smoke Frost), the other rim's photos
+   under their own captions and a note that says so; Pixel, moto, Galaxy A, iPhone Duo and the other Rated only phones
+   (one photo set each, the similar phone note only where the camera differs, Choose changes only the rim and Back to my
+   design otherwise); the drop rating follows the kit (none on the iPhone Duo) beside Confirm availability in store;
    the button shows with the clear case and the Rated Case chosen, never toggles the case, costs no height on phones and
    hides for a phone without a Rated kit; the viewer opens on the right phone and rim; next, previous, arrow keys,
    swipe, thumbnails and the rim switch; Choose Rated Case sets case, rim, price and address through the case radios;
@@ -9,8 +13,8 @@
    phone; the shared kiosk (no links, the idle reset closes it, failures point to a team member); the classic ?staff=1
    rail; a mouse drag released on the backdrop swipes instead of closing; Forward never lands on the viewer's old history
    entry; the page behind does not scroll; arrow keys stay in the viewer (?cal=1); short landscape phones keep a real
-   photo; tablets load the 1600 x 1920 file; On other phones leaves out this phone and keeps its rim chips; the S26 and
-   S26 Ultra photos with the embossed rim name stay out; no page errors.
+   photo; tablets load the 1600 x 1920 file; On other phones leaves out this phone and keeps its rim chips; the photos
+   with the embossed rim name, a clock or an app icon stay out; no page errors.
    usage: KP_BASE=http://127.0.0.1:PORT/ node tools/tests/rated_photos.cjs [outdir]   (serves the repo itself without KP_BASE) */
 const {chromium,webkit}=require(process.env.PW_CORE||'../../../playwright/node_modules/playwright-core');
 const http=require('http'),fs=require('fs'),path=require('path');
@@ -24,11 +28,13 @@ function check(name,ok,detail){results.push({name,ok:!!ok,detail});console.log((
 const MODEL='iphone-17-pro-max',DESIGN='boho-floral-01.jpg',STORE='West Chester, PA';
 const BRAND=/cck|custom case kiosk|nimbus|phantom|balaji/i,DASH=/[‐-―−-]/;
 /* the site's Rated phones and rims, read the way tools/build_rated_photos.py reads them */
+const SECOND=['googpl10p10','googpl11p11'],NO_PHOTOS={samgs24:['Smoke Frost']};
 function siteKits(){
  const src=fs.readFileSync(path.join(root,'customizer.html'),'utf8'),block=src.slice(src.indexOf('KP-RATED-KITS'));
- const rated=JSON.parse(/var RATED=(\{[\s\S]*?\});/.exec(block)[1].replace(/'/g,'"'));
- const only=JSON.parse(/var CLEAR_FROST_ONLY=(\{[\s\S]*?\});/.exec(block)[1].replace(/'([^']+)':1/g,'"$1":1'));
- return Object.entries(rated).map(([model,key])=>({model,key:key.replace(/-i\d+\w*$/,''),rims:only[key]?['Clear Frost']:['Smoke Frost','Clear Frost']}));
+ const flat=n=>JSON.parse(new RegExp('var '+n+'=(\\{[\\s\\S]*?\\});').exec(block)[1].replace(/'/g,'"'));
+ const soon=flat('COMING_SOON'),clear=flat('CLEAR_FROST_ONLY'),smoke=flat('SMOKE_FROST_ONLY'),only=flat('RATED_ONLY');
+ return Object.entries({...flat('RATED'),...only}).filter(([model])=>!soon[model]).map(([model,key])=>({model,only:!!only[model],key:SECOND.includes(key.replace('-',''))?key.replace('-',''):key.split('-')[0],
+  rims:clear[key]?['Clear Frost']:smoke[key]?['Smoke Frost']:['Smoke Frost','Clear Frost']}));
 }
 async function hooked(page,errors){
  page.on('pageerror',e=>errors.push('pageerror: '+e.message));
@@ -44,7 +50,7 @@ const center=l=>l.evaluate(e=>e.scrollIntoView({block:'center'}));
 const tapLabel=async l=>{if(await l.isVisible()){await center(l);await l.click();}else await l.evaluate(e=>e.click());};
 async function pickCase(p,type){const l=p.locator('#studioCase label:has(input[value="'+type+'"])');await tapLabel(l);await p.waitForFunction(t=>__kp.state.caseType===t,type);await settled(p);}
 async function pickRim(p,name){const l=p.locator('#studioRim label:has(input[value="'+name+'"])');await tapLabel(l);await p.waitForFunction(n=>KPStudioCore.info().rim===n,name);await settled(p);}
-async function setModel(p,name){await p.evaluate(n=>{const b=document.getElementById('brandSel'),want=/^Samsung /.test(n)?'Samsung':'Apple';if(b.value!==want){b.value=want;b.dispatchEvent(new Event('change'));}const s=document.getElementById('modelSel');s.value=n;s.dispatchEvent(new Event('change'));},name);await p.waitForFunction(n=>__kp.state.model===n,name);await settled(p);await photosReady(p);}
+async function setModel(p,name){await p.evaluate(n=>{const b=document.getElementById('brandSel'),want=(/^(Samsung|Google|Motorola) /.exec(n)||[,'Apple'])[1];if(b.value!==want){b.value=want;b.dispatchEvent(new Event('change'));}const s=document.getElementById('modelSel');s.value=n;s.dispatchEvent(new Event('change'));},name);await p.waitForFunction(n=>__kp.state.model===n,name);await settled(p);await photosReady(p);}
 async function openViewer(p){const b=p.locator('#ratedPhotosOpen');await center(b);await b.click();await p.waitForFunction(()=>KPRatedGallery.isOpen&&document.querySelector('#ratedGallery .rg-thumb'),null,{timeout:10000});await shown(p);}
 /* the large photo has loaded (or failed) for the current index */
 const shown=p=>p.waitForFunction(()=>{const i=document.querySelector('#ratedGallery .rg-img'),m=document.querySelector('#ratedGallery .rg-msg');return !m.hidden||i.complete&&i.naturalWidth>0;},null,{timeout:10000}).catch(()=>{});
@@ -53,7 +59,7 @@ const view=p=>p.evaluate(()=>{const d=document.getElementById('ratedGallery'),im
   natural:img.naturalWidth,attrW:img.getAttribute('width'),attrH:img.getAttribute('height'),choose:d.querySelector('.rg-choose').textContent,
   rims:[...d.querySelectorAll('.rg-rim')].map(b=>b.textContent+(b.getAttribute('aria-pressed')==='true'?'*':'')+(b.tagName==='SPAN'?'(only)':'')),rimsHidden:d.querySelector('.rg-rims').hidden,
   thumbs:d.querySelectorAll('.rg-thumb').length,current:[...d.querySelectorAll('.rg-thumb')].findIndex(t=>t.getAttribute('aria-current')==='true'),
-  set:d.querySelector('[data-set][aria-pressed=true]')?.dataset.set,anchors:d.querySelectorAll('a,[href]').length,note:d.querySelector('.rg-note').hidden?'':d.querySelector('.rg-note').textContent,
+  set:d.querySelector('[data-set][aria-pressed=true]')?.dataset.set,anchors:d.querySelectorAll('a,[href]').length,note:d.querySelector('.rg-note').hidden?'':d.querySelector('.rg-note').textContent,facts:[...d.querySelectorAll('.rg-facts li')].map(l=>l.textContent),sideScroll:(e=>e.scrollHeight-e.clientHeight)(d.querySelector('.rg-side')),
   rect:[r.left,r.top,r.width,r.height].map(Math.round),frame:(f=>[f.left,f.top,f.width,f.height].map(Math.round))(d.querySelector('.rg-frame').getBoundingClientRect()),vw:innerWidth,vh:innerHeight,
   msg:d.querySelector('.rg-msg').hidden?'':d.querySelector('.rg-msg p').textContent,imgHidden:getComputedStyle(img).visibility==='hidden'};});
 const focusId=p=>p.evaluate(()=>document.activeElement&&document.activeElement.id);
@@ -75,21 +81,28 @@ const shot=async(p,name)=>{await p.evaluate(()=>{const i=document.querySelector(
  /* 0. the manifest covers every site Rated phone with the rims its kit offers, 3+ photos each, and clean words */
  {
   const missing=[];for(const k of kits){const m=manifest.models[k.model];if(!m||m.key!==k.key||JSON.stringify(m.rims)!==JSON.stringify(k.rims)){missing.push(k.model+': phone list');continue;}
-   for(const rim of k.rims){const list=(manifest.sets[k.key]||{})[rim]||[];if(list.length<3)missing.push(k.model+' '+rim+': '+list.length+' photos');}}
-  check('every site Rated phone x offered rim has at least 3 photos ('+kits.length+' phones, '+kits.reduce((n,k)=>n+k.rims.length,0)+' phone rims)',kits.length>=20&&!missing.length,missing);
+   for(const rim of k.rims){const set=manifest.sets[k.key]||{},none=(NO_PHOTOS[k.key]||[]).includes(rim),list=set[none?k.rims.find(r=>r!==rim):rim]||[];
+    if(list.length<3||(none&&set[rim]))missing.push(k.model+' '+rim+': '+list.length+' photos');}}
+  check('every site Rated phone x offered rim has at least 3 photos ('+kits.length+' phones, '+kits.reduce((n,k)=>n+k.rims.length,0)+' phone rims)',kits.length>=54&&!missing.length,missing);
+  check('phones listed as coming soon have no photos (Galaxy S24 Ultra)',!manifest.models['Samsung Galaxy S24 Ultra']&&!Object.keys(manifest.sets).includes('samgs24u'));
+  const mislabeled=Object.entries(manifest.sets).flatMap(([k,set])=>Object.entries(set).flatMap(([rim,l])=>l.filter(i=>!i.caption.endsWith('· '+rim)||!i.file.startsWith('rp-'+k+'-'+rim.split(' ')[0].toLowerCase()+'-')||!i.alt.includes(rim+' rim')).map(i=>i.file)));
+  check('every photo is captioned with the rim it shows',!mislabeled.length,mislabeled);
   const all=[...Object.values(manifest.sets).flatMap(s=>Object.values(s).flat()),...manifest.other];
   const words=all.flatMap(i=>[i.caption,i.alt,i.file,i.thumb,i.phone||'',i.rim||'']).filter(t=>BRAND.test(t)||(!/\.webp$/.test(t)&&DASH.test(t)));
   check('captions, alt text and file names carry no dashes or brand names ('+all.length+' photos)',!words.length&&!BRAND.test(JSON.stringify(manifest)),words.slice(0,5));
   const order=Object.values(manifest.sets).flatMap(s=>Object.values(s)).every(l=>l.map(i=>i.view).join()===['angle','side','side2','back','front'].filter(v=>l.some(i=>i.view===v)).join()&&l.some(i=>i.view==='side'));
   check('views in order: front and back, side views, back, front (each set has a side view)',order);
-  // the Galaxy S26 and S26 Ultra front and back (shot 1) and other side (shot 4) show the vendor name embossed in the rim
-  const embossed=['rp-samgs26-clear-angle','rp-samgs26-clear-side2','rp-samgs26u-clear-angle','rp-samgs26u-clear-side2'];
-  check('the S26 and S26 Ultra photos with the embossed rim name are not shipped',!embossed.some(n=>JSON.stringify(manifest).includes(n)||fs.existsSync(path.join(root,'assets/cases/rated-photos',n+'.webp'))));
+  // these blanks' front and back (shot 1) and other side (shot 4) photos show the vendor name embossed in the rim; the iPhone
+  // Duo's front photos show a lock screen clock, the Galaxy S24 Smoke Frost photo an app icon
+  const out0=['samgs26','samgs26u','samgs25fe','samga37','samga17','googpl10','googpl10p10','googpl10pxl','motgstl26','motgpwr25','motgply25'].flatMap(k=>['smoke','clear'].flatMap(r=>['angle','side2'].map(v=>'rp-'+k+'-'+r+'-'+v)))
+   .concat(['rp-iph18fld-smoke-angle','rp-iph18fld-smoke-front','rp-samgs24-smoke-back','rp-samgs24u-smoke-back']);
+  const shipped=out0.filter(n=>JSON.stringify(manifest).includes(n+'.webp')||fs.existsSync(path.join(root,'assets/cases/rated-photos',n+'.webp')));
+  check('photos with an embossed rim name, a clock or an app icon are not shipped',!shipped.length,shipped);
   check('every photo has a 1600 x 1920 file for tablets',all.every(i=>i.hd===i.file.replace(/\.webp$/,'-hd.webp')));
-  const otherOk=manifest.other.length>=8&&new Set(manifest.other.map(o=>o.phone)).size===manifest.other.length&&['Smoke Frost','Clear Frost'].every(r=>manifest.other.some(o=>o.rim===r));
+  const otherOk=manifest.other.length>=12&&manifest.other.length<=14&&new Set(manifest.other.map(o=>o.phone)).size===manifest.other.length&&['Smoke Frost','Clear Frost'].every(r=>manifest.other.some(o=>o.rim===r));
   check('on other phones: '+manifest.other.length+' photos, each a different phone, both rims',otherOk,manifest.other.map(o=>o.caption));
   const weight=fs.readdirSync(path.join(root,'assets/cases/rated-photos')).reduce((n,f)=>n+fs.statSync(path.join(root,'assets/cases/rated-photos',f)).size,0);
-  check('photo folder weighs under 10 MB ('+(weight/1e6).toFixed(2)+' MB)',weight<10e6);
+  check('photo folder weighs under 14 MB ('+(weight/1e6).toFixed(2)+' MB)',weight<14e6);
   const src=fs.readFileSync(path.join(root,'customizer.html'),'utf8');
   check('customizer loads the viewer with a release version and keeps window.__kp={',/rated-gallery\.js\?v=[\w.-]+/.test(src)&&/rated-gallery\.css\?v=[\w.-]+/.test(src)&&src.includes('window.__kp={'));
  }
@@ -103,7 +116,7 @@ const shot=async(p,name)=>{await p.evaluate(()=>{const i=document.querySelector(
     const bad=[];await Promise.all([...files].map(async f=>{const [name,size]=f.split('|');try{const res=await fetch(name);if(res.status!==200){bad.push(name+' '+res.status);return;}
      const im=new Image();im.src=URL.createObjectURL(await res.blob());await im.decode();if(im.naturalWidth+'x'+im.naturalHeight!==size)bad.push(name+' '+im.naturalWidth+'x'+im.naturalHeight);URL.revokeObjectURL(im.src);}catch(e){bad.push(name+' '+e.message);}}));
     return {n:files.size,bad};});
-   check(engine+' every photo, tablet photo and thumbnail loads (HTTP 200) and decodes ('+r.n+' files)',r.n>=360&&!r.bad.length,r.bad.slice(0,6));
+   check(engine+' every photo, tablet photo and thumbnail loads (HTTP 200) and decodes ('+r.n+' files)',r.n>=780&&!r.bad.length,r.bad.slice(0,6));
    await ctx.close();
   }
   for(const width of [390,1440]){
@@ -129,9 +142,8 @@ const shot=async(p,name)=>{await p.evaluate(()=>{const i=document.querySelector(
    /* 3. open with the clear case: the radios stay put; this phone, the first rim, the first photo */
    await openViewer(page);
    let v=await view(page);
-   /* the full site audit (#71) removed the unsupported drop rating: the viewer must not bring it back */
-   {const facts=await page.evaluate(()=>[...document.querySelectorAll('#ratedGallery .rg-facts li')].map(l=>l.textContent));
-    check(tag+' facts make no drop rating claim and match the case card',!facts.some(t=>/drop|\bft\b|feet|protect/i.test(t))&&facts.includes('Confirm availability in store'),facts);}
+   /* the drop rating is the one published for this blank, always beside the availability line, as on the case card */
+   check(tag+' facts: price, drop rating, availability, design on the back, rims',JSON.stringify(v.facts)===JSON.stringify(['Rated Case · $49.99','20 ft drop protection','Confirm availability in store','Your design printed on the back','Frosted rim in Smoke Frost or Clear Frost']),v.facts);
    check(tag+' opening never changes the case',await page.evaluate(()=>__kp.state.caseType==='MagSafe Clear'&&document.querySelector('#studioCase input[value="MagSafe Clear"]').checked));
    check(tag+' opens on this phone and the first rim',v.open&&v.sub==='On iPhone 17 Pro Max'&&v.rims.join()==='Smoke Frost*,Clear Frost'&&v.caption==='Front and back · Smoke Frost'&&v.count==='1 of 5'&&/rp-iph17pmx-smoke-angle\.webp/.test(v.src)&&v.natural===1000,v);
    check(tag+' Choose names the Rated Case and rim',v.choose==='Choose Rated Case · Smoke Frost',v.choose);
@@ -233,7 +245,9 @@ const shot=async(p,name)=>{await p.evaluate(()=>{const i=document.querySelector(
    await openViewer(page);await page.locator('#ratedGallery [data-set="other"]').click();await shown(page);v=await view(page);
    const other=await page.evaluate(()=>[...document.querySelectorAll('#ratedGallery .rg-thumb')].map(t=>t.getAttribute('aria-label')));
    check(tag+' On other phones shows '+v.thumbs+' photos in the same viewer',v.set==='other'&&v.thumbs>=8&&v.count==='1 of '+v.thumbs&&v.natural===1000&&!!v.note&&!/studio/i.test(v.note),v);
-   check(tag+' On other phones leaves out this phone (its photos are under Your phone)',other.length===manifest.other.length-1&&!other.some(t=>/: iPhone 17 Pro Max ·/.test(t)),other);
+   check(tag+' On other phones shows every phone but this one',other.length===manifest.other.filter(o=>o.key!=='iph17pmx').length&&!other.some(t=>/: iPhone 17 Pro Max ·/.test(t)),other);
+   check(tag+' On other phones says what it shows, true for phones we sell',v.note==='The same case on other phones and colors.',v.note);
+   if(!phone)check(tag+' On other phones fits beside the photo without scrolling (facts in view)',v.sideScroll<=1,v.sideScroll);
    const or=await page.evaluate(()=>({label:document.getElementById('rgRimLabel').textContent,rims:[...document.querySelectorAll('#ratedGallery .rg-rim')].filter(b=>b.getClientRects().length).map(b=>b.textContent),
     choose:document.querySelector('#ratedGallery .rg-choose').getBoundingClientRect().top,chips:document.querySelector('#ratedGallery .rg-rims').getBoundingClientRect().bottom}));
    check(tag+' On other phones keeps this phone\'s rim chips beside Choose',!v.rimsHidden&&or.label==='Rim for your iPhone 17 Pro Max'&&or.rims.join()==='Smoke Frost,Clear Frost'&&or.chips<=or.choose+1,or);
@@ -255,23 +269,74 @@ const shot=async(p,name)=>{await p.evaluate(()=>{const i=document.querySelector(
    }
    await page.locator('#ratedGallery .rg-close').click();await settledClose(page);
    check(tag+' Close closes and focus returns',await page.evaluate(()=>!KPRatedGallery.isOpen&&document.activeElement.id==='ratedPhotosOpen'));
-   /* 12. reopening follows a new phone: iPhone 16 (Clear Frost only), Galaxy S26, and none for iPhone 12 */
-   await setModel(page,'iPhone 16');
+   /* 12. reopening follows a new phone: one rim, both rims, similar phones, Rated only phones of every brand, and none for
+      a phone without a Rated kit */
+   await setModel(page,'iPhone 14 Plus');
    await openViewer(page);v=await view(page);
-   check(tag+' reopening follows the new phone (iPhone 16, Clear Frost only)',v.sub==='On iPhone 16'&&v.rims.join()==='Clear Frost(only)'&&/rp-iph16-clear-angle/.test(v.src)&&v.set==='mine'&&v.count==='1 of 5',v);
+   check(tag+' reopening follows the new phone (iPhone 14 Plus, Clear Frost only)',v.sub==='On iPhone 14 Plus'&&v.rims.join()==='Clear Frost(only)'&&/rp-iph14max-clear-angle/.test(v.src)&&v.set==='mine'&&v.count==='1 of 5'&&v.facts.includes('Frosted rim in Clear Frost'),v);
    const one=await page.evaluate(()=>{const c=getComputedStyle(document.querySelector('#ratedGallery .rg-rim-only'));return {style:c.borderTopStyle,color:c.borderTopColor,bg:c.backgroundColor};});
    check(tag+' a single rim looks chosen, not dimmed',one.style==='solid'&&one.color==='rgb(206, 32, 43)'&&one.bg==='rgb(255, 245, 242)',one);
+   await page.keyboard.press('Escape');await settledClose(page);
+   await setModel(page,'iPhone 16');await openViewer(page);v=await view(page);
+   check(tag+' iPhone 16 comes in both rims, Smoke Frost photos first',v.sub==='On iPhone 16'&&v.rims.join()==='Smoke Frost*,Clear Frost'&&/rp-iph16-smoke-angle/.test(v.src)&&v.count==='1 of 5'&&!v.note&&v.choose==='Back to my design',v);
    await page.keyboard.press('Escape');await settledClose(page);
    if(!phone){
     await setModel(page,'iPhone 15');await openViewer(page);v=await view(page);
     check(tag+' a phone shown on a similar model says so (iPhone 15)',v.sub==='On iPhone 15'&&v.note==='Photos show this case on a similar iPhone.'&&/rp-iphse25-/.test(v.src),v);
     await page.keyboard.press('Escape');await settledClose(page);
-    await setModel(page,'Samsung Galaxy S26');await openViewer(page);v=await view(page);
-    check(tag+' Galaxy S26 photos (side view first)',v.sub==='On Galaxy S26'&&/rp-samgs26-clear-side\.webp/.test(v.src)&&v.count==='1 of 3'&&!v.note,v);
+   }
+   /* model, rims (first is the one this phone opens on), first photo, number of photos, note; brands are left out of names */
+   const LIST=[['Samsung Galaxy S26','Smoke Frost*,Clear Frost','samgs26-smoke-side',3,''],['iPhone 13 Pro Max','Smoke Frost*,Clear Frost','iph2167-smoke-angle',5,''],['iPhone 12 Pro','Clear Frost(only)','iph1261-clear-angle',5,'Photos show this case on a similar iPhone.'],
+    ['Google Pixel 11 Pro','Clear Frost(only)','googpl11-clear-angle',5,'',1],['Google Pixel 10','Clear Frost(only)','googpl10p10-clear-side',3,'',1],['Motorola moto g stylus 2026','Smoke Frost*,Clear Frost','motgstl26-smoke-side',3,'',1],
+    ['Motorola moto g 2025','Smoke Frost*,Clear Frost','motgply25-smoke-side',3,'Photos show this case on a similar phone.',1],['Samsung Galaxy A17','Clear Frost(only)','samga17-clear-side',3,'',1],['Samsung Galaxy A36','Clear Frost(only)','samga37-clear-side',3,'Photos show this case on a similar phone.',1],
+    ['Samsung Galaxy S25 Plus','Smoke Frost*,Clear Frost','samgs26pl-smoke-angle',5,'Photos show this case on a similar phone.',1],['iPhone 17e','Smoke Frost*,Clear Frost','iphse25-smoke-angle',5,'',1],['iPhone Duo','Smoke Frost(only)','iph18fld-smoke-side',3,'',1]];
+   for(const [model,rims,first,count,note,only] of phone?LIST.filter(l=>/Pixel 11|stylus|A17|S25 Plus|Duo/.test(l[0])):LIST){
+    await setModel(page,model);await openViewer(page);v=await view(page);
+    check(tag+' '+model+': its own photos, rims and note',v.sub==='On '+model.replace(/^(Samsung|Google|Motorola) /,'')&&v.rims.join()===rims&&v.src.includes('rp-'+first+'.webp')&&v.count==='1 of '+count&&v.natural===1000&&v.note===note,v);
+    const drop=v.facts.includes('20 ft drop protection'),claims=v.facts.filter(t=>/drop|\bft\b|feet|protect|shock|military|warranty/i.test(t));
+    check(tag+' '+model+(model==='iPhone Duo'?': no drop claim':': 20 ft drop protection')+', availability beside it',drop===(model!=='iPhone Duo')&&claims.length===(drop?1:0)&&v.facts.includes('Confirm availability in store')&&!v.facts.some(t=>/white/i.test(t)),v.facts);
+    if(only)check(tag+' '+model+' (Rated Case only): already chosen, so Back to my design',v.choose==='Back to my design'&&await page.evaluate(()=>__kp.state.caseType==='Rated Case'),v.choose);
+    if(only&&/S25 Plus/.test(model)){
+     await page.locator('#ratedGallery [data-rim="Clear Frost"]').click();await shown(page);v=await view(page);
+     check(tag+' Rated Case only: another rim is chosen by its name',v.choose==='Choose Clear Frost'&&v.caption==='Front and back · Clear Frost',v);
+     await page.locator('#ratedGallery .rg-choose').click();await page.waitForFunction(()=>KPStudioCore.info().rim==='Clear Frost',null,{timeout:6000}).catch(()=>{});await settled(page);await settledClose(page);
+     const rr=await page.evaluate(()=>({ct:__kp.state.caseType,rim:KPStudioCore.info().rim,total:document.getElementById('studioTotal').textContent,chip:document.querySelector('#studioRim input[value="Clear Frost"]')?.checked,open:KPRatedGallery.isOpen,q:new URLSearchParams(location.search).get('rim')}));
+     check(tag+' Rated Case only: Choose changes the rim, the case and price stay',!rr.open&&rr.ct==='Rated Case'&&rr.rim==='Clear Frost'&&rr.total==='$49.99'&&rr.chip&&rr.q==='Clear Frost',rr);
+     await openViewer(page);v=await view(page);
+     check(tag+' Rated Case only: reopens on that rim with Back to my design',v.rims.join()==='Smoke Frost,Clear Frost*'&&v.choose==='Back to my design',v);
+     await page.locator('#ratedGallery [data-rim="Smoke Frost"]').click();await page.locator('#ratedGallery .rg-choose').click();await page.waitForFunction(()=>KPStudioCore.info().rim==='Smoke Frost',null,{timeout:6000}).catch(()=>{});await settled(page);await settledClose(page);
+    }else{
+     if(model==='Google Pixel 10'){
+      await page.locator('#ratedGallery [data-set="other"]').click();await shown(page);
+      const o=await page.evaluate(()=>[...document.querySelectorAll('#ratedGallery .rg-thumb')].map(t=>t.getAttribute('aria-label')));
+      check(tag+' On other phones leaves out this phone (its photos are under Your phone)',o.length===manifest.other.length-1&&!o.some(t=>/: Pixel 10 ·/.test(t))&&o.some(t=>/: Pixel 11 ·/.test(t)),o);
+     }
+     await shot(page,engine+'-'+width+'-'+model.replace(/ /g,'-'));
+     await page.keyboard.press('Escape');await settledClose(page);
+    }
+   }
+   /* Galaxy S25 and S24: no Smoke Frost photo can be shown, so that rim shows the Clear Frost photos and says so */
+   for(const [model,like] of [['Samsung Galaxy S25',''],['Samsung Galaxy S24',' on a similar phone']]){
+    await setModel(page,model);await openViewer(page);v=await view(page);
+    check(tag+' '+model+' Smoke Frost: Clear Frost photos under their own captions, with a note',v.rims.join()==='Smoke Frost*,Clear Frost'&&v.caption==='Front and back · Clear Frost'&&/rp-samgs24-clear-angle/.test(v.src)&&v.count==='1 of 5'&&/Clear Frost rim/.test(v.alt)
+     &&v.note==='Photos show Clear Frost'+like+'. Smoke Frost is the same case with a dark rim.'&&v.choose==='Back to my design',v);
+    await shot(page,engine+'-'+width+'-'+model.replace(/ /g,'-')+'-smoke');
+    await page.locator('#ratedGallery .rg-next').click();await page.locator('#ratedGallery [data-rim="Clear Frost"]').click();await shown(page);v=await view(page);
+    check(tag+' '+model+' Clear Frost: the same photos, no rim note',v.caption==='Side view · Clear Frost'&&v.count==='2 of 5'&&v.note===(like?'Photos show this case on a similar phone.':'')&&v.choose==='Choose Clear Frost',v);
+    await page.locator('#ratedGallery [data-rim="Smoke Frost"]').click();v=await view(page);
+    check(tag+' '+model+' back on Smoke Frost keeps the photo',v.count==='2 of 5'&&/Smoke Frost is the same case/.test(v.note),v);
     await page.keyboard.press('Escape');await settledClose(page);
    }
-   await setModel(page,'iPhone 12');await page.waitForTimeout(200);
-   check(tag+' no button for a phone without a Rated kit (iPhone 12)',await page.evaluate(()=>document.getElementById('ratedPhotosOpen').hidden&&document.getElementById('studioCase').hidden));
+   check(tag+' a phone listed as coming soon cannot be picked (Galaxy S24 Ultra)',await page.evaluate(()=>{const o=[...document.getElementById('modelSel').options].find(o=>/S24 Ultra/.test(o.textContent));return !!o&&o.disabled;}));
+   await setModel(page,'iPhone 12 mini');await page.waitForTimeout(200);
+   check(tag+' no button for a phone without a Rated kit (iPhone 12 mini)',await page.evaluate(()=>document.getElementById('ratedPhotosOpen').hidden&&document.getElementById('studioCase').hidden));
+   /* a rim chosen here on a Rated only phone does not turn the customer's clear case into a Rated Case on the next phone */
+   await setModel(page,'Motorola moto g power 2026');await openViewer(page);
+   await page.locator('#ratedGallery [data-rim="Clear Frost"]').click();await page.locator('#ratedGallery .rg-choose').click();
+   await page.waitForFunction(()=>KPStudioCore.info().rim==='Clear Frost',null,{timeout:6000}).catch(()=>{});await settledClose(page);
+   const mp=await page.evaluate(()=>__kp.state.caseType);
+   await setModel(page,'iPhone 17');
+   check(tag+' a rim chosen on a Rated Case only phone keeps the clear case for the next phone',mp==='Rated Case'&&await page.evaluate(()=>__kp.state.caseType==='MagSafe Clear'&&document.getElementById('studioTotal').textContent==='$44.99'),mp);
    check(tag+' no page errors',!errors.length,errors);
    await ctx.close();
    /* 13. a photo that cannot load (offline) shows a message, not a broken image; Choose still works */

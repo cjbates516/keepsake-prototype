@@ -56,6 +56,8 @@ html.rg-lock{overflow:hidden}
 /* the right column scrolls on short screens (landscape phones); Choose stays in view */
 #ratedGallery .rg-side{grid-area:side;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain;padding:3px;margin:-3px}
 #ratedGallery .rg-thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:14px}
+/* On other phones has 14: five to a row keeps the facts in view beside the photo */
+#ratedGallery .rg-thumbs.rg-many{grid-template-columns:repeat(5,minmax(0,1fr))}
 #ratedGallery .rg-thumb{position:relative;display:block;width:100%;min-height:0;aspect-ratio:5/6;padding:0;border:1px solid var(--rg-line);border-radius:10px;background:#fff;overflow:hidden}
 #ratedGallery .rg-thumb img{display:block;width:100%;height:100%;object-fit:contain}
 #ratedGallery .rg-thumb[aria-current=true]{border-color:var(--rg-red);box-shadow:inset 0 0 0 2px var(--rg-red)}
