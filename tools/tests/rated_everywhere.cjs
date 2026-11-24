@@ -93,6 +93,11 @@ const sizes=[[320,700],[390,844],[820,1180],[1440,950]];
     const f=await p.locator('#res').innerText();
     check(t+' counter: asks Clear or Rated before printing',/Clear or Rated Case\? Check the customer’s screen or card before printing\./.test(f)&&/workspace opens on the clear case/.test(f),f);
     check(t+' counter: states neither case as fact, shows both prices',!/Clear case ·/.test(f)&&f.includes('Case · '+CLEAR+' clear or '+RATED+' Rated Case')&&f.includes('$64.98 clear or $69.98 Rated'),f);
+    if(w===820){for(const m of models.filter(m=>!kits[m].rated)){const row=JSON.parse(read('instore/models.json')).models.find(x=>x.name===m);await p.goto(base+'instore/find.html?code='+row.id+'-SCN-131');await p.waitForFunction(()=>document.querySelector('#res').classList.contains('on'));
+     check(t+' counter: '+m+' has no Rated Case, so it says clear',/Clear case · \$44\.99/.test(await p.locator('#res').innerText())&&!/Rated/.test(await p.locator('#res').innerText()),await p.locator('#res').innerText());}
+     /* the phone list is not in the offline copy: without it every lookup asks */
+     await p.route('**/rated-phones.js*',r=>r.abort());await p.goto(base+'instore/find.html?code=12MN-SCN-131');await p.waitForFunction(()=>document.querySelector('#res').classList.contains('on'));check(t+' counter: without the phone list it asks',await p.locator('#rcase').isVisible());await p.unroute('**/rated-phones.js*');
+     await p.goto(base+'instore/find.html?code=17P-SCN-131-G-S1');await p.waitForFunction(()=>document.querySelector('#res').classList.contains('on'));}
     check(t+' counter: no pick code path asks too, page fits',/Check their screen or card for Clear or Rated Case before printing/.test(await p.locator('main').innerText())&&!await overflow(p));
     await p.screenshot({path:path.join(out,tag+'-find-'+w+'.png'),fullPage:true});
     await p.__ctx.close();
