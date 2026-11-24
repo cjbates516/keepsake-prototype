@@ -10,8 +10,8 @@
     if(ticket!==request)return;
     const title=card.dataset.title,name=button.dataset.name;
     card.querySelector('.fresh-image img').src=image.src;
-    card.querySelector('.fresh-image img').alt=title+' on a clear case · '+name+(name==='Artwork only'?'':' background');
-    const href='customizer.html?'+new URLSearchParams({design:card.dataset.design,colorway:button.dataset.variant,view:'phone'});
+    card.querySelector('.fresh-image img').alt=title+' on a frost case · '+name+(name==='Artwork only'?'':' background');
+    const old=new URL(card.querySelector('.fresh-customize').href);old.searchParams.set('colorway',button.dataset.variant);const href=old.href;
     for(const link of card.querySelectorAll('.fresh-image,.fresh-customize'))link.href=href;
     card.querySelector('.fresh-image').setAttribute('aria-label','Enlarge '+title+' · '+name);
     for(const b of card.querySelectorAll('[data-variant]'))b.setAttribute('aria-pressed',String(b===button));

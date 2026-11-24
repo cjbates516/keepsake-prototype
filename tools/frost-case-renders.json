@@ -1,0 +1,7436 @@
+[
+  {
+    "output": "assets/frost-samples/alpine-wildflowers.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/desert-monsoon.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-acadia-bass-harbor--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-golf-pebble-beach--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-golf-st-andrews--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-grand-canyon-mather-point--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-grand-teton-reflection--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-olympic-rialto--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-olympic-rialto-photograph--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-rocky-dream-lake-photo--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-sunday-scramble--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-sunday-scramble--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-sunday-scramble--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-sunday-scramble--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-sunday-scramble--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-teton-jenny-lake-photo--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-weather-frost-fern--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-weather-october-drift--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-weather-ripple-prism--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-weather-window-seat--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-zion-the-narrows-photo--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-zion-watchman-bend--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/galaxy-s26-ultra--modern-yosemite-national-park-logo-for-mug--artwork-only.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "artwork-only",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--abstract-leopard-pink--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--bethany-beach-city-map-navy--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--boston-map-cream--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--christmas-santa-hats-white--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--city-night-los-angeles--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--city-night-new-york--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--city-night-philadelphia--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--colorful-minimalist-wavy-stripes--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--cow-print-pink-on-cream--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--dog-28-christmas-dog-pattern--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--dog-adorable-love-paw-dog-bone--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--dog-paw-prints-and-pet-toys--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--dog-small-dog-breeds--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--high-detail-botanical-of-winter-flora-on-white--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--kp-cherry-dot--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--kp-half-dome-river--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--kp-heart-riot--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--kp-heart-riot--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--kp-liquid-prism--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--kp-wrong-way-duck--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--lake-george-navy--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--los-angeles-map-blush--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--mid-century-modern-abstract-shapes--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--modern-yosemite-national-park-logo-for-mug--forest-topo.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "forest-topo",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--nyc-map-navy--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--pastel-pink-floral-minimalist-pattern--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--philadelphia-city-map-cream--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--philadelphia-city-map-navy--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--smiley-flower-power--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--stylish-white-daisy-floral-pattern--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--west-chester-city-map-cream--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--where-it-all-began-heart-map-cream--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--y2k-retro-04--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--zodiac-atlas-aquarius--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--zodiac-atlas-gemini--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--zodiac-atlas-leo--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--zodiac-atlas-scorpio--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-15-pro-max--zodiac-atlas-virgo--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-cherry-dot--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-cherry-dot--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-cherry-dot--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-cherry-dot--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-cherry-dot--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-wrong-way-duck--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-wrong-way-duck--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-wrong-way-duck--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-wrong-way-duck--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-wrong-way-duck--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-blueprint-eucalyptus.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-blueprint-ginkgo.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-blueprint-maidenhair.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-blueprint-maple.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-blueprint-monstera.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-blueprint-palm.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-blueprint-sea-garden.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-blueprint-wildflower.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-cafe-dot--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-cafe-dot--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-cafe-dot--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-cafe-dot--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-cafe-dot--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-cafe-dot--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-cherry-pinpoint--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-cherry-pinpoint--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-cherry-pinpoint--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-cherry-pinpoint--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-cherry-pinpoint--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-cherry-pinpoint--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-halo-dot--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-halo-dot--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-halo-dot--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-halo-dot--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-halo-dot--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-halo-dot--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-micro-ink--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-micro-ink--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-micro-ink--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-micro-ink--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-micro-ink--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-micro-ink--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-offset-duo--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-offset-duo--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-offset-duo--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-offset-duo--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-offset-duo--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-offset-duo--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-orbit-scatter--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-orbit-scatter--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-orbit-scatter--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-orbit-scatter--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-orbit-scatter--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-orbit-scatter--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-oversize-pop--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-oversize-pop--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-oversize-pop--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-oversize-pop--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-oversize-pop--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-oversize-pop--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-pearl-grid--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-pearl-grid--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-pearl-grid--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-pearl-grid--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-pearl-grid--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-dots-pearl-grid--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-golf-alpine-fairways.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-golf-autumn-round.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-golf-clubhouse-check.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-golf-desert-links.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-golf-island-green.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-golf-links-coast.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-golf-midnight-fairway.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-golf-sunday-carts.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-cabana-bold--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-cabana-bold--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-cabana-bold--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-cabana-bold--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-cabana-bold--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-cabana-bold--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-contour-flow--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-contour-flow--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-contour-flow--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-contour-flow--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-contour-flow--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-contour-flow--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-diagonal-dash--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-diagonal-dash--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-diagonal-dash--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-diagonal-dash--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-diagonal-dash--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-diagonal-dash--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-double-rail--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-double-rail--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-double-rail--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-double-rail--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-double-rail--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-double-rail--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-fine-ticking--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-fine-ticking--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-fine-ticking--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-fine-ticking--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-fine-ticking--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-fine-ticking--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-scallop-stripe--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-scallop-stripe--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-scallop-stripe--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-scallop-stripe--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-scallop-stripe--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-scallop-stripe--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-wave-ribbon--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-wave-ribbon--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-wave-ribbon--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-wave-ribbon--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-wave-ribbon--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-wave-ribbon--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-windowpane--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-windowpane--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-windowpane--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-windowpane--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-windowpane--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-lines-windowpane--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-arctic-fold.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-chrome-ripple.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-citrus-coil.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-copper-wave.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-cosmic-lace.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-emerald-flux.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-honey-glass.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-lagoon-ripple.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-lilac-chrome.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-midnight-mercury.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-neon-rift.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-oil-slick.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-pearl-current.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-pink-voltage.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-rainbow-cascade.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-rose-glass.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-ruby-tide.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-solar-melt.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-tidal-glass.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-liquid-ultraviolet-bloom.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-park-bryce-amphitheater.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-park-crater-lake.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-park-denali-alpenglow.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-park-rainier-reflection.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-season-autumn-road.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-season-rain-on-glass.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-season-snowfall-pines.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-season-sunlit-shore.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-andromeda.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-blue-marble.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-bubble.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-crab.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-doradus.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-eagle.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-helix.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-horsehead.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-lagoon-heart.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-mars-frost.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-mars-noachis.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-mars-wind.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-moon.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-mystic-mountain.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-pillars.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-ring.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-saturn.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-soul.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-tarantula.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-space-towering-infernos.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-lovers--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-lovers--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-lovers--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-lovers--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-lovers--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-lovers--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-moon--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-moon--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-moon--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-moon--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-moon--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-moon--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-star--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-star--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-star--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-star--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-star--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-star--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-sun--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-sun--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-sun--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-sun--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-sun--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-tarot-sun--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-aquarius--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-aquarius--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-aquarius--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-aquarius--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-aquarius--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-aquarius--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-aries--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-aries--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-aries--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-aries--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-aries--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-aries--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-cancer--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-cancer--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-cancer--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-cancer--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-cancer--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-cancer--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-capricorn--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-capricorn--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-capricorn--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-capricorn--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-capricorn--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-capricorn--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-gemini--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-gemini--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-gemini--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-gemini--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-gemini--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-gemini--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-leo--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-leo--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-leo--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-leo--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-leo--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-leo--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-libra--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-libra--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-libra--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-libra--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-libra--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-libra--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-pisces--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-pisces--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-pisces--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-pisces--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-pisces--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-pisces--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-sagittarius--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-sagittarius--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-sagittarius--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-sagittarius--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-sagittarius--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-sagittarius--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-scorpio--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-scorpio--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-scorpio--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-scorpio--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-scorpio--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-scorpio--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-taurus--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-taurus--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-taurus--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-taurus--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-taurus--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-taurus--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-virgo--c1.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c1",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-virgo--c2.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c2",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-virgo--c3.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c3",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-virgo--c4.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c4",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-virgo--c5.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "c5",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-zodiac-creature-virgo--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/mistwood.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/moonlit-coast.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/ocean-photo-kelp-light.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/ocean-photo-reef-in-blue.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/ocean-photo-silver-current.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/ocean-photo-surface-breath.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/ocean-photo-tidal-line.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/ocean-photo-turtle-glide.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/rain-photo-after-hours.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/rain-photo-amber-walk.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/rain-photo-golden-rain.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/rain-photo-midnight-window.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/rain-photo-neon-umbrellas.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/rain-photo-silver-afterglow.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/sunlit-dunes.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/winter-blue-hour.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 587,
+    "height": 1120,
+    "crop": [
+      331,
+      209,
+      918,
+      1329
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  }
+]

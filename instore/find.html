@@ -76,7 +76,7 @@ input::placeholder{color:#626269;opacity:1}
 <script src="../assets/kp-config.js"></script>
 <script src="../assets/slate-products.js"></script>
 <script src="../assets/case-shell.js?v=clear-mounted-2"></script>
-<script src="instore-lib.js?v=clear-rim-1"></script>
+<script src="../assets/rated-camera-geometry.js?v=device-finish-1"></script><script src="../assets/frost-samples.js?v=1"></script><script src="instore-lib.js?v=frost-20261124"></script>
 <script>
 (function () {
   var $ = function (id) { return document.getElementById(id); };
@@ -110,12 +110,13 @@ input::placeholder{color:#626269;opacity:1}
       if(d.compatible_models&&d.compatible_models.indexOf(m.id)===-1)return fail('This design is not available for '+m.name+'. Check the phone and pick code.');
       var options=KPI.colorways(d),selected=p.colorway?options.find(function(c){return c.code===p.colorway;}):options[0];
       if(!selected)return fail('That colorway is not available for this design. Ask the customer to choose again.');
-      var now = KPI.pickCode(m, d, selected.id, p.glass, p.charger, p.accessories,p.store), typed = m.id + '-' + p.col + '-' + KPI.pad3(p.n)+(p.colorway?'-C'+p.colorway:'')+(p.glass?'-G':'')+(p.charger?'-A':'')+(p.accessories&&p.accessories.length?'-'+p.accessories.join('-'):'')+(p.store?'-S'+(KPAccessories.stores.indexOf(p.store)+1):'');
+      var now = KPI.pickCode(m, d, selected.id, p.glass, p.charger, p.accessories,p.store,p.rim), typed = m.id + '-' + p.col + '-' + KPI.pad3(p.n)+(p.colorway?'-C'+p.colorway:'')+(p.glass?'-G':'')+(p.charger?'-A':'')+(p.accessories&&p.accessories.length?'-'+p.accessories.join('-'):'')+(p.store?'-S'+(KPAccessories.stores.indexOf(p.store)+1):'');
+      if(p.rim)typed+=p.rim==='Smoke Frost'?'-FS':'-FC';
       $('rcode').textContent = now && now !== typed ? typed + ' (now ' + now + ')' : typed;
       $('rname').textContent = KPI.cleanTitle(d.title)+(options.length>1?' · '+selected.name:'');
       var notes = [];
       $('raccessories').replaceChildren();
-      var caseLine=document.createElement('p');caseLine.textContent='Clear case · '+KPI.formatPrice(data.price);$('raccessories').append(caseLine);
+      if(p.rim&&KPFrostSamples.config(m.name,null,p.rim)?.rim!==p.rim)return fail('Frost case is unavailable for this phone. Confirm the model.');var casePrice=p.rim?KP_CONFIG.RATED_PRICE:data.price;var caseLine=document.createElement('p');caseLine.textContent=(p.rim||'Clear case')+' · '+KPI.formatPrice(casePrice);$('raccessories').append(caseLine);
       if(p.glass){var glassLine=document.createElement('p');glassLine.textContent='Tempered glass · '+KPI.formatPrice(KP_CONFIG.bundledGlass)+' (bundle price)';$('raccessories').append(glassLine);}
       (p.accessories||[]).forEach(function(id){var x=KPAccessories.get(id),line=document.createElement('p');line.textContent=KPAccessories.label(x)+' · $'+KPAccessories.price(x,p.store).toFixed(2)+' · SKU '+x.sku+(KPAccessories.available(x,p.store)?'':' · confirm availability here');$('raccessories').append(line);});
       if(p.accessories&&p.accessories.length){notes.push('confirm accessory stock, compatibility and price');p.accessories.forEach(function(id){var x=KPAccessories.get(id);if(!KPAccessories.compatible(x,m.name))notes.push('CHECK PHONE FIT: '+KPAccessories.label(x));});}
@@ -123,11 +124,11 @@ input::placeholder{color:#626269;opacity:1}
       if (!m.active) notes.push('we do not stock this phone in store');
       if (data.designs.indexOf(d)===-1) notes.push('this design is not currently offered in store; confirm availability before preparing');
       $('rmodel').textContent = m.name + (notes.length ? ' (' + notes.join(', ') + ')' : '');
-      $('lookupStatus').textContent='Found: '+KPI.cleanTitle(d.title)+' · '+selected.name+' · '+m.name+'.';$('rprice').textContent=(p.accessories&&p.accessories.length?'Estimated setup total · ':p.glass?'Case + tempered glass · ':'Case · ')+KPI.formatPrice(data.price+(p.glass?KP_CONFIG.bundledGlass:0)+KPAccessories.total(p.accessories,p.store))+(p.store==='Newark, DE'?' · no sales tax':' · before tax')+(p.store?' · '+p.store:'');$('rpreviewStatus').textContent='Loading preview…';
-      $('ropen').href = KPI.customizerUrl(m, d, selected.id, p.glass, p.charger, p.accessories,p.store);
+      $('lookupStatus').textContent='Found: '+KPI.cleanTitle(d.title)+' · '+selected.name+' · '+m.name+'.';$('rprice').textContent=(p.accessories&&p.accessories.length?'Estimated setup total · ':p.glass?'Case + tempered glass · ':'Case · ')+KPI.formatPrice(casePrice+(p.glass?KP_CONFIG.bundledGlass:0)+KPAccessories.total(p.accessories,p.store,p.rim))+(p.store==='Newark, DE'?' · no sales tax':' · before tax')+(p.store?' · '+p.store:'');$('rpreviewStatus').textContent='Loading preview…';
+      $('ropen').href = KPI.customizerUrl(m, d, selected.id, p.glass, p.charger, p.accessories,p.store,p.rim);
       $('rimg').removeAttribute('src'); revoke(shownUrl); shownUrl = null;
       $('res').classList.add('on');
-      Promise.all([KPI.prepModel(m, 900), KPI.loadImage(KPI.fullUrl(d), { cache: false, timeout: 12000 })]).then(function (r) {
+      Promise.all([KPI.prepModel(m, 900,true,p.rim), KPI.loadImage(KPI.fullUrl(d), { cache: false, timeout: 12000 })]).then(function (r) {
         return KPI.renderToUrl(r[0], r[1], '#FFFFFF', selected.id);
       }).then(function (u) {
         /* only the newest lookup may show its picture; older ones are thrown away */

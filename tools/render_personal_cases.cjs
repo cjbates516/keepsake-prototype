@@ -11,7 +11,7 @@ const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).diges
  const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'reduce',serviceWorkers:'block'});
  await context.route('**/*',r=>new URL(r.request().url()).origin===new URL(base).origin?r.continue():r.abort());
  const p=await context.newPage();p.setDefaultTimeout(30000);
-  const href='customizer.html?'+new URLSearchParams({studio:row.studio,model:row.model,finish:row.finish,view:'phone'});
+  const href='customizer.html?'+new URLSearchParams({studio:row.studio,model:row.model,finish:row.finish,view:'phone',case:'rated',rim:row.rim});
   await p.goto(new URL(href,base).href,{waitUntil:'domcontentloaded'});
   await p.waitForFunction(()=>window.KPStudioCore?.info().previewReady);
   if(row.studio==='drawing')await p.locator('#fileInput').setInputFiles(row.input);
@@ -32,7 +32,7 @@ const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).diges
    const out=document.createElement('canvas');out.width=r-l;out.height=b-t;out.getContext('2d').drawImage(c,-l,-t);
    const s=__kp.state;return {data:out.toDataURL('image/webp',.95).split(',')[1],width:out.width,height:out.height,crop:[l,t,r,b],model:s.model,finish:s.colorName,caseType:s.caseType,view:s.previewMode,fitMode:s.fitMode};
   });
-  assert.equal(result.caseType,'MagSafe Clear');assert.equal(result.view,'phone');assert.equal(result.finish,row.finish);
+  assert.equal(result.caseType,row.caseType);assert.equal(await p.evaluate(()=>KPStudioCore.info().rim),row.rim);assert.equal(result.view,'phone');assert.equal(result.finish,row.finish);
   assert.equal(result.model.toLowerCase().replaceAll(' ','-'),row.model);
   assert(result.width>=600&&result.height>=1200,'Preview resolution');
   fs.writeFileSync(row.output+'.tmp',Buffer.from(result.data,'base64'));delete result.data;

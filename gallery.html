@@ -72,7 +72,7 @@ input::placeholder{color:#626269;opacity:1}
 .kpStepN{width:26px;height:26px;border-radius:50%;background:#2D2D3B;color:#FFF;font-size:13px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .kpStepDone{background:#176F32}
   #mega.open{max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto}
-  
+
 /* ── v2 identity carry ── */
 body{background:#FFFBF7}
 h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;letter-spacing:-.01em}
@@ -95,13 +95,13 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 </style>
 <link rel="stylesheet" href="assets/storefront.css">
 <script src="assets/case-shell.js?v=clear-mounted-2"></script>
-<script src="assets/print-layouts.js"></script>
+<script src="assets/print-layouts.js"></script><script src="assets/rated-camera-geometry.js?v=device-finish-1"></script><script src="assets/frost-samples.js?v=1"></script>
 <script src="assets/colorway-catalog.js?v=full-art-2-20261121"></script>
 <script src="assets/design-colorways.js?v=full-art-2-20261121"></script>
-<link rel="stylesheet" href="assets/shop-refresh.css?v=compact-gallery-1">
+<link rel="stylesheet" href="assets/shop-refresh.css?v=frost-20261124">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css?v=start-case-1"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=ocean-rain-1" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
+<link rel="stylesheet" href="assets/shop-menu.css?v=frost-20261124"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=frost-20261124" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
 </head>
 <body class="kp-storefront kp-library kp-shop">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
@@ -121,7 +121,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         <div>
           <div class="library-eyebrow">THE PRINT SHOP</div>
           <h1 id="shopTitle" style="font-weight:900;font-size:clamp(26px,3.8vw,52px);letter-spacing:-.01em;color:#191921;margin:0;line-height:1.02">Find your next favorite.</h1>
-          <p style="font-size:14px;font-weight:700;color:#6E6E70;margin:10px 0 0">Clear cases. Your favorite print. $44.99 · Made in store.</p>
+          <p style="font-size:14px;font-weight:700;color:#6E6E70;margin:10px 0 0">Clear $44.99 · Frost $49.99 · Made in store.</p>
           <a id="galleryFeature" hidden href="new-prints.html" style="display:inline-flex;align-items:center;min-height:44px;font-weight:800">Explore the latest collections →</a>
         </div>
         <a class="library-photo-cta" href="customizer.html">Use your own photo <span aria-hidden="true">↗</span></a>
@@ -365,6 +365,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var chosen=KP_DEVICES[device].colors[+(card.dataset.selectedColor||0)];
     card.querySelectorAll('a[href*="customizer.html"]').forEach(function(a){
       var url=new URL(a.href);
+      const frost=KPFrostSamples.config(device,file);if(frost){url.searchParams.set('case','rated');url.searchParams.set('rim',frost.rim);}
       url.searchParams.set('finish',chosen.n);
       url.searchParams.set('view',previewMode);
       url.searchParams.set('colorway',artworkPicks[file]||'original');
@@ -415,13 +416,16 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function previewKey(file,finish,look){
     return JSON.stringify([device,file,finish,look||artworkPicks[file]||'original',previewMode]);
   }
-  function renderCase(cv, file, colorIdx){
+  async function renderCase(cv, file, colorIdx){
+    const ticket=cv.__frostTicket=(cv.__frostTicket||0)+1;
     if(!cv.width||!cv.isConnected||colorIdx!==+cv.dataset.color)return;
     const model=device||sampleModel;
     var layer = caseLayers[model + '|' + colorIdx];
     var dImg = designImgs[file];
     if (!layer || !dImg?.naturalWidth) return;
     dImg.__kpDesignFile=file;loadArtworkThumbs(cv.closest('.kpCard'),dImg);
+    let frost;try{frost=await KPFrostSamples.prepare(model,file,'assets/cases/'+KP_DEVICES[model].colors[colorIdx].f,cv.width,cv.height);}catch{cv.closest('button').querySelector('.zoom-hint').textContent='Preview unavailable';return;}
+    if(ticket!==cv.__frostTicket||!cv.isConnected)return;
     var composed=null, profile=KPDesignColorways.profile(dImg), pick='original';
     if(profile){
       pick=artworkPicks[file]||'original';
@@ -432,13 +436,13 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       composed=KPDesignColorways.make(dImg,pick,700);
       dImg=composed;
     }
-    paintCase(cv,model,layer,viewMasks[model],dImg,composed);
+    paintCase(cv,model,frost?frost.base:layer,frost?frost.mask:viewMasks[model],dImg,composed,!!frost);
     if(viewMasks[model]){
       cv.dataset.renderedPreview=previewKey(file,colorIdx,pick);
       cv.closest('button').querySelector('.zoom-hint').textContent='Zoom';
     }
   }
-  function paintCase(cv,device,layer,vmask,dImg,composed){
+  function paintCase(cv,device,layer,vmask,dImg,composed,frost){
     var dev=KP_DEVICES[device],CW=cv.width,CH=cv.height,S=CW/2500;
     var ctx = cv.getContext('2d');
     ctx.clearRect(0, 0, CW, CH);
@@ -448,7 +452,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     // A known stencil is loading: show the phone until its actual panel is ready.
     if (KP_VIEW[device] && !vmask){
       if(maskFailed[device] && cv.closest('.h-card')) cv.closest('.h-card').querySelector('.case-zoom-button .zoom-hint').textContent='Case preview unavailable';
-      KPCaseShell.draw(ctx,device,CW,CH,caseStyle(device),layer);
+      if(!frost)KPCaseShell.draw(ctx,device,CW,CH,caseStyle(device),layer);
       if(composed) composed.width=composed.height=0;
       return;
     }
@@ -470,7 +474,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(!emptyCase&&(device==='iPhone 18 Pro Max'||device==='iPhone 18 Pro')) ctx.globalCompositeOperation='source-atop';
       ctx.drawImage(t, 0, 0);
       ctx.globalCompositeOperation='source-over';
-      KPCaseShell.draw(ctx,device,CW,CH,caseStyle(device),layer);
+      if(!frost)KPCaseShell.draw(ctx,device,CW,CH,caseStyle(device),layer);
       if(composed)composed.width=composed.height=0;
       return;
     }
@@ -486,7 +490,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ctx.globalAlpha = .32; ctx.globalCompositeOperation = 'multiply';
     ctx.drawImage(layer, 0, 0, CW, CH);
     ctx.restore();
-    KPCaseShell.draw(ctx,device,CW,CH,caseStyle(device),layer);
+    if(!frost)KPCaseShell.draw(ctx,device,CW,CH,caseStyle(device),layer);
     if(composed)composed.width=composed.height=0;
   }
 
@@ -503,10 +507,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     ]);
     art.__kpDesignFile=design.file;
     if(variant!=='original')await KPDesignColorways.prepare(art);
-    const composed=KPDesignColorways.profile(art) ? KPDesignColorways.make(art,variant,2000) : null;
     const output=document.createElement('canvas');
     output.width=1750;output.height=2100;
-    paintCase(output,model,layer,stencil,composed||art,composed);
+    const frost=await KPFrostSamples.prepare(model,design.file,'assets/cases/'+dev.colors[finish].f,output.width,output.height);
+    const composed=KPDesignColorways.profile(art) ? KPDesignColorways.make(art,variant,2000) : null;
+    paintCase(output,model,frost?frost.base:layer,frost?frost.mask:stencil,composed||art,composed,!!frost);
     return output;
   }
   $('grid').addEventListener('click',event=>{
@@ -556,7 +561,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   var searchQ='';
   var KP_NEW=['iPhone 18 Pro Max','iPhone 18 Pro'];
   var drawerBrand='Apple', pendingDesign=null, pendingBack=null, drawerOpener=null;
-  function browseReturn(){var u=new URL(location.href);for(var key of ['pick','colorway','back','brand'])u.searchParams.delete(key);return 'gallery.html'+u.search+u.hash;}
+  function browseReturn(){var u=new URL(location.href);for(var key of ['pick','colorway','back','brand','case','rim'])u.searchParams.delete(key);return 'gallery.html'+u.search+u.hash;}
   function kpEnsureDrawer(){
     if(document.getElementById('kpDevScrim')) return;
     var sc=document.createElement('div'); sc.id='kpDevScrim';
@@ -586,7 +591,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var sc=document.getElementById('kpDevScrim'), dw=document.getElementById('kpDevDrawer');
     if(!sc) return;
     var url=new URL(location.href);
-    ['brand','pick','colorway','back'].forEach(function(k){url.searchParams.delete(k);});history.replaceState(null,'',url);
+    ['brand','pick','colorway','back','case','rim'].forEach(function(k){url.searchParams.delete(k);});history.replaceState(null,'',url);
     sc.style.opacity='0'; sc.style.pointerEvents='none';
     dw.inert=true;dw.style.transform='translateX(-103%)';
     document.querySelector('.kp-page').inert=false;if(drawerOpener&&drawerOpener.isConnected)drawerOpener.focus({preventScroll:true});
@@ -595,11 +600,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function kpPickDevice(slug){
     if(!slug){kpCloseDrawer();return;}
     var selected = DEVICE_ORDER.find(function(model){return slugify(model)===slug;}) || null;
-    var file = pendingDesign, back=pendingBack||browseReturn();
+    var file = pendingDesign, back=pendingBack||browseReturn(), requestedRim=new URLSearchParams(location.search).get('rim');
     kpCloseDrawer();
     if (file && selected) {
       device=selected;saveBrowseFilters();
-      location.assign('customizer.html?' + new URLSearchParams({design:file,model:slugify(selected),colorway:artworkPicks[file]||'original',back:back}));
+      location.assign('customizer.html?' + new URLSearchParams({design:file,model:slugify(selected),colorway:artworkPicks[file]||'original',back:back,...(KPFrostSamples.config(selected,file,requestedRim)?{case:'rated',rim:KPFrostSamples.config(selected,file,requestedRim).rim}:{})}));
       return;
     }
     device = selected;
@@ -851,7 +856,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
           + '<a data-pick-model="'+d.file+'" href="customizer.html?design='+encodeURIComponent(d.file)+(d.displayColorway?'&amp;colorway='+d.displayColorway:'')+'" style="display:block;text-decoration:none;padding:10px 12px 12px">'
           + '<div style="font-weight:700;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
           + '<div style="font-size:11px;color:#6C6C72;font-weight:700;margin-top:2px">' + categoryLabel(d.category) + ' · choose your phone</div>'
-          + '<div style="font-size:13px;font-weight:800;color:#17171F;margin-top:6px">$44.99</div>'
+          + '<div style="font-size:13px;font-weight:800;color:#17171F;margin-top:6px">Frost case · $49.99</div>'
           + '<span style="display:block;margin-top:8px;text-align:center;border:1.5px solid #DC282E;color:#DC282E;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:10px;border-radius:999px">Customize</span>'
           + '</a></div>';
       });
@@ -897,7 +902,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         + '<canvas width="' + CW + '" height="' + CH + '" data-file="' + d.file + '" data-color="'+finish+'" role="img" aria-label="' + d.title + ' on ' + device + '" style="width:100%;height:auto;aspect-ratio:440/528;display:block"></canvas></button>'
         + '<div style="padding:12px 16px 6px;display:flex;align-items:center;justify-content:space-between;gap:8px">'
         + '<div style="min-width:0"><div style="font-weight:900;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
-        + '<div style="font-size:11px;color:#6C6C72;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">' + ('MagSafe Clear · $44.99') + '</div></div>'
+        + '<div style="font-size:11px;color:#6C6C72;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">' + (KPFrostSamples.config(device,d.file)?KPFrostSamples.config(device,d.file).rim+' · $49.99':'Clear case · $44.99') + '</div></div>'
         + '<div class="phone-finishes" aria-label="Phone finish"><small>Phone finish</small>' + dots + '</div></div>'
         + colorwayPicker(d.file)
         + '<div style="padding:8px 16px 14px;display:flex;gap:8px">'
