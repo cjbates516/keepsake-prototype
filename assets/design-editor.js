@@ -56,7 +56,7 @@
   const info=core.info(),initialSnapshot=core.snapshot();
   if(info.drawing)top.querySelector('h1').textContent=kiosk?'Plan your drawing case.':'Their drawing, your case.';
   if(info.sky)top.querySelector('h1').textContent='Your special night.';
-  if(info.sky){move(panel('sky','Night sky','Create a sky for your date and place.'),'personalStudio');buttons.background.hidden=true;buttons.adjust.hidden=true;buttons.name.hidden=true;tray.prepend(buttons.sky);}
+  if(info.sky){document.body.classList.add('studio-sky');move(panel('sky','Night sky','Create a sky for your date and place.'),'personalStudio');buttons.background.hidden=true;buttons.adjust.hidden=true;buttons.name.hidden=true;tray.prepend(buttons.sky);}
   else {
     const photoPanel=panel('photo',info.drawing?'Drawing':kiosk?'Photo help':'Photo',info.drawing&&kiosk?'':kiosk?'Want to use your own photo or drawing? Ask our team at the counter.':'Choose an original, full-size image.');
     if(info.drawing){move(photoPanel,'personalStudio');tray.prepend(buttons.photo);}
@@ -236,7 +236,7 @@
   document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!e.target.closest('input,textarea,select')&&step==='edit'&&!document.querySelector('dialog[open]')){e.preventDefault();travel(!e.shiftKey);}});
   function hideSheet(){stageHome.after(stage);if(sheet.open){internalCloses++;sheet.close();}Object.values(panels).forEach(p=>host.append(p));}
   function paintTool(){
-    Object.entries(panels).forEach(([id,p])=>p.hidden=id!==tool&&!(id==='phone'&&!mobile.matches&&step==='edit'));
+    Object.entries(panels).forEach(([id,p])=>p.hidden=id!==tool&&!(id==='phone'&&!mobile.matches&&step==='edit'&&!info.sky));
     Object.entries(buttons).forEach(([id,b])=>b.setAttribute('aria-expanded',String(id===tool)));
     sheet.dataset.activeTool=tool||'';
     if(mobile.matches&&tool){if(tool==='adjust')sheetBody.append(stage);else stageHome.after(stage);sheetBody.append(panels[tool]);$('studioSheetTitle').textContent=buttons[tool].querySelector('strong').textContent;if(!sheet.open)sheet.showModal();}
@@ -299,7 +299,7 @@
     if(i.library&&!lastTool&&tool==='photo'&&!mobile.matches){tool='background';paintTool();}
     if(initialSetup===null&&!i.loading&&!i.issue)initialSetup=i.selectionKey;
     if(!storeConfirmed)$('storeChips').querySelectorAll('button').forEach(b=>{b.setAttribute('aria-pressed','false');b.style.background='#FFFFFF';b.style.color='#4E4E50';});
-    if(storeLabel)storeLabel.textContent=storeConfirmed?'Store: '+(i.store||'Choose your store'):'Choose your store';
+    if(storeLabel){storeLabel.textContent=storeConfirmed?'Store: '+(i.store||'Choose your store'):'Choose your store';storeLabel.nextElementSibling.hidden=!storeConfirmed;}
     $('studioPhone').textContent=i.model+' · '+(i.rim||'Clear case');
     // case choice: prices from the customizer, checked state from the live case; rim chips only for the Rated Case
     caseBox.hidden=!i.ratedAvailable;
