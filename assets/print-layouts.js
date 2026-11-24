@@ -10,6 +10,12 @@ window.KP_PRINT_LAYOUTS = {
       2677
     ],
     "mask": "view-s26.png",
+    "ratedBox": [
+      716,
+      328,
+      1792,
+      2672
+    ],
     "rx": 0.9665259240705623
   },
   "Samsung Galaxy S26 Plus": {
@@ -34,6 +40,12 @@ window.KP_PRINT_LAYOUTS = {
       2676
     ],
     "mask": "view-s26u.png",
+    "ratedBox": [
+      714,
+      330,
+      1789,
+      2668
+    ],
     "rx": 0.9687811748136845
   },
   "iPhone 12": {
@@ -94,6 +106,12 @@ window.KP_PRINT_LAYOUTS = {
       2410
     ],
     "mask": "view-i13.png",
+    "ratedBox": [
+      830,
+      612,
+      1672,
+      2393
+    ],
     "rx": 0.99350974676626
   },
   "iPhone 13 Pro": {
@@ -142,6 +160,12 @@ window.KP_PRINT_LAYOUTS = {
       2429
     ],
     "mask": "view-i14.png",
+    "ratedBox": [
+      821,
+      593,
+      1680,
+      2410
+    ],
     "rx": 0.9911218184657257
   },
   "iPhone 14 Plus": {
@@ -154,6 +178,12 @@ window.KP_PRINT_LAYOUTS = {
       2513
     ],
     "mask": "view-i14m.png",
+    "ratedBox": [
+      790,
+      500,
+      1739,
+      2506
+    ],
     "rx": 1.0005563963322355
   },
   "iPhone 14 Pro": {
@@ -166,6 +196,12 @@ window.KP_PRINT_LAYOUTS = {
       2431
     ],
     "mask": "view-i14p.png",
+    "ratedBox": [
+      819,
+      584,
+      1681,
+      2418
+    ],
     "rx": 0.9925975623392597
   },
   "iPhone 14 Pro Max": {
@@ -178,6 +214,12 @@ window.KP_PRINT_LAYOUTS = {
       2521
     ],
     "mask": "view-i14pm.png",
+    "ratedBox": [
+      777,
+      494,
+      1723,
+      2507
+    ],
     "rx": 0.9771808203350664
   },
   "iPhone 15": {
@@ -190,6 +232,12 @@ window.KP_PRINT_LAYOUTS = {
       2576
     ],
     "mask": "view-i15.png",
+    "ratedBox": [
+      772,
+      497,
+      1745,
+      2553
+    ],
     "rx": 1.0557663931767673
   },
   "iPhone 15 Plus": {
@@ -202,6 +250,12 @@ window.KP_PRINT_LAYOUTS = {
       2684
     ],
     "mask": "view-i15m.png",
+    "ratedBox": [
+      715,
+      379,
+      1793,
+      2659
+    ],
     "rx": 1.0099785759780742
   },
   "iPhone 15 Pro": {
@@ -214,6 +268,12 @@ window.KP_PRINT_LAYOUTS = {
       2592
     ],
     "mask": "view-i15p.png",
+    "ratedBox": [
+      764,
+      504,
+      1731,
+      2571
+    ],
     "rx": 1.0507498903668644
   },
   "iPhone 15 Pro Max": {
@@ -226,6 +286,12 @@ window.KP_PRINT_LAYOUTS = {
       2668
     ],
     "mask": "view-i15pm.png",
+    "ratedBox": [
+      730,
+      389,
+      1780,
+      2639
+    ],
     "rx": 1.0406844750006425
   },
   "iPhone 16": {
@@ -238,6 +304,12 @@ window.KP_PRINT_LAYOUTS = {
       2557
     ],
     "mask": "view-i16n.png",
+    "ratedBox": [
+      749,
+      419,
+      1749,
+      2536
+    ],
     "rx": 1.065753963800566
   },
   "iPhone 16 Plus": {
@@ -262,6 +334,12 @@ window.KP_PRINT_LAYOUTS = {
       2566
     ],
     "mask": "view-i16p.png",
+    "ratedBox": [
+      754,
+      408,
+      1743,
+      2546
+    ],
     "rx": 1.0757737493138289
   },
   "iPhone 16 Pro Max": {
@@ -274,6 +352,12 @@ window.KP_PRINT_LAYOUTS = {
       2671
     ],
     "mask": "view-i16pm.png",
+    "ratedBox": [
+      711,
+      312,
+      1786,
+      2643
+    ],
     "rx": 1.0502188336197638
   },
   "iPhone 17": {
@@ -286,6 +370,12 @@ window.KP_PRINT_LAYOUTS = {
       2576
     ],
     "mask": "view-i17.png",
+    "ratedBox": [
+      773,
+      451,
+      1726,
+      2551
+    ],
     "rx": 1.0092806758718786
   },
   "iPhone 17 Pro": {
@@ -298,6 +388,12 @@ window.KP_PRINT_LAYOUTS = {
       2570
     ],
     "mask": "view-i17p.png",
+    "ratedBox": [
+      769,
+      1071,
+      1728,
+      2554
+    ],
     "rx": 0.9831276165631184
   },
   "iPhone 17 Pro Max": {
@@ -310,6 +406,12 @@ window.KP_PRINT_LAYOUTS = {
       2678
     ],
     "mask": "view-i17pm.png",
+    "ratedBox": [
+      726,
+      972,
+      1771,
+      2648
+    ],
     "rx": 0.9534053225708294
   },
   "iPhone 18 Pro": {
@@ -322,6 +424,12 @@ window.KP_PRINT_LAYOUTS = {
       2570
     ],
     "mask": "view-i17p.png",
+    "ratedBox": [
+      769,
+      1071,
+      1728,
+      2554
+    ],
     "rx": 0.9831276165631184
   },
   "iPhone 18 Pro Max": {
@@ -334,6 +442,12 @@ window.KP_PRINT_LAYOUTS = {
       2678
     ],
     "mask": "view-i17pm.png",
+    "ratedBox": [
+      726,
+      972,
+      1771,
+      2648
+    ],
     "rx": 0.9534053225708294
   },
   "iPhone Air": {
@@ -346,6 +460,12 @@ window.KP_PRINT_LAYOUTS = {
       2625
     ],
     "mask": "view-i17a.png",
+    "ratedBox": [
+      748,
+      843,
+      1750,
+      2597
+    ],
     "rx": 1.0354040861895994
   }
 };
