@@ -5,7 +5,7 @@ vm.runInContext(fs.readFileSync('assets/phone-finishes.js','utf8'),c);c.KPPhoneF
 vm.runInContext(s.slice(s.indexOf('  var KITS ='),s.indexOf('  /* KP-RATED-KITS:')),c);
 const file='instore/models.json',data=JSON.parse(fs.readFileSync(file));
 for(const m of data.models){const kit=c.KITS[m.name]||c.KITS['Samsung '+m.name];if(!kit?.colors)throw Error('Missing finishes: '+m.name);const colors=kit.colors;
- const saved=(m.finishes||[]).map(old=>{const current=colors.find(x=>x.n===old.n);return current?{n:current.n,f:current.f}:{...old,retired:true};});
- for(const color of colors)if(!saved.some(x=>x.n===color.n))saved.push({n:color.n,f:color.f});m.finishes=saved;
+ const saved=(m.finishes||[]).map(old=>{const current=colors.find(x=>x.n===old.n);return current?{n:current.n,f:current.f.split('?')[0]}:{...old,retired:true};});
+ for(const color of colors)if(!saved.some(x=>x.n===color.n))saved.push({n:color.n,f:color.f.split('?')[0]});m.finishes=saved;
 }
 fs.writeFileSync(file,JSON.stringify(data,null,1)+'\n');
