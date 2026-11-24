@@ -120,7 +120,7 @@
     if(key===accessorySummaryKey)return;const restoreFocus=accessorySummary.contains(document.activeElement);accessorySummaryKey=key;accessorySummary.replaceChildren();
     rows.forEach(row=>{if(!row.querySelector('[data-remove]')||!row.querySelector('span'))return;const copy=document.createElement('div'),label=document.createElement('span'),remove=document.createElement('button'),id=row.querySelector('[data-remove]').dataset.remove;label.textContent=row.querySelector('span').textContent;remove.type='button';remove.textContent='Remove';remove.setAttribute('aria-label',row.querySelector('button').getAttribute('aria-label'));remove.onclick=()=>accessoryHost.querySelector('[data-remove="'+id+'"]').click();copy.append(label,remove);accessorySummary.append(copy);});
     if(restoreFocus)(accessorySummary.querySelector('button')||accessoryOpen).focus({preventScroll:true});
-    if($('chargerHelp').checked){const note=document.createElement('p');note.textContent='Charger help requested · price confirmed by staff';accessorySummary.append(note);}
+    if($('chargerHelp').checked){const note=document.createElement('p');note.textContent='Charger help requested · price confirmed by a team member';accessorySummary.append(note);}
   }
   const quality=document.createElement('div');quality.className='studio-quality';move(quality,'dpiLabel');$('stageStick').append(quality);
   // Case choice (Rated Case): a two option radio group right under the case preview, on phones without opening a sheet
@@ -130,7 +130,7 @@
   // Each title is the name, then the price in its own span: on a narrow stage (iPad portrait) the price takes its own line.
   // The rim chips carry a visible "Rim color" label (the Phone tool's words), which also names the radio group.
   const caseTitle=(id,name)=>'<strong id="'+id+'"><span>'+name+'</span><span class="studio-case-price"><span class="studio-case-sep"> · </span><span class="studio-case-amt"></span></span></strong>';
-  caseBox.innerHTML='<legend>Choose your case</legend><div class="studio-case-row"><div class="studio-case-options"><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="MagSafe Clear"><span>'+caseTitle('studioCaseClear','Clear case')+'<small>Your phone shows through</small></span></label><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="Rated Case"><span>'+caseTitle('studioCaseRated','Rated Case')+'<small>Confirm availability in store</small></span></label></div><div class="studio-rim" id="studioRim" role="radiogroup" aria-labelledby="studioRimLabel" hidden><span class="studio-rim-label" id="studioRimLabel">Rim color</span><span class="studio-rim-chips" id="studioRimChips"></span></div></div>';
+  caseBox.innerHTML='<legend>Choose your case</legend><div class="studio-case-row"><div class="studio-case-options"><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="MagSafe Clear"><span>'+caseTitle('studioCaseClear','Clear case')+'<small>Your phone shows through</small></span></label><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="Rated Case"><span>'+caseTitle('studioCaseRated','Frost case')+'<small>Confirm availability in store</small></span></label></div><div class="studio-rim" id="studioRim" role="radiogroup" aria-labelledby="studioRimLabel" hidden><span class="studio-rim-label" id="studioRimLabel">Rim color</span><span class="studio-rim-chips" id="studioRimChips"></span></div></div>';
   panels.phone.append(caseBox);let rimKey='',revealRim=false;
   // On phones, rim chips that appear below the fold (short screens) are scrolled into view once, above the tool tray.
   caseBox.addEventListener('change',e=>{if(e.target.name==='studioCaseType'){core.setCase(e.target.value);revealRim=mobile.matches&&e.target.value==='Rated Case';}else if(e.target.name==='studioRim')core.setRim(e.target.value);sync();});
@@ -293,16 +293,16 @@
     syncVariations(i);productPrice.textContent='$'+(i.caseType==='Rated Case'?i.prices.rated:i.prices.clear).toFixed(2);product.hidden=step!=='edit';
     preview.querySelector('h2').textContent=i.drawingPending?'Your case setup.':'Your design, on your case.';
     preview.querySelector('h2 + p').textContent=i.drawingPending?'Your drawing will be added at the counter. Check your phone and any name, then choose your extras.':'Check the spelling, placement and camera area. Tap the case to see every detail.';
-    if(i.drawing){buttons.background.hidden=buttons.adjust.hidden=!i.hasPhoto;if(i.drawingPending)$('stageHint').textContent=(i.caseType==='Rated Case'?'Rated Case':'Clear case')+' · drawing to be added at the counter';}
+    if(i.drawing){buttons.background.hidden=buttons.adjust.hidden=!i.hasPhoto;if(i.drawingPending)$('stageHint').textContent=(i.rim||'Clear case')+' · drawing to be added at the counter';}
     if(i.library&&!lastTool&&tool==='photo'&&!mobile.matches){tool='background';paintTool();}
     if(initialSetup===null&&!i.loading&&!i.issue)initialSetup=i.selectionKey;
     if(storeLabel)storeLabel.textContent='Store: '+(i.store||'Choose your store');
-    $('studioPhone').textContent=i.model+' · '+(i.caseType==='MagSafe Clear'?'Clear case':i.caseType);
+    $('studioPhone').textContent=i.model+' · '+(i.rim||'Clear case');
     // case choice: prices from the customizer, checked state from the live case; rim chips only for the Rated Case
     caseBox.hidden=!i.ratedAvailable;
     const phoneHelp=panels.phone.querySelector('.studio-help'),copy=i.ratedAvailable?phoneCopy.rated:phoneCopy.clear;if(phoneHelp.textContent!==copy)phoneHelp.textContent=copy;
     if(i.ratedAvailable){
-      $('studioCaseClear').querySelector('.studio-case-amt').textContent='$'+i.prices.clear.toFixed(2);$('studioCaseRated').querySelector('.studio-case-amt').textContent='$'+i.prices.rated.toFixed(2);
+      $('studioCaseRated').firstElementChild.textContent=i.rim||'Frost case';$('studioCaseClear').querySelector('.studio-case-amt').textContent='$'+i.prices.clear.toFixed(2);$('studioCaseRated').querySelector('.studio-case-amt').textContent='$'+i.prices.rated.toFixed(2);
       caseBox.querySelectorAll('[name=studioCaseType]').forEach(r=>{r.checked=r.value===i.caseType;});
       const rims=i.caseType==='Rated Case'?i.rims:[],key=rims.map(r=>r.n).join('|'),rimRow=$('studioRim');
       if(key!==rimKey){rimKey=key;$('studioRimChips').replaceChildren(...rims.map(r=>{const l=document.createElement('label');l.className='studio-rim-chip';l.innerHTML='<input type="radio" name="studioRim"><span class="studio-rim-dot" aria-hidden="true"></span><span></span>';l.querySelector('input').value=r.n;l.querySelector('.studio-rim-dot').style.background=r.h;l.lastChild.textContent=r.n;return l;}));}
@@ -330,7 +330,7 @@
     $('editTools').style.display=i.hasPhoto&&!i.sky?'block':'none';
     adjustments.querySelectorAll('input').forEach(el=>{if(el!==document.activeElement)el.value=s[el.dataset.adjust];});
     const details=$('studioReviewDetails');details.replaceChildren();
-    const rows=[['Phone',i.model+' · '+i.finish],['Case',i.caseType==='Rated Case'?i.caseLabel:'Clear case']];
+    const rows=[['Phone',i.model+' · '+i.finish],['Case',i.rim||'Clear case']];
     $('studioPartial').hidden=!i.partial;$('studioPartial').textContent=i.partial||'';
     if(i.sky)rows.push(...(i.skyDetails||[]).filter(([label])=>!['Printed place','Coordinates','UTC instant','Sky version'].includes(label)));
     else if(i.layout){rows.push(['Layout',i.layout.name+' · '+i.layout.filled+' of '+i.layout.total+(i.layout.total===1?' photo':' photos')]);i.layout.captions.forEach(c=>rows.push([c.label,c.shown===false?'Not shown on this phone':c.waiting?'Prints when photo '+c.waiting+' is added':c.text.replace(/\n/g,' / ')||'Not added']));}

@@ -425,7 +425,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if (!layer || !dImg?.naturalWidth) return;
     dImg.__kpDesignFile=file;loadArtworkThumbs(cv.closest('.kpCard'),dImg);
     let frost;try{frost=await KPFrostSamples.prepare(model,file,'assets/cases/'+KP_DEVICES[model].colors[colorIdx].f,cv.width,cv.height);}catch{cv.closest('button').querySelector('.zoom-hint').textContent='Preview unavailable';return;}
-    if(ticket!==cv.__frostTicket||!cv.isConnected)return;
+    // Scrolling can release an offscreen canvas while the frost shell loads.
+    if(ticket!==cv.__frostTicket||!cv.isConnected||!cv.width||!cv.height)return;
     var composed=null, profile=KPDesignColorways.profile(dImg), pick='original';
     if(profile){
       pick=artworkPicks[file]||'original';
@@ -740,6 +741,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         if (cv.width === 0){ cv.width = CW; cv.height = CH; }
         loadDesign(file, function(){ renderCase(cv, file, +(cv.dataset.color||0)); });
       } else if (cv.width !== 0 && Math.abs(en.boundingClientRect.top) > 2400){
+        cv.__frostTicket=(cv.__frostTicket||0)+1;
         cv.width = 0; cv.height = 0; delete cv.dataset.renderedPreview;var card=cv.closest('.kpCard');if(card){card.querySelectorAll('.artwork-thumb img').forEach(function(im){im.removeAttribute('src');});delete card.dataset.thumbsLoaded;}if(designImgs[file])delete designImgs[file].__kpVariantImages; /* releases canvas memory on iOS; CSS aspect-ratio keeps layout */
       }
     });
