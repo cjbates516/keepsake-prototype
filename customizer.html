@@ -166,9 +166,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/shop-refresh.css?v=frost-20261124">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css?v=frost-20261124"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=frost-20261124" defer></script><link rel="stylesheet" href="assets/case-zoom.css">
+<link rel="stylesheet" href="assets/shop-menu.css?v=frost-20261124"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=frost-20261124" defer></script><link rel="stylesheet" href="assets/case-zoom.css?v=slate-drawing-audit-20261124">
 <link rel="stylesheet" href="assets/accessories.css">
-<link rel="stylesheet" href="assets/design-editor.css?v=frost-walkthrough-20261124">
+<link rel="stylesheet" href="assets/design-editor.css?v=slate-drawing-audit-20261124">
 <!-- Rated Case photos: the See photos button and its viewer (assets/rated-gallery.js) -->
 <link rel="stylesheet" href="assets/rated-gallery.css?v=rated-photos-2">
 <script>window.KP_EDITOR=!new URLSearchParams(location.search).has('cal')&&new URLSearchParams(location.search).get('staff')!=='1';</script>
@@ -224,8 +224,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <select id="brandSel" aria-label="Phone brand" style="flex:1;min-width:0;padding:15px 20px;border:0;font-size:16px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer">
               <option value="Apple">Apple</option>
               <option value="Samsung">Samsung</option>
-              <option value="Google" disabled>Google — coming soon</option>
-              <option value="iPad" disabled>iPad — coming soon</option>
+              <option value="Google" disabled>Google (coming soon)</option>
+              <option value="iPad" disabled>iPad (coming soon)</option>
             </select>
             <div style="width:1px;background:#E4E3E3"></div>
             <select id="modelSel" aria-label="Phone model" style="flex:1.4;min-width:0;padding:15px 20px;border:0;font-size:16px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer"></select>
@@ -324,7 +324,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
             <div style="font-size:11px;color:#6C6C72;font-weight:600;margin-top:6px;text-align:center">One-of-a-kind design, made just for you</div>
           </div>
           <input type="file" id="fileInput" accept="image/*" style="display:none">
-          <button id="clearBtn" class="h-borderink" style="display:none;width:100%;background:#FFFFFF;color:#6E6E70;border:1px solid #CECDCD;padding:13px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer;margin-top:10px;transition:border-color .2s">Start over — remove photo</button>
+          <button id="clearBtn" class="h-borderink" style="display:none;width:100%;background:#FFFFFF;color:#6E6E70;border:1px solid #CECDCD;padding:13px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer;margin-top:10px;transition:border-color .2s">Remove photo</button>
           <p style="font-size:12.5px;color:#6C6C72;margin:10px 0 28px;line-height:1.5">Photos are edited on this device. A team member can help transfer your original file to the print computer.</p>
           <div id="editTools" style="display:none;animation:fadeUp .3s cubic-bezier(.2,.7,.2,1) both;margin:-8px 0 28px">
             <div style="display:flex;gap:8px;margin-bottom:14px">
@@ -431,7 +431,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
 </div>
 
-<script src="assets/case-zoom.js?v=fit-first-1"></script>
+<script src="assets/case-zoom.js?v=slate-drawing-audit-20261124"></script>
 <script src="assets/night-sky.js?v=frost-20261124"></script>
 <script>
 (function(){
@@ -1810,7 +1810,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var t=state.layout?curTpl():null;
     $('fileInput').multiple=!!t;
     $('photoHeading').textContent=t?'Your photos':'Your photo';
-    $('clearBtn').textContent=t?'Remove all photos':'Start over — remove photo';
+    $('clearBtn').textContent=t?'Remove all photos':'Remove photo';
     if(t){
       var total=t.slots.length, filled=filledSlots(t), full=filled>=total;
       /* full: an opaque instruction instead of a button that would do nothing */
@@ -2101,7 +2101,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function fillModels(){
     $('modelSel').innerHTML = modelsByBrand[state.brand].map(function(m){
       var has = !!KITS[m];
-      return '<option value="'+m+'"'+(m===state.model?' selected':'')+(has?'':' disabled')+'>'+m+(has?'':' \u2014 coming soon')+'</option>';
+      return '<option value="'+m+'"'+(m===state.model?' selected':'')+(has?'':' disabled')+'>'+m+(has?'':' (coming soon)')+'</option>';
     }).join('');
   }
   function paletteFor(){
@@ -2420,7 +2420,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   document.addEventListener('click',function(e){
     var sc=e.target.closest ? e.target.closest('.storeChip') : null;
-    if(sc){ if(new URLSearchParams(location.search).get('kiosk')==='1'&&KP_STORES.some(s=>s.n===requestedStore))return;state.store=sc.dataset.s; state.reserved=false; renderStoreChips(); updateSummary(); }
+    if(sc){ if(new URLSearchParams(location.search).get('kiosk')==='1'&&new URLSearchParams(location.search).get('storeMode')!=='choose'&&KP_STORES.some(s=>s.n===requestedStore))return;state.store=sc.dataset.s; state.reserved=false; renderStoreChips(); updateSummary(); }
   });
   renderStoreChips();
   /* ── ordering ── */
@@ -3248,7 +3248,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   };
 })();
 </script>
-<script src="assets/design-editor.js?v=frost-walkthrough-20261124"></script>
+<script src="assets/design-editor.js?v=slate-drawing-audit-20261124"></script>
 <!-- Rated Case photos: after the editor, so the button joins its case row (tools/build_rated_photos.py makes the photos) -->
 <script src="assets/rated-gallery.js?v=rated-photos-3"></script>
 <script>

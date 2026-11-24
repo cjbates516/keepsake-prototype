@@ -14,16 +14,22 @@ const sample=new Image(), stone=new Image();sample.src='assets/photos/slates/fam
 const home=()=>{const url=new URL('instore/',location.href);if(fixedStore)url.searchParams.set('store',params.get('store'));return url.href;};
 if(stores.some(s=>s.name===params.get('store')))$('slateStore').value=params.get('store');
 const selected=()=>products[key];
+const displaySize=item=>$('slateOrientation').value==='portrait'&&!item.artwork?item.sizeLabel.split(' × ').reverse().join(' × '):item.sizeLabel;
 function credit(target){const node=document.querySelector('[data-slate-choice="'+key+'"]')?.closest('article,section')?.querySelector('figcaption');$(target).replaceChildren();if(node)$(target).append(...Array.from(node.childNodes,n=>n.cloneNode(true)));}
 function parkSource(){return document.querySelector('[data-slate-choice="'+key+'"]')?.closest('article,section')?.querySelector('figure img')?.src;}
 function updateActions(){
  const item=selected();$('runningTotal').querySelector('strong').textContent=item?'$'+item.price.toFixed(2):'From $29.99';
- $('runningDetail').textContent=item?(key==='bundle'?'Two '+item.sizeLabel+' inch slates':'Approx. '+item.sizeLabel+' inches'):'Display supports included';
+ $('runningDetail').textContent=item?(key==='bundle'?'Two '+displaySize(item)+' inch slates':'Approx. '+displaySize(item)+' inches'):'Display supports included';
  $('builderSelection').textContent=item?$('runningDetail').textContent:'';
  $('slateForward').hidden=step===3||step===0;$('editSlate').hidden=step!==3;$('clearSlate').hidden=step!==3;$('slateBack').hidden=step===3;
  $('slateForward').textContent=['Choose a size above','Use this store →','Show at the counter →'][step]||'';
  $('slateForward').disabled=step===0||step===1&&!$('slateStore').value||step===2&&!(photo||bringing||item?.artwork);
- document.querySelectorAll('[data-size]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.size===(selected()?.artwork?'large':key))));
+ document.querySelectorAll('[data-size]').forEach(b=>{
+  b.setAttribute('aria-pressed',String(b.dataset.size===(selected()?.artwork?'large':key)));
+  const item=products[b.dataset.size],label=b.querySelector('.size-card-label strong');
+  if(label){label.textContent=displaySize(item)+' inches';b.setAttribute('aria-label','Choose '+displaySize(item)+' inches photo slate, '+item.price.toFixed(2)+' dollars');}
+  else if(b.dataset.size==='bundle')b.querySelector('span').textContent='Two '+displaySize(item)+' slates · $'+item.price.toFixed(2)+' →';
+ });
  document.querySelectorAll('[data-progress]').forEach(el=>{const n=+el.dataset.progress;el.classList.toggle('complete',n<step);if(n===step)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current');});
 }
 function show(n){
@@ -38,7 +44,7 @@ function show(n){
 function chooseSize(value){$('slateOrientation').value=document.querySelector('[name=sizeOrientation]:checked').value;key=value;parkMode=false;closeParks();show(1);}
 document.querySelectorAll('[data-start]').forEach(b=>{b.disabled=false;b.onclick=()=>show(key?step:0);});
 document.querySelectorAll('[data-size]').forEach(b=>b.onclick=()=>chooseSize(b.dataset.size));
-document.querySelectorAll('[name=sizeOrientation]').forEach(input=>input.addEventListener('change',()=>{$('slateOrientation').value=input.value;document.querySelector('.size-grid').dataset.orientation=input.value;}));
+document.querySelectorAll('[name=sizeOrientation]').forEach(input=>input.addEventListener('change',()=>{$('slateOrientation').value=input.value;document.querySelector('.size-grid').dataset.orientation=input.value;updateActions();}));
 document.querySelector('.size-grid').dataset.orientation='landscape';
 $('startParks').onclick=()=>{key='large';parkMode=true;show(1);};
 $('slateForward').onclick=()=>{if(!$('slateForward').disabled)show(step+1);};
@@ -108,18 +114,29 @@ $('slatePhoto').onchange=async()=>{
  const file=$('slatePhoto').files[0];if(!file||kiosk)return;
  if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>20*1024*1024){$('photoStatus').textContent='Choose a JPG, PNG or WebP under 20 MB. For HEIC, bring the original to our team.';$('slatePhoto').value='';return;}
  const token=++generation,url=URL.createObjectURL(file),image=new Image();image.src=url;$('photoStatus').textContent='Preparing your preview…';
- try{await image.decode();if(token!==generation){URL.revokeObjectURL(url);return;}if(photoURL)URL.revokeObjectURL(photoURL);photoURL=url;photo=image;bringing=false;adjusting=false;parkMode=false;$('photoStatus').textContent=key==='bundle'?'First slate preview. Choose the second photo with our team.':'Your photo stays on this device. Bring the original to the counter.';updatePhoto();}catch{URL.revokeObjectURL(url);if(token===generation){$('slatePhoto').value='';$('photoStatus').textContent='That photo could not be opened. Try another JPG, PNG or WebP.';}}
+ try{await image.decode();if(token!==generation){URL.revokeObjectURL(url);return;}if(photoURL)URL.revokeObjectURL(photoURL);photoURL=url;photo=image;bringing=false;adjusting=false;parkMode=false;
+ // A replacement is a new composition, not the previous photo's crop.
+ $('slatePhotoZoom').value='1';$('slatePhotoX').value=$('slatePhotoY').value='50';
+ $('photoStatus').textContent=key==='bundle'?'First slate preview. Choose the second photo with our team.':'Your photo stays on this device. Bring the original to the counter.';updatePhoto();}catch{URL.revokeObjectURL(url);if(token===generation){$('slatePhoto').value='';$('photoStatus').textContent='That photo could not be opened. Try another JPG, PNG or WebP.';}}
 };
 $('removePhoto').onclick=()=>{discardPhoto();bringing=false;$('photoStatus').textContent='Choose another photo, or bring it to the counter.';updatePhoto();};
 $('bringPhoto').onclick=()=>{parkMode=false;bringing=true;updatePhoto();show(3);};
 ['slatePhotoZoom','slatePhotoX','slatePhotoY','slateCaption','slateOrientation'].forEach(id=>$(id).addEventListener('input',drawPreview));
+$('slateOrientation').addEventListener('change',()=>{
+ const orientation=$('slateOrientation').value;
+ if(orientation==='portrait'||orientation==='landscape'){
+  document.querySelector('[name=sizeOrientation][value="'+orientation+'"]').checked=true;
+  document.querySelector('.size-grid').dataset.orientation=orientation;
+ }
+ updateActions();
+});
 function openParks(){$('photoEditor').hidden=true;$('parkLibrary').hidden=false;$('slateForward').disabled=true;}
 function closeParks(){$('photoEditor').hidden=false;$('parkLibrary').hidden=true;updateActions();}
 $('chooseParkPhoto').onclick=openParks;$('closeParkLibrary').onclick=()=>{parkMode=!!selected()?.artwork;closeParks();updatePhoto();};
 document.querySelectorAll('[data-slate-choice]').forEach(b=>b.onclick=()=>{key=b.dataset.slateChoice;parkMode=true;$('slateOrientation').value='landscape';closeParks();updatePhoto();show(3);});
 function review(){
  const item=selected(),store=stores.find(s=>s.name===$('slateStore').value);if(!item||!store){show(!item?0:1);return;}
- $('selectedStore').textContent=store.name;$('counterAddress').textContent=store.address;$('selectedProduct').textContent=item.label;$('slateCode').textContent=item.code;$('selectedOrientation').textContent=item.artwork?'Landscape':$('slateOrientation').selectedOptions[0].textContent;$('selectedCaption').textContent=$('slateCaption').value.trim()||'None';
+ $('selectedStore').textContent=store.name;$('counterAddress').textContent=store.address;$('selectedProduct').textContent=item.label.replace(item.sizeLabel,displaySize(item));$('slateCode').textContent=item.code;$('selectedOrientation').textContent=item.artwork?'Landscape':$('slateOrientation').selectedOptions[0].textContent;$('selectedCaption').textContent=$('slateCaption').value.trim()||'None';
  const price=document.createElement('strong'),tax=document.createElement('small');price.textContent='$'+item.price.toFixed(2);tax.textContent=store.name==='Newark, DE'?'No sales tax':'Before applicable tax';$('selectedPrice').replaceChildren(price,tax);
  const ready=drawPreview();if(item.artwork)$('selectedSlatePreview').src=parkSource();else if(!ready)$('selectedSlatePreview').src='assets/photos/slates/family-slate-preview.jpg?v=solid-stone-2';
  $('counterPhotoNote').textContent=item.artwork?'Your chosen park photo':photo&&ready?'Your photo preview · Bring the original file':photo?'Example slate · Your chosen photo cannot be previewed. Bring the original.':'Example photo only · We’ll use your own photo';
