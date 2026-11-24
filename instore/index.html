@@ -140,6 +140,16 @@
     .steps{flex-wrap:wrap}
   }
 @media(max-width:900px){.phones,.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Phone selection is a quick choice, not a full-height product gallery. */
+.phone .pimg{height:150px;aspect-ratio:auto}
+.phone .pimg img{width:100%;max-height:100%}
+@media(min-width:601px) and (max-width:999px){.phones{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:601px){
+  #s1 .lede{margin-bottom:16px}
+  #s1 .store-promise{padding:14px 20px;margin:14px 0}
+  #s1 .phone-help{margin-bottom:8px}
+  #s1 .kiosk-gifts{margin:8px 0 16px}
+}
 
   .kiosk-location{margin:0 0 20px;font-size:15px;font-weight:700;color:var(--muted)}
   .store-label{display:block;margin-top:20px;font-weight:700}
@@ -191,6 +201,21 @@
 #kioskAccessoryBody .ka h3{display:none}
 #kioskAccessoryBody .ka-card img{height:120px}
 #kioskAccessoryBody .ka-tabs{position:sticky;top:0;background:#fcfaf6;z-index:1}
+
+@media(min-width:601px){
+ .setup-open .confirm{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:24px}
+ .setup-open .pv img{height:min(48vh,420px)}
+ .setup-open .dname{font-size:30px}
+ .setup-open .dmeta{font-size:17px}
+ .setup-open #price{display:none}
+ .setup-open #personalizeCase{margin:8px 0!important;min-height:48px;font-size:16px}
+ .setup-open #colorwayPicker{margin:10px 0!important}
+ .setup-open #colorwayPicker>p{margin:0 0 8px;font-size:16px!important}
+ .setup-open #colorwayButtons{display:flex!important;overflow-x:auto;padding:3px 3px 8px;scroll-snap-type:x proximity}
+ .setup-open #colorwayButtons button{flex:none;scroll-snap-align:start;font-size:15px!important;min-height:48px!important}
+ .setup-open .bundle-note{font-size:16px;margin:10px 0}
+ .setup-open #studioAccessoryOpen{font-size:16px;min-height:48px;margin:8px 0}
+}
 
 @media(max-width:600px){
  .setup-open .confirm{display:grid;grid-template-columns:95px minmax(0,1fr);gap:8px 14px;align-items:center}

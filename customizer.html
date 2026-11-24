@@ -111,7 +111,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/heic-loader.js"></script>
 <script src="assets/colorway-catalog.js?v=full-art-2-20261121"></script>
 <script src="assets/design-colorways.js?v=full-art-2-20261121"></script>
-<script src="instore/instore-lib.js?v=clear-rim-1"></script>
+<script src="instore/instore-lib.js?v=frost-center-20261124"></script>
 <style>
 .photo-looks{display:flex;gap:10px;overflow-x:auto;padding:6px 6px 14px;scroll-snap-type:x proximity}
 .photo-look{flex:0 0 106px;padding:6px;background:#fff;border:2px solid #dedad6;border-radius:12px;cursor:pointer;scroll-snap-align:start;color:#191921;font:800 12px "Nunito Sans",sans-serif}
@@ -2478,7 +2478,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       detail('Layout',reviewTpl.n+' \u00b7 '+filledSlots(reviewTpl)+' of '+reviewTotal+(reviewTotal===1?' photo':' photos'));
       tplTexts(reviewTpl).forEach(function(x){detail(x.label||x.key,kpCaptionHidden(x)?'Not shown on this phone':(captionValue(x)&&kpCaptionWaiting(x))?'Prints when photo '+(+x.slot+1)+' is added':(captionValue(x)||'Not added'));});
     }
-    /* the Rated Case covers the phone, so its rim color is the finish that matters (pick codes do not encode the case) */
+    /* Carry the selected frost rim in the pick code as well as the visible counter card. */
     var reviewRim=kpRim(), partialNote=kpPartialIssue();
     /* reviewNotes ride on the counter card under the code; the customer's overview shows only a real problem (empty
        photo spots) in amber. The team instruction for the Rated blank is on the card and in the details (Case row). */
@@ -2557,7 +2557,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(version!==reviewVersion||!dialog.open)return;
       var m=data.activeModels.find(function(item){return item.name.replace(/^Samsung /,'')===model.replace(/^Samsung /,'');});
       var d=m&&data.designsFor(m).find(function(item){return item.file===file;});
-      var key=d&&KPI.pickCode(m,d,variant,state.addons.screen,state.chargerHelp,state.accessories,state.store);
+      var key=d&&KPI.pickCode(m,d,variant,state.addons.screen,state.chargerHelp,state.accessories,state.store,reviewRim&&reviewRim.n);
       if(d)title.textContent=KPI.cleanTitle(d.title);
       code.textContent=key?'Pick code · '+key:'Ask the team to match this preview.';
       prepareCounterCard(version,code.textContent);
