@@ -1,0 +1,42 @@
+[
+  {
+    "href": "customizer.html?design=kp-park-collage-smokies.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-park-collage-smokies.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-park-collage-smokies--original.webp",
+    "replaces": "assets/celestial-patterns/kp-park-collage-smokies--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-park-collage-everest.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-park-collage-everest.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-park-collage-everest--original.webp",
+    "replaces": "assets/celestial-patterns/kp-park-collage-everest--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-park-collage-grand-canyon.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-park-collage-grand-canyon.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-park-collage-grand-canyon--original.webp",
+    "replaces": "assets/celestial-patterns/kp-park-collage-grand-canyon--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-sunday-scramble.png&model=galaxy-s26-ultra&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-sunday-scramble.png",
+    "model": "galaxy-s26-ultra",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/samsung-menu-sunday-scramble.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--original.webp"
+  }
+]

@@ -3,6 +3,8 @@
 #caseZoomDialog::backdrop {background:#101522c9;}
 #caseZoomDialog header,#caseZoomDialog footer {display:flex;align-items:center;gap:12px;padding:6px 14px;background:white;}
 #caseZoomDialog header {justify-content:space-between;}
+#caseZoomDialog header strong {min-width:0;overflow-wrap:anywhere;}
+#caseZoomDialog header [data-close] {flex:0 0 auto;width:auto;padding:0 12px;white-space:nowrap;}
 #caseZoomDialog footer {justify-content:center;}
 #caseZoomDialog button {min-width:44px;min-height:44px;background:white;color:#172638;border:1px solid #a2a6ac;border-radius:8px;font:inherit;cursor:pointer;}
 #caseZoomDialog button:disabled {opacity:.45;}

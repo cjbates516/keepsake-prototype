@@ -5,6 +5,7 @@
   const sessionId=Date.now().toString(36)+Math.random().toString(36).slice(2);
   const kiosk=params.get('kiosk')==='1', mobile=matchMedia('(max-width:760px)');
   const fixedStore=kiosk&&params.get('storeMode')!=='choose'&&window.KPAccessories?.stores.includes(params.get('store'));
+  let storeConfirmed=!kiosk||window.KPAccessories?.stores.includes(params.get('store'));
   function collectionReturn(){try{const u=new URL(params.get('back')||'',location.href),folder=new URL('.',location.href);if(u.origin!==folder.origin||!['gallery.html','parks-rugged.html','park-collages.html','new-prints.html','signature-golf.html','ocean-and-rain.html','seasonal-weather.html'].some(name=>u.pathname===folder.pathname+name))return null;const safe=new URL(u.pathname,location.origin);if(u.pathname.endsWith('/gallery.html'))for(const key of ['cat','q','color','state','all','n'])if(u.searchParams.has(key))safe.searchParams.set(key,u.searchParams.get(key));if(/^#[a-z0-9-]+$/.test(u.hash))safe.hash=u.hash;return safe;}catch{return null;}}
   // Arm privacy protection before constructing any editor UI. Deadlines survive device sleep.
   let idleTimer,warningTimer,warning=null,expiresAt=0,exiting=false,leaving=false;
@@ -56,7 +57,7 @@
   const info=core.info(),initialSnapshot=core.snapshot();
   if(info.drawing)top.querySelector('h1').textContent=kiosk?'Plan your drawing case.':'Their drawing, your case.';
   if(info.sky)top.querySelector('h1').textContent='Your special night.';
-  if(info.sky){move(panel('sky','Night sky','Create a sky for your date and place.'),'personalStudio');buttons.background.hidden=true;buttons.adjust.hidden=true;buttons.name.hidden=true;tray.prepend(buttons.sky);}
+  if(info.sky){document.body.classList.add('studio-sky');move(panel('sky','Night sky','Create a sky for your date and place.'),'personalStudio');buttons.background.hidden=true;buttons.adjust.hidden=true;buttons.name.hidden=true;tray.prepend(buttons.sky);}
   else {
     const photoPanel=panel('photo',info.drawing?'Drawing':kiosk?'Photo help':'Photo',info.drawing&&kiosk?'':kiosk?'Want to use your own photo or drawing? Ask our team at the counter.':'Choose an original, full-size image.');
     if(info.drawing){move(photoPanel,'personalStudio');tray.prepend(buttons.photo);}
@@ -95,7 +96,7 @@
     const summary=document.createElement('summary');storeLabel=document.createElement('strong');
     const change=document.createElement('span');change.textContent='Change store';summary.append(storeLabel,change);
     storePicker.append(summary,storeChoice);setup.insertBefore(storePicker,$('retailAddons'));
-    $('storeChips').addEventListener('click',e=>{if(e.target.closest('[data-s]')){storePicker.open=false;summary.focus({preventScroll:true});}});
+    $('storeChips').addEventListener('click',e=>{if(e.target.closest('[data-s]')){storeConfirmed=true;storePicker.open=false;summary.focus({preventScroll:true});sync();}});
   }else setup.insertBefore(storeChoice,$('retailAddons'));
   const editSetup=document.createElement('button');editSetup.id='studioSetupEdit';editSetup.type='button';editSetup.textContent='Edit your case';setup.insertBefore(editSetup,storePicker||storeChoice);editSetup.onclick=returnToDesign;
   if(fixedStore){$('storeChips').querySelectorAll('button').forEach(b=>{b.disabled=true;b.hidden=b.dataset.s!==params.get('store');});}
@@ -110,18 +111,18 @@
   const accessorySummary=document.createElement('div');accessorySummary.id='studioAccessorySummary';accessorySummary.setAttribute('aria-live','polite');
   $('retailAddons').append(accessoryOpen,accessorySummary);
   let accessoryClosing=false;
-  accessoryOpen.onclick=()=>{if(accessoryDialog.open||accessoryClosing)return;if(!core.info().store){if(storePicker){storePicker.open=true;storePicker.querySelector('summary').focus();}return;}history.pushState({...history.state,kpStudioAccessory:true},'');accessoryDialog.showModal();accessoryOpen.setAttribute('aria-expanded','true');accessoryBody.scrollTop=0;};
+  accessoryOpen.onclick=()=>{if(accessoryDialog.open||accessoryClosing)return;if(!storeConfirmed||!core.info().store){if(storePicker){storePicker.open=true;storePicker.querySelector('summary').focus();}return;}history.pushState({...history.state,kpStudioAccessory:true},'');accessoryDialog.showModal();accessoryOpen.setAttribute('aria-expanded','true');accessoryBody.scrollTop=0;};
   function closeAccessories(){if(accessoryDialog.open)accessoryDialog.close();}
   $('studioAccessoryDone').onclick=closeAccessories;accessoryDialog.addEventListener('cancel',e=>{e.preventDefault();closeAccessories();});
   accessoryDialog.addEventListener('close',()=>{if(!purged&&history.state?.kpStudioAccessory&&!accessoryClosing){accessoryClosing=true;history.back();}accessoryOpen.setAttribute('aria-expanded','false');if(!purged&&step==='setup')accessoryOpen.focus({preventScroll:true});});
   let accessorySummaryKey='';
   function syncAccessorySummary(i){
     const rows=[...accessoryHost.querySelectorAll('.ka-selected>div')],key=rows.map(r=>r.textContent).join('|')+'|'+$('chargerHelp').checked;
-    accessoryOpen.disabled=!i.store;accessoryOpen.textContent=rows.length?'Change chargers & accessories →':'Choose a charger or accessory →';
+    accessoryOpen.disabled=!i.store||!storeConfirmed;accessoryOpen.textContent=rows.length?'Change chargers & accessories →':'Choose a charger or accessory →';
     if(key===accessorySummaryKey)return;const restoreFocus=accessorySummary.contains(document.activeElement);accessorySummaryKey=key;accessorySummary.replaceChildren();
     rows.forEach(row=>{if(!row.querySelector('[data-remove]')||!row.querySelector('span'))return;const copy=document.createElement('div'),label=document.createElement('span'),remove=document.createElement('button'),id=row.querySelector('[data-remove]').dataset.remove;label.textContent=row.querySelector('span').textContent;remove.type='button';remove.textContent='Remove';remove.setAttribute('aria-label',row.querySelector('button').getAttribute('aria-label'));remove.onclick=()=>accessoryHost.querySelector('[data-remove="'+id+'"]').click();copy.append(label,remove);accessorySummary.append(copy);});
     if(restoreFocus)(accessorySummary.querySelector('button')||accessoryOpen).focus({preventScroll:true});
-    if($('chargerHelp').checked){const note=document.createElement('p');note.textContent='Charger help requested · price confirmed by staff';accessorySummary.append(note);}
+    if($('chargerHelp').checked){const note=document.createElement('p');note.textContent='Charger help requested · price confirmed by a team member';accessorySummary.append(note);}
   }
   const quality=document.createElement('div');quality.className='studio-quality';move(quality,'dpiLabel');$('stageStick').append(quality);
   // Case choice (Rated Case): a two option radio group right under the case preview, on phones without opening a sheet
@@ -131,7 +132,7 @@
   // Each title is the name, then the price in its own span: on a narrow stage (iPad portrait) the price takes its own line.
   // The rim chips carry a visible "Rim color" label (the Phone tool's words), which also names the radio group.
   const caseTitle=(id,name)=>'<strong id="'+id+'"><span>'+name+'</span><span class="studio-case-price"><span class="studio-case-sep"> · </span><span class="studio-case-amt"></span></span></strong>';
-  caseBox.innerHTML='<legend>Choose your case</legend><div class="studio-case-row"><div class="studio-case-options"><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="MagSafe Clear"><span>'+caseTitle('studioCaseClear','Clear case')+'<small>Your phone shows through</small></span></label><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="Rated Case"><span>'+caseTitle('studioCaseRated','Rated Case')+'<small><span id="studioCaseDrop"></span>Confirm availability in store</small></span></label></div><div class="studio-rim" id="studioRim" role="radiogroup" aria-labelledby="studioRimLabel" hidden><span class="studio-rim-label" id="studioRimLabel">Rim color</span><span class="studio-rim-chips" id="studioRimChips"></span></div></div>';
+  caseBox.innerHTML='<legend>Choose your case</legend><div class="studio-case-row"><div class="studio-case-options"><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="MagSafe Clear"><span>'+caseTitle('studioCaseClear','Clear case')+'<small>Your phone shows through</small></span></label><label class="studio-case-opt"><input type="radio" name="studioCaseType" value="Rated Case"><span>'+caseTitle('studioCaseRated','Frost case')+'<small><span id="studioCaseDrop"></span>Confirm availability in store</small></span></label></div><div class="studio-rim" id="studioRim" role="radiogroup" aria-labelledby="studioRimLabel" hidden><span class="studio-rim-label" id="studioRimLabel">Rim color</span><span class="studio-rim-chips" id="studioRimChips"></span></div></div>';
   panels.phone.append(caseBox);let rimKey='',revealRim=false;
   // On phones, rim chips that appear below the fold (short screens) are scrolled into view once, above the tool tray.
   caseBox.addEventListener('change',e=>{if(e.target.name==='studioCaseType'){core.setCase(e.target.value);revealRim=mobile.matches&&e.target.value==='Rated Case';}else if(e.target.name==='studioRim')core.setRim(e.target.value);sync();});
@@ -236,7 +237,7 @@
   document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!e.target.closest('input,textarea,select')&&step==='edit'&&!document.querySelector('dialog[open]')){e.preventDefault();travel(!e.shiftKey);}});
   function hideSheet(){stageHome.after(stage);if(sheet.open){internalCloses++;sheet.close();}Object.values(panels).forEach(p=>host.append(p));}
   function paintTool(){
-    Object.entries(panels).forEach(([id,p])=>p.hidden=id!==tool&&!(id==='phone'&&!mobile.matches&&step==='edit'));
+    Object.entries(panels).forEach(([id,p])=>p.hidden=id!==tool&&!(id==='phone'&&!mobile.matches&&step==='edit'&&!info.sky));
     Object.entries(buttons).forEach(([id,b])=>b.setAttribute('aria-expanded',String(id===tool)));
     sheet.dataset.activeTool=tool||'';
     if(mobile.matches&&tool){if(tool==='adjust')sheetBody.append(stage);else stageHome.after(stage);sheetBody.append(panels[tool]);$('studioSheetTitle').textContent=buttons[tool].querySelector('strong').textContent;if(!sheet.open)sheet.showModal();}
@@ -257,7 +258,7 @@
   function returnToDesign(){const distance=(history.state?.kpStudioDepth||0)-(history.state?.kpStudioEditDepth||0);if(distance>0)history.go(-distance);else setStep('edit',false);}
   function setStep(next,push=true){
     remember();tool=null;hideSheet();step=next;document.body.dataset.studioStep=step;
-    if(step==='setup'&&storePicker&&!core.info().store)storePicker.open=true;
+    if(step==='setup'&&storePicker&&(!storeConfirmed||!core.info().store))storePicker.open=true;
     tray.hidden=host.hidden=step!=='edit';preview.hidden=step!=='preview';setup.hidden=step!=='setup';
     $('studioUndo').hidden=$('studioRedo').hidden=step!=='edit';
     top.querySelectorAll('[data-step]').forEach(li=>{if(li.dataset.step===step)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});
@@ -278,6 +279,7 @@
     core.saveOptions?.();
   });
   $('studioNext').onclick=()=>{
+    if(step==='setup'&&!storeConfirmed){storePicker.open=true;return;}
     const i=core.info();if(i.issue){core.retry?.();$('studioStatus').textContent=i.issue;return;}
     if(step==='edit')setStep('preview');else if(step==='preview')setStep('setup');else core.review();
   };
@@ -296,11 +298,12 @@
     syncVariations(i);productPrice.textContent='$'+(i.caseType==='Rated Case'?i.prices.rated:i.prices.clear).toFixed(2);product.hidden=step!=='edit';
     preview.querySelector('h2').textContent=i.drawingPending?'Your case setup.':'Your design, on your case.';
     preview.querySelector('h2 + p').textContent=i.drawingPending?'Your drawing will be added at the counter. Check your phone and any name, then choose your extras.':'Check the spelling, placement and camera area. Tap the case to see every detail.';
-    if(i.drawing){buttons.background.hidden=buttons.adjust.hidden=!i.hasPhoto;if(i.drawingPending)$('stageHint').textContent=(i.caseType==='Rated Case'?'Rated Case':'Clear case')+' · drawing to be added at the counter';}
+    if(i.drawing){buttons.background.hidden=buttons.adjust.hidden=!i.hasPhoto;if(i.drawingPending)$('stageHint').textContent=(i.rim||'Clear case')+' · drawing to be added at the counter';}
     if(i.library&&!lastTool&&tool==='photo'&&!mobile.matches){tool='background';paintTool();}
     if(initialSetup===null&&!i.loading&&!i.issue)initialSetup=i.selectionKey;
-    if(storeLabel)storeLabel.textContent='Store: '+(i.store||'Choose your store');
-    $('studioPhone').textContent=i.model+' · '+(i.caseType==='MagSafe Clear'?'Clear case':i.caseType);
+    if(!storeConfirmed)$('storeChips').querySelectorAll('button').forEach(b=>{b.setAttribute('aria-pressed','false');b.style.background='#FFFFFF';b.style.color='#4E4E50';});
+    if(storeLabel){storeLabel.textContent=storeConfirmed?'Store: '+(i.store||'Choose your store'):'Choose your store';storeLabel.nextElementSibling.hidden=!storeConfirmed;}
+    $('studioPhone').textContent=i.model+' · '+(i.rim||'Clear case');
     // case choice: prices from the customizer, checked state from the live case; rim chips only for the Rated Case
     caseBox.hidden=!i.ratedAvailable;
     const phoneHelp=panels.phone.querySelector('.studio-help'),copy=!i.clearAvailable?(i.rims.length>1?phoneCopy.only:phoneCopy.onlyOne):i.ratedAvailable?phoneCopy.rated:phoneCopy.clear;if(phoneHelp.textContent!==copy)phoneHelp.textContent=copy;
@@ -308,18 +311,19 @@
       // Rated only phones: no clear option, so the lone Rated card keeps the price, drop rating and availability line
       caseBox.classList.toggle('studio-case-only',!i.clearAvailable);caseBox.querySelector('[value="MagSafe Clear"]').closest('label').hidden=!i.clearAvailable;
       const legend=i.clearAvailable?'Choose your case':'Your case',drop=i.drop?i.drop+' · ':'';if(caseBox.querySelector('legend').textContent!==legend)caseBox.querySelector('legend').textContent=legend;if($('studioCaseDrop').textContent!==drop)$('studioCaseDrop').textContent=drop;
-      $('studioCaseClear').querySelector('.studio-case-amt').textContent='$'+i.prices.clear.toFixed(2);$('studioCaseRated').querySelector('.studio-case-amt').textContent='$'+i.prices.rated.toFixed(2);
+      $('studioCaseRated').firstElementChild.textContent=i.rim||'Frost case';$('studioCaseClear').querySelector('.studio-case-amt').textContent='$'+i.prices.clear.toFixed(2);$('studioCaseRated').querySelector('.studio-case-amt').textContent='$'+i.prices.rated.toFixed(2);
       caseBox.querySelectorAll('[name=studioCaseType]').forEach(r=>{r.checked=r.value===i.caseType;});
       const rims=i.caseType==='Rated Case'?i.rims:[],key=rims.map(r=>r.n).join('|'),rimRow=$('studioRim');
       if(key!==rimKey){rimKey=key;$('studioRimChips').replaceChildren(...rims.map(r=>{const l=document.createElement('label');l.className='studio-rim-chip';l.innerHTML='<input type="radio" name="studioRim"><span class="studio-rim-dot" aria-hidden="true"></span><span></span>';l.querySelector('input').value=r.n;l.querySelector('.studio-rim-dot').style.background=r.h;l.lastChild.textContent=r.n;return l;}));}
       rimRow.hidden=!rims.length;rimRow.querySelectorAll('input').forEach(r=>{r.checked=r.value===i.rim;});
     }fitSoon();$('studioTotal').textContent=i.accessoryError?'—':'$'+i.total.toFixed(2);
-    $('studioStore').textContent=(i.store||'Choose your store')+(i.store==='Newark, DE'?' · No sales tax':' · Before tax');
+    $('studioStore').textContent=storeConfirmed?(i.store||'Choose your store')+(i.store==='Newark, DE'?' · No sales tax':' · Before tax'):'Choose your store in Extras';
     const url=!kiosk&&collectionReturn()||new URL(kiosk?'instore/':'gallery.html',location.href);if(kiosk){if(fixedStore)url.searchParams.set('store',params.get('store'));url.searchParams.set('model',i.model.toLowerCase().replace(/^(samsung|google|motorola) /,'').replaceAll(' ','-'));if(params.get('collection'))url.searchParams.set('collection',params.get('collection'));}else if(url.pathname.endsWith('/gallery.html'))url.searchParams.set('device',i.model.toLowerCase().replace(/^(samsung|google|motorola) /,'').replaceAll(' ','-'));$('studioBrowse').href=url.href;
     $('studioNext').textContent=step==='edit'?(i.drawingPending?'Review case setup →':'Preview design →'):step==='preview'?'Choose extras →':'Show at counter →';
     // Preview and Extras also carry the empty photo spot note above the footer (partial collages never block Next)
-    const status=i.issue||(step!=='edit'&&i.partial)||'';
-    $('studioNext').disabled=!!i.issue;if($('studioStatus').textContent!==status)$('studioStatus').textContent=status;
+    const needsStore=step==='setup'&&!storeConfirmed;
+    const status=i.issue||(needsStore?'Choose your store above to confirm local prices.':null)||(step!=='edit'&&i.partial)||'';
+    $('studioNext').disabled=!!i.issue||needsStore;if($('studioStatus').textContent!==status)$('studioStatus').textContent=status;
     noBackground.hidden=!$('photoLooksWrap').hidden;noBackground.textContent=i.hasPhoto?'This design uses its original background.':'Choose a design or photo to see its backgrounds.';
     if(layoutAdd){
       // Photo path: personal photos have no alternate backgrounds, so Background steps aside (as it does for the sky).
@@ -336,7 +340,7 @@
     $('editTools').style.display=i.hasPhoto&&!i.sky?'block':'none';
     adjustments.querySelectorAll('input').forEach(el=>{if(el!==document.activeElement)el.value=s[el.dataset.adjust];});
     const details=$('studioReviewDetails');details.replaceChildren();
-    const rows=[['Phone',i.model+(i.finish?' · '+i.finish:'')],['Case',i.caseType==='Rated Case'?i.caseLabel:'Clear case']];
+    const rows=[['Phone',i.model+(i.finish?' · '+i.finish:'')],['Case',i.rim||'Clear case']];
     $('studioPartial').hidden=!i.partial;$('studioPartial').textContent=i.partial||'';
     if(i.sky)rows.push(...(i.skyDetails||[]).filter(([label])=>!['Printed place','Coordinates','UTC instant','Sky version'].includes(label)));
     else if(i.layout){rows.push(['Layout',i.layout.name+' · '+i.layout.filled+' of '+i.layout.total+(i.layout.total===1?' photo':' photos')]);if(i.layout.hidden)rows.push(['Photos',i.layout.hidden]);i.layout.captions.forEach(c=>rows.push([c.label,c.shown===false?'Not shown on this phone':c.waiting?'Prints when photo '+c.waiting+' is added':c.text.replace(/\n/g,' / ')||'Not added']));}

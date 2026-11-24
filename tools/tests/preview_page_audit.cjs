@@ -16,10 +16,10 @@ const old=/assets\/home\/personal\/(?:drawing-case|drawing-shell|sky-case|sky-sh
   await p.waitForLoadState('load');await p.evaluate(()=>document.fonts.ready);
   if(route==='gallery.html')await p.waitForFunction(()=>document.querySelector('canvas[data-rendered-preview]'));
   const images=await p.evaluate(async()=>{
-   const all=[...document.images].filter(im=>im.getAttribute('src')&&/assets\/(?:home|case-only-previews|featured-cases|collection-cases|celestial-patterns|new-prints)\//.test(im.src));
+   const all=[...document.images].filter(im=>im.getAttribute('src')&&/assets\/(?:home|case-only-previews|featured-cases|collection-cases|celestial-patterns|new-prints|frost-samples|ocean-rain|nature-seasons)\//.test(im.src));
    return Promise.all(all.map(async im=>{im.loading='eager';try{await im.decode();return {src:im.getAttribute('src'),width:im.naturalWidth,height:im.naturalHeight};}catch{return {src:im.getAttribute('src'),error:true};}}));
   });
-  const expected=(fs.readFileSync(route,'utf8').match(/<img\b[^>]*\bsrc=["']assets\/(?:home|case-only-previews|featured-cases|collection-cases|celestial-patterns|new-prints)\//g)||[]).length;
+  const expected=(fs.readFileSync(route,'utf8').match(/<img\b[^>]*\bsrc=["']assets\/(?:home|case-only-previews|featured-cases|collection-cases|celestial-patterns|new-prints|frost-samples|ocean-rain|nature-seasons)\//g)||[]).length;
   assert(images.length>=expected,route+' missing image elements: '+images.length+' of at least '+expected);
   const broken=images.filter(i=>i.error||!i.width);assert.deepEqual(broken,[],route+' broken preview');
   assert(!images.some(i=>old.test(i.src)),route+' stale personal preview');
@@ -31,9 +31,9 @@ const old=/assets\/home\/personal\/(?:drawing-case|drawing-shell|sky-case|sky-sh
    await p.screenshot({path:path.join(out,name+'-personal.png')});
    await personal.locator('a').first().click();await p.locator('#caseZoomDialog').waitFor();
    await p.locator('#caseZoomDialog img').evaluate(im=>im.decode());
-   assert((await p.locator('#caseZoomDialog img').getAttribute('src')).includes('drawing-clear-case-v2'));
+   assert((await p.locator('#caseZoomDialog img').getAttribute('src')).includes('drawing-frost'));
    await p.screenshot({path:path.join(out,name+'-personal-zoom.png')});
-   await p.locator('#caseZoomDialog [data-close]').click();await personal.locator('a').nth(1).click();await p.locator('#caseZoomDialog img').evaluate(im=>im.decode());assert((await p.locator('#caseZoomDialog img').getAttribute('src')).includes('sky-clear-case-v2'));
+   await p.locator('#caseZoomDialog [data-close]').click();await personal.locator('a').nth(1).click();await p.locator('#caseZoomDialog img').evaluate(im=>im.decode());assert((await p.locator('#caseZoomDialog img').getAttribute('src')).includes('sky-frost'));
   }
   assert.deepEqual(failed,[],route+' failed same-origin resources');results.push({route,engine:engine.name(),width,status:response.status(),images:images.length,expected,overflow,errors});p.off('pageerror',err);p.off('response',badResponse);
   console.log(name,images.length+' previews',overflow?'OVERFLOW':'OK',errors.length?'ERRORS '+JSON.stringify(errors):'');

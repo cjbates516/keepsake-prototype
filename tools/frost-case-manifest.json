@@ -1,0 +1,3542 @@
+[
+  {
+    "href": "customizer.html?design=kp-acadia-bass-harbor.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-acadia-bass-harbor.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-acadia-bass-harbor--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-acadia-bass-harbor-photograph.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-acadia-bass-harbor-photograph.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-acadia-bass-harbor-photograph--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-canyon-duck-on-a-rock-photo.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-canyon-duck-on-a-rock-photo.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-canyon-duck-on-a-rock-photo--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-golf-pebble-beach.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-golf-pebble-beach.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-golf-pebble-beach--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-pebble-beach--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-golf-st-andrews.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-golf-st-andrews.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-golf-st-andrews--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-golf-st-andrews--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-grand-canyon-mather-point.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-grand-canyon-mather-point.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-grand-canyon-mather-point--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-canyon-mather-point--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-grand-teton-reflection.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-grand-teton-reflection.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-grand-teton-reflection--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-grand-teton-reflection--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-great-smoky-mountains-newfound-gap.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-great-smoky-mountains-newfound-gap.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-great-smoky-mountains-newfound-gap--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-joshua-tree-hidden-valley.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-joshua-tree-hidden-valley.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-joshua-tree-hidden-valley-photograph.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-joshua-tree-hidden-valley-photograph.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-joshua-tree-hidden-valley-photograph--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-olympic-rialto.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-olympic-rialto.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-olympic-rialto--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-olympic-rialto-photograph.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-olympic-rialto-photograph.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-olympic-rialto-photograph--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-olympic-rialto-photograph--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-rocky-dream-lake-photo.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-rocky-dream-lake-photo.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-rocky-dream-lake-photo--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-dream-lake-photo--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-rocky-mountain-moraine-elk.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-rocky-mountain-moraine-elk.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-rocky-mountain-moraine-elk--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-smokies-grotto-falls-photo.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-smokies-grotto-falls-photo.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-smokies-grotto-falls-photo--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-sunday-scramble.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-sunday-scramble.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-sunday-scramble--c1.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-sunday-scramble.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-sunday-scramble.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-sunday-scramble--c2.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-sunday-scramble.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-sunday-scramble.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-sunday-scramble--c3.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-sunday-scramble.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-sunday-scramble.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-sunday-scramble--c4.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-sunday-scramble.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-sunday-scramble.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-sunday-scramble--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-teton-jenny-lake-photo.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-teton-jenny-lake-photo.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-teton-jenny-lake-photo--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-teton-jenny-lake-photo--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-weather-frost-fern.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-weather-frost-fern.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-weather-frost-fern--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-frost-fern--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-weather-october-drift.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-weather-october-drift.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-weather-october-drift--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-october-drift--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-weather-ripple-prism.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-weather-ripple-prism.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-weather-ripple-prism--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-ripple-prism--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-weather-window-seat.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-weather-window-seat.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-weather-window-seat--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-weather-window-seat--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-yellowstone-grand-prismatic.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-yellowstone-grand-prismatic.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-grand-prismatic--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-yellowstone-old-faithful-photo.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-yellowstone-old-faithful-photo.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-yellowstone-old-faithful-photo--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-yosemite-half-dome-sunset.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-yosemite-half-dome-sunset.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-yosemite-half-dome-sunset--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zion-the-narrows-photo.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zion-the-narrows-photo.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-zion-the-narrows-photo--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-the-narrows-photo--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zion-watchman-bend.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zion-watchman-bend.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--kp-zion-watchman-bend--original.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--kp-zion-watchman-bend--original.webp"
+  },
+  {
+    "href": "customizer.html?design=modern-yosemite-national-park-logo-for-mug.jpg&model=iphone-15-pro&colorway=artwork-only&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "modern-yosemite-national-park-logo-for-mug.jpg",
+    "model": "iphone-15-pro",
+    "variant": "artwork-only",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/galaxy-s26-ultra--modern-yosemite-national-park-logo-for-mug--artwork-only.webp",
+    "replaces": "assets/case-only-previews/galaxy-s26-ultra--modern-yosemite-national-park-logo-for-mug--artwork-only.webp"
+  },
+  {
+    "href": "customizer.html?design=abstract-leopard-pink.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "abstract-leopard-pink.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--abstract-leopard-pink--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--abstract-leopard-pink--original.webp"
+  },
+  {
+    "href": "customizer.html?design=bethany-beach-city-map-navy.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "bethany-beach-city-map-navy.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--bethany-beach-city-map-navy--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--bethany-beach-city-map-navy--original.webp"
+  },
+  {
+    "href": "customizer.html?design=boston-map-cream.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "boston-map-cream.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--boston-map-cream--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--boston-map-cream--original.webp"
+  },
+  {
+    "href": "customizer.html?design=christmas-santa-hats-white.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "christmas-santa-hats-white.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--christmas-santa-hats-white--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--christmas-santa-hats-white--original.webp"
+  },
+  {
+    "href": "customizer.html?design=city-night-los-angeles.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "city-night-los-angeles.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--city-night-los-angeles--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--city-night-los-angeles--original.webp"
+  },
+  {
+    "href": "customizer.html?design=city-night-new-york.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "city-night-new-york.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--city-night-new-york--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--city-night-new-york--original.webp"
+  },
+  {
+    "href": "customizer.html?design=city-night-philadelphia.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "city-night-philadelphia.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--city-night-philadelphia--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--city-night-philadelphia--original.webp"
+  },
+  {
+    "href": "customizer.html?design=colorful-minimalist-wavy-stripes.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "colorful-minimalist-wavy-stripes.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--colorful-minimalist-wavy-stripes--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--colorful-minimalist-wavy-stripes--original.webp"
+  },
+  {
+    "href": "customizer.html?design=cow-print-pink-on-cream.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "cow-print-pink-on-cream.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--cow-print-pink-on-cream--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--cow-print-pink-on-cream--original.webp"
+  },
+  {
+    "href": "customizer.html?design=dog-28-christmas-dog-pattern.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "dog-28-christmas-dog-pattern.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--dog-28-christmas-dog-pattern--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--dog-28-christmas-dog-pattern--original.webp"
+  },
+  {
+    "href": "customizer.html?design=dog-adorable-love-paw-dog-bone.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "dog-adorable-love-paw-dog-bone.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--dog-adorable-love-paw-dog-bone--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--dog-adorable-love-paw-dog-bone--original.webp"
+  },
+  {
+    "href": "customizer.html?design=dog-paw-prints-and-pet-toys.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "dog-paw-prints-and-pet-toys.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--dog-paw-prints-and-pet-toys--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--dog-paw-prints-and-pet-toys--original.webp"
+  },
+  {
+    "href": "customizer.html?design=dog-small-dog-breeds.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "dog-small-dog-breeds.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--dog-small-dog-breeds--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--dog-small-dog-breeds--original.webp"
+  },
+  {
+    "href": "customizer.html?design=high-detail-botanical-of-winter-flora-on-white.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "high-detail-botanical-of-winter-flora-on-white.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--high-detail-botanical-of-winter-flora-on-white--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--high-detail-botanical-of-winter-flora-on-white--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-cherry-dot.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-cherry-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--kp-cherry-dot--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--kp-cherry-dot--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-half-dome-river.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-half-dome-river.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--kp-half-dome-river--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--kp-half-dome-river--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-heart-riot.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-heart-riot.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--kp-heart-riot--c2.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--kp-heart-riot--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-heart-riot.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-heart-riot.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--kp-heart-riot--c4.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--kp-heart-riot--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-prism.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-liquid-prism.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--kp-liquid-prism--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--kp-liquid-prism--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-wrong-way-duck.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-wrong-way-duck.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--kp-wrong-way-duck--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--kp-wrong-way-duck--original.webp"
+  },
+  {
+    "href": "customizer.html?design=lake-george-navy.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "lake-george-navy.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--lake-george-navy--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--lake-george-navy--original.webp"
+  },
+  {
+    "href": "customizer.html?design=los-angeles-map-blush.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "los-angeles-map-blush.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--los-angeles-map-blush--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--los-angeles-map-blush--original.webp"
+  },
+  {
+    "href": "customizer.html?design=mid-century-modern-abstract-shapes.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "mid-century-modern-abstract-shapes.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--mid-century-modern-abstract-shapes--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--mid-century-modern-abstract-shapes--original.webp"
+  },
+  {
+    "href": "customizer.html?design=modern-yosemite-national-park-logo-for-mug.jpg&model=iphone-15-pro&colorway=forest-topo&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "modern-yosemite-national-park-logo-for-mug.jpg",
+    "model": "iphone-15-pro",
+    "variant": "forest-topo",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--modern-yosemite-national-park-logo-for-mug--forest-topo.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--modern-yosemite-national-park-logo-for-mug--forest-topo.webp"
+  },
+  {
+    "href": "customizer.html?design=nyc-map-navy.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "nyc-map-navy.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--nyc-map-navy--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--nyc-map-navy--original.webp"
+  },
+  {
+    "href": "customizer.html?design=pastel-pink-floral-minimalist-pattern.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "pastel-pink-floral-minimalist-pattern.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--pastel-pink-floral-minimalist-pattern--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--pastel-pink-floral-minimalist-pattern--original.webp"
+  },
+  {
+    "href": "customizer.html?design=philadelphia-city-map-cream.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "philadelphia-city-map-cream.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--philadelphia-city-map-cream--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--philadelphia-city-map-cream--original.webp"
+  },
+  {
+    "href": "customizer.html?design=philadelphia-city-map-navy.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "philadelphia-city-map-navy.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--philadelphia-city-map-navy--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--philadelphia-city-map-navy--original.webp"
+  },
+  {
+    "href": "customizer.html?design=playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--playful-chevron-stripe-pattern-in-sky-blue-and-burnt-orange--original.webp"
+  },
+  {
+    "href": "customizer.html?design=smiley-flower-power.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "smiley-flower-power.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--smiley-flower-power--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--smiley-flower-power--original.webp"
+  },
+  {
+    "href": "customizer.html?design=stylish-white-daisy-floral-pattern.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "stylish-white-daisy-floral-pattern.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--stylish-white-daisy-floral-pattern--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--stylish-white-daisy-floral-pattern--original.webp"
+  },
+  {
+    "href": "customizer.html?design=west-chester-city-map-cream.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "west-chester-city-map-cream.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--west-chester-city-map-cream--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--west-chester-city-map-cream--original.webp"
+  },
+  {
+    "href": "customizer.html?design=where-it-all-began-heart-map-cream.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "where-it-all-began-heart-map-cream.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--where-it-all-began-heart-map-cream--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--where-it-all-began-heart-map-cream--original.webp"
+  },
+  {
+    "href": "customizer.html?design=y2k-retro-04.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "y2k-retro-04.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--y2k-retro-04--original.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--y2k-retro-04--original.webp"
+  },
+  {
+    "href": "customizer.html?design=zodiac-atlas-aquarius.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "zodiac-atlas-aquarius.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--zodiac-atlas-aquarius--c3.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-aquarius--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=zodiac-atlas-gemini.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "zodiac-atlas-gemini.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--zodiac-atlas-gemini--c3.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-gemini--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=zodiac-atlas-leo.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "zodiac-atlas-leo.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--zodiac-atlas-leo--c3.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-leo--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=zodiac-atlas-scorpio.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "zodiac-atlas-scorpio.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--zodiac-atlas-scorpio--c3.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-scorpio--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=zodiac-atlas-virgo.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "zodiac-atlas-virgo.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/iphone-15-pro-max--zodiac-atlas-virgo--c3.webp",
+    "replaces": "assets/case-only-previews/iphone-15-pro-max--zodiac-atlas-virgo--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-cherry-dot.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-cherry-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-cherry-dot--c1.webp",
+    "replaces": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-cherry-dot.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-cherry-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-cherry-dot--c2.webp",
+    "replaces": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-cherry-dot.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-cherry-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-cherry-dot--c3.webp",
+    "replaces": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-cherry-dot.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-cherry-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-cherry-dot--c4.webp",
+    "replaces": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-cherry-dot.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-cherry-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-cherry-dot--original.webp",
+    "replaces": "assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-wrong-way-duck.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-wrong-way-duck.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-wrong-way-duck--c1.webp",
+    "replaces": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-wrong-way-duck.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-wrong-way-duck.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-wrong-way-duck--c2.webp",
+    "replaces": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-wrong-way-duck.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-wrong-way-duck.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-wrong-way-duck--c3.webp",
+    "replaces": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-wrong-way-duck.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-wrong-way-duck.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-wrong-way-duck--c4.webp",
+    "replaces": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-wrong-way-duck.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-wrong-way-duck.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/iphone-17-pro-max--kp-wrong-way-duck--original.webp",
+    "replaces": "assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-cafe-dot.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-cafe-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-cafe-dot--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-cafe-dot--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-cafe-dot.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-cafe-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-cafe-dot--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-cafe-dot--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-cafe-dot.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-cafe-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-cafe-dot--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-cafe-dot--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-cafe-dot.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-cafe-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-cafe-dot--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-cafe-dot--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-cafe-dot.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-cafe-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-cafe-dot--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-cafe-dot--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-cafe-dot.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-cafe-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-cafe-dot--original.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-cafe-dot--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-cherry-pinpoint.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-cherry-pinpoint.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-cherry-pinpoint--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-cherry-pinpoint.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-cherry-pinpoint.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-cherry-pinpoint--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-cherry-pinpoint.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-cherry-pinpoint.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-cherry-pinpoint--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-cherry-pinpoint.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-cherry-pinpoint.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-cherry-pinpoint--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-cherry-pinpoint.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-cherry-pinpoint.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-cherry-pinpoint--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-cherry-pinpoint--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-cherry-pinpoint.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-cherry-pinpoint.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-cherry-pinpoint--original.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-cherry-pinpoint--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-halo-dot.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-halo-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-halo-dot--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-halo-dot--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-halo-dot.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-halo-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-halo-dot--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-halo-dot--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-halo-dot.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-halo-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-halo-dot--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-halo-dot--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-halo-dot.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-halo-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-halo-dot--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-halo-dot--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-halo-dot.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-halo-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-halo-dot--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-halo-dot--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-halo-dot.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-halo-dot.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-halo-dot--original.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-halo-dot--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-micro-ink.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-micro-ink.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-micro-ink--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-micro-ink--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-micro-ink.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-micro-ink.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-micro-ink--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-micro-ink--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-micro-ink.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-micro-ink.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-micro-ink--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-micro-ink--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-micro-ink.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-micro-ink.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-micro-ink--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-micro-ink--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-micro-ink.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-micro-ink.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-micro-ink--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-micro-ink--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-micro-ink.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-micro-ink.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-micro-ink--original.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-micro-ink--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-offset-duo.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-offset-duo.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-offset-duo--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-offset-duo--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-offset-duo.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-offset-duo.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-offset-duo--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-offset-duo--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-offset-duo.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-offset-duo.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-offset-duo--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-offset-duo--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-offset-duo.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-offset-duo.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-offset-duo--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-offset-duo--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-offset-duo.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-offset-duo.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-offset-duo--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-offset-duo--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-offset-duo.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-offset-duo.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-offset-duo--original.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-offset-duo--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-orbit-scatter.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-dots-orbit-scatter.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-dots-orbit-scatter--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-orbit-scatter--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-orbit-scatter.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-dots-orbit-scatter.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-dots-orbit-scatter--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-orbit-scatter--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-orbit-scatter.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-dots-orbit-scatter.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-dots-orbit-scatter--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-orbit-scatter--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-orbit-scatter.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-dots-orbit-scatter.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-dots-orbit-scatter--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-orbit-scatter--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-orbit-scatter.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-dots-orbit-scatter.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-dots-orbit-scatter--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-orbit-scatter--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-orbit-scatter.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-dots-orbit-scatter.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-dots-orbit-scatter--original.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-orbit-scatter--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-oversize-pop.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-oversize-pop.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-oversize-pop--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-oversize-pop--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-oversize-pop.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-oversize-pop.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-oversize-pop--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-oversize-pop--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-oversize-pop.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-oversize-pop.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-oversize-pop--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-oversize-pop--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-oversize-pop.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-oversize-pop.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-oversize-pop--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-oversize-pop--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-oversize-pop.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-oversize-pop.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-oversize-pop--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-oversize-pop--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-oversize-pop.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-dots-oversize-pop.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-dots-oversize-pop--original.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-oversize-pop--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-pearl-grid.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-dots-pearl-grid.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-dots-pearl-grid--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-pearl-grid--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-pearl-grid.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-dots-pearl-grid.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-dots-pearl-grid--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-pearl-grid--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-pearl-grid.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-dots-pearl-grid.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-dots-pearl-grid--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-pearl-grid--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-pearl-grid.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-dots-pearl-grid.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-dots-pearl-grid--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-pearl-grid--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-pearl-grid.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-dots-pearl-grid.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-dots-pearl-grid--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-pearl-grid--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-dots-pearl-grid.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-dots-pearl-grid.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-dots-pearl-grid--original.webp",
+    "replaces": "assets/celestial-patterns/kp-dots-pearl-grid--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-cabana-bold.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-cabana-bold.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-cabana-bold--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-cabana-bold--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-cabana-bold.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-cabana-bold.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-cabana-bold--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-cabana-bold--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-cabana-bold.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-cabana-bold.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-cabana-bold--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-cabana-bold--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-cabana-bold.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-cabana-bold.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-cabana-bold--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-cabana-bold--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-cabana-bold.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-cabana-bold.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-cabana-bold--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-cabana-bold--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-cabana-bold.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-cabana-bold.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-cabana-bold--original.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-cabana-bold--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-contour-flow.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-contour-flow.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-contour-flow--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-contour-flow--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-contour-flow.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-contour-flow.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-contour-flow--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-contour-flow--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-contour-flow.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-contour-flow.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-contour-flow--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-contour-flow--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-contour-flow.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-contour-flow.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-contour-flow--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-contour-flow--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-contour-flow.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-contour-flow.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-contour-flow--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-contour-flow--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-contour-flow.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-contour-flow.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-contour-flow--original.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-contour-flow--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-diagonal-dash.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-diagonal-dash.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-diagonal-dash--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-diagonal-dash--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-diagonal-dash.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-diagonal-dash.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-diagonal-dash--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-diagonal-dash--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-diagonal-dash.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-diagonal-dash.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-diagonal-dash--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-diagonal-dash--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-diagonal-dash.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-diagonal-dash.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-diagonal-dash--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-diagonal-dash--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-diagonal-dash.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-diagonal-dash.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-diagonal-dash--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-diagonal-dash--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-diagonal-dash.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-diagonal-dash.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-diagonal-dash--original.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-diagonal-dash--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-double-rail.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-double-rail.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-double-rail--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-double-rail--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-double-rail.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-double-rail.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-double-rail--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-double-rail--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-double-rail.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-double-rail.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-double-rail--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-double-rail--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-double-rail.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-double-rail.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-double-rail--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-double-rail--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-double-rail.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-double-rail.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-double-rail--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-double-rail--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-double-rail.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-double-rail.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-double-rail--original.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-double-rail--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-fine-ticking.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-fine-ticking.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-fine-ticking--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-fine-ticking--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-fine-ticking.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-fine-ticking.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-fine-ticking--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-fine-ticking--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-fine-ticking.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-fine-ticking.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-fine-ticking--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-fine-ticking--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-fine-ticking.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-fine-ticking.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-fine-ticking--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-fine-ticking--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-fine-ticking.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-fine-ticking.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-fine-ticking--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-fine-ticking--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-fine-ticking.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-fine-ticking.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-fine-ticking--original.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-fine-ticking--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-scallop-stripe.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-scallop-stripe.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-scallop-stripe--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-scallop-stripe--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-scallop-stripe.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-scallop-stripe.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-scallop-stripe--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-scallop-stripe--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-scallop-stripe.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-scallop-stripe.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-scallop-stripe--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-scallop-stripe--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-scallop-stripe.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-scallop-stripe.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-scallop-stripe--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-scallop-stripe--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-scallop-stripe.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-scallop-stripe.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-scallop-stripe--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-scallop-stripe--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-scallop-stripe.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-scallop-stripe.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-scallop-stripe--original.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-scallop-stripe--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-wave-ribbon.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-wave-ribbon.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-wave-ribbon--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-wave-ribbon--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-wave-ribbon.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-wave-ribbon.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-wave-ribbon--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-wave-ribbon--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-wave-ribbon.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-wave-ribbon.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-wave-ribbon--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-wave-ribbon--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-wave-ribbon.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-wave-ribbon.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-wave-ribbon--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-wave-ribbon--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-wave-ribbon.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-wave-ribbon.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-wave-ribbon--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-wave-ribbon--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-wave-ribbon.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-lines-wave-ribbon.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-lines-wave-ribbon--original.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-wave-ribbon--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-windowpane.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-windowpane.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-windowpane--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-windowpane--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-windowpane.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-windowpane.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-windowpane--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-windowpane--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-windowpane.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-windowpane.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-windowpane--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-windowpane--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-windowpane.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-windowpane.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-windowpane--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-windowpane--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-windowpane.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-windowpane.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-windowpane--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-windowpane--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-lines-windowpane.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-lines-windowpane.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-lines-windowpane--original.webp",
+    "replaces": "assets/celestial-patterns/kp-lines-windowpane--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-lovers.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-tarot-lovers.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-tarot-lovers--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-lovers--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-lovers.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-tarot-lovers.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-tarot-lovers--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-lovers--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-lovers.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-tarot-lovers.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-tarot-lovers--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-lovers--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-lovers.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-tarot-lovers.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-tarot-lovers--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-lovers--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-lovers.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-tarot-lovers.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-tarot-lovers--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-lovers--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-lovers.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-tarot-lovers.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-tarot-lovers--original.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-lovers--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-moon.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-moon.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-moon--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-moon--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-moon.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-moon.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-moon--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-moon--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-moon.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-moon.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-moon--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-moon--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-moon.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-moon.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-moon--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-moon--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-moon.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-moon.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-moon--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-moon--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-moon.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-moon.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-moon--original.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-moon--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-star.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-star.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-star--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-star--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-star.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-star.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-star--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-star--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-star.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-star.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-star--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-star--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-star.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-star.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-star--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-star--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-star.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-star.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-star--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-star--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-star.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-star.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-star--original.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-star--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-sun.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-sun.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-sun--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-sun--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-sun.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-sun.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-sun--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-sun--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-sun.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-sun.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-sun--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-sun--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-sun.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-sun.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-sun--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-sun--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-sun.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-sun.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-sun--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-sun--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-tarot-sun.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-tarot-sun.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-tarot-sun--original.webp",
+    "replaces": "assets/celestial-patterns/kp-tarot-sun--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-aquarius.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-aquarius.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-aquarius--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-aquarius.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-aquarius.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-aquarius--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-aquarius.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-aquarius.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-aquarius--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-aquarius.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-aquarius.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-aquarius--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-aquarius.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-aquarius.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-aquarius--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-aquarius--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-aquarius.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-aquarius.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-aquarius--original.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-aquarius--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-aries.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-aries.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-aries--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-aries--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-aries.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-aries.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-aries--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-aries--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-aries.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-aries.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-aries--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-aries--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-aries.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-aries.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-aries--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-aries--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-aries.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-aries.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-aries--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-aries--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-aries.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-aries.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-aries--original.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-aries--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-cancer.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-cancer.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-cancer--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-cancer--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-cancer.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-cancer.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-cancer--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-cancer--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-cancer.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-cancer.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-cancer--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-cancer--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-cancer.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-cancer.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-cancer--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-cancer--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-cancer.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-cancer.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-cancer--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-cancer--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-cancer.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-cancer.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-cancer--original.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-cancer--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-capricorn.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-capricorn.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-capricorn--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-capricorn.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-capricorn.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-capricorn--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-capricorn.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-capricorn.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-capricorn--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-capricorn.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-capricorn.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-capricorn--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-capricorn.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-capricorn.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-capricorn--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-capricorn--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-capricorn.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-capricorn.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-capricorn--original.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-capricorn--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-gemini.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-gemini.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-gemini--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-gemini--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-gemini.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-gemini.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-gemini--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-gemini--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-gemini.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-gemini.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-gemini--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-gemini--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-gemini.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-gemini.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-gemini--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-gemini--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-gemini.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-gemini.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-gemini--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-gemini--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-gemini.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-gemini.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-gemini--original.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-gemini--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-leo.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-leo.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-leo--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-leo--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-leo.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-leo.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-leo--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-leo--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-leo.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-leo.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-leo--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-leo--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-leo.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-leo.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-leo--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-leo--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-leo.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-leo.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-leo--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-leo--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-leo.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-leo.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-leo--original.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-leo--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-libra.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-libra.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-libra--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-libra--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-libra.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-libra.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-libra--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-libra--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-libra.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-libra.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-libra--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-libra--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-libra.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-libra.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-libra--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-libra--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-libra.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-libra.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-libra--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-libra--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-libra.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-libra.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-libra--original.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-libra--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-pisces.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-pisces.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-pisces--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-pisces--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-pisces.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-pisces.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-pisces--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-pisces--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-pisces.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-pisces.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-pisces--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-pisces--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-pisces.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-pisces.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-pisces--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-pisces--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-pisces.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-pisces.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-pisces--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-pisces--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-pisces.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-pisces.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-pisces--original.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-pisces--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-sagittarius.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-sagittarius.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-sagittarius--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-sagittarius.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-sagittarius.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-sagittarius--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-sagittarius.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-sagittarius.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-sagittarius--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-sagittarius.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-sagittarius.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-sagittarius--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-sagittarius.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-sagittarius.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-sagittarius--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-sagittarius.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-sagittarius.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-sagittarius--original.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-sagittarius--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-scorpio.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-scorpio.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-scorpio--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-scorpio.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-scorpio.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-scorpio--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-scorpio.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-scorpio.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-scorpio--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-scorpio.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-scorpio.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-scorpio--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-scorpio.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-scorpio.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-scorpio--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-scorpio--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-scorpio.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-scorpio.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-scorpio--original.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-scorpio--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-taurus.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-taurus.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-taurus--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-taurus--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-taurus.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-taurus.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-taurus--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-taurus--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-taurus.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-taurus.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-taurus--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-taurus--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-taurus.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-taurus.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-taurus--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-taurus--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-taurus.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-taurus.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-taurus--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-taurus--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-taurus.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-zodiac-creature-taurus.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-taurus--original.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-taurus--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-virgo.png&model=iphone-15-pro&colorway=c1&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-virgo.png",
+    "model": "iphone-15-pro",
+    "variant": "c1",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-virgo--c1.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-virgo--c1.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-virgo.png&model=iphone-15-pro&colorway=c2&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-virgo.png",
+    "model": "iphone-15-pro",
+    "variant": "c2",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-virgo--c2.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-virgo--c2.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-virgo.png&model=iphone-15-pro&colorway=c3&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-virgo.png",
+    "model": "iphone-15-pro",
+    "variant": "c3",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-virgo--c3.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-virgo--c3.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-virgo.png&model=iphone-15-pro&colorway=c4&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-virgo.png",
+    "model": "iphone-15-pro",
+    "variant": "c4",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-virgo--c4.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-virgo--c4.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-virgo.png&model=iphone-15-pro&colorway=c5&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-virgo.png",
+    "model": "iphone-15-pro",
+    "variant": "c5",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-virgo--c5.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-virgo--c5.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-zodiac-creature-virgo.png&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-zodiac-creature-virgo.png",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-zodiac-creature-virgo--original.webp",
+    "replaces": "assets/celestial-patterns/kp-zodiac-creature-virgo--original.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-season-alpine-wildflowers.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-season-alpine-wildflowers.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/alpine-wildflowers.webp",
+    "replaces": "assets/nature-seasons/alpine-wildflowers.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-season-desert-monsoon.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-season-desert-monsoon.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/desert-monsoon.webp",
+    "replaces": "assets/nature-seasons/desert-monsoon.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-season-mistwood.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-season-mistwood.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/mistwood.webp",
+    "replaces": "assets/nature-seasons/mistwood.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-season-moonlit-coast.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-season-moonlit-coast.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/moonlit-coast.webp",
+    "replaces": "assets/nature-seasons/moonlit-coast.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-season-sunlit-dunes.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-season-sunlit-dunes.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/sunlit-dunes.webp",
+    "replaces": "assets/nature-seasons/sunlit-dunes.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-season-winter-blue-hour.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-season-winter-blue-hour.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/winter-blue-hour.webp",
+    "replaces": "assets/nature-seasons/winter-blue-hour.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-blueprint-eucalyptus.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-blueprint-eucalyptus.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-blueprint-eucalyptus.webp",
+    "replaces": "assets/new-prints/kp-blueprint-eucalyptus.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-blueprint-ginkgo.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-blueprint-ginkgo.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-blueprint-ginkgo.webp",
+    "replaces": "assets/new-prints/kp-blueprint-ginkgo.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-blueprint-maidenhair.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-blueprint-maidenhair.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-blueprint-maidenhair.webp",
+    "replaces": "assets/new-prints/kp-blueprint-maidenhair.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-blueprint-maple.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-blueprint-maple.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-blueprint-maple.webp",
+    "replaces": "assets/new-prints/kp-blueprint-maple.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-blueprint-monstera.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-blueprint-monstera.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-blueprint-monstera.webp",
+    "replaces": "assets/new-prints/kp-blueprint-monstera.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-blueprint-palm.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-blueprint-palm.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-blueprint-palm.webp",
+    "replaces": "assets/new-prints/kp-blueprint-palm.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-blueprint-sea-garden.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-blueprint-sea-garden.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-blueprint-sea-garden.webp",
+    "replaces": "assets/new-prints/kp-blueprint-sea-garden.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-blueprint-wildflower.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-blueprint-wildflower.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-blueprint-wildflower.webp",
+    "replaces": "assets/new-prints/kp-blueprint-wildflower.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-golf-alpine-fairways.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-golf-alpine-fairways.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-golf-alpine-fairways.webp",
+    "replaces": "assets/new-prints/kp-golf-alpine-fairways.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-golf-autumn-round.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-golf-autumn-round.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-golf-autumn-round.webp",
+    "replaces": "assets/new-prints/kp-golf-autumn-round.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-golf-clubhouse-check.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-golf-clubhouse-check.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-golf-clubhouse-check.webp",
+    "replaces": "assets/new-prints/kp-golf-clubhouse-check.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-golf-desert-links.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-golf-desert-links.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-golf-desert-links.webp",
+    "replaces": "assets/new-prints/kp-golf-desert-links.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-golf-island-green.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-golf-island-green.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-golf-island-green.webp",
+    "replaces": "assets/new-prints/kp-golf-island-green.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-golf-links-coast.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-golf-links-coast.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-golf-links-coast.webp",
+    "replaces": "assets/new-prints/kp-golf-links-coast.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-golf-midnight-fairway.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-golf-midnight-fairway.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-golf-midnight-fairway.webp",
+    "replaces": "assets/new-prints/kp-golf-midnight-fairway.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-golf-sunday-carts.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-golf-sunday-carts.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-golf-sunday-carts.webp",
+    "replaces": "assets/new-prints/kp-golf-sunday-carts.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-arctic-fold.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-liquid-arctic-fold.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-liquid-arctic-fold.webp",
+    "replaces": "assets/new-prints/kp-liquid-arctic-fold.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-chrome-ripple.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-liquid-chrome-ripple.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-liquid-chrome-ripple.webp",
+    "replaces": "assets/new-prints/kp-liquid-chrome-ripple.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-citrus-coil.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-liquid-citrus-coil.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-liquid-citrus-coil.webp",
+    "replaces": "assets/new-prints/kp-liquid-citrus-coil.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-copper-wave.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-liquid-copper-wave.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-liquid-copper-wave.webp",
+    "replaces": "assets/new-prints/kp-liquid-copper-wave.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-cosmic-lace.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-liquid-cosmic-lace.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-liquid-cosmic-lace.webp",
+    "replaces": "assets/new-prints/kp-liquid-cosmic-lace.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-emerald-flux.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-liquid-emerald-flux.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-liquid-emerald-flux.webp",
+    "replaces": "assets/new-prints/kp-liquid-emerald-flux.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-honey-glass.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-liquid-honey-glass.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-liquid-honey-glass.webp",
+    "replaces": "assets/new-prints/kp-liquid-honey-glass.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-lagoon-ripple.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-liquid-lagoon-ripple.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-liquid-lagoon-ripple.webp",
+    "replaces": "assets/new-prints/kp-liquid-lagoon-ripple.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-lilac-chrome.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-liquid-lilac-chrome.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-liquid-lilac-chrome.webp",
+    "replaces": "assets/new-prints/kp-liquid-lilac-chrome.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-midnight-mercury.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-liquid-midnight-mercury.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-liquid-midnight-mercury.webp",
+    "replaces": "assets/new-prints/kp-liquid-midnight-mercury.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-neon-rift.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-liquid-neon-rift.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-liquid-neon-rift.webp",
+    "replaces": "assets/new-prints/kp-liquid-neon-rift.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-oil-slick.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-liquid-oil-slick.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-liquid-oil-slick.webp",
+    "replaces": "assets/new-prints/kp-liquid-oil-slick.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-pearl-current.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-liquid-pearl-current.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-liquid-pearl-current.webp",
+    "replaces": "assets/new-prints/kp-liquid-pearl-current.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-pink-voltage.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-liquid-pink-voltage.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-liquid-pink-voltage.webp",
+    "replaces": "assets/new-prints/kp-liquid-pink-voltage.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-rainbow-cascade.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-liquid-rainbow-cascade.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-liquid-rainbow-cascade.webp",
+    "replaces": "assets/new-prints/kp-liquid-rainbow-cascade.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-rose-glass.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-liquid-rose-glass.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-liquid-rose-glass.webp",
+    "replaces": "assets/new-prints/kp-liquid-rose-glass.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-ruby-tide.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-liquid-ruby-tide.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-liquid-ruby-tide.webp",
+    "replaces": "assets/new-prints/kp-liquid-ruby-tide.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-solar-melt.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-liquid-solar-melt.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-liquid-solar-melt.webp",
+    "replaces": "assets/new-prints/kp-liquid-solar-melt.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-tidal-glass.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-liquid-tidal-glass.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-liquid-tidal-glass.webp",
+    "replaces": "assets/new-prints/kp-liquid-tidal-glass.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-liquid-ultraviolet-bloom.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-liquid-ultraviolet-bloom.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-liquid-ultraviolet-bloom.webp",
+    "replaces": "assets/new-prints/kp-liquid-ultraviolet-bloom.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-park-bryce-amphitheater.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-park-bryce-amphitheater.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-park-bryce-amphitheater.webp",
+    "replaces": "assets/new-prints/kp-park-bryce-amphitheater.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-park-crater-lake.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-park-crater-lake.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-park-crater-lake.webp",
+    "replaces": "assets/new-prints/kp-park-crater-lake.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-park-denali-alpenglow.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-park-denali-alpenglow.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-park-denali-alpenglow.webp",
+    "replaces": "assets/new-prints/kp-park-denali-alpenglow.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-park-rainier-reflection.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-park-rainier-reflection.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-park-rainier-reflection.webp",
+    "replaces": "assets/new-prints/kp-park-rainier-reflection.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-season-autumn-road.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-season-autumn-road.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-season-autumn-road.webp",
+    "replaces": "assets/new-prints/kp-season-autumn-road.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-season-rain-on-glass.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-season-rain-on-glass.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-season-rain-on-glass.webp",
+    "replaces": "assets/new-prints/kp-season-rain-on-glass.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-season-snowfall-pines.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-season-snowfall-pines.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-season-snowfall-pines.webp",
+    "replaces": "assets/new-prints/kp-season-snowfall-pines.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-season-sunlit-shore.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-season-sunlit-shore.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-season-sunlit-shore.webp",
+    "replaces": "assets/new-prints/kp-season-sunlit-shore.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-andromeda.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-space-andromeda.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-space-andromeda.webp",
+    "replaces": "assets/new-prints/kp-space-andromeda.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-blue-marble.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-space-blue-marble.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-space-blue-marble.webp",
+    "replaces": "assets/new-prints/kp-space-blue-marble.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-bubble.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-space-bubble.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-space-bubble.webp",
+    "replaces": "assets/new-prints/kp-space-bubble.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-crab.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-space-crab.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-space-crab.webp",
+    "replaces": "assets/new-prints/kp-space-crab.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-doradus.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-space-doradus.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-space-doradus.webp",
+    "replaces": "assets/new-prints/kp-space-doradus.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-eagle.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-space-eagle.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-space-eagle.webp",
+    "replaces": "assets/new-prints/kp-space-eagle.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-helix.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-space-helix.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-space-helix.webp",
+    "replaces": "assets/new-prints/kp-space-helix.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-horsehead.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-space-horsehead.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-space-horsehead.webp",
+    "replaces": "assets/new-prints/kp-space-horsehead.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-lagoon-heart.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-space-lagoon-heart.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-space-lagoon-heart.webp",
+    "replaces": "assets/new-prints/kp-space-lagoon-heart.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-mars-frost.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-space-mars-frost.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-space-mars-frost.webp",
+    "replaces": "assets/new-prints/kp-space-mars-frost.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-mars-noachis.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-space-mars-noachis.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-space-mars-noachis.webp",
+    "replaces": "assets/new-prints/kp-space-mars-noachis.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-mars-wind.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-space-mars-wind.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-space-mars-wind.webp",
+    "replaces": "assets/new-prints/kp-space-mars-wind.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-moon.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-space-moon.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-space-moon.webp",
+    "replaces": "assets/new-prints/kp-space-moon.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-mystic-mountain.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-space-mystic-mountain.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-space-mystic-mountain.webp",
+    "replaces": "assets/new-prints/kp-space-mystic-mountain.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-pillars.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-space-pillars.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-space-pillars.webp",
+    "replaces": "assets/new-prints/kp-space-pillars.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-ring.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-space-ring.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-space-ring.webp",
+    "replaces": "assets/new-prints/kp-space-ring.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-saturn.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-space-saturn.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-space-saturn.webp",
+    "replaces": "assets/new-prints/kp-space-saturn.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-soul.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-space-soul.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-space-soul.webp",
+    "replaces": "assets/new-prints/kp-space-soul.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-tarantula.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "kp-space-tarantula.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/kp-space-tarantula.webp",
+    "replaces": "assets/new-prints/kp-space-tarantula.webp"
+  },
+  {
+    "href": "customizer.html?design=kp-space-towering-infernos.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "kp-space-towering-infernos.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/kp-space-towering-infernos.webp",
+    "replaces": "assets/new-prints/kp-space-towering-infernos.webp"
+  },
+  {
+    "href": "customizer.html?design=ocean-photo-kelp-light.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "ocean-photo-kelp-light.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/ocean-photo-kelp-light.webp",
+    "replaces": "assets/ocean-rain/ocean-photo-kelp-light.webp"
+  },
+  {
+    "href": "customizer.html?design=ocean-photo-reef-in-blue.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "ocean-photo-reef-in-blue.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/ocean-photo-reef-in-blue.webp",
+    "replaces": "assets/ocean-rain/ocean-photo-reef-in-blue.webp"
+  },
+  {
+    "href": "customizer.html?design=ocean-photo-silver-current.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "ocean-photo-silver-current.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/ocean-photo-silver-current.webp",
+    "replaces": "assets/ocean-rain/ocean-photo-silver-current.webp"
+  },
+  {
+    "href": "customizer.html?design=ocean-photo-surface-breath.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "ocean-photo-surface-breath.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/ocean-photo-surface-breath.webp",
+    "replaces": "assets/ocean-rain/ocean-photo-surface-breath.webp"
+  },
+  {
+    "href": "customizer.html?design=ocean-photo-tidal-line.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "ocean-photo-tidal-line.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/ocean-photo-tidal-line.webp",
+    "replaces": "assets/ocean-rain/ocean-photo-tidal-line.webp"
+  },
+  {
+    "href": "customizer.html?design=ocean-photo-turtle-glide.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "ocean-photo-turtle-glide.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/ocean-photo-turtle-glide.webp",
+    "replaces": "assets/ocean-rain/ocean-photo-turtle-glide.webp"
+  },
+  {
+    "href": "customizer.html?design=rain-photo-after-hours.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "rain-photo-after-hours.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/rain-photo-after-hours.webp",
+    "replaces": "assets/ocean-rain/rain-photo-after-hours.webp"
+  },
+  {
+    "href": "customizer.html?design=rain-photo-amber-walk.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "rain-photo-amber-walk.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/rain-photo-amber-walk.webp",
+    "replaces": "assets/ocean-rain/rain-photo-amber-walk.webp"
+  },
+  {
+    "href": "customizer.html?design=rain-photo-golden-rain.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "rain-photo-golden-rain.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/rain-photo-golden-rain.webp",
+    "replaces": "assets/ocean-rain/rain-photo-golden-rain.webp"
+  },
+  {
+    "href": "customizer.html?design=rain-photo-midnight-window.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "rain-photo-midnight-window.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/rain-photo-midnight-window.webp",
+    "replaces": "assets/ocean-rain/rain-photo-midnight-window.webp"
+  },
+  {
+    "href": "customizer.html?design=rain-photo-neon-umbrellas.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Clear+Frost",
+    "design": "rain-photo-neon-umbrellas.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "output": "assets/frost-samples/rain-photo-neon-umbrellas.webp",
+    "replaces": "assets/ocean-rain/rain-photo-neon-umbrellas.webp"
+  },
+  {
+    "href": "customizer.html?design=rain-photo-silver-afterglow.jpg&model=iphone-15-pro&colorway=original&view=phone&case=rated&rim=Smoke+Frost",
+    "design": "rain-photo-silver-afterglow.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "output": "assets/frost-samples/rain-photo-silver-afterglow.webp",
+    "replaces": "assets/ocean-rain/rain-photo-silver-afterglow.webp"
+  }
+]

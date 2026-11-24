@@ -99,7 +99,7 @@ document.addEventListener('click',event=>{
   const slide=trigger.closest('.case-slide');
   const next=slide ? slide.querySelector('.campaign-shop') : trigger.closest('a');
   const img=trigger.dataset.imageZoom ? document.getElementById(trigger.dataset.imageZoom) : trigger.querySelector('img,svg');
-  const title=slide?.querySelector('.campaign-title')?.textContent || trigger.getAttribute('aria-label')?.replace(/^(Customize|Enlarge) /i,'') || trigger.textContent.trim() || img?.alt || 'Case preview';
+  const title=slide?.querySelector('.campaign-title')?.textContent || trigger.getAttribute('aria-label')?.replace(/^(Customize|Enlarge) /i,'') || trigger.querySelector('h2,h3,strong')?.textContent || img?.alt || trigger.textContent.trim() || 'Case preview';
   const url=trigger.style.backgroundImage.match(/^url\(["']?(.*?)["']?\)$/)?.[1];
   if(!img&&!url)return;
   event.preventDefault();

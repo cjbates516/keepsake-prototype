@@ -27,11 +27,11 @@ const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
      for(let y=0;y<c.height;y++)for(let a=0;a<c.width;a++){if(d[(y*c.width+a)*4+3]<20)continue;left=Math.min(left,a);right=Math.max(right,a);top=Math.min(top,y);bottom=Math.max(bottom,y);}
      left=Math.max(0,left-14);right=Math.min(c.width,right+15);top=Math.max(0,top-14);bottom=Math.min(c.height,bottom+15);
      const out=document.createElement('canvas');out.width=right-left;out.height=bottom-top;out.getContext('2d').drawImage(c,-left,-top);
-     return {webp:out.toDataURL('image/webp',.94).split(',')[1],model:s.model,variant:s.variant,view:s.previewMode,caseType:s.caseType,width:out.width,height:out.height,crop:[left,top,right,bottom],cameraPoint:[point[0]*c.width/2500-left,point[1]*c.height/3000-top],cameraAlpha};
+     return {webp:out.toDataURL('image/webp',.94).split(',')[1],model:s.model,variant:s.variant,view:s.previewMode,caseType:s.caseType,rim:KPStudioCore.info().rim,width:out.width,height:out.height,crop:[left,top,right,bottom],cameraPoint:[point[0]*c.width/2500-left,point[1]*c.height/3000-top],cameraAlpha};
     });
     assert.equal(res.view,'phone');assert(res.cameraAlpha>240,row.output+' must show the phone through the camera opening');
     assert.equal(res.model.toLowerCase().replace(/^samsung /,'').replaceAll(' ','-'),row.model);
-    assert.equal(res.variant,row.variant);assert.equal(res.caseType,row.caseType,'Case style drift: '+row.output);
+    assert.equal(res.variant,row.variant);if(row.rim)assert.equal(res.rim,row.rim,'Frost rim mismatch');assert.equal(res.caseType,row.caseType,'Case style drift: '+row.output);
     fs.mkdirSync(path.dirname(row.output),{recursive:true});fs.writeFileSync(row.output,Buffer.from(res.webp,'base64'));
     const {webp,...meta}=res;results.push({output:row.output,...meta});
     console.log('OK',results.length+'/'+rows.length,row.output);
@@ -41,5 +41,5 @@ const base=process.env.KP_BASE||'http://127.0.0.1:19038/';
   await Promise.all([worker(),worker()]);
   fs.writeFileSync(process.env.KP_RENDER_REPORT||'tools/expansion-case-renders.json',JSON.stringify(results.sort((a,b)=>a.output.localeCompare(b.output)),null,2)+'\n');
  }finally{await browser.close();}
- assert.equal(results.length,rows.length);console.log(results.length+' mounted clear-case previews rebuilt');
+ assert.equal(results.length,rows.length);console.log(results.length+' mounted case previews rebuilt');
 })().catch(e=>{console.error(e);process.exitCode=1;});

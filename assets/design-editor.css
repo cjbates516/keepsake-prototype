@@ -114,7 +114,7 @@ body.design-editor #stageCanvas{max-height:max(260px,calc(100dvh - 450px));width
 .design-editor #reviewSpecification summary{cursor:pointer;font-size:14px;font-weight:800;min-height:30px;display:flex;align-items:center;gap:8px}
 .design-editor #reviewSpecification summary::before{content:'+'}.design-editor #reviewSpecification[open] summary::before{content:'−'}
 .design-editor #counterReview #saveCounterCard,.design-editor #reviewNextCustomer{grid-column:1/-1}
-.design-editor #reviewNextCustomer{background:var(--studio-red)}
+.design-editor #reviewNextCustomer{background:transparent;border:1px solid var(--studio-line)}
 .design-editor #reviewCode{overflow-wrap:anywhere;font-size:15px}
 @media(max-width:760px){.design-editor #reviewAtGlance{grid-template-columns:minmax(0,1fr) 105px;gap:10px}.design-editor #reviewPreview{height:175px}.design-editor #counterReview h2{font-size:23px}.design-editor .review-total{font-size:30px}}
 .design-editor #reviewOverview .review-personalization{font-size:13px;font-weight:800;overflow-wrap:anywhere}.design-editor #storeChips button{min-height:48px}
@@ -217,7 +217,7 @@ body.design-editor #stageCanvas{max-height:max(260px,calc(100dvh - 450px));width
  .design-editor #studioStorePicker{margin-bottom:12px}
 }
 
-.design-editor #reviewNextCustomer{color:#fff}
+.design-editor #reviewNextCustomer{color:var(--studio-ink)}
 .design-editor #studioBrowse{min-height:44px}
 .design-editor :is(.studio-top h1,#studioPreview h2,#studioSetup h2):focus{outline:none}
 .design-editor .studio-history{justify-content:flex-end}
@@ -307,7 +307,7 @@ body.design-editor #stageCanvas,body.design-editor #stageStick.studio-fit #stage
 }
 
 @media(max-width:760px){
- body.design-editor[data-studio-step=preview] #stageCanvas{max-height:24dvh!important;min-height:0!important}
+ body.design-editor[data-studio-step=preview] #stageCanvas{max-height:clamp(240px,36dvh,340px)!important;min-height:0!important}
  .design-editor[data-studio-step=preview] .studio-quality,.design-editor[data-studio-step=preview] #studioEditAgain,.design-editor[data-studio-step=preview] #studioPreview>.studio-help{display:none}
  .design-editor[data-studio-step=preview] #studioPreview h2{font-size:21px;margin-bottom:6px}
  .design-editor[data-studio-step=preview] #studioPreview>p{font-size:12px;line-height:1.35;margin-bottom:6px}
@@ -315,3 +315,21 @@ body.design-editor #stageCanvas,body.design-editor #stageStick.studio-fit #stage
  .design-editor[data-studio-step=preview] .studio-kicker{display:none}
 }
 @media(min-width:761px) and (max-height:500px){body.design-editor #stageCanvas{max-height:calc(100dvh - 180px)!important;min-height:0!important}}
+
+/* Night sky keeps date/place close to the case instead of below a second phone panel. */
+@media(min-width:761px){
+ .design-editor.studio-sky #studioProduct{padding-bottom:12px}
+ .design-editor.studio-sky #studioProduct h1{font-size:32px!important;margin-block:4px 8px!important}
+ .design-editor.studio-sky #studioProductPrice{margin-top:8px}
+ .design-editor.studio-sky #studio-sky>h2,.design-editor.studio-sky #studio-sky>.studio-help{display:none}
+ .design-editor.studio-sky #personalStudio .studio-pair{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .design-editor.studio-sky #personalStudio input,.design-editor.studio-sky #personalStudio select{min-width:0;width:100%;box-sizing:border-box}
+ .design-editor.studio-sky #studioProduct .studio-kicker,
+ .design-editor.studio-sky #personalStudio>h2,
+ .design-editor.studio-sky #personalStudio>p:first-of-type{display:none}
+ .design-editor.studio-sky #personalStudio details{margin-block:8px}
+ .design-editor.studio-sky #personalStudio label{margin-bottom:8px}
+ .design-editor.studio-sky #personalStudio .studio-pair{gap:10px}
+}
+
+#reviewCode[data-pick-code]{white-space:nowrap;font-size:clamp(11px,3.5vw,16px);letter-spacing:-.02em}

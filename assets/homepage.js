@@ -31,13 +31,14 @@
   let visible = true, stopped = false, hovered = false, suppressClick = false;
 
   function measureHeader() {
-    hero.style.setProperty('--hero-header', ((header?.offsetHeight || 0) + (announcement?.offsetHeight || 0)) + 'px');
+    hero.style.setProperty('--hero-header', ((header?.offsetHeight || 0) + (announcement?.offsetHeight || 0) + (document.querySelector('.ks-shop-rail')?.offsetHeight || 0)) + 'px');
   }
   measureHeader();
   if ('ResizeObserver' in window) {
     const observer = new ResizeObserver(measureHeader);
     if (header) observer.observe(header);
     if (announcement) observer.observe(announcement);
+    const rail=document.querySelector('.ks-shop-rail');if(rail)observer.observe(rail);
   }
   function schedule() {
     clearTimeout(timer);

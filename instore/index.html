@@ -140,6 +140,16 @@
     .steps{flex-wrap:wrap}
   }
 @media(max-width:900px){.phones,.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Phone selection is a quick choice, not a full-height product gallery. */
+.phone .pimg{height:150px;aspect-ratio:auto}
+.phone .pimg img{width:100%;max-height:100%}
+@media(min-width:601px) and (max-width:999px){.phones{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:601px){
+  #s1 .lede{margin-bottom:16px}
+  #s1 .store-promise{padding:14px 20px;margin:14px 0}
+  #s1 .phone-help{margin-bottom:8px}
+  #s1 .kiosk-gifts{margin:8px 0 16px}
+}
 
   .kiosk-location{margin:0 0 20px;font-size:15px;font-weight:700;color:var(--muted)}
   .store-label{display:block;margin-top:20px;font-weight:700}
@@ -161,6 +171,7 @@
   @media(min-width:901px) and (orientation:landscape){.confirm>.pv{position:sticky;top:20px}}
   @media(max-width:600px){.setup-dock{gap:14px;padding:12px 16px max(12px,env(safe-area-inset-bottom))}.setup-dock>div{display:block}.setup-dock strong,.setup-dock span,.setup-dock small{display:block}.setup-dock strong{font-size:23px}.setup-dock span{font-size:13px}.setup-dock small{font-size:11px}.setup-dock .cta{min-width:0;max-width:48%;font-size:17px;padding:12px 18px;line-height:1.15}.codecard{padding:18px}.codecard p{font-size:18px}}
   @media(max-width:600px){.handoff-open .confirm>.pv{display:none}.counter-heading{display:grid;grid-template-columns:minmax(0,1fr) 82px;gap:10px;align-items:start}.case-zoom-button.counter-thumb{display:block;width:82px;margin:0;padding:0}.counter-thumb img{width:100%;height:156px;object-fit:contain}.counter-heading .code{font-size:26px}}
+  @media(max-width:600px){.counter-heading>div{display:contents}.counter-heading .codelabel{grid-column:1;grid-row:1;align-self:center}.counter-heading .code{grid-column:1/-1;grid-row:2}.counter-heading .counter-thumb{grid-column:2;grid-row:1}.counter-heading .counter-thumb img{height:90px}}
   @media(prefers-reduced-motion:reduce){.screen.on,.codecard.on{animation:none}}
 
 #dockBack{min-height:48px;padding:8px 12px;flex:none}
@@ -181,6 +192,10 @@
 
 #studioAccessoryOpen{width:100%;margin:12px 0}
 #kioskExtraSummary{font-size:15px;line-height:1.5}
+#kioskRims{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+#kioskRims button{min-height:44px;padding:8px 12px;border:2px solid var(--line);border-radius:999px;background:white;font-size:15px;font-weight:700}
+#kioskRims button[aria-pressed=true]{border-color:var(--red);background:var(--red-tint)}
+#kioskRimLabel{font-size:14px;font-weight:700;margin:8px 0 0}
 #studioAccessoryDialog{width:min(900px,calc(100vw - 24px));max-width:none;max-height:calc(100dvh - 24px);padding:0;border:0;border-radius:16px;background:#fcfaf6;overflow:hidden}
 #studioAccessoryDialog::backdrop{background:#171a2377}
 #studioAccessoryDialog header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid #ddd}
@@ -191,6 +206,21 @@
 #kioskAccessoryBody .ka h3{display:none}
 #kioskAccessoryBody .ka-card img{height:120px}
 #kioskAccessoryBody .ka-tabs{position:sticky;top:0;background:#fcfaf6;z-index:1}
+
+@media(min-width:601px){
+ .setup-open .confirm{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:24px}
+ .setup-open .pv img{height:min(48vh,420px)}
+ .setup-open .dname{font-size:30px}
+ .setup-open .dmeta{font-size:17px}
+ .setup-open #price{display:none}
+ .setup-open #personalizeCase{margin:8px 0!important;min-height:48px;font-size:16px}
+ .setup-open #colorwayPicker{margin:10px 0!important}
+ .setup-open #colorwayPicker>p{margin:0 0 8px;font-size:16px!important}
+ .setup-open #colorwayButtons{display:flex!important;overflow-x:auto;padding:3px 3px 8px;scroll-snap-type:x proximity}
+ .setup-open #colorwayButtons button{flex:none;scroll-snap-align:start;font-size:15px!important;min-height:48px!important}
+ .setup-open .bundle-note{font-size:16px;margin:10px 0}
+ .setup-open #studioAccessoryOpen{font-size:16px;min-height:48px;margin:8px 0}
+}
 
 @media(max-width:600px){
  .setup-open .confirm{display:grid;grid-template-columns:95px minmax(0,1fr);gap:8px 14px;align-items:center}
@@ -209,6 +239,10 @@
  .setup-open .after{grid-column:1/-1;display:flex;justify-content:flex-end;margin:0}
  .setup-open .after [data-act=designs]{display:none}
  .setup-open .after .linkbtn{font-size:13px;min-height:44px}
+ .setup-open #colorwayPicker{margin:8px 0!important}
+ .setup-open #colorwayPicker>p{font-size:15px!important;margin:0 0 6px}
+ .setup-open #colorwayButtons{display:flex!important;overflow-x:auto;padding:3px 3px 8px;scroll-snap-type:x proximity}
+ .setup-open #colorwayButtons button{flex:none;scroll-snap-align:start;font-size:14px!important;min-height:44px!important}
 }
 </style>
 <link rel="stylesheet" href="../assets/case-zoom.css">
@@ -264,6 +298,7 @@
           <h1 class="dname" id="dname"></h1>
           <p class="dmeta" id="dmeta"></p><p id="previewStatus" role="status"></p><p id="setupNotice" role="status"></p>
           <div id="setupOptions">
+            <p id="kioskRimLabel">Your case</p><div id="kioskRims" role="group" aria-labelledby="kioskRimLabel"></div>
             <button type="button" class="ghost" id="personalizeCase" style="width:100%;margin:8px 0 18px">Make it yours · add a name &amp; more →</button>
             <div id="colorwayPicker" hidden style="margin:16px 0"><p style="font-size:18px;font-weight:800">Choose your background</p><div id="colorwayButtons" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"></div></div>
             <div id="storeChoice"><label for="accessoryStore" class="store-label">Your store</label>
@@ -274,7 +309,7 @@
             <button type="button" class="ghost" id="studioAccessoryOpen">Choose a charger or accessory →</button><div id="kioskExtraSummary" aria-live="polite"></div><div id="accessoryPicker"></div>
           </div>
           <div class="codecard" id="codecard" aria-live="polite">
-            <div class="counter-heading"><div><p class="codelabel" id="codelabel">YOUR PICK CODE</p><p class="code" id="code"></p></div><button class="case-zoom-button counter-thumb" type="button" data-image-zoom="pv" aria-label="Enlarge your counter case"><img id="counterPreview" alt="Your selected clear case"></button></div>
+            <div class="counter-heading"><div><p class="codelabel" id="codelabel">YOUR PICK CODE</p><p class="code" id="code"></p></div><button class="case-zoom-button counter-thumb" type="button" data-image-zoom="pv" aria-label="Enlarge your counter case"><img id="counterPreview" alt="Your selected case"></button></div>
             <p id="cname"></p><p id="counterPreviewStatus" role="status"></p>
             <p id="cmodel"></p>
             <p id="counterCase"></p><p id="counterGlass" hidden></p>
@@ -318,10 +353,10 @@
 <div id="idleNotice" hidden role="status"><span>Still browsing? This screen will reset soon.</span><button type="button" class="ghost" id="keepBrowsing">Keep browsing</button></div>
 <script src="../assets/colorway-catalog.js?v=full-art-2-20261121"></script>
 <script src="../assets/design-colorways.js?v=full-art-2-20261121"></script>
-<script src="../assets/print-layouts.js"></script>
+<script src="../assets/print-layouts.js?v=rated-all-20261124"></script><script src="../assets/rated-phones.js?v=rated-all-20261124"></script>
 <script src="../assets/kp-config.js"></script>
 <script src="../assets/seasonal-visibility.js"></script><script src="../assets/case-shell.js?v=clear-mounted-2"></script>
-<script src="instore-lib.js?v=clear-rim-1"></script>
+<script src="../assets/rated-camera-geometry.js?v=rated-all-20261124"></script><script src="../assets/frost-samples.js?v=rated-all-20261124"></script><script src="instore-lib.js?v=counter-finish-20261124"></script>
 <script>
 (function () {
   'use strict';
@@ -334,7 +369,7 @@
   $('storeChoice').hidden=!!kioskStore;
   $('kioskLocation').hidden=!kioskStore&&!requestedKioskStore;$('kioskLocation').textContent=kioskStore?kioskStore+' · Pay with our team in store':'Choose your store when you build your setup.';
   $('kioskSlates').href='../slates.html?kiosk=1'+(kioskStore?'&store='+encodeURIComponent(kioskStore):'');
-  var state = { screen: 1, model: null, design: null, colorway:'original', accessories:[], store:kioskStore, filter: 'all', query:'' };
+  var state = { screen: 1, model: null, design: null, rim:null, colorway:'original', accessories:[], store:kioskStore, filter: 'all', query:'' };
   var urls = {};           /* model id -> { file: objectURL } */
   var blankUrl = {};       /* model id -> phone only render */
   var queue = [], active = 0, MAX_JOBS = 4, gen = 0, io = null;
@@ -397,7 +432,7 @@
     if (!byBrand.Samsung) html += '<p class="soon">Don’t see your phone? Ask our team to check case availability.</p>';
     $('phones').innerHTML = html;
     data.activeModels.forEach(function (m) {
-      KPI.prepModel(m, 260, false).then(function (prep) {
+      KPI.prepModel(m, 260, true, sampleRim(m)).then(function (prep) {
         var img = $('phones').querySelector('img[data-ph="' + m.id + '"]');
         if (img) img.parentNode.style.setProperty('--ar', prep.W / prep.H);
         return KPI.renderToUrl(prep, null, TILE_BG).then(function (u) { if (img) img.src = u; });
@@ -411,7 +446,8 @@
     if (!m || !m.active) return;
     Object.keys(urls).forEach(function (id) { if (id !== m.id) dropUrls(id); });
     data.models.forEach(function (x) { if (x.id !== m.id) KPI.releaseModel(x.id, ['260n']); });
-    state.model = m; state.design = null; state.filter = 'all';state.query='';$('designSearch').value='';
+    if(state.rim){dropUrls(m.id);revoke(blankUrl[m.id]);delete blankUrl[m.id];}
+    state.rim=null;state.model = m; state.design = null; state.filter = 'all';state.query='';$('designSearch').value='';
     $('s2sub').textContent = 'Shown on your ' + m.name;
     buildChips();
     buildGrid();
@@ -443,7 +479,7 @@
   }
   function buildGrid() {
     gen++; queue.length = 0;
-    var m = state.model, list = designsNow(), cache = urls[m.id] || (urls[m.id] = {});
+    var generation=gen,m = state.model, list = designsNow(), cache = urls[m.id] || (urls[m.id] = {});
     var html = '<button class="tile own" type="button" data-act="own"><span class="timg">' +
       '<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>' +
       '</span><span class="tname">Use your own photo</span></button>';
@@ -458,10 +494,12 @@
     $('grid').innerHTML = html;
     $('noResults').hidden=list.length>0;
     $('count').textContent = list.length === 1 ? '1 design' : list.length + ' designs';$('count').setAttribute('aria-live','polite');
-    KPI.prepModel(m, TILE_W).then(function (prep) {
+    KPI.prepModel(m, TILE_W, true, sampleRim(m)).then(function (prep) {
+      if(generation!==gen)return;
       $('grid').style.setProperty('--ar', prep.W / prep.H);
       if (!blankUrl[m.id]) {
         KPI.renderToUrl(prep, null, TILE_BG).then(function (u) {
+          if(generation!==gen){revoke(u);return;}
           blankUrl[m.id] = u;
           Array.prototype.forEach.call($('grid').querySelectorAll('img.wait:not([src]), img.fail:not([src])'), function (im) { im.src = u; });
         });
@@ -527,7 +565,7 @@
     if (!d || !m) { done(); return; }
     var cache = urls[m.id] || (urls[m.id] = {});
     if (cache[file]) { job.img.src = cache[file]; job.img.classList.remove('wait', 'fail'); done(); return; }
-    Promise.all([KPI.prepModel(m, TILE_W), KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 })]).then(function (r) {
+    Promise.all([KPI.prepModel(m, TILE_W, true, sampleRim(m)), KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 })]).then(function (r) {
       return KPI.renderToUrl(r[0], r[1], TILE_BG);
     }).then(function (u) {
       if (state.model !== m) { revoke(u); done(); return; }
@@ -582,6 +620,9 @@
     var title = cleanTitle(d.title);
     $('dname').textContent = title;
     $('dmeta').textContent = 'For your '+m.name+(options.length>1?' · '+selected.name:'');
+    var rims=['Smoke Frost','Clear Frost'].filter(function(rim){return KPFrostSamples.counter(m.name,rim)?.rim===rim;});
+    $('kioskRimLabel').textContent=rims.length===1?'Available for this phone':'Choose your frost rim';
+    $('kioskRims').innerHTML=rims.length?rims.map(function(rim){return '<button type="button" data-rim="'+rim+'" aria-pressed="'+(rim===sampleRim())+'">'+rim+'</button>';}).join(''):'<span>Clear case</span>';
     updatePurchase();
     $('cname').textContent = title+(options.length>1?' · '+selected.name:'');
     $('cmodel').textContent = m.name;
@@ -591,7 +632,7 @@
     if(!sameDesign){var old = bigUrl; bigUrl = null;pv.src = tileUrl || blankUrl[m.id] || '';revoke(old);}
     if(state.screen!==3){show(3);$('dname').tabIndex=-1;$('dname').focus({preventScroll:true});}
     var mine = d, look=state.colorway, seq = ++previewSeq;
-    KPI.prepModel(m, BIG_W).then(function (prep) {
+    KPI.prepModel(m, BIG_W, true, sampleRim(m)).then(function (prep) {
       if(bigImageFile!==file||!bigImagePromise){bigImageFile=file;bigImagePromise=KPI.loadImage(KPI.fullUrl(d), { cache: false, timeout: 15000 }).catch(function () {return KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 });});bigImagePromise.catch(function(){if(bigImageFile===file)bigImagePromise=null;});}
       return bigImagePromise.then(function (im) {
         return KPI.renderToUrl(prep, im, null, look);
@@ -619,21 +660,32 @@
     $('chargerRequest').hidden=!$('charger').checked;
     $('chargerRequest').textContent='Charger help requested · team to confirm compatibility and price; not included in total';
     $('glassLabel').textContent='Add tempered glass for '+KPI.formatPrice(KP_CONFIG.bundledGlass)+' · save '+KPI.formatPrice(KP_CONFIG.GLASS_BUNDLE_DISCOUNT);
-    $('price').textContent = KPI.formatPrice(data.price+(glass?KP_CONFIG.bundledGlass:0)+KPAccessories.total(state.accessories,state.store));
-    $('counterCase').textContent='Clear case · '+KPI.formatPrice(data.price);
+    $('price').textContent = KPI.formatPrice(samplePrice()+(glass?KP_CONFIG.bundledGlass:0)+KPAccessories.total(state.accessories,state.store));
+    $('counterCase').textContent=(sampleRim()||'Clear case')+' · '+KPI.formatPrice(samplePrice());
     $('counterGlass').hidden=!glass;$('counterGlass').textContent='Tempered glass · '+KPI.formatPrice(KP_CONFIG.bundledGlass)+' (bundle price)';
     $('dockTotal').textContent=$('price').textContent;
     $('dockSummary').textContent='Case'+(glass?' + glass':'')+(state.accessories.length?' + '+state.accessories.length+' extra'+(state.accessories.length===1?'':'s'):'');
     $('dockStore').textContent=(state.store||'Choose a store for extras')+(state.store==='Newark, DE'?' · no sales tax':' · before tax');
     $('cprice').textContent = (state.accessories.length?'Estimated total · ':'Total · ')+$('price').textContent;
     $('counterStore').textContent=(state.store||'Confirm your store with our team')+(state.store==='Newark, DE'?' · no sales tax':' · before tax');
-    var code = KPI.pickCode(state.model, state.design, state.colorway, glass, $('charger').checked, state.accessories,state.store);
+    var code = KPI.pickCode(state.model, state.design, state.colorway, glass, $('charger').checked, state.accessories,state.store,sampleRim());
     /* no registered code (new design or code list missing): show no code rather than a guessed one */
-    $('code').textContent = code || '';
+    $('code').textContent = code || '';requestAnimationFrame(fitPickCode);
     $('code').hidden = !code;
     $('codelabel').textContent = code ? 'YOUR PICK CODE' : 'SHOW THIS TO A TEAM MEMBER';
     $('hint').textContent = code ? 'Show this code to our team to confirm stock and pay.' : 'Show our team this preview. They’ll find the design by its name.';
   }
+  // Keep normal pick codes on one line; very long accessory lists may wrap to remain readable.
+  function fitPickCode(){
+    var el=$('code');if(!el.offsetWidth)return;
+    el.style.fontSize='';el.style.whiteSpace='nowrap';
+    var size=parseFloat(getComputedStyle(el).fontSize);
+    if(el.scrollWidth>el.clientWidth){size=Math.max(16,Math.floor(size*el.clientWidth/el.scrollWidth));el.style.fontSize=size+'px';}
+    while(el.scrollWidth>el.clientWidth&&size>16){el.style.fontSize=(--size)+'px';}
+    if(el.scrollWidth>el.clientWidth)el.style.whiteSpace='normal';
+  }
+  new ResizeObserver(fitPickCode).observe($('code'));
+  if(document.fonts)document.fonts.ready.then(fitPickCode);
   $('glass').addEventListener('change',updatePurchase);
   $('charger').addEventListener('change',updatePurchase);
   if(window.ResizeObserver)new ResizeObserver(function(entries){var h=entries[0].target.getBoundingClientRect().height;if(h)document.documentElement.style.setProperty('--setup-dock-height',h+'px');}).observe($('setupDock'));
@@ -659,7 +711,7 @@
 
   /* ---------- sheet, reset, idle ---------- */
   var sheetReturn=null;
-  function openSheet() {sheetReturn=document.activeElement;$('ownModel').textContent=state.model?'For your '+state.model.name+' · '+KPI.formatPrice(data.price):'';$('ownSheet').classList.add('on');$('ownSheet').querySelector('button').focus();}
+  function openSheet() {sheetReturn=document.activeElement;$('ownModel').textContent=state.model?'For your '+state.model.name+' · '+KPI.formatPrice(samplePrice()):'';$('ownSheet').classList.add('on');$('ownSheet').querySelector('button').focus();}
   function closeSheet() {var wasOpen=$('ownSheet').classList.contains('on');$('ownSheet').classList.remove('on');if(wasOpen&&sheetReturn&&sheetReturn.isConnected)sheetReturn.focus();}
   document.addEventListener('keydown',function(e){if(!$('ownSheet').classList.contains('on'))return;if(e.key==='Escape'){e.preventDefault();closeSheet();}if(e.key==='Tab'){e.preventDefault();$('ownSheet').querySelector('button').focus();}});
   var searchTimer;
@@ -674,7 +726,7 @@
     previewSeq++;
     $('pv').removeAttribute('src');$('counterPreview').removeAttribute('src'); revoke(bigUrl); bigUrl = null;
     if($('studioAccessoryDialog').open)$('studioAccessoryDialog').close();$('kioskExtraSummary').textContent='';
-    state.model = null; state.design = null;state.store=kioskStore;$('accessoryStore').value=kioskStore;accessoryPicker.setStore(kioskStore);accessoryPicker.reset();state.colorway='original'; state.filter = 'all';state.query='';$('designSearch').value='';clearTimeout(searchTimer);$('idleNotice').hidden=true;
+    state.rim=null;state.model = null; state.design = null;state.store=kioskStore;$('accessoryStore').value=kioskStore;accessoryPicker.setStore(kioskStore);accessoryPicker.reset();state.colorway='original'; state.filter = 'all';state.query='';$('designSearch').value='';clearTimeout(searchTimer);$('idleNotice').hidden=true;
     gen++; queue.length = 0;
     $('codecard').classList.remove('on');
     $('setupOptions').hidden=false;syncSetupView(); $('showBtn').disabled=true;
@@ -704,17 +756,25 @@
   }, 1000);
   window.__kpInStore = { state: state, reset: reset, idle: function () { last = 0; } };
 
+  function sampleRim(model){return window.KPFrostSamples.counter((model||state.model)?.name||'',(!model||model===state.model)?state.rim:null)?.rim||null;}
+  function samplePrice(){return sampleRim()?KP_CONFIG.RATED_PRICE:data.price;}
   /* ---------- taps ---------- */
   document.addEventListener('click', function (e) {
     if (Date.now() - changedAt < 450 && Math.abs(e.clientX - changeTap.x) < 40 && Math.abs(e.clientY - changeTap.y) < 40) return;
     lastTap = { x: e.clientX, y: e.clientY };
     var t = e.target.closest('button');
     if (!t) { if (e.target === $('ownSheet')) closeSheet(); return; }
+    if(t.hasAttribute('data-rim')){
+      var rim=t.getAttribute('data-rim');
+      if(!state.model||!state.design||KPFrostSamples.counter(state.model.name,rim)?.rim!==rim)return;
+      state.rim=rim;dropUrls(state.model.id);revoke(blankUrl[state.model.id]);delete blankUrl[state.model.id];buildGrid();
+      return pickDesign(state.design.file,state.colorway);
+    }
     if(t.id==='personalizeCase'){
       if(!navigator.onLine){$('setupNotice').textContent='Reconnect to open the design editor. You can still show this case and your extras at the counter.';return;}
       if(!state.model||!state.design)return;
       var url=new URL('../customizer.html',location.href);
-      var opt={kiosk:'1',storeMode:kioskStore?'':'choose',model:state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'),design:state.design.file,colorway:state.colorway,collection:state.design._col.code,store:state.store,glass:$('glass').checked?'1':'',charger:$('charger').checked?'1':'',extras:state.accessories.join(',')};
+      var opt={case:sampleRim()?'rated':'clear',rim:sampleRim(),kiosk:'1',storeMode:kioskStore?'':'choose',model:state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'),design:state.design.file,colorway:state.colorway,collection:state.design._col.code,store:state.store,glass:$('glass').checked?'1':'',charger:$('charger').checked?'1':'',extras:state.accessories.join(',')};
       Object.keys(opt).forEach(function(k){if(opt[k])url.searchParams.set(k,opt[k]);});location.href=url.href;return;
     }
     if(t.hasAttribute('data-colorway'))return pickDesign(state.design.file,t.getAttribute('data-colorway'));
@@ -724,7 +784,7 @@
       var tileFile=t.closest('.tile').dataset.file,design=findDesign(tileFile), model=state.model;
       KPCaseZoom.open({title:cleanTitle(design.title),trigger:t,label:'Use this design',
         source:async function(){
-          var pair=await Promise.all([KPI.prepModel(model,BIG_W), KPI.loadImage(KPI.fullUrl(design),{cache:false,timeout:12000})]);
+          var pair=await Promise.all([KPI.prepModel(model,BIG_W,true,sampleRim(model)), KPI.loadImage(KPI.fullUrl(design),{cache:false,timeout:12000})]);
           var url=await KPI.renderToUrl(pair[0],pair[1],null,rememberedLooks[tileFile]||'original');
           try{return await KPCaseZoom.image(url);}finally{revoke(url);}
         },proceed:()=>pickDesign(tileFile)});
@@ -732,7 +792,7 @@
     }
     if (t.hasAttribute('data-file')) return pickDesign(t.getAttribute('data-file'));
     var act = t.getAttribute('data-act');
-    if ((act === 'drawing'||act === 'sky') && state.model) {var drawingUrl=new URL('../customizer.html',location.href);drawingUrl.searchParams.set('studio',act);drawingUrl.searchParams.set('kiosk','1');if(!kioskStore)drawingUrl.searchParams.set('storeMode','choose');drawingUrl.searchParams.set('model',state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'));if(state.store)drawingUrl.searchParams.set('store',state.store);location.href=drawingUrl.href;return;}
+    if ((act === 'drawing'||act === 'sky') && state.model) {var drawingUrl=new URL('../customizer.html',location.href);drawingUrl.searchParams.set('studio',act);if(sampleRim()){drawingUrl.searchParams.set('case','rated');drawingUrl.searchParams.set('rim',sampleRim());}drawingUrl.searchParams.set('kiosk','1');if(!kioskStore)drawingUrl.searchParams.set('storeMode','choose');drawingUrl.searchParams.set('model',state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'));if(state.store)drawingUrl.searchParams.set('store',state.store);location.href=drawingUrl.href;return;}
     if (act === 'own') return openSheet();
     if (act === 'closeSheet') return closeSheet();
     if (act === 'phone') { state.design = null; return show(1); }
@@ -770,7 +830,7 @@
   var loadWatch = setTimeout(function () { if (!data) { last = Date.now(); show(0); } }, 25000);
   KPI.load().then(function (d) {
     clearTimeout(loadWatch);
-    data = d;$('casePricePromise').textContent='Clear case designs · '+KPI.formatPrice(data.price);
+    data = d;$('casePricePromise').textContent='Clear $44.99 · Frost $49.99';
     if (state.screen === 0) show(1);
     buildPhones();
     // Consume only nonpersonal browsing context; resets and reloads start fresh.
