@@ -9,3 +9,11 @@
 .hero-copy h1{letter-spacing:-.045em;word-spacing:.04em}.hero-copy h1 em:before{content:none}
 .photo-options>#removePhoto{grid-column:1/-1;min-height:32px}.slate-kiosk .slate-header nav a,.slate-kiosk .slate-footer>a{display:none}
 @media(max-width:700px){.photo-options>#adjustPhoto{grid-column:1}.photo-options>#removePhoto{grid-column:2;grid-row:auto;text-align:right}}
+
+/* Show both ways to display each physical slate before choosing a size. */
+.slate-size-orientation{border:0;padding:0;margin:0 auto 18px;max-width:1120px;display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center}
+.slate-size-orientation legend{font-weight:750;margin-bottom:8px}.slate-size-orientation label{display:flex;gap:10px;align-items:center;min-height:44px;cursor:pointer}.slate-size-orientation input{width:20px;height:20px;accent-color:var(--red)}
+.size-photo{gap:12px;align-items:center}.size-photo .slate-orientation-example{display:flex;flex:1;min-width:0;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-bottom:3px solid transparent;padding-bottom:8px}.size-photo .slate-orientation-example img{width:100%;height:auto;max-height:80%;object-fit:contain}.size-photo.small .slate-orientation-example img{width:76%}.size-photo.medium .slate-orientation-example img{width:88%}.slate-orientation-example small{font-size:12px;font-weight:750}.size-grid[data-orientation=landscape] [data-example=landscape],.size-grid[data-orientation=portrait] [data-example=portrait]{border-color:var(--red)}
+@media(max-width:600px){.size-photo{min-width:130px}.slate-orientation-example small{font-size:10px}.size-photo{gap:6px}.slate-size-orientation{margin-bottom:10px}}
+
+@media(max-width:700px){.size-card{grid-template-columns:118px minmax(0,1fr);gap:5px 12px}.size-photo{min-width:0;width:118px;height:112px;gap:5px}.size-photo .slate-orientation-example img{height:auto;max-height:80px;width:100%}.size-photo.small .slate-orientation-example img{width:85%}.size-card-label{display:block}.size-card-label strong{display:block;font-size:15px}.size-card-label>span{display:block;font-size:15px;margin-top:4px}.size-purpose{margin:0}.slate-orientation-example small{font-size:9px}}

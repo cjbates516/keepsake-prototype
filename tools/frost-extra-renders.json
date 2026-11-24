@@ -1,0 +1,86 @@
+[
+  {
+    "output": "assets/frost-samples/kp-park-collage-everest--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-park-collage-grand-canyon--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/kp-park-collage-smokies--original.webp",
+    "model": "iPhone 15 Pro",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Smoke Frost",
+    "width": 587,
+    "height": 1119,
+    "crop": [
+      331,
+      209,
+      918,
+      1328
+    ],
+    "cameraPoint": [
+      169,
+      116
+    ],
+    "cameraAlpha": 255
+  },
+  {
+    "output": "assets/frost-samples/samsung-menu-sunday-scramble.webp",
+    "model": "Samsung Galaxy S26 Ultra",
+    "variant": "original",
+    "view": "phone",
+    "caseType": "Rated Case",
+    "rim": "Clear Frost",
+    "width": 649,
+    "height": 1267,
+    "crop": [
+      298,
+      116,
+      947,
+      1383
+    ],
+    "cameraPoint": [
+      152,
+      209
+    ],
+    "cameraAlpha": 255
+  }
+]

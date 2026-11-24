@@ -3,7 +3,7 @@
  "price": 44.99,
  "idle_seconds": 75,
  "code_hold_seconds": 300,
- "assets_version": "14",
+ "assets_version": "frost-20261124",
  "collections": [
   {
    "category": "Ocean Photography",

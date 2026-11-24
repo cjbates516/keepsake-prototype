@@ -274,7 +274,7 @@
             <button type="button" class="ghost" id="studioAccessoryOpen">Choose a charger or accessory →</button><div id="kioskExtraSummary" aria-live="polite"></div><div id="accessoryPicker"></div>
           </div>
           <div class="codecard" id="codecard" aria-live="polite">
-            <div class="counter-heading"><div><p class="codelabel" id="codelabel">YOUR PICK CODE</p><p class="code" id="code"></p></div><button class="case-zoom-button counter-thumb" type="button" data-image-zoom="pv" aria-label="Enlarge your counter case"><img id="counterPreview" alt="Your selected clear case"></button></div>
+            <div class="counter-heading"><div><p class="codelabel" id="codelabel">YOUR PICK CODE</p><p class="code" id="code"></p></div><button class="case-zoom-button counter-thumb" type="button" data-image-zoom="pv" aria-label="Enlarge your counter case"><img id="counterPreview" alt="Your selected case"></button></div>
             <p id="cname"></p><p id="counterPreviewStatus" role="status"></p>
             <p id="cmodel"></p>
             <p id="counterCase"></p><p id="counterGlass" hidden></p>
@@ -321,7 +321,7 @@
 <script src="../assets/print-layouts.js"></script>
 <script src="../assets/kp-config.js"></script>
 <script src="../assets/seasonal-visibility.js"></script><script src="../assets/case-shell.js?v=clear-mounted-2"></script>
-<script src="instore-lib.js?v=clear-rim-1"></script>
+<script src="../assets/rated-camera-geometry.js?v=device-finish-1"></script><script src="../assets/frost-samples.js?v=1"></script><script src="instore-lib.js?v=frost-20261124"></script>
 <script>
 (function () {
   'use strict';
@@ -458,7 +458,7 @@
     $('grid').innerHTML = html;
     $('noResults').hidden=list.length>0;
     $('count').textContent = list.length === 1 ? '1 design' : list.length + ' designs';$('count').setAttribute('aria-live','polite');
-    KPI.prepModel(m, TILE_W).then(function (prep) {
+    KPI.prepModel(m, TILE_W, true, sampleRim(m)).then(function (prep) {
       $('grid').style.setProperty('--ar', prep.W / prep.H);
       if (!blankUrl[m.id]) {
         KPI.renderToUrl(prep, null, TILE_BG).then(function (u) {
@@ -527,7 +527,7 @@
     if (!d || !m) { done(); return; }
     var cache = urls[m.id] || (urls[m.id] = {});
     if (cache[file]) { job.img.src = cache[file]; job.img.classList.remove('wait', 'fail'); done(); return; }
-    Promise.all([KPI.prepModel(m, TILE_W), KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 })]).then(function (r) {
+    Promise.all([KPI.prepModel(m, TILE_W, true, sampleRim(m)), KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 })]).then(function (r) {
       return KPI.renderToUrl(r[0], r[1], TILE_BG);
     }).then(function (u) {
       if (state.model !== m) { revoke(u); done(); return; }
@@ -591,7 +591,7 @@
     if(!sameDesign){var old = bigUrl; bigUrl = null;pv.src = tileUrl || blankUrl[m.id] || '';revoke(old);}
     if(state.screen!==3){show(3);$('dname').tabIndex=-1;$('dname').focus({preventScroll:true});}
     var mine = d, look=state.colorway, seq = ++previewSeq;
-    KPI.prepModel(m, BIG_W).then(function (prep) {
+    KPI.prepModel(m, BIG_W, true, sampleRim(m)).then(function (prep) {
       if(bigImageFile!==file||!bigImagePromise){bigImageFile=file;bigImagePromise=KPI.loadImage(KPI.fullUrl(d), { cache: false, timeout: 15000 }).catch(function () {return KPI.loadImage(KPI.thumbUrl(d), { cache: false, timeout: 12000 });});bigImagePromise.catch(function(){if(bigImageFile===file)bigImagePromise=null;});}
       return bigImagePromise.then(function (im) {
         return KPI.renderToUrl(prep, im, null, look);
@@ -619,15 +619,15 @@
     $('chargerRequest').hidden=!$('charger').checked;
     $('chargerRequest').textContent='Charger help requested · team to confirm compatibility and price; not included in total';
     $('glassLabel').textContent='Add tempered glass for '+KPI.formatPrice(KP_CONFIG.bundledGlass)+' · save '+KPI.formatPrice(KP_CONFIG.GLASS_BUNDLE_DISCOUNT);
-    $('price').textContent = KPI.formatPrice(data.price+(glass?KP_CONFIG.bundledGlass:0)+KPAccessories.total(state.accessories,state.store));
-    $('counterCase').textContent='Clear case · '+KPI.formatPrice(data.price);
+    $('price').textContent = KPI.formatPrice(samplePrice()+(glass?KP_CONFIG.bundledGlass:0)+KPAccessories.total(state.accessories,state.store));
+    $('counterCase').textContent=(sampleRim()||'Clear case')+' · '+KPI.formatPrice(samplePrice());
     $('counterGlass').hidden=!glass;$('counterGlass').textContent='Tempered glass · '+KPI.formatPrice(KP_CONFIG.bundledGlass)+' (bundle price)';
     $('dockTotal').textContent=$('price').textContent;
     $('dockSummary').textContent='Case'+(glass?' + glass':'')+(state.accessories.length?' + '+state.accessories.length+' extra'+(state.accessories.length===1?'':'s'):'');
     $('dockStore').textContent=(state.store||'Choose a store for extras')+(state.store==='Newark, DE'?' · no sales tax':' · before tax');
     $('cprice').textContent = (state.accessories.length?'Estimated total · ':'Total · ')+$('price').textContent;
     $('counterStore').textContent=(state.store||'Confirm your store with our team')+(state.store==='Newark, DE'?' · no sales tax':' · before tax');
-    var code = KPI.pickCode(state.model, state.design, state.colorway, glass, $('charger').checked, state.accessories,state.store);
+    var code = KPI.pickCode(state.model, state.design, state.colorway, glass, $('charger').checked, state.accessories,state.store,sampleRim());
     /* no registered code (new design or code list missing): show no code rather than a guessed one */
     $('code').textContent = code || '';
     $('code').hidden = !code;
@@ -704,6 +704,8 @@
   }, 1000);
   window.__kpInStore = { state: state, reset: reset, idle: function () { last = 0; } };
 
+  function sampleRim(model){return window.KPFrostSamples.config((model||state.model)?.name||'',null)?.rim||null;}
+  function samplePrice(){return sampleRim()?KP_CONFIG.RATED_PRICE:data.price;}
   /* ---------- taps ---------- */
   document.addEventListener('click', function (e) {
     if (Date.now() - changedAt < 450 && Math.abs(e.clientX - changeTap.x) < 40 && Math.abs(e.clientY - changeTap.y) < 40) return;
@@ -714,7 +716,7 @@
       if(!navigator.onLine){$('setupNotice').textContent='Reconnect to open the design editor. You can still show this case and your extras at the counter.';return;}
       if(!state.model||!state.design)return;
       var url=new URL('../customizer.html',location.href);
-      var opt={kiosk:'1',storeMode:kioskStore?'':'choose',model:state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'),design:state.design.file,colorway:state.colorway,collection:state.design._col.code,store:state.store,glass:$('glass').checked?'1':'',charger:$('charger').checked?'1':'',extras:state.accessories.join(',')};
+      var opt={case:sampleRim()?'rated':'',rim:sampleRim(),kiosk:'1',storeMode:kioskStore?'':'choose',model:state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'),design:state.design.file,colorway:state.colorway,collection:state.design._col.code,store:state.store,glass:$('glass').checked?'1':'',charger:$('charger').checked?'1':'',extras:state.accessories.join(',')};
       Object.keys(opt).forEach(function(k){if(opt[k])url.searchParams.set(k,opt[k]);});location.href=url.href;return;
     }
     if(t.hasAttribute('data-colorway'))return pickDesign(state.design.file,t.getAttribute('data-colorway'));
@@ -724,7 +726,7 @@
       var tileFile=t.closest('.tile').dataset.file,design=findDesign(tileFile), model=state.model;
       KPCaseZoom.open({title:cleanTitle(design.title),trigger:t,label:'Use this design',
         source:async function(){
-          var pair=await Promise.all([KPI.prepModel(model,BIG_W), KPI.loadImage(KPI.fullUrl(design),{cache:false,timeout:12000})]);
+          var pair=await Promise.all([KPI.prepModel(model,BIG_W,true,sampleRim(model)), KPI.loadImage(KPI.fullUrl(design),{cache:false,timeout:12000})]);
           var url=await KPI.renderToUrl(pair[0],pair[1],null,rememberedLooks[tileFile]||'original');
           try{return await KPCaseZoom.image(url);}finally{revoke(url);}
         },proceed:()=>pickDesign(tileFile)});
@@ -732,7 +734,7 @@
     }
     if (t.hasAttribute('data-file')) return pickDesign(t.getAttribute('data-file'));
     var act = t.getAttribute('data-act');
-    if ((act === 'drawing'||act === 'sky') && state.model) {var drawingUrl=new URL('../customizer.html',location.href);drawingUrl.searchParams.set('studio',act);drawingUrl.searchParams.set('kiosk','1');if(!kioskStore)drawingUrl.searchParams.set('storeMode','choose');drawingUrl.searchParams.set('model',state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'));if(state.store)drawingUrl.searchParams.set('store',state.store);location.href=drawingUrl.href;return;}
+    if ((act === 'drawing'||act === 'sky') && state.model) {var drawingUrl=new URL('../customizer.html',location.href);drawingUrl.searchParams.set('studio',act);if(sampleRim()){drawingUrl.searchParams.set('case','rated');drawingUrl.searchParams.set('rim',sampleRim());}drawingUrl.searchParams.set('kiosk','1');if(!kioskStore)drawingUrl.searchParams.set('storeMode','choose');drawingUrl.searchParams.set('model',state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'));if(state.store)drawingUrl.searchParams.set('store',state.store);location.href=drawingUrl.href;return;}
     if (act === 'own') return openSheet();
     if (act === 'closeSheet') return closeSheet();
     if (act === 'phone') { state.design = null; return show(1); }
@@ -770,7 +772,7 @@
   var loadWatch = setTimeout(function () { if (!data) { last = Date.now(); show(0); } }, 25000);
   KPI.load().then(function (d) {
     clearTimeout(loadWatch);
-    data = d;$('casePricePromise').textContent='Every design · '+KPI.formatPrice(data.price);
+    data = d;$('casePricePromise').textContent='Clear $44.99 · Frost $49.99';
     if (state.screen === 0) show(1);
     buildPhones();
     // Consume only nonpersonal browsing context; resets and reloads start fresh.

@@ -12,13 +12,13 @@
     "reason": "Recover the exact already-public note pixels; no generated handwriting."
   },
   "sources": {
-    "customizer.html": "466a1672c567796b4b84c5c81cf23f87f77ef798883e5afc2aebf4637b9d4e4b",
-    "assets/night-sky.js": "83d0655a90572c2f2e466b9e35731af36e37a8a7013cc7c509cd425e919c492d",
+    "customizer.html": "2143038bdcd0d04fa217dc2d55a519d27c558067c2d8ab59355c4ae9398df513",
+    "assets/night-sky.js": "679ea5236e4cab0c3ed77c08ff33d02ebe0792cb03aaf07c766562c1b6ee6590",
     "assets/case-shell.js": "cb5a4c9ee41f8160bb0fed61e0dbdbad794bb4dbb27a9c3d5aa158d8c1e25b0e",
     "assets/print-geometry.js": "8f5c0160cdf1bfaef806bb495bbe1705fc5f410bbd63d260f60e97c4b5d2a144",
     "assets/cases/i17pm-silver.webp": "fd3f8e91e7b1e112a34bdf72433da1a486fcd07ee3949f0b6cfce31f7a13d9b0",
     "assets/masks/view-i17pm.png": "c1d1e1cbc62a2ef764c24e331db32a6f2215169c40040a57ae3375347815f0a4",
-    "assets/design-editor.js": "3d5d35f953a27c7eef6df5699eb9cd7f67e34a07a6081f7390495c9f0e2579a2",
+    "assets/design-editor.js": "eaf7cb4508e2f31e518a5026468d7c3f7e1e3dfcb8c768022d159072f8cb9a79",
     "assets/bright-stars.json": "634e7bb903ebc5d3cd62c4a3da0781f84c2412feb5e9b28395062698c359cbe0",
     "assets/sky-figures.json": "9f295a5c8e083f735940b2bf9ff292e35851457fa681acfc04167f81bf40e3be",
     "assets/sky-places.json": "d7c00c900ed85a7d860ed1424dca49576368b228494469295f251c2a3425014c"
@@ -29,20 +29,22 @@
       "model": "iPhone 17 Pro Max",
       "finish": "Silver",
       "input": "assets/home/personal/drawing-note.png",
-      "output": "assets/home/personal/drawing-clear-case-v2.webp",
-      "href": "customizer.html?studio=drawing&model=iphone-17-pro-max&finish=Silver&view=phone",
-      "width": 638,
-      "height": 1252,
+      "output": "assets/frost-samples/drawing-frost.webp",
+      "caseType": "Rated Case",
+      "rim": "Clear Frost",
+      "replaces": "assets/home/personal/drawing-clear-case-v2.webp",
+      "href": "customizer.html?studio=drawing&model=iphone-17-pro-max&finish=Silver&view=phone&case=rated&rim=Clear+Frost",
+      "width": 647,
+      "height": 1254,
       "crop": [
-        305,
-        124,
-        943,
-        1376
+        301,
+        123,
+        948,
+        1377
       ],
-      "caseType": "MagSafe Clear",
       "view": "phone",
       "fitMode": "fit",
-      "sha256": "47c533c961c54bfd89d961124aee5b25df6c237ac38c661690cba6506861c2e9",
+      "sha256": "d26984f1d5a45ae8ee44957e8afa9940f7317cb301566e77f6f78d08afe62471",
       "inputSha256": "b6c871ca1685c1acd00d0c655afaf8c5f232ad2ef1ba6376a7f3a1a595e50f35"
     },
     {
@@ -60,20 +62,22 @@
         "Gemini",
         "Libra"
       ],
-      "output": "assets/home/personal/sky-clear-case-v2.webp",
-      "href": "customizer.html?studio=sky&model=iphone-17-pro-max&finish=Silver&view=phone",
-      "width": 638,
-      "height": 1252,
+      "output": "assets/frost-samples/sky-frost.webp",
+      "caseType": "Rated Case",
+      "rim": "Smoke Frost",
+      "replaces": "assets/home/personal/sky-clear-case-v2.webp",
+      "href": "customizer.html?studio=sky&model=iphone-17-pro-max&finish=Silver&view=phone&case=rated&rim=Smoke+Frost",
+      "width": 647,
+      "height": 1254,
       "crop": [
-        305,
-        124,
-        943,
-        1376
+        301,
+        123,
+        948,
+        1377
       ],
-      "caseType": "MagSafe Clear",
       "view": "phone",
       "fitMode": "fill",
-      "sha256": "12c391edc0ae968fef92ca43b983590a16faf9449baa40f218df9170103fd779"
+      "sha256": "fb8d440159d663dfdd629529d71d70a6e8f5f02872fe2607afe83617d2c77a0d"
     }
   ]
 }
