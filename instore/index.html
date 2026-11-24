@@ -233,7 +233,7 @@
     <section id="s1" class="screen on" aria-labelledby="s1h">
       <h1 id="s1h">Which phone do you have?</h1>
       <p class="lede">Your phone. Your style. Made right here.</p>
-      <div class="store-promise"><strong id="casePricePromise">Every design · $44.99</strong><span>Pick a design, make it yours, and let us print it.</span></div>
+      <div class="store-promise"><strong id="casePricePromise">Clear case designs · $44.99</strong><span>Pick a design, make it yours, and let us print it.</span></div>
       <details class="phone-help"><summary>Not sure which iPhone you have?</summary><p>On your phone, open Settings → General → About and look for Model Name. If your model is not listed, ask a team member to check the available blanks.</p></details>
       <p class="kiosk-gifts"><a id="kioskSlates" class="ghost" href="../slates.html?kiosk=1">Photo slates &amp; gifts →</a></p><div id="phones"></div>
     </section>
@@ -770,7 +770,7 @@
   var loadWatch = setTimeout(function () { if (!data) { last = Date.now(); show(0); } }, 25000);
   KPI.load().then(function (d) {
     clearTimeout(loadWatch);
-    data = d;$('casePricePromise').textContent='Every design · '+KPI.formatPrice(data.price);
+    data = d;$('casePricePromise').textContent='Clear case designs · '+KPI.formatPrice(data.price);
     if (state.screen === 0) show(1);
     buildPhones();
     // Consume only nonpersonal browsing context; resets and reloads start fresh.

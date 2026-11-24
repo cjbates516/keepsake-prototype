@@ -16,6 +16,8 @@
   ['Original Zodiac','The star-sign collection you know','gallery.html?cat=Zodiac','assets/home/personal/sky-clear-case-v2.webp'],
   ['iPhone cases','Pick your iPhone model','gallery.html?brand=Apple','assets/case-only-previews/iphone-17-pro-max--kp-cherry-dot--original.webp?v=clear-mounted-1'],
   ['Samsung cases','Pick your Galaxy model','gallery.html?brand=Samsung','assets/case-only-previews/galaxy-s26-ultra--kp-sunday-scramble--original.webp?v=clear-mounted-1'],
+  ['Google cases','Pick your Pixel model','gallery.html?brand=Google','assets/rated-menu/pixel.webp'],
+  ['Motorola cases','Pick your moto g model','gallery.html?brand=Motorola','assets/rated-menu/moto.webp'],
   ['All phone cases','Browse prints before picking a phone','gallery.html','assets/case-only-previews/iphone-17-pro-max--kp-wrong-way-duck--original.webp?v=clear-mounted-1'],
   ['City After Dark','Find your city · real photography','gallery.html?cat=City%20Scenes','assets/case-only-previews/iphone-15-pro-max--city-night-philadelphia--original.webp?v=clear-mounted-1'],
   ['Earth From Orbit','Deserts and river deltas photographed by satellite','gallery.html?cat=Earth%20From%20Orbit','assets/designs/thumbs/field-photo-yukon-delta-0.jpg'],
