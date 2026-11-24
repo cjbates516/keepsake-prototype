@@ -114,7 +114,7 @@ body.design-editor #stageCanvas{max-height:max(260px,calc(100dvh - 450px));width
 .design-editor #reviewSpecification summary{cursor:pointer;font-size:14px;font-weight:800;min-height:30px;display:flex;align-items:center;gap:8px}
 .design-editor #reviewSpecification summary::before{content:'+'}.design-editor #reviewSpecification[open] summary::before{content:'−'}
 .design-editor #counterReview #saveCounterCard,.design-editor #reviewNextCustomer{grid-column:1/-1}
-.design-editor #reviewNextCustomer{background:var(--studio-red)}
+.design-editor #reviewNextCustomer{background:transparent;border:1px solid var(--studio-line)}
 .design-editor #reviewCode{overflow-wrap:anywhere;font-size:15px}
 @media(max-width:760px){.design-editor #reviewAtGlance{grid-template-columns:minmax(0,1fr) 105px;gap:10px}.design-editor #reviewPreview{height:175px}.design-editor #counterReview h2{font-size:23px}.design-editor .review-total{font-size:30px}}
 .design-editor #reviewOverview .review-personalization{font-size:13px;font-weight:800;overflow-wrap:anywhere}.design-editor #storeChips button{min-height:48px}
@@ -216,7 +216,7 @@ body.design-editor #stageCanvas{max-height:max(260px,calc(100dvh - 450px));width
  .design-editor #studioStorePicker{margin-bottom:12px}
 }
 
-.design-editor #reviewNextCustomer{color:#fff}
+.design-editor #reviewNextCustomer{color:var(--studio-ink)}
 .design-editor #studioBrowse{min-height:44px}
 .design-editor :is(.studio-top h1,#studioPreview h2,#studioSetup h2):focus{outline:none}
 .design-editor .studio-history{justify-content:flex-end}
