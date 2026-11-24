@@ -46,10 +46,13 @@ team member a pick code. No checkout, no uploads, nothing about the customer is 
   The worker only touches caches named `kp-instore-*`.
 - Pick codes look like `17P-FLR-012`: phone id, collection code, design number. Team members type the code into
   `instore/find.html` on the print computer; it opens that design on that phone in the customizer, ready to export.
+  A code does not say which case, so the page shows the clear and the Rated price and asks the team member to check
+  the customer's screen or card before printing (the print workspace opens on the clear case).
 
 Settings, no code changes needed:
 - `instore/models.json`: phones. Set `active` to true only when we stock the blank and have the print mask.
-  Samsung entries are there and switched off.
+  Samsung entries are there and switched off. Phones that come in the Rated Case only have no row (not stocked); kiosk
+  customers reach them in the editor's Phone tool.
 - `instore/config.json`: price, idle seconds, displayed-code hold seconds, `assets_version` (raise it after replacing a mask or case photo so
   iPads fetch the new file), collection chips (order, label, 3 letter code), and an optional `exclude_files`
   list that keeps designs off the iPad only (empty unless Corey asks).
@@ -71,6 +74,8 @@ Add the page to the Home Screen first if you want it full screen. Triple click a
 ## Storefront and design colorways
 
 Every case design is $44.99 on the clear case; the Rated Case, offered on the phones listed under Case options below, is $49.99. Tempered glass is $29.99 separately, with $10 off when added to a case ($19.99 glass; $64.98 bundle with the clear case, $69.98 with the Rated Case, before any other applicable promotion). Runtime prices live in `assets/kp-config.js`; storefront copy mirrors those prices.
+
+Phones on the storefront: the kits in `customizer.html` are the one list. `tools/build_print_layouts.cjs` writes `assets/rated-phones.js` from them (Rated only phones with their brand, mask, back color, drop rating and rims, and the phones that come in both cases), and `gallery.html` builds its Rated only phones, brands (Apple, Samsung, Google, Motorola), prices and wording from it. Rated only cards say "Rated Case · $49.99" and "Rim color", their links carry `case=rated&rim=<name>`, and the panel shows the phone's back color like the editor's `drawRatedPanel` (nothing is drawn until the mask loads, so the white print area guide never shows as the product). A phone in `COMING_SOON` is not in the gallery or the finder, and `gallery.html?device=` for a phone without a case says so. The home phone finder (`#homeDevice` in `index.html`) is plain HTML: add a phone there when one is turned on. `tools/tests/rated_everywhere.cjs` compares the gallery, finder, menu and editor with the kits, phone by phone.
 
 Colorways preserve the focal artwork while changing the surrounding background. Every active library design has five alternatives plus the original. Each design has a frozen palette in `assets/colorway-catalog.js`; ordinary uploaded photos are not recolored. Neon Doodles adds six original neon patterns. Detailed scenery uses a framed treatment that preserves the full image. `assets/design-colorways.js` is the shared local composition renderer. Selected colorways must travel with the design into preview, staff handoff and print export.
 

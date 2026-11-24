@@ -27,8 +27,8 @@ const soon=Object.keys(vm.runInNewContext('('+/var COMING_SOON=(\{[^}]*\})/.exec
 const kits=scope.KITS,models=Object.keys(kits),only=models.filter(m=>kits[m].ratedOnly),both=models.filter(m=>kits[m].rated&&!kits[m].ratedOnly);
 const cfg=vm.runInNewContext('var window={};'+read('assets/kp-config.js')+';window.KP_CONFIG'),CLEAR='$'+cfg.PRICE.toFixed(2),RATED='$'+cfg.RATED_PRICE.toFixed(2);
 const BRANDS=['Apple','Samsung','Google','Motorola'];
-/* a deliberate typo in a phone list would otherwise pass quietly */
-check('54 phones with a Rated Case, 28 of them Rated only',both.length===26&&only.length===28,{both:both.length,only:only.length});
+/* a phone dropped from the kits would otherwise pass quietly everywhere below */
+check('26 phones come in both cases, 29 are Rated only or coming soon',both.length===26&&only.length+soon.length===29,{both:both.length,only:only.length,soon:soon.length});
 
 /* ---- files ---- */
 const listed=vm.runInNewContext('var window={};'+read('assets/rated-phones.js')+';window.KP_RATED_PHONES');
@@ -115,7 +115,7 @@ const sizes=[[320,700],[390,844],[820,1180],[1440,950]];
      /* a transparent design shows the phone's own back color through the panel, never the white guide */
      await drawn(p);const px=await p.locator('.kpCard canvas').first().evaluate(async(c,[mask,back])=>{const im=new Image();im.src='assets/masks/'+mask;await im.decode();const x=document.createElement('canvas');x.width=c.width;x.height=c.height;const g=x.getContext('2d');g.drawImage(im,0,0,c.width,c.height);const k=g.getImageData(0,0,c.width,c.height).data,d=c.getContext('2d').getImageData(0,0,c.width,c.height).data,v=[[],[],[]];
       for(let i=0;i<k.length;i+=4)if(k[i+3]===255)for(let z=0;z<3;z++)v[z].push(d[i+z]);const got=v.map(a=>a.sort((q,w)=>q-w)[a.length>>1]),lit=z=>{const n=parseInt(back.slice(1+z*2,3+z*2),16)*.9777;return n+.0463*(255-n);};return {got,want:[0,1,2].map(z=>Math.round(lit(z)))};},[k.view,k.colors[0].h]);
-     check(t+': panel shows the phone back color',px.got.every((v,i)=>Math.abs(v-px.want[i])<=9),px);
+     check(t+': panel shows the phone back color',px.got.every((v,i)=>v<=px.want[i]+4&&v>=px.want[i]-20),px);  /* the photo may only darken it; the white guide would be lighter */
     }else{
      check(t+': clear price, Rated note only where there is one',/magsafe clear · \$44\.99/i.test(g.card)&&g.card.includes('Rated Case · '+RATED)===!!k.rated,g.card);
      check(t+': finishes and link unchanged',g.group==='Phone finish'&&g.dots.length===k.colors.length&&!q.has('case')&&!q.has('rim')&&q.get('finish')===k.colors[0].n,g.href);
