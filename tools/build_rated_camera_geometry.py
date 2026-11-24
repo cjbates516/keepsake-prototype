@@ -16,6 +16,9 @@ ROOT=Path(__file__).resolve().parent.parent
 # and the lip is darker than 130 and would split the opening; the lip itself is about 62.
 RATED_ONLY={key+suffix for key,frames in LISTINGS.items() for _,placed,suffix in frames if placed=='scale'}
 BRIGHT={'iph16plus':88}
+# These photos show a white phone: the inset left a thin white line around a dark phone, so the opening reaches one preview
+# pixel over the edge of the dark lip instead.
+COVER={'iph2161p','iph2167','iph1261','iph16plus','samgs26pl'}
 result={}
 for file in sorted((ROOT/'assets/cases').glob('rated-*-clear.webp')):
     key=file.name[len('rated-'):-len('-clear.webp')]
@@ -26,7 +29,7 @@ for file in sorted((ROOT/'assets/cases').glob('rated-*-clear.webp')):
     sizes=np.bincount(labels.ravel());sizes[0]=0
     for k in np.unique(np.concatenate([labels[0],labels[-1],labels[:,0],labels[:,-1]])): sizes[k]=0
     k=int(sizes.argmax());assert sizes[k]>1000,file
-    mask=ndimage.binary_erosion(ndimage.binary_fill_holes(labels==k),iterations=1)
+    hole=ndimage.binary_fill_holes(labels==k);mask=ndimage.binary_dilation(hole) if key in COVER else ndimage.binary_erosion(hole,iterations=1)
     ys,xs=np.where(mask);left=int(xs.min()*2);rows=[]
     for y in range(int(ys.min()),int(ys.max())+1):
         edges=np.flatnonzero(np.diff(np.r_[False,mask[y],False]));row=[int(y*2),int((y+1)*2),*[int(x*2) for x in edges]]

@@ -28,13 +28,15 @@ function check(name,ok,detail){results.push({name,ok:!!ok,detail});console.log((
 const MODEL='iphone-17-pro-max',DESIGN='boho-floral-01.jpg',STORE='West Chester, PA';
 const BRAND=/cck|custom case kiosk|nimbus|phantom|balaji/i,DASH=/[‐-―−-]/;
 /* the site's Rated phones and rims, read the way tools/build_rated_photos.py reads them */
-const SECOND=['googpl10p10','googpl11p11'],NO_PHOTOS={samgs24:['Smoke Frost']};
+const SECOND=['googpl10p10','googpl11p11'],NO_PHOTOS={samgs24:['Smoke Frost'],samgs24u:['Smoke Frost']};
 function siteKits(){
  const src=fs.readFileSync(path.join(root,'customizer.html'),'utf8'),block=src.slice(src.indexOf('KP-RATED-KITS'));
  const flat=n=>JSON.parse(new RegExp('var '+n+'=(\\{[\\s\\S]*?\\});').exec(block)[1].replace(/'/g,'"'));
  const soon=flat('COMING_SOON'),clear=flat('CLEAR_FROST_ONLY'),smoke=flat('SMOKE_FROST_ONLY'),only=flat('RATED_ONLY');
  return Object.entries({...flat('RATED'),...only}).filter(([model])=>!soon[model]).map(([model,key])=>({model,only:!!only[model],key:SECOND.includes(key.replace('-',''))?key.replace('-',''):key.split('-')[0],
-  rims:clear[key]?['Clear Frost']:smoke[key]?['Smoke Frost']:['Smoke Frost','Clear Frost']}));
+  rims:clear[key]?['Clear Frost']:smoke[key]?['Smoke Frost']:['Smoke Frost','Clear Frost']}))
+  /* a phone with no photo in any rim is in no photo list (its button hides itself) */
+  .filter(k=>!k.rims.every(r=>(NO_PHOTOS[k.key]||[]).includes(r)));
 }
 async function hooked(page,errors){
  page.on('pageerror',e=>errors.push('pageerror: '+e.message));
@@ -101,6 +103,8 @@ const shot=async(p,name)=>{await p.evaluate(()=>{const i=document.querySelector(
   check('every photo has a 1600 x 1920 file for tablets',all.every(i=>i.hd===i.file.replace(/\.webp$/,'-hd.webp')));
   const otherOk=manifest.other.length>=12&&manifest.other.length<=14&&new Set(manifest.other.map(o=>o.phone)).size===manifest.other.length&&['Smoke Frost','Clear Frost'].every(r=>manifest.other.some(o=>o.rim===r));
   check('on other phones: '+manifest.other.length+' photos, each a different phone, both rims',otherOk,manifest.other.map(o=>o.caption));
+  /* the viewer calls them the same case beside this phone's 20 ft line: a blank without that rating is another case */
+  check('on other phones: no iPhone Duo (another case, no drop rating)',!manifest.other.some(o=>o.key==='iph18fld'||/Duo/.test(o.phone)),manifest.other.map(o=>o.phone));
   const weight=fs.readdirSync(path.join(root,'assets/cases/rated-photos')).reduce((n,f)=>n+fs.statSync(path.join(root,'assets/cases/rated-photos',f)).size,0);
   check('photo folder weighs under 14 MB ('+(weight/1e6).toFixed(2)+' MB)',weight<14e6);
   const src=fs.readFileSync(path.join(root,'customizer.html'),'utf8');

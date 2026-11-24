@@ -66,10 +66,15 @@ LENS_TEXT = {
     'motgpwr25': {12: (1429, 561, 39, 68, 1), 3: (1481, 547, 39, 68, .85)},
     'motgstl26': {12: (1465, 612, 39, 81, 1), 3: (1505, 602, 39, 81, .85)},
 }
+# broken black, white and pink scraps under the camera lip (cut off reflections of the render) become the frost beside them on
+# our copies, as tools/build_rated_cases.py does for the preview (grey_lip, clean_lip): listing -> shots
+CLEAN_LIP = {'samgs24': (1, 3, 4, 12)}
 # these listings keep the frame of all their photos, shipped or not (their front photos first shipped under On other phones)
 FRAME_ALL = set(LENS_TEXT)
 # an offered rim with no photo we can show: the viewer shows the other rim's photos, captioned with that rim, and says so
-NO_PHOTOS = {('samgs24', 'smoke'): 'the only Smoke Frost photo carries an app icon, so the viewer shows the Clear Frost photos and says so'}
+# (a phone with no photo in any rim is left out of the manifest, and the viewer's button hides itself)
+NO_PHOTOS = {('samgs24', 'smoke'): 'the only Smoke Frost photo carries an app icon, so the viewer shows the Clear Frost photos and says so',
+             ('samgs24u', 'smoke'): 'the only photo carries an app icon, and the phone is listed as coming soon'}
 # the phone (or phones: the camera must match) in each listing's photos, so the viewer can say when a phone is shown on a
 # similar model
 PHOTOGRAPHED = {
@@ -78,14 +83,15 @@ PHOTOGRAPHED = {
     'iph17': 'iPhone 17', 'iph17a': 'iPhone Air', 'iph17pro': 'iPhone 17 Pro', 'iph17pmx': 'iPhone 17 Pro Max',
     'iph14max': 'iPhone 15 Plus', 'samgs26': 'Samsung Galaxy S26', 'samgs26u': 'Samsung Galaxy S26 Ultra',
     'iph2161p': 'iPhone 13 Pro', 'iph2167': 'iPhone 13 Pro Max', 'iph16plus': 'iPhone 16 Plus', 'iph1261': 'iPhone 12', 'iph61': 'iPhone 11', 'iph18fld': 'iPhone Duo',
-    'samgs26pl': 'Samsung Galaxy S26 Plus', 'samgs26fe': 'Samsung Galaxy S26 FE', 'samgs25u': 'Samsung Galaxy S25 Ultra', 'samgs24': 'Samsung Galaxy S25',
+    'samgs26pl': 'Samsung Galaxy S26 Plus', 'samgs26fe': 'Samsung Galaxy S26 FE', 'samgs25u': 'Samsung Galaxy S25 Ultra', 'samgs24': 'Samsung Galaxy S25', 'samgs24u': 'Samsung Galaxy S24 Ultra',
     'samgs25fe': 'Samsung Galaxy S25 FE', 'samgs24fe': 'Samsung Galaxy S24 FE', 'samga37': 'Samsung Galaxy A37', 'samga17': 'Samsung Galaxy A17',
     'googpl11pxl': 'Google Pixel 11 Pro XL', 'googpl11': 'Google Pixel 11 Pro', 'googpl11p11': 'Google Pixel 11',
     'googpl10pxl': 'Google Pixel 10 Pro XL', 'googpl10': 'Google Pixel 10 Pro', 'googpl10p10': 'Google Pixel 10',
     'motgstl26': 'Motorola moto g stylus 2026', 'motgpwr25': 'Motorola moto g power 2026', 'motgply25': 'Motorola moto g play 2026',
 }
 # "On other phones": one photo per phone color or brand, both rims. (key, rim, shot, caption phone, alt description)
-# Captions name the phones the listing fits; alt text names what the photo shows, with the color when it is obvious.
+# Captions name the phones the listing fits; alt text names what the photo shows, with the color when it is obvious. Never the
+# iPhone Duo: the viewer calls these the same case beside the 20 ft line, and the Duo blank is another case with no rating.
 OTHER = [
     ('iph14max', 'clear', 1, 'iPhone 14 Plus and 15 Plus', 'a yellow iPhone 15 Plus'),
     ('googpl11pxl', 'clear', 1, 'Pixel 11 Pro XL', 'a Pixel 11 Pro XL with a rose screen'),
@@ -97,7 +103,6 @@ OTHER = [
     ('googpl10p10', 'clear', 5, 'Pixel 10', 'a Pixel 10 with a blue and green screen'),
     ('samgs25u', 'smoke', 1, 'Galaxy S25 Ultra', 'a Galaxy S25 Ultra with a bronze screen'),
     ('samga17', 'clear', 5, 'Galaxy A17', 'a Galaxy A17 with a blue screen'),
-    ('iph18fld', 'smoke', 3, 'iPhone Duo', 'a white iPhone Duo'),
     ('samga37', 'clear', 5, 'Galaxy A36 and A37', 'a Galaxy A37 with a pink and lavender screen'),
     ('iph1261', 'clear', 1, 'iPhone 12 and 12 Pro', 'a white iPhone 12 with an orange screen'),
     ('googpl11p11', 'clear', 1, 'Pixel 11', 'a Pixel 11 with a violet screen'),
@@ -130,6 +135,8 @@ def plan():
     for model, site_key in rated.items():
         key = photo_key(site_key)
         offered = kit_rims[site_key]
+        if all((key, r) in NO_PHOTOS for r in offered):
+            continue
         rims.setdefault(key, [])
         for r in offered:
             if r not in rims[key]:
@@ -176,6 +183,15 @@ def without_lens_text(im, cx, cy, r0, r1, kx):
     return Image.fromarray(rgb)
 
 
+def without_lip_scraps(im):
+    import numpy as np
+    from PIL import Image
+    import build_rated_cases as cases
+    rgb = cases.grey_lip(np.asarray(im))
+    _, _, case, lum = cases.cutout(rgb)
+    return Image.fromarray(cases.clean_lip(rgb, lum, case, cases.panel_mask(lum, case, 205)))
+
+
 def build(src):
     from PIL import Image
     models, rims = plan()
@@ -189,6 +205,8 @@ def build(src):
             im = Image.open(src / name).convert('RGB')
             m = re.match(r'cckp3-(\w+)-media-\w+-frost-(\d+)\.jpg', name)
             text = LENS_TEXT.get(m[1], {}).get(int(m[2]))
+            if int(m[2]) in CLEAN_LIP.get(m[1], ()):
+                im = without_lip_scraps(im)
             cache[name] = without_lens_text(im, *text) if text else im
         return cache[name]
 
@@ -306,7 +324,8 @@ def write_doc(rows, models, qualities):
     lines += ['| %s | %s |' % (s, r) for s, r in EXCLUDE.items()]
     lines += ['| %s | %s |' % (s, r) for s, r in EXCLUDE_NOTES]
     lines += ['', 'Changed on our copies only (`LENS_TEXT`): the letters printed around the flash of the moto phones (megapixels, a sensor',
-              'brand) are taken off the back (12) and side (3) photos of %s.' % ', '.join(LENS_TEXT), '',
+              'brand) are taken off the back (12) and side (3) photos of %s, and the broken scraps under' % ', '.join(LENS_TEXT),
+              'the camera lip (`CLEAN_LIP`) become frost on the back and side photos of %s.' % ', '.join(CLEAN_LIP), '',
               'Checked by eye on a contact sheet of every output (logos, text, people, wrong phone, wrong rim). The first pass',
               'missed the vendor name embossed in the Galaxy S26 and S26 Ultra rims (light text on a light rim, legible only at',
               'full size); a review found it with contrast stretched 1:1 crops and a template match over both rims of every used',

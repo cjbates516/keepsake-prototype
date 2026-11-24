@@ -70,7 +70,7 @@ back (12, or 2 when 12 is missing), front (5). Rims follow the site kit (`KITS[m
 | Motorola moto g power 2026 | motgpwr25 | Smoke Frost, Clear Frost |  |
 | Motorola moto g power 2025 | motgpwr25 | Smoke Frost, Clear Frost | yes |
 | Motorola moto g play 2026 | motgply25 | Smoke Frost, Clear Frost |  |
-| Motorola moto g 5G 2026 | motgply25 | Smoke Frost, Clear Frost | yes |
+| Motorola moto g 2026 | motgply25 | Smoke Frost, Clear Frost | yes |
 | Motorola moto g 2025 | motgply25 | Smoke Frost, Clear Frost | yes |
 
 A phone on a blank photographed with another phone (a different camera) reads "Photos show this case on a similar phone."
@@ -78,6 +78,7 @@ The Pixel 10 and Pixel 11 have their own photos (shots 101 to 105 of the listing
 table: the Galaxy S24 Ultra (coming soon, no usable photo).
 
 samgs24 Smoke Frost: the only Smoke Frost photo carries an app icon, so the viewer shows the Clear Frost photos and says so.
+samgs24u Smoke Frost: the only photo carries an app icon, and the phone is listed as coming soon.
 
 ## Source file to output file
 
@@ -391,7 +392,8 @@ Each output also has a `-hd.webp` and a `-t.webp` thumbnail.
 | cckp3-iphse25-media-*-frost-{21 to 25, 101 and up}.jpg | the same blank on other phones and colors (16e black 21 to 25, iPhone 15 1xx, 14 2xx, 13 3xx, 17e 4xx); not used: the 17e has the same camera as the 16e in shots 1 to 12, and the iPhone 13, 14 and 15 are shown on the 16e with the similar iPhone note |
 
 Changed on our copies only (`LENS_TEXT`): the letters printed around the flash of the moto phones (megapixels, a sensor
-brand) are taken off the back (12) and side (3) photos of motgply25, motgpwr25, motgstl26.
+brand) are taken off the back (12) and side (3) photos of motgply25, motgpwr25, motgstl26, and the broken scraps under
+the camera lip (`CLEAN_LIP`) become frost on the back and side photos of samgs24.
 
 Checked by eye on a contact sheet of every output (logos, text, people, wrong phone, wrong rim). The first pass
 missed the vendor name embossed in the Galaxy S26 and S26 Ultra rims (light text on a light rim, legible only at

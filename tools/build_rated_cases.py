@@ -87,7 +87,7 @@ LISTINGS = {
     'googpl11':  [(['Google Pixel 11 Pro'], 'scale', ''),
                   (['Google Pixel 11'], 'scale', '-p11')],
     'googpl11pxl': [(['Google Pixel 11 Pro XL'], 'scale', '')],
-    'motgply25': [(['Motorola moto g play 2026', 'Motorola moto g 5G 2026', 'Motorola moto g 2025'], 'scale', '')],
+    'motgply25': [(['Motorola moto g play 2026', 'Motorola moto g 2026', 'Motorola moto g 2025'], 'scale', '')],
     'motgpwr25': [(['Motorola moto g power 2026', 'Motorola moto g power 2025'], 'scale', '')],
     'motgstl26': [(['Motorola moto g stylus 2026', 'Motorola moto g stylus 2025'], 'scale', '')],
 }
@@ -117,7 +117,8 @@ BOX_CENTRE = {'iph18fld'}
 PHOTO_PX_PER_MM = {('iph18fld', 'smoke'): 18.25, ('samgs24u', 'smoke'): 16.8}
 # text printed on a phone's flash ring (megapixels, a sensor brand): (centre x, y, inner and outer radius) in the photo
 LENS_TEXT = {'motgply25': (1437, 526, 38, 74), 'motgpwr25': (1429, 551, 39, 68), 'motgstl26': (1465, 603, 39, 81)}
-# pink scraps of the phone's art show through the frost beside the camera lip: made grey
+# pink scraps of the phone's art show through the frost beside the camera lip: made grey, and the broken black and white
+# ones under the lip become the frost beside them (clean_lip)
 GREY_LIP = {('samgs24', 'clear')}
 # the camera stands alone inside this panel, with a clear lip that would pass for panel: px kept free around its ring
 ISLAND = {('samgs24u', 'smoke'): 24}
@@ -147,7 +148,10 @@ SMOKE_TONE = [
     [48.2, 47.4, 51.6, 54.4, 56.5, 59.0, 62.8, 67.2, 69.6, 70.6],
     [46.3, 49.0, 52.5, 54.7, 56.7, 59.2, 62.3, 64.7, 66.6, 69.1],
     [45.3, 49.6, 52.9, 54.3, 56.0, 58.0, 58.5, 58.5, 58.5, 58.5]]
-SMOKE_EDGE = 3.4  # px from the 205 contour of the Clear Frost panel to the edge the Smoke Frost photos of the pairs show
+# px from the 205 contour of the Clear Frost panel to the Smoke Frost edge. The pairs show 3.4, but their masks come from
+# that edge; this mask was cut from the 205 contour, so at 3.4 a light line of bare panel ran around dark art (5 stage px,
+# the pairs show 2). 0.2 gives the one pixel line of the pairs.
+SMOKE_EDGE = 0.2
 
 
 def disk(r):
@@ -418,24 +422,12 @@ def learn_smoke(src):
     return np.round(ndi.gaussian_filter(T, (0, .6), mode='nearest'), 1).tolist()
 
 
-def retone_smoke(rgb, alpha, lum, case, panel):
-    """Clear Frost cut -> Smoke Frost color and alpha: only the frost changes. The panel, the camera lip and everything
-    inside it, and the dark buttons keep their pixels, as on the real pairs."""
-    body = body_of(case)
-    d = np.maximum(ndi.distance_transform_edt(body), 4)
+def lip_parts(lum, body, panel):
+    """The camera lip, px outside it, px inside (+) or outside (-) the panel, and how much each pixel is a scrap."""
     lab, n = ndi.label(ndi.binary_opening((lum > 50) & (lum < 80), structure=disk(4)))
     lip = ndi.binary_fill_holes(lab == 1 + int(np.argmax(ndi.sum(lab > 0, lab, range(1, n + 1)))))
     lip = ndi.distance_transform_edt(~(ndi.distance_transform_edt(lip) > 10)) <= 10  # scraps stuck to the lip drop off
     off = ndi.distance_transform_edt(~lip)
-    f = rgb.astype(np.float32)
-    l = f @ LUM
-    tone = ndi.map_coordinates(np.array(SMOKE_TONE, np.float32),
-                               [np.interp(d, SMOKE_D, range(len(SMOKE_D))), np.interp(l, SMOKE_L, range(len(SMOKE_L)))],
-                               order=1, mode='nearest')
-    # below 62 is the lip's own dark edge and the buttons: unchanged, easing into the frost
-    w = np.clip((l - 62) / 38, 0, 1)
-    tone = l * (1 - w) + tone * w
-    # broken black and pink scraps of the phone's art show through the frost under the lip: a flat shaded frost there
     # px inside (+) or outside (-) the panel's 205 contour, between pixels so the dark edge has no steps; evened out more
     # away from the lip, where the panel's shadow ends in short straight pieces around the corners
     soft = (np.clip((lum - 190) / 30, 0, 1) * ndi.binary_dilation(panel, structure=disk(3))).astype(np.float32)
@@ -446,6 +438,53 @@ def retone_smoke(rgb, alpha, lum, case, panel):
     seed = near & (off > 7) & (lum < 90)  # beyond the dark outer edge of the lip, which stays
     scrap = ndi.gaussian_filter((near & (ndi.distance_transform_edt(~seed) <= 9)).astype(np.float32), 2)
     scrap[lip] = 0
+    return lip, off, sd, scrap
+
+
+def clean_lip(rgb, lum, case, panel):
+    """Clear Frost: the scraps under the camera lip become the frost beside them. Clean frost only changes across its
+    width, from the thin dark edge of the lip to the panel, so beside a scrap the lip gets its own flat grey up to its edge
+    and every pixel outside takes the middle light of the clean frost at the same place: by px from the lip near it, by
+    share of the way to the panel further out."""
+    body = body_of(case)
+    lip, off, sd, scrap = lip_parts(lum, body, panel)
+    lip = ndi.distance_transform_edt(~(ndi.distance_transform_edt(lip) > 34)) <= 34  # the scraps cling to its edge
+    lip = ndi.gaussian_filter(lip.astype(np.float32), 6) > .5
+    off = ndi.distance_transform_edt(~lip)
+    f = rgb.astype(np.float32)
+    l = f @ LUM
+    away = ndi.distance_transform_edt(~panel)
+    across = np.clip(off / np.maximum(off + away, 1), 0, 1)
+    clean = ~ndi.binary_dilation(scrap > .01, structure=disk(12)) & (off > 0) & (off <= 40) & ~panel & (away < 45) & body
+    fade = np.clip((46 - away) / 24, 0, 1)  # between the lip and the panel only: beside the rim the lip is whole
+    px, step = np.arange(1, 16), np.linspace(0, 1, 13)
+    near = np.interp(off, px, [np.median(l[clean & (off > o - .5) & (off <= o + .5)]) for o in px])
+    wide = np.interp(across, (step[1:] + step[:-1]) / 2,
+                     [np.median(l[clean & (l > 90) & (across >= lo) & (across <= hi)]) for lo, hi in zip(step, step[1:])])
+    u = np.clip((off - 7) / 7, 0, 1)
+    inside = ndi.distance_transform_edt(lip)
+    tone = np.where(lip, np.median(l[lip & (inside > 4) & (inside < 12)]), near * (1 - u) + wide * u)
+    # the scrap zone down to the lip and 4 px into it, where the scraps have nibbled its edge
+    zone = ndi.binary_dilation(scrap > .5, structure=disk(9)) & (inside <= 4) & (sd < 0) & body
+    w = (fade * np.maximum(scrap, ndi.gaussian_filter(zone.astype(np.float32), 1.5)))[..., None]
+    return np.clip(np.round(f * (1 - w) + ndi.gaussian_filter(tone, .8)[..., None] * w), 0, 255).astype(rgb.dtype)
+
+
+def retone_smoke(rgb, alpha, lum, case, panel):
+    """Clear Frost cut -> Smoke Frost color and alpha: only the frost changes. The panel, the camera lip and everything
+    inside it, and the dark buttons keep their pixels, as on the real pairs."""
+    body = body_of(case)
+    d = np.maximum(ndi.distance_transform_edt(body), 4)
+    lip, off, sd, scrap = lip_parts(lum, body, panel)
+    f = rgb.astype(np.float32)
+    l = f @ LUM
+    tone = ndi.map_coordinates(np.array(SMOKE_TONE, np.float32),
+                               [np.interp(d, SMOKE_D, range(len(SMOKE_D))), np.interp(l, SMOKE_L, range(len(SMOKE_L)))],
+                               order=1, mode='nearest')
+    # below 62 is the lip's own dark edge and the buttons: unchanged, easing into the frost
+    w = np.clip((l - 62) / 38, 0, 1)
+    tone = l * (1 - w) + tone * w
+    # broken black and pink scraps of the phone's art show through the frost under the lip: a flat shaded frost there
     tone = tone * (1 - scrap) + (48 - .12 * (48 - np.clip(tone, 0, 60))) * scrap
     # the frost is neutral where it is flat and a touch blue where it catches light, as on the real photos
     b = np.clip((tone - 57) / 6, 0, 1)
@@ -589,6 +628,9 @@ def build_listing(src, key, want):
             d = cc['clear']
             rgb, alpha = retone_smoke(d['rgb'], d['alpha'], d['lum'], d['case'], d['panel'])
             cc['smoke'] = dict(d, rgb=rgb, alpha=alpha)
+        if (key, 'clear') in GREY_LIP:
+            d = cc['clear']
+            cc['clear'] = dict(d, rgb=clean_lip(d['rgb'], d['lum'], d['case'], d['panel']))
         for c in cc:
             fn = 'rated-%s-%s.webp' % (fk, c)
             d = cc[c]
