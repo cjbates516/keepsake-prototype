@@ -624,10 +624,10 @@ async function closeReview(p){await p.locator('#reviewEditDesign').click();await
       sheet's title when the sheet grows under it; spacing */
    const c2=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
    p=await open('model=iphone-17-pro&design='+DESIGN,null,c2);
-   await tool(p,'phone');await setModel(p,'Google Pixel 10');await p.waitForTimeout(400);
+   await tool(p,'phone');await setModel(p,'Google Pixel 10');await setModel(p,'iPhone 18 Pro Max');await p.waitForTimeout(400); /* the sheet grows: finish row, two cards */
    const top=await p.evaluate(()=>{const t=document.getElementById('kpToast').getBoundingClientRect(),h=document.getElementById('studioSheetTitle').getBoundingClientRect(),d=document.getElementById('studioDone').getBoundingClientRect();return [t.top,t.bottom,h.top,h.bottom,d.top,d.bottom].map(Math.round);});
    check(tag+' 390 the message is clear of the sheet title and Done',top[1]<=Math.min(top[2],top[4])+1||top[0]>=Math.max(top[3],top[5])-1,top);
-   await done(p);await p.waitForTimeout(400);
+   await setModel(p,'Google Pixel 10');await done(p);await p.waitForTimeout(400);
    check(tag+' 390 the address after Done names the Pixel',/[?&]model=pixel-10(&|$)/.test(await p.evaluate(()=>location.search)),await p.evaluate(()=>location.search));
    await p.reload();await editorReady(p);check(tag+' 390 a reload keeps it',await p.evaluate(()=>__kp.state.model==='Google Pixel 10'&&KPStudioCore.info().total===49.99));
    await tool(p,'phone');await setModel(p,'Samsung Galaxy S25');await p.evaluate(()=>KPStudioCore.setRim('Clear Frost'));await done(p);await p.waitForTimeout(400);await p.reload();await editorReady(p);
