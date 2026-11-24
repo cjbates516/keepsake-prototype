@@ -1,0 +1,50 @@
+[
+  {
+    "href": "customizer.html?design=kp-season-winter-blue-hour.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "kp-season-winter-blue-hour.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/nature-seasons/winter-blue-hour.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-season-mistwood.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "kp-season-mistwood.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/nature-seasons/mistwood.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-season-desert-monsoon.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "kp-season-desert-monsoon.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/nature-seasons/desert-monsoon.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-season-sunlit-dunes.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "kp-season-sunlit-dunes.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/nature-seasons/sunlit-dunes.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-season-alpine-wildflowers.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "kp-season-alpine-wildflowers.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/nature-seasons/alpine-wildflowers.webp",
+    "caseType": "MagSafe Clear"
+  },
+  {
+    "href": "customizer.html?design=kp-season-moonlit-coast.jpg&model=iphone-15-pro&colorway=original&view=phone",
+    "design": "kp-season-moonlit-coast.jpg",
+    "model": "iphone-15-pro",
+    "variant": "original",
+    "output": "assets/nature-seasons/moonlit-coast.webp",
+    "caseType": "MagSafe Clear"
+  }
+]
