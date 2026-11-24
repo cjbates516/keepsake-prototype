@@ -829,7 +829,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if(!device)return 'Clear $44.99 \u00b7 Frost $49.99 \u00b7 Made in store.';
     var only=RATED.only[device], both=RATED.both[device];
     if(!only&&!both)return 'Clear case $44.99 \u00b7 Made in store.';
-    return (both?'Clear $44.99 \u00b7 Frost $49.99 \u00b7 ':'Frost case $49.99 \u00b7 ')+dropText((only||both).drop)+'Confirm availability in store.';
+    var drop=dropText((only||both).drop);
+    return (both?'Clear $44.99 \u00b7 Frost $49.99'+(drop?' with ':' \u00b7 '):'Frost case $49.99 \u00b7 ')+drop+'Confirm availability in store.';
   }
   function syncCaseView(){
     var panel=$('galleryCaseView');panel.hidden=!device||!viewMasks[device]||!KPCaseShell.canShowEmpty(device,caseStyle(device),caseLayers[device+'|0'],KP_DEVICES[device].camD);
