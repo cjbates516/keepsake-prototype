@@ -27,6 +27,7 @@ const kioskReady = async p => { await p.locator('#setupDock:not([hidden])').wait
           assert.equal(await p.evaluate(() => KPStudioCore.info().total), 49.99);
           assert((await p.locator('#studioPhone').innerText()).includes('Smoke Frost'));
           await p.goto(base+'customizer.html');await ready(p);assert.equal(await p.evaluate(()=>KPStudioCore.info().rim),'Smoke Frost');
+          await p.evaluate(()=>KPStudioCore.setRim('Clear Frost'));await ready(p);await p.reload();await ready(p);assert.equal(await p.evaluate(()=>KPStudioCore.info().rim),'Clear Frost');
           await p.evaluate(()=>KPStudioCore.setCase('MagSafe Clear'));await ready(p);await p.reload();await ready(p);assert.equal(await p.evaluate(()=>KPStudioCore.info().caseType),'MagSafe Clear');
           await p.goto(base+'customizer.html?staff=1&design=kp-cherry-dot.png&model=iphone-15-pro');await ready(p);assert.equal(await p.evaluate(()=>KPStudioCore.info().caseType),'MagSafe Clear');
 
