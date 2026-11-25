@@ -148,6 +148,14 @@
   const productPrice=document.createElement('p');productPrice.id='studioProductPrice';product.append(productPrice);
   const promise=document.createElement('p');promise.className='studio-product-note';promise.textContent='Made yours in store. Choose a background, add your name, then show our team.';product.append(promise);
   rail.insertBefore(product,tray);
+  // Always-visible entry points: customers should not have to discover uploads inside a tool.
+  const sourceActions=document.createElement('div');sourceActions.id='studioSources';
+  sourceActions.setAttribute('role','group');sourceActions.setAttribute('aria-label','Add your artwork');
+  sourceActions.innerHTML='<button type="button" id="studioUpload"></button><button type="button" id="studioDesigns">Browse designs</button>';
+  grid.before(sourceActions);
+  $('studioUpload').textContent=kiosk?'Use your own photo':'Upload your photo or design';
+  $('studioUpload').onclick=()=>{if(kiosk||core.info().layout){openTool('photo');return;}$('uploadBtn').click();};
+  $('studioDesigns').onclick=()=>$('studioBrowse').click();
   const media=document.createElement('div');media.className='studio-media';
   const thumbs=document.createElement('div');thumbs.id='studioVariations';thumbs.setAttribute('role','group');thumbs.setAttribute('aria-label','See backgrounds on your case');thumbs.hidden=true;
   const wrap=$('stageWrap');wrap.before(media);media.append(thumbs,wrap);
@@ -175,36 +183,33 @@
   }
   thumbs.addEventListener('click',e=>{const b=e.target.closest('[data-variation]');if(!b)return;const original=[...$('photoLooks').children].find(o=>o.dataset.look===b.dataset.variation);if(original){remember();original.click();remember();sync();}});
   if(params.get('design')&&window.KPI)KPI.load('instore/').then(data=>{/* phones outside the store list have no pick code, but the design still has its title */const m=data.activeModels.find(m=>m.name===core.info().model),d=(m?data.designsFor(m):data.designs).find(d=>d.file===params.get('design'));if(d){libraryTitle=KPI.cleanTitle(d.title);if(core.info().library)product.querySelector('h1').textContent=libraryTitle;}}).catch(()=>{});
-  const footer=document.createElement('div');footer.id='studioFooter';footer.innerHTML='<button type="button" id="studioBack">← Back</button><div><strong id="studioTotal"></strong><small id="studioStore"></small></div><button type="button" id="studioNext">Preview design →</button><p id="studioStatus" role="status"></p>';$('main').append(footer);
+  const footer=document.createElement('div');footer.id='studioFooter';footer.innerHTML='<button type="button" id="studioBack" hidden>← Back</button><div><strong id="studioTotal"></strong><small id="studioSelection"></small><small id="studioStore"></small></div><button type="button" id="studioNext">Preview design →</button><p id="studioStatus" role="status"></p>';$('main').append(footer);
   // Size around iPhone safe areas, wrapped totals and the on-screen keyboard.
   function sizeChrome(){
     document.body.style.setProperty('--studio-tray-bottom',Math.ceil(footer.getBoundingClientRect().height+$('studioStatus').getBoundingClientRect().height)+'px');
-    const v=window.visualViewport;
-    if(v){sheet.style.setProperty('--studio-sheet-bottom',Math.max(0,innerHeight-v.height-v.offsetTop)+'px');sheet.style.setProperty('--studio-sheet-height',Math.max(150,Math.min(innerHeight*(sheet.dataset.activeTool==='adjust'?.9:.64),v.height-16))+'px');}
+    const v=window.visualViewport;document.body.style.setProperty('--studio-viewport-height',(v?.height||innerHeight)+'px');
+    if(v){sheet.style.setProperty('--studio-sheet-bottom',Math.max(0,innerHeight-v.height-v.offsetTop)+'px');sheet.style.setProperty('--studio-sheet-height',(sheet.dataset.activeTool==='adjust'?v.height:Math.max(150,Math.min(innerHeight*.64,v.height-16)))+'px');}
     fitSoon();
   }
-  // Case size budget. While the case choice or a photo credit shows under the case (both added there by this editor),
-  // the case preview gives up only the height that the rows under it (print quality pill, case choice, rim chips,
-  // Enlarge case, quality line, credit) need to clear the fixed tool tray (phones) or footer (desktop) before any
-  // scrolling. It is measured, so a wrapped rim row, the pill on the photo path, a two line title or the kiosk's missing
-  // site header all count. design-editor.css keeps the case between a floor and its baseline size; without either row
-  // the baseline sizing applies unchanged.
+  // Measure the case against the fixed tray/footer so previews, quality and photo buttons
+  // remain reachable in the stationary editor. Adjust uses its own full-screen size budget.
   let fitFrame=0;
   function fitSoon(){if(!fitFrame)fitFrame=requestAnimationFrame(fitStage);}
   function fitStage(){
-    fitFrame=0;const credit=$('cityPhotoCredit'),canvasEl=$('stageCanvas');
-    const on=!purged&&step!=='setup'&&!sheet.open&&stage.parentElement===grid&&(!thumbs.hidden||stage.contains(caseBox)&&!caseBox.hidden||!!credit&&creditBox.contains(credit)&&!credit.hidden);
+    fitFrame=0;const canvasEl=$('stageCanvas');
+    const on=!purged&&step!=='setup'&&!sheet.open&&stage.parentElement===grid;
     stage.classList.toggle('studio-fit',on);
     if(!on){stage.style.removeProperty('--studio-case-fit');if(revealRim&&sheet.open)requestAnimationFrame(showRim);return;}
     const ch=canvasEl.getBoundingClientRect().height;if(!ch)return;
-    let limit=footer.getBoundingClientRect().top;
+    let limit=footer.hidden?(window.visualViewport?.height||innerHeight):footer.getBoundingClientRect().top;
     if($('studioStatus').textContent)limit=Math.min(limit,$('studioStatus').getBoundingClientRect().top);
     if(mobile.matches&&!tray.hidden)limit=Math.min(limit,tray.getBoundingClientRect().top);
+    if(step==='edit')limit=Math.min(limit,grid.getBoundingClientRect().bottom);
     const sr=stage.getBoundingClientRect();let bottom=sr.top;
     for(const el of stage.children){const r=el.getBoundingClientRect();if(r.height>0)bottom=Math.max(bottom,r.bottom);}
     // where the content ends with the page at the top: the stage is the grid's first item (sticky on desktop)
     const bottom0=grid.getBoundingClientRect().top+scrollY+(bottom-sr.top);
-    const fit=Math.floor(ch+limit-8-bottom0),prev=parseFloat(stage.style.getPropertyValue('--studio-case-fit'));
+    const fit=Math.floor(ch+limit-24-bottom0),prev=parseFloat(stage.style.getPropertyValue('--studio-case-fit'));
     if(!(Math.abs(fit-prev)<=1))stage.style.setProperty('--studio-case-fit',fit+'px');
     if(revealRim)requestAnimationFrame(showRim);
   }
@@ -237,32 +242,33 @@
   document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!e.target.closest('input,textarea,select')&&step==='edit'&&!document.querySelector('dialog[open]')){e.preventDefault();travel(!e.shiftKey);}});
   function hideSheet(){stageHome.after(stage);if(sheet.open){internalCloses++;sheet.close();}Object.values(panels).forEach(p=>host.append(p));}
   function paintTool(){
-    Object.entries(panels).forEach(([id,p])=>p.hidden=id!==tool&&!(id==='phone'&&!mobile.matches&&step==='edit'&&!info.sky));
+    Object.entries(panels).forEach(([id,p])=>p.hidden=id!==tool);
     Object.entries(buttons).forEach(([id,b])=>b.setAttribute('aria-expanded',String(id===tool)));
     sheet.dataset.activeTool=tool||'';
-    if(mobile.matches&&tool){if(tool==='adjust')sheetBody.append(stage);else stageHome.after(stage);sheetBody.append(panels[tool]);$('studioSheetTitle').textContent=buttons[tool].querySelector('strong').textContent;if(!sheet.open)sheet.showModal();}
-    sizeChrome();const canMove=step==='edit'&&tool==='adjust';$('stageCanvas').style.touchAction=canMove?'none':'pan-y';
+    if(tool){if(tool==='adjust')sheetBody.append(stage);else stageHome.after(stage);sheetBody.append(panels[tool]);$('studioSheetTitle').textContent=buttons[tool].querySelector('strong').textContent;if(!sheet.open){sheet.showModal();sheetBody.scrollTop=0;}}
+    sizeChrome();fitStage();const canMove=step==='edit'&&tool==='adjust';$('stageCanvas').style.touchAction=canMove?'none':'pan-y';
   }
-  function openTool(id,push=true){if(step!=='edit'||!panels[id]||buttons[id].hidden)return;remember();tool=id;lastTool=id;if(mobile.matches&&push)pushStep(step,id);paintTool();if(id==='photo'&&layoutAdd){core.loadLayouts?.();showChosenLayout();}}
+  function openTool(id,push=true){if(step!=='edit'||!panels[id]||buttons[id].hidden)return;remember();tool=id;lastTool=id;if(push)pushStep(step,id);paintTool();if(id==='photo'&&layoutAdd){core.loadLayouts?.();showChosenLayout();}}
   // The phone sheet re-parents the panel, which resets the chip strip's scroll: bring the chosen layout back into view.
   function showChosenLayout(){const row=$('layoutChips'),chip=row?.querySelector('.layChip[aria-pressed="true"]');if(!chip||!mobile.matches)return;const r=row.getBoundingClientRect(),c=chip.getBoundingClientRect();row.scrollLeft+=(c.left+c.width/2)-(r.left+r.width/2);}
-  function closeTool(){if(closing)return;if(document.activeElement instanceof HTMLElement)document.activeElement.blur();if(mobile.matches&&history.state?.kpStudioTool){closing=true;hideSheet();history.back();return;}tool=null;hideSheet();paintTool();}
-  document.addEventListener('kp:sky-preview',()=>{if(mobile.matches)closeTool();$('stageStick').scrollIntoView({block:'start',behavior:'smooth'});});
+  function closeTool(){if(closing)return;if(document.activeElement instanceof HTMLElement)document.activeElement.blur();if(history.state?.kpStudioTool){closing=true;hideSheet();history.back();return;}tool=null;hideSheet();paintTool();}
+  document.addEventListener('kp:sky-preview',()=>{closeTool();});
   sheet.addEventListener('close',()=>{if(internalCloses){internalCloses--;return;}if(!purged&&tool)closeTool();});
   sheet.addEventListener('cancel',e=>{e.preventDefault();closeTool();});$('studioDone').onclick=closeTool;
   let backdropPress=false;sheet.addEventListener('pointerdown',e=>{backdropPress=e.target===sheet;});
   sheet.addEventListener('click',e=>{if(backdropPress&&e.target===sheet){const r=sheet.getBoundingClientRect();if(e.clientY<r.top||e.clientX<r.left||e.clientX>r.right)closeTool();}});
   tray.onclick=e=>{const b=e.target.closest('[data-tool]');if(b)openTool(b.dataset.tool);};
-  mobile.addEventListener('change',()=>{hideSheet();if(!mobile.matches){tool=tool||home();paintTool();}else {tool=null;paintTool();}history.replaceState({...history.state,kpStudioTool:null},'');});
+  mobile.addEventListener('change',()=>{paintTool();});
   function pushStep(next,id){const depth=(history.state?.kpStudioDepth||0)+1;history.pushState({...history.state,kpStudioSession:sessionId,kpStudioDepth:depth,kpStudioEditDepth:next==='edit'&&!id?depth:(history.state?.kpStudioEditDepth||0),kpStudioStep:next,kpStudioTool:id},'');}
   function returnToDesign(){const distance=(history.state?.kpStudioDepth||0)-(history.state?.kpStudioEditDepth||0);if(distance>0)history.go(-distance);else setStep('edit',false);}
   function setStep(next,push=true){
     remember();tool=null;hideSheet();step=next;document.body.dataset.studioStep=step;
     if(step==='setup'&&storePicker&&(!storeConfirmed||!core.info().store))storePicker.open=true;
     tray.hidden=host.hidden=step!=='edit';preview.hidden=step!=='preview';setup.hidden=step!=='setup';
+    sourceActions.hidden=step!=='edit'||info.sky;
     $('studioUndo').hidden=$('studioRedo').hidden=step!=='edit';
     top.querySelectorAll('[data-step]').forEach(li=>{if(li.dataset.step===step)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});
-    if(step==='edit'&&!mobile.matches)tool=home();paintTool();
+    paintTool();
     if(push)pushStep(step,null);core.redraw?.();
     sync();window.scrollTo({top:0,behavior:'instant'});if(entered){const heading=step==='edit'?product.querySelector('h1'):(step==='preview'?preview:setup).querySelector('h2');heading.tabIndex=-1;heading.focus({preventScroll:true});}entered=true;
   }
@@ -273,7 +279,7 @@
     closing=false;for(const id of ['counterReview','studioResetDialog','studioClearDialog','studioAccessoryDialog'])if($(id)?.open)$(id).close();if(!history.state?.kpStudioStep)return;const previous=tool;let target=history.state.kpStudioStep;
     if(history.state.kpStudioSession!==sessionId){target='edit';history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioDepth:0,kpStudioEditDepth:0,kpStudioStep:'edit',kpStudioTool:null},'');}
     if(target!=='edit'&&core.info().issue){target='edit';history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioEditDepth:history.state.kpStudioDepth||0,kpStudioStep:'edit',kpStudioTool:null},'');}
-    if(target!==step)setStep(target,false);else{tool=step==='edit'&&!mobile.matches?home():null;hideSheet();paintTool();if(previous)buttons[previous]?.focus({preventScroll:true});}
+    if(target!==step)setStep(target,false);else{tool=null;hideSheet();paintTool();if(previous)buttons[previous]?.focus({preventScroll:true});}
     if(history.state.kpStudioTool)openTool(history.state.kpStudioTool,false);
     // the entry we went back to still has the phone, case and rim from before: a reload must keep what is on screen
     core.saveOptions?.();
@@ -317,12 +323,17 @@
       if(key!==rimKey){rimKey=key;$('studioRimChips').replaceChildren(...rims.map(r=>{const l=document.createElement('label');l.className='studio-rim-chip';l.innerHTML='<input type="radio" name="studioRim"><span class="studio-rim-dot" aria-hidden="true"></span><span></span>';l.querySelector('input').value=r.n;l.querySelector('.studio-rim-dot').style.background=r.h;l.lastChild.textContent=r.n;return l;}));}
       rimRow.hidden=!rims.length;rimRow.querySelectorAll('input').forEach(r=>{r.checked=r.value===i.rim;});
     }fitSoon();$('studioTotal').textContent=i.accessoryError?'—':'$'+i.total.toFixed(2);
+    $('studioSelection').textContent=i.model+' · '+(i.rim||'Clear case');
+    $('studioBrowse').textContent=step==='edit'?'← Designs':'← Back';
     $('studioStore').textContent=storeConfirmed?(i.store||'Choose your store')+(i.store==='Newark, DE'?' · No sales tax':' · Before tax'):'Choose your store in Extras';
     const url=!kiosk&&collectionReturn()||new URL(kiosk?'instore/':'gallery.html',location.href);if(kiosk){if(fixedStore)url.searchParams.set('store',params.get('store'));url.searchParams.set('model',i.model.toLowerCase().replace(/^(samsung|google|motorola) /,'').replaceAll(' ','-'));if(params.get('collection'))url.searchParams.set('collection',params.get('collection'));}else if(url.pathname.endsWith('/gallery.html'))url.searchParams.set('device',i.model.toLowerCase().replace(/^(samsung|google|motorola) /,'').replaceAll(' ','-'));$('studioBrowse').href=url.href;
     $('studioNext').textContent=step==='edit'?(i.drawingPending?'Review case setup →':'Preview design →'):step==='preview'?'Choose extras →':'Show at counter →';
     // Preview and Extras also carry the empty photo spot note above the footer (partial collages never block Next)
     const needsStore=step==='setup'&&!storeConfirmed;
-    const status=i.issue||(needsStore?'Choose your store above to confirm local prices.':null)||(step!=='edit'&&i.partial)||'';
+    const emptyIssue=i.issue==='Add a photo, choose a design or enter a name.';
+    footer.hidden=step==='edit'&&!!i.issue&&!i.hasPhoto&&!s.text?.trim()&&!i.drawingPending;
+    $('studioNext').hidden=step==='edit'&&!!i.issue;
+    const status=(!emptyIssue&&i.issue)||(needsStore?'Choose your store above to confirm local prices.':null)||(step!=='edit'&&i.partial)||'';
     $('studioNext').disabled=!!i.issue||needsStore;if($('studioStatus').textContent!==status)$('studioStatus').textContent=status;
     noBackground.hidden=!$('photoLooksWrap').hidden;noBackground.textContent=i.hasPhoto?'This design uses its original background.':'Choose a design or photo to see its backgrounds.';
     if(layoutAdd){
@@ -352,7 +363,7 @@
   let leaveToBrowse=false;
   function exit(preserveBrowse=false){if(exiting)return;exiting=true;window.KPKioskSession?.retire();if(kiosk)document.documentElement.style.visibility='hidden';const fallback=new URL(kiosk?'instore/':'gallery.html',location.href);if(fixedStore)fallback.searchParams.set('store',params.get('store'));const dest=(!kiosk||preserveBrowse)&&$('studioBrowse')?.href||fallback.href;try{core.purge();}finally{location.replace(dest);}}
   function confirmExit(mode){const next=mode==='next',leave=mode===true;leaveToBrowse=leave;resetDialog.querySelector('h2').textContent=next?'Clear for the next customer?':leave?'Leave this design?':'Start a new design?';resetDialog.querySelector('p').textContent=next?'This clears the current design, name and extras from this screen.':leave?(core.info().layout?'Your layout, photos, words and selected extras will be cleared.':'Your design changes and selected extras will be cleared.'):'Your current changes will be cleared.';$('studioConfirmReset').textContent=next?'Clear screen':leave?'Leave design':'Start over';$('studioCancelReset').textContent=next?'Cancel':'Keep designing';resetDialog.showModal();}
-  $('studioBrowse').onclick=e=>{const s=core.snapshot(),i=core.info();if(i.skyDirty||s.text||s.px||s.py||s.rot||s.scale!==1||i.hasPhoto&&!i.library||i.hasExtras||!same(s,initialSnapshot)||i.model!==info.model||i.finish!==info.finish||i.store!==info.store||initialSetup!==null&&i.selectionKey!==initialSetup||i.layout){e.preventDefault();confirmExit(true);}};
+  $('studioBrowse').onclick=e=>{if(step!=='edit'){e.preventDefault();history.back();return;}const s=core.snapshot(),i=core.info();if(i.skyDirty||s.text||s.px||s.py||s.rot||s.scale!==1||i.hasPhoto&&!i.library||i.hasExtras||!same(s,initialSnapshot)||i.model!==info.model||i.finish!==info.finish||i.store!==info.store||initialSetup!==null&&i.selectionKey!==initialSetup||i.layout){e.preventDefault();confirmExit(true);}};
   $('studioReset').onclick=()=>confirmExit(false);$('studioCancelReset').onclick=()=>resetDialog.close();$('studioConfirmReset').onclick=()=>exit(leaveToBrowse);
   // Remove all photos in the Photo tool clears a whole layout (up to 12 photos and every word) and cannot be undone,
   // so it asks first, like Start over. A single photo keeps the one tap clear it always had.
