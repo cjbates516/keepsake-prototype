@@ -1,0 +1,22 @@
+const assert=require('node:assert/strict'),fs=require('node:fs');const {chromium,webkit}=require('../../../playwright/node_modules/playwright-core');
+const base=process.env.KP_BASE||'http://127.0.0.1:19042/',out='../collaboration/neon-expansion-2026-11-25/flow';fs.mkdirSync(out,{recursive:true});
+(async()=>{for(const engine of [chromium,webkit]){const b=await engine.launch();try{for(const [width,height,file,look] of [[390,844,'kp-neon-after-hours-smiles.png','c4'],[1024,768,'kp-neon-arcade-after-dark.png','c2']]){
+ const p=await b.newPage({viewport:{width,height},isMobile:width===390,hasTouch:true,reducedMotion:'reduce'}),errors=[],posts=[];p.on('pageerror',e=>errors.push(e.message));p.on('request',r=>{if(r.method()==='POST')posts.push(r.url());});p.setDefaultTimeout(20000);
+ await p.goto(base+'gallery.html?cat=Neon%20Doodles');await p.waitForFunction(()=>document.querySelectorAll('.kpCard[data-file^="kp-neon-"]').length===12);
+ assert.equal(await p.locator('.kpCard .artwork-thumb').count(),72,'Six options per design before choosing a phone');
+ const card=p.locator('.kpCard[data-file="'+file+'"]');await card.scrollIntoViewIfNeeded();await p.waitForFunction(file=>[...document.querySelectorAll('.kpCard[data-file="'+file+'"] .artwork-thumb img')].every(im=>im.naturalWidth>0),file);
+ const before=await card.locator('canvas').evaluate(c=>c.toDataURL());await card.locator('[data-look='+look+']').click();assert.equal(await card.locator('[data-look='+look+']').getAttribute('aria-pressed'),'true');
+ await p.waitForFunction(({file,before})=>document.querySelector('.kpCard[data-file="'+file+'"] canvas').toDataURL()!==before,{file,before});
+ assert(!await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1));await card.screenshot({path:out+'/'+engine.name()+'-'+width+'-variations.png'});
+ await card.locator('a[data-pick-model]').last().click();await p.locator('[data-md=iphone-16-pro]').click();
+ await p.waitForFunction(({file,look})=>window.KPStudioCore?.info().previewReady&&!KPStudioCore.info().issue&&__kp.state.photoImg?.__kpDesignFile===file&&__kp.state.variant===look,{file,look});
+ assert.equal(await p.locator('#phoneFirst').count(),0,'Gallery already chose the phone');
+ const initial=await p.evaluate(()=>KPStudioCore.info());assert.equal(initial.model,'iPhone 16 Pro');assert.equal(initial.caseType,'Rated Case');
+ const stage=await p.locator('#stageWrap').boundingBox(),canvas=await p.locator('#stageCanvas').boundingBox();assert(Math.abs(stage.x+stage.width/2-canvas.x-canvas.width/2)<3,'Centered preview within its canvas area, alongside desktop variation rail');
+ await p.locator('#studioNext').click();await p.locator('#studioNext').click();if(await p.locator('#studioStorePicker summary').isVisible())await p.locator('#studioStorePicker summary').click();await p.locator('#storeChips [data-s="West Chester, PA"]').click();
+ await p.locator('#studioNext').click();await p.locator('#counterReview[open]').waitFor();await p.waitForFunction(()=>document.getElementById('reviewCode').textContent.startsWith('Pick code'));
+ const code=(await p.locator('#reviewCode').innerText()).replace('Pick code · ','').trim();await p.screenshot({path:out+'/'+engine.name()+'-'+width+'-counter.png'});
+ await p.goto(base+'instore/find.html?code='+encodeURIComponent(code));await p.waitForFunction(()=>document.getElementById('rimg').naturalWidth>0);await p.locator('#ropen').click();await p.waitForFunction(look=>window.KPStudioCore?.info().previewReady&&!KPStudioCore.info().issue&&__kp.state.variant===look,look);
+ assert.equal(await p.evaluate(()=>__kp.state.photoImg.__kpDesignFile),file);assert.equal(await p.evaluate(()=>KPStudioCore.info().rim),initial.rim);
+ assert.deepEqual(errors,[]);assert.deepEqual(posts,[]);console.log('PASS',engine.name(),width,file,look,'gallery options → phone → preview → counter → exact design/variation restored');await p.close();
+}}finally{await b.close();}}})().catch(e=>{console.error(e);process.exitCode=1;});

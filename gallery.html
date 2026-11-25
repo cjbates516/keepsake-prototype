@@ -100,7 +100,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/storefront.css">
 <script src="assets/case-shell.js?v=clear-mounted-2"></script>
 <script src="assets/print-layouts.js?v=rated-all-20261124"></script><script src="assets/rated-phones.js?v=rated-all-20261124"></script><script src="assets/rated-camera-geometry.js?v=rated-all-20261124"></script><script src="assets/frost-cases.js?v=rated-all-20261124"></script>
-<script src="assets/colorway-catalog.js?v=full-art-2-20261121"></script>
+<script src="assets/colorway-catalog.js?v=neon-20261125"></script>
 <script src="assets/design-colorways.js?v=full-art-2-20261121"></script>
 <link rel="stylesheet" href="assets/shop-refresh.css?v=frost-20261124">
 <script src="assets/homepage.js" defer></script>
@@ -375,8 +375,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   document.addEventListener('click',function(e){var b=e.target.closest('.artwork-thumb');if(!b)return;var select=b.closest('.kpCard').querySelector('.artwork-picker');select.value=b.dataset.look;select.dispatchEvent(new Event('change',{bubbles:true}));});
   function updateCaseLinks(card){
-    if(!device)return;
     var file=card.dataset.file;
+    if(!device){
+      card.querySelectorAll('a[data-pick-model]').forEach(function(a){var url=new URL(a.href);url.searchParams.set('colorway',artworkPicks[file]||'original');url.searchParams.set('back',browseReturn());a.href=url.href;});
+      return;
+    }
     var chosen=KP_DEVICES[device].colors[+(card.dataset.selectedColor||0)];
     card.querySelectorAll('a[href*="customizer.html"]').forEach(function(a){
       var url=new URL(a.href);
@@ -930,14 +933,15 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         var _sm=new Date().getMonth()+1; var _scat=(_sm>=11)?'Christmas':'Halloween';
         var badge = d.category===_scat ? '<span class="kpBadge kpB-season">Seasonal</span>'
           : (KP_FEATURED.indexOf(d.file)>-1 && KP_FEATURED.indexOf(d.file)<12 ? '<span class="kpBadge kpB-pick">Staff pick</span>' : '');
-        return '<div class="h-card" style="display:block;text-decoration:none;animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:16px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
+        return '<div class="h-card kpCard" data-file="'+d.file+'" style="display:block;text-decoration:none;animation:fadeUp .4s cubic-bezier(.2,.7,.2,1) both;background:#FFFFFF;border-radius:16px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)">'
           + '<button type="button" class="case-zoom-button" data-enlarge="'+d.file+'" aria-label="Enlarge '+escapeHtml(d.title)+'" style="position:relative;background:#F8F7F7"><canvas width="'+CW+'" height="'+CH+'" data-color="0" data-file="'+d.file+'" role="img" aria-label="'+escapeHtml(d.title)+' on a sample case"></canvas>' + badge + '<span class="zoom-hint">Zoom</span></button>'
           + '<a data-pick-model="'+d.file+'" href="customizer.html?design='+encodeURIComponent(d.file)+(d.displayColorway?'&amp;colorway='+d.displayColorway:'')+'" style="display:block;text-decoration:none;padding:10px 12px 12px">'
           + '<div style="font-weight:700;font-size:14px;color:#2D2D3B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.title + '</div>'
           + '<div style="font-size:11px;color:#6C6C72;font-weight:700;margin-top:2px">' + categoryLabel(d.category) + ' · choose your phone</div>'
           + '<div style="font-size:13px;font-weight:800;color:#17171F;margin-top:6px">Frost case · $49.99</div>'
-          + '<span style="display:block;margin-top:8px;text-align:center;border:1.5px solid #DC282E;color:#DC282E;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:10px;border-radius:999px">Customize</span>'
-          + '</a></div>';
+          + '</a>'+colorwayPicker(d.file)
+          + '<a data-pick-model="'+d.file+'" href="customizer.html?design='+encodeURIComponent(d.file)+'" style="display:block;margin:8px 12px 12px;text-align:center;border:1.5px solid #DC282E;color:#DC282E;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:10px;border-radius:999px">Customize</a>'
+          + '</div>';
       });
       /* seeded your-photo card every 10th slot */
       var photoCard = '<a class="h-card" href="customizer.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-decoration:none;border:2px dashed #DC282E;border-radius:16px;background:#FFF7F7;padding:24px 14px;min-height:230px">'
@@ -952,6 +956,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         + '<span style="font-size:clamp(19px,4.5vw,28px);font-weight:900;line-height:1.1;margin-top:4px">Your town, on your phone.</span>'
         + '<span style="font-size:12.5px;font-weight:700;margin-top:6px;opacity:.85">West Chester · Pottstown · Newark · Philly neighborhoods →</span></span></a>');
       grid.innerHTML = cards.join('');
+      grid.querySelectorAll('.kpCard').forEach(updateCaseLinks);
       if (paged) grid.insertAdjacentHTML('beforeend',
         '<button class="kpLoadMore" style="grid-column:1/-1;display:block;width:100%;max-width:420px;margin:18px auto;background:#DC282E;color:#FFF;border:0;padding:16px;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Load more — ' + (items.length - shown.length) + ' left</button>');
       if (kpCurated) grid.insertAdjacentHTML('beforeend', kpCuratedFooter(kpTotal));
