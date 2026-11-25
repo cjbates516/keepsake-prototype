@@ -413,3 +413,6 @@ body.design-editor[data-studio-step=edit] #main #studioFrame{height:var(--studio
  .design-editor #studioProduct h1{font-size:28px!important;line-height:1.1}
  .design-editor .studio-tools button{min-height:58px;padding:8px}
 }
+
+/* Stage padding scrolls; only the SVG print-window hit target captures gestures. */
+body.design-editor #stageCanvas{touch-action:pan-y!important;cursor:default}
