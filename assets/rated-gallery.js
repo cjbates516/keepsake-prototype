@@ -1,36 +1,43 @@
-/* Rated Case photos: the "See photos" button beside Enlarge case (classic ?staff=1 rail: under the case cards) and its
-   viewer. Photos, captions and the phone list come from assets/cases/rated-photos/manifest.json, written by
-   tools/build_rated_photos.py from customizer.html KP-RATED-KITS (docs/RATED-CASE-PHOTOS.md lists the sources).
-   This file only reads KPStudioCore.info(). "Choose Rated Case" goes through the editor's own case and rim radios
-   (#studioCase), the same path a tap on them takes, or core.setCase / core.setRim where those radios do not exist, so
-   prices, the case photo, the address and the editor follow as usual. Shared kiosks: no links in the viewer, and the
-   idle reset (KPStudioCore.purge) closes it. Each photo has a 1000 x 1200 file and a 1600 x 1920 one (hd) for screens
-   that would draw it more than 15% bigger than 1000 x 1200 (tablets such as the in-store iPad, high density desktops).
-   Tests: tools/tests/rated_photos.cjs. */
+/* Mounted frost previews share the editor compositor. Supplier white-panel print guides are never displayed here. */
 (() => {
   const core = window.KPStudioCore, stage = document.getElementById('stageStick');
   if (!core || !stage || window.KPRatedGallery) return;
-  const V = 'rated-photos-2', DIR = 'assets/cases/rated-photos/', RATED = 'Rated Case';
+  const RATED = 'Rated Case';
   const editor = document.body.classList.contains('design-editor');
   // the shared in-store iPad: a customer there cannot check a connection, so failures point to a team member
   const kiosk = new URLSearchParams(location.search).get('kiosk') === '1';
   const failText = what => what + ' could not load. ' + (kiosk ? 'Try again or ask a team member.' : 'Check your connection and try again.');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
-  const src = f => DIR + f + '?v=' + V;
+  const src = f => f;
   const short = m => String(m || '').replace(/^Samsung /, '');
   let manifest = null, request = null, purged = false;
+  let sampleKey = '';
+  const sampleURLs=new Set();
+  function releaseSamples(){for(const url of sampleURLs)URL.revokeObjectURL(url);sampleURLs.clear();}
   function load() {
-    if (manifest) return Promise.resolve(manifest);
-    if (!request) request = fetch(DIR + 'manifest.json?v=' + V).then(r => { if (!r.ok) throw Error('manifest ' + r.status); return r.json(); })
-      .then(m => (manifest = m)).catch(e => { request = null; throw e; });
+    const i=core.info(),key=i.model+'|'+(i.finish||'As shown');
+    if(sampleKey===key && manifest)return Promise.resolve(manifest);
+    if(sampleKey===key && request)return request;
+    releaseSamples();sampleKey=key;manifest=null;
+    request=Promise.all(i.rims.map(async rim=>{
+      const file=await core.caseSample(rim.n);
+      if(purged||sampleKey!==key){URL.revokeObjectURL(file);throw Error('Case selection changed');}
+      sampleURLs.add(file);
+      return [rim.n,[{file,thumb:file,w:1000,h:1200,view:'back',caption:rim.n+(i.finish?' · '+i.finish:''),
+        alt:i.model+(i.finish?' in '+i.finish:'')+' with '+rim.n+' and a transparent back preview'}]];
+    })).then(entries=>{
+      if(sampleKey!==key)return load();
+      manifest={models:{[i.model]:{key:i.model,similar:false,rims:i.rims.map(r=>r.n)}},sets:{[i.model]:Object.fromEntries(entries)},other:[]};
+      request=null;return manifest;
+    }).catch(error=>{if(sampleKey===key)request=null;throw error;});
     return request;
   }
 
   /* ── the button ── */
   const opener = document.createElement('button');
   opener.type = 'button'; opener.id = 'ratedPhotosOpen'; opener.className = 'rg-open'; opener.hidden = true;
-  opener.setAttribute('aria-label', 'See photos of the Rated Case');
-  opener.innerHTML = '<span class="rg-open-pic" aria-hidden="true"><img alt="" width="200" height="240" decoding="async" hidden></span><span>See photos</span>';
+  opener.setAttribute('aria-label', 'See frost case previews');
+  opener.innerHTML = '<span class="rg-open-pic" aria-hidden="true"><img alt="" width="200" height="240" decoding="async" hidden></span><span>See case</span>';
   const openerImg = opener.querySelector('img');
   // without its picture (offline) the button drops the empty slot and is a plain pill like Enlarge case
   const noPic = off => opener.classList.toggle('rg-open-nopic', off);
@@ -60,7 +67,9 @@
   function syncOpener() {
     syncTimer = 0;
     if (purged) { opener.hidden = true; return; }
-    const i = core.info(), r = manifest ? resolve(i.model, i) : null;
+    const i = core.info();
+    if(i.ratedAvailable && sampleKey!==i.model+'|'+(i.finish||'As shown')){openerImg.hidden=true;noPic(true);load().then(syncOpener,()=>noPic(true));return;}
+    const r = manifest ? resolve(i.model, i) : null;
     opener.hidden = !i.ratedAvailable || (!!manifest && !r);
     if (!r || opener.hidden) return;
     const rim = chosenRim(i, r.rims), list = r.set[rim], pic = list.find(p => p.view === 'side') || list[0], key = pic.thumb;
@@ -83,7 +92,7 @@
   // top (title, sets), the photo, then the side (thumbnails, rim, Choose): one column on phones and portrait tablets,
   // photo left and the rest right on wider screens (assets/rated-gallery.css)
   dialog.innerHTML = '<div class="rg-body"><div class="rg-top">'
-    + '<header class="rg-head"><div class="rg-titles"><h2 id="rgTitle">Rated Case photos</h2><p id="rgSub"></p></div><button type="button" class="rg-close">Close</button></header>'
+    + '<header class="rg-head"><div class="rg-titles"><h2 id="rgTitle">Frost case preview</h2><p id="rgSub"></p></div><button type="button" class="rg-close">Close</button></header>'
     + '<div class="rg-sets" role="group" aria-label="Photo sets"><button type="button" data-set="mine" aria-pressed="true">Your phone</button><button type="button" data-set="other" aria-pressed="false">On other phones</button></div></div>'
     + '<figure class="rg-figure"><div class="rg-frame"><img class="rg-img" width="1000" height="1200" alt="" decoding="async" draggable="false">'
     + '<div class="rg-msg" role="status" hidden><p></p><button type="button" class="rg-retry">Try again</button></div>'
@@ -119,10 +128,10 @@
     const i = core.info(), mine = st.set === 'mine';
     q('#rgSub').textContent = 'On ' + short(st.model);
     dialog.querySelectorAll('[data-set]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.set === st.set)));
-    q('.rg-sets').hidden = !manifest || !manifest.other.length;
+    q('.rg-sets').hidden = true;
+    thumbs.hidden = true;
     const note = q('.rg-note');
-    note.textContent = !mine ? 'The same case on other phones and colors. We do not make it for every phone shown yet.'
-      : st.r && st.r.similar ? 'Photos show this case on a similar ' + (/^iPhone/.test(st.model) ? 'iPhone.' : 'phone.') : '';
+    note.textContent = i.clearAvailable===false ? 'Digital preview. Phone finish shown for illustration.' : 'Digital preview with your phone finish and MagSafe backing.';
     note.hidden = !note.textContent;
     // the rim chips stay on both sets: Choose below names this phone's rim, so the chips that change it stay in view
     q('.rg-rims').hidden = !st.r;
@@ -145,10 +154,10 @@
     // what the case is, beside the photos on larger screens (the editor shows the price on phones). No drop rating here:
     // the full site audit (#71) removed that unsupported claim, and the case cards now say "Confirm availability in store".
     const rimNames = (st.r ? st.r.rims : (i.rims || [])).map(r => r.n);
-    q('.rg-facts').replaceChildren(...['Rated Case \u00b7 $' + Number(i.prices && i.prices.rated || 0).toFixed(2), 'Confirm availability in store', 'Your design printed on the white back',
+    q('.rg-facts').replaceChildren(...[st.rim + ' \u00b7 $' + Number(i.prices && i.prices.rated || 0).toFixed(2), 'Confirm availability in store', 'Your design is printed inside the frosted rim',
       rimNames.length ? 'Frosted rim in ' + rimNames.join(' or ') : ''].filter(Boolean).map(t => { const li = document.createElement('li'); li.textContent = t; return li; }));
     const done = i.caseType === RATED && i.rim === st.rim && i.model === st.model;
-    choose.textContent = done ? 'Back to my design' : 'Choose Rated Case · ' + st.rim;
+    choose.textContent = done ? 'Back to my design' : 'Choose ' + st.rim;
     choose.dataset.done = done ? '1' : '';
     st.items = items();
     thumbs.replaceChildren(...st.items.map((p, n) => {
@@ -188,7 +197,7 @@
     else if (img.complete && !img.naturalWidth) { img.removeAttribute('src'); img.src = want; }
     if (dir && !reduce.matches) { img.classList.remove('rg-in-l', 'rg-in-r'); void img.offsetWidth; img.classList.add(dir > 0 ? 'rg-in-r' : 'rg-in-l'); }
     q('.rg-caption').textContent = p.caption;
-    q('.rg-count').textContent = (st.index + 1) + ' of ' + list.length;
+    q('.rg-count').textContent = list.length>1 ? (st.index + 1) + ' of ' + list.length : '';
     thumbs.querySelectorAll('.rg-thumb').forEach((b, k) => { if (k === st.index) { b.setAttribute('aria-current', 'true'); if (dialog.open) keepInView(b); } else b.removeAttribute('aria-current'); });
   }
   function keepInView(b) {
@@ -303,7 +312,7 @@
   opener.addEventListener('click', () => open(opener));
   /* kiosk idle reset, Start over and Start next customer purge the session: the viewer closes and forgets the phone */
   document.addEventListener('kp:editor-purge', () => {
-    purged = true; choice = null; clearTimeout(syncTimer);
+    purged = true; choice = null; clearTimeout(syncTimer);releaseSamples();
     if (dialog.open) dialog.close();
     lock(false);
     img.removeAttribute('src'); img.alt = ''; thumbs.replaceChildren(); chips.replaceChildren(); chips.dataset.key = '';

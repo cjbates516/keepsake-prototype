@@ -267,7 +267,7 @@
     <section id="s1" class="screen on" aria-labelledby="s1h">
       <h1 id="s1h">Which phone do you have?</h1>
       <p class="lede">Your phone. Your style. Made right here.</p>
-      <div class="store-promise"><strong id="casePricePromise">Every design · $44.99</strong><span>Pick a design, make it yours, and let us print it.</span></div>
+      <div class="store-promise"><strong id="casePricePromise">Clear case designs · $44.99</strong><span>Pick a design, make it yours, and let us print it.</span></div>
       <details class="phone-help"><summary>Not sure which iPhone you have?</summary><p>On your phone, open Settings → General → About and look for Model Name. If your model is not listed, ask a team member to check the available blanks.</p></details>
       <p class="kiosk-gifts"><a id="kioskSlates" class="ghost" href="../slates.html?kiosk=1">Photo slates &amp; gifts →</a></p><div id="phones"></div>
     </section>
@@ -353,10 +353,10 @@
 <div id="idleNotice" hidden role="status"><span>Still browsing? This screen will reset soon.</span><button type="button" class="ghost" id="keepBrowsing">Keep browsing</button></div>
 <script src="../assets/colorway-catalog.js?v=full-art-2-20261121"></script>
 <script src="../assets/design-colorways.js?v=full-art-2-20261121"></script>
-<script src="../assets/print-layouts.js?v=frost-center-20261124"></script>
+<script src="../assets/print-layouts.js?v=rated-all-20261124"></script><script src="../assets/rated-phones.js?v=rated-all-20261124"></script>
 <script src="../assets/kp-config.js"></script>
 <script src="../assets/seasonal-visibility.js"></script><script src="../assets/case-shell.js?v=clear-mounted-2"></script>
-<script src="../assets/rated-camera-geometry.js?v=device-finish-1"></script><script src="../assets/frost-samples.js?v=1"></script><script src="instore-lib.js?v=counter-finish-20261124"></script>
+<script src="../assets/rated-camera-geometry.js?v=rated-all-20261124"></script><script src="../assets/frost-cases.js?v=rated-all-20261124"></script><script src="instore-lib.js?v=rated-all-20261124"></script>
 <script>
 (function () {
   'use strict';
@@ -620,8 +620,8 @@
     var title = cleanTitle(d.title);
     $('dname').textContent = title;
     $('dmeta').textContent = 'For your '+m.name+(options.length>1?' · '+selected.name:'');
-    var rims=['Smoke Frost','Clear Frost'].filter(function(rim){return KPFrostSamples.config(m.name,null,rim)?.rim===rim;});
-    $('kioskRimLabel').textContent=rims.length===1?'Available for this phone':'Choose your frost rim';
+    var rims=['Smoke Frost','Clear Frost'].filter(function(rim){return KPFrostSamples.counter(m.name,rim)?.rim===rim;});
+    $('kioskRimLabel').textContent=!rims.length?'Your case':rims.length===1?'Available for this phone':'Choose your frost rim';
     $('kioskRims').innerHTML=rims.length?rims.map(function(rim){return '<button type="button" data-rim="'+rim+'" aria-pressed="'+(rim===sampleRim())+'">'+rim+'</button>';}).join(''):'<span>Clear case</span>';
     updatePurchase();
     $('cname').textContent = title+(options.length>1?' · '+selected.name:'');
@@ -756,7 +756,7 @@
   }, 1000);
   window.__kpInStore = { state: state, reset: reset, idle: function () { last = 0; } };
 
-  function sampleRim(model){return window.KPFrostSamples.config((model||state.model)?.name||'',null,(!model||model===state.model)?state.rim:null)?.rim||null;}
+  function sampleRim(model){return window.KPFrostSamples.counter((model||state.model)?.name||'',(!model||model===state.model)?state.rim:null)?.rim||null;}
   function samplePrice(){return sampleRim()?KP_CONFIG.RATED_PRICE:data.price;}
   /* ---------- taps ---------- */
   document.addEventListener('click', function (e) {
@@ -766,7 +766,7 @@
     if (!t) { if (e.target === $('ownSheet')) closeSheet(); return; }
     if(t.hasAttribute('data-rim')){
       var rim=t.getAttribute('data-rim');
-      if(!state.model||!state.design||KPFrostSamples.config(state.model.name,null,rim)?.rim!==rim)return;
+      if(!state.model||!state.design||KPFrostSamples.counter(state.model.name,rim)?.rim!==rim)return;
       state.rim=rim;dropUrls(state.model.id);revoke(blankUrl[state.model.id]);delete blankUrl[state.model.id];buildGrid();
       return pickDesign(state.design.file,state.colorway);
     }
@@ -774,7 +774,7 @@
       if(!navigator.onLine){$('setupNotice').textContent='Reconnect to open the design editor. You can still show this case and your extras at the counter.';return;}
       if(!state.model||!state.design)return;
       var url=new URL('../customizer.html',location.href);
-      var opt={case:sampleRim()?'rated':'',rim:sampleRim(),kiosk:'1',storeMode:kioskStore?'':'choose',model:state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'),design:state.design.file,colorway:state.colorway,collection:state.design._col.code,store:state.store,glass:$('glass').checked?'1':'',charger:$('charger').checked?'1':'',extras:state.accessories.join(',')};
+      var opt={case:sampleRim()?'rated':'clear',rim:sampleRim(),kiosk:'1',storeMode:kioskStore?'':'choose',model:state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'),design:state.design.file,colorway:state.colorway,collection:state.design._col.code,store:state.store,glass:$('glass').checked?'1':'',charger:$('charger').checked?'1':'',extras:state.accessories.join(',')};
       Object.keys(opt).forEach(function(k){if(opt[k])url.searchParams.set(k,opt[k]);});location.href=url.href;return;
     }
     if(t.hasAttribute('data-colorway'))return pickDesign(state.design.file,t.getAttribute('data-colorway'));
@@ -792,7 +792,7 @@
     }
     if (t.hasAttribute('data-file')) return pickDesign(t.getAttribute('data-file'));
     var act = t.getAttribute('data-act');
-    if ((act === 'drawing'||act === 'sky') && state.model) {var drawingUrl=new URL('../customizer.html',location.href);drawingUrl.searchParams.set('studio',act);if(sampleRim()){drawingUrl.searchParams.set('case','rated');drawingUrl.searchParams.set('rim',sampleRim());}drawingUrl.searchParams.set('kiosk','1');if(!kioskStore)drawingUrl.searchParams.set('storeMode','choose');drawingUrl.searchParams.set('model',state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'));if(state.store)drawingUrl.searchParams.set('store',state.store);location.href=drawingUrl.href;return;}
+    if ((act === 'drawing'||act === 'sky') && state.model) {var drawingUrl=new URL('../customizer.html',location.href);drawingUrl.searchParams.set('studio',act);drawingUrl.searchParams.set('case',sampleRim()?'rated':'clear');if(sampleRim())drawingUrl.searchParams.set('rim',sampleRim());drawingUrl.searchParams.set('kiosk','1');if(!kioskStore)drawingUrl.searchParams.set('storeMode','choose');drawingUrl.searchParams.set('model',state.model.name.toLowerCase().replace(/^samsung /,'').replace(/ /g,'-'));if(state.store)drawingUrl.searchParams.set('store',state.store);location.href=drawingUrl.href;return;}
     if (act === 'own') return openSheet();
     if (act === 'closeSheet') return closeSheet();
     if (act === 'phone') { state.design = null; return show(1); }
