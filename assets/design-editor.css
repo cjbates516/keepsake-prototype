@@ -389,3 +389,26 @@ body.design-editor[data-studio-step=edit]:not(:has(#studioSheet[open])) #stageSt
  .design-editor #studioUpload{flex:1}
  .design-editor #studioDesigns{flex:0 0 38%}
 }
+
+/* One stationary design surface; tools open in their own focused dialog. */
+body.design-editor[data-studio-step=edit]{position:fixed;inset:0;width:100%;height:var(--studio-viewport-height,100dvh)}
+body.design-editor[data-studio-step=edit] #main #studioFrame{height:var(--studio-viewport-height,100dvh)}
+.design-editor[data-studio-step=edit] .design-rail{overflow:hidden;max-height:none}
+.design-editor[data-studio-step=edit] .studio-tool-host{display:none}
+.design-editor #studioProduct{padding:4px 0 16px}
+.design-editor #studioProduct .studio-kicker,.design-editor #studioProduct .studio-product-note{display:none}
+.design-editor #studioFooter[hidden]{display:none!important}
+.design-editor #studioFooter #studioStatus{background:var(--studio-paper);color:#57544f}
+@media(min-width:761px){
+ .design-editor .studio-tools{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .design-editor .studio-tools button{min-height:72px}
+ .design-editor #studioSheet:not([data-active-tool=adjust]){inset:50% auto auto 50%;transform:translate(-50%,-50%);width:min(600px,calc(100vw - 48px));max-height:calc(var(--studio-viewport-height,100dvh) - 40px);border-radius:16px}
+ .design-editor #studioSheet:not([data-active-tool=adjust]) .studio-sheet-body{max-height:calc(var(--studio-viewport-height,100dvh) - 120px)}
+ body.design-editor[data-studio-step=edit] #main #studioGrid{grid-template-columns:minmax(0,1fr) minmax(240px,320px)!important}
+}
+@media(min-width:761px) and (max-height:700px){
+ body.design-editor #main #studioFrame{padding-top:10px!important}
+ .design-editor .studio-top{margin-bottom:8px}
+ .design-editor #studioProduct h1{font-size:28px!important;line-height:1.1}
+ .design-editor .studio-tools button{min-height:58px;padding:8px}
+}
