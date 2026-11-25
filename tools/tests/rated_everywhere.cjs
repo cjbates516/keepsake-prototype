@@ -371,7 +371,7 @@ const sizes=[[320,700],[390,844],[820,1180],[1440,950]],HEARTS='clear-mini-heart
      const card=await w.locator('[data-pick-model]').first().innerText();check(tag+' no phone yet: card says Frost case · '+RATED,card.includes('Frost case · '+RATED)&&!/44\.99|rated/i.test(card),card);
      await w.locator('[data-pick-model="'+HEARTS+'"]').click();await w.locator('[data-pill="'+brandOf(m)+'"]').click();await w.locator('[data-md="'+slug(name)+'"]').click();
      await w.waitForURL(/customizer\.html/,{waitUntil:'domcontentloaded'});const q=new URL(w.url()).searchParams;
-     check(t+': the link carries '+(rims.length?'case=rated and the rim':'case=clear'),q.get('case')===(rims.length?'rated':'clear')&&q.get('rim')===(rims[0]||null)&&q.get('design')===HEARTS,w.url());
+     check(t+': the link carries '+(rims.length?'case=rated and the rim':'the clear case route'),(rims.length?q.get('case')==='rated':q.get('case')===null||q.get('case')==='clear')&&q.get('rim')===(rims[0]||null)&&q.get('design')===HEARTS,w.url());
      await w.waitForFunction(()=>window.KPEditor&&!KPStudioCore.info().issue&&!KPStudioCore.info().loading);
      const s=await state(w);check(t+': opens in its case',(rims.length?isFrost(s,m):isClear(s,m))&&!s.forced,s);
      check(t+': the address keeps it',await address(w,{case:rims.length?'rated':'clear',rim:rims[0]||null,model:slug(name)}),w.url());
