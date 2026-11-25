@@ -409,6 +409,6 @@ body.design-editor[data-studio-step=edit] #main #studioFrame{height:var(--studio
 @media(min-width:761px) and (max-height:700px){
  body.design-editor #main #studioFrame{padding-top:10px!important}
  .design-editor .studio-top{margin-bottom:8px}
- .design-editor #studioProduct h1{font-size:28px}
+ .design-editor #studioProduct h1{font-size:28px!important;line-height:1.1}
  .design-editor .studio-tools button{min-height:58px;padding:8px}
 }

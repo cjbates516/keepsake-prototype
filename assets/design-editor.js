@@ -203,6 +203,7 @@
     let limit=footer.hidden?(window.visualViewport?.height||innerHeight):footer.getBoundingClientRect().top;
     if($('studioStatus').textContent)limit=Math.min(limit,$('studioStatus').getBoundingClientRect().top);
     if(mobile.matches&&!tray.hidden)limit=Math.min(limit,tray.getBoundingClientRect().top);
+    if(step==='edit')limit=Math.min(limit,grid.getBoundingClientRect().bottom);
     const sr=stage.getBoundingClientRect();let bottom=sr.top;
     for(const el of stage.children){const r=el.getBoundingClientRect();if(r.height>0)bottom=Math.max(bottom,r.bottom);}
     // where the content ends with the page at the top: the stage is the grid's first item (sticky on desktop)
@@ -244,7 +245,7 @@
     Object.entries(buttons).forEach(([id,b])=>b.setAttribute('aria-expanded',String(id===tool)));
     sheet.dataset.activeTool=tool||'';
     if(tool){if(tool==='adjust')sheetBody.append(stage);else stageHome.after(stage);sheetBody.append(panels[tool]);$('studioSheetTitle').textContent=buttons[tool].querySelector('strong').textContent;if(!sheet.open){sheet.showModal();sheetBody.scrollTop=0;}}
-    sizeChrome();const canMove=step==='edit'&&tool==='adjust';$('stageCanvas').style.touchAction=canMove?'none':'pan-y';
+    sizeChrome();fitStage();const canMove=step==='edit'&&tool==='adjust';$('stageCanvas').style.touchAction=canMove?'none':'pan-y';
   }
   function openTool(id,push=true){if(step!=='edit'||!panels[id]||buttons[id].hidden)return;remember();tool=id;lastTool=id;if(push)pushStep(step,id);paintTool();if(id==='photo'&&layoutAdd){core.loadLayouts?.();showChosenLayout();}}
   // The phone sheet re-parents the panel, which resets the chip strip's scroll: bring the chosen layout back into view.
