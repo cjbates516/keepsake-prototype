@@ -1,5 +1,1220 @@
 [
 {
+"file": "drop-ocean-anacapa-light.jpg",
+"title": "Anacapa Light",
+"category": "Ocean Photography",
+"hash": "273ded23a559",
+"credit": "Eric T Gunther",
+"license": "CC BY-SA 3.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Green",
+"Red"
+],
+"creditUrl": "collection-credits.html#drop-ocean-anacapa-light",
+"added": "2026-11-25"
+},
+{
+"file": "drop-ocean-golden-kelp.jpg",
+"title": "Golden Kelp",
+"category": "Ocean Photography",
+"hash": "0f2dba8da602",
+"credit": "Stef Maruch",
+"license": "CC BY-SA 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Blue",
+"Green"
+],
+"creditUrl": "collection-credits.html#drop-ocean-golden-kelp",
+"added": "2026-11-25"
+},
+{
+"file": "drop-ocean-golden-reef.jpg",
+"title": "Golden Reef",
+"category": "Ocean Photography",
+"hash": "51c3884b6946",
+"credit": "James St. John",
+"license": "CC BY 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Blue",
+"Grey"
+],
+"creditUrl": "collection-credits.html#drop-ocean-golden-reef",
+"added": "2026-11-25"
+},
+{
+"file": "drop-ocean-manta-passage.jpg",
+"title": "Manta Passage",
+"category": "Ocean Photography",
+"hash": "14d699de5387",
+"credit": "Rilando June Lamadjido",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-ocean-manta-passage",
+"added": "2026-11-25"
+},
+{
+"file": "drop-ocean-moon-jelly-glow.jpg",
+"title": "Moon Jelly Glow",
+"category": "Ocean Photography",
+"hash": "7727ae71c3ef",
+"credit": "Marek Ślusarczyk (Tupungato) Photo portfolio",
+"license": "CC BY 3.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Blue",
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-ocean-moon-jelly-glow",
+"added": "2026-11-25"
+},
+{
+"file": "drop-ocean-pacific-tide-pool.jpg",
+"title": "Pacific Tide Pool",
+"category": "Ocean Photography",
+"hash": "27d68e2cc80e",
+"credit": "Lauren.mta",
+"license": "CC BY 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Grey"
+],
+"creditUrl": "collection-credits.html#drop-ocean-pacific-tide-pool",
+"added": "2026-11-25"
+},
+{
+"file": "drop-ocean-palmyra-blue.jpg",
+"title": "Palmyra Blue",
+"category": "Ocean Photography",
+"hash": "71e7a5490eda",
+"credit": "USFWS Pacific",
+"license": "Public domain",
+"kind": "photograph",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-ocean-palmyra-blue",
+"added": "2026-11-25"
+},
+{
+"file": "drop-ocean-sea-garden-green.jpg",
+"title": "Sea Garden Green",
+"category": "Ocean Photography",
+"hash": "77a736a2d327",
+"credit": "Peter Southwood",
+"license": "CC BY-SA 3.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Green",
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-ocean-sea-garden-green",
+"added": "2026-11-25"
+},
+{
+"file": "drop-ocean-sunbeam-drift.jpg",
+"title": "Sunbeam Drift",
+"category": "Ocean Photography",
+"hash": "b925229056b7",
+"credit": "Jeremy Bishop tidesinourveins",
+"license": "CC0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-ocean-sunbeam-drift",
+"added": "2026-11-25"
+},
+{
+"file": "drop-ocean-turtle-ascent.jpg",
+"title": "Turtle Ascent",
+"category": "Ocean Photography",
+"hash": "b0f2f4eac2d4",
+"credit": "Ppmh21",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Blue",
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-ocean-turtle-ascent",
+"added": "2026-11-25"
+},
+{
+"file": "drop-ocean-turtle-at-first-light.jpg",
+"title": "Turtle at First Light",
+"category": "Ocean Photography",
+"hash": "a3f85d0c5c50",
+"credit": "Ppmh21",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Black",
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-ocean-turtle-at-first-light",
+"added": "2026-11-25"
+},
+{
+"file": "drop-ocean-under-the-ice.jpg",
+"title": "Under the Ice",
+"category": "Ocean Photography",
+"hash": "3b59ee9727f7",
+"credit": "Erwan AMICE",
+"license": "CC BY 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Black",
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-ocean-under-the-ice",
+"added": "2026-11-25"
+},
+{
+"file": "drop-rain-amber-frosted-window.jpg",
+"title": "Amber Frosted Window",
+"category": "Rain After Dark",
+"hash": "d6f32229fb25",
+"credit": "W.carter",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Black",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-rain-amber-frosted-window",
+"added": "2026-11-25"
+},
+{
+"file": "drop-rain-blue-hour-window.jpg",
+"title": "Blue Hour Window",
+"category": "Rain After Dark",
+"hash": "10a5ea8a5832",
+"credit": "constant progression",
+"license": "CC BY 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Blue",
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-rain-blue-hour-window",
+"added": "2026-11-25"
+},
+{
+"file": "drop-rain-drizzle-and-headlights.jpg",
+"title": "Drizzle and Headlights",
+"category": "Rain After Dark",
+"hash": "8ca05a590c39",
+"credit": "Jason Trbovich from Houston, TX, USA",
+"license": "CC BY 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Black",
+"Yellow"
+],
+"creditUrl": "collection-credits.html#drop-rain-drizzle-and-headlights",
+"added": "2026-11-25"
+},
+{
+"file": "drop-rain-lantern-lane.jpg",
+"title": "Lantern Lane",
+"category": "Rain After Dark",
+"hash": "b55a9d4ce6fe",
+"credit": "Florian Pépellin",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Black",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-rain-lantern-lane",
+"added": "2026-11-25"
+},
+{
+"file": "drop-rain-one-light-in-the-rain.jpg",
+"title": "One Light in the Rain",
+"category": "Rain After Dark",
+"hash": "c9ca7f511027",
+"credit": "W.carter",
+"license": "CC0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Black",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-rain-one-light-in-the-rain",
+"added": "2026-11-25"
+},
+{
+"file": "drop-rain-quiet-amber-alley.jpg",
+"title": "Quiet Amber Alley",
+"category": "Rain After Dark",
+"hash": "f03ae52868f5",
+"credit": "\nNils Söderman",
+"license": "CC0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Black",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-rain-quiet-amber-alley",
+"added": "2026-11-25"
+},
+{
+"file": "drop-rain-rain-in-the-rearview.jpg",
+"title": "Rain in the Rearview",
+"category": "Rain After Dark",
+"hash": "4ea967214d54",
+"credit": "Nadinviki",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Black",
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-rain-rain-in-the-rearview",
+"added": "2026-11-25"
+},
+{
+"file": "drop-rain-red-lights-in-the-rain.jpg",
+"title": "Red Lights in the Rain",
+"category": "Rain After Dark",
+"hash": "3926216c90a6",
+"credit": "kishjar? from Moscow, Russia",
+"license": "CC BY 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Black",
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-rain-red-lights-in-the-rain",
+"added": "2026-11-25"
+},
+{
+"file": "drop-rain-san-francisco-after-rain.jpg",
+"title": "San Francisco After Rain",
+"category": "Rain After Dark",
+"hash": "1720c8215284",
+"credit": "Sergiy Galyonkin from Raleigh, USA",
+"license": "CC BY-SA 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Black",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-rain-san-francisco-after-rain",
+"added": "2026-11-25"
+},
+{
+"file": "drop-rain-silver-window.jpg",
+"title": "Silver Window",
+"category": "Rain After Dark",
+"hash": "4f0af0602af2",
+"credit": "W.carter",
+"license": "CC0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Grey",
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-rain-silver-window",
+"added": "2026-11-25"
+},
+{
+"file": "drop-rain-under-the-umbrella.jpg",
+"title": "Under the Umbrella",
+"category": "Rain After Dark",
+"hash": "2ccafea4c0ad",
+"credit": "Jeremy Segrott from Cardiff, Wales, UK",
+"license": "CC BY 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Brown",
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-rain-under-the-umbrella",
+"added": "2026-11-25"
+},
+{
+"file": "drop-rain-window-stardust.jpg",
+"title": "Window Stardust",
+"category": "Rain After Dark",
+"hash": "10d8981b4766",
+"credit": "W.carter",
+"license": "CC0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Black",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-rain-window-stardust",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-bladderwrack-branches.jpg",
+"title": "Bladderwrack Branches",
+"category": "Botanical Blueprints",
+"hash": "d730a4298e90",
+"credit": "Scan by NYPL",
+"license": "Public domain",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-botanical-bladderwrack-branches",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-bracken-lace.jpg",
+"title": "Bracken Lace",
+"category": "Botanical Blueprints",
+"hash": "637ae865cf4c",
+"credit": "Anna Atkins",
+"license": "Public domain",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue",
+"Grey"
+],
+"creditUrl": "collection-credits.html#drop-botanical-bracken-lace",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-brazilian-fern.jpg",
+"title": "Brazilian Fern",
+"category": "Botanical Blueprints",
+"hash": "a8b6d7da397a",
+"credit": "Anna Atkins",
+"license": "Public domain",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-botanical-brazilian-fern",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-broadleaf-fern-study.jpg",
+"title": "Broadleaf Fern Study",
+"category": "Botanical Blueprints",
+"hash": "fc7275563f0d",
+"credit": "Eric Craig",
+"license": "CC0",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-botanical-broadleaf-fern-study",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-carex-sunburst.jpg",
+"title": "Carex Sunburst",
+"category": "Botanical Blueprints",
+"hash": "b450cb36129f",
+"credit": "Anna Atkins",
+"license": "Public domain",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-botanical-carex-sunburst",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-climbing-fern.jpg",
+"title": "Climbing Fern",
+"category": "Botanical Blueprints",
+"hash": "9f869228df77",
+"credit": "Anna Atkins (British, 1799-1871), and Anne Dixon (British, 1799-1864)",
+"license": "CC0",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-botanical-climbing-fern",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-feathered-seaweed.jpg",
+"title": "Feathered Seaweed",
+"category": "Botanical Blueprints",
+"hash": "4b567cf464ac",
+"credit": "Rijksmuseum",
+"license": "CC0",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-botanical-feathered-seaweed",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-fern-no-8.jpg",
+"title": "Fern No. 8",
+"category": "Botanical Blueprints",
+"hash": "022500cf00bf",
+"credit": "Eric Craig",
+"license": "CC0",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-botanical-fern-no-8",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-fern-study-in-blue.jpg",
+"title": "Fern Study in Blue",
+"category": "Botanical Blueprints",
+"hash": "116d0d105241",
+"credit": "\nAnna Atkins",
+"license": "CC0",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-botanical-fern-study-in-blue",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-maidenhair-companions.jpg",
+"title": "Maidenhair Companions",
+"category": "Botanical Blueprints",
+"hash": "9cee6b3120ab",
+"credit": "Eric Craig",
+"license": "CC0",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-botanical-maidenhair-companions",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-meadowsweet-silhouette.jpg",
+"title": "Meadowsweet Silhouette",
+"category": "Botanical Blueprints",
+"hash": "f00ae76d5971",
+"credit": "Anna Atkins",
+"license": "CC0",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-botanical-meadowsweet-silhouette",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-new-zealand-fronds.jpg",
+"title": "New Zealand Fronds",
+"category": "Botanical Blueprints",
+"hash": "6b5f9550025a",
+"credit": "Anna Atkins",
+"license": "Public domain",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-botanical-new-zealand-fronds",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-osmunda-branch.jpg",
+"title": "Osmunda Branch",
+"category": "Botanical Blueprints",
+"hash": "dc563d93083c",
+"credit": "Anna Atkins",
+"license": "Public domain",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-botanical-osmunda-branch",
+"added": "2026-11-25"
+},
+{
+"file": "drop-botanical-ribbon-fern-study.jpg",
+"title": "Ribbon Fern Study",
+"category": "Botanical Blueprints",
+"hash": "6731f8d82842",
+"credit": "Eric Craig",
+"license": "CC0",
+"kind": "historic botanical cyanotype",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-botanical-ribbon-fern-study",
+"added": "2026-11-25"
+},
+{
+"file": "drop-golf-autumn-fairway.jpg",
+"title": "Autumn Fairway",
+"category": "Signature Golf",
+"hash": "d8da9930d5c3",
+"credit": "Michael Gil from Calgary, AB, Canada",
+"license": "CC BY 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Brown",
+"Orange"
+],
+"creditUrl": "collection-credits.html#drop-golf-autumn-fairway",
+"added": "2026-11-25"
+},
+{
+"file": "drop-golf-links-poster.png",
+"title": "Coastal Links Club",
+"category": "Signature Golf",
+"hash": "ccc4de4d0b20",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Blue",
+"Green"
+],
+"creditUrl": "collection-credits.html#drop-golf-links-poster",
+"added": "2026-11-25"
+},
+{
+"file": "drop-golf-dornoch-greens.jpg",
+"title": "Dornoch Greens",
+"category": "Signature Golf",
+"hash": "b7b6e833b6cb",
+"credit": "Bill Boaden ",
+"license": "CC BY-SA 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Yellow"
+],
+"creditUrl": "collection-credits.html#drop-golf-dornoch-greens",
+"added": "2026-11-25"
+},
+{
+"file": "drop-golf-dunbar-clubhouse.jpg",
+"title": "Dunbar Clubhouse",
+"category": "Signature Golf",
+"hash": "5f10e65fbefd",
+"credit": "Stephen Darlington ",
+"license": "CC BY-SA 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Green"
+],
+"creditUrl": "collection-credits.html#drop-golf-dunbar-clubhouse",
+"added": "2026-11-25"
+},
+{
+"file": "drop-golf-fairway-clouds.jpg",
+"title": "Fairway Clouds",
+"category": "Signature Golf",
+"hash": "3c8a76cb1c32",
+"credit": "Fabricio Cardenas",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Grey",
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-golf-fairway-clouds",
+"added": "2026-11-25"
+},
+{
+"file": "drop-golf-first-tee-sunrise.jpg",
+"title": "First Tee Sunrise",
+"category": "Signature Golf",
+"hash": "576ca0145ee8",
+"credit": "allen watkin from London, UK",
+"license": "CC BY-SA 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Black",
+"Grey"
+],
+"creditUrl": "collection-credits.html#drop-golf-first-tee-sunrise",
+"added": "2026-11-25"
+},
+{
+"file": "drop-golf-little-bay-links.jpg",
+"title": "Little Bay Links",
+"category": "Signature Golf",
+"hash": "22dbc52ebf77",
+"credit": "J Bar",
+"license": "CC BY 2.5",
+"kind": "photograph",
+"active": true,
+"color": [
+"Yellow",
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-golf-little-bay-links",
+"added": "2026-11-25"
+},
+{
+"file": "drop-golf-sunday-bag.png",
+"title": "Sunday Golf Club",
+"category": "Signature Golf",
+"hash": "e1457a423040",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Yellow",
+"Orange"
+],
+"creditUrl": "collection-credits.html#drop-golf-sunday-bag",
+"added": "2026-11-25"
+},
+{
+"file": "drop-golf-the-autumn-round.jpg",
+"title": "The Autumn Round",
+"category": "Signature Golf",
+"hash": "17f3e11b81b6",
+"credit": "Des Blenkinsopp ",
+"license": "CC BY-SA 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Green",
+"Yellow"
+],
+"creditUrl": "collection-credits.html#drop-golf-the-autumn-round",
+"added": "2026-11-25"
+},
+{
+"file": "drop-golf-tynedale-morning.jpg",
+"title": "Tynedale Morning",
+"category": "Signature Golf",
+"hash": "770bbf8ce295",
+"credit": "Clive Nicholson ",
+"license": "CC BY-SA 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Blue",
+"Yellow"
+],
+"creditUrl": "collection-credits.html#drop-golf-tynedale-morning",
+"added": "2026-11-25"
+},
+{
+"file": "drop-season-autumn-lake-stillness.jpg",
+"title": "Autumn Lake Stillness",
+"category": "Seasonal Weather",
+"hash": "0ed8d4c8d151",
+"credit": "Eric Kilby",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Brown",
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-season-autumn-lake-stillness",
+"added": "2026-11-25"
+},
+{
+"file": "drop-season-blossom-blush.jpg",
+"title": "Blossom Blush",
+"category": "Seasonal Weather",
+"hash": "e204264236e6",
+"credit": "W.carter",
+"license": "CC BY 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Red",
+"Pink"
+],
+"creditUrl": "collection-credits.html#drop-season-blossom-blush",
+"added": "2026-11-25"
+},
+{
+"file": "drop-season-cape-town-sundown.jpg",
+"title": "Cape Town Sundown",
+"category": "Seasonal Weather",
+"hash": "41c3deb005d7",
+"credit": "Phumzile Phala",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Grey",
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-season-cape-town-sundown",
+"added": "2026-11-25"
+},
+{
+"file": "drop-season-first-spring-buds.jpg",
+"title": "First Spring Buds",
+"category": "Seasonal Weather",
+"hash": "50f42544d499",
+"credit": "W.carter",
+"license": "Public domain",
+"kind": "photograph",
+"active": true,
+"color": [
+"Blue"
+],
+"creditUrl": "collection-credits.html#drop-season-first-spring-buds",
+"added": "2026-11-25"
+},
+{
+"file": "drop-season-golden-forest-path.jpg",
+"title": "Golden Forest Path",
+"category": "Seasonal Weather",
+"hash": "213d50a723ab",
+"credit": "Dietmar Rabich",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Yellow",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-season-golden-forest-path",
+"added": "2026-11-25"
+},
+{
+"file": "drop-season-into-the-autumn-mist.jpg",
+"title": "Into the Autumn Mist",
+"category": "Seasonal Weather",
+"hash": "937930704faf",
+"credit": "Sergey Pesterev",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Yellow",
+"Orange"
+],
+"creditUrl": "collection-credits.html#drop-season-into-the-autumn-mist",
+"added": "2026-11-25"
+},
+{
+"file": "drop-season-powder-pink-dawn.jpg",
+"title": "Powder Pink Dawn",
+"category": "Seasonal Weather",
+"hash": "54fb9beb5e71",
+"credit": "Eric Kilby",
+"license": "CC BY-SA 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Grey",
+"Pink"
+],
+"creditUrl": "collection-credits.html#drop-season-powder-pink-dawn",
+"added": "2026-11-25"
+},
+{
+"file": "drop-season-snowfall-rose.jpg",
+"title": "Snowfall Rose",
+"category": "Seasonal Weather",
+"hash": "f83719b2330d",
+"credit": "Vitalii Bashkatov",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Pink",
+"Purple"
+],
+"creditUrl": "collection-credits.html#drop-season-snowfall-rose",
+"added": "2026-11-25"
+},
+{
+"file": "drop-season-spring-rain-leaf.jpg",
+"title": "Spring Rain Leaf",
+"category": "Seasonal Weather",
+"hash": "e31f93029324",
+"credit": "Heath Cajandig",
+"license": "CC BY 2.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Green"
+],
+"creditUrl": "collection-credits.html#drop-season-spring-rain-leaf",
+"added": "2026-11-25"
+},
+{
+"file": "drop-season-summer-pier.jpg",
+"title": "Summer Pier",
+"category": "Seasonal Weather",
+"hash": "e0e4e708698a",
+"credit": "The original uploader was Estrategy at English Wikipedia.",
+"license": "CC BY-SA 3.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Orange",
+"Red"
+],
+"creditUrl": "collection-credits.html#drop-season-summer-pier",
+"added": "2026-11-25"
+},
+{
+"file": "drop-season-sunflower-summer.jpg",
+"title": "Sunflower Summer",
+"category": "Seasonal Weather",
+"hash": "8e939dbbe6db",
+"credit": "Faisal Iqbal",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Yellow",
+"Green"
+],
+"creditUrl": "collection-credits.html#drop-season-sunflower-summer",
+"added": "2026-11-25"
+},
+{
+"file": "drop-season-winter-lake-mirror.jpg",
+"title": "Winter Lake Mirror",
+"category": "Seasonal Weather",
+"hash": "7df4156d4966",
+"credit": "Sergey Pesterev",
+"license": "CC BY-SA 4.0",
+"kind": "photograph",
+"active": true,
+"color": [
+"Grey"
+],
+"creditUrl": "collection-credits.html#drop-season-winter-lake-mirror",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-death.png",
+"title": "Death",
+"category": "Tarot",
+"hash": "8f7074c3a897",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-tarot-death",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-judgement.png",
+"title": "Judgement",
+"category": "Tarot",
+"hash": "ea80cfb42921",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-tarot-judgement",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-justice.png",
+"title": "Justice",
+"category": "Tarot",
+"hash": "7d005ece4449",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-tarot-justice",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-strength.png",
+"title": "Strength",
+"category": "Tarot",
+"hash": "5aee02a11ab7",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-tarot-strength",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-temperance.png",
+"title": "Temperance",
+"category": "Tarot",
+"hash": "5566d87684a4",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-tarot-temperance",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-chariot.png",
+"title": "The Chariot",
+"category": "Tarot",
+"hash": "ab1689d298e4",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-tarot-chariot",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-devil.png",
+"title": "The Devil",
+"category": "Tarot",
+"hash": "422a782b4325",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-tarot-devil",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-emperor.png",
+"title": "The Emperor",
+"category": "Tarot",
+"hash": "3898aa0c0c03",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-tarot-emperor",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-empress.png",
+"title": "The Empress",
+"category": "Tarot",
+"hash": "a4dc54ac70f4",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-tarot-empress",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-fool.png",
+"title": "The Fool",
+"category": "Tarot",
+"hash": "adbded66e1e4",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-tarot-fool",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-hanged-man.png",
+"title": "The Hanged Man",
+"category": "Tarot",
+"hash": "32f5dd7483d5",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-tarot-hanged-man",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-hermit.png",
+"title": "The Hermit",
+"category": "Tarot",
+"hash": "3442faee2022",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-tarot-hermit",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-hierophant.png",
+"title": "The Hierophant",
+"category": "Tarot",
+"hash": "e45803cc3819",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-tarot-hierophant",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-high-priestess.png",
+"title": "The High Priestess",
+"category": "Tarot",
+"hash": "69d20cb5ff45",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-tarot-high-priestess",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-magician.png",
+"title": "The Magician",
+"category": "Tarot",
+"hash": "b76320907d48",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-tarot-magician",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-tower.png",
+"title": "The Tower",
+"category": "Tarot",
+"hash": "baa0425afc17",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-tarot-tower",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-world.png",
+"title": "The World",
+"category": "Tarot",
+"hash": "47226c524329",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black"
+],
+"creditUrl": "collection-credits.html#drop-tarot-world",
+"added": "2026-11-25"
+},
+{
+"file": "drop-tarot-wheel-of-fortune.png",
+"title": "Wheel of Fortune",
+"category": "Tarot",
+"hash": "59d06aa35aa5",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"kind": "original AI-assisted illustration",
+"active": true,
+"color": [
+"Black",
+"Brown"
+],
+"creditUrl": "collection-credits.html#drop-tarot-wheel-of-fortune",
+"added": "2026-11-25"
+},
+{
 "file": "kp-dots-micro-ink.png",
 "title": "Micro Ink Dots",
 "category": "Polka dots",

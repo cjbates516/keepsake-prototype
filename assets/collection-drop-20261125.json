@@ -1,0 +1,1796 @@
+[
+  {
+    "file": "drop-ocean-anacapa-light.jpg",
+    "title": "Anacapa Light",
+    "category": "Ocean Photography",
+    "kind": "photograph",
+    "hash": "273ded23a559",
+    "credit": "Eric T Gunther",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kelp_Forest_off_of_Anacapa_Island_California.jpg",
+    "sourceTitle": "Kelp Forest off of Anacapa Island California.jpg",
+    "description": "A kelp forest off of the coast of Anacapa Island, California",
+    "originalSize": [
+      2048,
+      3089
+    ],
+    "artworkSize": [
+      2048,
+      3089
+    ],
+    "originalSha256": "97b500fa5ce3b260a6248ae1a9cbc5a9f49e433e6dfa448b53a27d4f15ae54d4",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-ocean-golden-kelp.jpg",
+    "title": "Golden Kelp",
+    "category": "Ocean Photography",
+    "kind": "photograph",
+    "hash": "0f2dba8da602",
+    "credit": "Stef Maruch",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kelp-forest-Monterey.jpg",
+    "sourceTitle": "Kelp-forest-Monterey.jpg",
+    "description": "The kelp forest exhibit at the Monterey Bay Aquarium",
+    "originalSize": [
+      1455,
+      2301
+    ],
+    "artworkSize": [
+      1455,
+      2301
+    ],
+    "originalSha256": "0e3f937f8050d2116d7c3976373040c627947ddffbe237588251e29dd8570988",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-ocean-golden-reef.jpg",
+    "title": "Golden Reef",
+    "category": "Ocean Photography",
+    "kind": "photograph",
+    "hash": "51c3884b6946",
+    "credit": "James St. John",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acropora_palmata_(elkhorn_coral)_(San_Salvador_Island,_Bahamas)_1_(15946092620).jpg",
+    "sourceTitle": "Acropora palmata (elkhorn coral) (San Salvador Island, Bahamas) 1 (15946092620).jpg",
+    "description": "Acropora palmata (Lamarck, 1816) - elkhorn coral on a reef.\nStony corals have a patchy distribution in the shallow marine waters surrounding San Salvador Island.  They occur as isolated individual colonies, in patch reefs, fringing reefs, and barrier reefs.  Stony corals are scleractinian anthozoan cnidarians (there are also non-scleractinian stony corals in the fossil record, such as tabulates and rugosans).  They consist of individuals or colonies of gelatinous polyps that secrete hard skeletons of aragonite (CaCO3).  Most scleractinian corals live in warm, tropical to subtropical, photic zone environments (the shallow portions of the world’s oceans where sunlight penetrates).  Microbes (Symbiodinium - Protista, Dinoflagellata/Pyrrhophyta) called zooxanthellae live in their tissues and need to be in sunlight to make their own food (photosynthesis), which is shared with the host coral animal.  Scleractinian corals have stinging cells (nematocysts) in their tentacles that paralyze prey.\nThe brownish and grayish branching organisms below the elkhorn corals are octocorals.  The upright bladed organisms are Millepora complanata - bladed fire corals.\nClassification: Animalia, Cnidaria, Anthozoa, Scleractinia, Acroporidae\n\nLocality: Gaulin Reef, northern Graham's Harbour, offshore northern San Salvador Island, eastern Bahamas",
+    "originalSize": [
+      4000,
+      3000
+    ],
+    "artworkSize": [
+      3600,
+      2700
+    ],
+    "originalSha256": "6d07a6a53052007adc85d557d811e869927077c337d9ede6ad028473f359ab77",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-ocean-manta-passage.jpg",
+    "title": "Manta Passage",
+    "category": "Ocean Photography",
+    "kind": "photograph",
+    "hash": "14d699de5387",
+    "credit": "Rilando June Lamadjido",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Manta_Ray_-_Shot_by_Lamadjido.jpg",
+    "sourceTitle": "Manta Ray - Shot by Lamadjido.jpg",
+    "description": "Manta Ray shot during a dive session at manta bay (Nusa Penida)",
+    "originalSize": [
+      4000,
+      3000
+    ],
+    "artworkSize": [
+      3600,
+      2700
+    ],
+    "originalSha256": "a97ff50106cbec533383da306ad4cd689adba264d67ddd9724428cafdde4b0c5",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-ocean-moon-jelly-glow.jpg",
+    "title": "Moon Jelly Glow",
+    "category": "Ocean Photography",
+    "kind": "photograph",
+    "hash": "7727ae71c3ef",
+    "credit": "Marek Ślusarczyk (Tupungato) Photo portfolio",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:22_Jellyfish_underwater_photo_-_common_jellyfish_in_Valencia_Oceanarium,_Spain_-_free_stock_photo_with_attribution.jpg",
+    "sourceTitle": "22 Jellyfish underwater photo - common jellyfish in Valencia Oceanarium, Spain - free stock photo with attribution.jpg",
+    "description": "Common jellyfish or moon jellyfish (Aurelia aurita) at the aquarium of Valencia Oceanarium L'Oceanogràfic in Spain.",
+    "originalSize": [
+      2592,
+      1728
+    ],
+    "artworkSize": [
+      2592,
+      1728
+    ],
+    "originalSha256": "7e9a446f3e2da86dc30a5f1197fc41c34f87240d6b1afa4370f763d6a875fb9f",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-ocean-pacific-tide-pool.jpg",
+    "title": "Pacific Tide Pool",
+    "category": "Ocean Photography",
+    "kind": "photograph",
+    "hash": "27d68e2cc80e",
+    "credit": "Lauren.mta",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Starfish_on_Second_Beach,_Washington.jpg",
+    "sourceTitle": "Starfish on Second Beach, Washington.jpg",
+    "description": "The image shows a starfish in a tide pool on Second Beach, located on the Olympic Peninsula.",
+    "originalSize": [
+      3024,
+      4032
+    ],
+    "artworkSize": [
+      2700,
+      3600
+    ],
+    "originalSha256": "5b45cc588a4e213437b5daa560147844046b5f22c57aa0609f821c3abaaf17cd",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-ocean-palmyra-blue.jpg",
+    "title": "Palmyra Blue",
+    "category": "Ocean Photography",
+    "kind": "photograph",
+    "hash": "71e7a5490eda",
+    "credit": "USFWS Pacific",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Manta_ray_at_Palmyra_Atoll_(53004279275).jpg",
+    "sourceTitle": "Manta ray at Palmyra Atoll (53004279275).jpg",
+    "description": "A manta ray train swims above the coral reef at the remote Palmyra Atoll National Wildlife Refuge, April 7, 2023. USFWS photo: Ryan Hagerty\nThe filter feeders with wingspans that can surpass 20 feet long are common in the plankton-rich lagoons of the atoll, about 1,000 miles south of Hawaiʻi.\n“They seem very curious about divers as they fly around underwater sometimes coming back around to take another look at the air breathers,” said Ryan Hagerty, who captured the image and works at the agency’s National Conservation Training Center.\nPalmyra Atoll is a circular string of islets nestled among several lagoons, all encircled by 15,000 acres of coral reefs.\n\nMore about the refuge: www.fws.gov/refuge/palmyra-atoll",
+    "originalSize": [
+      8192,
+      5464
+    ],
+    "artworkSize": [
+      3600,
+      2401
+    ],
+    "originalSha256": "c2b19401efb02c65704627e987fdfd80d095f00ad958fb6ac6154174519c9901",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-ocean-sea-garden-green.jpg",
+    "title": "Sea Garden Green",
+    "category": "Ocean Photography",
+    "kind": "photograph",
+    "hash": "77a736a2d327",
+    "credit": "Peter Southwood",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kelp_forest_at_Taranga_pinnacles_Hen_and_Chicken_Islands_PA232359.JPG",
+    "sourceTitle": "Kelp forest at Taranga pinnacles Hen and Chicken Islands PA232359.JPG",
+    "description": "Kelp forest at Taranga pinnacles Hen and Chicken Islands",
+    "originalSize": [
+      3648,
+      2736
+    ],
+    "artworkSize": [
+      3600,
+      2700
+    ],
+    "originalSha256": "39645f8750f9db1285132bcd34aca2789309522e381ee4b2185aa302d9dcecca",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-ocean-sunbeam-drift.jpg",
+    "title": "Sunbeam Drift",
+    "category": "Ocean Photography",
+    "kind": "photograph",
+    "hash": "b925229056b7",
+    "credit": "Jeremy Bishop tidesinourveins",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jellyfish_underwater_view_(Unsplash).jpg",
+    "sourceTitle": "Jellyfish underwater view (Unsplash).jpg",
+    "description": "Bondi Beach, Australia",
+    "originalSize": [
+      4000,
+      3000
+    ],
+    "artworkSize": [
+      3600,
+      2700
+    ],
+    "originalSha256": "55fc40816b2186a271eb546aeeef11d8fc8a55104a0e58930bb5470416d035aa",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-ocean-turtle-ascent.jpg",
+    "title": "Turtle Ascent",
+    "category": "Ocean Photography",
+    "kind": "photograph",
+    "hash": "b0f2f4eac2d4",
+    "credit": "Ppmh21",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Green_turtle_swimming_out_for_a_breath_at_the_GBR.jpg",
+    "sourceTitle": "Green turtle swimming out for a breath at the GBR.jpg",
+    "description": "Freedom of swimming out in the open",
+    "originalSize": [
+      5472,
+      3648
+    ],
+    "artworkSize": [
+      3600,
+      2400
+    ],
+    "originalSha256": "62659cecf6bc138289734c1dec369b17e88f1f5a4064200aec5e62f332b63a63",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-ocean-turtle-at-first-light.jpg",
+    "title": "Turtle at First Light",
+    "category": "Ocean Photography",
+    "kind": "photograph",
+    "hash": "a3f85d0c5c50",
+    "credit": "Ppmh21",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sunrise_Green_turtle.jpg",
+    "sourceTitle": "Sunrise Green turtle.jpg",
+    "description": "One of the most beautiful and majestic animals you can encounter on the sea",
+    "originalSize": [
+      4934,
+      3289
+    ],
+    "artworkSize": [
+      3072,
+      2560
+    ],
+    "originalSha256": "c449f76044e721d3be08bfb733d501a185c8d240924be04e1e79cf475d470e6d",
+    "adaptation": "Cropped toward the turtle head to keep it inside the case print; resized without upscaling."
+  },
+  {
+    "file": "drop-ocean-under-the-ice.jpg",
+    "title": "Under the Ice",
+    "category": "Ocean Photography",
+    "kind": "photograph",
+    "hash": "3b59ee9727f7",
+    "credit": "Erwan AMICE",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ice_planet_and_antarctic_jellyfish.jpg",
+    "sourceTitle": "Ice planet and antarctic jellyfish.jpg",
+    "description": "Underwater Antarctic biodiversity (French scientific base in Antarctica). Identified as Diplulmaris antarctica by Prof. Andre C. Morandini:\n\n\n“\n\nSometimes it is not so easy to identify animals by photographs, but in this case we can see some important features.\nIt is a scyphozoan jellyfish of the order Semaeostomeae, due to the general body shape but mostly because of the marginal tentacles and elongated oral arms.\nIt is a member of the family Ulmaridae because the gastric cavity is divided in canals, as can be seen by transparency.\nSubfamily Ulmarinae because tentacles arise from the margin and gonads are protrusive (the orange pleated tissue in the center).\nThe difference between the genera of this subfamily (Diplulmaris, Discomedusa, Floresca, Parumbrosa, Ulmaris, Undosa) are the number of sense organs (rhopalia) and the number of tentacles, besides some canal system organization.\nAs far as I can see the animal in the photo has 21 tentacles and 10 rhopalia (probably more of both). But the angle of the image does not allow me to see more.\nI think it is a Diplulmaris antarctica, by the way from all valid species of the subfamily, this is the only one known from Antarctic waters. The species has 16 sense organs and 16-48 tentacles.\nIf you Google it, at least the first images are OK.\n\n\n”\n\n\n",
+    "originalSize": [
+      4256,
+      2832
+    ],
+    "artworkSize": [
+      3600,
+      2395
+    ],
+    "originalSha256": "e95a6187d3fc289ce712eeaded7d0787961eb7202e0fb5f0f867951573d34353",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-rain-amber-frosted-window.jpg",
+    "title": "Amber Frosted Window",
+    "category": "Rain After Dark",
+    "kind": "photograph",
+    "hash": "d6f32229fb25",
+    "credit": "W.carter",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Slush_on_window_-_night.jpg",
+    "sourceTitle": "Slush on window - night.jpg",
+    "description": "Slush deposited on the lower part of a window pane during snowing mixed with rain on a night in Gåseberg, Lysekil Municipality, Sweden. The slush is illuminated from the outside by a sodium street light and a halogen floodlight, giving a mixed light source.",
+    "originalSize": [
+      3648,
+      3648
+    ],
+    "artworkSize": [
+      3600,
+      3600
+    ],
+    "originalSha256": "96b7c6230dc57c53f42cecb20c51fe2b744be30bf4bb74349c5e9b012cf08159",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-rain-blue-hour-window.jpg",
+    "title": "Blue Hour Window",
+    "category": "Rain After Dark",
+    "kind": "photograph",
+    "hash": "10a5ea8a5832",
+    "credit": "constant progression",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rain_-_Flickr_-_constant_progression.jpg",
+    "sourceTitle": "Rain - Flickr - constant progression.jpg",
+    "description": "Canon FTb | 50mm f/1.4\nFUJI pro 160C\nit's all about bokeh, obviously\nthis film is amazing by the way\nyou've really gotta view it on black\n\ninterestingly, this was in EXPLORE. I think I have better shots than this.",
+    "originalSize": [
+      3000,
+      2000
+    ],
+    "artworkSize": [
+      3000,
+      2000
+    ],
+    "originalSha256": "5d8049cce3e9c5b1e65a4425023d0a8f77ec83fe923f8f9c686ce57a071e82e7",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-rain-drizzle-and-headlights.jpg",
+    "title": "Drizzle and Headlights",
+    "category": "Rain After Dark",
+    "kind": "photograph",
+    "hash": "8ca05a590c39",
+    "credit": "Jason Trbovich from Houston, TX, USA",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Perfect_night_(drizzle_remix)_(Explored)_-_Flickr_-_Real_Cowboys_Drive_Cadillacs.jpg",
+    "sourceTitle": "Perfect night (drizzle remix) (Explored) - Flickr - Real Cowboys Drive Cadillacs.jpg",
+    "description": "Website: www.realcowboysdrivecadillacs.com/",
+    "originalSize": [
+      4288,
+      2848
+    ],
+    "artworkSize": [
+      3600,
+      2391
+    ],
+    "originalSha256": "b74498f05e3782a2fd19aea725deec04f14709fd3e50b74c0a8572b7aea331ee",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-rain-lantern-lane.jpg",
+    "title": "Lantern Lane",
+    "category": "Rain After Dark",
+    "kind": "photograph",
+    "hash": "b55a9d4ce6fe",
+    "credit": "Florian Pépellin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rue_Juiverie_de_Chamb%C3%A9ry_illumin%C3%A9e_de_nuit_sous_la_pluie_(2017).JPG",
+    "sourceTitle": "Rue Juiverie de Chambéry illuminée de nuit sous la pluie (2017).JPG",
+    "description": "Sight, in a rainy evening of December, of Rue Juiverie street in Chambéry downtown, Savoie, France.",
+    "originalSize": [
+      3216,
+      2384
+    ],
+    "artworkSize": [
+      3216,
+      2384
+    ],
+    "originalSha256": "a8654af482c73acfde6d6a46af4010d24dd203caeb266a32fa430e231ee06f7b",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-rain-one-light-in-the-rain.jpg",
+    "title": "One Light in the Rain",
+    "category": "Rain After Dark",
+    "kind": "photograph",
+    "hash": "c9ca7f511027",
+    "credit": "W.carter",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Raindrops_on_a_window_in_Brastad_1.jpg",
+    "sourceTitle": "Raindrops on a window in Brastad 1.jpg",
+    "description": "Raindrops on a window in Brastad, Lysekil Municipality, Sweden.",
+    "originalSize": [
+      3283,
+      4385
+    ],
+    "artworkSize": [
+      2695,
+      3600
+    ],
+    "originalSha256": "662bb93a1d740a08f524eeda30e0e33b8f064a05dfd8ee86af4c9d3f4d3236ab",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-rain-quiet-amber-alley.jpg",
+    "title": "Quiet Amber Alley",
+    "category": "Rain After Dark",
+    "kind": "photograph",
+    "hash": "f03ae52868f5",
+    "credit": "\nNils Söderman",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Night_Lights_(218082587).jpeg",
+    "sourceTitle": "Night Lights (218082587).jpeg",
+    "description": "\n500px provided description: Night Lights [#yellow ,#city ,#color ,#street ,#travel ,#blue ,#contrast ,#night ,#light ,#house ,#rain ,#tourism ,#architecture ,#road ,#building ,#colors ,#lamp ,#evening ,#croatia ,#town ,#dark ,#alley ,#narrow ,#colorful ,#illuminated ,#wet ,#reflective ,#organe ,#no person ,#CC0]",
+    "originalSize": [
+      1462,
+      2048
+    ],
+    "artworkSize": [
+      1462,
+      2048
+    ],
+    "originalSha256": "95ee059dfad50d3a13c5d29f0e8489506110095562815bc08da27ac517f88eff",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-rain-rain-in-the-rearview.jpg",
+    "title": "Rain in the Rearview",
+    "category": "Rain After Dark",
+    "kind": "photograph",
+    "hash": "4ea967214d54",
+    "credit": "Nadinviki",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Night_Rain_mode.jpg",
+    "sourceTitle": "Night Rain mode.jpg",
+    "description": "Night Rain mode",
+    "originalSize": [
+      3456,
+      4608
+    ],
+    "artworkSize": [
+      2700,
+      3600
+    ],
+    "originalSha256": "7be648704e807705254f399f43f1eb40dae41636f87c417dd61b7d1f15bc7e71",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-rain-red-lights-in-the-rain.jpg",
+    "title": "Red Lights in the Rain",
+    "category": "Rain After Dark",
+    "kind": "photograph",
+    "hash": "3926216c90a6",
+    "credit": "kishjar? from Moscow, Russia",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Late_autumn_rainy_night_in_Moscow_(54889230493).jpg",
+    "sourceTitle": "Late autumn rainy night in Moscow (54889230493).jpg",
+    "description": "Late autumn rainy night in Moscow // Улица Тёплый Стан. Вид на угол Профсоюзной и Новоясеневской, ТЦ Принц на месте бывшего рынка. Ели видна эстакада Профсоюзной.",
+    "originalSize": [
+      2220,
+      3090
+    ],
+    "artworkSize": [
+      2220,
+      3090
+    ],
+    "originalSha256": "660eb3ea78e4c2bcc869369f1cfb56b84dc03b57ebf11d55a3bc492d8db428ce",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-rain-san-francisco-after-rain.jpg",
+    "title": "San Francisco After Rain",
+    "category": "Rain After Dark",
+    "kind": "photograph",
+    "hash": "1720c8215284",
+    "credit": "Sergiy Galyonkin from Raleigh, USA",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rainy_night_in_San_Francisco_(52768468996).jpg",
+    "sourceTitle": "Rainy night in San Francisco (52768468996).jpg",
+    "description": "Rain in San Francisco",
+    "originalSize": [
+      6328,
+      9394
+    ],
+    "artworkSize": [
+      2425,
+      3600
+    ],
+    "originalSha256": "9dd588614959a1868f3f339d98ff4c39b07456a9097f07d94fd5084b19fc1b7c",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-rain-silver-window.jpg",
+    "title": "Silver Window",
+    "category": "Rain After Dark",
+    "kind": "photograph",
+    "hash": "4f0af0602af2",
+    "credit": "W.carter",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Raindrops_on_a_window_in_Brastad_3.jpg",
+    "sourceTitle": "Raindrops on a window in Brastad 3.jpg",
+    "description": "Raindrops on a window in Brastad, Lysekil Municipality, Sweden.",
+    "originalSize": [
+      4298,
+      3283
+    ],
+    "artworkSize": [
+      3600,
+      2750
+    ],
+    "originalSha256": "8f7d575b5ced66d5504adb0e7844502205428afbd41e3bde5ac98bd642a5649f",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-rain-under-the-umbrella.jpg",
+    "title": "Under the Umbrella",
+    "category": "Rain After Dark",
+    "kind": "photograph",
+    "hash": "2ccafea4c0ad",
+    "credit": "Jeremy Segrott from Cardiff, Wales, UK",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Figure_in_the_rain_(24263897279).jpg",
+    "sourceTitle": "Figure in the rain (24263897279).jpg",
+    "description": "Figure in the rain",
+    "originalSize": [
+      3184,
+      4944
+    ],
+    "artworkSize": [
+      2318,
+      3600
+    ],
+    "originalSha256": "7b03a5be0fa3e9a795fc737910d2298dbd150b67fb58dff45ce34dedb2f3f21a",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-rain-window-stardust.jpg",
+    "title": "Window Stardust",
+    "category": "Rain After Dark",
+    "kind": "photograph",
+    "hash": "10d8981b4766",
+    "credit": "W.carter",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bokeh_raindrops_on_a_window_2.jpg",
+    "sourceTitle": "Bokeh raindrops on a window 2.jpg",
+    "description": "Bokeh from raindrops on a window in Brastad, Lysekil Municipality, Sweden.",
+    "originalSize": [
+      3283,
+      4385
+    ],
+    "artworkSize": [
+      2695,
+      3600
+    ],
+    "originalSha256": "54fbe6e192ad2c19ebd516832d69bd6bafcace281c5242726e18b376b0fd6e7b",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-botanical-bladderwrack-branches.jpg",
+    "title": "Bladderwrack Branches",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "d730a4298e90",
+    "credit": "Scan by NYPL",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fucus_vesiculosus_(NYPL_b11861683-419704).jpg",
+    "sourceTitle": "Fucus vesiculosus (NYPL b11861683-419704).jpg",
+    "description": "Fucus vesiculosus.",
+    "originalSize": [
+      2033,
+      3072
+    ],
+    "artworkSize": [
+      1651,
+      2118
+    ],
+    "originalSha256": "cdc63492181de2915e252f693ec0ac81ed3222243266d3b364308da6e48ec404",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-botanical-bracken-lace.jpg",
+    "title": "Bracken Lace",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "637ae865cf4c",
+    "credit": "Anna Atkins",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anna_Atkins_-_Pteris_aquilina_-_Google_Art_Project.jpg",
+    "sourceTitle": "Anna Atkins - Pteris aquilina - Google Art Project.jpg",
+    "description": "",
+    "originalSize": [
+      1767,
+      2401
+    ],
+    "artworkSize": [
+      1625,
+      2185
+    ],
+    "originalSha256": "5d32d86cfdebf0d0a59dd592a4a38030459d861bdcd73f5f0df71ab1d88303a6",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-botanical-brazilian-fern.jpg",
+    "title": "Brazilian Fern",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "a8b6d7da397a",
+    "credit": "Anna Atkins",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anna_Atkins_-_Asplenium_Braziliense,_S._America_-_Google_Art_Project.jpg",
+    "sourceTitle": "Anna Atkins - Asplenium Braziliense, S. America - Google Art Project.jpg",
+    "description": "",
+    "originalSize": [
+      2000,
+      2852
+    ],
+    "artworkSize": [
+      1920,
+      2738
+    ],
+    "originalSha256": "d243c051f6fab3e5a9d08ca5cd04c833ffb36b61a2a62efe17059dc7f5822c4f",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-botanical-broadleaf-fern-study.jpg",
+    "title": "Broadleaf Fern Study",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "fc7275563f0d",
+    "credit": "Eric Craig",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amgueddfa_Cymru_-_New_Zealand_Ferns_066_-_74416.jpeg",
+    "sourceTitle": "Amgueddfa Cymru - New Zealand Ferns 066 - 74416.jpeg",
+    "description": "\nCyanotype of the fern Asplenium obtusatum var lyallii. The original specimen used to create the cyanotype was from Otago, New Zealand. From \ta volume of 172 Cyanotypes of Ferns, Eric Craig 1892, second edition, page 66.",
+    "originalSize": [
+      2998,
+      4000
+    ],
+    "artworkSize": [
+      1612,
+      1947
+    ],
+    "originalSha256": "0423e884547ab1de23db2008ec6cfcc98f226f81d68e748affcf0b9d307c3b8d",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-botanical-carex-sunburst.jpg",
+    "title": "Carex Sunburst",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "b450cb36129f",
+    "credit": "Anna Atkins",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anna_Atkins_-_Carix_(America)_-_Google_Art_Project.jpg",
+    "sourceTitle": "Anna Atkins - Carix (America) - Google Art Project.jpg",
+    "description": "",
+    "originalSize": [
+      3642,
+      4585
+    ],
+    "artworkSize": [
+      2938,
+      3600
+    ],
+    "originalSha256": "8a77fb184fb4e705b306e5ad966401556e2299446c24ad0ee73c09c734ea3d5d",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-botanical-climbing-fern.jpg",
+    "title": "Climbing Fern",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "9f869228df77",
+    "credit": "Anna Atkins (British, 1799-1871), and Anne Dixon (British, 1799-1864)",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lygodium_volubile,_Brazil_(Getty_Museum).jpg",
+    "sourceTitle": "Lygodium volubile, Brazil (Getty Museum).jpg",
+    "description": "(Recto, print) lower center, cyanotyped text in artist's hand: \"Lygodium volubile. / Brazil.\";",
+    "originalSize": [
+      4338,
+      5548
+    ],
+    "artworkSize": [
+      1709,
+      2284
+    ],
+    "originalSha256": "e0d080316458a50fdf72192b1f2d635656798dee9e599d6340f7aeb8a4853f91",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-botanical-feathered-seaweed.jpg",
+    "title": "Feathered Seaweed",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "4b567cf464ac",
+    "credit": "Rijksmuseum",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ptilota_plumosa,_RP-F-2016-133-256.jpg",
+    "sourceTitle": "Ptilota plumosa, RP-F-2016-133-256.jpg",
+    "description": "IdentificatieTitel(s): Ptilota plumosaObjecttype: foto bladzijde Objectnummer: RP-F-2016-133-256VervaardigingVervaardiger: fotograaf: Anna AtkinsPlaats vervaardiging: Verenigd KoninkrijkDatering: ca. 1843 - ca. 1853Materiaal: fotopapier Techniek: cyanotypieAfmetingen: pagina: h 250 mm × b 200 mmOnderwerpWat: algae, seaweedVerwerving en rechtenCredit line: Aankoop met steun van de Bank. Giro Loterij, de Familie W. Cordia/Rijksmuseum Fonds en het Paul Huf Fonds/Rijksmuseum FondsVerwerving: aankoop 4-jan-2017Copyright: Publiek domein",
+    "originalSize": [
+      3256,
+      3798
+    ],
+    "artworkSize": [
+      2768,
+      3380
+    ],
+    "originalSha256": "99ddf2d8cd3fedb066179d954561bcdccd41b5aeaa14d09e7d129f3cca264cbd",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-botanical-fern-no-8.jpg",
+    "title": "Fern No. 8",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "022500cf00bf",
+    "credit": "Eric Craig",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amgueddfa_Cymru_-_New_Zealand_Ferns_008_-_74366.jpeg",
+    "sourceTitle": "Amgueddfa Cymru - New Zealand Ferns 008 - 74366.jpeg",
+    "description": "\nCyanotype of the fern Cyathea dealbata. The original specimen used to create the cyanotype was from  Auckland, North Island, New Zealand. From \ta volume of 172 Cyanotypes of Ferns, Eric Craig 1892, second edition, page 8.",
+    "originalSize": [
+      2998,
+      4000
+    ],
+    "artworkSize": [
+      1612,
+      1921
+    ],
+    "originalSha256": "194a919fdcea5ec8100361bb3de6de7626585c07e5ab081d79c44bda90a68446",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-botanical-fern-study-in-blue.jpg",
+    "title": "Fern Study in Blue",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "116d0d105241",
+    "credit": "\nAnna Atkins",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anna_Atkins,_Ferns._Specimen_of_Cyanotype,_1840s,_NGA_136477.jpg",
+    "sourceTitle": "Anna Atkins, Ferns. Specimen of Cyanotype, 1840s, NGA 136477.jpg",
+    "description": "",
+    "originalSize": [
+      3101,
+      4000
+    ],
+    "artworkSize": [
+      2791,
+      3600
+    ],
+    "originalSha256": "38f475e55aa8829aaec13854fa33809a575f0bef93a30030773ccf9b26225ab4",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-botanical-maidenhair-companions.jpg",
+    "title": "Maidenhair Companions",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "9cee6b3120ab",
+    "credit": "Eric Craig",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amgueddfa_Cymru_-_New_Zealand_Ferns_026_-_74384.jpeg",
+    "sourceTitle": "Amgueddfa Cymru - New Zealand Ferns 026 - 74384.jpeg",
+    "description": "\nCyanotypes of different ferns from New Zealand from \ta volume of 172 Cyanotypes of Ferns, Eric Craig 1892, second edition, page 26.\n55. Adiantum aethiopicum, Auckland.\n\n56. Adiantum diaphanum, Auckland.",
+    "originalSize": [
+      2998,
+      4000
+    ],
+    "artworkSize": [
+      1612,
+      1973
+    ],
+    "originalSha256": "958b9810e492f2d8f1b5292c15a6885c4e78af76726fa0253e89ad8be4152075",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-botanical-meadowsweet-silhouette.jpg",
+    "title": "Meadowsweet Silhouette",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "f00ae76d5971",
+    "credit": "Anna Atkins",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spiraea_aruncus_(Tyrol)_MET_DT5664.jpg",
+    "sourceTitle": "Spiraea aruncus (Tyrol) MET DT5664.jpg",
+    "description": "\nPhotogram; Photographs",
+    "originalSize": [
+      2631,
+      3722
+    ],
+    "artworkSize": [
+      1844,
+      2608
+    ],
+    "originalSha256": "4311663c444228271a19fe567e19d7f5360c166b02a8bd05389dc1086bde4272",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-botanical-new-zealand-fronds.jpg",
+    "title": "New Zealand Fronds",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "6b5f9550025a",
+    "credit": "Anna Atkins",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anna_Atkins_-_New_Zealand_-_Google_Art_Project.jpg",
+    "sourceTitle": "Anna Atkins - New Zealand - Google Art Project.jpg",
+    "description": "",
+    "originalSize": [
+      3086,
+      4309
+    ],
+    "artworkSize": [
+      2578,
+      3600
+    ],
+    "originalSha256": "78c859ebe1a38de47a7e3adabb0b8662ddab8aad1ae056c9fe32156f7e0d4b92",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-botanical-osmunda-branch.jpg",
+    "title": "Osmunda Branch",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "dc563d93083c",
+    "credit": "Anna Atkins",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anna_Atkins_-_Osmunda_Rigalis_(Australia)_-_Google_Art_Project.jpg",
+    "sourceTitle": "Anna Atkins - Osmunda Rigalis (Australia) - Google Art Project.jpg",
+    "description": "",
+    "originalSize": [
+      1631,
+      2400
+    ],
+    "artworkSize": [
+      1565,
+      2304
+    ],
+    "originalSha256": "02475ee1817d84236eac350ee11df04873401a2a4ccce174d2d173376c8c379c",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-botanical-ribbon-fern-study.jpg",
+    "title": "Ribbon Fern Study",
+    "category": "Botanical Blueprints",
+    "kind": "historic botanical cyanotype",
+    "hash": "6731f8d82842",
+    "credit": "Eric Craig",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amgueddfa_Cymru_-_New_Zealand_Ferns_044_-_74394.jpeg",
+    "sourceTitle": "Amgueddfa Cymru - New Zealand Ferns 044 - 74394.jpeg",
+    "description": "\nCyanotype of the fern Lomaria patersonii. The original specimen used to create the cyanotype was from Picton, New Zealand. From \ta volume of 172 Cyanotypes of Ferns, Eric Craig 1892, second edition, page 44.",
+    "originalSize": [
+      2998,
+      4000
+    ],
+    "artworkSize": [
+      1612,
+      1921
+    ],
+    "originalSha256": "c5308f5ea196f775fc60948e2eb5519f974b36bd2aa48e26fce6e60df51da25c",
+    "adaptation": "Scan borders cropped; resized without upscaling. Case preview crops the artwork to the print mask."
+  },
+  {
+    "file": "drop-golf-autumn-fairway.jpg",
+    "title": "Autumn Fairway",
+    "category": "Signature Golf",
+    "kind": "photograph",
+    "hash": "d8da9930d5c3",
+    "credit": "Michael Gil from Calgary, AB, Canada",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Autumn_golf_(8084229342).jpg",
+    "sourceTitle": "Autumn golf (8084229342).jpg",
+    "description": "FOUR!!! Imagine enjoying a round of golf on this scenic golf course! Have a great weekend everyone!",
+    "originalSize": [
+      3000,
+      2249
+    ],
+    "artworkSize": [
+      3000,
+      2249
+    ],
+    "originalSha256": "b52090fe8fc04f5dac608306706dcd51711f9662483adc9ed379224498de59aa",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-golf-links-poster.png",
+    "title": "Coastal Links Club",
+    "category": "Signature Golf",
+    "kind": "original AI-assisted illustration",
+    "hash": "ccc4de4d0b20",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "Coastal Links Club",
+    "description": "Original premium vintage screen-print travel-poster illustration of a coastal golf links: flowing emerald green fairway winding centrally between dune grasses to a small flag, ocean surf and distant cliffs, pale warm sand and deep navy ocean, restrained cream sun. No real named course, no words, no branding. Tall 1:2 phone-case artwork, edge-to-edge landscape, central narrow vertical composition, empty calm sky across upper 25 percent for camera cutout, beautiful paper grain and confident hand-drawn shapes, no border, no mockup, high native resolution.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-golf-dornoch-greens.jpg",
+    "title": "Dornoch Greens",
+    "category": "Signature Golf",
+    "kind": "photograph",
+    "hash": "b7b6e833b6cb",
+    "credit": "Bill Boaden ",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dornoch_Golf_Course_-_geograph.org.uk_-_3599767.jpg",
+    "sourceTitle": "Dornoch Golf Course - geograph.org.uk - 3599767.jpg",
+    "description": "Dornoch Golf Course ",
+    "originalSize": [
+      3872,
+      2592
+    ],
+    "artworkSize": [
+      3600,
+      2410
+    ],
+    "originalSha256": "766c5dc5a589b4da569240fff2ec9556a3b40b1884ed9055b7d86f727ab498a7",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-golf-dunbar-clubhouse.jpg",
+    "title": "Dunbar Clubhouse",
+    "category": "Signature Golf",
+    "kind": "photograph",
+    "hash": "5f10e65fbefd",
+    "credit": "Stephen Darlington ",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dunbar_Golf_Course_-_geograph.org.uk_-_4970541.jpg",
+    "sourceTitle": "Dunbar Golf Course - geograph.org.uk - 4970541.jpg",
+    "description": "Dunbar Golf Course ",
+    "originalSize": [
+      4608,
+      3072
+    ],
+    "artworkSize": [
+      3600,
+      2400
+    ],
+    "originalSha256": "e5f752fbf8501246d2d756cec3290c5a839ef5830953004a0240ddc88f1962b5",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-golf-fairway-clouds.jpg",
+    "title": "Fairway Clouds",
+    "category": "Signature Golf",
+    "kind": "photograph",
+    "hash": "3c8a76cb1c32",
+    "credit": "Fabricio Cardenas",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:20240521_-_Yamoussoukro_-_Golf.jpg",
+    "sourceTitle": "20240521 - Yamoussoukro - Golf.jpg",
+    "description": "The golf in Yamoussoukro.",
+    "originalSize": [
+      4000,
+      3000
+    ],
+    "artworkSize": [
+      3600,
+      2700
+    ],
+    "originalSha256": "28520f9206b7faec8066587218dc758bbbfd0e5a4abc9535e97d108d41f62b49",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-golf-first-tee-sunrise.jpg",
+    "title": "First Tee Sunrise",
+    "category": "Signature Golf",
+    "kind": "photograph",
+    "hash": "576ca0145ee8",
+    "credit": "allen watkin from London, UK",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sunrise_on_the_golf_course_1_(3150302521).jpg",
+    "sourceTitle": "Sunrise on the golf course 1 (3150302521).jpg",
+    "description": "Frosty start to the day,Reigate Heath Golf Club,Dec 2008",
+    "originalSize": [
+      2816,
+      2112
+    ],
+    "artworkSize": [
+      2816,
+      2112
+    ],
+    "originalSha256": "d3c7c7c9d773238ac7fafb23e7a8812d5c36dd0603a434c759cd52032e4e5003",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-golf-little-bay-links.jpg",
+    "title": "Little Bay Links",
+    "category": "Signature Golf",
+    "kind": "photograph",
+    "hash": "22dbc52ebf77",
+    "credit": "J Bar",
+    "license": "CC BY 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Coast_Golf_Course_Little_Bay.JPG",
+    "sourceTitle": "The Coast Golf Course Little Bay.JPG",
+    "description": "The Coast Golf Course, Little Bay, Sydney",
+    "originalSize": [
+      2560,
+      1920
+    ],
+    "artworkSize": [
+      2560,
+      1920
+    ],
+    "originalSha256": "35f0de4e6cb3260fa48aa8da528fc097ca8e02579ba719df289c7b23c66d272f",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-golf-sunday-bag.png",
+    "title": "Sunday Golf Club",
+    "category": "Signature Golf",
+    "kind": "original AI-assisted illustration",
+    "hash": "e1457a423040",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "Sunday Golf Club",
+    "description": "Original premium vintage gouache and engraved editorial illustration: a handsome forest-green golf bag holding classic irons and wooden clubs beside a few golf balls on softly rolling fairway, delicate wildflowers, warm butter yellow sky and ink navy accents. Entire bag and clubs centered in lower 65 percent with space above for phone camera. Tall 1:2 phone-case artwork, sophisticated timeless sporting print, subtle paper texture, no words, no branding, no frame, no mockup, high native resolution.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-golf-the-autumn-round.jpg",
+    "title": "The Autumn Round",
+    "category": "Signature Golf",
+    "kind": "photograph",
+    "hash": "17f3e11b81b6",
+    "credit": "Des Blenkinsopp ",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Autumn_on_the_Golf_Course_-_geograph.org.uk_-_5186027.jpg",
+    "sourceTitle": "Autumn on the Golf Course - geograph.org.uk - 5186027.jpg",
+    "description": "Autumn on the Golf Course ",
+    "originalSize": [
+      3544,
+      2224
+    ],
+    "artworkSize": [
+      3544,
+      2224
+    ],
+    "originalSha256": "da67ec27beaf46d07299bbb3b41c090739f4e81a73775a2ac75bfbadfbcdc9c5",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-golf-tynedale-morning.jpg",
+    "title": "Tynedale Morning",
+    "category": "Signature Golf",
+    "kind": "photograph",
+    "hash": "770bbf8ce295",
+    "credit": "Clive Nicholson ",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Autumn_morning_at_Tynedale_Golf_course_-_geograph.org.uk_-_6658466.jpg",
+    "sourceTitle": "Autumn morning at Tynedale Golf course - geograph.org.uk - 6658466.jpg",
+    "description": "Autumn morning at Tynedale Golf course ",
+    "originalSize": [
+      4000,
+      3000
+    ],
+    "artworkSize": [
+      3600,
+      2700
+    ],
+    "originalSha256": "2a18b6ec5758538f4af6d90fbb320153ab7355a2f55191ca948592e24fe9e3e3",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-season-autumn-lake-stillness.jpg",
+    "title": "Autumn Lake Stillness",
+    "category": "Seasonal Weather",
+    "kind": "photograph",
+    "hash": "0ed8d4c8d151",
+    "credit": "Eric Kilby",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Foggy_Reflections_-_Loch_Tummel.jpg",
+    "sourceTitle": "Foggy Reflections - Loch Tummel.jpg",
+    "description": "Foggy Reflections - Loch Tummel",
+    "originalSize": [
+      8175,
+      5450
+    ],
+    "artworkSize": [
+      3600,
+      2400
+    ],
+    "originalSha256": "44e548d1747ced93bc8881734c1fbac0f074b3e368ae8b619030fb44caa2cd74",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-season-blossom-blush.jpg",
+    "title": "Blossom Blush",
+    "category": "Seasonal Weather",
+    "kind": "photograph",
+    "hash": "e204264236e6",
+    "credit": "W.carter",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Three_pink_cherry_blossoms_in_Tuntorp.jpg",
+    "sourceTitle": "Three pink cherry blossoms in Tuntorp.jpg",
+    "description": "Pink cherry blossoms (Prunus sect. Cerasus) in spring at Sågvägen, Tuntorp, Brastad, Lysekil Municipality, Sweden.",
+    "originalSize": [
+      4721,
+      3148
+    ],
+    "artworkSize": [
+      3600,
+      2401
+    ],
+    "originalSha256": "a45a7429045c4a40f00ef9915cc52b490ba0c9ad8a7d4621d2f1c5b3c68f8c4e",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-season-cape-town-sundown.jpg",
+    "title": "Cape Town Sundown",
+    "category": "Seasonal Weather",
+    "kind": "photograph",
+    "hash": "41c3deb005d7",
+    "credit": "Phumzile Phala",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_of_the_summer_sunset_from_Sunset_Beach,_Cape_Town.jpg",
+    "sourceTitle": "View of the summer sunset from Sunset Beach, Cape Town.jpg",
+    "description": "View of the sunset against the backdrop of Table Mountain and Lion's Head from Sunset Beach, Cape Town",
+    "originalSize": [
+      5312,
+      2988
+    ],
+    "artworkSize": [
+      3600,
+      2025
+    ],
+    "originalSha256": "e25b81dc7709ac8db29e8fbfe76e58e4230dde3a38dba45d210a2027104d57af",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-season-first-spring-buds.jpg",
+    "title": "First Spring Buds",
+    "category": "Seasonal Weather",
+    "kind": "photograph",
+    "hash": "50f42544d499",
+    "credit": "W.carter",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cherry_blossom_buds_1.jpg",
+    "sourceTitle": "Cherry blossom buds 1.jpg",
+    "description": "Buds on branches of a cherry tree (Prunus sect. Cerasus), Gåseberg, Lysekil Municipality, Sweden.",
+    "originalSize": [
+      4834,
+      2719
+    ],
+    "artworkSize": [
+      3600,
+      2025
+    ],
+    "originalSha256": "0c761ae5f97aff2539d50de2741e7e6ae727bc9c623d1493e6bb580867c56ec4",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-season-golden-forest-path.jpg",
+    "title": "Golden Forest Path",
+    "category": "Seasonal Weather",
+    "kind": "photograph",
+    "hash": "213d50a723ab",
+    "credit": "Dietmar Rabich",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:D%C3%BClmen,_B%C3%B6rnste,_Waldweg_--_2015_--_4649.jpg",
+    "sourceTitle": "Dülmen, Börnste, Waldweg -- 2015 -- 4649.jpg",
+    "description": "Autumn in the Börnste hamlet, Kirchspiel, Dülmen, North Rhine-Westphalia, Germany",
+    "originalSize": [
+      4645,
+      2879
+    ],
+    "artworkSize": [
+      3600,
+      2231
+    ],
+    "originalSha256": "197ba18e61bf632e14ab98023cfde329be3400de431129b5524c1150a4f4420f",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-season-into-the-autumn-mist.jpg",
+    "title": "Into the Autumn Mist",
+    "category": "Seasonal Weather",
+    "kind": "photograph",
+    "hash": "937930704faf",
+    "credit": "Sergey Pesterev",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Foggy_autumn_forest_in_the_morning.jpg",
+    "sourceTitle": "Foggy autumn forest in the morning.jpg",
+    "description": "Foggy autumn forest in the morning. Moscow region, Russia.",
+    "originalSize": [
+      3657,
+      5485
+    ],
+    "artworkSize": [
+      1920,
+      2880
+    ],
+    "originalSha256": "e29294b00d8b6d3f179641fbb327c7d1d9fc0abd31beae488cc3bc86afa47e4c",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-season-powder-pink-dawn.jpg",
+    "title": "Powder Pink Dawn",
+    "category": "Seasonal Weather",
+    "kind": "photograph",
+    "hash": "54fb9beb5e71",
+    "credit": "Eric Kilby",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Powder_Mountain_-_Sunrise_Clouds.jpg",
+    "sourceTitle": "Powder Mountain - Sunrise Clouds.jpg",
+    "description": "Powder Mountain - Eden, Utah",
+    "originalSize": [
+      8165,
+      5443
+    ],
+    "artworkSize": [
+      3600,
+      2400
+    ],
+    "originalSha256": "cd833b0eef7a05cd81ec584140cfe3ecefe51d7a465721d1fdaf27534d296dc4",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-season-snowfall-rose.jpg",
+    "title": "Snowfall Rose",
+    "category": "Seasonal Weather",
+    "kind": "photograph",
+    "hash": "f83719b2330d",
+    "credit": "Vitalii Bashkatov",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%A0%D0%BE%D0%B6%D0%B5%D0%B2%D0%B8%D0%B9_%D1%80%D0%B0%D0%BD%D0%BE%D0%BA_%D0%B2_%D2%90%D0%BE%D1%80%D2%91%D0%B0%D0%BD%D0%B0%D1%85.jpg",
+    "sourceTitle": "Рожевий ранок в Ґорґанах.jpg",
+    "description": "Winter morning in the Gorgany mountain range, Nadvirna Raion, Ivano-Frankivsk Oblast, Ukraine",
+    "originalSize": [
+      6000,
+      4000
+    ],
+    "artworkSize": [
+      3600,
+      2400
+    ],
+    "originalSha256": "0cf4bdfe1fea1b9298dc45ebad262b69f4fef0e01e78633c600e83d29dd99530",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-season-spring-rain-leaf.jpg",
+    "title": "Spring Rain Leaf",
+    "category": "Seasonal Weather",
+    "kind": "photograph",
+    "hash": "e31f93029324",
+    "credit": "Heath Cajandig",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spring_Rain_(17014468511).jpg",
+    "sourceTitle": "Spring Rain (17014468511).jpg",
+    "description": "Spring Rain",
+    "originalSize": [
+      2322,
+      3391
+    ],
+    "artworkSize": [
+      1920,
+      2804
+    ],
+    "originalSha256": "dd4a2e00bca56374c47d1d20f34d1c6d0b9b12cf26f9ad08bdb048338de4912d",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-season-summer-pier.jpg",
+    "title": "Summer Pier",
+    "category": "Seasonal Weather",
+    "kind": "photograph",
+    "hash": "e0e4e708698a",
+    "credit": "The original uploader was Estrategy at English Wikipedia.",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hermosa_beach_summer_sunset_surf.jpg",
+    "sourceTitle": "Hermosa beach summer sunset surf.jpg",
+    "description": "Sunset surf in Hermosa Beach in July of 2006\nPhotographed and uploaded by user Estrategy",
+    "originalSize": [
+      2347,
+      1729
+    ],
+    "artworkSize": [
+      2347,
+      1729
+    ],
+    "originalSha256": "4dba639f66a60583b220838ad85bc361ce398fbe198aaaf82a00d3efdd7be102",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-season-sunflower-summer.jpg",
+    "title": "Sunflower Summer",
+    "category": "Seasonal Weather",
+    "kind": "photograph",
+    "hash": "8e939dbbe6db",
+    "credit": "Faisal Iqbal",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sunflowers_and_the_Sun.jpg",
+    "sourceTitle": "Sunflowers and the Sun.jpg",
+    "description": "Somewhere near Ahmadpur, Punjab",
+    "originalSize": [
+      5184,
+      3456
+    ],
+    "artworkSize": [
+      3600,
+      2400
+    ],
+    "originalSha256": "0603b279d9ea58ee59ec713cfb60534d20ea33980acaefb52c3d7c2debba221d",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-season-winter-lake-mirror.jpg",
+    "title": "Winter Lake Mirror",
+    "category": "Seasonal Weather",
+    "kind": "photograph",
+    "hash": "7df4156d4966",
+    "credit": "Sergey Pesterev",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sunrise_at_Maligne_lake.jpg",
+    "sourceTitle": "Sunrise at Maligne lake.jpg",
+    "description": "Canada, Jasper National Park. Sunrise at Maligne lake.",
+    "originalSize": [
+      7360,
+      4912
+    ],
+    "artworkSize": [
+      3600,
+      2403
+    ],
+    "originalSha256": "963d2a5964b56aeb216489d1af278078f6f6ddc0fded20cb014aeb82802d2db6",
+    "adaptation": "Resized without upscaling. Case preview crops the photograph to the print mask."
+  },
+  {
+    "file": "drop-tarot-death.png",
+    "title": "Death",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "8f7074c3a897",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "Death",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: Death. An ornate hourglass beside a small elegant skull nestled in blooming roses and leaves, a butterfly above. Symbol of renewal, no gore, no bodies.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-judgement.png",
+    "title": "Judgement",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "ea80cfb42921",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "Judgement",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: Judgement. A beautiful winged trumpet surrounded by a rising sun halo, drifting clouds and awakening flowers. Symbolic still life, no text, no people.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-justice.png",
+    "title": "Justice",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "7d005ece4449",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "Justice",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: Justice. A symmetrical upright sword with balanced suspended scales, botanical laurel framing, celestial crown; elegant symbolic still life, no person.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-strength.png",
+    "title": "Strength",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "5aee02a11ab7",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "Strength",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: Strength. A serene fully clothed woman gently resting a hand on the head of a full-bodied lion, wildflowers and tiny infinity symbol.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-temperance.png",
+    "title": "Temperance",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "5566d87684a4",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "Temperance",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: Temperance. A fully clothed graceful winged angel carefully pouring a fine stream of water between two cups, irises and water lilies below.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-chariot.png",
+    "title": "The Chariot",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "ab1689d298e4",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "The Chariot",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: The Chariot. An elegant ornate chariot with a standing fully clothed armored rider, two complete horses at rest, stars and laurel.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-devil.png",
+    "title": "The Devil",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "422a782b4325",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "The Devil",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: The Devil. A sculptural horned goat head above two loose broken chain links, thornless rose vines and small celestial sparks. Ornamental symbolic engraving, no nudity or violence.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-emperor.png",
+    "title": "The Emperor",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "3898aa0c0c03",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "The Emperor",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: The Emperor. A dignified armored emperor seated on a stone throne with ram head carvings, orb and scepter, mountain sprigs.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-empress.png",
+    "title": "The Empress",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "a4dc54ac70f4",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "The Empress",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: The Empress. A regal fully clothed woman seated in a botanical throne with wheat and wild roses, twelve tiny stars crowning her hair.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-fool.png",
+    "title": "The Fool",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "adbded66e1e4",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "The Fool",
+    "description": "Original gold and ivory copperplate engraving of a full-length traveler and small dog stepping toward a rocky ledge, midnight navy background, botanical sprigs, phone-safe centered composition, no text or border.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-hanged-man.png",
+    "title": "The Hanged Man",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "32f5dd7483d5",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "The Hanged Man",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: The Hanged Man. A peaceful fully clothed young person suspended upside-down by ONE ankle from a living branch, other leg bent gently, hands behind back, radiant halo. Classic serene tarot symbolism, no injury or distress.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-hermit.png",
+    "title": "The Hermit",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "3442faee2022",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "The Hermit",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: The Hermit. A full-length cloaked elder standing on a rocky summit holding a glowing six-point star lantern and walking staff, alpine botanicals.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-hierophant.png",
+    "title": "The Hierophant",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "e45803cc3819",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "The Hierophant",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: The Hierophant. An ornate ceremonial triple crown suspended above two crossed keys, framed by restrained laurel and gothic arch engraving; symbolic still life, no people.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-high-priestess.png",
+    "title": "The High Priestess",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "69d20cb5ff45",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "The High Priestess",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: The High Priestess. A serene fully clothed priestess seated between two slender pillars with crescent moon at her feet, closed book in lap, pomegranate sprigs.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-magician.png",
+    "title": "The Magician",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "b76320907d48",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "The Magician",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: The Magician. A robed magician raising a wand, small altar with cup, sword, coin and wand, roses and lilies, infinity motif above.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-tower.png",
+    "title": "The Tower",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "baa0425afc17",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "The Tower",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: The Tower. A tall ancient stone tower struck by a delicate lightning bolt, crown lifting from the top, swirling clouds, no people or injuries.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-world.png",
+    "title": "The World",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "47226c524329",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "The World",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: The World. A circular laurel wreath surrounding a small globe with engraved continents, four tiny celestial stars, flowing ribbon and flowers. Balanced complete emblem.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  },
+  {
+    "file": "drop-tarot-wheel-of-fortune.png",
+    "title": "Wheel of Fortune",
+    "category": "Tarot",
+    "kind": "original AI-assisted illustration",
+    "hash": "59d06aa35aa5",
+    "credit": "Keepsake · original AI-assisted artwork",
+    "license": "Original artwork",
+    "licenseUrl": "",
+    "sourceUrl": "",
+    "sourceTitle": "Wheel of Fortune",
+    "description": "Create ONE original premium phone-case artwork, portrait 1:2, maximum native resolution. Delicate antique gold and warm ivory copperplate engraving on perfectly solid midnight navy #142336. Match a cohesive luxury celestial botanical tarot collection, intricate fine engraved shading, restrained sparse gold stars. NO LETTERING, NO NUMBERS, NO BORDERS, no phone or card mockup. Full main subject centered horizontally entirely within central 70% width and between 30% and 78% of image height, full figures and complete ornamental shapes, generous plain navy top camera zone. Major Arcana: Wheel of Fortune. An ornate eight-spoked celestial wheel with subtle zodiac ornaments, clouds, laurel and scattered stars; exact radial symmetry.",
+    "originalSize": [
+      887,
+      1774
+    ],
+    "artworkSize": [
+      887,
+      1774
+    ],
+    "adaptation": "Original generated artwork, saved at native resolution. No upscaling.",
+    "generationMethod": "built-in image_gen"
+  }
+]
