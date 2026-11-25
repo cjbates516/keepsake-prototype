@@ -245,7 +245,7 @@
  .setup-open #colorwayButtons button{flex:none;scroll-snap-align:start;font-size:14px!important;min-height:44px!important}
 }
 </style>
-<link rel="stylesheet" href="../assets/case-zoom.css">
+<link rel="stylesheet" href="../assets/case-zoom.css?v=rated-all-20261124">
 <link rel="stylesheet" href="../assets/accessories.css">
 <script src="../assets/accessory-catalog.js"></script>
 <script src="../assets/accessories.js?v=2"></script>
@@ -830,6 +830,8 @@
   var loadWatch = setTimeout(function () { if (!data) { last = Date.now(); show(0); } }, 25000);
   KPI.load().then(function (d) {
     clearTimeout(loadWatch);
+    /* a phone list that did not arrive counts as a failed load, so the screen reloads itself instead of selling frost as clear */
+    if(!window.KPFrostSamples||!window.KP_RATED_PHONES)throw Error('Case list missing');
     data = d;$('casePricePromise').textContent='Clear $44.99 · Frost $49.99';
     if (state.screen === 0) show(1);
     buildPhones();

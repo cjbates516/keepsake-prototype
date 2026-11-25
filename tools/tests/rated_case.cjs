@@ -158,18 +158,18 @@ async function closeReview(p){await p.locator('#reviewEditDesign').click();await
    check(tag+' Rated swaps the case photo: dark Smoke Frost rim where the clear case was',lum(r1.rim)<110&&Math.abs(lum(r1.rim)-lum(clearRim))>40&&net.some(u=>u.includes('/assets/cases/rated-iph17pmx-smoke.webp')),{rated:r1.rim,clear:clearRim});
    check(tag+' Rated loads its panel mask and light map',net.some(u=>u.includes('/assets/masks/view-rated-iph17pmx.png'))&&net.some(u=>u.includes('/assets/cases/rated-light.jpg')));
    check(tag+' Rated total $49.99, header and rim chips',r1.total==='$49.99'&&r1.head==='iPhone 17 Pro Max · Smoke Frost'&&!r1.rimHidden&&r1.chips.join()==='Smoke Frost*,Clear Frost',r1);
-   if(phone)await tool(page,'phone');
+   await tool(page,'phone');
    const lab=await page.evaluate(()=>{const l=document.getElementById('studioRimLabel'),r=l.getBoundingClientRect();return {text:l.textContent,shown:r.width>0&&r.height>0&&getComputedStyle(l).visibility!=='hidden',by:document.getElementById('studioRim').getAttribute('aria-labelledby')};});
    check(tag+' rim chips carry a visible Rim color label that names the group',lab.text==='Rim color'&&lab.shown&&lab.by==='studioRimLabel',lab);
-   if(phone)await done(page);
-   if(phone)await tool(page,'phone');
+   await done(page);
+   await tool(page,'phone');
    const t=await page.evaluate(()=>[...document.querySelectorAll('#studioCase .studio-case-opt,#studioRim .studio-rim-chip')].map(e=>Math.round(e.getBoundingClientRect().height)));
    check(tag+' case and rim targets are at least 44 px tall',t.every(h=>h>=44),t);
    if(phone){
     const vis=await page.evaluate(()=>[...document.querySelectorAll('#studioRim .studio-rim-chip')].every(l=>{l.scrollIntoView({block:'nearest'});const r=l.getBoundingClientRect(),h=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return r.height>0&&!!h&&l.contains(h);}));
     check(tag+' rim chips reachable in the Phone sheet',vis);
-    await done(page);
    }
+   await done(page);
    check(tag+' no horizontal overflow with the Rated Case',await noOverflow(page));
    await shot(page,engine+'-'+width+'-rated-smoke');
    /* 3. rim chips swap the photo */
@@ -495,7 +495,7 @@ async function closeReview(p){await p.locator('#reviewEditDesign').click();await
    const tag=engine+' 768x1024';
    const ctx=await browser.newContext({serviceWorkers:'block',viewport:{width:768,height:1024},hasTouch:true});const page=await ctx.newPage();const errors=[];await hooked(page,errors);
    for(const q of ['','&rim=Clear+Frost','&case=clear']){
-   await page.goto(base+'customizer.html?model='+MODEL+'&design=boho-floral-01.jpg'+q);await editorReady(page);await settled(page);
+   await page.goto(base+'customizer.html?model='+MODEL+'&design=boho-floral-01.jpg'+q);await editorReady(page);await settled(page);await tool(page,'phone');
    const tt=await page.evaluate(()=>[...document.querySelectorAll('#studioCase .studio-case-opt strong')].map(s=>{const name=s.firstElementChild,price=s.querySelector('.studio-case-price'),sep=s.querySelector('.studio-case-sep');
     const lines=e=>[...new Map([...e.getClientRects()].map(q=>[Math.round(q.top),q])).values()],nr=lines(name),pr=lines(price);return {text:s.innerText.replace(/\n/g,' / '),nameLines:nr.length,priceLines:pr.length,sameLine:pr.length===1&&nr.length===1&&Math.abs(pr[0].top-nr[0].top)<2,sepShown:getComputedStyle(sep).display!=='none'};}));
    check(tag+' '+(q||'default')+' case titles keep the name whole and the price whole (own line on a narrow stage)',tt.length===2&&tt.every(t=>t.nameLines===1&&t.priceLines===1&&(t.sameLine||!t.sepShown))&&tt[1].text.startsWith(q==='&case=clear'?'Frost case':q?'Clear Frost':'Smoke Frost'),tt);}
@@ -527,7 +527,7 @@ async function closeReview(p){await p.locator('#reviewEditDesign').click();await
    await p.evaluate(()=>KPStudioCore.setCase('MagSafe Clear'));check(tag+' the clear case cannot be chosen there',(await st(p)).ct===RATED);
    await p.reload();await editorReady(p);await p.waitForFunction(()=>!__kp.state.libraryLoading);await settled(p);s=await st(p);
    check(tag+' reload on the Pixel: Rated Case, no toast',s.ct===RATED&&!s.toast,s);
-   await setModel(p,'iPhone 17 Pro Max');s=await st(p);
+   await setModel(p,'iPhone 17 Pro Max');if(await p.evaluate(()=>KPEditor.tool!=='phone'))await tool(p,'phone');s=await st(p);
    check(tag+' back on iPhone 17 Pro Max the clear choice is back',s.ct===CLEAR&&s.total===44.99&&s.clear&&/[?&]case=clear(&|$)/.test(s.url)&&!/[?&]rim=/.test(s.url),s);
    await pickCase(p,RATED);await setModel(p,'Google Pixel 10');await clearToast(p);await setModel(p,'iPhone 17 Pro Max');s=await st(p);
    check(tag+' an explicit Rated choice survives a Rated only phone',s.ct===RATED&&/case=rated/.test(s.url),s);
@@ -715,7 +715,7 @@ async function closeReview(p){await p.locator('#reviewEditDesign').click();await
    p=await open('model=iphone-duo',null,c2);if(!(await p.evaluate(()=>KPEditor.tool==='photo')))await tool(p,'photo');
    check(tag+' 390 Duo: the layouts note has room above it',await p.evaluate(()=>{const n=document.getElementById('studioLayoutsWait'),r=n.getBoundingClientRect(),above=[...document.querySelectorAll('#studio-photo *')].filter(e=>!e.contains(n)&&!n.contains(e)&&e.getClientRects().length&&e.getBoundingClientRect().bottom<=r.top+1).map(e=>e.getBoundingClientRect().bottom);return r.height>0&&r.top-Math.max(...above)>=10;}));
    await p.close();await c2.close();
-   const c3=await browser.newContext({serviceWorkers:'block',viewport:{width:1440,height:900}});p=await open('model=galaxy-s25',null,c3);
+   const c3=await browser.newContext({serviceWorkers:'block',viewport:{width:1440,height:900}});p=await open('model=galaxy-s25',null,c3);await tool(p,'phone');
    check(tag+' 1440 the rim label does not touch the case card',await p.evaluate(()=>document.getElementById('studioRim').getBoundingClientRect().top-document.querySelector('.studio-case-options').getBoundingClientRect().bottom>=6));
    await p.close();await c3.close();
   }
