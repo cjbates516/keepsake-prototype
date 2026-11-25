@@ -109,6 +109,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 </style>
 <script src="assets/kp-config.js?v=rated-3"></script>
 <script src="assets/heic-loader.js"></script>
+<script src="assets/photo-screening.js?v=worker-1"></script>
 <script src="assets/colorway-catalog.js?v=full-art-2-20261121"></script>
 <script src="assets/design-colorways.js?v=full-art-2-20261121"></script>
 <script src="instore/instore-lib.js?v=counter-finish-20261124"></script>
@@ -1584,7 +1585,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* ── iOS: repaint after app-switch (Safari purges canvases), free GPU while hidden ── */
   document.addEventListener('visibilitychange',function(){
     if(document.visibilityState==='visible'){ render(); }
-    else { try{ if(kpScreen.model){ kpScreen.model.model.dispose(); kpScreen.model=null; } }catch(_){ kpScreen.model=null; } }
+    else { try{ if(kpScreen.model&&!kpScreen.model.worker){ kpScreen.model.model.dispose(); kpScreen.model=null; } }catch(_){ kpScreen.model=null; } }
   });
   window.addEventListener('pageshow',function(){ render(); });
 
@@ -1592,6 +1593,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   var kpScreen={model:null,loading:false};
   function kpLoadScript(src){ return new Promise(function(res,rej){ var sc=document.createElement('script'); sc.src=src; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }); }
   function kpEnsureScreen(cb){
+    if(window.Worker&&window.KPPhotoScreen){kpScreen.model={worker:true,classify:KPPhotoScreen.classify,model:{dispose:KPPhotoScreen.dispose}};cb();return;}
     if(kpScreen.model){ cb(); return; }
     if(kpScreen.loading){ setTimeout(function(){ kpEnsureScreen(cb); }, 500); return; }
     kpScreen.loading=true;
@@ -1609,6 +1611,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
       if(!kpScreen.model){ owner.__kpScreened=true; return; }
       if(!live()) return;
       kpScreen.model.classify(img).then(function(preds){
+        if(!live())return;
         var bad=0;
         owner.__kpScreened=true;
         preds.forEach(function(p){ if(p.className==='Porn'||p.className==='Hentai') bad+=p.probability; });
@@ -1749,6 +1752,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
         updateUploadLabel();renderFilterChips();updateDpi();updateStage();updateSummary();
       }
       kpScreenCanvas(src);
+      if(slot==null&&!state.layout)requestAnimationFrame(function(){if(current()&&state.photoImg===src)document.dispatchEvent(new Event('kp:photo-ready'));});
     }
     img.onload=function(){accept(img);};img.onerror=failed;
     function fallback(){if(current())img.src=url;else URL.revokeObjectURL(url);}
@@ -3195,6 +3199,22 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   window.KPStudioCore={
     snapshot:editorSnapshot,
+    // Display-only mounted samples. Never uses or modifies the customer's artwork or print geometry.
+    caseSample:async function(rimName){
+      var model=state.model,k=KITS[model],rated=k&&k.rated;
+      if(!rated)throw Error('No frost preview for this phone');
+      var rim=rated.colors.find(function(c){return c.n===rimName;})||rated.colors[0];
+      var finish=k.colors.find(function(c){return c.n===state.colorName;})||k.colors[0];
+      var geometry=(window.KP_MASK_GEOMETRY||{})[rated.view];
+      if(!geometry)throw Error('Case preview mask unavailable');
+      function image(file){return new Promise(function(resolve,reject){var im=new Image();im.onload=function(){resolve(im);};im.onerror=function(){reject(Error('Case photo unavailable'));};im.src='assets/cases/'+file;});}
+      var images=await Promise.all([image(rim.f),image(finish.f)]);
+      var out=document.createElement('canvas');out.width=1000;out.height=1200;
+      var g=out.getContext('2d');g.scale(.4,.4);g.drawImage(images[0],0,0,DIM.w,DIM.h);
+      g.save();g.beginPath();geometry.rows.forEach(function(row){for(var j=2;j<row.length;j+=2)g.rect(row[j],row[0],row[j+1]-row[j],row[1]-row[0]);});
+      g.clip();g.drawImage(images[1],0,0,DIM.w,DIM.h);g.restore();drawRatedPhoneCamera(g,images[1],rated);
+      var url=out.toDataURL('image/webp',.92);out.width=out.height=0;return url;
+    },
     // Small, display-only previews for the visual background strip. Never changes selection or print state.
     lookPreview:function(look){
       if(!caseReady||!finishReady||(viewImg&&!viewReady)||!state.photoImg)return null;
@@ -3229,7 +3249,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     setCase:kpSetCase,
     setRim:kpSetRim,
     purge:function(){
-      editorPurged=true;clearTimeout(window.__kpDpiTick);
+      editorPurged=true;clearTimeout(window.__kpDpiTick);window.KPPhotoScreen?.dispose();
       if(skyStudio)$('personalStudio').dispatchEvent(new Event('skyreset'));
       kpLibraryRequest++;kpUploadRequest++;releaseWorkingPhoto();state.photoImg=null;state.photoUrl=null;state.text='';
       /* layouts: spot photos are detached canvases, so free them here; drop the layout, its words and pending spot loads */

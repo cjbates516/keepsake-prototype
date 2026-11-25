@@ -236,6 +236,7 @@
   function travel(back){remember();if(back?undo.length<2:!redo.length)return;if(back)redo.push(undo.pop());else undo.push(redo.pop());applying=true;core.restore(undo.at(-1));applying=false;historyButtons();sync();}
   function rememberSoon(){if(purged)return;if(core.context()!==context)remember();sync();clearTimeout(pending);pending=setTimeout(remember,350);}
   document.addEventListener('kp:editor-change',rememberSoon);
+  document.addEventListener('kp:photo-ready',()=>{if(!purged&&step==='edit'&&core.info().hasPhoto&&!core.info().layout)openTool('adjust');});
   document.addEventListener('kp:editor-purge',()=>{purged=true;if(accessoryDialog.open)accessoryDialog.close();accessorySummary.replaceChildren();clearTimeout(thumbTimer);clearTimeout(pending);undo=[];redo=[];$('studioReviewDetails').replaceChildren();$('studioStatus').textContent='';});
   $('studioUndo').onclick=()=>travel(true);$('studioRedo').onclick=()=>travel(false);
   document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!e.target.closest('input,textarea,select')&&step==='edit'&&!document.querySelector('dialog[open]')){e.preventDefault();travel(!e.shiftKey);}});
