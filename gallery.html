@@ -99,7 +99,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 </style>
 <link rel="stylesheet" href="assets/storefront.css">
 <script src="assets/case-shell.js?v=clear-mounted-2"></script>
-<script src="assets/print-layouts.js?v=rated-all-20261124"></script><script src="assets/rated-phones.js?v=rated-all-20261124"></script><script src="assets/rated-camera-geometry.js?v=rated-all-20261124"></script><script src="assets/frost-samples.js?v=rated-all-20261124"></script>
+<script src="assets/print-layouts.js?v=rated-all-20261124"></script><script src="assets/rated-phones.js?v=rated-all-20261124"></script><script src="assets/rated-camera-geometry.js?v=rated-all-20261124"></script><script src="assets/frost-cases.js?v=rated-all-20261124"></script>
 <script src="assets/colorway-catalog.js?v=full-art-2-20261121"></script>
 <script src="assets/design-colorways.js?v=full-art-2-20261121"></script>
 <link rel="stylesheet" href="assets/shop-refresh.css?v=frost-20261124">
@@ -180,7 +180,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* the same rule as kpSlug in customizer.html; a phone's name also matches with its brand in front, and the moto g 2025 and
      2026 with the 5G some shops add */
   function slugify(m){ return m.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
-  function findDevice(text){ var slug=slugify(String(text||'')).replace(/^(apple|samsung|google|motorola)-/,'').replace(/^moto-g-5g-(2025|2026)$/,'moto-g-$1'); return DEVICE_ORDER.find(function(m){ return slugify(m)===slug; })||null; }
+  function findDevice(text){ var slug=slugify(String(text||'').replace(/(\d)\+/g,'$1 plus')).replace(/^(apple|samsung|google|motorola)-/,'').replace(/^moto-g-5g-(2025|2026)$/,'moto-g-$1'); return DEVICE_ORDER.find(function(m){ return slugify(m)===slug; })||null; }
   function brandOf(m){ return RATED.only[m]?RATED.only[m].brand:m.indexOf('Galaxy')===0?'Samsung':'Apple'; }
 
   var designs = [], filter = 'All', device = null;
@@ -431,12 +431,13 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     return JSON.stringify([device,file,finish,look||artworkPicks[file]||'original',previewMode]);
   }
   async function renderCase(cv, file, colorIdx){
-    const ticket=cv.__frostTicket=(cv.__frostTicket||0)+1;
     if(!cv.width||!cv.isConnected||colorIdx!==+cv.dataset.color)return;
     const model=device||sampleModel;
     var layer = caseLayers[model + '|' + colorIdx];
     var dImg = designImgs[file];
     if (!layer || !dImg?.naturalWidth) return;
+    /* taken after the checks: a late photo of an older finish must not cancel the newer one */
+    const ticket=cv.__frostTicket=(cv.__frostTicket||0)+1;
     dImg.__kpDesignFile=file;loadArtworkThumbs(cv.closest('.kpCard'),dImg);
     let frost=null;if(!ratedOnly(model))try{frost=await KPFrostSamples.prepare(model,file,'assets/cases/'+KP_DEVICES[model].colors[colorIdx].f,cv.width,cv.height);}catch{cv.closest('button').querySelector('.zoom-hint').textContent='Preview unavailable';return;}
     // Scrolling can release an offscreen canvas while the frost shell loads.
@@ -737,7 +738,10 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   /* the "use your own photo" links open the editor on the chosen phone, in a case it comes in, and come back here (the header
      one is written by shop-menu.js, which runs before DOMContentLoaded; the menu ones are written as it opens) */
   function photoLink(a) {
-    var url=new URL(a.href), frost=device&&KPFrostSamples.config(device,null,url.searchParams.get('rim'));
+    var url=new URL(a.href);
+    if(a.dataset.rim===undefined) a.dataset.rim=url.searchParams.get('rim')||'';
+    /* the link's own rim, so a phone with one rim never changes the next phone's */
+    var frost=device&&KPFrostSamples.config(device,null,a.dataset.rim);
     ['model','back'].forEach(function(k){ url.searchParams.delete(k); });
     if(device){
       url.searchParams.set('model',slugify(device));

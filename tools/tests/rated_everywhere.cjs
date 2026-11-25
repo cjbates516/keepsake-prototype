@@ -58,7 +58,7 @@ check('both phones with 20 ft: the price line says it right',both.every(m=>price
 check('printing a Rated Case stays locked',cfg.RATED_PRINT_READY===false&&models.every(m=>!kits[m].rated||kits[m].rated.template!=='measured'));
 
 /* ---- files ---- */
-const win={};vm.runInNewContext(read('assets/rated-phones.js')+read('assets/rated-camera-geometry.js')+read('assets/frost-samples.js'),{window:win});
+const win={};vm.runInNewContext(read('assets/rated-phones.js')+read('assets/rated-camera-geometry.js')+read('assets/frost-cases.js'),{window:win});
 const listed=win.KP_RATED_PHONES,samples=win.KPFrostSamples,rimList=m=>kits[m].rated.colors.map(({n,h,f,edge})=>({n,h,f,edge}));
 /* the whole answer KPFrostSamples must give for one phone and rim, from its kit */
 const expected=(m,rim)=>{const k=kits[m];if(!k||!k.rated)return null;const c=k.rated.colors.find(x=>x.n===rim)||k.rated.colors[0];return {key:k.rated.cameraKey,rim:c.n,edge:c.edge||0,type:FROST,price:cfg.RATED_PRICE,photo:c.f,mask:k.rated.view,only:!!k.ratedOnly};};
@@ -93,7 +93,7 @@ if(on('files')){
  check('menu: no phone pictures left',!/rated-menu/.test(menuFile)&&!exists('assets/rated-menu'));
  /* customer copy: no white back, no vendor, no drop claim without its availability line, no flat $44.99 promise */
  const vendor=/\b(CCK|Nimbus9|Phantom|Balaji)\b|Custom Case Kiosk/i;
- for(const f of ['index.html','gallery.html','checkout.html','instore/index.html','instore/find.html','assets/rated-phones.js','assets/frost-samples.js','assets/shop-menu.js']){const t=read(f);
+ for(const f of ['index.html','gallery.html','checkout.html','instore/index.html','instore/find.html','assets/rated-phones.js','assets/frost-cases.js','assets/shop-menu.js']){const t=read(f);
   check('no vendor name and no white back wording: '+f,!vendor.test(t)&&!/white back/i.test(t));}
  check('checkout: 20 ft and availability together',/20 ft drop protection on most phones\.[^<]*Confirm availability in store/.test(read('checkout.html')));
  for(const f of ['ocean-and-rain.html','parks-rugged.html','instore/index.html','index.html'])check('no "every case is '+CLEAR+'" promise: '+f,!/every (case|design|case design) ?·? ?\$44\.99|Cases \$44\.99,/i.test(read(f)));
@@ -102,11 +102,11 @@ if(on('files')){
  /* every page loads the same menu, so none of them shows a cached one without the Google and Motorola links */
  const pages=fs.readdirSync(root).filter(f=>f.endsWith('.html')).concat('instore/index.html','instore/find.html'),menus=pages.flatMap(f=>[...read(f).matchAll(/shop-menu\.js\?v=([\w-]+)/g)].map(m=>m[1]));
  check('every page loads the same shop-menu.js version ('+menus.length+' pages)',menus.length>=20&&new Set(menus).size===1,[...new Set(menus)]);
- /* frost-samples.js reads the phone list while it loads: the list comes first on every page, in one version */
- for(const f of pages){const t=read(f);if(!t.includes('frost-samples.js'))continue;check(f+': rated-phones.js and the camera shapes load before frost-samples.js',t.indexOf('rated-phones.js')>0&&t.indexOf('rated-phones.js')<t.indexOf('frost-samples.js')&&t.indexOf('rated-camera-geometry.js')>0);}
- for(const file of ['rated-phones.js','frost-samples.js','rated-camera-geometry.js','print-layouts.js']){const v=pages.flatMap(f=>[...read(f).matchAll(new RegExp('src="[^"]*'+file.replace('.','\\.')+'(\\?v=[\\w-]+)?"','g'))].map(m=>m[1]||''));check('one version of '+file,v.length>=3&&new Set(v).size===1,v);}
+ /* frost-cases.js reads the phone list while it loads: the list comes first on every page, in one version */
+ for(const f of pages){const t=read(f);if(!t.includes('frost-cases.js'))continue;check(f+': rated-phones.js and the camera shapes load before frost-cases.js',t.indexOf('rated-phones.js')>0&&t.indexOf('rated-phones.js')<t.indexOf('frost-cases.js')&&t.indexOf('rated-camera-geometry.js')>0);}
+ for(const file of ['rated-phones.js','frost-cases.js','rated-camera-geometry.js','print-layouts.js']){const v=pages.flatMap(f=>[...read(f).matchAll(new RegExp('src="[^"]*'+file.replace('.','\\.')+'(\\?v=[\\w-]+)?"','g'))].map(m=>m[1]||''));check('one version of '+file,v.length>=3&&new Set(v).size===1,v);}
  const required=/var REQUIRED = \[[\s\S]*?\];/.exec(read('instore/sw.js'))[0];
- check('the store iPad keeps the phone list for offline use',['rated-phones.js','frost-samples.js','rated-camera-geometry.js'].every(f=>required.includes("'../assets/"+f+"'")));
+ check('the store iPad keeps the phone list for offline use',['rated-phones.js','frost-cases.js','rated-camera-geometry.js'].every(f=>required.includes("'../assets/"+f+"'")));
  /* staff size tables: a print size only for phones with a clear case */
  for(const f of ['staff-sop.html','sop-body.html']){const rows=[...read(f).matchAll(/<tr><td>([^<]+)<\/td><td[^>]*>([^<]+)<\/td>/g)].filter(r=>/^[\d.]+$/.test(r[2])).map(r=>r[1]);
   check(f+': no print size for a phone without a clear case, and the Rated Case is not printed',rows.length>20&&!rows.some(r=>only.some(m=>m===r||short(m)===r))&&/<b>Rated Case:<\/b> do not print one/.test(read(f)),rows.filter(r=>only.some(m=>m===r||short(m)===r)));}

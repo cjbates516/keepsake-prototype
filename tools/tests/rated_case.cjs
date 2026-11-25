@@ -188,9 +188,9 @@ async function closeReview(p){await p.locator('#reviewEditDesign').click();await
    check(tag+' Rated + glass total $69.98',await page.locator('#studioTotal').textContent()==='$69.98');
    const rv=await openReview(page);
    check(tag+' review: Case row, phone row and total (Rated + glass)',rowOf(rv.rows,'Case')==='Rated Case · Smoke Frost'&&rowOf(rv.rows,'Phone')==='iPhone 17 Pro Max · Silver'&&rowOf(rv.rows,'Estimated total before tax')==='$69.98'&&rv.total==='$69.98',rv.rows);
-   /* the team instruction is a plain line on the review screen (kiosks save no card) and rides on the card; the customer's
-      overview has no amber note when nothing is wrong (UX-7) */
-   check(tag+' review overview: Smoke Frost · $49.99, the rim, the blank to use, no amber note',rv.items.includes('Smoke Frost · $49.99')&&!rv.items.some(t=>/Rated Case/.test(t))&&rv.overview.includes('iPhone 17 Pro Max · Silver · Smoke Frost rim')&&rv.overview.includes('Use a Rated Case blank in Smoke Frost.')&&!rv.notes.length,{items:rv.items,notes:rv.notes,overview:rv.overview});
+   /* the team instruction rides on the card; the customer's overview names the rim and has no staff wording and no amber note
+      when nothing is wrong (UX-7) */
+   check(tag+' review overview: Smoke Frost · $49.99, the rim, no staff wording, no amber note',rv.items.includes('Smoke Frost · $49.99')&&!rv.items.some(t=>/Rated Case/.test(t))&&rv.overview.includes('iPhone 17 Pro Max · Silver · Smoke Frost rim')&&!rv.overview.some(t=>/Rated Case/.test(t))&&!rv.notes.length,{items:rv.items,notes:rv.notes,overview:rv.overview});
    check(tag+' counter card: Case row, total and the blank instruction',!!rv.card&&rowOf(rv.card.rows,'Case')==='Rated Case · Smoke Frost'&&rowOf(rv.card.rows,'Estimated total before tax')==='$69.98'&&rv.card.code.split('\n').includes('Use a Rated Case blank in Smoke Frost.'),rv.card);
    {const k=codeOf(rv.card);check(tag+' pick code: glass, store, Silver is finish 1, Smoke Frost rim (-G -S1 -P1 -FS)',!!k&&k.glass&&k.store===1&&k.finish===1&&k.rim==='-FS',rv.card&&rv.card.code);}
    await shot(page,engine+'-'+width+'-rated-review');
@@ -207,7 +207,7 @@ async function closeReview(p){await p.locator('#reviewEditDesign').click();await
    await pickCase(page,RATED);await pickRim(page,'Clear Frost');
    if(phone)await tool(page,'phone');await page.locator('#colorSwatches .sw[data-n="Deep Blue"]').evaluate(e=>e.click());await settled(page);if(phone)await done(page);
    const rd=await openReview(page),kd=codeOf(rd.card);
-   check(tag+' Clear Frost and Deep Blue: -P3 and -FC on the code, rows and overview agree',!!kd&&kd.finish===3&&kd.rim==='-FC'&&rowOf(rd.rows,'Phone')==='iPhone 17 Pro Max · Deep Blue'&&rowOf(rd.rows,'Case')==='Rated Case · Clear Frost'&&rd.items.includes('Clear Frost · $49.99')&&rd.overview.includes('Use a Rated Case blank in Clear Frost.'),rd);
+   check(tag+' Clear Frost and Deep Blue: -P3 and -FC on the code, rows and overview agree',!!kd&&kd.finish===3&&kd.rim==='-FC'&&rowOf(rd.rows,'Phone')==='iPhone 17 Pro Max · Deep Blue'&&rowOf(rd.rows,'Case')==='Rated Case · Clear Frost'&&rd.items.includes('Clear Frost · $49.99')&&rd.overview.includes('iPhone 17 Pro Max · Deep Blue · Clear Frost rim')&&rd.card.code.split('\n').includes('Use a Rated Case blank in Clear Frost.'),rd);
    await closeReview(page);
    /* 6. design clipped to the Rated panel (solid red customer photo) */
    await page.goto(base+'customizer.html?model='+MODEL+'&case=clear');await editorReady(page);await settled(page);
@@ -269,7 +269,7 @@ async function closeReview(p){await p.locator('#reviewEditDesign').click();await
    await pickCase(page,RATED);
    check(tag+' partial collage on frost: customer flow is not blocked, staff print waits on the Rated Case first',await page.evaluate(([p,s])=>__kp.printIssue()===''&&!document.getElementById('studioNext').disabled&&__kp.staffPrintIssue()===s&&KPStudioCore.info().partial===p,[PARTIAL,STAFF_RATED]),await page.evaluate(()=>[__kp.printIssue(),__kp.staffPrintIssue(),KPStudioCore.info().partial]));
    const rq=await openReview(page);
-   check(tag+' partial collage on frost: the empty spots and the blank are both on the review and the card',rq.notes.includes(PARTIAL)&&rowOf(rq.rows,'Photo spots')===PARTIAL&&rq.total==='$49.99'&&!!rq.card&&['Use a Rated Case blank in Smoke Frost.',PARTIAL].every(t=>rq.card.code.split('\n').includes(t)),{notes:rq.notes,card:rq.card&&rq.card.code});
+   check(tag+' partial collage on frost: the empty spots are on the review, the spots and the blank on the card',rq.notes.includes(PARTIAL)&&rowOf(rq.rows,'Photo spots')===PARTIAL&&rq.total==='$49.99'&&!!rq.card&&['Use a Rated Case blank in Smoke Frost.',PARTIAL].every(t=>rq.card.code.split('\n').includes(t)),{notes:rq.notes,card:rq.card&&rq.card.code});
    await closeReview(page);
    /* 11. purge (Start over, next customer) returns to the clear case */
    await page.goto(base+'customizer.html?model='+MODEL+'&design='+DESIGN);await editorReady(page);await settled(page);
@@ -575,17 +575,17 @@ async function closeReview(p){await p.locator('#reviewEditDesign').click();await
    p=await ctx.newPage();await hooked(p,[]);await p.route('**/assets/mask-geometry-rated.js*',x=>fails-->0?x.abort():x.continue());await p.goto(base+'customizer.html?model=pixel-10&design='+DESIGN);await editorReady(p);
    check(tag+' two failed mask requests show the mask message',await p.waitForFunction(()=>__kp.printIssue()==='Case mask failed to load. Reload before printing.',null,{timeout:8000}).then(()=>true,()=>false));
    await setModel(p,'Google Pixel 10 Pro XL');check(tag+' the next Rated only phone loads them',await p.evaluate(()=>KPStudioCore.info().previewReady));await p.close();
-   /* counter review: the title team members search for, no finish, the blank to use; same on a kiosk, which saves no card */
+   /* counter review: the title team members search for, no finish, the rim on screen and the blank on the card; a kiosk saves no card */
    p=await open('model=pixel-10&design='+DESIGN);
    check(tag+' the editor shows the design title',await p.waitForFunction(()=>document.querySelector('#studioProduct h1').textContent.startsWith('New York'),null,{timeout:8000}).then(()=>true,()=>false));
    const rv=await openReview(p);
    check(tag+' review rows: design title, phone without a finish, Rated Case',/^New York/.test(rowOf(rv.rows,'Design'))&&rowOf(rv.rows,'Phone')==='Google Pixel 10'&&rowOf(rv.rows,'Case')==='Rated Case · Clear Frost',rv.rows);
-   check(tag+' review overview and card: rim, blank, no guessed pick code',rv.overview.includes('Google Pixel 10 · Clear Frost rim')&&rv.overview.includes('Use a Rated Case blank in Clear Frost.')&&!!rv.card&&rv.card.code==='Ask the team to match this preview.\nUse a Rated Case blank in Clear Frost.'&&rv.total==='$49.99',rv);
+   check(tag+' review overview and card: rim, blank, no guessed pick code',rv.overview.includes('Google Pixel 10 · Clear Frost rim')&&!rv.overview.some(t=>/Rated Case/.test(t))&&!!rv.card&&rv.card.code==='Ask the team to match this preview.\nUse a Rated Case blank in Clear Frost.'&&rv.total==='$49.99',rv);
    check(tag+' purge leaves nothing printable behind',await p.evaluate(()=>{KPStudioCore.purge();return __kp.state.caseType==='MagSafe Clear'&&!__kp.state.ratedForced;}));
    check(tag+' review no console errors',!p.errs.length,p.errs);await p.close();
    p=await open('kiosk=1&store='+encodeURIComponent(STORE)+'&model=pixel-10&design='+DESIGN);
    for(let i=0;i<3;i++){await p.locator('#studioNext').click();await p.waitForTimeout(250);}
-   check(tag+' kiosk review names the blank',await p.waitForFunction(()=>[...document.querySelectorAll('#reviewOverview > *')].some(e=>e.textContent==='Use a Rated Case blank in Clear Frost.'&&e.getClientRects().length>0),null,{timeout:8000}).then(()=>true,()=>false));await p.close();
+   check(tag+' kiosk review names the rim and no staff wording',await p.waitForFunction(()=>[...document.querySelectorAll('#reviewOverview > *')].some(e=>e.textContent==='Google Pixel 10 · Clear Frost rim'&&e.getClientRects().length>0)&&!/Rated Case/.test(document.getElementById('reviewOverview').textContent),null,{timeout:8000}).then(()=>true,()=>false));await p.close();
    /* print: an allow list. The flag alone never unblocks an estimated size, and the case type cannot get around it */
    p=await open('model=pixel-10&design='+DESIGN);
    const pg=await p.evaluate(()=>{const a=__kp.staffPrintIssue(),s=__kp.state;s.caseType='MagSafe Clear';const b=__kp.staffPrintIssue();s.caseType='Rated Case';KP_CONFIG.RATED_PRINT_READY=true;const c=__kp.staffPrintIssue();s.caseType='MagSafe Clear';const d=__kp.staffPrintIssue();s.caseType='Rated Case';let file='',built=false;__kp.buildPrint(()=>{built=true;},{staff:true});__kp.buildPrint((x,n)=>{file=n;});KP_CONFIG.RATED_PRINT_READY=false;return {a,b,c,d,built,file};});

@@ -200,7 +200,6 @@ body.design-editor #stageCanvas{max-height:max(260px,calc(100dvh - 450px));width
 @media(max-width:760px){body.design-editor:not(:has(#studioSheet[open])) #stageStick.studio-fit #stageCanvas{max-height:max(150px,min(var(--studio-case-fit,420px),clamp(240px,40dvh,420px)))}}
 @media(min-width:761px){body.design-editor #stageStick.studio-fit #stageCanvas{max-height:max(200px,min(var(--studio-case-fit,560px),max(260px,calc(100dvh - 450px))))}}
 /* counter review note: empty photo spots (customizer.html showCounterReview); the Rated blank instruction is on the card */
-.design-editor #reviewOverview .review-blank{font-size:13px;font-weight:700;line-height:1.4}
 .design-editor #reviewOverview .review-note{font-size:13px;font-weight:800;line-height:1.4;color:#6b4600;background:#fdf7ec;border:1px solid #e8c98f;border-radius:8px;padding:8px 10px;overflow-wrap:anywhere}
 /* The editor is a focused workspace; Designs provides a guarded way back. */
 .design-editor #siteHeader{display:none!important}

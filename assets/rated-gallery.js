@@ -10,8 +10,8 @@
 (() => {
   const core = window.KPStudioCore, stage = document.getElementById('stageStick');
   if (!core || !stage || window.KPRatedGallery) return;
-  // V is the photos' own version (a photo never changes under its name), LIST the photo list's, which changes with the phones
-  const V = 'rated-photos-2', LIST = 'rated-photos-4', DIR = 'assets/cases/rated-photos/', RATED = 'Rated Case';
+  // V is the photos' own version (raise it when a photo changes under its name), LIST the photo list's, which changes with the phones
+  const V = 'rated-photos-4', LIST = 'rated-photos-4', DIR = 'assets/cases/rated-photos/', RATED = 'Rated Case';
   const editor = document.body.classList.contains('design-editor');
   // the shared in-store iPad: a customer there cannot check a connection, so failures point to a team member
   const kiosk = new URLSearchParams(location.search).get('kiosk') === '1';
@@ -125,7 +125,8 @@
     q('.rg-sets').hidden = !manifest || !manifest.other.length;
     const note = q('.rg-note'), from = st.r ? st.r.photosOf(st.rim) : st.rim;
     const like = st.r && st.r.similar ? ' on a similar ' + (/^iPhone/.test(st.model) ? 'iPhone' : 'phone') : '';
-    note.textContent = !mine ? 'The same case on other phones and colors.'
+    // the iPhone Duo case is another style
+    note.textContent = !mine ? (st.model === 'iPhone Duo' ? 'Frost cases on other phones. The iPhone Duo case is a different style.' : 'The same case on other phones and colors.')
       : from !== st.rim ? 'Photos show ' + from + like + '. ' + st.rim + ' is the same case with a ' + (st.rim === 'Smoke Frost' ? 'dark' : 'light') + ' rim.'
       : like ? 'Photos show this case' + like + '.' : '';
     note.hidden = !note.textContent;

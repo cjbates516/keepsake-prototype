@@ -45,7 +45,7 @@
   function move(p,...ids){ids.forEach(id=>{const el=typeof id==='string'?$(id):id;if(el)p.append(el);});}
   // Phone copy follows the phone (sync): with a Rated kit it names both cases, a Rated only phone names its one case, otherwise it keeps the clear case copy.
   const phoneCopy={clear:'Choose your model and phone finish. Your case stays clear; screen colors are approximate.',rated:'Choose your phone model, finish and case. The preview updates to show your choices.',
-    only:'Choose your phone model and rim color. This phone comes in the Rated Case.',onlyOne:'Choose your phone model. This phone comes in the Rated Case.'};
+    only:'Choose your phone model and rim color. This phone comes in a frost case.',onlyOne:'Choose your phone model. This phone comes in a frost case.'};
   move(panel('phone','Phone',phoneCopy.clear),'kpSelRow',finish);
   move(panel('background','Background','Keep the artwork you love. Change only its background.'),'photoLooksWrap');
   const noBackground=document.createElement('p');noBackground.id='studioNoBackground';noBackground.textContent='Background choices appear once your design is ready.';panels.background.append(noBackground);

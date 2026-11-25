@@ -111,7 +111,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/heic-loader.js"></script>
 <script src="assets/colorway-catalog.js?v=full-art-2-20261121"></script>
 <script src="assets/design-colorways.js?v=full-art-2-20261121"></script>
-<script src="instore/instore-lib.js?v=counter-finish-20261124"></script>
+<script src="instore/instore-lib.js?v=rated-all-20261124"></script>
 <style>
 .photo-looks{display:flex;gap:10px;overflow-x:auto;padding:6px 6px 14px;scroll-snap-type:x proximity}
 .photo-look{flex:0 0 106px;padding:6px;background:#fff;border:2px solid #dedad6;border-radius:12px;cursor:pointer;scroll-snap-align:start;color:#191921;font:800 12px "Nunito Sans",sans-serif}
@@ -2698,7 +2698,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     /* Carry the selected frost rim in the pick code as well as the visible counter card. */
     var reviewRim=kpRim(), partialNote=kpPartialIssue();
     /* reviewNotes ride on the counter card under the code; the customer's overview shows only a real problem (empty
-       photo spots) in amber. The team instruction for the Rated blank is a plain line there. */
+       photo spots) in amber; its rim line already names the case. */
     reviewNotes=[];
     if(reviewRim)reviewNotes.push('Use a Rated Case blank in '+reviewRim.n+'.');
     if(partialNote)reviewNotes.push(partialNote);
@@ -2730,8 +2730,6 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     overviewText('p',totalLabel+(newark?' · no sales tax':''),'review-total-label');
     overviewText('strong','$'+orderPricing().total.toFixed(2),'review-total');
     overviewText('p',model+(finishShown?' · '+finishShown:'')+(reviewRim?' · '+reviewRim.n+' rim':''),'review-phone');
-    /* kiosks save no card, so the blank to reach for is on the review screen too */
-    if(reviewRim)overviewText('p',reviewNotes[0],'review-blank');
     if(partialNote)overviewText('p',partialNote,'review-note');
     if(kpNameText())overviewText('p','Name: '+kpNameText(),'review-personalization');
     if(reviewTpl){overviewText('p','Layout: '+reviewTpl.n+' \u00b7 '+filledSlots(reviewTpl)+' of '+reviewTpl.slots.length+(reviewTpl.slots.length===1?' photo':' photos'),'review-personalization');tplTexts(reviewTpl).forEach(function(x){var v=captionValue(x);if(v&&!kpCaptionHidden(x)&&!kpCaptionWaiting(x))overviewText('p',(x.label||x.key)+': '+v.replace(/\n/g,' / '),'review-personalization');});}
