@@ -167,7 +167,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/shop-refresh.css?v=frost-20261124">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
-<link rel="stylesheet" href="assets/shop-menu.css?v=narrow-rail-20261124"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=rated-all-20261124" defer></script><link rel="stylesheet" href="assets/case-zoom.css?v=rated-all-20261124">
+<link rel="stylesheet" href="assets/shop-menu.css?v=narrow-rail-20261124"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=arrivals-20261125" defer></script><link rel="stylesheet" href="assets/case-zoom.css?v=rated-all-20261124">
 <link rel="stylesheet" href="assets/accessories.css">
 <link rel="stylesheet" href="assets/design-editor.css?v=case-gestures-20261124-rated-all-20261124">
 <!-- Rated Case photos: the See photos button and its viewer (assets/rated-gallery.js) -->
@@ -1726,7 +1726,9 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     const fieldPhoto = state.isLibraryDesign && state.photoImg && /^field-photo-([a-z0-9-]+)\.jpg$/.exec(state.photoImg.__kpDesignFile || '');
     const spacePhoto = state.isLibraryDesign && state.photoImg && /^kp-space-([a-z0-9-]+)\.jpg$/.exec(state.photoImg.__kpDesignFile || '');
     const oceanRainPhoto = state.isLibraryDesign && state.photoImg && /^(?:ocean|rain)-photo-([a-z-]+)\.jpg$/.test(state.photoImg.__kpDesignFile || '');
-    creditLink.hidden = !(cityPhoto || fieldPhoto || spacePhoto || oceanRainPhoto);
+    const collectionPhoto = state.isLibraryDesign && state.photoImg && /^drop-[a-z0-9-]+\.(jpg|png)$/.test(state.photoImg.__kpDesignFile || '');
+    creditLink.hidden = !(cityPhoto || fieldPhoto || spacePhoto || oceanRainPhoto || collectionPhoto);
+    if (collectionPhoto) creditLink.href = 'collection-credits.html#' + state.photoImg.__kpDesignFile.replace(/\.(jpg|png)$/, '');
     if (oceanRainPhoto) creditLink.href = 'ocean-rain-credits.html#' + state.photoImg.__kpDesignFile.replace(/\.jpg$/, '');
     /* every credit is a link to its credits page (CC BY attribution); the web editor shows it under the case. On kiosks
        it stays in the Photo tool with its attribution href (design-editor.js), but design-editor.css hides it there
@@ -1734,7 +1736,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     if (spacePhoto) creditLink.href = 'new-print-credits.html#kp-space-' + spacePhoto[1];
     if (fieldPhoto) creditLink.href = 'field-photo-credits.html#' + fieldPhoto[1];
     if (cityPhoto) creditLink.href = 'city-photo-credits.html#' + cityPhoto[1];
-    updatePhotoCredit(creditLink, (fieldPhoto || oceanRainPhoto) ? state.photoImg.__kpDesignFile : null);
+    updatePhotoCredit(creditLink, (fieldPhoto || oceanRainPhoto || collectionPhoto) ? state.photoImg.__kpDesignFile : null);
     var live = hasKit();
     canvas.style.display = live ? 'block' : 'none';
     canvas.style.touchAction = state.photoImg ? 'none' : 'pan-y';
@@ -3525,7 +3527,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   };
 })();
 </script>
-<script src="assets/design-editor.js?v=case-gestures-20261124"></script>
+<script src="assets/design-editor.js?v=arrivals-20261125"></script>
 <!-- Rated Case photos: after the editor, so the button joins its case row (tools/build_rated_photos.py makes the photos) -->
 <script src="assets/rated-gallery.js?v=mounted-frost-20261124"></script>
 <script>
