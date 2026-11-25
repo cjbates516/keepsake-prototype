@@ -244,8 +244,9 @@ body.design-editor #stageCanvas,body.design-editor #stageStick.studio-fit #stage
 .design-editor .studio-tools{grid-template-columns:repeat(5,minmax(0,1fr));margin-bottom:16px}
 .design-editor #studio-phone{margin-top:16px;order:2}.design-editor .studio-tool-host{display:flex;flex-direction:column;gap:16px}
 .design-editor .studio-panel{border:0;border-top:1px solid var(--studio-line);border-radius:0;padding:20px 0}
-.design-editor #studioCase{margin:24px 0 0}.design-editor .studio-case legend{position:static;width:auto;height:auto;clip-path:none;overflow:visible;font-size:16px;font-weight:800;margin-bottom:10px}
-.design-editor .studio-case-row{display:block}.design-editor .studio-case-options{grid-template-columns:repeat(2,minmax(0,1fr))}.design-editor .studio-case-opt{max-width:none}
+.design-editor #studioCase.studio-case-only .studio-case-options{grid-template-columns:minmax(0,1fr)}.design-editor .studio-case-opt[hidden]{display:none}
+.design-editor #studioCase{margin:16px 0 0}.design-editor .studio-case legend{position:static;width:auto;height:auto;clip-path:none;overflow:visible;font-size:16px;font-weight:800;margin-bottom:10px}
+.design-editor .studio-case-row{display:block}.design-editor .studio-case-options{grid-template-columns:repeat(2,minmax(0,1fr))}.design-editor .studio-case-opt{max-width:none}.design-editor .studio-rim{margin-top:8px}.design-editor #studioLayoutsWait{margin-top:14px}
 .design-editor #layoutChips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible;gap:8px}
 .design-editor #layoutChips .layChip{width:auto;min-width:0}.design-editor #layoutMore{grid-column:1/-1}
 .design-editor #layoutMore summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:13px;font-weight:800;text-decoration:underline}

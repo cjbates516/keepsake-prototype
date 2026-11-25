@@ -252,7 +252,7 @@
     if (withMask !== false) jobs.push(KPI.loadImage(KPI.maskUrl(model), { timeout: 15000, cache: false }));
     prepCache[key] = Promise.all(jobs).then(async function (imgs) {
       if(frost&&withMask!==false){const f=await KPFrostSamples.prepare(model.name,null,phoneSrc,2500,3000,ROOT,rim);imgs[0]=f.base;imgs[1]=f.mask;}
-      var layout=(window.KP_PRINT_LAYOUTS||{})[model.name];
+      var layouts=window.KP_PRINT_LAYOUTS||{},layout=layouts[model.name]||layouts['Samsung '+model.name];
       if(withMask!==false&&!layout)throw new Error('Print preview geometry unavailable. Reload to try again.');
       var ob = model.case_box, vb = layout?(frost&&layout.ratedBox?layout.ratedBox:layout.box):model.mask_box, padX = 40, padY = 40;
       var x0 = Math.min(ob[0], vb[0]) - padX, y0 = Math.min(ob[1], vb[1]) - padY;

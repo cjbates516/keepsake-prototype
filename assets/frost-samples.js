@@ -1,3 +1,4 @@
+/* Kept as it was for pages a browser cached before frost-cases.js replaced it (Nov 24 2026). Edit frost-cases.js instead. */
 /* Display-only frost sample composition. Physical print geometry stays in the editor. */
 window.KPFrostSamples=(()=>{
  const kits={'iPhone 13':'iphse25-i13','iPhone 14':'iphse25-i14','iPhone 15':'iphse25','iPhone 14 Pro':'iph14pro','iPhone 14 Pro Max':'iph14promax','iPhone 15 Pro':'iph15pro','iPhone 15 Pro Max':'iph15pmx','iPhone 16':'iph16','iPhone 16 Pro':'iph16pro','iPhone 16 Pro Max':'iph16pmx','iPhone 17':'iph17','iPhone Air':'iph17a','iPhone 17 Pro':'iph17pro','iPhone 18 Pro':'iph17pro','iPhone 17 Pro Max':'iph17pmx','iPhone 18 Pro Max':'iph17pmx','iPhone 14 Plus':'iph14max','iPhone 15 Plus':'iph14max-i15m','Galaxy S26':'samgs26','Galaxy S26 Ultra':'samgs26u'};

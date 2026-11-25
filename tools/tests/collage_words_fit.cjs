@@ -2,18 +2,19 @@
    Each field is drawn alone through the real print transform and intersected with the print mask (printMaskCache.trim),
    with its default words and with maximum length words. A field this phone cannot show must print nothing and be
    reported as hidden (kpCaptionHidden), so the review rows and staff details can say so. Phones with a Rated Case
-   run again on the Rated panel mask. A field that hides its default words while it prints its maximum length words
+   run again on the Rated panel mask (a new customer session starts there, so the clear run asks for case=clear; a Rated only
+   phone has no clear run). Each run checks that the stage really shows the panel it names. A phone without layouts (the iPhone Duo) is left out. A field that hides its default words while it prints its maximum length words
    fails (a short word must never be hidden where a longer one in the same field prints).
-   usage: node tools/tests/collage_words_fit.cjs [outdir]   (KP_BASE=http://127.0.0.1:PORT/ to use a running server;
+   usage: node tools/tests/collage_words_fit.cjs [outdir]   (or KP_OUT; KP_BASE=http://127.0.0.1:PORT/ to use a running server;
    KP_ENGINES=chromium,webkit; KP_MODELS=slug,slug to limit the kits; KP_CASES=clear,rated). Photos are synthetic canvases. */
-const {chromium,webkit}=require(process.env.PW_CORE||'../../../playwright/node_modules/playwright-core');
+const {chromium,webkit}=require(process.env.PW_CORE||process.env.KP_PLAYWRIGHT||'../../../playwright/node_modules/playwright-core');
 const http=require('http'),fs=require('fs'),path=require('path');
 const root=path.resolve(__dirname,'../..');
-const out=path.resolve(process.argv[2]||'/tmp/keepsake-words-fit');fs.mkdirSync(out,{recursive:true});
+const out=path.resolve(process.argv[2]||process.env.KP_OUT||'/tmp/keepsake-words-fit');fs.mkdirSync(out,{recursive:true});
 const types={'.html':'text/html','.js':'application/javascript','.css':'text/css','.json':'application/json','.webp':'image/webp','.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml','.woff2':'font/woff2'};
 let server=null;
 function serve(){return new Promise(r=>{server=http.createServer((req,res)=>{let f=path.join(root,decodeURIComponent(new URL(req.url,'http://local').pathname));if(f.endsWith(path.sep))f+='index.html';if(!f.startsWith(root+path.sep)){res.writeHead(403).end();return}fs.readFile(f,(e,d)=>{if(e){res.writeHead(404).end();return}res.setHeader('Content-Type',types[path.extname(f)]||'application/octet-stream');res.end(d)})});server.listen(0,'127.0.0.1',()=>r('http://127.0.0.1:'+server.address().port+'/'))})}
-const HOOK='window.__W={st:function(){return state;},choose:chooseLayout,cur:curTpl,map:tplMap,dc:drawCaptions,pm:function(){return printMaskCache;},art:artMatrix,TPL:function(){return TPL;},FIT:function(){return FIT;},kits:function(){return Object.keys(KITS);},rated:function(){return Object.keys(KITS).filter(function(m){return !!KITS[m].rated;});},tplImage:tplImage,hidden:kpCaptionHidden,ready:function(){return {c:caseReady,l:lightReady,v:viewReady,n:KP_TPLS.length,mb:!!maskBox,f:viewFailed,vs:viewSrc};},tpls:function(){return KP_TPLS;}};window.__kp={';
+const HOOK='window.__W={st:function(){return state;},choose:chooseLayout,cur:curTpl,map:tplMap,dc:drawCaptions,pm:function(){return printMaskCache;},art:artMatrix,TPL:function(){return TPL;},FIT:function(){return FIT;},kits:function(){return Object.keys(KITS).filter(function(m){return !KITS[m].noLayouts;});},rated:function(){return Object.keys(KITS).filter(function(m){return !!KITS[m].rated;});},only:function(){return Object.keys(KITS).filter(function(m){return !!KITS[m].ratedOnly;});},tplImage:tplImage,hidden:kpCaptionHidden,ready:function(){return {c:caseReady,l:lightReady,v:viewReady,n:KP_TPLS.length,mb:!!maskBox,f:viewFailed,vs:viewSrc};},tpls:function(){return KP_TPLS;}};window.__kp={';
 const results=[];
 function check(name,ok,detail){results.push({name,ok:!!ok,detail});console.log((ok?'PASS ':'FAIL ')+name+(detail===undefined?'':' '+JSON.stringify(detail)));}
 const INPAGE=`window.WF={
@@ -40,27 +41,30 @@ const INPAGE=`window.WF={
  const summary={};
  for(const engine of engines){
   const kind=engine==='webkit'?webkit:chromium,browser=await kind.launch();
-  const ctx0=await browser.newContext({viewport:{width:1440,height:1000}});const p0=await ctx0.newPage();
+  const ctx0=await browser.newContext({serviceWorkers:'block',viewport:{width:1440,height:1000}});const p0=await ctx0.newPage();
   await p0.route(/\/customizer\.html(\?|$)/,async r=>{const res=await r.fetch();let body=await res.text();body=body.replace('window.__kp={',HOOK);await r.fulfill({response:res,body});});
   await p0.goto(base+'customizer.html?model=iphone-17-pro-max');await p0.waitForFunction(()=>window.__W);
   const toSlug=n=>n.toLowerCase().replace(/\s+/g,'-');
-  let slugs=(await p0.evaluate(()=>__W.kits())).map(toSlug);const ratedSlugs=(await p0.evaluate(()=>__W.rated())).map(toSlug);await ctx0.close();
+  let slugs=(await p0.evaluate(()=>__W.kits())).map(toSlug);const ratedSlugs=(await p0.evaluate(()=>__W.rated())).map(toSlug),onlySlugs=(await p0.evaluate(()=>__W.only())).map(toSlug);await ctx0.close();
+  check(engine+' the kits: 29 with a clear case, 27 Rated only with layouts',slugs.filter(s=>!onlySlugs.includes(s)).length===29&&slugs.filter(s=>onlySlugs.includes(s)).length===27,{kits:slugs.length,only:onlySlugs.length});
   if(process.env.KP_MODELS)slugs=slugs.filter(s=>process.env.KP_MODELS.split(',').includes(s));
   const cases=(process.env.KP_CASES||'clear,rated').split(',');
   for(const slug0 of slugs)for(const cs of cases){
-   if(cs==='rated'&&!ratedSlugs.includes(slug0))continue;
+   if(cs==='rated'&&!ratedSlugs.includes(slug0)||cs==='clear'&&onlySlugs.includes(slug0))continue;
    const slug=slug0+(cs==='rated'?' (Rated Case)':'');
-   const ctx=await browser.newContext({viewport:{width:1440,height:1000}});const page=await ctx.newPage();const errors=[];
+   const ctx=await browser.newContext({serviceWorkers:'block',viewport:{width:1440,height:1000}});const page=await ctx.newPage();const errors=[];
    page.on('pageerror',e=>errors.push(e.message));
    await page.route('**/assets/nsfw/**',r=>r.fulfill({contentType:'application/javascript',body:r.request().url().includes('nsfwjs')?"window.nsfwjs={load:async()=>({classify:async()=>[{className:'Neutral',probability:1}]})};":''}));
    await page.route(/\/customizer\.html(\?|$)/,async r=>{const res=await r.fetch();let body=await res.text();if(!body.includes('window.__kp={'))throw Error('hook literal missing');body=body.replace('window.__kp={',HOOK);await r.fulfill({response:res,body});});
-   await page.goto(base+'customizer.html?model='+slug0);
+   await page.goto(base+'customizer.html?model='+slug0+'&case=clear');
    let ready=await page.waitForFunction(()=>{const r=window.__W&&__W.ready();return r&&(r.f||(r.c&&r.l&&r.v&&r.n>0&&r.mb));},null,{timeout:30000}).then(()=>page.evaluate(()=>__W.ready())).catch(()=>null);
    if(ready&&cs==='rated'){
     await page.evaluate(()=>KPStudioCore.setCase('Rated Case'));
     ready=await page.waitForFunction(()=>{const r=__W.ready();return r.f||(/^view-rated-/.test(r.vs||'')&&r.c&&r.l&&r.v&&r.mb);},null,{timeout:30000}).then(()=>page.evaluate(()=>__W.ready())).catch(()=>null);
    }
    if(!ready||ready.f||!ready.v){check(engine+' '+slug+' kit has a print mask (skipped)',true,ready);await ctx.close();continue;}
+   const on=await page.evaluate(()=>({ct:__W.st().caseType,vs:__W.ready().vs||''}));
+   check(engine+' '+slug+' the stage shows the panel under test',cs==='rated'?on.ct==='Rated Case'&&/^view-rated-/.test(on.vs):on.ct==='MagSafe Clear'&&!/^view-rated-/.test(on.vs),on);
    await page.evaluate(INPAGE);
    const tpls=await page.evaluate(()=>__W.tpls().filter(t=>(t.texts||[]).length).map(t=>({id:t.id,n:t.n,texts:t.texts.map(x=>x.key)})));
    for(const t of tpls){

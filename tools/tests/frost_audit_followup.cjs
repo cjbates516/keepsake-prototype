@@ -19,7 +19,7 @@ const kioskReady = async p => { await p.locator('#setupDock:not([hidden])').wait
         try {
           await p.goto(base);
           const models = await p.locator('#homeDevice option:not([disabled])').evaluateAll(es => es.map(e => e.value));
-          assert.equal(models.length, 29);
+          assert.equal(models.length, 57); // 29 phones with a clear case and 28 with the frost case only
           assert.equal(await p.locator('.pair-slide[aria-label*="ZODIAC"] .paired-phone.inverted').count(), 0);
           await p.locator('.pair-slide:not([hidden]) .campaign-copy a').first().click();
           await ready(p);
@@ -34,7 +34,7 @@ const kioskReady = async p => { await p.locator('#setupDock:not([hidden])').wait
           await p.goto(base + 'gallery.html');
           await p.locator('#wizDevBtn').click();
           const galleryModels = await p.locator('[data-md]').evaluateAll(es => [...new Set(es.map(e => e.dataset.md).filter(Boolean))]);
-          await p.locator('[data-pill="Samsung"]').click();galleryModels.push(...await p.locator('[data-md]').evaluateAll(es=>es.map(e=>e.dataset.md).filter(Boolean)));assert.deepEqual([...models].sort(),galleryModels.sort());
+          for(const brand of ['Samsung','Google','Motorola']){await p.locator('[data-pill="'+brand+'"]').click();galleryModels.push(...await p.locator('[data-md]').evaluateAll(es=>es.map(e=>e.dataset.md).filter(Boolean)));}assert.deepEqual([...models].sort(),galleryModels.sort());
 
           await p.goto(base + 'customizer.html?model=iphone-15-pro&design=zodiac-atlas-leo.png&case=rated&rim=Clear+Frost');
           await p.waitForFunction(()=>window.__kp?.state.photoImg&&!__kp.state.libraryLoading&&!__kp.printIssue());await ready(p);
@@ -104,8 +104,19 @@ const kioskReady = async p => { await p.locator('#setupDock:not([hidden])').wait
           await p.locator('.tile[data-file] img:not(.wait)').first().waitFor();
           await p.locator('.tile[data-file] .tname').first().click();
           await kioskReady(p);
-          assert.deepEqual(await p.locator('#kioskRims button').allTextContents(), ['Clear Frost']);
-          assert((await p.locator('#kioskRimLabel').innerText()).includes('Available'));
+          // iPhone 16 Pro Max has both rims now; no phone in the store list has a single rim, and phones new to frost stay clear here
+          assert.deepEqual(await p.locator('#kioskRims button').allTextContents(), ['Smoke Frost', 'Clear Frost']);
+          assert((await p.locator('#kioskRimLabel').innerText()).includes('Choose your frost rim'));
+          await p.goto(base + 'instore/?store=West%20Chester%2C%20PA');
+          await p.locator('[data-model="13P"]').click();
+          await p.locator('#designSearch').fill('Leo · Star Atlas');
+          await p.waitForTimeout(500);
+          await tile.locator('img:not(.wait)').waitFor();
+          await tile.locator('.tname').click();
+          await kioskReady(p);
+          assert.equal(await p.locator('#kioskRims button').count(), 0);
+          assert.equal((await p.locator('#kioskRims').innerText()).trim(), 'Clear case');
+          assert((await p.locator('#dockTotal').innerText()).includes('44.99'));
           assert.deepEqual(errors, []);
           assert.deepEqual(posts, []);
           console.log('PASS', engine.name(), width, 'CTA, model parity, larger preview, rim/background switching, accessories, counter, staff lookup, reset, clear-only model');

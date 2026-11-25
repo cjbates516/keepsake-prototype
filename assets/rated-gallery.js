@@ -2,7 +2,7 @@
 (() => {
   const core = window.KPStudioCore, stage = document.getElementById('stageStick');
   if (!core || !stage || window.KPRatedGallery) return;
-  const V = 'rated-photos-2', DIR = 'assets/cases/rated-photos/', RATED = 'Rated Case';
+  const RATED = 'Rated Case';
   const editor = document.body.classList.contains('design-editor');
   // the shared in-store iPad: a customer there cannot check a connection, so failures point to a team member
   const kiosk = new URLSearchParams(location.search).get('kiosk') === '1';
@@ -12,15 +12,19 @@
   const short = m => String(m || '').replace(/^Samsung /, '');
   let manifest = null, request = null, purged = false;
   let sampleKey = '';
+  const sampleURLs=new Set();
+  function releaseSamples(){for(const url of sampleURLs)URL.revokeObjectURL(url);sampleURLs.clear();}
   function load() {
-    const i=core.info(),key=i.model+'|'+i.finish;
+    const i=core.info(),key=i.model+'|'+(i.finish||'As shown');
     if(sampleKey===key && manifest)return Promise.resolve(manifest);
     if(sampleKey===key && request)return request;
-    sampleKey=key;manifest=null;
+    releaseSamples();sampleKey=key;manifest=null;
     request=Promise.all(i.rims.map(async rim=>{
       const file=await core.caseSample(rim.n);
-      return [rim.n,[{file,thumb:file,w:1000,h:1200,view:'back',caption:rim.n+' · '+i.finish,
-        alt:i.model+' in '+i.finish+' with '+rim.n+' and visible MagSafe backing'}]];
+      if(purged||sampleKey!==key){URL.revokeObjectURL(file);throw Error('Case selection changed');}
+      sampleURLs.add(file);
+      return [rim.n,[{file,thumb:file,w:1000,h:1200,view:'back',caption:rim.n+(i.finish?' · '+i.finish:''),
+        alt:i.model+(i.finish?' in '+i.finish:'')+' with '+rim.n+' and a transparent back preview'}]];
     })).then(entries=>{
       if(sampleKey!==key)return load();
       manifest={models:{[i.model]:{key:i.model,similar:false,rims:i.rims.map(r=>r.n)}},sets:{[i.model]:Object.fromEntries(entries)},other:[]};
@@ -64,7 +68,7 @@
     syncTimer = 0;
     if (purged) { opener.hidden = true; return; }
     const i = core.info();
-    if(i.ratedAvailable && sampleKey!==i.model+'|'+i.finish){openerImg.hidden=true;noPic(true);load().then(syncOpener,()=>noPic(true));return;}
+    if(i.ratedAvailable && sampleKey!==i.model+'|'+(i.finish||'As shown')){openerImg.hidden=true;noPic(true);load().then(syncOpener,()=>noPic(true));return;}
     const r = manifest ? resolve(i.model, i) : null;
     opener.hidden = !i.ratedAvailable || (!!manifest && !r);
     if (!r || opener.hidden) return;
@@ -127,7 +131,7 @@
     q('.rg-sets').hidden = true;
     thumbs.hidden = true;
     const note = q('.rg-note');
-    note.textContent = 'Digital preview with your phone finish and MagSafe backing.';
+    note.textContent = i.clearAvailable===false ? 'Digital preview. Phone finish shown for illustration.' : 'Digital preview with your phone finish and MagSafe backing.';
     note.hidden = !note.textContent;
     // the rim chips stay on both sets: Choose below names this phone's rim, so the chips that change it stay in view
     q('.rg-rims').hidden = !st.r;
@@ -193,7 +197,7 @@
     else if (img.complete && !img.naturalWidth) { img.removeAttribute('src'); img.src = want; }
     if (dir && !reduce.matches) { img.classList.remove('rg-in-l', 'rg-in-r'); void img.offsetWidth; img.classList.add(dir > 0 ? 'rg-in-r' : 'rg-in-l'); }
     q('.rg-caption').textContent = p.caption;
-    q('.rg-count').textContent = (st.index + 1) + ' of ' + list.length;
+    q('.rg-count').textContent = list.length>1 ? (st.index + 1) + ' of ' + list.length : '';
     thumbs.querySelectorAll('.rg-thumb').forEach((b, k) => { if (k === st.index) { b.setAttribute('aria-current', 'true'); if (dialog.open) keepInView(b); } else b.removeAttribute('aria-current'); });
   }
   function keepInView(b) {
@@ -308,7 +312,7 @@
   opener.addEventListener('click', () => open(opener));
   /* kiosk idle reset, Start over and Start next customer purge the session: the viewer closes and forgets the phone */
   document.addEventListener('kp:editor-purge', () => {
-    purged = true; choice = null; clearTimeout(syncTimer);
+    purged = true; choice = null; clearTimeout(syncTimer);releaseSamples();
     if (dialog.open) dialog.close();
     lock(false);
     img.removeAttribute('src'); img.alt = ''; thumbs.replaceChildren(); chips.replaceChildren(); chips.dataset.key = '';

@@ -8,7 +8,8 @@
 #caseZoomDialog footer {justify-content:center;}
 #caseZoomDialog button {min-width:44px;min-height:44px;background:white;color:#172638;border:1px solid #a2a6ac;border-radius:8px;font:inherit;cursor:pointer;}
 #caseZoomDialog button:disabled {opacity:.45;}
-#caseZoomDialog .zoom-scroll {overflow:auto;overscroll-behavior:contain;}
+/* grid centers a case that does not fill the height (iPhone Duo on a phone); the side borders keep it off the frame */
+#caseZoomDialog .zoom-scroll {display:grid;border:solid transparent;border-width:0 8px;overflow:auto;overscroll-behavior:contain;}
 #caseZoomDialog :is(canvas,img,svg) {display:block;max-width:none;height:auto;margin:auto;}
 #caseZoomDialog [hidden] {display:none!important;}
 #caseZoomDialog header,#caseZoomDialog footer {position:static;height:auto;width:auto;margin:0;}

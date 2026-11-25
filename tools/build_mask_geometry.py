@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Compile existing view-mask alpha into exact row spans; no geometry guessed.
 Requires Pillow. Use --check to detect stale source or generated data.
+Two files: assets/mask-geometry.js (every phone with a clear case, loaded with the page) and
+assets/mask-geometry-rated.js (Rated Case masks no such phone uses; customizer.html loads it with the first Rated only
+phone). Which is which comes from RATED in customizer.html, the Rated Cases of phones that also have a clear kit.
 """
-import hashlib,json,sys
+import hashlib,json,re,sys
 from pathlib import Path
 from PIL import Image
 root=Path(__file__).resolve().parents[1]
@@ -20,9 +23,18 @@ for p in sorted((root/'assets/masks').glob('view-*.png')):
   if groups and groups[-1][1]==y and groups[-1][2:]==spans:groups[-1][1]=y+1
   else:groups.append([y,y+1]+spans)
  out[p.name]={'w':w,'h':h,'box':list(a.getbbox()),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'rows':groups}
-text='/* Generated from native mask alpha >=128 by tools/build_mask_geometry.py. */\nwindow.KP_MASK_GEOMETRY='+json.dumps(out,separators=(',',':'))+';\n'
-p=root/'assets/mask-geometry.js'
-if '--check' in sys.argv:
- assert p.read_text()==text,'Mask geometry needs regeneration'
- print('PASS exact row geometry and source hashes for',len(out),'masks')
-else:p.write_text(text);print('Generated',len(out),'masks,',len(text),'bytes')
+page=(root/'customizer.html').read_text()
+kept={'view-rated-'+key+'.png' for key in json.loads(re.search(r'var RATED=(\{.*?\});',page,re.S).group(1).replace("'",'"')).values()}
+late=lambda name:name.startswith('view-rated-') and name not in kept
+pack=lambda masks:json.dumps(masks,separators=(',',':'))
+files={
+ 'assets/mask-geometry.js':'window.KP_MASK_GEOMETRY='+pack({n:g for n,g in out.items() if not late(n)})+';\n',
+ 'assets/mask-geometry-rated.js':'window.KP_MASK_GEOMETRY=Object.assign(window.KP_MASK_GEOMETRY||{},'+pack({n:g for n,g in out.items() if late(n)})+');\n',
+}
+for name,text in files.items():
+ text='/* Generated from native mask alpha >=128 by tools/build_mask_geometry.py. */\n'+text
+ p=root/name
+ if '--check' in sys.argv:assert p.exists() and p.read_text()==text,'Mask geometry needs regeneration: '+name
+ else:p.write_text(text);print('Generated',name,len(text),'bytes')
+assert kept<=set(out),'RATED masks missing: '+', '.join(sorted(kept-set(out)))
+if '--check' in sys.argv:print('PASS exact row geometry and source hashes for',len(out),'masks,',sum(map(late,out)),'of them loaded on demand')
