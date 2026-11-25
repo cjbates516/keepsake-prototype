@@ -24,7 +24,7 @@
 "LIQ": 22,
 "MAP": 112,
 "NE1": 1,
-"NEO": 6,
+"NEO": 12,
 "NPK": 31,
 "OCN": 18,
 "ORB": 3,
@@ -3177,9 +3177,17 @@
 "c": "HIM",
 "n": 11
 },
+"kp-neon-after-hours-smiles.png": {
+"c": "NEO",
+"n": 7
+},
 "kp-neon-arcade-after-dark.png": {
 "c": "NEO",
 "n": 1
+},
+"kp-neon-butterfly-club.png": {
+"c": "NEO",
+"n": 8
 },
 "kp-neon-cosmic-squiggle.png": {
 "c": "NEO",
@@ -3189,17 +3197,33 @@
 "c": "NEO",
 "n": 3
 },
+"kp-neon-electric-garden.png": {
+"c": "NEO",
+"n": 9
+},
 "kp-neon-glow-grid.png": {
 "c": "NEO",
 "n": 4
+},
+"kp-neon-lucky-little-things.png": {
+"c": "NEO",
+"n": 10
 },
 "kp-neon-miami-doodle.png": {
 "c": "NEO",
 "n": 5
 },
+"kp-neon-mixtape-magic.png": {
+"c": "NEO",
+"n": 11
+},
 "kp-neon-neon-recess.png": {
 "c": "NEO",
 "n": 6
+},
+"kp-neon-neon-tide.png": {
+"c": "NEO",
+"n": 12
 },
 "kp-olives-cabana.jpg": {
 "c": "FRU",

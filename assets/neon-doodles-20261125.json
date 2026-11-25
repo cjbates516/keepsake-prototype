@@ -1,0 +1,494 @@
+[
+  {
+    "file": "kp-neon-after-hours-smiles.png",
+    "title": "After Hours Smiles",
+    "existing": false,
+    "width": 887,
+    "height": 1774,
+    "sourceSha256": "4452c1b32cd5391ec9e7dd18751e07a307d3a4753af3019ee5ea5bb66a42b530",
+    "method": "Original transparent artwork generated or edited with image_gen; full-size backgrounds composed with browser canvas. Existing originals are preserved.",
+    "options": [
+      {
+        "id": "original",
+        "name": "Original",
+        "file": "assets/designs/kp-neon-after-hours-smiles.png"
+      },
+      {
+        "id": "c1",
+        "name": "Midnight Navy",
+        "file": "assets/designs/colorways/kp-neon-after-hours-smiles-c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Electric Plum",
+        "file": "assets/designs/colorways/kp-neon-after-hours-smiles-c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Deep Teal",
+        "file": "assets/designs/colorways/kp-neon-after-hours-smiles-c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Berry Night",
+        "file": "assets/designs/colorways/kp-neon-after-hours-smiles-c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Graphite",
+        "file": "assets/designs/colorways/kp-neon-after-hours-smiles-c5.webp"
+      }
+    ]
+  },
+  {
+    "file": "kp-neon-neon-tide.png",
+    "title": "Neon Tide",
+    "existing": false,
+    "width": 887,
+    "height": 1774,
+    "sourceSha256": "76ada5a0893b389be54da006f1d3ff21bd158b36a292d04da695ccf45c3da1b1",
+    "method": "Original transparent artwork generated or edited with image_gen; full-size backgrounds composed with browser canvas. Existing originals are preserved.",
+    "options": [
+      {
+        "id": "original",
+        "name": "Original",
+        "file": "assets/designs/kp-neon-neon-tide.png"
+      },
+      {
+        "id": "c1",
+        "name": "Midnight Navy",
+        "file": "assets/designs/colorways/kp-neon-neon-tide-c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Electric Plum",
+        "file": "assets/designs/colorways/kp-neon-neon-tide-c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Deep Teal",
+        "file": "assets/designs/colorways/kp-neon-neon-tide-c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Berry Night",
+        "file": "assets/designs/colorways/kp-neon-neon-tide-c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Graphite",
+        "file": "assets/designs/colorways/kp-neon-neon-tide-c5.webp"
+      }
+    ]
+  },
+  {
+    "file": "kp-neon-butterfly-club.png",
+    "title": "Butterfly Club",
+    "existing": false,
+    "width": 887,
+    "height": 1774,
+    "sourceSha256": "a1ec003817ea3500c0e87e2e3b780861437e9d8f0b18c27e273684975060857d",
+    "method": "Original transparent artwork generated or edited with image_gen; full-size backgrounds composed with browser canvas. Existing originals are preserved.",
+    "options": [
+      {
+        "id": "original",
+        "name": "Original",
+        "file": "assets/designs/kp-neon-butterfly-club.png"
+      },
+      {
+        "id": "c1",
+        "name": "Midnight Navy",
+        "file": "assets/designs/colorways/kp-neon-butterfly-club-c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Electric Plum",
+        "file": "assets/designs/colorways/kp-neon-butterfly-club-c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Deep Teal",
+        "file": "assets/designs/colorways/kp-neon-butterfly-club-c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Berry Night",
+        "file": "assets/designs/colorways/kp-neon-butterfly-club-c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Graphite",
+        "file": "assets/designs/colorways/kp-neon-butterfly-club-c5.webp"
+      }
+    ]
+  },
+  {
+    "file": "kp-neon-electric-garden.png",
+    "title": "Electric Garden",
+    "existing": false,
+    "width": 887,
+    "height": 1774,
+    "sourceSha256": "4d538bfb780145720d70a57e53c1e691284d5822ff984ec5592ae87a1ccb22e3",
+    "method": "Original transparent artwork generated or edited with image_gen; full-size backgrounds composed with browser canvas. Existing originals are preserved.",
+    "options": [
+      {
+        "id": "original",
+        "name": "Original",
+        "file": "assets/designs/kp-neon-electric-garden.png"
+      },
+      {
+        "id": "c1",
+        "name": "Midnight Navy",
+        "file": "assets/designs/colorways/kp-neon-electric-garden-c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Electric Plum",
+        "file": "assets/designs/colorways/kp-neon-electric-garden-c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Deep Teal",
+        "file": "assets/designs/colorways/kp-neon-electric-garden-c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Berry Night",
+        "file": "assets/designs/colorways/kp-neon-electric-garden-c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Graphite",
+        "file": "assets/designs/colorways/kp-neon-electric-garden-c5.webp"
+      }
+    ]
+  },
+  {
+    "file": "kp-neon-mixtape-magic.png",
+    "title": "Mixtape Magic",
+    "existing": false,
+    "width": 887,
+    "height": 1774,
+    "sourceSha256": "d452b0bc10300d8441556adb0523b62a102b4e542df1e600874fd621399f77fc",
+    "method": "Original transparent artwork generated or edited with image_gen; full-size backgrounds composed with browser canvas. Existing originals are preserved.",
+    "options": [
+      {
+        "id": "original",
+        "name": "Original",
+        "file": "assets/designs/kp-neon-mixtape-magic.png"
+      },
+      {
+        "id": "c1",
+        "name": "Midnight Navy",
+        "file": "assets/designs/colorways/kp-neon-mixtape-magic-c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Electric Plum",
+        "file": "assets/designs/colorways/kp-neon-mixtape-magic-c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Deep Teal",
+        "file": "assets/designs/colorways/kp-neon-mixtape-magic-c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Berry Night",
+        "file": "assets/designs/colorways/kp-neon-mixtape-magic-c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Graphite",
+        "file": "assets/designs/colorways/kp-neon-mixtape-magic-c5.webp"
+      }
+    ]
+  },
+  {
+    "file": "kp-neon-lucky-little-things.png",
+    "title": "Lucky Little Things",
+    "existing": false,
+    "width": 887,
+    "height": 1774,
+    "sourceSha256": "ddfe52c8de10df61cc9fa6efe5debc195ca93000b1dcf2434ddadc1d61ebebc4",
+    "method": "Original transparent artwork generated or edited with image_gen; full-size backgrounds composed with browser canvas. Existing originals are preserved.",
+    "options": [
+      {
+        "id": "original",
+        "name": "Original",
+        "file": "assets/designs/kp-neon-lucky-little-things.png"
+      },
+      {
+        "id": "c1",
+        "name": "Midnight Navy",
+        "file": "assets/designs/colorways/kp-neon-lucky-little-things-c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Electric Plum",
+        "file": "assets/designs/colorways/kp-neon-lucky-little-things-c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Deep Teal",
+        "file": "assets/designs/colorways/kp-neon-lucky-little-things-c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Berry Night",
+        "file": "assets/designs/colorways/kp-neon-lucky-little-things-c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Graphite",
+        "file": "assets/designs/colorways/kp-neon-lucky-little-things-c5.webp"
+      }
+    ]
+  },
+  {
+    "file": "kp-neon-neon-recess.png",
+    "title": "Neon Recess",
+    "existing": true,
+    "width": 887,
+    "height": 1774,
+    "sourceSha256": "5260f1e33c6296e22a21660d40306e0d9d4a60ef5a3ea74d894d02b61ca26497",
+    "method": "Original transparent artwork generated or edited with image_gen; full-size backgrounds composed with browser canvas. Existing originals are preserved.",
+    "options": [
+      {
+        "id": "original",
+        "name": "Original",
+        "file": "assets/designs/kp-neon-neon-recess.png"
+      },
+      {
+        "id": "c1",
+        "name": "Midnight Navy",
+        "file": "assets/designs/colorways/kp-neon-neon-recess-c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Deep Plum",
+        "file": "assets/designs/colorways/kp-neon-neon-recess-c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Pine Ink",
+        "file": "assets/designs/colorways/kp-neon-neon-recess-c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Cherry Ink",
+        "file": "assets/designs/colorways/kp-neon-neon-recess-c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Graphite",
+        "file": "assets/designs/colorways/kp-neon-neon-recess-c5.webp"
+      }
+    ]
+  },
+  {
+    "file": "kp-neon-arcade-after-dark.png",
+    "title": "Arcade After Dark",
+    "existing": true,
+    "width": 887,
+    "height": 1774,
+    "sourceSha256": "71d5666ac6de7e3709e2d4b8671b638293263d834643f150526144c9459e3bbe",
+    "method": "Original transparent artwork generated or edited with image_gen; full-size backgrounds composed with browser canvas. Existing originals are preserved.",
+    "options": [
+      {
+        "id": "original",
+        "name": "Original",
+        "file": "assets/designs/kp-neon-arcade-after-dark.png"
+      },
+      {
+        "id": "c1",
+        "name": "Arcade Blue",
+        "file": "assets/designs/colorways/kp-neon-arcade-after-dark-c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Violet Screen",
+        "file": "assets/designs/colorways/kp-neon-arcade-after-dark-c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Racing Green",
+        "file": "assets/designs/colorways/kp-neon-arcade-after-dark-c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Burgundy",
+        "file": "assets/designs/colorways/kp-neon-arcade-after-dark-c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Steel",
+        "file": "assets/designs/colorways/kp-neon-arcade-after-dark-c5.webp"
+      }
+    ]
+  },
+  {
+    "file": "kp-neon-electric-confetti.png",
+    "title": "Electric Confetti",
+    "existing": true,
+    "width": 887,
+    "height": 1774,
+    "sourceSha256": "02d120d5cfb210f2c1c8a86a50afebb418c51889f454928ae7f9efcfb1503173",
+    "method": "Original transparent artwork generated or edited with image_gen; full-size backgrounds composed with browser canvas. Existing originals are preserved.",
+    "options": [
+      {
+        "id": "original",
+        "name": "Original",
+        "file": "assets/designs/kp-neon-electric-confetti.png"
+      },
+      {
+        "id": "c1",
+        "name": "Poolside Night",
+        "file": "assets/designs/colorways/kp-neon-electric-confetti-c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Purple Party",
+        "file": "assets/designs/colorways/kp-neon-electric-confetti-c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Berry Night",
+        "file": "assets/designs/colorways/kp-neon-electric-confetti-c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Midnight Blue",
+        "file": "assets/designs/colorways/kp-neon-electric-confetti-c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Charcoal",
+        "file": "assets/designs/colorways/kp-neon-electric-confetti-c5.webp"
+      }
+    ]
+  },
+  {
+    "file": "kp-neon-miami-doodle.png",
+    "title": "Miami Doodle",
+    "existing": true,
+    "width": 887,
+    "height": 1774,
+    "sourceSha256": "788c4c850afeca35d64e1024de35694bd8f7085981749fe36e2b30c4d2651b63",
+    "method": "Original transparent artwork generated or edited with image_gen; full-size backgrounds composed with browser canvas. Existing originals are preserved.",
+    "options": [
+      {
+        "id": "original",
+        "name": "Original",
+        "file": "assets/designs/kp-neon-miami-doodle.png"
+      },
+      {
+        "id": "c1",
+        "name": "Ocean Night",
+        "file": "assets/designs/colorways/kp-neon-miami-doodle-c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Palm Shadow",
+        "file": "assets/designs/colorways/kp-neon-miami-doodle-c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Plum Sunset",
+        "file": "assets/designs/colorways/kp-neon-miami-doodle-c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Coral Night",
+        "file": "assets/designs/colorways/kp-neon-miami-doodle-c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Blue Hour",
+        "file": "assets/designs/colorways/kp-neon-miami-doodle-c5.webp"
+      }
+    ]
+  },
+  {
+    "file": "kp-neon-cosmic-squiggle.png",
+    "title": "Cosmic Squiggle",
+    "existing": true,
+    "width": 887,
+    "height": 1774,
+    "sourceSha256": "afa43cdc9933cd8f2947c4bf12853fcf981423ab3dd1d46981f5e1522f259523",
+    "method": "Original transparent artwork generated or edited with image_gen; full-size backgrounds composed with browser canvas. Existing originals are preserved.",
+    "options": [
+      {
+        "id": "original",
+        "name": "Original",
+        "file": "assets/designs/kp-neon-cosmic-squiggle.png"
+      },
+      {
+        "id": "c1",
+        "name": "Deep Space",
+        "file": "assets/designs/colorways/kp-neon-cosmic-squiggle-c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Nebula",
+        "file": "assets/designs/colorways/kp-neon-cosmic-squiggle-c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Aurora",
+        "file": "assets/designs/colorways/kp-neon-cosmic-squiggle-c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Berry Orbit",
+        "file": "assets/designs/colorways/kp-neon-cosmic-squiggle-c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Moon Shadow",
+        "file": "assets/designs/colorways/kp-neon-cosmic-squiggle-c5.webp"
+      }
+    ]
+  },
+  {
+    "file": "kp-neon-glow-grid.png",
+    "title": "Glow Grid",
+    "existing": true,
+    "width": 887,
+    "height": 1774,
+    "sourceSha256": "d33ea577195aa6d7581006f8a3dd7ea1936d259f6d868f0de2ecae5ec29dd6ce",
+    "method": "Original transparent artwork generated or edited with image_gen; full-size backgrounds composed with browser canvas. Existing originals are preserved.",
+    "options": [
+      {
+        "id": "original",
+        "name": "Original",
+        "file": "assets/designs/kp-neon-glow-grid.png"
+      },
+      {
+        "id": "c1",
+        "name": "Cobalt Night",
+        "file": "assets/designs/colorways/kp-neon-glow-grid-c1.webp"
+      },
+      {
+        "id": "c2",
+        "name": "Voltage Violet",
+        "file": "assets/designs/colorways/kp-neon-glow-grid-c2.webp"
+      },
+      {
+        "id": "c3",
+        "name": "Forest Circuit",
+        "file": "assets/designs/colorways/kp-neon-glow-grid-c3.webp"
+      },
+      {
+        "id": "c4",
+        "name": "Magenta Night",
+        "file": "assets/designs/colorways/kp-neon-glow-grid-c4.webp"
+      },
+      {
+        "id": "c5",
+        "name": "Carbon",
+        "file": "assets/designs/colorways/kp-neon-glow-grid-c5.webp"
+      }
+    ]
+  }
+]

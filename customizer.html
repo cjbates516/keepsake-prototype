@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <script src="assets/kiosk-session.js?v=1"></script>
+<script>window.KP_ENTRY_URL=location.href;</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/personal-studio.css?v=clear-personal-2">
+<link rel="stylesheet" href="assets/phone-first.css?v=20261125">
 
 <script>if(new URLSearchParams(location.search).get('staff')==='1')document.documentElement.classList.add('staff-mode');</script>
 <link rel="stylesheet" href="assets/staff-print.css">
@@ -110,7 +112,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/kp-config.js?v=rated-3"></script>
 <script src="assets/heic-loader.js"></script>
 <script src="assets/photo-screening.js?v=worker-1"></script>
-<script src="assets/colorway-catalog.js?v=full-art-2-20261121"></script>
+<script src="assets/colorway-catalog.js?v=neon-20261125"></script>
 <script src="assets/design-colorways.js?v=full-art-2-20261121"></script>
 <script src="instore/instore-lib.js?v=rated-all-20261124"></script>
 <style>
@@ -3443,6 +3445,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     renderFontChips();renderFilterChips();syncFitChips();updateStage();updateSummary();
   }
   window.KPStudioCore={
+    phoneModels:function(){return Object.fromEntries(Object.entries(modelsByBrand).filter(function(pair){return pair[0]!=='iPad';}).map(function(pair){return [pair[0],pair[1].slice()];}));},
     snapshot:editorSnapshot,
     syncGestureTarget:syncGestureTarget,
     // Display-only mounted samples. Never uses or modifies the customer's artwork or print geometry.
@@ -3528,6 +3531,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 })();
 </script>
 <script src="assets/design-editor.js?v=arrivals-20261125"></script>
+<script src="assets/phone-first.js?v=20261125"></script>
 <!-- Rated Case photos: after the editor, so the button joins its case row (tools/build_rated_photos.py makes the photos) -->
 <script src="assets/rated-gallery.js?v=mounted-frost-20261124"></script>
 <script>
