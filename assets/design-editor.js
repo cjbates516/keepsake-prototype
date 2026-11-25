@@ -153,7 +153,7 @@
   sourceActions.innerHTML='<button type="button" id="studioUpload"></button><button type="button" id="studioDesigns">Browse designs</button>';
   grid.before(sourceActions);
   $('studioUpload').textContent=kiosk?'Use your own photo':'Upload your photo or design';
-  $('studioUpload').onclick=()=>{if(kiosk||core.info().layout){openTool('photo');if(!mobile.matches)rail.scrollTop+=panels.photo.getBoundingClientRect().top-rail.getBoundingClientRect().top;return;}$('uploadBtn').click();};
+  $('studioUpload').onclick=()=>{if(kiosk||core.info().layout){openTool('photo');return;}$('uploadBtn').click();};
   $('studioDesigns').onclick=()=>$('studioBrowse').click();
   const media=document.createElement('div');media.className='studio-media';
   const thumbs=document.createElement('div');thumbs.id='studioVariations';thumbs.setAttribute('role','group');thumbs.setAttribute('aria-label','See backgrounds on your case');thumbs.hidden=true;
@@ -186,7 +186,7 @@
   // Size around iPhone safe areas, wrapped totals and the on-screen keyboard.
   function sizeChrome(){
     document.body.style.setProperty('--studio-tray-bottom',Math.ceil(footer.getBoundingClientRect().height+$('studioStatus').getBoundingClientRect().height)+'px');
-    const v=window.visualViewport;
+    const v=window.visualViewport;document.body.style.setProperty('--studio-viewport-height',(v?.height||innerHeight)+'px');
     if(v){sheet.style.setProperty('--studio-sheet-bottom',Math.max(0,innerHeight-v.height-v.offsetTop)+'px');sheet.style.setProperty('--studio-sheet-height',(sheet.dataset.activeTool==='adjust'?v.height:Math.max(150,Math.min(innerHeight*.64,v.height-16)))+'px');}
     fitSoon();
   }
@@ -200,7 +200,7 @@
     stage.classList.toggle('studio-fit',on);
     if(!on){stage.style.removeProperty('--studio-case-fit');return;}
     const ch=canvasEl.getBoundingClientRect().height;if(!ch)return;
-    let limit=footer.getBoundingClientRect().top;
+    let limit=footer.hidden?(window.visualViewport?.height||innerHeight):footer.getBoundingClientRect().top;
     if($('studioStatus').textContent)limit=Math.min(limit,$('studioStatus').getBoundingClientRect().top);
     if(mobile.matches&&!tray.hidden)limit=Math.min(limit,tray.getBoundingClientRect().top);
     const sr=stage.getBoundingClientRect();let bottom=sr.top;
@@ -240,24 +240,23 @@
   document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!e.target.closest('input,textarea,select')&&step==='edit'&&!document.querySelector('dialog[open]')){e.preventDefault();travel(!e.shiftKey);}});
   function hideSheet(){stageHome.after(stage);if(sheet.open){internalCloses++;sheet.close();}Object.values(panels).forEach(p=>host.append(p));}
   function paintTool(){
-    if(sheet.open&&!mobile.matches&&tool!=='adjust')hideSheet();
-    Object.entries(panels).forEach(([id,p])=>p.hidden=id!==tool&&!(id==='phone'&&!mobile.matches&&step==='edit'&&!info.sky));
+    Object.entries(panels).forEach(([id,p])=>p.hidden=id!==tool);
     Object.entries(buttons).forEach(([id,b])=>b.setAttribute('aria-expanded',String(id===tool)));
     sheet.dataset.activeTool=tool||'';
-    if(tool&&(mobile.matches||tool==='adjust')){if(tool==='adjust')sheetBody.append(stage);else stageHome.after(stage);sheetBody.append(panels[tool]);$('studioSheetTitle').textContent=buttons[tool].querySelector('strong').textContent;if(!sheet.open){sheet.showModal();sheetBody.scrollTop=0;}}
+    if(tool){if(tool==='adjust')sheetBody.append(stage);else stageHome.after(stage);sheetBody.append(panels[tool]);$('studioSheetTitle').textContent=buttons[tool].querySelector('strong').textContent;if(!sheet.open){sheet.showModal();sheetBody.scrollTop=0;}}
     sizeChrome();const canMove=step==='edit'&&tool==='adjust';$('stageCanvas').style.touchAction=canMove?'none':'pan-y';
   }
-  function openTool(id,push=true){if(step!=='edit'||!panels[id]||buttons[id].hidden)return;remember();tool=id;lastTool=id;if(mobile.matches&&push)pushStep(step,id);paintTool();if(id==='photo'&&layoutAdd){core.loadLayouts?.();showChosenLayout();}}
+  function openTool(id,push=true){if(step!=='edit'||!panels[id]||buttons[id].hidden)return;remember();tool=id;lastTool=id;if(push)pushStep(step,id);paintTool();if(id==='photo'&&layoutAdd){core.loadLayouts?.();showChosenLayout();}}
   // The phone sheet re-parents the panel, which resets the chip strip's scroll: bring the chosen layout back into view.
   function showChosenLayout(){const row=$('layoutChips'),chip=row?.querySelector('.layChip[aria-pressed="true"]');if(!chip||!mobile.matches)return;const r=row.getBoundingClientRect(),c=chip.getBoundingClientRect();row.scrollLeft+=(c.left+c.width/2)-(r.left+r.width/2);}
-  function closeTool(){if(closing)return;if(document.activeElement instanceof HTMLElement)document.activeElement.blur();if(mobile.matches&&history.state?.kpStudioTool){closing=true;hideSheet();history.back();return;}tool=null;hideSheet();paintTool();}
-  document.addEventListener('kp:sky-preview',()=>{if(mobile.matches)closeTool();$('stageStick').scrollIntoView({block:'start',behavior:'smooth'});});
+  function closeTool(){if(closing)return;if(document.activeElement instanceof HTMLElement)document.activeElement.blur();if(history.state?.kpStudioTool){closing=true;hideSheet();history.back();return;}tool=null;hideSheet();paintTool();}
+  document.addEventListener('kp:sky-preview',()=>{closeTool();});
   sheet.addEventListener('close',()=>{if(internalCloses){internalCloses--;return;}if(!purged&&tool)closeTool();});
   sheet.addEventListener('cancel',e=>{e.preventDefault();closeTool();});$('studioDone').onclick=closeTool;
   let backdropPress=false;sheet.addEventListener('pointerdown',e=>{backdropPress=e.target===sheet;});
   sheet.addEventListener('click',e=>{if(backdropPress&&e.target===sheet){const r=sheet.getBoundingClientRect();if(e.clientY<r.top||e.clientX<r.left||e.clientX>r.right)closeTool();}});
   tray.onclick=e=>{const b=e.target.closest('[data-tool]');if(b)openTool(b.dataset.tool);};
-  mobile.addEventListener('change',()=>{hideSheet();if(!mobile.matches){tool=tool||home();paintTool();}else {tool=null;paintTool();}history.replaceState({...history.state,kpStudioTool:null},'');});
+  mobile.addEventListener('change',()=>{paintTool();});
   function pushStep(next,id){const depth=(history.state?.kpStudioDepth||0)+1;history.pushState({...history.state,kpStudioSession:sessionId,kpStudioDepth:depth,kpStudioEditDepth:next==='edit'&&!id?depth:(history.state?.kpStudioEditDepth||0),kpStudioStep:next,kpStudioTool:id},'');}
   function returnToDesign(){const distance=(history.state?.kpStudioDepth||0)-(history.state?.kpStudioEditDepth||0);if(distance>0)history.go(-distance);else setStep('edit',false);}
   function setStep(next,push=true){
@@ -267,7 +266,7 @@
     sourceActions.hidden=step!=='edit'||info.sky;
     $('studioUndo').hidden=$('studioRedo').hidden=step!=='edit';
     top.querySelectorAll('[data-step]').forEach(li=>{if(li.dataset.step===step)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});
-    if(step==='edit'&&!mobile.matches)tool=home();paintTool();
+    paintTool();
     if(push)pushStep(step,null);core.redraw?.();
     sync();window.scrollTo({top:0,behavior:'instant'});if(entered){const heading=step==='edit'?product.querySelector('h1'):(step==='preview'?preview:setup).querySelector('h2');heading.tabIndex=-1;heading.focus({preventScroll:true});}entered=true;
   }
@@ -278,7 +277,7 @@
     closing=false;for(const id of ['counterReview','studioResetDialog','studioClearDialog','studioAccessoryDialog'])if($(id)?.open)$(id).close();if(!history.state?.kpStudioStep)return;const previous=tool;let target=history.state.kpStudioStep;
     if(history.state.kpStudioSession!==sessionId){target='edit';history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioDepth:0,kpStudioEditDepth:0,kpStudioStep:'edit',kpStudioTool:null},'');}
     if(target!=='edit'&&core.info().issue){target='edit';history.replaceState({...history.state,kpStudioSession:sessionId,kpStudioEditDepth:history.state.kpStudioDepth||0,kpStudioStep:'edit',kpStudioTool:null},'');}
-    if(target!==step)setStep(target,false);else{tool=step==='edit'&&!mobile.matches?home():null;hideSheet();paintTool();if(previous)buttons[previous]?.focus({preventScroll:true});}
+    if(target!==step)setStep(target,false);else{tool=null;hideSheet();paintTool();if(previous)buttons[previous]?.focus({preventScroll:true});}
     if(history.state.kpStudioTool)openTool(history.state.kpStudioTool,false);
   });
   $('studioNext').onclick=()=>{
@@ -324,7 +323,10 @@
     $('studioNext').textContent=step==='edit'?(i.drawingPending?'Review case setup →':'Preview design →'):step==='preview'?'Choose extras →':'Show at counter →';
     // Preview and Extras also carry the empty photo spot note above the footer (partial collages never block Next)
     const needsStore=step==='setup'&&!storeConfirmed;
-    const status=i.issue||(needsStore?'Choose your store above to confirm local prices.':null)||(step!=='edit'&&i.partial)||'';
+    const emptyIssue=i.issue==='Add a photo, choose a design or enter a name.';
+    footer.hidden=step==='edit'&&!!i.issue&&!i.hasPhoto&&!s.text?.trim()&&!i.drawingPending;
+    $('studioNext').hidden=step==='edit'&&!!i.issue;
+    const status=(!emptyIssue&&i.issue)||(needsStore?'Choose your store above to confirm local prices.':null)||(step!=='edit'&&i.partial)||'';
     $('studioNext').disabled=!!i.issue||needsStore;if($('studioStatus').textContent!==status)$('studioStatus').textContent=status;
     noBackground.hidden=!$('photoLooksWrap').hidden;noBackground.textContent=i.hasPhoto?'This design uses its original background.':'Choose a design or photo to see its backgrounds.';
     if(layoutAdd){
