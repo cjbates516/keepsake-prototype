@@ -5,21 +5,25 @@
    under their own captions and a note that says so; Pixel, moto, Galaxy A, iPhone Duo and the other Rated only phones
    (one photo set each, the similar phone note only where the camera differs, Choose changes only the rim and Back to my
    design otherwise); the drop rating follows the kit (none on the iPhone Duo) beside Confirm availability in store;
+   a new customer session starts on the frost case, so the viewer opens on its rim with Back to my design, and the rim or the
+   clear case chosen next survives a reload (case=clear links start on the clear case, which the rest of the checks use);
    the button shows with the clear case and the Rated Case chosen, never toggles the case, costs no height on phones and
    hides for a phone without a Rated kit; the viewer opens on the right phone and rim; next, previous, arrow keys,
    swipe, thumbnails and the rim switch; Choose Rated Case sets case, rim, price and address through the case radios;
    Back to my design; Esc, Close and Back close it and focus returns; On other phones (8+ photos, captions and alt text
    without dashes or brand names); a photo that fails to load shows a message; reduced motion; reopening follows a new
    phone; the shared kiosk (no links, the idle reset closes it, failures point to a team member); the classic ?staff=1
-   rail; a mouse drag released on the backdrop swipes instead of closing; Forward never lands on the viewer's old history
+   rail, which starts on the clear case; a mouse drag released on the backdrop swipes instead of closing; Forward never lands on the viewer's old history
    entry; the page behind does not scroll; arrow keys stay in the viewer (?cal=1); short landscape phones keep a real
    photo; tablets load the 1600 x 1920 file; On other phones leaves out this phone and keeps its rim chips; the photos
-   with the embossed rim name, a clock or an app icon stay out; no page errors.
+   with the embossed rim name, a clock or an app icon stay out; a customer with the clear case gets it back (with a message)
+   after a Rated only phone, and one on the frost case keeps it; no page errors. Around the viewer the editor
+   says Frost case or the rim's name; Rated Case is the wording inside the viewer only.
    usage: KP_BASE=http://127.0.0.1:PORT/ node tools/tests/rated_photos.cjs [outdir]   (serves the repo itself without KP_BASE) */
 const {chromium,webkit}=require(process.env.PW_CORE||'../../../playwright/node_modules/playwright-core');
 const http=require('http'),fs=require('fs'),path=require('path');
 const root=path.resolve(__dirname,'../..');
-const out=path.resolve(process.argv[2]||'/tmp/keepsake-rated-photos');fs.mkdirSync(out,{recursive:true});
+const out=path.resolve(process.argv[2]||process.env.KP_OUT||'/tmp/keepsake-rated-photos');fs.mkdirSync(out,{recursive:true});
 const types={'.html':'text/html','.js':'application/javascript','.css':'text/css','.json':'application/json','.webp':'image/webp','.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml','.woff2':'font/woff2','.pdf':'application/pdf'};
 let server=null;
 function serve(){return new Promise(r=>{server=http.createServer((req,res)=>{let f=path.join(root,decodeURIComponent(new URL(req.url,'http://local').pathname));if(f.endsWith(path.sep))f+='index.html';if(!f.startsWith(root+path.sep)){res.writeHead(403).end();return}fs.readFile(f,(e,d)=>{if(e){res.writeHead(404).end();return}res.setHeader('Content-Type',types[path.extname(f)]||'application/octet-stream');res.end(d)})});server.listen(0,'127.0.0.1',()=>r('http://127.0.0.1:'+server.address().port+'/'))})}
@@ -125,9 +129,39 @@ const shot=async(p,name)=>{await p.evaluate(()=>{const i=document.querySelector(
   }
   for(const width of [390,1440]){
    const tag=engine+' '+width,phone=width<761;
+   /* 1b. a new customer session (no case in the link) starts on the frost case: the viewer opens on that rim and has nothing
+      to choose; another rim, and then the clear case, are kept by the address and survive a reload */
+   {
+    const c0=await browser.newContext({viewport:{width,height:phone?844:900},isMobile:phone,hasTouch:phone,serviceWorkers:'block'});const p0=await c0.newPage();const e0=[];await hooked(p0,e0);
+    const at=()=>p0.evaluate(()=>({ct:__kp.state.caseType,rim:KPStudioCore.info().rim,total:document.getElementById('studioTotal').textContent,head:document.getElementById('studioPhone').textContent,
+     radio:document.querySelector('#studioCase input[name=studioCaseType]:checked')?.value,q:['case','rim'].map(k=>new URLSearchParams(location.search).get(k)),photos:!document.getElementById('ratedPhotosOpen').hidden,open:KPRatedGallery.isOpen}));
+    const fresh=async()=>{await editorReady(p0);await p0.waitForFunction(()=>__kp.state.photoImg&&!__kp.state.libraryLoading,null,{timeout:30000});await settled(p0);await photosReady(p0);};
+    await p0.goto(base+'customizer.html?model='+MODEL+'&design='+DESIGN);await fresh();
+    const s0=await at();
+    check(tag+' a new session starts on the frost case with See photos shown',s0.ct==='Rated Case'&&s0.rim==='Smoke Frost'&&s0.total==='$49.99'&&s0.radio==='Rated Case'&&s0.head==='iPhone 17 Pro Max · Smoke Frost'&&s0.photos,s0);
+    await openViewer(p0);let d=await view(p0);
+    check(tag+' new session: the viewer opens on the rim it starts with, with Back to my design',d.sub==='On iPhone 17 Pro Max'&&d.rims.join()==='Smoke Frost*,Clear Frost'&&/rp-iph17pmx-smoke-angle/.test(d.src)&&d.choose==='Back to my design',d);
+    await p0.locator('#ratedGallery [data-rim="Clear Frost"]').click();await shown(p0);d=await view(p0);
+    check(tag+' new session: another rim is chosen by case and rim',d.choose==='Choose Rated Case · Clear Frost'&&/clear-angle/.test(d.src),d);
+    await p0.locator('#ratedGallery .rg-choose').click();await p0.waitForFunction(()=>KPStudioCore.info().rim==='Clear Frost',null,{timeout:6000}).catch(()=>{});await settled(p0);await settledClose(p0);
+    const s1=await at();
+    check(tag+' new session: Choose changes only the rim',!s1.open&&s1.ct==='Rated Case'&&s1.rim==='Clear Frost'&&s1.total==='$49.99'&&s1.head==='iPhone 17 Pro Max · Clear Frost'&&s1.q.join()==='rated,Clear Frost',s1);
+    await p0.reload();await fresh();const s2=await at();
+    check(tag+' the rim chosen in the viewer survives a reload',s2.ct==='Rated Case'&&s2.rim==='Clear Frost'&&s2.head==='iPhone 17 Pro Max · Clear Frost'&&s2.photos,s2);
+    await openViewer(p0);d=await view(p0);
+    check(tag+' after a reload the viewer opens on that rim',d.rims.join()==='Smoke Frost,Clear Frost*'&&d.choose==='Back to my design',d);
+    await p0.keyboard.press('Escape');await settledClose(p0);
+    await pickCase(p0,'MagSafe Clear');const s3=await at();await p0.reload();await fresh();const s4=await at();
+    check(tag+' the clear case chosen over the starting frost case survives a reload, See photos stays',[s3,s4].every(x=>x.ct==='MagSafe Clear'&&x.total==='$44.99'&&x.head==='iPhone 17 Pro Max · Clear case'&&x.q[0]==='clear'&&x.photos),{s3,s4});
+    await openViewer(p0);d=await view(p0);
+    check(tag+' the viewer offers the first rim again beside the clear case',d.rims.join()==='Smoke Frost*,Clear Frost'&&d.choose==='Choose Rated Case · Smoke Frost',d);
+    await p0.keyboard.press('Escape');await settledClose(p0);
+    check(tag+' no page errors (new session)',!e0.length,e0);
+    await c0.close();
+   }
    const ctx=await browser.newContext({viewport:{width,height:phone?844:900},isMobile:phone,hasTouch:phone,serviceWorkers:'block'});
    const page=await ctx.newPage();const errors=[],net=[];await hooked(page,errors);page.on('request',r=>net.push(r.url()));
-   await page.goto(base+'customizer.html?model='+MODEL+'&design='+DESIGN);await editorReady(page);
+   await page.goto(base+'customizer.html?model='+MODEL+'&design='+DESIGN+'&case=clear');await editorReady(page);
    await page.waitForFunction(()=>__kp.state.photoImg&&!__kp.state.libraryLoading,null,{timeout:20000});await settled(page);await photosReady(page);
    check(tag+' no viewer photos load before it opens (only the button thumbnail)',!net.some(u=>/rated-photos\/rp-.*\.webp/.test(u)&&!/-side-t\.webp/.test(u)),net.filter(u=>/rated-photos\/rp-/.test(u)));
    await page.waitForFunction(()=>{const i=document.querySelector('#ratedPhotosOpen img');return i.complete&&i.naturalWidth>0;},null,{timeout:8000}).catch(()=>{});
@@ -212,7 +246,7 @@ const shot=async(p,name)=>{await p.evaluate(()=>{const i=document.querySelector(
    const c1=await page.evaluate(()=>({open:KPRatedGallery.isOpen,ct:__kp.state.caseType,rim:KPStudioCore.info().rim,total:document.getElementById('studioTotal').textContent,
     radio:document.querySelector('#studioCase input[value="Rated Case"]').checked,chip:document.querySelector('#studioRim input[value="Clear Frost"]')?.checked,focus:document.activeElement.id,step:KPEditor.step,head:document.getElementById('studioPhone').textContent}));
    const q1=await page.evaluate(()=>[new URLSearchParams(location.search).get('case'),new URLSearchParams(location.search).get('rim'),!!(history.state&&history.state.kpRatedPhotos)]);
-   check(tag+' Choose sets the Rated Case, Clear Frost rim and $49.99, then closes',!c1.open&&c1.ct==='Rated Case'&&c1.rim==='Clear Frost'&&c1.total==='$49.99'&&c1.radio&&c1.chip&&c1.head==='iPhone 17 Pro Max · Rated Case',c1);
+   check(tag+' Choose sets the Rated Case, Clear Frost rim and $49.99, then closes',!c1.open&&c1.ct==='Rated Case'&&c1.rim==='Clear Frost'&&c1.total==='$49.99'&&c1.radio&&c1.chip&&c1.head==='iPhone 17 Pro Max · Clear Frost',c1);
    check(tag+' the address keeps the case and rim (reload, shared link)',q1[0]==='rated'&&q1[1]==='Clear Frost'&&!q1[2],q1);
    /* Forward steps over the entry the viewer left behind (it has the address from before Choose) */
    const len0=await page.evaluate(()=>history.length);
@@ -336,20 +370,36 @@ const shot=async(p,name)=>{await p.evaluate(()=>{const i=document.querySelector(
    else{await setModel(page,'Samsung Galaxy S24 Ultra');check(tag+' a Rated phone without photos shows no See photos button (Galaxy S24 Ultra)',await page.evaluate(()=>{const b=document.getElementById('ratedPhotosOpen');return KPStudioCore.info().ratedAvailable&&(!b||b.hidden||!b.getClientRects().length);}));}
    await setModel(page,'iPhone 12 mini');await page.waitForTimeout(200);
    check(tag+' no button for a phone without a Rated kit (iPhone 12 mini)',await page.evaluate(()=>document.getElementById('ratedPhotosOpen').hidden&&document.getElementById('studioCase').hidden));
-   /* a rim chosen here on a Rated only phone does not turn the customer's clear case into a Rated Case on the next phone */
-   await setModel(page,'Motorola moto g power 2026');await openViewer(page);
+   /* a rim chosen here on a Rated only phone does not turn the customer's clear case into a Rated Case on the next phone: the
+      address keeps case=clear with the rim, and the clear case comes back with a message */
+   const toast=()=>page.evaluate(()=>(document.getElementById('kpToast')||{}).textContent||'');
+   /* Rated Case is the wording inside the viewer only: around it the editor says Frost case or the rim's name */
+   const rated=()=>page.evaluate(()=>['#studio-phone .studio-help','#studioCase','#studioPhone','#kpToast'].map(s=>document.querySelector(s).textContent).filter(t=>/Rated Case/.test(t)));
+   await setModel(page,'iPhone 17');await pickCase(page,'MagSafe Clear');
+   await setModel(page,'Motorola moto g power 2026');
+   check(tag+' a Rated only phone says it comes in a frost case',/This phone comes in a frost case\. Your case is now \$49\.99\./.test(await toast()),await toast());
+   check(tag+' the Phone tool, case choice, header and messages never say Rated Case (frost case only)',!(await rated()).length,await rated());
+   await openViewer(page);
    await page.locator('#ratedGallery [data-rim="Clear Frost"]').click();await page.locator('#ratedGallery .rg-choose').click();
    await page.waitForFunction(()=>KPStudioCore.info().rim==='Clear Frost',null,{timeout:6000}).catch(()=>{});await settledClose(page);
-   const mp=await page.evaluate(()=>__kp.state.caseType);
+   const mp=await page.evaluate(()=>({ct:__kp.state.caseType,head:document.getElementById('studioPhone').textContent,q:['case','rim'].map(k=>new URLSearchParams(location.search).get(k))}));
+   check(tag+' the address keeps the clear case choice beside the rim of a Rated only phone',mp.ct==='Rated Case'&&mp.head==='Motorola moto g power 2026 · Clear Frost'&&mp.q.join()==='clear,Clear Frost',mp);
    await setModel(page,'iPhone 17');
-   check(tag+' a rim chosen on a Rated Case only phone keeps the clear case for the next phone',mp==='Rated Case'&&await page.evaluate(()=>__kp.state.caseType==='MagSafe Clear'&&document.getElementById('studioTotal').textContent==='$44.99'),mp);
+   check(tag+' a rim chosen on a Rated Case only phone keeps the clear case for the next phone',mp.ct==='Rated Case'&&await page.evaluate(()=>__kp.state.caseType==='MagSafe Clear'&&document.getElementById('studioTotal').textContent==='$44.99'),mp);
+   check(tag+' the clear case comes back with a message',/Your case is the clear case again at \$44\.99\./.test(await toast()),await toast());
+   /* a customer on the frost case keeps it, and the rim where the next phone has it */
+   await pickCase(page,'Rated Case');await pickRim(page,'Clear Frost');await setModel(page,'Motorola moto g power 2026');await setModel(page,'iPhone 17');
+   const fk=await page.evaluate(()=>({ct:__kp.state.caseType,rim:KPStudioCore.info().rim,total:document.getElementById('studioTotal').textContent}));
+   check(tag+' a customer on the frost case keeps it and the rim across a Rated only phone',fk.ct==='Rated Case'&&fk.rim==='Clear Frost'&&fk.total==='$49.99',fk);
+   check(tag+' the Phone tool, case choice, header and messages never say Rated Case (both cases offered)',!(await rated()).length,await rated());
    check(tag+' no page errors',!errors.length,errors);
    await ctx.close();
-   /* 13. a photo that cannot load (offline) shows a message, not a broken image; Choose still works */
+   /* 13. a photo that cannot load (offline) shows a message, not a broken image; Choose still works (from the clear case) */
    {
     const c2=await browser.newContext({viewport:{width,height:phone?844:900},isMobile:phone,hasTouch:phone,serviceWorkers:'block',reducedMotion:'reduce'});const p2=await c2.newPage();const e2=[];await hooked(p2,e2);
     await p2.route(/rated-photos\/rp-iph17pro-.*\.webp/,r=>r.abort());
-    await p2.goto(base+'customizer.html?model=iphone-17-pro&design='+DESIGN);await editorReady(p2);await settled(p2);await photosReady(p2);
+    await p2.goto(base+'customizer.html?model=iphone-17-pro&design='+DESIGN+'&case=clear');await editorReady(p2);await settled(p2);await photosReady(p2);
+    const oc=await p2.evaluate(()=>__kp.state.caseType);
     await p2.waitForFunction(()=>document.getElementById('ratedPhotosOpen').classList.contains('rg-open-nopic'),null,{timeout:6000}).catch(()=>{});
     const ob=await p2.evaluate(()=>{const b=document.getElementById('ratedPhotosOpen'),i=b.querySelector('img');return {hidden:b.hidden,img:i.hidden,slot:getComputedStyle(b.querySelector('.rg-open-pic')).display,h:Math.round(b.getBoundingClientRect().height),pad:getComputedStyle(b).paddingLeft===getComputedStyle(b).paddingRight};});
     check(tag+' button stays clean when its thumbnail cannot load (no empty picture slot)',!ob.hidden&&ob.img&&ob.slot==='none'&&ob.h===44&&ob.pad,ob);
@@ -358,7 +408,7 @@ const shot=async(p,name)=>{await p.evaluate(()=>{const i=document.querySelector(
     await p2.locator('#ratedGallery .rg-next').click();
     check(tag+' reduced motion: no slide animation',await p2.evaluate(()=>document.querySelector('#ratedGallery .rg-img').getAnimations().length===0));
     await p2.locator('#ratedGallery .rg-choose').click();await p2.waitForFunction(()=>__kp.state.caseType==='Rated Case',null,{timeout:6000}).catch(()=>{});
-    check(tag+' Choose works while photos are offline',await p2.evaluate(()=>__kp.state.caseType==='Rated Case'&&KPStudioCore.info().rim==='Smoke Frost'&&document.getElementById('studioTotal').textContent==='$49.99'));
+    check(tag+' Choose works while photos are offline',oc==='MagSafe Clear'&&await p2.evaluate(()=>__kp.state.caseType==='Rated Case'&&KPStudioCore.info().rim==='Smoke Frost'&&document.getElementById('studioTotal').textContent==='$49.99'));
     check(tag+' no page errors (offline photos)',!e2.length,e2);
     await c2.close();
    }
@@ -421,11 +471,11 @@ const shot=async(p,name)=>{await p.evaluate(()=>{const i=document.querySelector(
   {
    const c4=await browser.newContext({viewport:{width:1440,height:900},serviceWorkers:'block'});const p4=await c4.newPage();const e4=[];await hooked(p4,e4);
    await p4.goto(base+'customizer.html?model=iphone-17-pro&design='+DESIGN+'&staff=1');await p4.waitForFunction(()=>window.__kp&&window.KPRatedGallery,null,{timeout:20000});await settled(p4);await photosReady(p4);
-   const s0=await p4.evaluate(()=>{const b=document.getElementById('ratedPhotosOpen');return {hidden:b.hidden,after:b.previousElementSibling&&b.previousElementSibling.id};});
+   const s0=await p4.evaluate(()=>{const b=document.getElementById('ratedPhotosOpen');return {hidden:b.hidden,after:b.previousElementSibling&&b.previousElementSibling.id,ct:__kp.state.caseType};});
    await p4.locator('#ratedPhotosOpen').click();await p4.waitForFunction(()=>KPRatedGallery.isOpen);await p4.locator('#ratedGallery [data-rim="Clear Frost"]').click();await p4.locator('#ratedGallery .rg-choose').click();
    await p4.waitForFunction(()=>__kp.state.caseType==='Rated Case',null,{timeout:6000}).catch(()=>{});await settledClose(p4);
    const s1=await p4.evaluate(()=>({ct:__kp.state.caseType,rim:KPStudioCore.info().rim,card:document.getElementById('ctRated').getAttribute('aria-pressed'),open:KPRatedGallery.isOpen}));
-   check(engine+' classic staff rail: See photos under the case cards, Choose sets the Rated Case',!s0.hidden&&s0.after==='ctRow'&&s1.ct==='Rated Case'&&s1.rim==='Clear Frost'&&s1.card==='true'&&!s1.open,{s0,s1});
+   check(engine+' classic staff rail: starts on the clear case, See photos under the case cards, Choose sets the Rated Case',!s0.hidden&&s0.after==='ctRow'&&s0.ct==='MagSafe Clear'&&s1.ct==='Rated Case'&&s1.rim==='Clear Frost'&&s1.card==='true'&&!s1.open,{s0,s1});
    check(engine+' no page errors (staff rail)',!e4.length,e4);
    await c4.close();
   }
