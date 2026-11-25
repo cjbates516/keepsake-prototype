@@ -1,19 +1,41 @@
 const assert=require('node:assert/strict'),fs=require('node:fs');
 const {chromium,webkit}=require('../../../playwright/node_modules/playwright-core');
-const base=process.env.KP_BASE||'http://127.0.0.1:19042/',out='../collaboration/neon-expansion-2026-11-25/phone-first';fs.mkdirSync(out,{recursive:true});
+const base=process.env.KP_BASE||'http://127.0.0.1:19042/',out='../collaboration/phone-series-2026-11-25';fs.mkdirSync(out,{recursive:true});
 const ready=p=>p.waitForFunction(()=>window.KPStudioCore?.info().previewReady,{},{timeout:30000});
 (async()=>{for(const engine of [chromium,webkit]){const b=await engine.launch();try{for(const [width,height] of [[390,844],[1024,768],[820,1180]]){
   const p=await b.newPage({viewport:{width,height},isMobile:width===390,hasTouch:true,reducedMotion:'reduce'}),errors=[],posts=[];
   p.setDefaultTimeout(20000);p.on('pageerror',e=>errors.push(e.message));p.on('request',r=>{if(r.method()==='POST')posts.push(r.url());});
   // Begin with the actual homepage call to action, not a test-only link.
   await p.goto(base);await p.locator(width===390?'.campaign-shop':'.header-cta.ks-start-case').first().click();await p.locator('#phoneFirst[open]').waitFor();
-  assert.equal(await p.locator('#phoneFirstModels button').count(),30);
+  assert.equal(await p.locator('#phoneFirstModels [data-model]').count(),0);
+  assert.equal(await p.locator('#phoneFirstModels [data-series]').count(),10);
+  await p.locator('[data-series="iPhone 18 series"]').click();
+  assert.deepEqual(await p.locator('#phoneFirstModels [data-model]').evaluateAll(nodes=>nodes.map(n=>n.dataset.model)),['iPhone 18 Pro Max','iPhone 18 Pro']);
+  await p.locator('.phone-first-series-back').click();
+  assert(await p.locator('[data-series="iPhone Duo"]').isVisible());
+  assert(await p.locator('[data-series="iPhone Air"]').isVisible());
+  // Every brand's supported models must remain reachable exactly once.
+  for(const brand of ['Apple','Samsung','Google','Motorola']){
+    await p.locator('#phoneFirst [data-brand="'+brand+'"]').click();
+    const groups=await p.locator('[data-series]').evaluateAll(nodes=>nodes.map(n=>n.dataset.series)),found=[];
+    for(const group of groups){
+      await p.locator('[data-series="'+group+'"]').click();
+      found.push(...await p.locator('#phoneFirstModels [data-model]').evaluateAll(nodes=>nodes.map(n=>n.dataset.model)));
+      await p.locator('.phone-first-series-back').click();
+    }
+    assert.deepEqual(found.sort(),(await p.evaluate(b=>KPStudioCore.phoneModels()[b],brand)).sort());
+  }
+  await p.locator('#phoneFirst [data-brand=Apple]').click();
+  await p.screenshot({path:out+'/'+engine.name()+'-'+width+'-series.png'});
   assert.equal(await p.locator('#phoneFirst [aria-pressed=true]').innerText(),'Apple');
   assert(!await p.evaluate(()=>document.getElementById('phoneFirst').scrollWidth>innerWidth+1));
-  await p.locator('#phoneFirst [data-brand=Google]').click();assert.equal(await p.locator('#phoneFirstModels button').count(),10);
+  await p.locator('#phoneFirst [data-brand=Google]').click();assert.equal(await p.locator('#phoneFirstModels [data-series]').count(),4);
   await p.locator('#phoneFirstSearch').fill('nonsense model');assert(await p.locator('#phoneFirstEmpty').isVisible());
   await p.locator('#phoneFirstSearch').fill('16 Pro');assert.equal(await p.locator('#phoneFirstModels button').count(),2);
   await p.screenshot({path:out+'/'+engine.name()+'-'+width+'-picker.png'});
+  await p.locator('#phoneFirst [data-brand=Apple]').click();
+  await p.locator('[data-series="iPhone 16 series"]').click();
+  await p.screenshot({path:out+'/'+engine.name()+'-'+width+'-models.png'});
   await p.locator('#phoneFirstModels [data-model="iPhone 16 Pro"]').click();await ready(p);
   assert.equal(await p.locator('#phoneFirst').count(),0);assert.equal(await p.evaluate(()=>KPStudioCore.info().model),'iPhone 16 Pro');assert.equal(await p.evaluate(()=>KPStudioCore.info().rim),'Smoke Frost');
   // A saved entry selection stays intact, even if the editor writes defaults while loading.
