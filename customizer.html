@@ -169,7 +169,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/shop-dialogs.js" defer></script>
 <link rel="stylesheet" href="assets/shop-menu.css?v=narrow-rail-20261124"><script src="assets/seasonal-visibility.js"></script><script src="assets/shop-menu.js?v=rated-all-20261124" defer></script><link rel="stylesheet" href="assets/case-zoom.css?v=rated-all-20261124">
 <link rel="stylesheet" href="assets/accessories.css">
-<link rel="stylesheet" href="assets/design-editor.css?v=rated-all-20261124">
+<link rel="stylesheet" href="assets/design-editor.css?v=case-gestures-20261124-rated-all-20261124">
 <!-- Rated Case photos: the See photos button and its viewer (assets/rated-gallery.js) -->
 <link rel="stylesheet" href="assets/rated-gallery.css?v=rated-photos-4">
 <script>window.KP_EDITOR=!new URLSearchParams(location.search).has('cal')&&new URLSearchParams(location.search).get('staff')!=='1';</script>
@@ -972,40 +972,12 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   function drawDesignInto(c2, src, filterCss, variant){
     variant=variant||state.variant;
-    var clearArt=KPDesignColorways.isArtworkOnly(src,variant) || (!state.isLibraryDesign && photoHasAlpha());
     src=KPDesignColorways.source(src,variant);
     var iw=src.naturalWidth||src.width, ih=src.naturalHeight||src.height;
     var B=photoBox();
-    if(state.fitMode==='fit' && (clearArt || drawingStudio && !state.isLibraryDesign)) {
-      var cs=Math.min(B.w/iw,B.h/ih)*0.93;
-    } else if(state.fitMode==='fit'){
-      var cvr=Math.max(B.w/iw, B.h/ih);
-      c2.fillStyle=edgeColor(src); c2.fillRect(-DIM.w,-DIM.h,DIM.w*3,DIM.h*3);
-      if(kpBgUniform(src)){
-        /* plain-background design: solid background extension is seamless — skip the blur backdrop */
-        c2.fillStyle=src.__kpBg||edgeColor(src); c2.fillRect(-DIM.w,-DIM.h,DIM.w*3,DIM.h*3);
-        var cs=Math.min(B.w/iw, B.h/ih)*0.93;
-        var dw0=iw*cs, dh0=ih*cs;
-        try{ c2.filter=filterCss; }catch(_){}
-        c2.drawImage(src,B.x+(B.w-dw0)/2,B.y+(B.h-dh0)/2,dw0,dh0);
-        try{ c2.filter='none'; }catch(_){}
-        return;
-      }
-      /* downscale-upscale blur: identical output on every engine (ctx.filter is a no-op on iOS<18) */
-      var bs=src.__kpBlur;
-      if(!bs){
-        bs=document.createElement('canvas');
-        var bw=Math.max(12,Math.round(44*(iw>=ih?1:iw/ih))), bh=Math.max(12,Math.round(44*(ih>iw?1:ih/iw)));
-        bs.width=bw; bs.height=bh;
-        var bx=bs.getContext('2d'); bx.imageSmoothingEnabled=true; bx.drawImage(src,0,0,bw,bh);
-        src.__kpBlur=bs;
-      }
-      c2.imageSmoothingEnabled=true; c2.imageSmoothingQuality='high';
-      c2.drawImage(bs,B.x+(B.w-iw*cvr)/2,B.y+(B.h-ih*cvr)/2,iw*cvr,ih*cvr);
-      var cs=Math.min(B.w/iw, B.h/ih)*0.93;
-    } else {
-      var cs=Math.max(B.w/iw, B.h/ih);
-    }
+    // Fit means one complete photo with clear space around it. The same artwork
+    // layer feeds the editor, counter preview and print; never add a second copy.
+    var cs=state.fitMode==='fit' ? Math.min(B.w/iw,B.h/ih)*0.93 : Math.max(B.w/iw,B.h/ih);
     var dw=iw*cs, dh=ih*cs, dx=B.x+(B.w-dw)/2, dy=B.y+(B.h-dh)/2;
     try{ c2.filter=filterCss; }catch(_){}
     c2.drawImage(src,dx,dy,dw,dh);
@@ -1441,6 +1413,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     setTimeout(go, 80);   // backstop: rAF is paused/throttled in some contexts
   }
   function renderNow(){
+    syncGestureTarget();
     if(editorPurged)return;
     if(!caseReady || !lightReady || !finishReady) return;
     ctx.setTransform(PS,0,0,PS,0,0);
@@ -1629,7 +1602,36 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   var kpPtr=null, kpPtrs={}, pinch=null;
   function ptrCount(){ return Object.keys(kpPtrs).length; }
   function canGesture(){ return state.photoImg && (window.KP_EDITOR ? window.KPEditor?.step==='edit'&&window.KPEditor?.tool==='adjust' : !state.isLibraryDesign); }
+  // Only the print window owns drag/pinch gestures. The transparent stage padding
+  // keeps native vertical scrolling; touch-action must be decided before touch starts.
+  var gestureSVG=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  gestureSVG.id='caseGestureTarget';gestureSVG.setAttribute('viewBox','0 0 2500 3000');gestureSVG.setAttribute('aria-hidden','true');
+  gestureSVG.style.cssText='position:absolute;pointer-events:none;overflow:visible;display:none';
+  var gesturePath=document.createElementNS('http://www.w3.org/2000/svg','path');
+  gesturePath.style.cssText='fill:transparent;pointer-events:fill;touch-action:none;cursor:grab';
+  gestureSVG.append(gesturePath);$('stageWrap').style.position='relative';$('stageWrap').append(gestureSVG);
+  var gestureMaskKey=null;
+  function syncGestureTarget(){
+    if(!gestureSVG)return;
+    var geometry=viewReady&&(window.KP_MASK_GEOMETRY||{})[viewSrc];
+    var enabled=canGesture()&&!state.layout&&!CAL.on&&geometry&&canvas.offsetWidth;
+    gestureSVG.style.display=enabled?'block':'none';if(!enabled)return;
+    if(gestureMaskKey!==viewSrc){
+      gesturePath.setAttribute('d',geometry.rows.map(function(row){var d='';for(var j=2;j<row.length;j+=2)d+='M'+row[j]+' '+row[0]+'H'+row[j+1]+'V'+row[1]+'H'+row[j]+'Z';return d;}).join(''));
+      gestureMaskKey=viewSrc;
+    }
+    gestureSVG.style.left=canvas.offsetLeft+'px';gestureSVG.style.top=canvas.offsetTop+'px';
+    gestureSVG.style.width=canvas.offsetWidth+'px';gestureSVG.style.height=canvas.offsetHeight+'px';
+  }
+  function inPrintWindow(e){
+    var p=toCanvas(e),geometry=viewReady&&(window.KP_MASK_GEOMETRY||{})[viewSrc];
+    return !!geometry&&geometry.rows.some(function(row){if(p.y<row[0]||p.y>=row[1])return false;for(var j=2;j<row.length;j+=2)if(p.x>=row[j]&&p.x<row[j+1])return true;return false;});
+  }
+  gesturePath.addEventListener('pointerdown',function(e){canvas.dispatchEvent(new PointerEvent('pointerdown',e));});
+  gesturePath.addEventListener('wheel',function(e){if(e.ctrlKey){e.preventDefault();canvas.dispatchEvent(new WheelEvent('wheel',e));}},{passive:false});
+  new ResizeObserver(syncGestureTarget).observe(canvas);
   canvas.addEventListener('pointerdown',function(e){
+    if(!CAL.on&&!inPrintWindow(e))return;
     if(state.layout && !CAL.on) return; /* collage taps handled on click for iOS user-activation */
     if(!canGesture() && !CAL.on) return;
     if(CAL.on && VIEW.z>1){ if(kpPtr!==null && e.pointerId!==kpPtr) return; kpPtr=e.pointerId;
@@ -3440,6 +3442,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   }
   window.KPStudioCore={
     snapshot:editorSnapshot,
+    syncGestureTarget:syncGestureTarget,
     // Display-only mounted samples. Never uses or modifies the customer's artwork or print geometry.
     caseSample:async function(rimName){
       var model=state.model,k=KITS[model],rated=k&&k.rated;
@@ -3522,7 +3525,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   };
 })();
 </script>
-<script src="assets/design-editor.js?v=upload-frost-20261124"></script>
+<script src="assets/design-editor.js?v=case-gestures-20261124"></script>
 <!-- Rated Case photos: after the editor, so the button joins its case row (tools/build_rated_photos.py makes the photos) -->
 <script src="assets/rated-gallery.js?v=mounted-frost-20261124"></script>
 <script>

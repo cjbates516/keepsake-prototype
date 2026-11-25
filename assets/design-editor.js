@@ -247,8 +247,23 @@
     Object.entries(buttons).forEach(([id,b])=>b.setAttribute('aria-expanded',String(id===tool)));
     sheet.dataset.activeTool=tool||'';
     if(tool){if(tool==='adjust')sheetBody.append(stage);else stageHome.after(stage);sheetBody.append(panels[tool]);$('studioSheetTitle').textContent=buttons[tool].querySelector('strong').textContent;if(!sheet.open){sheet.showModal();sheetBody.scrollTop=0;}}
-    sizeChrome();fitStage();const canMove=step==='edit'&&tool==='adjust';$('stageCanvas').style.touchAction=canMove?'none':'pan-y';
+    sizeChrome();fitStage();core.syncGestureTarget();
   }
+  // Swipes in the empty preview area scroll the Adjust controls, never the artwork.
+  let stageScrollTouch=null;
+  stage.addEventListener('touchstart',e=>{
+    const t=e.touches[0];stageScrollTouch=tool==='adjust'&&e.touches.length===1&&!e.target.closest('#caseGestureTarget')?{id:t.identifier,y:t.clientY}:null;
+  },{passive:true});
+  stage.addEventListener('touchmove',e=>{
+    if(!stageScrollTouch||e.touches.length!==1)return;
+    const t=Array.from(e.touches).find(t=>t.identifier===stageScrollTouch.id);if(!t)return;
+    panels.adjust.scrollTop+=stageScrollTouch.y-t.clientY;stageScrollTouch.y=t.clientY;
+  },{passive:true});
+  ['touchend','touchcancel'].forEach(type=>stage.addEventListener(type,()=>{stageScrollTouch=null;},{passive:true}));
+  stage.addEventListener('wheel',e=>{
+    if(tool!=='adjust'||e.ctrlKey||e.metaKey)return;
+    if(panels.adjust.scrollHeight>panels.adjust.clientHeight){e.preventDefault();panels.adjust.scrollTop+=e.deltaY;}
+  },{passive:false});
   function openTool(id,push=true){if(step!=='edit'||!panels[id]||buttons[id].hidden)return;remember();tool=id;lastTool=id;if(push)pushStep(step,id);paintTool();if(id==='photo'&&layoutAdd){core.loadLayouts?.();showChosenLayout();}}
   // The phone sheet re-parents the panel, which resets the chip strip's scroll: bring the chosen layout back into view.
   function showChosenLayout(){const row=$('layoutChips'),chip=row?.querySelector('.layChip[aria-pressed="true"]');if(!chip||!mobile.matches)return;const r=row.getBoundingClientRect(),c=chip.getBoundingClientRect();row.scrollLeft+=(c.left+c.width/2)-(r.left+r.width/2);}
