@@ -249,7 +249,7 @@
 <link rel="stylesheet" href="../assets/accessories.css">
 <script src="../assets/accessory-catalog.js"></script>
 <script src="../assets/accessories.js?v=2"></script>
-</head>
+<link rel="stylesheet" href="../assets/phone-series.css?v=20261125"><script src="../assets/phone-series.js?v=20261125"></script></head>
 <body>
 <div class="wrap">
 <div id="connectionNotice" role="status" hidden>You’re offline. Previously viewed designs may still work. Ask a team member if a preview won’t load.</div>
@@ -392,6 +392,7 @@
   /* ---------- screens ---------- */
   function show(n, push) {
     if (state.screen !== n) { changedAt = Date.now(); changeTap = { x: lastTap.x, y: lastTap.y }; }
+    if(n===1&&state.screen!==1&&kioskPhonePicker)kioskPhonePicker.reset();
     state.screen = n;
     if(n!==3){$('codecard').classList.remove('on');$('setupOptions').hidden=false;}
     syncSetupView();
@@ -418,26 +419,9 @@
   });
 
   /* ---------- screen 1 ---------- */
+  var kioskPhonePicker;
   function buildPhones() {
-    var byBrand = {};
-    data.activeModels.forEach(function (m) { (byBrand[m.brand || 'Apple'] = byBrand[m.brand || 'Apple'] || []).push(m); });
-    var html = '';
-    Object.keys(byBrand).forEach(function (b) {
-      html += '<div class="group"><h2>' + (b === 'Apple' ? 'iPhone' : esc(b)) + '</h2><div class="phones">' +
-        byBrand[b].map(function (m) {
-          return '<button class="phone" type="button" data-model="' + esc(m.id) + '"><span class="pimg"><img alt="" data-ph="' + esc(m.id) + '"></span>' +
-            '<span class="pname">' + esc(m.name) + '</span></button>';
-        }).join('') + '</div></div>';
-    });
-    if (!byBrand.Samsung) html += '<p class="soon">Don’t see your phone? Ask our team to check case availability.</p>';
-    $('phones').innerHTML = html;
-    data.activeModels.forEach(function (m) {
-      KPI.prepModel(m, 260, true, sampleRim(m)).then(function (prep) {
-        var img = $('phones').querySelector('img[data-ph="' + m.id + '"]');
-        if (img) img.parentNode.style.setProperty('--ar', prep.W / prep.H);
-        return KPI.renderToUrl(prep, null, TILE_BG).then(function (u) { if (img) img.src = u; });
-      }).catch(function () {});
-    });
+    kioskPhonePicker=KPPhoneSeries.mount($('phones'),{items:data.activeModels.map(function(m){return {id:m.id,name:m.name,brand:m.brand||'Apple'};}),onSelect:function(item){pickModel(item.id);}});
   }
 
   /* ---------- screen 2 ---------- */
@@ -723,6 +707,7 @@
   function reset() {
     document.getElementById('caseZoomDialog')?.close();
     $('glass').checked=false;$('charger').checked=false;closeSheet();bigImageFile=bigImagePromise=null;rememberedLooks={};
+    if(kioskPhonePicker)kioskPhonePicker.reset();
     previewSeq++;
     $('pv').removeAttribute('src');$('counterPreview').removeAttribute('src'); revoke(bigUrl); bigUrl = null;
     if($('studioAccessoryDialog').open)$('studioAccessoryDialog').close();$('kioskExtraSummary').textContent='';

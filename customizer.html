@@ -177,7 +177,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script>window.KP_EDITOR=!new URLSearchParams(location.search).has('cal')&&new URLSearchParams(location.search).get('staff')!=='1';</script>
 <script src="assets/accessory-catalog.js"></script>
 <script src="assets/accessories.js?v=2"></script>
-<script src="assets/phone-finishes.js?v=iphone16-20261124"></script></head>
+<script src="assets/phone-finishes.js?v=iphone16-20261124"></script><link rel="stylesheet" href="assets/phone-series.css?v=20261125"><script src="assets/phone-series.js?v=20261125"></script></head>
 <body class="kp-shop kp-customizer">
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#2D2D3B;color:#fff;padding:10px 16px;z-index:999;border-radius:0 0 8px 0" onfocus="this.style.left=0" onblur="this.style.left='-9999px'">Skip to content</a>
 <div class="kp-page" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
@@ -232,7 +232,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
               <option value="iPad" disabled>iPad (coming soon)</option>
             </select>
             <div style="width:1px;background:#E4E3E3"></div>
-            <select id="modelSel" aria-label="Phone model" style="flex:1.4;min-width:0;padding:15px 20px;border:0;font-size:16px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer"></select>
+            <select id="seriesSel" aria-label="Phone series"></select><select id="modelSel" aria-label="Phone model" style="flex:1.4;min-width:0;padding:15px 20px;border:0;font-size:16px;font-weight:700;color:#17171F;background:#FFFFFF;outline:none;cursor:pointer"></select>
           </div>
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:30px">
             <span style="font-size:17px;font-weight:800;color:#17171F"><span id="finishLabel">Device color</span> · <span id="colorName" style="font-weight:600;color:#514f55">Silver</span></span>
@@ -428,7 +428,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   <div id="kpSheetScrim"></div>
   <div id="kpSheet">
     <div style="padding:14px 20px 10px;border-bottom:1px solid #EFEDED">
-      <div style="width:44px;height:5px;border-radius:999px;background:#E4E3E3;margin:0 auto 12px"></div>
+      <button id="kpSheetClose" type="button" style="min-height:44px;padding:8px 18px;border:1px solid #ccc;border-radius:12px;background:white;font:inherit">Done</button>
       <input id="kpSheetSearch" type="search" placeholder="Search your phone…" style="width:100%;box-sizing:border-box;padding:13px 16px;border:1px solid #E4E3E3;border-radius:12px;font-size:16px">
     </div>
     <div id="kpSheetList" style="overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:env(safe-area-inset-bottom)"></div>
@@ -2307,12 +2307,16 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   });
 
   /* ── model / brand ── */
-  function fillModels(){
-    $('modelSel').innerHTML = modelsByBrand[state.brand].map(function(m){
-      var has = !!KITS[m];
-      return '<option value="'+m+'"'+(m===state.model?' selected':'')+(has?'':' disabled')+'>'+m+(has?'':' (coming soon)')+'</option>';
-    }).join('');
+  function fillModels(model){
+    var list=modelsByBrand[state.brand],series=KPPhoneSeries.seriesFor(model||state.model);
+    $('seriesSel').replaceChildren();[...new Set(list.map(KPPhoneSeries.seriesFor))].forEach(function(s){$('seriesSel').add(new Option(s,s));});$('seriesSel').value=series;
+    fillSeriesModels(model||state.model);
   }
+  function fillSeriesModels(model){
+    $('modelSel').replaceChildren(new Option('Choose your model',''));
+    modelsByBrand[state.brand].filter(function(m){return KPPhoneSeries.seriesFor(m)===$('seriesSel').value;}).forEach(function(m){var option=new Option(m,m);option.disabled=!KITS[m];$('modelSel').add(option);});$('modelSel').value=model||'';
+  }
+  $('seriesSel').addEventListener('change',function(){fillSeriesModels('');});
   function paletteFor(){
     var k=KITS[state.model], rated=kpRatedKit();
     /* Phone colors remain available for both case types; Rated rims have their own controls. */
@@ -2441,6 +2445,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     }
   }
   $('modelSel').addEventListener('change',function(){
+    if(!this.value)return;
     state.model=this.value; state.reserved=false;if(state.handoffErrorType==='model'){state.handoffError=null;state.handoffErrorType=null;}
     var nk=KITS[state.model];
     kpNormalizeCaseType();
@@ -2451,19 +2456,12 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 
   /* ── phone picker sheet (CU4) ── */
   function kpTrigSync(){ var t=$('kpModelTrig'); if(t) t.innerHTML=state.brand+' · '+kpShort(state.model)+' <span style="float:right;color:#6C6C72">⌄</span>'; }
-  function kpSheetBuild(q){
-    var el=$('kpSheetList'); if(!el) return;
-    q=(q||'').toLowerCase();
-    var html='';
-    ['Apple','Samsung','Google','Motorola'].forEach(function(b){
-      var ms=modelsByBrand[b].filter(function(m){ return !q || m.toLowerCase().indexOf(q)>-1; });
-      if(!ms.length) return;
-      html+='<div class="kpShBrand">'+b+'</div>'+ms.map(function(m){
-        var ok=!!KITS[m];
-        return '<button class="kpShRow" data-b="'+b+'" data-m="'+m+'"'+(ok?'':' disabled')+'>'+m+(ok?'':' <span style="margin-left:auto;font-size:11px;font-weight:800;color:#B9BDCB">SOON</span>')+'</button>';
-      }).join('');
-    });
-    el.innerHTML = html || '<div style="padding:26px;text-align:center;color:#6C6C72;font-weight:700">No matches — try fewer letters</div>';
+  function kpSheetBuild(){
+    KPPhoneSeries.mount($('kpSheetList'),{brand:state.brand,selected:state.model,items:Object.keys(modelsByBrand).filter(function(b){return b!=='iPad';}).flatMap(function(b){return modelsByBrand[b].map(function(m){return {name:m,brand:b,disabled:!KITS[m]};});}),onSelect:function(item){
+      if($('brandSel').value!==item.brand){$('brandSel').value=item.brand;$('brandSel').dispatchEvent(new Event('change'));}
+      // Restore the native options to the newly chosen model's series before selecting it.
+      fillModels(item.name);$('modelSel').value=item.name;$('modelSel').dispatchEvent(new Event('change'));kpTrigSync();kpSheetClose();
+    }});
   }
   function kpSheetOpen(){ kpSheetBuild(''); $('kpSheetSearch').value=''; $('kpSheet').style.display='flex'; $('kpSheetScrim').style.display='block'; document.body.style.overflow='hidden'; }
   function kpSheetClose(){ $('kpSheet').style.display='none'; $('kpSheetScrim').style.display='none'; document.body.style.overflow=''; }
@@ -2471,14 +2469,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var t=$('kpModelTrig'); if(!t) return;
     t.addEventListener('click', kpSheetOpen);
     $('kpSheetScrim').addEventListener('click', kpSheetClose);
+    $('kpSheetClose').addEventListener('click', kpSheetClose);
     $('kpSheetSearch').addEventListener('input', function(){ kpSheetBuild(this.value); });
-    $('kpSheetList').addEventListener('click', function(e){
-      var r=e.target.closest('.kpShRow'); if(!r||r.disabled) return;
-      var b=r.dataset.b, m=r.dataset.m;
-      if($('brandSel').value!==b){ $('brandSel').value=b; $('brandSel').dispatchEvent(new Event('change')); }
-      $('modelSel').value=m; $('modelSel').dispatchEvent(new Event('change'));
-      kpTrigSync(); kpSheetClose();
-    });
     $('modelSel').addEventListener('change', kpTrigSync);
     $('brandSel').addEventListener('change', kpTrigSync);
     kpTrigSync();
@@ -3531,7 +3523,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 })();
 </script>
 <script src="assets/design-editor.js?v=arrivals-20261125"></script>
-<script src="assets/phone-first.js?v=20261125-series"></script>
+<script src="assets/phone-first.js?v=20261125-sitewide"></script>
 <!-- Rated Case photos: after the editor, so the button joins its case row (tools/build_rated_photos.py makes the photos) -->
 <script src="assets/rated-gallery.js?v=mounted-frost-20261124"></script>
 <script>
