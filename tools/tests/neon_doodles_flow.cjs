@@ -8,7 +8,7 @@ const base=process.env.KP_BASE||'http://127.0.0.1:19042/',out='../collaboration/
  const before=await card.locator('canvas').evaluate(c=>c.toDataURL());await card.locator('[data-look='+look+']').click();assert.equal(await card.locator('[data-look='+look+']').getAttribute('aria-pressed'),'true');
  await p.waitForFunction(({file,before})=>document.querySelector('.kpCard[data-file="'+file+'"] canvas').toDataURL()!==before,{file,before});
  assert(!await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1));await card.screenshot({path:out+'/'+engine.name()+'-'+width+'-variations.png'});
- await card.locator('a[data-pick-model]').last().click();await p.locator('[data-md=iphone-16-pro]').click();
+ await card.locator('a[data-pick-model]').last().click();await p.locator('#galleryPhoneSeries [data-series="iPhone 16 series"]').click();await p.locator('#galleryPhoneSeries [data-series-model="iPhone 16 Pro"]').click();
  await p.waitForFunction(({file,look})=>window.KPStudioCore?.info().previewReady&&!KPStudioCore.info().issue&&__kp.state.photoImg?.__kpDesignFile===file&&__kp.state.variant===look,{file,look});
  assert.equal(await p.locator('#phoneFirst').count(),0,'Gallery already chose the phone');
  const initial=await p.evaluate(()=>KPStudioCore.info());assert.equal(initial.model,'iPhone 16 Pro');assert.equal(initial.caseType,'Rated Case');

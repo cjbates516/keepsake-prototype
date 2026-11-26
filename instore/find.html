@@ -43,7 +43,7 @@ input::placeholder{color:#626269;opacity:1}
 <link rel="stylesheet" href="../assets/accessories.css">
 <script src="../assets/accessory-catalog.js"></script>
 <script src="../assets/accessories.js"></script>
-</head>
+<link rel="stylesheet" href="../assets/phone-series.css?v=20261125"><script src="../assets/phone-series.js?v=20261125"></script></head>
 <body>
 <main class="wrap">
   <div class="brand"><img src="../assets/favicon.svg" alt=""><span>Keepsake Printing Co</span></div>
@@ -156,7 +156,7 @@ input::placeholder{color:#626269;opacity:1}
     });
     $('phoneHint').textContent=model?'Selected: '+model+'.':'Choose the customer’s phone first.';
   }
-  function populateModels(data){if(modelsReady)return;modelsReady=true;$('staffModel').innerHTML='<option value="">Choose a phone</option>';data.models.forEach(function(m){var opt=document.createElement('option');opt.value=m.name;opt.textContent=m.name+(m.active?'':' · check availability');$('staffModel').appendChild(opt);});var requestedModel=new URLSearchParams(location.search).get('model');var requested=data.models.find(function(m){return m.id===requestedModel||m.name.toLowerCase()===(requestedModel||'').replace(/-/g,' ').toLowerCase();});if(requested)$('staffModel').value=requested.name;$('staffModel').disabled=false;$('retryPhones').hidden=true;ownUrl();}
+  function populateModels(data){if(modelsReady)return;modelsReady=true;$('staffModel').innerHTML='<option value="">Choose a phone</option>';data.models.forEach(function(m){var opt=document.createElement('option');opt.value=m.name;opt.textContent=m.name+(m.active?'':' · check availability');$('staffModel').appendChild(opt);});var requestedModel=new URLSearchParams(location.search).get('model');var requested=data.models.find(function(m){return m.id===requestedModel||m.name.toLowerCase()===(requestedModel||'').replace(/-/g,' ').toLowerCase();});if(requested)$('staffModel').value=requested.name;$('staffModel').disabled=false;KPPhoneSeries.enhanceSelect($('staffModel'));$('retryPhones').hidden=true;ownUrl();}
   function loadPhones(focus){$('retryPhones').disabled=true;$('phoneHint').textContent='Loading phones…';load().then(function(){if(focus)$('staffModel').focus();}).catch(function(){$('staffModel').innerHTML='<option value="">Phones unavailable</option>';$('staffModel').disabled=true;$('phoneHint').textContent='Could not load phones. Check the connection and retry.';$('retryPhones').hidden=false;$('retryPhones').disabled=false;if(focus)$('retryPhones').focus();}).finally(function(){$('retryPhones').disabled=false;});}
   loadPhones(false);
   $('retryPhones').addEventListener('click',function(){loadPhones(true);});

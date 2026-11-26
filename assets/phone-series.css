@@ -1,0 +1,30 @@
+.kp-series-picker{padding:16px;box-sizing:border-box;min-width:0;color:#212121}
+.kp-series-brands{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.kp-series-picker button{font:inherit;cursor:pointer;color:inherit;min-height:48px}
+.kp-series-brands button{border:1px solid #d5d2cd;border-radius:999px;background:white;padding:10px 16px;font-weight:700}
+.kp-series-brands button[aria-pressed=true]{background:#242424;color:white;border-color:#242424}
+.kp-series-search{display:block;font-size:14px;font-weight:700;max-width:520px}
+.kp-series-search input{box-sizing:border-box;width:100%;min-height:48px;font:inherit;font-size:16px;margin-top:6px;padding:12px;border:1px solid #c9c6bf;border-radius:10px;background:white}
+.kp-series-picker h3{font-size:22px;line-height:1.25;margin:18px 0 14px}
+.kp-series-picker h3:focus{outline:none}
+.kp-series-back{display:block;border:0;background:transparent;padding:8px 0;text-decoration:underline;text-underline-offset:4px}
+.kp-series-back[hidden]{display:none}
+.kp-series-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.kp-series-grid button{background:white;border:1px solid #dad7d1;border-radius:12px;padding:14px;text-align:left;font-weight:700;overflow-wrap:anywhere}
+.kp-series-grid button:hover,.kp-series-grid button[aria-pressed=true]{border-color:#c7192e;background:#fff5f3}
+.kp-series-picker button:focus-visible,.kp-series-picker input:focus-visible,.kp-series-select:focus-visible{outline:3px solid #007e9e;outline-offset:2px}
+.kp-series-status{font-size:14px;color:#565653}
+#phones .kp-series-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+#phones.kp-series-picker{padding:0}
+#phones .kp-series-grid button{min-height:70px}
+.kp-series-select-label{display:block;font-weight:700;font-size:14px}
+.kp-series-select{font:inherit;min-height:48px;border:1px solid #bbb8b1;border-radius:8px;padding:12px;background:white;color:#212121;max-width:100%}
+.phone-finder form{flex-wrap:wrap}
+#kpSheet{max-height:90dvh!important}#kpSheetSearch{display:none}
+#kpSheet>div:first-child{display:flex;justify-content:flex-end}
+@media(max-width:420px){.kp-series-brands{gap:6px}.kp-series-brands button{font-size:14px;padding:8px 12px}.kp-series-grid{gap:8px}.kp-series-grid button{padding:12px;font-size:15px}#phones .kp-series-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.kp-series-native-field{flex:1;min-width:190px;max-width:100%}.kp-series-native-field label{display:block;margin-bottom:6px}.kp-series-native-field select{box-sizing:border-box;width:100%}.phone-finder form{align-items:flex-end}.phone-finder button:disabled{opacity:.5;cursor:default}
+
+.kp-series-grid [data-series]{display:flex;align-items:center;justify-content:space-between;gap:8px}.kp-series-grid [data-series]>span:last-child{flex:none}
+#seriesSel{min-width:0;font:inherit;padding:12px;background:white;color:#212121;border:0}

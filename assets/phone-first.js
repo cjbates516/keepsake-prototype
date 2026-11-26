@@ -13,13 +13,7 @@
   dialog.querySelector('a').href=back.href;
   const nav=dialog.querySelector('nav'),grid=dialog.querySelector('#phoneFirstModels'),search=dialog.querySelector('input');
   let brand='Apple',series='',choosing=false;
-  function seriesFor(model){
-    const numbered=model.match(/^(iPhone \d+|Samsung Galaxy S\d+|Google Pixel \d+)/);
-    if(numbered)return numbered[1].replace(/^(Samsung |Google )/,'')+' series';
-    if(model.startsWith('Samsung Galaxy A'))return 'Galaxy A series';
-    if(model.startsWith('Motorola '))return model.replace(/^Motorola /,'').replace(/ \d{4}$/,'').replace(/^moto/,'Moto')+' series';
-    return model; // Air and Duo stay easy to find in their own families.
-  }
+  const seriesFor=KPPhoneSeries.seriesFor;
   const seriesBack=document.createElement('button');seriesBack.type='button';seriesBack.className='phone-first-series-back';seriesBack.textContent='← All series';seriesBack.hidden=true;
   const heading=document.createElement('h2');heading.id='phoneFirstSeriesTitle';heading.tabIndex=-1;
   grid.before(seriesBack,heading);grid.setAttribute('aria-labelledby',heading.id);
