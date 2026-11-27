@@ -351,8 +351,8 @@
 
 
 <div id="idleNotice" hidden role="status"><span>Still browsing? This screen will reset soon.</span><button type="button" class="ghost" id="keepBrowsing">Keep browsing</button></div>
-<script src="../assets/colorway-catalog.js?v=neon-20261125"></script>
-<script src="../assets/design-colorways.js?v=full-art-2-20261121"></script>
+<script src="../assets/colorway-catalog.js?v=confetti-20261127"></script>
+<script src="../assets/design-colorways.js?v=confetti-20261127"></script>
 <script src="../assets/print-layouts.js?v=rated-all-20261124"></script><script src="../assets/rated-phones.js?v=rated-all-20261124"></script>
 <script src="../assets/kp-config.js"></script>
 <script src="../assets/seasonal-visibility.js"></script><script src="../assets/case-shell.js?v=clear-mounted-2"></script>
@@ -600,7 +600,17 @@
     var options=KPI.colorways(d),selected=options.find(function(c){return c.id===state.colorway;})||options[0];
     state.colorway=selected.id;rememberedLooks[file]=selected.id;
     $('colorwayPicker').hidden=options.length<2;
+    $('colorwayPicker').querySelector('p').textContent=(KPDesignColorways.profile({__kpDesignFile:d.file})||{}).label?'Choose your color':'Choose your background';
     $('colorwayButtons').innerHTML=options.map(function(c){return '<button type="button" data-colorway="'+esc(c.id)+'" aria-pressed="'+(c.id===state.colorway)+'" style="min-height:52px;font-family:inherit;font-size:18px;font-weight:700;border:2px solid '+(c.id===state.colorway?'#dc282e':'#ddd')+';border-radius:10px;background:#fff;color:#191921;padding:10px"><span aria-hidden="true" style="display:inline-block;width:18px;height:18px;border:1px solid #aaa;border-radius:50%;vertical-align:middle;margin-right:8px;background:'+esc(c.bg||'#dedee3')+'"></span>'+esc(c.name)+'</button>';}).join('');
+    var profile=KPDesignColorways.profile({__kpDesignFile:d.file});
+    if(profile&&profile.label){
+      $('colorwayButtons').querySelectorAll('button').forEach(function(button,i){
+        var choice=options[i],im=document.createElement('img');im.alt='';im.width=32;im.height=44;
+        im.style.cssText='object-fit:cover;border-radius:4px;vertical-align:middle;margin-right:8px';
+        im.src=choice.id==='original'?KPI.thumbUrl(d):'../assets/designs/colorways/thumbs/'+encodeURIComponent(profile.variants[choice.code-1])+'?v='+profile.variantHashes[choice.code-1];
+        button.querySelector('span').replaceWith(im);
+      });
+    }
     var title = cleanTitle(d.title);
     $('dname').textContent = title;
     $('dmeta').textContent = 'For your '+m.name+(options.length>1?' · '+selected.name:'');

@@ -1,5 +1,77 @@
 [
 {
+"file": "kp-ocean-confetti.png",
+"title": "Ocean Confetti",
+"category": "Paint Party",
+"collection": "Confetti Paint",
+"color": [
+"Blue",
+"Pink",
+"Purple",
+"Green"
+],
+"hash": "f52c9b4099e6",
+"kind": "original AI-assisted illustration",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"active": true,
+"added": "2026-11-27"
+},
+{
+"file": "kp-confetti-party.png",
+"title": "Confetti Party",
+"category": "Paint Party",
+"collection": "Confetti Paint",
+"color": [
+"Blue",
+"Pink",
+"Purple",
+"Green"
+],
+"hash": "b4169295a4c3",
+"kind": "original AI-assisted illustration",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"active": true,
+"added": "2026-11-27"
+},
+{
+"file": "kp-pastel-confetti.png",
+"title": "Pastel Confetti",
+"category": "Paint Party",
+"collection": "Confetti Paint",
+"color": [
+"Blue",
+"Pink",
+"Purple",
+"Green"
+],
+"hash": "d74cc4a234d4",
+"kind": "original AI-assisted illustration",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"active": true,
+"added": "2026-11-27"
+},
+{
+"file": "kp-jewel-confetti.png",
+"title": "Jewel Confetti",
+"category": "Paint Party",
+"collection": "Confetti Paint",
+"color": [
+"Blue",
+"Pink",
+"Purple",
+"Green"
+],
+"hash": "f5ff7de536bd",
+"kind": "original AI-assisted illustration",
+"credit": "Keepsake · original AI-assisted artwork",
+"license": "Original artwork",
+"active": true,
+"added": "2026-11-27"
+},
+{
 "file": "kp-neon-lucky-little-things.png",
 "title": "Lucky Little Things",
 "category": "Neon Doodles",

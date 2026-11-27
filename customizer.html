@@ -112,8 +112,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <script src="assets/kp-config.js?v=rated-3"></script>
 <script src="assets/heic-loader.js"></script>
 <script src="assets/photo-screening.js?v=worker-1"></script>
-<script src="assets/colorway-catalog.js?v=neon-20261125"></script>
-<script src="assets/design-colorways.js?v=full-art-2-20261121"></script>
+<script src="assets/colorway-catalog.js?v=confetti-20261127"></script>
+<script src="assets/design-colorways.js?v=confetti-20261127"></script>
 <script src="instore/instore-lib.js?v=rated-all-20261124"></script>
 <style>
 .photo-looks{display:flex;gap:10px;overflow-x:auto;padding:6px 6px 14px;scroll-snap-type:x proximity}
@@ -2286,12 +2286,15 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
     var ready=src&&src.complete!==false&&(src.naturalWidth||src.width)>0&&(src.naturalHeight||src.height)>0;
     wrap.hidden=!ready||(KPDesignColorways.choicesFor(src).length<2&&!state.colorwayUnavailable);
     if(!ready){row.replaceChildren();looksSource=null;KPDesignColorways.clear();return;}
+    var lookLabel=(KPDesignColorways.profile(src)||{}).label;
+    $('photoLooksTitle').textContent=lookLabel?'Choose your color.':'Choose your background.';
+    row.setAttribute('aria-label',lookLabel?'Color variations':'Background options');
     var size=(src.naturalWidth||src.width)+'x'+(src.naturalHeight||src.height);
     if(looksSource!==src||looksSize!==size){
       row.replaceChildren();KPDesignColorways.clear();looksSource=src;looksSize=size;
       KPDesignColorways.choicesFor(src).forEach(function(look){
         var button=document.createElement('button');button.type='button';button.className='photo-look';button.dataset.look=look.id;
-        button.setAttribute('aria-label',look.name+' background');
+        button.setAttribute('aria-label',look.name+' variation');
         var thumb=KPDesignColorways.make(src,look.id,192);thumb.setAttribute('aria-hidden','true');
         var label=document.createElement('span');label.textContent=look.name;button.append(thumb,label);row.append(button);
       });
@@ -3522,7 +3525,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   };
 })();
 </script>
-<script src="assets/design-editor.js?v=arrivals-20261125"></script>
+<script src="assets/design-editor.js?v=confetti-20261127"></script>
 <script src="assets/phone-first.js?v=20261125-sitewide"></script>
 <!-- Rated Case photos: after the editor, so the button joins its case row (tools/build_rated_photos.py makes the photos) -->
 <script src="assets/rated-gallery.js?v=mounted-frost-20261124"></script>
