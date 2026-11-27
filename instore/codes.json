@@ -29,7 +29,7 @@
 "OCN": 18,
 "ORB": 3,
 "OUT": 6,
-"PAI": 1,
+"PAI": 5,
 "POP": 13,
 "RAN": 18,
 "SCN": 168,
@@ -2917,6 +2917,10 @@
 "c": "FRU",
 "n": 9
 },
+"kp-confetti-party.png": {
+"c": "PAI",
+"n": 2
+},
 "kp-dots-cafe-dot.png": {
 "c": "DOT",
 "n": 13
@@ -3016,6 +3020,10 @@
 "kp-heart-riot.png": {
 "c": "NE1",
 "n": 1
+},
+"kp-jewel-confetti.png": {
+"c": "PAI",
+"n": 3
 },
 "kp-joshua-tree-hidden-valley-photograph.jpg": {
 "c": "NPK",
@@ -3225,6 +3233,10 @@
 "c": "NEO",
 "n": 12
 },
+"kp-ocean-confetti.png": {
+"c": "PAI",
+"n": 4
+},
 "kp-olives-cabana.jpg": {
 "c": "FRU",
 "n": 23
@@ -3276,6 +3288,10 @@
 "kp-park-rainier-reflection.jpg": {
 "c": "NPK",
 "n": 28
+},
+"kp-pastel-confetti.png": {
+"c": "PAI",
+"n": 5
 },
 "kp-peaches-clear.png": {
 "c": "CLR",

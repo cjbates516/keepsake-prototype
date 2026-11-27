@@ -315,6 +315,11 @@
   adjustments.addEventListener('input',e=>{if(e.target.dataset.adjust)core.adjust(e.target.dataset.adjust,e.target.value);});
   function sync(){
     if(purged)return;const i=core.info(),s=core.snapshot(),originalOnly=i.library&&i.previewReady&&!i.loading&&$('photoLooksWrap').hidden;syncAccessorySummary(i);
+    const colorChoices=!!window.KPDesignColorways?.profile(window.__kp?.state.photoImg)?.label;
+    buttons.background.querySelector('strong').textContent=colorChoices?'Colors':'Background';
+    panels.background.querySelector('h2').textContent=colorChoices?'Colors':'Background';
+    panels.background.querySelector('.studio-help').textContent=colorChoices?'Pick a color variation. Your phone and frost rim stay the same.':'Keep the artwork you love. Change only its background.';
+    thumbs.setAttribute('aria-label',colorChoices?'See color variations on your case':'See backgrounds on your case');
     promise.textContent=i.sky?'Create a sky for your date and place, then review it with our team.':i.drawing?'Turn their drawing into a keepsake. Our team checks the artwork before printing.':i.library?(originalOnly?'Choose your phone, add a name if you like, then show our team.':'Made yours in store. Choose a background, add your name, then show our team.'):'Add your photo, make it yours, then show our team in store.';
     product.querySelector('h1').textContent=i.library?libraryTitle:i.sky?'Your special night.':i.drawing?'Their drawing, your case.':i.layout?'Your photo collage.':'Make it yours.';
     syncVariations(i);productPrice.textContent='$'+(i.caseType==='Rated Case'?i.prices.rated:i.prices.clear).toFixed(2);product.hidden=step!=='edit';

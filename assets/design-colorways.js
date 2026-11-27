@@ -19,7 +19,7 @@
   };
   function profile(src){return src&&(window.KP_COLORWAY_CATALOG||{})[src.__kpDesignFile]||null;}
   // Some collections count the named original as their first colorway.
-  function variantCount(p){return p.originalColor ? 4 : 5;}
+  function variantCount(p){return Number.isInteger(p.variantCount)&&p.variantCount>=1&&p.variantCount<=5 ? p.variantCount : (p.originalColor ? 4 : 5);}
   function validAssets(p){return Array.isArray(p.variants)&&p.variants.length===variantCount(p)&&Array.isArray(p.variantHashes)&&p.variantHashes.length===variantCount(p)&&p.variantHashes.every(function(h){return typeof h==='string'&&/^[a-f0-9]{12,64}$/.test(h);});}
   const artworkOnly = {id:'artwork-only', code:6, name:'Artwork only', bg:'transparent'};
   function isArtworkOnly(src, id) {

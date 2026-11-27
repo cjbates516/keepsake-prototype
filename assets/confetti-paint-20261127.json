@@ -1,0 +1,46 @@
+[
+  {
+    "file": "kp-ocean-confetti.png",
+    "variantFile": "kp-ocean-confetti.webp",
+    "variantHash": "b7c6eede0d41",
+    "title": "Ocean Confetti",
+    "color": "#36a9b8",
+    "hash": "f52c9b4099e6",
+    "sourceSha256": "f52c9b4099e6e4053f4725bb2a95a9ae1209d820c4d56f7b9f070c64f987c078",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "file": "kp-confetti-party.png",
+    "variantFile": "kp-confetti-party.webp",
+    "variantHash": "530374e5ada6",
+    "title": "Confetti Party",
+    "color": "#ee6397",
+    "hash": "b4169295a4c3",
+    "sourceSha256": "b4169295a4c36fadafd0f5640cb9486199cae0c3059dced640301082ceeadf14",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "file": "kp-pastel-confetti.png",
+    "variantFile": "kp-pastel-confetti.webp",
+    "variantHash": "84ef8efa4f44",
+    "title": "Pastel Confetti",
+    "color": "#c9b3df",
+    "hash": "d74cc4a234d4",
+    "sourceSha256": "d74cc4a234d44620d087dd9296aa3955b489b645b312aafbd3e210f40810d98e",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "file": "kp-jewel-confetti.png",
+    "variantFile": "kp-jewel-confetti.webp",
+    "variantHash": "dba5960508da",
+    "title": "Jewel Confetti",
+    "color": "#554298",
+    "hash": "f5ff7de536bd",
+    "sourceSha256": "f5ff7de536bd5e98bcb15f62e837df23af132fd232ab1bc890acc1243a5f956c",
+    "width": 1024,
+    "height": 1536
+  }
+]

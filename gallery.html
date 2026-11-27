@@ -91,6 +91,7 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 .kpDwPills button{background:#FFF;color:#17171F;font-size:14px;font-weight:700;padding:10px 12px;min-height:44px;border-radius:999px;cursor:pointer}
 @media(max-width:374px){.kpDwPills{grid-template-columns:1fr 1fr;justify-content:stretch}}
 
+.color-variations .artwork-thumbs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible}.color-variations .artwork-thumb{min-width:0;width:100%}.color-variations .artwork-thumb img{height:64px}.color-variations .artwork-thumb span{font-size:11px}
 .artwork-options{margin-top:14px;min-width:0}.artwork-options>strong{display:block;font-size:13px;margin-bottom:8px}
 .artwork-thumbs{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;padding:3px 3px 9px;overscroll-behavior-x:contain}
 .artwork-thumb{flex:0 0 64px;min-width:44px;min-height:44px;scroll-snap-align:start;border:2px solid #dedad6;border-radius:7px;padding:3px;background:#fff;color:#27272d;cursor:pointer;font:700 10px/1.2 inherit}
@@ -100,8 +101,8 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
 <link rel="stylesheet" href="assets/storefront.css">
 <script src="assets/case-shell.js?v=clear-mounted-2"></script>
 <script src="assets/print-layouts.js?v=rated-all-20261124"></script><script src="assets/rated-phones.js?v=rated-all-20261124"></script><script src="assets/rated-camera-geometry.js?v=rated-all-20261124"></script><script src="assets/frost-cases.js?v=rated-all-20261124"></script>
-<script src="assets/colorway-catalog.js?v=neon-20261125"></script>
-<script src="assets/design-colorways.js?v=full-art-2-20261121"></script>
+<script src="assets/colorway-catalog.js?v=confetti-20261127"></script>
+<script src="assets/design-colorways.js?v=confetti-20261127"></script>
 <link rel="stylesheet" href="assets/shop-refresh.css?v=frost-20261124">
 <script src="assets/homepage.js" defer></script>
 <script src="assets/shop-dialogs.js" defer></script>
@@ -356,10 +357,11 @@ h1{font-family:"Bricolage Grotesque","Nunito Sans",sans-serif;font-weight:800;le
   function colorwayPicker(file){
     var options=KPDesignColorways.choicesFor({__kpDesignFile:file});
     if(options.length<2)return '';
+    var label=(KPDesignColorways.profile({__kpDesignFile:file})||{}).label||'Background';
     var select=document.createElement('select');
     select.className='artwork-picker';
     options.forEach(function(o){var item=new Option(o.name,o.id);if(o.id===(artworkPicks[file]||'original'))item.defaultSelected=true;select.add(item);});
-    return '<div class="artwork-options"><strong>Background</strong><div class="artwork-thumbs" role="group" aria-label="Background variations">'+options.map(function(o){return '<button type="button" class="artwork-thumb" data-look="'+escapeHtml(o.id)+'" aria-label="'+escapeHtml(o.name)+' background" aria-pressed="'+(o.id===(artworkPicks[file]||'original'))+'"><img alt="" width="64" height="84"><span>'+escapeHtml(o.name)+'</span></button>';}).join('')+'</div><label hidden>Background'+select.outerHTML+'</label></div><small class="artwork-error" role="status"></small>';
+    return '<div class="artwork-options'+(label==='Color variation'?' color-variations':'')+'"><strong>'+escapeHtml(label)+'</strong><div class="artwork-thumbs" role="group" aria-label="'+escapeHtml(label)+' options">'+options.map(function(o){return '<button type="button" class="artwork-thumb" data-look="'+escapeHtml(o.id)+'" aria-label="'+escapeHtml(o.name)+' variation" aria-pressed="'+(o.id===(artworkPicks[file]||'original'))+'"><img alt="" width="64" height="84"><span>'+escapeHtml(o.name)+'</span></button>';}).join('')+'</div><label hidden>Background'+select.outerHTML+'</label></div><small class="artwork-error" role="status"></small>';
   }
   function syncArtworkThumbs(card){card.querySelectorAll('.artwork-thumb').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.look===(artworkPicks[card.dataset.file]||'original')));});}
   var artworkThumbRequest=0;
